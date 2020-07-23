@@ -1,0 +1,16 @@
+<div
+  class="uk-padding-small uk-overflow-auto uk-flex-center"
+  uk-grid
+  ...attributes
+  {{did-insert (perform this.fetchDocuments)}}
+  {{did-update (perform this.fetchDocuments) @filters}}
+>
+  {{#each this.documents as |document|}}
+    {{! This wrapper div is needed for the uk-grid spacing between elements }}
+    <div>
+      <DocumentCard @document={{document}} />
+    </div>
+  {{else}}
+    No documents
+  {{/each}}
+</div>

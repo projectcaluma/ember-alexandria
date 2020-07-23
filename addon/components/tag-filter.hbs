@@ -1,0 +1,19 @@
+<div
+  class="uk-border uk-padding-small uk-width-expand"
+  ...attributes
+  {{did-insert (perform this.fetchTags)}}
+  {{did-update (perform this.fetchTags) @filters}}
+>
+  {{#each this.tags as |tag|}}
+    <span
+      class="uk-badge {{
+        if (contains tag.id @selectedTags) "uk-background-secondary"
+      }}"
+      {{on "click" (fn this.toggleTag tag)}}
+    >
+      {{tag.name}}
+    </span>
+  {{else}}
+    No tags...
+  {{/each}}
+</div>
