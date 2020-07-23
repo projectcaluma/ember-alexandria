@@ -1,0 +1,17 @@
+<li class="category-nav--category">
+  <LinkTo @query={{hash category=@category.id}} class={{if @slected "active"}}>
+    <div class="uk-flex uk-flex-middle">
+      <div>
+        <FaIcon
+          @icon="folder"
+          @size="2x"
+          class="uk-margin-right"
+          {{set-style color=@category.color}}
+        />
+      </div>
+      <div>
+        {{@category.name}}
+      </div>
+    </div>
+  </LinkTo>
+</li>

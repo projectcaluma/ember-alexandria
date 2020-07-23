@@ -1,0 +1,17 @@
+@use "ember-uikit" as uikit;
+
+.document-card {
+  min-width: 200px;
+
+  transition: box-shadow uikit.$animation-duration,
+    color uikit.$animation-duration, border uikit.$animation-duration;
+
+  &:hover {
+    @extend .uk-box-shadow-medium;
+    // border: none;
+  }
+
+  .document-name {
+    font-size: 1rem;
+  }
+}

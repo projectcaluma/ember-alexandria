@@ -1,0 +1,18 @@
+<div
+  class="document-card uk-card uk-card-body uk-border-rounded-circular uk-padding-remove"
+>
+  <div class="uk-card-media-top uk-text-center uk-border-bottom uk-padding">
+    <FaIcon
+      @icon="file-alt"
+      @prefix="far"
+      @size="7x"
+      {{set-style color=@document.category.color}}
+    />
+  </div>
+  <div
+    class="uk-card-body uk-padding-small uk-flex uk-flex-between document-name"
+  >
+    {{@document.name}}
+    <FaIcon @icon="ellipsis-v" />
+  </div>
+</div>
