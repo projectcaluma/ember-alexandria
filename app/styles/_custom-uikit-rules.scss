@@ -1,0 +1,37 @@
+@use "ember-uikit/variables-theme" as uikit;
+
+[class*="uk-border"] {
+  border: uikit.$global-border-width solid uikit.$global-border;
+}
+
+.uk-border-horizontal {
+  border-style: solid none;
+}
+
+.uk-border-top {
+  border-style: solid none none none;
+}
+
+.uk-border-bottom {
+  border-style: none none solid none;
+}
+
+.uk-border-left {
+  border-style: none none none solid;
+}
+
+.uk-border-right {
+  border-style: none solid none none;
+}
+
+.uk-border-rounded {
+  border-radius: uikit.$border-rounded-border-radius;
+
+  &-circular {
+    border-radius: calc(#{uikit.$border-rounded-border-radius} * 2);
+  }
+
+  &-angular {
+    border-radius: calc(#{uikit.$border-rounded-border-radius} / 2);
+  }
+}

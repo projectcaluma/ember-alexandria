@@ -1,0 +1,19 @@
+<nav
+  class="uk-background-muted uk-border-right"
+  {{did-insert (perform this.fetchCategories)}}
+>
+  <div
+    class="uk-padding-small uk-margin-top uk-width-1 uk-text-bold uk-border-horizontal"
+  >
+    <div class="uk-text-center">
+      Kategorien
+    </div>
+  </div>
+  <ul class="uk-nav uk-width-medium uk-margin-top">
+    {{#each this.categories as |category|}}
+      <CategoryNav::Category @category={{category}} @selected={{eq category.id @selected}} />
+    {{else}}
+      No categories
+    {{/each}}
+  </ul>
+</nav>

@@ -1,0 +1,20 @@
+@use "ember-uikit" as uikit;
+
+@mixin active {
+  background: uikit.$background-default-background;
+}
+
+.uk-nav .category-nav--category a {
+  transition: background uikit.$animation-duration,
+    box-shadow uikit.$animation-duration, color uikit.$animation-duration;
+  padding: 10px 0 10px 50px;
+
+  &.active {
+    @include active;
+  }
+
+  &:hover {
+    @include active;
+    @extend .uk-box-shadow-small;
+  }
+}
