@@ -1,10 +1,10 @@
-import Model, { attr, hasMany } from "@ember-data/model";
+import { attr, hasMany } from "@ember-data/model";
+import { LocalizedModel, localizedAttr } from "ember-localized-model";
 
-export default class CategoryModel extends Model {
-  @attr name;
+export default class CategoryModel extends LocalizedModel {
+  @localizedAttr name;
   @attr description;
   @attr color;
-
 
   @hasMany documents;
 }
