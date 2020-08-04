@@ -10,7 +10,7 @@ export default class DocumentGridComponent extends Component {
   *fetchDocuments() {
     return yield this.store.query("document", {
       include: "category",
-      ...this.args.filters,
+      filter: { ...this.args.filters },
     });
   }
 }
