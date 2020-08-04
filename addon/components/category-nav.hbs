@@ -11,7 +11,10 @@
   </div>
   <ul class="uk-nav uk-width-medium uk-margin-top">
     {{#each this.categories as |category|}}
-      <CategoryNav::Category @category={{category}} @selected={{eq category.id @selected}} />
+      <CategoryNav::Category
+        @category={{category}}
+        @selected={{eq category.id @selected}}
+      />
     {{else}}
       No categories
     {{/each}}
