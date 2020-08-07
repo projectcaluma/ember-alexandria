@@ -24,7 +24,7 @@
   border-style: none solid none none;
 }
 
-.uk-border-rounded {
+.uk-border-rounded, .uk-corner-rounded {
   border-radius: uikit.$border-rounded-border-radius;
 
   &-circular {

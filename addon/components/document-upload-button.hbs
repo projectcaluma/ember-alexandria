@@ -1,0 +1,45 @@
+<div
+  class="uk-height-1-1"
+  uk-form-custom
+  ...attributes
+  {{did-insert (perform this.fetchCategories)}}
+>
+  <UkButton
+    @color="primary"
+    @size="small"
+    class="uk-height-1-1"
+    tabindex="-1"
+    @loading={{this.upload.isRunning}}
+  >
+    {{t "alexandria.upload-file"}}
+  </UkButton>
+
+  {{#if @category}}
+    <input
+      type="file"
+      multiple
+      {{on "change" (perform this.upload @category)}}
+    />
+  {{else}}
+    <Drop @width="uk-with-medium" as |Item|>
+      {{#each this.categories as |category|}}
+        <Item uk-form-custom>
+          <input
+            type="file"
+            multiple
+            {{on "change" (perform this.upload category)}}
+          />
+          <FaIcon
+            @icon="folder"
+            @size="2x"
+            class="uk-margin-small-right"
+            {{set-style color=category.color}}
+          />
+          {{category.name}}
+        </Item>
+      {{else}}
+        {{t "alexandria.document-upload-button.no-categories"}}
+      {{/each}}
+    </Drop>
+  {{/if}}
+</div>

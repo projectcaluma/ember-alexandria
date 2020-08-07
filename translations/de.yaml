@@ -1,0 +1,31 @@
+alexandria:
+  loading: "Lädt..."
+  nothing-found: "Wir haben nichts gefunden..."
+  download: "Herunterladen"
+  delete: "Löschen"
+  upload-file: "Datei hochladen"
+
+  errors:
+    save-file: "Beim Herunterladen der Datei ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+    delete-document: "Beim Löschen des Dokummentes ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+    fetch-categories: "Beim laden der Kategorien ist ein Fehler aufgetreten."
+    upload-document: |-
+      Beim hochladen {count, plural,
+        one {des Dokumentes}
+        other {der Dokumente}
+      } ist ein Fehler aufgetreten.
+
+  success:
+    delete-document: "Das Dokument wurde erfolgreich gelöscht."
+    upload-document: |-
+      {count, plural,
+        one {Das Dokument wurde}
+        other {Die Dokumente wurden}
+      } erfolgreich hochgeladen.
+
+  category-nav:
+    all-files: "Alle Dokumente"
+    categories: "Kategorien"
+
+  document-upload-button:
+    no-categories: "Es wurden keine Kategorien gefunden."
