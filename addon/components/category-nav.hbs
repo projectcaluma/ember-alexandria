@@ -10,6 +10,12 @@
     </div>
   </div>
   <ul class="uk-nav uk-width-medium uk-margin-top">
+    <CategoryNav::Category
+      @category={{
+        hash name=(t "alexandria.category-nav.all-files") color="#e3e3e3"
+      }}
+      @selected={{eq @selected undefined}}
+    />
     {{#each this.categories as |category|}}
       <CategoryNav::Category
         @category={{category}}
