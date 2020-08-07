@@ -1,16 +1,38 @@
+<div class="uk-flex uk-flex-middle uk-padding-small">
+  <DocumentUploadButton
+    @category={{@filters.category}}
+    @afterUpload={{perform this.fetchDocuments}}
+  />
+  <TagFilter
+    @filters={{hash category=@filters.category}}
+    @selectedTags={{@filters.tags}}
+    class="uk-margin-left"
+  />
+</div>
+
 <div
-  class="uk-padding-small uk-overflow-auto uk-flex-center"
+  class="uk-padding uk-overflow-auto uk-flex-center"
   uk-grid
   ...attributes
   {{did-insert (perform this.fetchDocuments)}}
   {{did-update (perform this.fetchDocuments) @filters}}
 >
-  {{#each this.documents as |document|}}
-    {{! This wrapper div is needed for the uk-grid spacing between elements }}
-    <div>
-      <DocumentCard @document={{document}} />
-    </div>
+  {{#if this.fetchDocuments.isRunning}}
+    {{#each (range 0 10)}}
+      <div>
+        <DocumentCard::Skeleton />
+      </div>
+    {{/each}}
   {{else}}
-    No documents
-  {{/each}}
+    {{#each this.documents as |document|}}
+      {{! This wrapper div is needed for the uk-grid spacing between elements }}
+      <div>
+        <DocumentCard @document={{document}} />
+      </div>
+    {{else}}
+      <div>
+        <EmptyIcon />
+      </div>
+    {{/each}}
+  {{/if}}
 </div>

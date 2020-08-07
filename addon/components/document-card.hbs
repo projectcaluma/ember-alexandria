@@ -1,18 +1,59 @@
 <div
   class="document-card uk-card uk-card-body uk-border-rounded-circular uk-padding-remove"
 >
-  <div class="uk-card-media-top uk-text-center uk-border-bottom uk-padding">
-    <FaIcon
-      @icon="file-alt"
-      @prefix="far"
-      @size="7x"
-      {{set-style color=@document.category.color}}
-    />
+  <div class="uk-card-media-top uk-text-center uk-border-bottom">
+    {{#if this.showLoadingState}}
+      <div class="uk-padding">
+        <span uk-spinner="ratio: 4.5" class="uk-position-relative"></span>
+        <FaIcon
+          @icon="file-download"
+          @prefix="far"
+          @size="7x"
+          {{set-style color=@document.category.color}}
+        />
+      </div>
+    {{else}}
+      {{#if @document.thumbnail}}
+        <img
+          data-src={{@document.thumbnail}}
+          width="200"
+          height="170"
+          uk-img
+          alt={{@document.title}}
+        />
+      {{else}}
+        <div class="uk-padding">
+          <FaIcon
+            @icon="file-alt"
+            @prefix="far"
+            @size="7x"
+            {{set-style color=@document.category.color}}
+          />
+        </div>
+      {{/if}}
+    {{/if}}
   </div>
   <div
     class="uk-card-body uk-padding-small uk-flex uk-flex-between document-name"
   >
-    {{@document.name}}
-    <FaIcon @icon="ellipsis-v" />
+    <span
+      class="uk-text-truncate"
+      uk-tooltip="title: {{@document.title}}; pos: bottom; delay: 300;"
+    >
+      {{@document.title}}
+    </span>
+    <span>
+      <FaIcon @icon="ellipsis-v" />
+    </span>
+    <Drop @width="uk-width-small" @position="left-center" as |Item|>
+      <Item {{on "click" (perform this.download)}}>
+        <FaIcon @icon="file-download" />
+        {{t "alexandria.download"}}
+      </Item>
+      <Item {{on "click" (perform this.delete)}}>
+        <FaIcon @icon="trash-alt" @prefix="far" />
+        {{t "alexandria.delete"}}
+      </Item>
+    </Drop>
   </div>
 </div>

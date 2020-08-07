@@ -1,0 +1,23 @@
+<div
+  class="document-card uk-card uk-card-body uk-border-rounded-circular uk-padding-remove"
+>
+  <div class="uk-card-media-top uk-text-center uk-border-bottom">
+    <img
+      width="200"
+      height="180"
+      uk-img
+      class="skeleton-img"
+      alt={{t "alexandria.loading"}}
+    />
+  </div>
+  <div
+    class="uk-card-body uk-padding-small uk-flex uk-flex-between document-name"
+  >
+    <span class="skeleton-text">
+    </span>
+
+    <span {{set-style color="#F4F4F4"}}>
+      <FaIcon @icon="ellipsis-v" />
+    </span>
+  </div>
+</div>

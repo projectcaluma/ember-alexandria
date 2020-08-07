@@ -1,17 +1,41 @@
 @use "ember-uikit" as uikit;
 
 .document-card {
-  min-width: 200px;
+  width: 200px;
 
   transition: box-shadow uikit.$animation-duration,
     color uikit.$animation-duration, border uikit.$animation-duration;
 
   &:hover {
-    @extend .uk-box-shadow-medium;
-    // border: none;
+    @extend .uk-box-shadow-large;
+  }
+
+  .uk-card-media-top {
+    height: 170px;
+    overflow: hidden;
+
+    img {
+      border-radius: calc(#{uikit.$border-rounded-border-radius} * 2);
+    }
   }
 
   .document-name {
-    font-size: 1rem;
+    font-size: 0.85rem;
+
+    & > span:first-child {
+      max-width: 90%;
+    }
+
+    & > span:last-of-type {
+      width: 10%;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    & > span[class*="skeleton"] {
+      width: 100%;
+      max-width: 100%;
+
+    }
   }
 }
