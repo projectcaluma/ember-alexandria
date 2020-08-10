@@ -1,10 +1,10 @@
 <div class="uk-flex uk-flex-1 uk-height-1-1 uk-border uk-background-default">
   <CategoryNav @selected={{this.category}} />
   <section class="uk-width-1 uk-flex uk-flex-column uk-overflow-hidden">
-    <Search />
+    <Search @search={{this.search}} />
 
     <DocumentGrid
-      @filters={{hash category=this.category tags=this.tags}}
+      @filters={{hash category=this.category tags=this.tags search=this.search}}
       class="uk-border-top"
     />
   </section>

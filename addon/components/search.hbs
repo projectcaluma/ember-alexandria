@@ -5,6 +5,8 @@
       type="search"
       class="uk-search-input uk-background-default"
       placeholder="Search..."
+      value={{@search}}
+      {{on "input" (perform this.updateSearch)}}
     />
   </form>
 </div>
