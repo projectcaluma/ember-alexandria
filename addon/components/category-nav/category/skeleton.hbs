@@ -5,11 +5,11 @@
         <FaIcon
           @icon="folder"
           @size="2x"
-          class="uk-margin-right"
-          {{set-style color="#999"}}
+          class="uk-margin-right skeleton-icon"
+          {{set-style animation-delay=@animationDelay}}
         />
       </div>
-      <span class="skeleton-text">
+      <span class="skeleton-text" {{set-style animation-delay=@animationDelay}}>
       </span>
     </div>
   </a>

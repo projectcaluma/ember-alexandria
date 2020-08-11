@@ -5,6 +5,8 @@ module.exports = function () {
       "ellipsis-v",
       "file-download",
       "box-open",
+      "user",
+      "users",
     ],
     "free-regular-svg-icons": ["file-alt", "trash-alt"],
   };

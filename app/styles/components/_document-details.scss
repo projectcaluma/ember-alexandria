@@ -1,0 +1,18 @@
+@use "ember-uikit" as uikit;
+
+.document-details {
+  transition: width uikit.$animation-duration;
+
+  &.closed {
+    width: 0px;
+  }
+  .document-title {
+    font-size: 1.5em;
+    word-break: break-all;
+  }
+
+  .document-meta {
+    font-size: 1.25em;
+    color: uikit.$global-muted-color;
+  }
+}
