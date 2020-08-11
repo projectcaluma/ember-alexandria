@@ -1,50 +1,30 @@
 @use "ember-uikit/variables-theme" as uikit;
-
 $base-color: #f4f4f4;
-$shine-color: rgba(229, 229, 229, 0.8);
-$animation-duration: 3s;
 
-// forked from https://codepen.io/viktorstrate/pen/yoBRLy
-@mixin background-gradient {
-  background-image: linear-gradient(
-    90deg,
-    $base-color 0px,
-    $shine-color 40px,
-    $base-color 80px
-  );
-  background-size: 100vw;
+@mixin pulse-animation {
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.2;
+    }
+  }
 }
 
-// forked from https://codepen.io/viktorstrate/pen/yoBRLy
-@mixin background-gradient {
-  background-image: linear-gradient(
-    90deg,
-    $base-color 0px,
-    $shine-color 40px,
-    $base-color 80px
-  );
-  background-size: 100vw;
+.skeleton-pulse {
+  background-color: $base-color;
+  @include pulse-animation;
 }
 
 .skeleton-text {
-  background-color: $base-color;
+  @extend .skeleton-pulse;
   border-radius: uikit.$border-rounded-border-radius;
-  @include background-gradient;
-  animation: shine $animation-duration infinite;
 }
 
-.skeleton-img {
-  background-color: $base-color;
-  @include background-gradient;
-  animation: shine $animation-duration infinite;
-}
-
-@keyframes shine {
-  0% {
-    background-position: -100px;
-  }
-
-  100% {
-    background-position: 80vw;
-  }
+.skeleton-icon {
+  color: $base-color;
+  @include pulse-animation;
 }

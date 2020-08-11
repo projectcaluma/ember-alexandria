@@ -24,7 +24,8 @@
   border-style: none solid none none;
 }
 
-.uk-border-rounded, .uk-corner-rounded {
+.uk-border-rounded,
+.uk-corner-rounded {
   border-radius: uikit.$border-rounded-border-radius;
 
   &-circular {
@@ -34,4 +35,8 @@
   &-angular {
     border-radius: calc(#{uikit.$border-rounded-border-radius} / 2);
   }
+}
+
+.uk-height-max-1 {
+  max-height: 100%;
 }

@@ -14,6 +14,7 @@ alexandria:
         one {des Dokumentes}
         other {der Dokumente}
       } ist ein Fehler aufgetreten.
+    update: "Änderungen konnten nicht gespeichert werden. Versuchen Sie es erneut."
 
   success:
     delete-document: "Das Dokument wurde erfolgreich gelöscht."
@@ -22,6 +23,7 @@ alexandria:
         one {Das Dokument wurde}
         other {Die Dokumente wurden}
       } erfolgreich hochgeladen.
+    update: "Änderungen wurden gespeichert."
 
   category-nav:
     all-files: "Alle Dokumente"
@@ -29,3 +31,7 @@ alexandria:
 
   document-upload-button:
     no-categories: "Es wurden keine Kategorien gefunden."
+
+  document-details:
+    created-at: "Erstellt am {date}"
+    name-placeholder: "Name..."

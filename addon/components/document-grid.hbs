@@ -1,39 +1,60 @@
-<div class="uk-flex uk-flex-middle uk-padding-small">
-  <DocumentUploadButton
-    @category={{@filters.category}}
-    @afterUpload={{perform this.fetchDocuments}}
-  />
+<div class="uk-flex uk-overflow-hidden uk-height-max-1 uk-height-1-1">
+  <div
+    class="uk-width-1 uk-flex uk-flex-column uk-overflow-hidden uk-height-max-1"
+  >
+    <div class="uk-flex uk-flex-middle uk-padding-small">
+      <DocumentUploadButton
+        @category={{@filters.category}}
+        @afterUpload={{perform this.fetchDocuments}}
+      />
 
-  <!-- TagFilter
-    @filters={{hash category=@filters.category}}
-    @selectedTags={{@filters.tags}}
-    class="uk-margin-left"
-  /-->
-</div>
+      {{! template-lint-disable no-html-comments}}
+      <!-- TagFilter
+      @filters={{hash category=@filters.category}}
+      @selectedTags={{@filters.tags}}
+      class="uk-margin-left"
+      /-->
+      {{! template-lint-enable no-html-comments}}
+    </div>
 
-<div
-  class="uk-padding uk-overflow-auto uk-flex-center"
-  uk-grid
-  ...attributes
-  {{did-insert (perform this.fetchDocuments)}}
-  {{did-update (perform this.fetchDocuments) @filters}}
->
-  {{#if this.fetchDocuments.isRunning}}
-    {{#each (range 0 10)}}
-      <div>
-        <DocumentCard::Skeleton />
-      </div>
-    {{/each}}
-  {{else}}
-    {{#each this.documents as |document|}}
-      {{! This wrapper div is needed for the uk-grid spacing between elements }}
-      <div>
-        <DocumentCard @document={{document}} />
-      </div>
-    {{else}}
-      <div>
-        <EmptyIcon />
-      </div>
-    {{/each}}
-  {{/if}}
+    <div
+      class="uk-padding uk-overflow-auto uk-flex-center"
+      uk-grid
+      ...attributes
+      {{did-insert (perform this.fetchDocuments)}}
+      {{did-update (perform this.fetchDocuments) @filters}}
+    >
+      {{#if this.fetchDocuments.isRunning}}
+        {{#each (range 0 10) as |index|}}
+          <div>
+            <DocumentCard::Skeleton @animationDelay={{concat index "00ms"}} />
+          </div>
+        {{/each}}
+      {{else}}
+        {{#each this.documents as |document|}}
+          {{! This wrapper div is needed for the uk-grid spacing between elements }}
+          <div>
+            <LinkTo
+              @query={{hash document=document.id}}
+              class="uk-link-reset"
+              {{did-insert
+                this.scrollIntoView
+                (eq @selectedDocumentId document.id)
+              }}
+            >
+              <DocumentCard
+                @document={{document}}
+                class={{if (eq @selectedDocumentId document.id) "selected"}}
+              />
+            </LinkTo>
+          </div>
+        {{else}}
+          <div>
+            <EmptyIcon />
+          </div>
+        {{/each}}
+      {{/if}}
+    </div>
+  </div>
+  <DocumentDetails @document={{this.selectedDocument}} />
 </div>

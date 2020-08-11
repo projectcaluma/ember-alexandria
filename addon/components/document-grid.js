@@ -1,3 +1,4 @@
+import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { lastValue, task } from "ember-concurrency-decorators";
@@ -7,6 +8,16 @@ export default class DocumentGridComponent extends Component {
 
   loadingElementsAmount = 10;
 
+  get selectedDocument() {
+    if (this.args.selectedDocumentId) {
+      return (
+        this.store.peekRecord("document", this.args.selectedDocumentId) ||
+        this.store.findRecord("document", this.args.selectedDocumentId)
+      );
+    }
+    return undefined;
+  }
+
   @lastValue("fetchDocuments") documents;
   @task
   *fetchDocuments() {
@@ -14,5 +25,19 @@ export default class DocumentGridComponent extends Component {
       include: "category,files",
       filter: { ...this.args.filters },
     });
+  }
+
+  @action scrollIntoView(element, [isSelected] = []) {
+    if (isSelected) {
+      window.setTimeout(
+        () =>
+          element.scrollIntoView({
+            block: "start",
+            inline: "nearest",
+            behavior: "smooth",
+          }),
+        500
+      );
+    }
   }
 }

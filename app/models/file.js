@@ -1,1 +1,1 @@
-export { default } from 'ember-alexandria/models/file';
+export { default } from "ember-alexandria/models/file";

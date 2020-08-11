@@ -1,0 +1,98 @@
+<div
+  class="uk-background-muted uk-border-left uk-width-xlarge uk-flex uk-flex-between uk-flex-column document-details {{
+    unless @document "closed"
+  }}"
+  {{did-update this.resetState @document}}
+>
+  <div>
+    <div class="uk-padding-small">
+      <span
+        class="document-title uk-flex uk-flex-between uk-margin-bottom uk-flex-middle"
+      >
+        <span
+          class="uk-flex uk-flex-middle uk-width-1"
+          {{set-style cursor="text"}}
+        >
+          <span>
+            <FaIcon
+              @icon="file-alt"
+              @prefix="far"
+              class="uk-margin-small-right"
+              {{set-style color=@document.category.color}}
+            />
+          </span>
+          {{#if this.editTitle}}
+            <input
+              class="uk-input uk-width-1"
+              type="text"
+              placeholder={{t "alexandria.document-details.name-placeholder"}}
+              value={{@document.title}}
+              {{on "input" this.updateDocumentTitle}}
+            />
+            <span>
+              <a
+                href="#"
+                class="uk-icon-button {{
+                  unless this.validTitle "uk-disabled"
+                }} cursor-pointer"
+                uk-icon="icon: check"
+                {{on "click" (perform this.saveDocument)}}
+              ></a>
+            </span>
+          {{else}}
+            <a
+              href="#"
+              class="uk-width-1 uk-link-reset"
+              {{on "click" (set this.editTitle true)}}
+            >
+              {{@document.title}}
+            </a>
+          {{/if}}
+        </span>
+        <LinkTo
+          @query={{hash document=undefined}}
+          class="uk-icon-button"
+          uk-icon="close"
+        />
+      </span>
+
+      <span class="document-meta">
+        <p>
+          {{
+            t
+            "alexandria.document-details.created-at"
+            date=(format-date @document.createdAt)
+          }}
+        </p>
+        <p>
+          <FaIcon @icon="user" class="uk-margin-small-right" />
+          {{@document.createdByUser}}
+        </p>
+        <p>
+          <FaIcon @icon="users" class="uk-margin-small-right" />
+          {{@document.createdByGroup}}
+        </p>
+      </span>
+
+      <LinkTo @query={{hash document=undefined}}>
+        <UkButton
+          @size="small"
+          @color="primary"
+          class="uk-width-1"
+          @loading={{this.delete.isRunning}}
+          {{on "click" (perform this.delete)}}
+        >
+          {{t "alexandria.delete"}}
+        </UkButton>
+      </LinkTo>
+    </div>
+  </div>
+  <UkButton
+    @size="large"
+    @color="primary"
+    @loading={{this.download.isRunning}}
+    {{on "click" (perform this.download)}}
+  >
+    {{t "alexandria.download"}}
+  </UkButton>
+</div>
