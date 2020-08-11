@@ -18,10 +18,10 @@
     </div>
 
     <div
-      class="uk-padding uk-overflow-auto uk-flex-center"
-      uk-grid
+      class="uk-padding-small uk-overflow-auto uk-flex-center document-grid"
       ...attributes
       {{did-insert (perform this.fetchDocuments)}}
+      {{did-insert this.setupGridAnimations}}
       {{did-update (perform this.fetchDocuments) @filters}}
     >
       {{#if this.fetchDocuments.isRunning}}
