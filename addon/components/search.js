@@ -1,7 +1,7 @@
-import Component from "@glimmer/component";
-import { restartableTask } from "ember-concurrency-decorators";
 import { inject as service } from "@ember/service";
+import Component from "@glimmer/component";
 import { timeout } from "ember-concurrency";
+import { restartableTask } from "ember-concurrency-decorators";
 
 export default class SearchComponent extends Component {
   @service router;

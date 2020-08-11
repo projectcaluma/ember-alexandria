@@ -6,14 +6,15 @@
       width="200"
       height="180"
       uk-img
-      class="skeleton-img"
+      class="skeleton-pulse"
       alt={{t "alexandria.loading"}}
+      {{set-style animation-delay=@animationDelay}}
     />
   </div>
   <div
     class="uk-card-body uk-padding-small uk-flex uk-flex-between document-name"
   >
-    <span class="skeleton-text">
+    <span class="skeleton-text" {{set-style animation-delay=@animationDelay}}>
     </span>
 
     <span {{set-style color="#F4F4F4"}}>

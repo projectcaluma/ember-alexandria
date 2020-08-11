@@ -35,7 +35,10 @@
     & > span[class*="skeleton"] {
       width: 100%;
       max-width: 100%;
-
     }
+  }
+
+  &.selected {
+    border-color: uikit.$global-primary-background;
   }
 }

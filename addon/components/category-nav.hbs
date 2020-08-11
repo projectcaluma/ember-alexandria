@@ -3,7 +3,7 @@
   {{did-insert (perform this.fetchCategories)}}
 >
   <div
-    class="uk-padding-small uk-margin-top uk-width-1 uk-text-bold uk-border-horizontal"
+    class="uk-padding-small uk-margin-top uk-width-1 uk-text-bold uk-border-bottom"
   >
     <div class="uk-text-center">
       {{t "alexandria.category-nav.categories"}}
@@ -17,8 +17,10 @@
       @selected={{eq @selected undefined}}
     />
     {{#if this.fetchCategories.isRunning}}
-      {{#each (range 0 5)}}
-        <CategoryNav::Category::Skeleton />
+      {{#each (range 0 5) as |index|}}
+        <CategoryNav::Category::Skeleton
+          @animationDelay={{concat index "00ms"}}
+        />
       {{/each}}
     {{else}}
       {{#each this.categories as |category|}}
