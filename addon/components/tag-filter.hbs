@@ -5,14 +5,14 @@
   {{did-update (perform this.fetchTags) @filters}}
 >
   {{#each this.tags as |tag|}}
-    <span
+    <LinkTo @query={{hash tag=tag.id}}>
       class="uk-badge {{
         if (contains tag.id @selectedTags) "uk-background-secondary"
       }}"
       {{on "click" (fn this.toggleTag tag)}}
-    >
+      >
       {{tag.name}}
-    </span>
+    </LinkTo>
   {{else}}
     No tags...
   {{/each}}
