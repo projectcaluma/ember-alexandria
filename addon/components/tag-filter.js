@@ -1,7 +1,7 @@
+import { action } from "@ember/object";
+import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { lastValue, task } from "ember-concurrency-decorators";
-import { inject as service } from "@ember/service";
-import { action } from "@ember/object";
 
 export default class TagFilterComponent extends Component {
   @service store;
