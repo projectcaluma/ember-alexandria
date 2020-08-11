@@ -5,5 +5,4 @@ export default class TagModel extends Model {
   @attr description;
 
   @hasMany documents;
-
 }
