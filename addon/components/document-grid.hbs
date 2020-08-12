@@ -17,43 +17,44 @@
       {{! template-lint-enable no-html-comments}}
     </div>
 
-    <div
-      class="uk-padding-small uk-overflow-auto uk-flex-center document-grid"
-      ...attributes
-      {{did-insert (perform this.fetchDocuments)}}
-      {{did-insert this.setupGridAnimations}}
-      {{did-update (perform this.fetchDocuments) @filters}}
-    >
-      {{#if this.fetchDocuments.isRunning}}
-        {{#each (range 0 10) as |index|}}
-          <div>
-            <DocumentCard::Skeleton @animationDelay={{concat index "00ms"}} />
-          </div>
-        {{/each}}
-      {{else}}
-        {{#each this.documents as |document|}}
-          {{! This wrapper div is needed for the uk-grid spacing between elements }}
-          <div>
-            <LinkTo
-              @query={{hash document=document.id}}
-              class="uk-link-reset"
-              {{did-insert
-                this.scrollIntoView
-                (eq @selectedDocumentId document.id)
-              }}
-            >
-              <DocumentCard
-                @document={{document}}
-                class={{if (eq @selectedDocumentId document.id) "selected"}}
-              />
-            </LinkTo>
-          </div>
+    <div class="uk-padding-small uk-overflow-auto" ...attributes>
+      <div
+        class="document-grid"
+        {{did-insert (perform this.fetchDocuments)}}
+        {{did-insert this.setupGridAnimations}}
+        {{did-update (perform this.fetchDocuments) @filters}}
+      >
+        {{#if this.fetchDocuments.isRunning}}
+          {{#each (range 0 10) as |index|}}
+            <div>
+              <DocumentCard::Skeleton @animationDelay={{concat index "00ms"}} />
+            </div>
+          {{/each}}
         {{else}}
-          <div>
-            <EmptyIcon />
-          </div>
-        {{/each}}
-      {{/if}}
+          {{#each this.documents as |document|}}
+            {{! This wrapper div is needed for the uk-grid spacing between elements }}
+            <div>
+              <LinkTo
+                @query={{hash document=document.id}}
+                class="uk-link-reset"
+                {{did-insert
+                  this.scrollIntoView
+                  (eq @selectedDocumentId document.id)
+                }}
+              >
+                <DocumentCard
+                  @document={{document}}
+                  class={{if (eq @selectedDocumentId document.id) "selected"}}
+                />
+              </LinkTo>
+            </div>
+          {{else}}
+            <div class="empty uk-margin-large-top">
+              <EmptyIcon />
+            </div>
+          {{/each}}
+        {{/if}}
+      </div>
     </div>
   </div>
   <DocumentDetails @document={{this.selectedDocument}} />
