@@ -9,5 +9,8 @@ export default class Router extends EmberRouter {
 
 /* eslint-disable-next-line array-callback-return */
 Router.map(function () {
-  this.mount("ember-alexandria", { path: "/" });
+  this.mount("ember-alexandria", {
+    path: "/:instance_id/documents/",
+    as: "alexandria",
+  });
 });

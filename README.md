@@ -55,6 +55,56 @@ constructor(...args) {
 }
 ```
 
+Configuration
+------------------------------------------------------------------------------
+
+You can configure if the models should be filtered by meta and what the default
+meta value for a model should be. Each configuration field is scoped by model name
+(check out the example to understand what is meant by this).
+
+For this you need to create a service extending from
+`ember-alexandria/services/config` which you then have to pass as `config` to
+alexandria.
+
+If you mounted alexandria with query params 
+`this.mount("ember-alexandria", {path: "/:your_query_param/documents/"});`
+you can access the query params in you config service (as shown in the example
+above) with `this.emeisQueryParams.your_query_param`.
+
+
+If you need to access the `emeisQueryParams` inside your config check that you define `modelMetaFilters`
+and/or `defaultModelMeta` as getters. If you dont need `emeisQueryParams` you
+can ignore the getters and just define the field as usual.
+
+__Example__:
+```js
+import ConfigService from "ember-alexandria/services/config";
+
+export default class AlexandriaConfigService extends ConfigService {
+  get modelMetaFilters() {
+    return {
+      document: [
+        { key: "your_meta_field", value: this.emeisQueryParams.your_query_param
+},
+      ],
+    };
+  }
+
+  get defaultModelMeta() {
+    return {
+      document: {
+        your_meta_field: this.emeisQueryParams.your_query_param,
+      },
+      file: {
+        is_alexandria_file: true
+      }
+    };
+  }
+}
+```
+
+
+
 Contributing
 ------------------------------------------------------------------------------
 

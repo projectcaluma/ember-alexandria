@@ -6,6 +6,7 @@ export default class FileModel extends Model {
   @attr uploadUrl;
   @attr downloadUrl;
   @attr objectName;
+  @attr meta;
 
   @belongsTo document;
 

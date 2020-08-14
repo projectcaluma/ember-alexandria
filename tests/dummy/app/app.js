@@ -15,7 +15,13 @@ export default class App extends Application {
     this.engines = {
       emberAlexandria: {
         dependencies: {
-          services: ["store", "intl", "notification", "router"],
+          services: [
+            "store",
+            "intl",
+            "notification",
+            "router",
+            { config: "alexandria-config" },
+          ],
         },
       },
     };

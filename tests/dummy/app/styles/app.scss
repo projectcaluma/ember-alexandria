@@ -1,4 +1,8 @@
-$global-primary-background: #c00;
-
 @import "ember-uikit";
 @import "ember-alexandria";
+
+#container {
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+}
