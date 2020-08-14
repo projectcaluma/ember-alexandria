@@ -1,1 +1,1 @@
-export { default } from 'ember-alexandria/serializers/document';
+export { default } from "ember-alexandria/serializers/document";

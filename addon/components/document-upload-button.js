@@ -1,5 +1,5 @@
-import Component from "@glimmer/component";
 import { inject as service } from "@ember/service";
+import Component from "@glimmer/component";
 import { task, lastValue } from "ember-concurrency-decorators";
 import fetch from "fetch";
 
