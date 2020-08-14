@@ -66,6 +66,9 @@ For this you need to create a service extending from
 `ember-alexandria/services/config` which you then have to pass as `config` to
 alexandria.
 
+This is needed since an engine does not merge its env into the host apps.
+See https://github.com/ember-engines/ember-engines/issues/176 for more info.
+
 If you mounted alexandria with query params 
 `this.mount("ember-alexandria", {path: "/:your_query_param/documents/"});`
 you can access the query params in you config service (as shown in the example
