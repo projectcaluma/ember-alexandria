@@ -7,6 +7,7 @@ export default class DocumentUploadButtonComponent extends Component {
   @service notification;
   @service intl;
   @service store;
+  @service config;
 
   @lastValue("fetchCategories") categories;
 
@@ -21,6 +22,7 @@ export default class DocumentUploadButtonComponent extends Component {
         Array.from(files).map(async (file) => {
           const documentModel = this.store.createRecord("document", {
             category,
+            meta: this.config.defaultModelMeta.document,
           });
           documentModel.title = file.name;
           await documentModel.save();
@@ -37,7 +39,9 @@ export default class DocumentUploadButtonComponent extends Component {
             body: file,
           });
 
-          console.error("Needs error handling here", response);
+          if (!response.ok) {
+            throw new Error("The request returned an error status code");
+          }
         })
       );
       this.notification.success(

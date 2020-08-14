@@ -7,6 +7,7 @@ export default class DocumentModel extends LocalizedModel {
   @attr createdAt;
   @attr createdByUser;
   @attr createdByGroup;
+  @attr meta;
 
   @belongsTo category;
   @hasMany tags;
