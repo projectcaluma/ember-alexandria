@@ -4,7 +4,7 @@
     <Search @search={{this.search}} />
 
     <DocumentGrid
-      @filters={{hash category=this.category tags=this.tags search=this.search}}
+      @filters={{this.documentFilters}}
       @selectedDocumentId={{this.document}}
       class="uk-border-top"
     />

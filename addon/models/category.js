@@ -5,6 +5,7 @@ export default class CategoryModel extends LocalizedModel {
   @localizedAttr name;
   @attr description;
   @attr color;
+  @attr meta;
 
   @hasMany documents;
 }
