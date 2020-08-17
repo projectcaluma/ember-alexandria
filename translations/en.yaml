@@ -1,1 +1,37 @@
-price_banner: The {product} costs {price, number, USD}
+alexandria:
+  loading: "Loading..."
+  nothing-found: "We found nothing..."
+  download: "Download"
+  delete: "Delete"
+  upload-file: "Upload file"
+
+  errors:
+    save-file: "While downloading the document, an error occured. Please try again."
+    delete-document: "While deleting the document, an error occured. Please try again."
+    fetch-categories: "While loading the categories, an error occured. Please try again."
+    upload-document: |-
+      While uploading your {count, plural,
+        one {document}
+        other {documents}
+      }, an error occured.
+    update: "Your changes chould'nt be saved. Please try again."
+
+  success:
+    delete-document: "Document deleted successfully"
+    upload-document: The |-
+      {count, plural,
+        one {document was}
+        other {documents were}
+      } uploaded successfully.
+    update: "Changes saved."
+
+  category-nav:
+    all-files: "All documents"
+    categories: "Categories"
+
+  document-upload-button:
+    no-categories: "No categories found."
+
+  document-details:
+    created-at: "Created on {date}"
+    name-placeholder: "Name..."
