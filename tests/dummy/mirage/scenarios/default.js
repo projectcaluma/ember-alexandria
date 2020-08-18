@@ -1,22 +1,24 @@
+import { setAllLocales } from "./../factories/helpers";
+
 export default function (server) {
   server.create("category", "withDocuments", {
-    name: "Beilagen zum Gesuch",
+    name: setAllLocales("Beilagen zum Gesuch"),
     color: "#9CDD69",
   });
   server.create("category", "withDocuments", {
-    name: "Nachforderungen",
+    name: setAllLocales("Nachforderungen"),
     color: "#66CFC9",
   });
   server.create("category", "withDocuments", {
-    name: "Beteiligte Behörden",
+    name: setAllLocales("Beteiligte Behörden"),
     color: "#8791EC",
   });
   server.create("category", "withDocuments", {
-    name: "Alle Beteiligten",
+    name: setAllLocales("Alle Beteiligten"),
     color: "#CB68C1",
   });
   server.create("category", "withDocuments", {
-    name: "Intern",
+    name: setAllLocales("Intern"),
     color: "#DB8B72",
   });
 }

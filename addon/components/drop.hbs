@@ -1,6 +1,10 @@
 <div
-  uk-drop="mode: click; pos: {{if @position @position "bottom-left"}}; offset: 5;"
+  uk-drop="mode: click; pos: {{
+    if @position @position "bottom-left"
+  }}; offset: 5;"
   class="{{@width}} drop"
+  data-test-drop
+  ...attributes
 >
   <div
     class="uk-corner-rounded uk-background-default uk-box-shadow-large uk-flex uk-flex-column uk-overflow-hidden uk-border"

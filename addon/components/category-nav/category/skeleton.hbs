@@ -1,15 +1,20 @@
-<li class="category-nav--category">
-  <a href="#" disabled>
+<li class="category-nav--category" ...attributes>
+  <a href="#" disabled data-test-link>
     <div class="uk-flex uk-flex-middle">
       <div>
         <FaIcon
           @icon="folder"
           @size="2x"
           class="uk-margin-right skeleton-icon"
+          data-test-icon
           {{set-style animation-delay=@animationDelay}}
         />
       </div>
-      <span class="skeleton-text" {{set-style animation-delay=@animationDelay}}>
+      <span
+        class="skeleton-text"
+        data-test-text
+        {{set-style animation-delay=@animationDelay}}
+      >
       </span>
     </div>
   </a>

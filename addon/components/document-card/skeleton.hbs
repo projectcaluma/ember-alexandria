@@ -3,6 +3,7 @@
 >
   <div class="uk-card-media-top uk-text-center uk-border-bottom">
     <img
+      data-test-img
       width="200"
       height="180"
       uk-img
@@ -14,10 +15,14 @@
   <div
     class="uk-card-body uk-padding-small uk-flex uk-flex-between document-name"
   >
-    <span class="skeleton-text" {{set-style animation-delay=@animationDelay}}>
+    <span
+      class="skeleton-text"
+      data-test-text
+      {{set-style animation-delay=@animationDelay}}
+    >
     </span>
 
-    <span {{set-style color="#F4F4F4"}}>
+    <span data-test-ellipsis {{set-style color="#F4F4F4"}}>
       <FaIcon @icon="ellipsis-v" />
     </span>
   </div>

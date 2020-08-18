@@ -5,7 +5,7 @@
   <div
     class="uk-padding-small uk-margin-top uk-width-1 uk-text-bold uk-border-bottom"
   >
-    <div class="uk-text-center">
+    <div class="uk-text-center" data-test-nav-title>
       {{t "alexandria.category-nav.categories"}}
     </div>
   </div>
@@ -15,11 +15,13 @@
         hash name=(t "alexandria.category-nav.all-files") color="#e3e3e3"
       }}
       @selected={{eq @selected undefined}}
+      data-test-all-files
     />
     {{#if this.fetchCategories.isRunning}}
       {{#each (range 0 5) as |index|}}
         <CategoryNav::Category::Skeleton
           @animationDelay={{concat index "00ms"}}
+          data-test-skeleton-category
         />
       {{/each}}
     {{else}}
@@ -27,6 +29,7 @@
         <CategoryNav::Category
           @category={{category}}
           @selected={{eq category.id @selected}}
+          data-test-category
         />
       {{/each}}
     {{/if}}

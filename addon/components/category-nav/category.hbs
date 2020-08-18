@@ -1,7 +1,8 @@
-<li class="category-nav--category">
+<li class="category-nav--category" ...attributes>
   <LinkTo
     @query={{hash category=@category.id search=undefined document=undefined}}
     class="uk-link-reset {{if @selected "active"}}"
+    data-test-link
   >
     <div class="uk-flex uk-flex-middle">
       <div>
@@ -9,10 +10,11 @@
           @icon="folder"
           @size="2x"
           class="uk-margin-right"
+          data-test-icon
           {{set-style color=@category.color}}
         />
       </div>
-      <div>
+      <div data-test-name>
         {{@category.name}}
       </div>
     </div>
