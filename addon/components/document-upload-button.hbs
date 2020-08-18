@@ -10,6 +10,7 @@
     class="uk-height-1-1"
     tabindex="-1"
     @loading={{this.upload.isRunning}}
+    data-test-upload
   >
     {{t "alexandria.upload-file"}}
   </UkButton>
@@ -18,27 +19,32 @@
     <input
       type="file"
       multiple
+      data-test-input
       {{on "change" (perform this.upload @category)}}
     />
   {{else}}
     <Drop @width="uk-with-medium" as |Item|>
       {{#each this.categories as |category|}}
-        <Item uk-form-custom>
+        <Item uk-form-custom data-test-category>
           <input
             type="file"
             multiple
+            data-test-input
             {{on "change" (perform this.upload category)}}
           />
           <FaIcon
             @icon="folder"
             @size="2x"
             class="uk-margin-small-right"
+            data-test-folder-icon
             {{set-style color=category.color}}
           />
           {{category.name}}
         </Item>
       {{else}}
-        {{t "alexandria.document-upload-button.no-categories"}}
+        <span data-test-no-categories>
+          {{t "alexandria.document-upload-button.no-categories"}}
+        </span>
       {{/each}}
     </Drop>
   {{/if}}

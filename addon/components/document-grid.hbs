@@ -6,6 +6,7 @@
       <DocumentUploadButton
         @category={{@filters.category}}
         @afterUpload={{perform this.fetchDocuments}}
+        data-test-upload
       />
 
       {{! template-lint-disable no-html-comments}}
@@ -37,19 +38,21 @@
               <LinkTo
                 @query={{hash document=document.id}}
                 class="uk-link-reset"
+                data-test-document-link
                 {{did-insert
                   this.scrollIntoView
                   (eq @selectedDocumentId document.id)
                 }}
               >
                 <DocumentCard
+                  data-test-document
                   @document={{document}}
                   class={{if (eq @selectedDocumentId document.id) "selected"}}
                 />
               </LinkTo>
             </div>
           {{else}}
-            <div class="empty uk-margin-large-top">
+            <div class="empty uk-margin-large-top" data-test-empty>
               <EmptyIcon />
             </div>
           {{/each}}
@@ -57,5 +60,5 @@
       </div>
     </div>
   </div>
-  <DocumentDetails @document={{this.selectedDocument}} />
+  <DocumentDetails @document={{this.selectedDocument}} data-test-details />
 </div>

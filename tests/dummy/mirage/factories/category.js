@@ -1,9 +1,11 @@
 import { Factory, trait } from "ember-cli-mirage";
 import faker from "faker";
 
+import { setAllLocales } from "./helpers";
+
 export default Factory.extend({
-  name: () => faker.lorem.word(),
-  description: () => faker.lorem.sentence(),
+  name: () => setAllLocales(faker.lorem.word()),
+  description: () => setAllLocales(faker.lorem.sentence()),
   color: () =>
     faker.random.arrayElement([
       "#9CDD69",
@@ -15,7 +17,7 @@ export default Factory.extend({
 
   withDocuments: trait({
     afterCreate(category, server) {
-      server.createList("document", 15, { category });
+      server.createList("document", 5, { category });
     },
   }),
 });

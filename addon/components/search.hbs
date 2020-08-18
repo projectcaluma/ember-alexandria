@@ -6,6 +6,7 @@
       class="uk-search-input uk-background-default"
       placeholder="Search..."
       value={{@search}}
+      data-test-search-input
       {{on "input" (perform this.updateSearch)}}
     />
   </form>

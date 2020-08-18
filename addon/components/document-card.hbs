@@ -3,8 +3,8 @@
   ...attributes
 >
   <div class="uk-card-media-top uk-text-center uk-border-bottom">
-    {{#if this.showLoadingState}}
-      <div class="uk-padding">
+    {{#if this.showloadingstate}}
+      <div class="uk-padding" data-test-loading>
         <span uk-spinner="ratio: 4.5" class="uk-position-relative"></span>
         <FaIcon
           @icon="file-download"
@@ -20,6 +20,7 @@
           width="200"
           height="170"
           uk-img
+          data-test-thumbnail
           alt={{@document.title}}
         />
       {{else}}
@@ -28,6 +29,7 @@
             @icon="file-alt"
             @prefix="far"
             @size="7x"
+            data-test-file-icon
             {{set-style color=@document.category.color}}
           />
         </div>
@@ -40,18 +42,23 @@
     <span
       class="uk-text-truncate"
       uk-tooltip="title: {{@document.title}}; pos: bottom; delay: 300;"
+      data-test-title
     >
       {{@document.title}}
     </span>
-    <span>
+    <span data-test-context-menu-trigger>
       <FaIcon @icon="ellipsis-v" />
     </span>
-    <Drop @width="uk-width-small" @position="left-center" as |Item|>
-      <Item {{on "click" (perform this.download)}}>
+    <Drop
+      @width="uk-width-small"
+      @position="left-center"
+      data-test-context-menu as |Item|
+    >
+      <Item data-test-download {{on "click" (perform this.download)}}>
         <FaIcon @icon="file-download" />
         {{t "alexandria.download"}}
       </Item>
-      <Item {{on "click" (perform this.delete)}}>
+      <Item data-test-delete {{on "click" (perform this.delete)}}>
         <FaIcon @icon="trash-alt" @prefix="far" />
         {{t "alexandria.delete"}}
       </Item>

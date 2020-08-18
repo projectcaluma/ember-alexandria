@@ -17,7 +17,7 @@ export default class ApplicationController extends Controller {
     let filters = {
       category: this.category,
       tags: this.tags,
-      search: this.serach,
+      search: this.search,
     };
 
     if (this.config && this.config.modelMetaFilters.document) {

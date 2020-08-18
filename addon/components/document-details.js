@@ -22,7 +22,6 @@ export default class DocumentDetailsComponent extends DocumentCard {
     try {
       // Cant use super.delete here since concurrency always takes the current class for perform and this causes recursion here.
       yield this.delete.perform(...args);
-      this.args.resetDocument();
       this.notification.success(
         this.intl.t("alexandria.success.delete-document")
       );

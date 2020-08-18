@@ -7,7 +7,9 @@ export default class SearchComponent extends Component {
   @service router;
 
   @restartableTask *updateSearch({ target: { value: search } }) {
-    yield timeout(1000);
+    if (!Ember.testing) {
+      yield timeout(1000);
+    }
     this.router.transitionTo({
       queryParams: { search: search || undefined, category: undefined },
     });
