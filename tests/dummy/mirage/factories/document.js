@@ -9,6 +9,7 @@ export default Factory.extend({
   createdByUser: () => `${faker.name.firstName()} ${faker.name.lastName()}`,
   createdByGroup: () => faker.company.companyName(),
   createdAt: () => faker.date.past(),
+  thumbnail: null,
 
   afterCreate(document, server) {
     server.create("tag", { documents: [document] });

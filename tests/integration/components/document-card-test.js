@@ -1,10 +1,10 @@
 import { render, click } from "@ember/test-helpers";
 import { hbs } from "ember-cli-htmlbars";
-import { setupRenderingTest } from "ember-qunit";
-import { module, test } from "qunit";
 import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
-import sinon from "sinon";
+import { setupRenderingTest } from "ember-qunit";
 import fileSaver from "file-saver";
+import { module, test } from "qunit";
+import sinon from "sinon";
 
 const modulePrefix = "ember-alexandria";
 const resolver = engineResolverFor(modulePrefix);

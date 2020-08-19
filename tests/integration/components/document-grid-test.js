@@ -1,9 +1,9 @@
 import { render } from "@ember/test-helpers";
 import { hbs } from "ember-cli-htmlbars";
+import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
 import { setupRenderingTest } from "ember-qunit";
 import { module, test } from "qunit";
 import sinon from "sinon";
-import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
 
 const modulePrefix = "ember-alexandria";
 const resolver = engineResolverFor(modulePrefix);
