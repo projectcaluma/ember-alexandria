@@ -11,6 +11,10 @@ export default class Router extends EmberRouter {
 Router.map(function () {
   this.mount("ember-alexandria", {
     path: "/:instance_id/documents/",
+    as: "alexandria-meta",
+  });
+  this.mount("ember-alexandria", {
+    path: "/",
     as: "alexandria",
   });
 });

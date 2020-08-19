@@ -8,4 +8,7 @@ module.exports = {
     "@adfinis-sygroup/eslint-config/ember-addon",
     "plugin:ember/octane",
   ],
+  globals: {
+    Ember: "readonly",
+  },
 };

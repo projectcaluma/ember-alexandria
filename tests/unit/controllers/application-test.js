@@ -1,11 +1,12 @@
+import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
 import { setupTest } from "ember-qunit";
 import { module, test } from "qunit";
-import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
 
 const modulePrefix = "ember-alexandria";
 const resolver = engineResolverFor(modulePrefix);
 
 module("Unit | Controller | application", function (hooks) {
+  // eslint-disable-next-line ember/no-restricted-resolver-tests
   setupTest(hooks, { resolver });
 
   test("compute document filters", function (assert) {

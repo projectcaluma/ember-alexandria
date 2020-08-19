@@ -1,8 +1,8 @@
 import { render } from "@ember/test-helpers";
 import { hbs } from "ember-cli-htmlbars";
+import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
 import { setupRenderingTest } from "ember-qunit";
 import { module, test } from "qunit";
-import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
 
 const modulePrefix = "ember-alexandria";
 const resolver = engineResolverFor(modulePrefix);
@@ -15,6 +15,8 @@ module("Integration | Component | document-card/skeleton", function (hooks) {
 
     assert.dom("[data-test-img]").hasStyle({ "animation-delay": "0.1s" });
     assert.dom("[data-test-text]").hasStyle({ "animation-delay": "0.1s" });
-    assert.dom("[data-test-ellipsis]").hasStyle({ color: "rgb(244, 244, 244)" });
+    assert
+      .dom("[data-test-ellipsis]")
+      .hasStyle({ color: "rgb(244, 244, 244)" });
   });
 });

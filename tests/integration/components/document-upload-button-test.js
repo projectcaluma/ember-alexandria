@@ -1,10 +1,9 @@
 import { render, triggerEvent } from "@ember/test-helpers";
 import { hbs } from "ember-cli-htmlbars";
+import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
 import { setupRenderingTest } from "ember-qunit";
 import { module, test } from "qunit";
-import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
 import sinon from "sinon";
-import fetch from "fetch";
 
 const modulePrefix = "ember-alexandria";
 const resolver = engineResolverFor(modulePrefix);
@@ -63,19 +62,19 @@ module("Integration | Component | document-upload-button", function (hooks) {
 
     await render(hbs`<DocumentUploadButton/>`);
 
-    assert.dom("[data-test-category]").exists({ count: 3 });
+    assert.dom("[data-test-upload-category]").exists({ count: 3 });
     assert
-      .dom("[data-test-category]:first-child [data-test-folder-icon]")
+      .dom("[data-test-upload-category]:first-child [data-test-folder-icon]")
       .hasStyle({ color: "rgb(255, 0, 0)" });
     assert
-      .dom("[data-test-category]:nth-child(2) [data-test-folder-icon]")
+      .dom("[data-test-upload-category]:nth-child(2) [data-test-folder-icon]")
       .hasStyle({ color: "rgb(0, 255, 0)" });
     assert
-      .dom("[data-test-category]:last-child [data-test-folder-icon]")
+      .dom("[data-test-upload-category]:last-child [data-test-folder-icon]")
       .hasStyle({ color: "rgb(0, 0, 255)" });
 
     await triggerEvent(
-      "[data-test-category]:nth-child(2) [data-test-input]",
+      "[data-test-upload-category]:nth-child(2) [data-test-input]",
       "change",
       {
         files: [new File(["Ember Rules!"], "test-file.txt")],
