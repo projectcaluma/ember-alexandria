@@ -2,7 +2,7 @@ import Service from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 
 export default class ConfigService extends Service {
-  @tracked emeisQueryParams = {};
+  @tracked alexandriaQueryParams = {};
 
   /* Defaults so we can lookup
    * `this.config.modelMetaFilters.document`

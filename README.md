@@ -72,11 +72,11 @@ See https://github.com/ember-engines/ember-engines/issues/176 for more info.
 If you mounted alexandria with query params 
 `this.mount("ember-alexandria", {path: "/:your_query_param/documents/"});`
 you can access the query params in you config service (as shown in the example
-above) with `this.emeisQueryParams.your_query_param`.
+above) with `this.alexandriaQueryParams.your_query_param`.
 
 
-If you need to access the `emeisQueryParams` inside your config check that you define `modelMetaFilters`
-and/or `defaultModelMeta` as getters. If you dont need `emeisQueryParams` you
+If you need to access the `alexandriaQueryParams` inside your config check that you define `modelMetaFilters`
+and/or `defaultModelMeta` as getters. If you don't need `alexandriaQueryParams` you
 can ignore the getters and just define the field as usual.
 
 __Example__:
@@ -87,7 +87,7 @@ export default class AlexandriaConfigService extends ConfigService {
   get modelMetaFilters() {
     return {
       document: [
-        { key: "your_meta_field", value: this.emeisQueryParams.your_query_param
+        { key: "your_meta_field", value: this.alexandriaQueryParams.your_query_param
 },
       ],
     };
@@ -96,7 +96,7 @@ export default class AlexandriaConfigService extends ConfigService {
   get defaultModelMeta() {
     return {
       document: {
-        your_meta_field: this.emeisQueryParams.your_query_param,
+        your_meta_field: this.alexandriaQueryParams.your_query_param,
       },
       file: {
         is_alexandria_file: true

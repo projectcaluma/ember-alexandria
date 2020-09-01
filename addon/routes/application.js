@@ -5,6 +5,6 @@ export default class ApplicationRoute extends Route {
   @service config;
 
   model(_, transition) {
-    this.config.emeisQueryParams = transition.to.parent.params;
+    this.config.alexandriaQueryParams = transition.to.parent.params;
   }
 }
