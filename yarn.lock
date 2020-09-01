@@ -1554,7 +1554,7 @@
   resolved "https://registry.yarnpkg.com/@ember/edition-utils/-/edition-utils-1.2.0.tgz#a039f542dc14c8e8299c81cd5abba95e2459cfa6"
   integrity sha512-VmVq/8saCaPdesQmftPqbFtxJWrzxNGSQ+e8x8LLe3Hjm36pJ04Q8LeORGZkAeOhldoUX9seLGmSaHeXkIqoog==
 
-"@ember/optional-features@1.3.0":
+"@ember/optional-features@^1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@ember/optional-features/-/optional-features-1.3.0.tgz#d7da860417b85a56cec88419f30da5ee1dde2756"
   integrity sha512-Lrfojy4xKwTX+J4EAylmxZY2TO6bQtP4Lg5C8/z2priVqiT0X5fVB1+4WQCJbRBetctO1lMDnqjmhWCVKB8bmQ==
@@ -1726,10 +1726,10 @@
     "@glimmer/wire-format" "^0.27.0"
     simple-html-tokenizer "^0.3.0"
 
-"@glimmer/component@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@glimmer/component/-/component-1.0.0.tgz#f9052c8e99fb7b3d48d27c65891c5f0e59084a82"
-  integrity sha512-1ERZYNLZRuC8RYbcfkJeAWn3Ly7W2VdoHLQIHCmhQH/m7ubkNOdLQcTnUzje7OnRUs9EJ6DjfoN57XRX9Ux4rA==
+"@glimmer/component@^1.0.0":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@glimmer/component/-/component-1.0.1.tgz#f304b2f9cf4f2762396abed2b8962486767e0b2e"
+  integrity sha512-Bo+R6e2fnydZz0JQrV6E5cAIYvCEUQVh6mmXexVSgFmPr/7Q1DB/afAgTQrpK5vXUGRAU7sBB8gzoO0t7vl+Ng==
   dependencies:
     "@glimmer/di" "^0.1.9"
     "@glimmer/env" "^0.1.7"
@@ -1743,6 +1743,7 @@
     ember-cli-path-utils "^1.0.0"
     ember-cli-string-utils "^1.1.0"
     ember-cli-typescript "3.0.0"
+    ember-cli-version-checker "^3.1.3"
     ember-compatibility-helpers "^1.1.2"
 
 "@glimmer/di@^0.1.9":
@@ -1789,10 +1790,10 @@
     handlebars "^4.7.4"
     simple-html-tokenizer "^0.5.9"
 
-"@glimmer/tracking@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@glimmer/tracking/-/tracking-1.0.0.tgz#aba9feeb47c48d5aadc1226b7e8d19e34031a6bc"
-  integrity sha512-OuF04ihYD/Rjvf++Rf7MzJVnawMSax/SZXEj4rlsQoMRwtQafgtkWjlFBcbBNQkJ3rev1zzfNN+3mdD2BFIaNg==
+"@glimmer/tracking@^1.0.0":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@glimmer/tracking/-/tracking-1.0.1.tgz#77d8b16e9e0be2cc8e4a00b77259fdc208802840"
+  integrity sha512-Jt8rn4/6S6CObILaotYUT0lFWNPq1xJubXdU/9p6zxWtMrBXYJalVvI5hFYrCh/hG8Z/aLoERGnb2YRWtBSyzw==
   dependencies:
     "@glimmer/env" "^0.1.7"
     "@glimmer/validator" "^0.44.0"
