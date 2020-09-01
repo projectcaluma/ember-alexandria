@@ -1587,6 +1587,11 @@
     resolve "^1.8.1"
     semver "^5.6.0"
 
+"@formatjs/ecma402-abstract@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@formatjs/ecma402-abstract/-/ecma402-abstract-1.2.0.tgz#5b03ba4931436070ad926d1b2e89bf07edc5ea5b"
+  integrity sha512-jc1bZHhIE1YI0HnZIZcdlKpF4wle2pkgQpzXHDoyy4bUqzBSvDqktnF26hOkyA04KD4wqd61gkuTvRrHMmroAg==
+
 "@formatjs/intl-numberformat@^4.2.11":
   version "4.2.11"
   resolved "https://registry.yarnpkg.com/@formatjs/intl-numberformat/-/intl-numberformat-4.2.11.tgz#b7d2446b5bb2e6d760d66d9d053e51c045439936"
@@ -1594,24 +1599,17 @@
   dependencies:
     "@formatjs/intl-utils" "^3.5.0"
 
-"@formatjs/intl-numberformat@^5.4.1":
-  version "5.4.1"
-  resolved "https://registry.yarnpkg.com/@formatjs/intl-numberformat/-/intl-numberformat-5.4.1.tgz#713542177689862d6f7849f9d802ad19e85855ab"
-  integrity sha512-w9GRPRmD4EZ1gxbekVAMmLphwT7JzjYGmxPa1ZD4ukb0pmk+9Sb3Qy6BjOu59YsROAAMrct6EQqfc/H//EYRdA==
+"@formatjs/intl-numberformat@^5.3.3":
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-numberformat/-/intl-numberformat-5.6.0.tgz#87bd1e56246fba2c7af58f73930cbe379dd0aef8"
+  integrity sha512-MfYcqX1LE2N4P9eVtQXI/L6APlXgjexCj0b7GxJfK+icrwbA0XINSPGTt96kUxO5hf/tDu0MxJXnt9gwMKm/EA==
   dependencies:
-    "@formatjs/intl-utils" "^3.8.3"
+    "@formatjs/ecma402-abstract" "^1.2.0"
 
 "@formatjs/intl-utils@^3.5.0":
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/@formatjs/intl-utils/-/intl-utils-3.5.0.tgz#77f2590e86d58d330014b104049f54343e09ba86"
   integrity sha512-bXKUZFyOhcsjZlLfo+/Aeiu9FN8bh3ugwVx2FpoRC0sxixk9iALvlBPz2J6LGeJMtc/2zgdk6qqwR6RdAFGNBQ==
-  dependencies:
-    emojis-list "^3.0.0"
-
-"@formatjs/intl-utils@^3.8.3":
-  version "3.8.3"
-  resolved "https://registry.yarnpkg.com/@formatjs/intl-utils/-/intl-utils-3.8.3.tgz#a04e2e569fb81e587b109ac0cab6808324a7ac44"
-  integrity sha512-AVHjyIcWA+VEZQNbTFbzbchykmsavUNaU7mryarphgLp2wqhadHPu2eKjF/cZX6FA3vEM/KJXqxxcrZkvYNduQ==
   dependencies:
     emojis-list "^3.0.0"
 
@@ -1735,10 +1733,10 @@
     handlebars "^4.7.4"
     simple-html-tokenizer "^0.5.9"
 
-"@glimmer/tracking@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@glimmer/tracking/-/tracking-1.0.0.tgz#aba9feeb47c48d5aadc1226b7e8d19e34031a6bc"
-  integrity sha512-OuF04ihYD/Rjvf++Rf7MzJVnawMSax/SZXEj4rlsQoMRwtQafgtkWjlFBcbBNQkJ3rev1zzfNN+3mdD2BFIaNg==
+"@glimmer/tracking@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@glimmer/tracking/-/tracking-1.0.1.tgz#77d8b16e9e0be2cc8e4a00b77259fdc208802840"
+  integrity sha512-Jt8rn4/6S6CObILaotYUT0lFWNPq1xJubXdU/9p6zxWtMrBXYJalVvI5hFYrCh/hG8Z/aLoERGnb2YRWtBSyzw==
   dependencies:
     "@glimmer/env" "^0.1.7"
     "@glimmer/validator" "^0.44.0"
