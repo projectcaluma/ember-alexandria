@@ -1,5 +1,13 @@
 @use "custom-uikit-rules";
 
+@use "skeleton-loading";
+
 // Components
 @use "components/category-nav/category";
 @use "components/document-card";
+@use "components/drop";
+
+
+.cursor-pointer {
+  cursor: pointer;
+}

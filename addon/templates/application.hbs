@@ -3,17 +3,8 @@
   <section class="uk-width-1 uk-flex uk-flex-column uk-overflow-hidden">
     <Search />
 
-    <div class="uk-flex uk-flex-middle uk-padding-small">
-      <FileUploadButton />
-      <TagFilter
-        @filters={{hash category=this.category}}
-        @selectedTags={{this.tags}}
-        class="uk-margin-left"
-      />
-    </div>
-
     <DocumentGrid
-      @filters={{hash category=this.category}}
+      @filters={{hash category=this.category tags=this.tags}}
       class="uk-border-top"
     />
   </section>

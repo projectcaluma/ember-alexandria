@@ -4,10 +4,18 @@ import { lastValue, task } from "ember-concurrency-decorators";
 
 export default class CategoryNavComponent extends Component {
   @service store;
+  @service notification;
+  @service intl;
 
   @lastValue("fetchCategories") categories;
   @task
   *fetchCategories() {
-    return yield this.store.findAll("category");
+    try {
+      return yield this.store.findAll("category");
+    } catch (error) {
+      this.notification.danger(
+        this.intl.t("alexandria.errors.fetch-categories")
+      );
+    }
   }
 }

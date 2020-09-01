@@ -17,4 +17,9 @@
     @include active;
     @extend .uk-box-shadow-small;
   }
+
+  .skeleton-text {
+    height: 15px;
+    width: 70%;
+  }
 }

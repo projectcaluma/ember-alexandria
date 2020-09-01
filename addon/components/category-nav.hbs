@@ -6,17 +6,27 @@
     class="uk-padding-small uk-margin-top uk-width-1 uk-text-bold uk-border-horizontal"
   >
     <div class="uk-text-center">
-      Kategorien
+      {{t "alexandria.category-nav.categories"}}
     </div>
   </div>
   <ul class="uk-nav uk-width-medium uk-margin-top">
-    {{#each this.categories as |category|}}
-      <CategoryNav::Category
-        @category={{category}}
-        @selected={{eq category.id @selected}}
-      />
+    <CategoryNav::Category
+      @category={{
+        hash name=(t "alexandria.category-nav.all-files") color="#e3e3e3"
+      }}
+      @selected={{eq @selected undefined}}
+    />
+    {{#if this.fetchCategories.isRunning}}
+      {{#each (range 0 5)}}
+        <CategoryNav::Category::Skeleton />
+      {{/each}}
     {{else}}
-      No categories
-    {{/each}}
+      {{#each this.categories as |category|}}
+        <CategoryNav::Category
+          @category={{category}}
+          @selected={{eq category.id @selected}}
+        />
+      {{/each}}
+    {{/if}}
   </ul>
 </nav>

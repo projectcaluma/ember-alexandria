@@ -1,0 +1,20 @@
+@use "ember-uikit" as uikit;
+
+.drop {
+  width: 200px;
+
+  .item {
+    @extend .uk-link-reset;
+    padding: 5px 10px 5px 10px;
+    cursor: pointer;
+
+    &:hover {
+      background: uikit.$global-muted-background;
+    }
+
+    svg {
+      font-size: 1.2em;
+      margin-right: 10px;
+    }
+  }
+}
