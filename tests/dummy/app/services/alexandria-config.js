@@ -4,7 +4,7 @@ export default class AlexandriaConfigService extends ConfigService {
   get modelMetaFilters() {
     return {
       document: [
-        { key: "instance_id", value: this.emeisQueryParams.instance_id },
+        { key: "instance_id", value: this.alexandriaQueryParams.instance_id },
       ],
     };
   }
@@ -12,7 +12,7 @@ export default class AlexandriaConfigService extends ConfigService {
   get defaultModelMeta() {
     return {
       document: {
-        instance_id: this.emeisQueryParams.instance_id,
+        instance_id: this.alexandriaQueryParams.instance_id,
       },
     };
   }
