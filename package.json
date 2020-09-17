@@ -43,7 +43,7 @@
     "ember-fetch": "^8.0.1",
     "ember-intl": "^5.5.0",
     "ember-localized-model": "^1.0.1",
-    "ember-modifier": "^2.1.0",
+    "ember-modifier": "^2.1.1",
     "ember-simple-set-helper": "^0.1.2",
     "ember-truth-helpers": "^2.1.0",
     "ember-uikit": "^2.1.2",
