@@ -1,4 +1,5 @@
 import Controller from "@ember/controller";
+import { get } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 
@@ -20,11 +21,10 @@ export default class ApplicationController extends Controller {
       search: this.search,
     };
 
-    if (this.config && this.config.modelMetaFilters.document) {
-      filters = {
-        ...filters,
-        meta: JSON.stringify(this.config.modelMetaFilters.document),
-      };
+    let doc = get(this, "config.modelMetaFilters.document");
+    
+    if (doc) {
+      filters.meta = JSON.stringify(doc);
     }
 
     return filters;
