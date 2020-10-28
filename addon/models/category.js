@@ -3,7 +3,7 @@ import { LocalizedModel, localizedAttr } from "ember-localized-model";
 
 export default class CategoryModel extends LocalizedModel {
   @localizedAttr name;
-  @attr description;
+  @localizedAttr description;
   @attr color;
   @attr meta;
 
