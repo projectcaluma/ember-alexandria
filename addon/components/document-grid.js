@@ -21,8 +21,8 @@ export default class DocumentGridComponent extends Component {
   @task
   *fetchDocuments() {
     return yield this.store.query("document", {
-      include: "category,files",
-      filter: { ...(this.args.filters || {}) },
+      include: "category,files,tags",
+      filter: this.args.filters || {},
     });
   }
 

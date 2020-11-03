@@ -1,19 +1,17 @@
 import { render, click, fillIn } from "@ember/test-helpers";
 import { tracked } from "@glimmer/tracking";
+import setupRenderingTest from "dummy/tests/helpers/setup-rendering-test";
 import { hbs } from "ember-cli-htmlbars";
-import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
+import { setupMirage } from "ember-cli-mirage/test-support";
 import { setupIntl } from "ember-intl/test-support";
-import { setupRenderingTest } from "ember-qunit";
 import fileSaver from "file-saver";
 import { module, test } from "qunit";
 import sinon from "sinon";
 
-const modulePrefix = "ember-alexandria";
-const resolver = engineResolverFor(modulePrefix);
-
 module("Integration | Component | document-details", function (hooks) {
-  setupRenderingTest(hooks, { resolver });
+  setupRenderingTest(hooks);
   setupIntl(hooks, "en");
+  setupMirage(hooks);
 
   test("it renders document information", async function (assert) {
     this.selectedDocument = {
@@ -45,6 +43,8 @@ module("Integration | Component | document-details", function (hooks) {
   });
 
   test("closed state", async function (assert) {
+    this.set("selectedDocument", null);
+
     await render(hbs`<DocumentDetails @document={{this.selectedDocument}} />`);
 
     assert.dom("[data-test-file-details]").hasClass("closed");

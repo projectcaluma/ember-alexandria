@@ -9,13 +9,11 @@
         data-test-upload
       />
 
-      {{! template-lint-disable no-html-comments}}
-      <!-- TagFilter
-      @filters={{hash category=@filters.category}}
-      @selectedTags={{@filters.tags}}
-      class="uk-margin-left"
-      /-->
-      {{! template-lint-enable no-html-comments}}
+      <TagFilter
+        @filters={{hash withDocumentsInCategory=@filters.category}}
+        @selectedTags={{@filters.tags}}
+        class="uk-margin-left"
+      />
     </div>
 
     <div class="uk-padding-small uk-overflow-auto" ...attributes>
