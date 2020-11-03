@@ -38,3 +38,9 @@ alexandria:
     name-placeholder: "Name..."
     version-history: "Version history"
     replace: "Replace"
+    tags:
+      title: "Tags"
+      add: "Add"
+
+  tag-filter:
+    empty: "No tags..."

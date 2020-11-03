@@ -5,15 +5,17 @@
   {{did-update (perform this.fetchTags) @filters}}
 >
   {{#each this.tags as |tag|}}
-    <LinkTo @query={{hash tag=tag.id}}>
-      class="uk-badge {{
-        if (contains tag.id @selectedTags) "uk-background-secondary"
-      }}"
+    <a
       {{on "click" (fn this.toggleTag tag)}}
-      >
+      class="
+        uk-badge
+        {{if (contains tag.id this.selectedTagsArray) "uk-background-secondary"}}
+      "
+      href="javascript:void(0)"
+    >
       {{tag.name}}
-    </LinkTo>
+    </a>
   {{else}}
-    No tags...
+    {{t "alexandria.tag-filter.empty"}}
   {{/each}}
 </div>

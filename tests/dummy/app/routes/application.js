@@ -5,6 +5,6 @@ export default class ApplicationRoute extends Route {
   @service intl;
 
   afterModel() {
-    this.intl.setLocale("de");
+    this.intl.setLocale("en");
   }
 }

@@ -10,8 +10,8 @@ export default class DocumentGridComponent extends Component {
   get selectedDocument() {
     if (this.args.selectedDocumentId) {
       return (
-        this.store.peekRecord("document", this.args.selectedDocumentId) ||
-        this.store.findRecord("document", this.args.selectedDocumentId)
+        this.documents &&
+        this.store.peekRecord("document", this.args.selectedDocumentId)
       );
     }
     return undefined;
@@ -21,8 +21,8 @@ export default class DocumentGridComponent extends Component {
   @task
   *fetchDocuments() {
     return yield this.store.query("document", {
-      include: "category,files",
-      filter: { ...(this.args.filters || {}) },
+      include: "category,files,tags",
+      filter: this.args.filters || {},
     });
   }
 

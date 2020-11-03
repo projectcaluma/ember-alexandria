@@ -6,7 +6,7 @@
   ...attributes
   {{did-update this.resetState @document}}
 >
-  <div>
+  <div class="uk-overflow-auto">
     <div class="uk-padding-small">
       <span
         class="document-title uk-flex uk-flex-between uk-margin-bottom uk-flex-middle"
@@ -138,6 +138,60 @@
               </li>
               {{/each}}
             </ul>
+          </div>
+        </li>
+
+        <li>
+          <a class="uk-accordion-title" href="#">
+            {{t "alexandria.document-details.tags.title"}}
+          </a>
+
+          <div class="uk-accordion-content">
+
+            {{#if @document.tags.length}}
+              <ul class="uk-iconnav uk-margin-bottom">
+                {{#each @document.tags as |tag|}}
+                  <li>
+                    <span class="uk-label">{{tag.name}}
+                      <button
+                        {{on "click" (perform this.removeTag tag)}}
+                        type="button"
+                        uk-close
+                      ></button>
+                    </span>
+                  </li>
+                {{/each}}
+              </ul>
+            {{/if}}
+
+            <form
+              {{did-insert this.didInsertTagSearch}}
+              {{on "submit" (perform this.addTagFromForm)}}
+              class="uk-flex"
+            >
+              <input
+                {{on "input" this.onSearchTag}}
+                class="uk-input uk-form-small uk-width-1-2 uk-margin-small-right"
+                autocomplete="off"
+                name="tag"
+                type="text"
+              >
+              <button
+                class="uk-button uk-button-primary uk-button-small uk-width-1-2"
+                type="submit"
+              >
+                {{t "alexandria.document-details.tags.add"}}
+              </button>
+            </form>
+
+            {{#if this.matchingTags.length}}
+              <ul class="uk-list uk-list-divider">
+                {{#each this.matchingTags as |tag|}}
+                  <li><a {{on "click" (perform this.addTagSuggestion tag)}} href="#">{{tag.name}}</a></li>
+                {{/each}}
+              </ul>
+            {{/if}}
+
           </div>
         </li>
       </ul>

@@ -9,21 +9,32 @@ export default class TagFilterComponent extends Component {
 
   @lastValue("fetchTags") tags;
 
+  get selectedTagsArray() {
+    return typeof this.args.selectedTags === "string"
+      ? this.args.selectedTags.split(",")
+      : [];
+  }
+
   @task
   *fetchTags() {
     return yield this.store.query("tag", {
-      ...this.args.filters,
+      filter: this.args.filters,
     });
   }
 
   @action
   toggleTag(tag) {
-    this.router.transitionTo({
-      queryParams: {
-        tags: this.args.selectedTags.includes(tag.id)
-          ? this.args.selectedTags.filter((tagId) => tag.id !== tagId)
-          : [...this.args.selectedTags, tag.id],
-      },
-    });
+    let tags;
+
+    if (this.selectedTagsArray.includes(tag.id)) {
+      const remaining = this.selectedTagsArray.filter(
+        (tagId) => tag.id !== tagId
+      );
+      tags = remaining.length > 0 ? remaining : null;
+    } else {
+      tags = [...this.selectedTagsArray, tag.id];
+    }
+
+    this.router.transitionTo({ queryParams: { tags } });
   }
 }
