@@ -9,6 +9,7 @@ alexandria:
     save-file: "Beim Herunterladen der Datei ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
     delete-document: "Beim Löschen des Dokummentes ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
     fetch-categories: "Beim laden der Kategorien ist ein Fehler aufgetreten."
+    replace-document: "Beim Ersetzen des Dokumentes ist ein Fehler aufgetreten."
     upload-document: |-
       Beim hochladen {count, plural,
         one {des Dokumentes}
@@ -35,3 +36,5 @@ alexandria:
   document-details:
     created-at: "Erstellt am {date}"
     name-placeholder: "Name..."
+    version-history: "Versionsgeschichte"
+    replace: "Ersetzen"

@@ -82,18 +82,65 @@
         </p>
       </span>
 
-      <LinkTo @query={{hash document=undefined}}>
-        <UkButton
-          data-test-delete
-          @size="small"
-          @color="primary"
-          class="uk-width-1"
-          @loading={{this.delete.isRunning}}
-          {{on "click" (perform this.delete)}}
-        >
-          {{t "alexandria.delete"}}
-        </UkButton>
-      </LinkTo>
+      <div class="uk-flex">
+        <div uk-form-custom class="uk-width-1-2 uk-margin-small-right">
+          <input
+            {{on "change" (perform this.uploadReplacement)}}
+            data-test-replace
+            type="file"
+          >
+
+          <button
+            class="uk-width-1 uk-button uk-button-default uk-button-small"
+            type="button"
+            tabindex="-1"
+          >
+            {{~t "alexandria.document-details.replace"~}}
+          </button>
+        </div>
+
+        <LinkTo @query={{hash document=undefined}} class="uk-width-1-2">
+          <UkButton
+            data-test-delete
+            @size="small"
+            @color="primary"
+            class="uk-width-1 uk-button-danger"
+            @loading={{this.delete.isRunning}}
+            {{on "click" (perform this.delete)}}
+          >
+            {{t "alexandria.delete"}}
+          </UkButton>
+        </LinkTo>
+      </div>
+
+      <hr>
+
+      <ul uk-accordion="multiple: true">
+        <li class="uk-open">
+          <a class="uk-accordion-title" href="#">
+            {{~t "alexandria.document-details.version-history"~}}
+          </a>
+          <div class="uk-accordion-content">
+            <ul class="uk-list uk-list-divider">
+              {{#each (filter-by "type" "original" @document.files) as |file|}}
+              <li data-test-file class="uk-flex">
+                <span class="uk-margin-right">
+                  {{moment-format file.createdAt "DD.MM.YYYY HH:mm"}}
+                </span>
+                <span class="uk-width-expand">
+                  {{~file.createdByUser.fullName~}}
+                </span>
+                <a
+                  uk-icon="download"
+                  class="uk-icon-link"
+                  href={{file.downloadUrl}}
+                ></a>
+              </li>
+              {{/each}}
+            </ul>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
   <UkButton
