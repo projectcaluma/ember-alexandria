@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.0.0...v1.1.0) (2020-11-06)
+
+
+### Features
+
+* **history:** add history of files to the side-panel ([c718504](https://github.com/projectcaluma/ember-alexandria/commit/c71850482af103058708eea9fcbb7a4177c29804))
+
 # 1.0.0 (2020-10-07)
 
 
