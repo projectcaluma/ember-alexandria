@@ -9,6 +9,7 @@ alexandria:
     save-file: "While downloading the document, an error occured. Please try again."
     delete-document: "While deleting the document, an error occured. Please try again."
     fetch-categories: "While loading the categories, an error occured. Please try again."
+    replace-document: "While replacing the document, an error occured. Please try again."
     upload-document: |-
       While uploading your {count, plural,
         one {document}
@@ -35,3 +36,5 @@ alexandria:
   document-details:
     created-at: "Created on {date}"
     name-placeholder: "Name..."
+    version-history: "Version history"
+    replace: "Replace"

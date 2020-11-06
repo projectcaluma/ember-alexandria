@@ -158,6 +158,26 @@ module("Acceptance | documents", function (hooks) {
     assert.dom("[data-test-document]").exists({ count: 1 });
   });
 
+  test("replace file", async function (assert) {
+    assert.expect(4);
+
+    const document = this.server.create("document");
+    await visit(`/?document=${document.id}`);
+
+    assert.dom("[data-test-file]").doesNotExist();
+
+    this.assertRequest("POST", "/api/v1/files", (request) => {
+      const { attributes } = JSON.parse(request.requestBody).data;
+      assert.equal(attributes.name, "test-file.txt");
+      assert.equal(attributes.type, "original");
+    });
+    await triggerEvent("[data-test-replace]", "change", {
+      files: [new File(["Ember Rules!"], "test-file.txt")],
+    });
+
+    assert.dom("[data-test-file]").exists({ count: 1 });
+  });
+
   test("context menu delete", async function (assert) {
     this.server.createList("document", 5);
     assert.expect(3);
