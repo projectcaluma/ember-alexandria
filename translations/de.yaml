@@ -33,5 +33,6 @@ alexandria:
     no-categories: "Es wurden keine Kategorien gefunden."
 
   document-details:
+    document-title: "Dokumententitel"
     created-at: "Erstellt am {date}"
     name-placeholder: "Name..."

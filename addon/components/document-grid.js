@@ -10,8 +10,8 @@ export default class DocumentGridComponent extends Component {
   get selectedDocument() {
     if (this.args.selectedDocumentId) {
       return (
-        this.store.peekRecord("document", this.args.selectedDocumentId) ||
-        this.store.findRecord("document", this.args.selectedDocumentId)
+        this.documents &&
+        this.store.peekRecord("document", this.args.selectedDocumentId)
       );
     }
     return undefined;

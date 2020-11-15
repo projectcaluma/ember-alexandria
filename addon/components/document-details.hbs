@@ -8,15 +8,27 @@
 >
   <div>
     <div class="uk-padding-small">
+      <div class="uk-flex uk-flex-between uk-flex-bottom">
+        <div class="uk-text-meta">
+          {{t "alexandria.document-details.document-title"}}
+        </div>
+        <LinkTo
+          @query={{hash document=undefined}}
+          class="uk-icon-button uk-flex-none"
+          uk-icon="close"
+          data-test-close
+        />
+      </div>
+
       <span
-        class="document-title uk-flex uk-flex-between uk-margin-bottom uk-flex-middle"
+        class="document-title uk-flex uk-flex-between uk-margin-bottom uk-flex-top"
       >
         <span
-          class="uk-flex uk-flex-middle uk-width-1"
+          class="uk-flex uk-flex-top"
           data-test-title-container
           {{set-style cursor="text"}}
         >
-          <span>
+          <span class="uk-flex-none">
             <FaIcon
               @icon="file-alt"
               @prefix="far"
@@ -27,14 +39,14 @@
           </span>
           {{#if this.editTitle}}
             <input
-              class="uk-input uk-width-1"
+              class="uk-input"
               type="text"
               placeholder={{t "alexandria.document-details.name-placeholder"}}
               value={{@document.title}}
               data-test-title-input
               {{on "input" this.updateDocumentTitle}}
             />
-            <span>
+            <span class="uk-flex-none">
               <a
                 href="#"
                 class="uk-icon-button {{
@@ -44,11 +56,17 @@
                 data-test-save
                 {{on "click" (perform this.saveDocument)}}
               ></a>
+              <a
+                 href="#"
+                 {{on "click" (set this.editTitle false)}}
+                 class="uk-icon-button  cursor-pointer"
+                 uk-icon="icon: close"
+               ></a>
             </span>
           {{else}}
             <a
               href="#"
-              class="uk-width-1 uk-link-reset"
+              class="uk-link-reset"
               data-test-title
               {{on "click" (set this.editTitle true)}}
             >
@@ -56,12 +74,6 @@
             </a>
           {{/if}}
         </span>
-        <LinkTo
-          @query={{hash document=undefined}}
-          class="uk-icon-button"
-          uk-icon="close"
-          data-test-close
-        />
       </span>
 
       <span class="document-meta">
