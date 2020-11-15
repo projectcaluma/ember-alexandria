@@ -48,7 +48,6 @@ module("Integration | Component | document-details", function (hooks) {
     await render(hbs`<DocumentDetails @document={{this.selectedDocument}} />`);
 
     assert.dom("[data-test-file-details]").hasClass("closed");
-    assert.dom("[data-test-title-container]").hasStyle({ width: "0px" });
 
     this.set("selectedDocument", {});
 
