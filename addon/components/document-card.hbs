@@ -58,10 +58,15 @@
         <FaIcon @icon="file-download" />
         {{t "alexandria.download"}}
       </Item>
-      <Item data-test-delete {{on "click" (perform this.delete)}}>
-        <FaIcon @icon="trash-alt" @prefix="far" />
-        {{t "alexandria.delete"}}
-      </Item>
+      <DocumentDeleteButton
+        @document={{@document}}
+        as |showDialog|
+      >
+        <Item data-test-delete {{on "click" showDialog}}>
+          <FaIcon @icon="trash-alt" @prefix="far" />
+          {{t "alexandria.delete"}}
+        </Item>
+      </DocumentDeleteButton>
     </Drop>
   </div>
 </div>

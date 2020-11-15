@@ -33,6 +33,13 @@ alexandria:
   document-upload-button:
     no-categories: "No categories found."
 
+  document-delete-button:
+    prompt:
+      title: "Delete document"
+      message: "Do you really want to delete the document \"{title}\" and its complete history?"
+      cancel: "Cancel"
+      confirm: "Delete"
+
   document-details:
     document-title: "Document title"
     created-at: "Created on {date}"

@@ -6,6 +6,8 @@ module.exports = function (environment) {
     environment,
 
     "ember-alexandria": {},
+
+    APP: {},
   };
 
   return ENV;
