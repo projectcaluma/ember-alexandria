@@ -2,17 +2,22 @@ import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { dasherize } from "@ember/string";
 import { tracked } from "@glimmer/tracking";
-import { task, restartableTask, dropTask } from "ember-concurrency-decorators";
+import { restartableTask, dropTask } from "ember-concurrency-decorators";
 
 import DocumentCard from "./document-card";
 
 export default class DocumentDetailsComponent extends DocumentCard {
+  @service router;
+  @service store;
+
   @tracked editTitle = false;
   @tracked validTitle = true;
   @tracked availableTags;
   @tracked matchingTags;
 
-  @service store;
+  @action closePanel() {
+    this.router.transitionTo({ queryParams: { document: undefined } });
+  }
 
   @action updateDocumentTitle({ target: { value: title } }) {
     this.validTitle = Boolean(title);
@@ -22,20 +27,6 @@ export default class DocumentDetailsComponent extends DocumentCard {
   @action resetState() {
     this.editTitle = false;
     this.validTitle = true;
-  }
-
-  @task *deleteAndReset(...args) {
-    try {
-      // Cant use super.delete here since concurrency always takes the current class for perform and this causes recursion here.
-      yield this.delete.perform(...args);
-      this.notification.success(
-        this.intl.t("alexandria.success.delete-document")
-      );
-    } catch (error) {
-      this.notification.danger(
-        this.intl.t("alexandria.errors.delete-document")
-      );
-    }
   }
 
   @restartableTask *saveDocument() {

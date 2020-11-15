@@ -1,0 +1,37 @@
+{{yield this.showDialog}}
+
+<UkModal
+  @on-hide={{this.hideDialog}}
+  @visible={{this.dialogVisible}}
+  data-test-delete-modal={{@document.id}}
+  as |Modal|
+>
+  <Modal.header>
+    <strong class="uk-modal-title">
+      {{t "alexandria.document-delete-button.prompt.title"}}
+    </strong>
+  </Modal.header>
+
+  <Modal.body>
+    <p>
+      {{t "alexandria.document-delete-button.prompt.message"
+        title=@document.title
+      }}
+    </p>
+  </Modal.body>
+
+  <Modal.footer>
+    <UkButton
+      @label={{t "alexandria.document-delete-button.prompt.cancel"}}
+      @on-click={{this.hideDialog}}
+    />
+
+    <UkButton
+      @color="primary"
+      @label={{t "alexandria.document-delete-button.prompt.confirm"}}
+      @on-click={{perform this.delete}}
+      @loading={{this.delete.isRunning}}
+      data-test-delete-confirm
+    />
+  </Modal.footer>
+</UkModal>

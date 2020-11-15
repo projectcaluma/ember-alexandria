@@ -24,17 +24,4 @@ export default class DocumentCardComponent extends Component {
       this.notification.danger(this.intl.t("alexandria.errors.save-file"));
     }
   }
-
-  @task *delete() {
-    try {
-      yield this.args.document.destroyRecord();
-      this.notification.success(
-        this.intl.t("alexandria.success.delete-document")
-      );
-    } catch (error) {
-      this.notification.danger(
-        this.intl.t("alexandria.errors.delete-document")
-      );
-    }
-  }
 }
