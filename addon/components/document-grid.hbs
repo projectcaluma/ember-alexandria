@@ -16,46 +16,76 @@
       />
     </div>
 
-    <div class="uk-padding-small uk-overflow-auto" ...attributes>
+    <div
+      class="
+        uk-position-relative
+        uk-height-1-1
+        {{if this.isDragOver "document-grid--dragover"}}
+      "
+      {{on "dragenter" this.onDragEnter}}
+      {{on "dragleave" this.onDragLeave}}
+      {{on "dragover" this.onDragOver}}
+      {{on "drop" this.onDrop}}
+    >
       <div
-        class="document-grid"
-        {{did-insert (perform this.fetchDocuments)}}
-        {{did-insert this.setupGridAnimations}}
-        {{did-update (perform this.fetchDocuments) @filters}}
+        class="
+          uk-position-cover
+          uk-padding-small
+          uk-height-1-1 uk-overflow-auto
+        "
+        ...attributes
       >
-        {{#if this.fetchDocuments.isRunning}}
-          {{#each (range 0 10) as |index|}}
-            <div>
-              <DocumentCard::Skeleton @animationDelay={{concat index "00ms"}} />
-            </div>
-          {{/each}}
-        {{else}}
-          {{#each this.documents as |document|}}
-            {{! This wrapper div is needed for the uk-grid spacing between elements }}
-            <div data-test-document-container>
-              <LinkTo
-                @query={{hash document=document.id}}
-                class="uk-link-reset"
-                data-test-document-link
-                {{did-insert
-                  this.scrollIntoView
-                  (eq @selectedDocumentId document.id)
-                }}
-              >
-                <DocumentCard
-                  data-test-document
-                  @document={{document}}
-                  class={{if (eq @selectedDocumentId document.id) "selected"}}
-                />
-              </LinkTo>
-            </div>
+        <div
+          class="document-grid"
+          {{did-insert (perform this.fetchDocuments)}}
+          {{did-insert this.setupGridAnimations}}
+          {{did-update (perform this.fetchDocuments) @filters}}
+        >
+          {{#if this.fetchDocuments.isRunning}}
+            {{#each (range 0 10) as |index|}}
+              <div>
+                <DocumentCard::Skeleton @animationDelay={{concat index "00ms"}} />
+              </div>
+            {{/each}}
           {{else}}
-            <div class="empty uk-margin-large-top" data-test-empty>
-              <EmptyIcon />
-            </div>
-          {{/each}}
-        {{/if}}
+            {{#each this.documents as |document|}}
+              {{! This wrapper div is needed for the uk-grid spacing between elements }}
+              <div data-test-document-container>
+                <LinkTo
+                  @query={{hash document=document.id}}
+                  class="uk-link-reset"
+                  data-test-document-link
+                  {{did-insert
+                    this.scrollIntoView
+                    (eq @selectedDocumentId document.id)
+                  }}
+                >
+                  <DocumentCard
+                    data-test-document
+                    @document={{document}}
+                    class={{if (eq @selectedDocumentId document.id) "selected"}}
+                  />
+                </LinkTo>
+              </div>
+            {{else}}
+              <div class="empty uk-margin-large-top" data-test-empty>
+                <EmptyIcon />
+              </div>
+            {{/each}}
+          {{/if}}
+        </div>
       </div>
+      {{#if this.isDragOver}}
+        <button
+          class="uk-width-1
+            uk-padding-remove
+            uk-position-bottom
+            uk-button uk-button-primary"
+          type="button"
+        >
+          {{t "alexandria.document-grid.drop-to-upload"}}
+        </button>
+      {{/if}}
     </div>
   </div>
   <DocumentDetails @document={{this.selectedDocument}} data-test-details />
