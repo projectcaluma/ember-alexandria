@@ -40,6 +40,9 @@ alexandria:
       cancel: "Abbrechen"
       confirm: "Löschen"
 
+  document-grid:
+    drop-to-upload: "Datei fallen lassen, um sie hochzuladen"
+
   document-details:
     document-title: "Dokumententitel"
     created-at: "Erstellt am {date}"
