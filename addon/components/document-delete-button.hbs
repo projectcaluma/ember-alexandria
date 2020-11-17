@@ -21,17 +21,19 @@
   </Modal.body>
 
   <Modal.footer>
-    <UkButton
-      @label={{t "alexandria.document-delete-button.prompt.cancel"}}
-      @on-click={{this.hideDialog}}
-    />
+    <div class="uk-flex uk-flex-between">
+      <UkButton
+        @label={{t "alexandria.document-delete-button.prompt.cancel"}}
+        @on-click={{this.hideDialog}}
+      />
 
-    <UkButton
-      @color="primary"
-      @label={{t "alexandria.document-delete-button.prompt.confirm"}}
-      @on-click={{perform this.delete}}
-      @loading={{this.delete.isRunning}}
-      data-test-delete-confirm
-    />
+      <UkButton
+        @color="primary"
+        @label={{t "alexandria.document-delete-button.prompt.confirm"}}
+        @on-click={{perform this.delete}}
+        @loading={{this.delete.isRunning}}
+        data-test-delete-confirm
+      />
+    </div>
   </Modal.footer>
 </UkModal>
