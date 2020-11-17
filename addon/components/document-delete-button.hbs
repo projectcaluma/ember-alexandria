@@ -3,7 +3,6 @@
 <UkModal
   @on-hide={{this.hideDialog}}
   @visible={{this.dialogVisible}}
-  data-test-delete-modal={{@document.id}}
   as |Modal|
 >
   <Modal.header>
@@ -24,7 +23,8 @@
     <div class="uk-flex uk-flex-between">
       <UkButton
         @label={{t "alexandria.document-delete-button.prompt.cancel"}}
-        @on-click={{this.hideDialog}}
+        @on-click={{this.cancel}}
+        data-test-delete-cancel={{@document.id}}
       />
 
       <UkButton
@@ -32,7 +32,7 @@
         @label={{t "alexandria.document-delete-button.prompt.confirm"}}
         @on-click={{perform this.delete}}
         @loading={{this.delete.isRunning}}
-        data-test-delete-confirm
+        data-test-delete-confirm={{@document.id}}
       />
     </div>
   </Modal.footer>
