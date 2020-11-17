@@ -5,7 +5,7 @@ import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
 import { setupIntl } from "ember-intl/test-support";
 import fileSaver from "file-saver";
-import { module, test, skip } from "qunit";
+import { module, test } from "qunit";
 import sinon from "sinon";
 
 module("Integration | Component | document-details", function (hooks) {
@@ -80,7 +80,7 @@ module("Integration | Component | document-details", function (hooks) {
     );
   });
 
-  skip("delete document", async function (assert) {
+  test("delete document", async function (assert) {
     this.selectedDocument = {
       id: 1,
       title: "Test",
@@ -89,10 +89,7 @@ module("Integration | Component | document-details", function (hooks) {
     await render(hbs`<DocumentDetails @document={{this.selectedDocument}}/>`);
 
     await click("[data-test-delete]");
-    await click(
-      `[data-test-delete-modal="${this.selectedDocument.id}"] [data-test-delete-submit]`
-    );
-    await click("[data-test-delete-submit]");
+    await click(`[data-test-delete-confirm="${this.selectedDocument.id}"]`);
 
     assert.ok(
       this.selectedDocument.destroyRecord.calledOnce,

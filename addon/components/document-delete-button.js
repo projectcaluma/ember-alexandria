@@ -16,6 +16,10 @@ export default class DocumentDeleteButtonComponent extends Component {
 
   @action hideDialog() {
     this.dialogVisible = false;
+  }
+
+  @action cancel() {
+    this.hideDialog();
 
     if (this.args.onCancel) {
       this.args.onCancel();

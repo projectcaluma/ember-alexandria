@@ -10,5 +10,9 @@ module.exports = function (environment) {
     APP: {},
   };
 
+  if (environment === "test") {
+    ENV.APP.rootElement = "#ember-testing";
+  }
+
   return ENV;
 };

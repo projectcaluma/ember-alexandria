@@ -3,7 +3,7 @@ import { hbs } from "ember-cli-htmlbars";
 import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
 import { setupRenderingTest } from "ember-qunit";
 import fileSaver from "file-saver";
-import { module, test, skip } from "qunit";
+import { module, test } from "qunit";
 import sinon from "sinon";
 
 const modulePrefix = "ember-alexandria";
@@ -54,7 +54,7 @@ module("Integration | Component | document-card", function (hooks) {
     );
   });
 
-  skip("delete file", async function (assert) {
+  test("delete file", async function (assert) {
     this.document = {
       id: 1,
       destroyRecord: sinon.fake(),
@@ -63,9 +63,7 @@ module("Integration | Component | document-card", function (hooks) {
 
     await click("[data-test-context-menu-trigger]");
     await click("[data-test-delete]");
-    await click(
-      `[data-test-delete-modal="${this.document.id}"] [data-test-delete-submit]`
-    );
+    await click(`[data-test-delete-confirm="${this.document.id}"]`);
     assert.ok(
       this.document.destroyRecord.calledOnce,
       "destroyRecord was called once"

@@ -1,20 +1,30 @@
-import { render, click, waitFor } from "@ember/test-helpers";
+import { render, click } from "@ember/test-helpers";
+import setupRenderingTest from "dummy/tests/helpers/setup-rendering-test";
 import { hbs } from "ember-cli-htmlbars";
-import { setupRenderingTest } from "ember-qunit";
-import { module, skip } from "qunit";
-import sinon from "sinon";
+import { setupIntl } from "ember-intl/test-support";
+import { module, test } from "qunit";
 
 module("Integration | Component | document-delete-button", function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks, "en");
 
-  skip("delete document", async function (assert) {
+  test("delete document", async function (assert) {
     this.document = {
+      id: 1,
       title: "Test",
-      destroyRecord: sinon.fake(),
+      destroyRecord() {},
     };
 
+    this.onCancel = () => assert.step("cancel");
+    this.onConfirm = () => assert.step("confirm");
+
     await render(hbs`
-      <DocumentDeleteButton @document={{this.document}} as |showDialog|>
+      <DocumentDeleteButton
+        @document={{this.document}}
+        @onConfirm={{this.onConfirm}}
+        @onCancel={{this.onCancel}}
+        as |showDialog|
+      >
         <button
           {{on "click" showDialog}}
           data-test-delete
@@ -24,12 +34,11 @@ module("Integration | Component | document-delete-button", function (hooks) {
     `);
 
     await click("[data-test-delete]");
-    await waitFor("[data-test-delete-confirm]", { timeout: 1000 });
-    await click("[data-test-delete-submit]");
+    await click("[data-test-delete-cancel]");
 
-    assert.ok(
-      this.selectedDocument.destroyRecord.calledOnce,
-      "destroyRecord was called once"
-    );
+    await click("[data-test-delete]");
+    await click("[data-test-delete-confirm]");
+
+    assert.verifySteps(["cancel", "confirm"]);
   });
 });
