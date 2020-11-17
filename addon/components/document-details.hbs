@@ -78,8 +78,7 @@
 
       <span class="document-meta">
         <p data-test-created-at>
-          {{
-            t
+          {{t
             "alexandria.document-details.created-at"
             date=(format-date @document.createdAt)
           }}
@@ -97,10 +96,10 @@
       <div class="uk-flex">
         <div uk-form-custom class="uk-width-1-2 uk-margin-small-right">
           <input
-            {{on "change" (perform this.uploadReplacement)}}
             data-test-replace
             type="file"
-          >
+            {{on "change" (perform this.uploadReplacement)}}
+          />
 
           <button
             class="uk-width-1 uk-button uk-button-default uk-button-small"
@@ -125,7 +124,7 @@
         </LinkTo>
       </div>
 
-      <hr>
+      <hr />
 
       <ul uk-accordion="multiple: true">
         <li class="uk-open">
@@ -135,19 +134,19 @@
           <div class="uk-accordion-content">
             <ul class="uk-list uk-list-divider">
               {{#each (filter-by "type" "original" @document.files) as |file|}}
-              <li data-test-file class="uk-flex">
-                <span class="uk-margin-right">
-                  {{moment-format file.createdAt "DD.MM.YYYY HH:mm"}}
-                </span>
-                <span class="uk-width-expand">
-                  {{~file.createdByUser.fullName~}}
-                </span>
-                <a
-                  uk-icon="download"
-                  class="uk-icon-link"
-                  href={{file.downloadUrl}}
-                ></a>
-              </li>
+                <li data-test-file class="uk-flex">
+                  <span class="uk-margin-right">
+                    {{moment-format file.createdAt "DD.MM.YYYY HH:mm"}}
+                  </span>
+                  <span class="uk-width-expand">
+                    {{~file.createdByUser.fullName~}}
+                  </span>
+                  <a
+                    uk-icon="download"
+                    class="uk-icon-link"
+                    href={{file.downloadUrl}}
+                  ></a>
+                </li>
               {{/each}}
             </ul>
           </div>
@@ -159,27 +158,27 @@
           </a>
 
           <div class="uk-accordion-content">
-
             {{#if @document.tags.length}}
-              <ul class="uk-iconnav uk-margin-bottom">
+              <div class="uk-margin-top uk-margin-bottom">
                 {{#each @document.tags as |tag|}}
-                  <li>
-                    <span class="uk-label">{{tag.name}}
-                      <button
-                        {{on "click" (perform this.removeTag tag)}}
-                        type="button"
-                        uk-close
-                      ></button>
-                    </span>
-                  </li>
+                  <span class="uk-badge">
+                    {{tag.name}}
+                    <button
+                      class="uk-margin-small-left"
+                      type="button"
+                      uk-close
+                      {{set-style color="white"}}
+                      {{on "click" (perform this.removeTag tag)}}
+                    ></button>
+                  </span>
                 {{/each}}
-              </ul>
+              </div>
             {{/if}}
 
             <form
+              class="uk-flex"
               {{did-insert this.didInsertTagSearch}}
               {{on "submit" (perform this.addTagFromForm)}}
-              class="uk-flex"
             >
               <input
                 {{on "input" this.onSearchTag}}
@@ -187,7 +186,8 @@
                 autocomplete="off"
                 name="tag"
                 type="text"
-              >
+                {{on "input" this.onSearchTag}}
+              />
               <button
                 class="uk-button uk-button-primary uk-button-small uk-width-1-2"
                 type="submit"
@@ -197,13 +197,18 @@
             </form>
 
             {{#if this.matchingTags.length}}
-              <ul class="uk-list uk-list-divider">
+              <div class="uk-margin-small-top">
                 {{#each this.matchingTags as |tag|}}
-                  <li><a {{on "click" (perform this.addTagSuggestion tag)}} href="#">{{tag.name}}</a></li>
+                  <a
+                    href="#"
+                    class="uk-badge"
+                    {{on "click" (perform this.addTagSuggestion tag)}}
+                  >
+                    {{tag.name}}
+                  </a>
                 {{/each}}
-              </ul>
+              </div>
             {{/if}}
-
           </div>
         </li>
       </ul>
