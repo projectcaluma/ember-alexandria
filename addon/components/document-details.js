@@ -83,13 +83,13 @@ export default class DocumentDetailsComponent extends DocumentCard {
   }
 
   @action onSearchTag() {
-    if (!this.availableTags) {
-      return [];
+    if (!this.availableTags || this.tagSearchBox.value === "") {
+      this.matchingTags = [];
+    } else {
+      this.matchingTags = this.availableTags.filter((tag) =>
+        tag.name.toLowerCase().startsWith(this.tagSearchBox.value.toLowerCase())
+      );
     }
-
-    this.matchingTags = this.availableTags.filter((tag) =>
-      tag.name.toLowerCase().startsWith(this.tagSearchBox.value.toLowerCase())
-    );
   }
 
   @task *addTagSuggestion(tag) {
@@ -116,6 +116,13 @@ export default class DocumentDetailsComponent extends DocumentCard {
     const existing = this.availableTags.findBy("name", tag);
     const attached = this.args.document.tags;
 
+    this.tagSearchBox.value = "";
+    this.matchingTags = [];
+
+    if (attached.findBy("name", tag)) {
+      return;
+    }
+
     if (existing) {
       attached.pushObject(existing);
     } else {
@@ -129,9 +136,6 @@ export default class DocumentDetailsComponent extends DocumentCard {
     }
 
     yield this.args.document.save();
-
-    this.tagSearchBox.value = "";
-    this.matchingTags = [];
   }
 
   @task *removeTag(tag) {
