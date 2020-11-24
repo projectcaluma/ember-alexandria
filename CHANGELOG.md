@@ -1,3 +1,24 @@
+# [1.2.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.1.0...v1.2.0) (2020-11-24)
+
+
+### Bug Fixes
+
+* **deps:** pin ember-uikit to 2.2.0 to fix floating test issue with modal and rootElement ([cbbd7d9](https://github.com/projectcaluma/ember-alexandria/commit/cbbd7d95e40c5a0df8ba580cdc5d89361d6cf72d))
+* **document-detail:** add task import to component ([be2549a](https://github.com/projectcaluma/ember-alexandria/commit/be2549ad4b10bcf742790856ab1b39934dc54481))
+* **document-details:** reset matching tags and minor fixes ([b6b6575](https://github.com/projectcaluma/ember-alexandria/commit/b6b6575af7146c6d7b07142cd32d13b0c9b49341))
+* **dummy:** remove smiley from alexandria dummy app ([4fe177c](https://github.com/projectcaluma/ember-alexandria/commit/4fe177c0903a74b597800ad2a963295b8f7bad8b))
+* **dummy:** update language to English to conform to backend ([0f64b6f](https://github.com/projectcaluma/ember-alexandria/commit/0f64b6fb4806fd122704e04ae7e11c1ccb1587a8))
+* **models:** change some attributes to localized ([004e2a1](https://github.com/projectcaluma/ember-alexandria/commit/004e2a128304776b9fd163f21a4f44b7575cd075))
+* **serializers:** add file serializer for more control ([09bcb3e](https://github.com/projectcaluma/ember-alexandria/commit/09bcb3e80449aee3fa993ee4dad956643efec568))
+* **tags-filter:** use badge for tags ([85ab804](https://github.com/projectcaluma/ember-alexandria/commit/85ab804d919288b4181a3c7131635921afc86254))
+
+
+### Features
+
+* **document-delete-buttom:** add a prompt to the delete buttons ([fe2bca9](https://github.com/projectcaluma/ember-alexandria/commit/fe2bca9c95c388c35205e172f6bacf743d520db5))
+* **document-details:** add label to document title and fix design ([1d75307](https://github.com/projectcaluma/ember-alexandria/commit/1d75307a01eaed1633d072696fc1524460d1ea24))
+* **tags:** add tag crud to side panel ([1fcc290](https://github.com/projectcaluma/ember-alexandria/commit/1fcc290107183651bd29dd12b9f0e2e8e1025daf))
+
 # [1.1.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.0.0...v1.1.0) (2020-11-06)
 
 
