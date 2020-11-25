@@ -2,8 +2,7 @@
 
 <UkModal
   @on-hide={{this.hideDialog}}
-  @visible={{this.dialogVisible}}
-  as |Modal|
+  @visible={{this.dialogVisible}} as |Modal|
 >
   <Modal.header>
     <strong class="uk-modal-title">
@@ -13,7 +12,8 @@
 
   <Modal.body>
     <p>
-      {{t "alexandria.document-delete-button.prompt.message"
+      {{t
+        "alexandria.document-delete-button.prompt.message"
         title=@document.title
       }}
     </p>
