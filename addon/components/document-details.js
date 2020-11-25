@@ -119,7 +119,7 @@ export default class DocumentDetailsComponent extends DocumentCard {
     } else {
       const fresh = this.store.createRecord("tag");
       fresh.id = dasherize(tag);
-      fresh.name = { en: tag };
+      fresh.name = tag;
 
       yield fresh.save();
 
