@@ -57,11 +57,11 @@
                 {{on "click" (perform this.saveDocument)}}
               ></a>
               <a
-                 href="#"
-                 {{on "click" (set this.editTitle false)}}
-                 class="uk-icon-button  cursor-pointer"
-                 uk-icon="icon: close"
-               ></a>
+                href="#"
+                class="uk-icon-button  cursor-pointer"
+                uk-icon="icon: close"
+                {{on "click" (set this.editTitle false)}}
+              ></a>
             </span>
           {{else}}
             <a
@@ -112,8 +112,7 @@
 
         <DocumentDeleteButton
           @document={{@document}}
-          @onConfirm={{this.closePanel}}
-          as |showDialog|
+          @onConfirm={{this.closePanel}} as |showDialog|
         >
           <UkButton
             data-test-delete
@@ -184,7 +183,6 @@
               {{on "submit" (perform this.addTagFromForm)}}
             >
               <input
-                {{on "input" this.onSearchTag}}
                 class="uk-input uk-form-small uk-width-1-2 uk-margin-small-right"
                 autocomplete="off"
                 name="tag"
