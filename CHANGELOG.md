@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/projectcaluma/ember-alexandria/compare/v1.2.0...v1.2.1) (2020-11-26)
+
+
+### Bug Fixes
+
+* **app:** export tag serializer to and remove hard-coded value ([0847fad](https://github.com/projectcaluma/ember-alexandria/commit/0847fadfc3547962e9dc03c91458a07b652a5928))
+
 # [1.2.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.1.0...v1.2.0) (2020-11-24)
 
 
