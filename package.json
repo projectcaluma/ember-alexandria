@@ -41,7 +41,7 @@
     "ember-concurrency-decorators": "^2.0.1",
     "ember-data": "^3.22.1",
     "ember-fetch": "^8.0.1",
-    "ember-intl": "^5.5.0",
+    "ember-intl": "^5.5.1",
     "ember-localized-model": "^1.0.1",
     "ember-modifier": "^2.1.1",
     "ember-moment": "^8.0.1",
