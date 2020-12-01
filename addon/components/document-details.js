@@ -9,6 +9,7 @@ import DocumentCard from "./document-card";
 export default class DocumentDetailsComponent extends DocumentCard {
   @service router;
   @service store;
+  @service document;
 
   @tracked editTitle = false;
   @tracked validTitle = true;
@@ -42,23 +43,7 @@ export default class DocumentDetailsComponent extends DocumentCard {
   @dropTask *uploadReplacement(event) {
     try {
       const [file] = event.target.files;
-
-      const fileModel = this.store.createRecord("file", {
-        name: file.name,
-        type: "original",
-        document: this.args.document,
-      });
-
-      yield fileModel.save();
-
-      const response = yield fetch(fileModel.uploadUrl, {
-        method: "PUT",
-        body: file,
-      });
-
-      if (!response.ok) {
-        throw new Error("The request returned an error status code");
-      }
+      yield this.document.replace(this.args.document, file);
     } catch (error) {
       this.notification.danger(
         this.intl.t("alexandria.errors.replace-document")

@@ -17,22 +17,16 @@
     </div>
 
     <div
-      class="
-        uk-position-relative
-        uk-height-1-1
-        {{if this.isDragOver "document-grid--dragover"}}
-      "
+      class="uk-position-relative uk-height-1-1 {{
+        if this.isDragOver "document-grid--dragover"
+      }}"
       {{on "dragenter" this.onDragEnter}}
       {{on "dragleave" this.onDragLeave}}
       {{on "dragover" this.onDragOver}}
       {{on "drop" this.onDrop}}
     >
       <div
-        class="
-          uk-position-cover
-          uk-padding-small
-          uk-height-1-1 uk-overflow-auto
-        "
+        class="uk-position-cover uk-padding-small uk-height-1-1 uk-overflow-auto"
         ...attributes
       >
         <div
@@ -44,7 +38,9 @@
           {{#if this.fetchDocuments.isRunning}}
             {{#each (range 0 10) as |index|}}
               <div>
-                <DocumentCard::Skeleton @animationDelay={{concat index "00ms"}} />
+                <DocumentCard::Skeleton
+                  @animationDelay={{concat index "00ms"}}
+                />
               </div>
             {{/each}}
           {{else}}
@@ -77,10 +73,7 @@
       </div>
       {{#if this.isDragOver}}
         <button
-          class="uk-width-1
-            uk-padding-remove
-            uk-position-bottom
-            uk-button uk-button-primary"
+          class="uk-width-1 uk-padding-remove uk-position-bottom uk-button uk-button-primary"
           type="button"
         >
           {{t "alexandria.document-grid.drop-to-upload"}}
