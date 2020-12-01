@@ -10,6 +10,7 @@ export default class DocumentGridComponent extends Component {
   @service config;
   @service store;
   @service intl;
+  @service document;
 
   @tracked isDragOver = false;
 
@@ -80,36 +81,7 @@ export default class DocumentGridComponent extends Component {
     const { files } = event.dataTransfer;
 
     try {
-      const category =
-        (await this.store.peekRecord("category", this.args.filters.category)) ||
-        this.store.findRecord("category", this.args.filters.category);
-
-      await Promise.all(
-        Array.from(files).map(async (file) => {
-          const documentModel = this.store.createRecord("document", {
-            category,
-            meta: this.config.defaultModelMeta.document,
-          });
-          documentModel.title = file.name;
-          await documentModel.save();
-
-          const fileModel = this.store.createRecord("file", {
-            name: file.name,
-            type: "original",
-            document: documentModel,
-          });
-          await fileModel.save();
-
-          const response = await fetch(fileModel.uploadUrl, {
-            method: "PUT",
-            body: file,
-          });
-
-          if (!response.ok) {
-            throw new Error("The request returned an error status code");
-          }
-        })
-      );
+      await this.document.upload(this.args.filters.category, files);
 
       this.notification.success(
         this.intl.t("alexandria.success.upload-document", {
