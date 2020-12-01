@@ -5,16 +5,15 @@
   {{did-update (perform this.fetchTags) @filters}}
 >
   {{#each this.tags as |tag|}}
-    <a
-      class="
-      uk-badge
-      {{if (contains tag.id this.selectedTagsArray) "uk-background-secondary"}}
-      "
-      href="javascript:void(0)"
+    <button
+      type="button"
+      class="uk-badge uk-border-remove {{
+        if (contains tag.id this.selectedTagsArray) "uk-background-secondary"
+      }}"
       {{on "click" (fn this.toggleTag tag)}}
     >
       {{tag.name}}
-    </a>
+    </button>
   {{else}}
     {{t "alexandria.tag-filter.empty"}}
   {{/each}}
