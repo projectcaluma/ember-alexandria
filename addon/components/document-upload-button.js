@@ -6,13 +6,13 @@ export default class DocumentUploadButtonComponent extends Component {
   @service notification;
   @service intl;
   @service store;
-  @service document;
+  @service documents;
 
   @lastValue("fetchCategories") categories;
 
   @task *upload(category, { target: { files = [] } = {} }) {
     try {
-      yield this.document.upload(category, files);
+      yield this.documents.upload(category, files);
 
       this.notification.success(
         this.intl.t("alexandria.success.upload-document", {

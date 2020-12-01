@@ -9,7 +9,7 @@ import DocumentCard from "./document-card";
 export default class DocumentDetailsComponent extends DocumentCard {
   @service router;
   @service store;
-  @service document;
+  @service documents;
 
   @tracked editTitle = false;
   @tracked validTitle = true;
@@ -43,7 +43,7 @@ export default class DocumentDetailsComponent extends DocumentCard {
   @dropTask *uploadReplacement(event) {
     try {
       const [file] = event.target.files;
-      yield this.document.replace(this.args.document, file);
+      yield this.documents.replace(this.args.document, file);
     } catch (error) {
       this.notification.danger(
         this.intl.t("alexandria.errors.replace-document")

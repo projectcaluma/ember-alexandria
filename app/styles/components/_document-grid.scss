@@ -14,11 +14,5 @@
 
   &--dragover {
     border: 1px solid uikit.$alert-primary-color;
-
-    // Disable pointer-events while draging something over the grid.
-    // Otherwise, the drag&drop will stop working when hovering over children.
-    .document-grid {
-      pointer-events: none;
-    }
   }
 }
