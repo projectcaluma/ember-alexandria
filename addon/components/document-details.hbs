@@ -12,12 +12,13 @@
         <div class="uk-text-meta">
           {{t "alexandria.document-details.document-title"}}
         </div>
-        <LinkTo
-          @query={{hash document=undefined}}
+        <button
           class="uk-icon-button uk-flex-none"
+          type="button"
           uk-icon="close"
           data-test-close
-        />
+          {{on "click" this.closePanel}}
+        ></button>
       </div>
 
       <span
