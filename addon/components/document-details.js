@@ -77,8 +77,9 @@ export default class DocumentDetailsComponent extends DocumentCard {
     if (!this.availableTags || this.tagSearchBox.value === "") {
       this.matchingTags = [];
     } else {
+      const searchValue = this.tagSearchBox.value.toLowerCase();
       this.matchingTags = this.availableTags.filter((tag) =>
-        tag.name.toLowerCase().startsWith(this.tagSearchBox.value.toLowerCase())
+        tag.name.toLowerCase().startsWith(searchValue)
       );
     }
   }
