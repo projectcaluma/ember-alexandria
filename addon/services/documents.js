@@ -1,7 +1,7 @@
 import Service, { inject as service } from "@ember/service";
 import fetch from "fetch";
 
-export default class DocumentService extends Service {
+export default class DocumentsService extends Service {
   @service store;
   @service config;
 

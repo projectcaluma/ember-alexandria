@@ -10,9 +10,10 @@ export default class DocumentGridComponent extends Component {
   @service config;
   @service store;
   @service intl;
-  @service document;
+  @service documents;
 
   @tracked isDragOver = false;
+  @tracked dragCounter = 0;
 
   get selectedDocument() {
     if (this.args.selectedDocumentId) {
@@ -58,11 +59,17 @@ export default class DocumentGridComponent extends Component {
       return;
     }
 
+    this.dragCounter++;
     this.isDragOver = true;
   }
 
   @action onDragLeave() {
-    this.isDragOver = false;
+    if (!this.args.filters.category) {
+      return;
+    }
+
+    this.dragCounter--;
+    this.isDragOver = this.dragCounter > 0;
   }
 
   @action onDragOver(event) {
@@ -81,7 +88,7 @@ export default class DocumentGridComponent extends Component {
     const { files } = event.dataTransfer;
 
     try {
-      await this.document.upload(this.args.filters.category, files);
+      await this.documents.upload(this.args.filters.category, files);
 
       this.notification.success(
         this.intl.t("alexandria.success.upload-document", {

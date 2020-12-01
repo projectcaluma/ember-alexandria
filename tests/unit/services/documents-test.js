@@ -2,19 +2,19 @@ import { setupMirage } from "ember-cli-mirage/test-support";
 import { setupTest } from "ember-qunit";
 import { module, test } from "qunit";
 
-module("Unit | Service | document", function (hooks) {
+module("Unit | Service | documents", function (hooks) {
   setupTest(hooks);
   setupMirage(hooks);
 
   test("it exists", function (assert) {
-    const service = this.owner.lookup("service:document");
+    const service = this.owner.lookup("service:documents");
     assert.ok(service);
   });
 
   test("it uploads documents", async function (assert) {
     const requests = this.server.pretender.handledRequests;
 
-    const service = this.owner.lookup("service:document");
+    const service = this.owner.lookup("service:documents");
 
     const category = this.server.create("category");
     const files = [
@@ -47,7 +47,7 @@ module("Unit | Service | document", function (hooks) {
   test("it replaces documents", async function (assert) {
     const requests = this.server.pretender.handledRequests;
 
-    const service = this.owner.lookup("service:document");
+    const service = this.owner.lookup("service:documents");
 
     const document = this.server.create("document");
     const file = new File([""], "test.docx");
