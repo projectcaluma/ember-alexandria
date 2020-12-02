@@ -1,3 +1,18 @@
+# [1.3.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.2.1...v1.3.0) (2020-12-02)
+
+
+### Bug Fixes
+
+* **document-grid:** use node counter instead of pointer-events ([d553f2c](https://github.com/projectcaluma/ember-alexandria/commit/d553f2c60f1edf5d2eccd378505473bd86147e48))
+* **tag-filter:** change javascript: link to button ([f2eca4e](https://github.com/projectcaluma/ember-alexandria/commit/f2eca4efc960b5dd382510ef1e13361823bc105e))
+
+
+### Features
+
+* **document-grid:** add drag'n'drop capability to document grid ([dd8bc22](https://github.com/projectcaluma/ember-alexandria/commit/dd8bc22c88423cc6097d8ff7f90e6bf1f60fd705))
+* **models:** change tag name to non-localized ([b5abb58](https://github.com/projectcaluma/ember-alexandria/commit/b5abb587f5c2742233a03ad00b9fa131df907034))
+* **services:** add document service for upload and replace ([a1d0a2f](https://github.com/projectcaluma/ember-alexandria/commit/a1d0a2fda27a397d308e98280adf5cba96d10bdb))
+
 ## [1.2.1](https://github.com/projectcaluma/ember-alexandria/compare/v1.2.0...v1.2.1) (2020-11-26)
 
 
