@@ -18,14 +18,14 @@ export default class DocumentGridComponent extends Component {
   get selectedDocument() {
     if (this.args.selectedDocumentId) {
       return (
-        this.documents &&
+        this.fetchedDocuments &&
         this.store.peekRecord("document", this.args.selectedDocumentId)
       );
     }
     return undefined;
   }
 
-  @lastValue("fetchDocuments") documents;
+  @lastValue("fetchDocuments") fetchedDocuments;
   @task
   *fetchDocuments() {
     return yield this.store.query("document", {

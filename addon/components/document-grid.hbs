@@ -44,7 +44,7 @@
               </div>
             {{/each}}
           {{else}}
-            {{#each this.documents as |document|}}
+            {{#each this.fetchedDocuments as |document|}}
               {{! This wrapper div is needed for the uk-grid spacing between elements }}
               <div data-test-document-container>
                 <LinkTo
