@@ -1,3 +1,11 @@
+## [1.3.1](https://github.com/projectcaluma/ember-alexandria/compare/v1.3.0...v1.3.1) (2020-12-03)
+
+
+### Bug Fixes
+
+* **document-grid:** rename lastSuccessful alias ([d62ecce](https://github.com/projectcaluma/ember-alexandria/commit/d62eccecc659943910e55c27b6c1dbbb83788bef))
+* **document-upload-button:** update multiple attribute ([eb9f193](https://github.com/projectcaluma/ember-alexandria/commit/eb9f19387f3a38450bed8f4404eaad39c6775d2c))
+
 # [1.3.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.2.1...v1.3.0) (2020-12-02)
 
 
