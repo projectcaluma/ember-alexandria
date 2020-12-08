@@ -1,14 +1,14 @@
 <div
   class="uk-border uk-padding-small uk-width-expand"
   ...attributes
-  {{did-insert (perform this.fetchTags)}}
-  {{did-update (perform this.fetchTags) @filters}}
+  {{did-insert this.onInsert}}
+  {{did-update this.onInsert @category}}
 >
-  {{#each this.tags as |tag|}}
+  {{#each this.tags.searchTags as |tag|}}
     <button
       type="button"
       class="uk-badge uk-border-remove {{
-        if (contains tag.id this.selectedTagsArray) "uk-background-secondary"
+        if (includes tag.id this.selectedTagsArray) "uk-background-secondary"
       }}"
       {{on "click" (fn this.toggleTag tag)}}
     >
