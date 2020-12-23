@@ -17,9 +17,11 @@
     </div>
 
     <div
-      class="uk-position-relative uk-height-1-1 {{
-        if this.isDragOver "document-grid--dragover"
-      }}"
+      class="
+      uk-position-relative uk-height-1-1
+      {{if this.isDragOver "document-grid--dragover"}}
+       {{unless this.canDrop "document-grid--disallowed"}}
+      "
       {{on "dragenter" this.onDragEnter}}
       {{on "dragleave" this.onDragLeave}}
       {{on "dragover" this.onDragOver}}
@@ -76,7 +78,11 @@
           class="uk-width-1 uk-padding-remove uk-position-bottom uk-button uk-button-primary"
           type="button"
         >
-          {{t "alexandria.document-grid.drop-to-upload"}}
+          {{if
+            this.canDrop
+            (t "alexandria.document-grid.drop-to-upload")
+            (t "alexandria.document-grid.drop-not-allowed")
+          }}
         </button>
       {{/if}}
     </div>

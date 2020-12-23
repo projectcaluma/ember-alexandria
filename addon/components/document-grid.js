@@ -15,6 +15,10 @@ export default class DocumentGridComponent extends Component {
   @tracked isDragOver = false;
   @tracked dragCounter = 0;
 
+  get canDrop() {
+    return Boolean(this.args.filters && this.args.filters.category);
+  }
+
   get selectedDocument() {
     if (this.args.selectedDocumentId) {
       return (
@@ -55,19 +59,11 @@ export default class DocumentGridComponent extends Component {
   // Drag'n'Drop document upload
 
   @action onDragEnter() {
-    if (!this.args.filters.category) {
-      return;
-    }
-
     this.dragCounter++;
     this.isDragOver = true;
   }
 
   @action onDragLeave() {
-    if (!this.args.filters.category) {
-      return;
-    }
-
     this.dragCounter--;
     this.isDragOver = this.dragCounter > 0;
   }
