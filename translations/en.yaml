@@ -42,6 +42,7 @@ alexandria:
 
   document-grid:
     drop-to-upload: "Drop file to upload"
+    drop-not-allowed: "No category selected"
 
   document-details:
     document-title: "Document title"
