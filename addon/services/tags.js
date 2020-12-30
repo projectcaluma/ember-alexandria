@@ -6,6 +6,7 @@ import { lastValue, task } from "ember-concurrency-decorators";
 
 export default class TagsService extends Service {
   @service store;
+  @service config;
 
   /**
    * Different parts of the application should be able to update the searchTags
@@ -28,7 +29,12 @@ export default class TagsService extends Service {
 
   @task *fetchSearchTags() {
     return yield this.store.query("tag", {
-      filter: { withDocumentsInCategory: this.category },
+      filter: {
+        withDocumentsInCategory: this.category,
+        withDocumentsMeta: JSON.stringify(
+          this.config.modelMetaFilters.document
+        ),
+      },
     });
   }
 
