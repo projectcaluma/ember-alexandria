@@ -6,6 +6,7 @@ import { lastValue, task } from "ember-concurrency-decorators";
 
 export default class TagsService extends Service {
   @service store;
+  @service config;
 
   /**
    * Different parts of the application should be able to update the searchTags
@@ -19,6 +20,7 @@ export default class TagsService extends Service {
    * until the API implements a search field. (STARTSWITH)
    */
   @lastValue("fetchAllTags") allTags;
+
   /** The searchTags are used in the TagFilter component. */
   @lastValue("fetchSearchTags") searchTags;
 
@@ -48,6 +50,8 @@ export default class TagsService extends Service {
         tag = this.store.createRecord("tag", {
           id: dasherize(tag),
           name: tag,
+          createdByGroup: this.config.activeGroup,
+          modifiedByGroup: this.config.activeGroup,
         });
         await tag.save();
       }

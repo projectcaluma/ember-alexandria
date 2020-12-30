@@ -6,5 +6,12 @@ export default class TagModel extends LocalizedModel {
   @localizedAttr description;
   @attr meta;
 
+  @attr createdAt;
+  @attr createdByUser;
+  @attr createdByGroup;
+  @attr modifiedAt;
+  @attr modifiedByUser;
+  @attr modifiedByGroup;
+
   @hasMany documents;
 }

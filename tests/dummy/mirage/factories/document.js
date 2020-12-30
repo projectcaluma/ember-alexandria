@@ -6,8 +6,8 @@ import { setAllLocales } from "./helpers";
 export default Factory.extend({
   title: () => setAllLocales(faker.commerce.product()),
   description: () => setAllLocales(faker.company.catchPhrase()),
-  createdByUser: () => `${faker.name.firstName()} ${faker.name.lastName()}`,
-  createdByGroup: () => faker.company.companyName(),
+  createdByUser: "dummy",
+  createdByGroup: "dummy-group",
   createdAt: () => faker.date.past(),
   thumbnail: null,
 

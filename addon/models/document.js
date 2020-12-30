@@ -4,10 +4,14 @@ import { LocalizedModel, localizedAttr } from "ember-localized-model";
 export default class DocumentModel extends LocalizedModel {
   @localizedAttr title;
   @localizedAttr description;
+  @attr meta;
+
   @attr createdAt;
   @attr createdByUser;
   @attr createdByGroup;
-  @attr meta;
+  @attr modifiedAt;
+  @attr modifiedByUser;
+  @attr modifiedByGroup;
 
   @belongsTo category;
   @hasMany tags;
