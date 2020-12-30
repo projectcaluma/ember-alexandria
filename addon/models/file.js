@@ -7,8 +7,13 @@ export default class FileModel extends Model {
   @attr downloadUrl;
   @attr objectName;
   @attr meta;
+
   @attr createdAt;
   @attr createdByUser;
+  @attr createdByGroup;
+  @attr modifiedAt;
+  @attr modifiedByUser;
+  @attr modifiedByGroup;
 
   @belongsTo document;
 

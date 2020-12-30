@@ -24,6 +24,8 @@ export default class DocumentsService extends Service {
         const documentModel = this.store.createRecord("document", {
           category,
           meta: this.config.defaultModelMeta.document,
+          createdByGroup: this.config.activeGroup,
+          modifiedByGroup: this.config.activeGroup,
         });
         documentModel.title = file.name;
         await documentModel.save();
@@ -32,6 +34,8 @@ export default class DocumentsService extends Service {
           name: file.name,
           type: "original",
           document: documentModel,
+          createdByGroup: this.config.activeGroup,
+          modifiedByGroup: this.config.activeGroup,
         });
         await fileModel.save();
 
@@ -58,6 +62,8 @@ export default class DocumentsService extends Service {
       name: file.name,
       type: "original",
       document,
+      createdByGroup: this.config.activeGroup,
+      modifiedByGroup: this.config.activeGroup,
     });
 
     await fileModel.save();

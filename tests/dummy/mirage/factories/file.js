@@ -2,7 +2,8 @@ import { Factory } from "ember-cli-mirage";
 import faker from "faker";
 
 export default Factory.extend({
-  createdByGroup: () => faker.company.companyName(),
+  createdByUser: "dummy",
+  createdByGroup: "dummy-group",
   createdAt: () => faker.date.past(),
   name: () => faker.lorem.word(),
   type: "original",

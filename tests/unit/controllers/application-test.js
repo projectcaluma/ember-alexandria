@@ -11,6 +11,7 @@ module("Unit | Controller | application", function (hooks) {
 
   test("compute document filters", function (assert) {
     const controller = this.owner.lookup("controller:application");
+    controller.activeGroup = "group";
     controller.search = "test";
     controller.category = 1;
     controller.config = {
@@ -20,6 +21,7 @@ module("Unit | Controller | application", function (hooks) {
     };
 
     assert.deepEqual(controller.documentFilters, {
+      activeGroup: "group",
       category: 1,
       meta: JSON.stringify([{ key: "instance_id", value: "1" }]),
       search: "test",
