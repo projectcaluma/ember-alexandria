@@ -1,3 +1,17 @@
+# [1.4.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.3.1...v1.4.0) (2021-01-13)
+
+
+### Bug Fixes
+
+* temporarily disable the ember-release test ([667836f](https://github.com/projectcaluma/ember-alexandria/commit/667836f3f2a16c36d4b2cc443869daa9288723bf))
+
+
+### Features
+
+* **document-grid:** show a warning when files cannot be dropped ([2dd1ecb](https://github.com/projectcaluma/ember-alexandria/commit/2dd1ecbb93b369d9bd402767489fdb1e64d2264c))
+* **tags:** filter tags by meta value ([2bdcb69](https://github.com/projectcaluma/ember-alexandria/commit/2bdcb69caa317789a33726cc8d755061d67e5f1f))
+* introduce created-by to documents, files, and tags ([75cd7d0](https://github.com/projectcaluma/ember-alexandria/commit/75cd7d0a044c0fe8c31d969ab367a80aa8214551))
+
 ## [1.3.1](https://github.com/projectcaluma/ember-alexandria/compare/v1.3.0...v1.3.1) (2020-12-03)
 
 
