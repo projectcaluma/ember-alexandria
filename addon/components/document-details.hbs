@@ -77,6 +77,49 @@
         </span>
       </span>
 
+      <p class="uk-flex">
+        {{#if this.editDescription}}
+          <textarea
+            class="uk-textarea"
+            {{on "input" this.updateDocumentDescription}}
+          >
+            {{~@document.description~}}
+          </textarea>
+          <div class="uk-flex uk-flex-column">
+            <a
+              class="uk-icon-button cursor-pointer"
+              href="#"
+              uk-icon="icon: check"
+              {{on "click" (perform this.saveDocument)}}
+            ></a>
+            <a
+              href="#"
+              class="uk-icon-button cursor-pointer"
+              uk-icon="icon: close"
+              {{on "click" (set this.editDescription false)}}
+            ></a>
+          </div>
+        {{else}}
+          {{#if @document.description}}
+            <a
+              class="uk-link-reset"
+              href="#"
+              {{on "click" (set this.editDescription true)}}
+            >
+              {{@document.description}}
+            </a>
+          {{else}}
+            <a
+              class="uk-link-reset"
+              href="#"
+              {{on "click" (set this.editDescription true)}}
+            >
+              {{t "alexandria.document-details.add-description"}}
+            </a>
+          {{/if}}
+        {{/if}}
+      </p>
+
       <span class="document-meta">
         <p data-test-created-at>
           {{t
