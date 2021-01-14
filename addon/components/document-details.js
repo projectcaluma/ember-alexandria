@@ -11,6 +11,7 @@ export default class DocumentDetailsComponent extends DocumentCard {
   @service tags;
 
   @tracked editTitle = false;
+  @tracked editDescription = false;
   @tracked validTitle = true;
   @tracked matchingTags = [];
 
@@ -23,15 +24,20 @@ export default class DocumentDetailsComponent extends DocumentCard {
     this.args.document.title = title;
   }
 
+  @action updateDocumentDescription({ target: { value: description } }) {
+    this.args.document.description = description;
+  }
+
   @action resetState() {
     this.editTitle = false;
     this.validTitle = true;
+    this.editDescription = false;
   }
 
   @restartableTask *saveDocument() {
     try {
       yield this.args.document.save();
-      this.editTitle = false;
+      this.resetState();
       this.notification.success(this.intl.t("alexandria.success.update"));
     } catch (error) {
       this.notification.danger(this.intl.t("alexandria.errors.update"));

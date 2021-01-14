@@ -49,6 +49,7 @@ alexandria:
     created-at: "Erstellt am {date}"
     name-placeholder: "Name..."
     version-history: "Versionsgeschichte"
+    add-description: "Beschreibung hinzufügen"
     replace: "Ersetzen"
     tags:
       title: "Tags"
