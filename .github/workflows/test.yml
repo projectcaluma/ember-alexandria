@@ -59,9 +59,7 @@ jobs:
       matrix:
         scenario:
           - ember-lts-3.16
-          # There is a bug upstream that breaks Ember Engine.
-          # https://github.com/ember-engines/ember-engines/issues/740
-          # - ember-release
+          - ember-release
 
     steps:
       - uses: actions/checkout@v2
