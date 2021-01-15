@@ -1,3 +1,15 @@
+# [1.5.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.4.0...v1.5.0) (2021-01-15)
+
+
+### Bug Fixes
+
+* reenable the ember-release test ([c317f64](https://github.com/projectcaluma/ember-alexandria/commit/c317f64c3f1d067e1fcd0e3ffc84e2ae42e839fa))
+
+
+### Features
+
+* **document-details:** add form to edit the document's description ([55f0973](https://github.com/projectcaluma/ember-alexandria/commit/55f09739738773e1cd3a238532af50fee6303413))
+
 # [1.4.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.3.1...v1.4.0) (2021-01-13)
 
 
