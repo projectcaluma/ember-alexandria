@@ -1465,6 +1465,45 @@
     walk-sync "^1.1.3"
     wrap-legacy-hbs-plugin-if-needed "^1.0.1"
 
+"@embroider/core@0.35.1":
+  version "0.35.1"
+  resolved "https://registry.yarnpkg.com/@embroider/core/-/core-0.35.1.tgz#811e9687a32a60e209adfa568ac8ecdc61068752"
+  integrity sha512-Aue/+oEWRLXMuE6xJpUbDJTcrqDMfE9z8rucTwWWKvOM+TS7yKlg1joqve+9g4XprGkdKxXOLo4aPpZ+Zt4a2w==
+  dependencies:
+    "@babel/core" "^7.12.3"
+    "@babel/parser" "^7.12.3"
+    "@babel/plugin-syntax-dynamic-import" "^7.8.3"
+    "@babel/plugin-transform-runtime" "^7.12.1"
+    "@babel/runtime" "^7.12.5"
+    "@babel/traverse" "^7.12.1"
+    "@babel/types" "^7.12.1"
+    "@embroider/macros" "0.35.1"
+    assert-never "^1.1.0"
+    babel-plugin-syntax-dynamic-import "^6.18.0"
+    broccoli-node-api "^1.7.0"
+    broccoli-persistent-filter "^3.1.2"
+    broccoli-plugin "^4.0.1"
+    broccoli-source "^3.0.0"
+    debug "^3.1.0"
+    escape-string-regexp "^4.0.0"
+    fast-sourcemap-concat "^1.4.0"
+    filesize "^4.1.2"
+    fs-extra "^7.0.1"
+    fs-tree-diff "^2.0.0"
+    handlebars "^4.4.2"
+    js-string-escape "^1.0.1"
+    jsdom "^16.4.0"
+    json-stable-stringify "^1.0.1"
+    lodash "^4.17.10"
+    pkg-up "^3.1.0"
+    resolve "^1.8.1"
+    resolve-package-path "^1.2.2"
+    semver "^7.3.2"
+    strip-bom "^3.0.0"
+    typescript-memoize "^1.0.0-alpha.3"
+    walk-sync "^1.1.3"
+    wrap-legacy-hbs-plugin-if-needed "^1.0.1"
+
 "@embroider/macros@0.33.0":
   version "0.33.0"
   resolved "https://registry.yarnpkg.com/@embroider/macros/-/macros-0.33.0.tgz#d5826ea7565bb69b57ba81ed528315fe77acbf9d"
@@ -1474,6 +1513,21 @@
     "@babel/traverse" "^7.12.1"
     "@babel/types" "^7.12.1"
     "@embroider/core" "0.33.0"
+    assert-never "^1.1.0"
+    ember-cli-babel "^7.23.0"
+    lodash "^4.17.10"
+    resolve "^1.8.1"
+    semver "^7.3.2"
+
+"@embroider/macros@0.35.1", "@embroider/macros@^0.35.1":
+  version "0.35.1"
+  resolved "https://registry.yarnpkg.com/@embroider/macros/-/macros-0.35.1.tgz#2cee2af3ca4e2f7c07aff37530b834420b379571"
+  integrity sha512-frGqNx2dFQ0J5zBrcRkTGNpKtzhxtt18SRRb6SSs1B12Aak/hyDS0hF0RD0V79IC0iBaFzeeJynAn6ZXE/YqdQ==
+  dependencies:
+    "@babel/core" "^7.12.3"
+    "@babel/traverse" "^7.12.1"
+    "@babel/types" "^7.12.1"
+    "@embroider/core" "0.35.1"
     assert-never "^1.1.0"
     ember-cli-babel "^7.23.0"
     lodash "^4.17.10"
@@ -6317,7 +6371,7 @@ ember-cli-htmlbars@^2.0.1:
     json-stable-stringify "^1.0.0"
     strip-bom "^3.0.0"
 
-ember-cli-htmlbars@^4.2.2, ember-cli-htmlbars@^4.2.3, ember-cli-htmlbars@^4.3.1:
+ember-cli-htmlbars@^4.2.2, ember-cli-htmlbars@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/ember-cli-htmlbars/-/ember-cli-htmlbars-4.3.1.tgz#4af8adc21ab3c4953f768956b7f7d207782cb175"
   integrity sha512-CW6AY/yzjeVqoRtItOKj3hcYzc5dWPRETmeCzr2Iqjt5vxiVtpl0z5VTqHqIlT5fsFx6sGWBQXNHIe+ivYsxXQ==
@@ -6760,11 +6814,12 @@ ember-disable-prototype-extensions@1.1.3:
   resolved "https://registry.yarnpkg.com/ember-disable-prototype-extensions/-/ember-disable-prototype-extensions-1.1.3.tgz#1969135217654b5e278f9fe2d9d4e49b5720329e"
   integrity sha1-GWkTUhdlS14nj5/i2dTkm1cgMp4=
 
-ember-engines@0.8.6:
-  version "0.8.6"
-  resolved "https://registry.yarnpkg.com/ember-engines/-/ember-engines-0.8.6.tgz#151d2fff6929a86b501acd1c650770d9c3593997"
-  integrity sha512-0MXMtUmhA3aY3F4iW0nbrVL1yr/0ExeijY/BrEk0qbbVt+IJ8jJpaSQd2a/q/ksujuGxF0ZclG0rUU8gfWPE1Q==
+ember-engines@0.8.10:
+  version "0.8.10"
+  resolved "https://registry.yarnpkg.com/ember-engines/-/ember-engines-0.8.10.tgz#328339c2e39384f1973df44122538aebb875b9de"
+  integrity sha512-bJaxhZB4pZ0as6dPY1HesA9cQD9WXXBven85mEK4MZmx6HgHchUM8Jp7+xG+0YxIEIl6LJKFaaaCOunXmDm85g==
   dependencies:
+    "@embroider/macros" "^0.35.1"
     amd-name-resolver "1.3.1"
     babel-plugin-compact-reexports "^1.1.0"
     broccoli-babel-transpiler "^7.2.0"
@@ -6778,7 +6833,7 @@ ember-engines@0.8.6:
     calculate-cache-key-for-tree "^2.0.0"
     ember-asset-loader "^0.6.1"
     ember-cli-babel "^7.18.0"
-    ember-cli-htmlbars "^4.2.3"
+    ember-cli-htmlbars "^5.3.1"
     ember-cli-preprocess-registry "^3.3.0"
     ember-cli-string-utils "^1.1.0"
     ember-cli-version-checker "^3.1.3"
