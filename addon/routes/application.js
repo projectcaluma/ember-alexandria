@@ -2,10 +2,12 @@ import Route from "@ember/routing/route";
 import { inject as service } from "@ember/service";
 
 export default class ApplicationRoute extends Route {
+  queryParams = { activeGroup: { refreshModel: true } };
+
   @service config;
 
-  model(params, transition) {
+  afterModel(model, transition) {
     this.config.alexandriaQueryParams = transition.to.parent.params;
-    this.config.activeGroup = params.activeGroup;
+    this.config.activeGroup = transition.to.queryParams.activeGroup;
   }
 }
