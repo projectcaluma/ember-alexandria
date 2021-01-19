@@ -9,9 +9,9 @@
   <div class="uk-overflow-auto">
     <div class="uk-padding-small">
       <div class="uk-flex uk-flex-between uk-flex-bottom">
-        <div class="uk-text-meta">
+        <label class="uk-text-meta" for="alexandria-details-title">
           {{t "alexandria.document-details.document-title"}}
-        </div>
+        </label>
         <button
           class="uk-icon-button uk-flex-none"
           type="button"
@@ -41,6 +41,7 @@
           {{#if this.editTitle}}
             <input
               class="uk-input"
+              id="alexandria-details-title"
               type="text"
               placeholder={{t "alexandria.document-details.name-placeholder"}}
               value={{@document.title}}
@@ -77,15 +78,24 @@
         </span>
       </span>
 
-      <p class="uk-flex">
+      <p class="uk-margin-remove-top">
+        <label
+          class="uk-text-meta uk-display-block"
+          for="alexandria-details-description"
+        >
+          {{t "alexandria.document-details.document-description"}}
+        </label>
+
         {{#if this.editDescription}}
           <textarea
             class="uk-textarea"
+            id="alexandria-details-description"
+            rows="10"
             {{on "input" this.updateDocumentDescription}}
           >
             {{~@document.description~}}
           </textarea>
-          <div class="uk-flex uk-flex-column">
+          <div class="uk-text-right">
             <a
               class="uk-icon-button cursor-pointer"
               href="#"
@@ -109,11 +119,7 @@
               {{@document.description}}
             </a>
           {{else}}
-            <a
-              class="uk-link-reset"
-              href="#"
-              {{on "click" (set this.editDescription true)}}
-            >
+            <a href="#" {{on "click" (set this.editDescription true)}}>
               {{t "alexandria.document-details.add-description"}}
             </a>
           {{/if}}

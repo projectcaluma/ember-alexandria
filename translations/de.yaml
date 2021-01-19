@@ -46,6 +46,7 @@ alexandria:
 
   document-details:
     document-title: "Dokumententitel"
+    document-description: "Dokumentenbeschreibung"
     created-at: "Erstellt am {date}"
     name-placeholder: "Name..."
     version-history: "Versionsgeschichte"
