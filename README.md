@@ -74,7 +74,6 @@ If you mounted alexandria with query params
 you can access the query params in you config service (as shown in the example
 above) with `this.alexandriaQueryParams.your_query_param`.
 
-
 If you need to access the `alexandriaQueryParams` inside your config check that you define `modelMetaFilters`
 and/or `defaultModelMeta` as getters. If you don't need `alexandriaQueryParams` you
 can ignore the getters and just define the field as usual.
@@ -106,7 +105,23 @@ export default class AlexandriaConfigService extends ConfigService {
 }
 ```
 
+As the Alexandria backend returns IDs for the user and groups you can add a
+resolver from your project to turn the IDs to something the user can relate to.
 
+Just replace the identity functions on the config service.
+
+__Example__:
+```js
+import ConfigService from "ember-alexandria/services/config";
+import { inject as service } from "@ember/service";
+
+export default class AlexandriaConfigService extends ConfigService {
+  @service store;
+  
+  resolveUser(id) { return this.store.peekRecord("user", id); }
+  resolveGroup(id) { return this.store.peekRecord("group", id); }
+}
+```
 
 Contributing
 ------------------------------------------------------------------------------
