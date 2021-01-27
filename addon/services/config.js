@@ -10,6 +10,9 @@ export default class ConfigService extends Service {
    */
   @tracked activeGroup = null;
 
+  resolveUser = (id) => id;
+  resolveGroup = (id) => id;
+
   /**
    * Defaults so we can lookup
    * `this.config.modelMetaFilters.document`
