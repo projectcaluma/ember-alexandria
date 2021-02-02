@@ -89,6 +89,14 @@
     "qunit-dom": "1.6.0",
     "sass": "1.32.5"
   },
+  "//": {
+    "uikit": "Higher versions break the build. https://github.com/uikit/uikit/issues/4403",
+    "@babel/parser": "For some reason 7.12.13 fails to transpile TypeScript sources. https://github.com/babel/babel/issues/12745"
+  },
+  "resolutions": {
+    "uikit": "3.6.11",
+    "@babel/parser": "7.12.11"
+  },
   "engines": {
     "node": "10.* || >= 12"
   },
