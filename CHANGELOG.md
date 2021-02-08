@@ -1,3 +1,18 @@
+# [1.6.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.5.0...v1.6.0) (2021-02-08)
+
+
+### Bug Fixes
+
+* **deps:** add resolution for UIkit and @babel/parser ([110ec08](https://github.com/projectcaluma/ember-alexandria/commit/110ec08b12e018af955d77b6a77f508211b0df8d))
+* **route:** add queryParams config to route ([93fe019](https://github.com/projectcaluma/ember-alexandria/commit/93fe0191a84fcfb8b1221104028146a7fdd23408))
+* **routes:** add empty model hook and param options to route ([e869997](https://github.com/projectcaluma/ember-alexandria/commit/e869997d3db7251897f21165b7c9d2615137ec38))
+
+
+### Features
+
+* **deps:** switch from Uglify to Terser for code mangling ([d8ab74c](https://github.com/projectcaluma/ember-alexandria/commit/d8ab74cbfb082ffa01346d208eedb8a8a8ce0c9f))
+* **document-details:** update UI for description and its form ([c2ef2a5](https://github.com/projectcaluma/ember-alexandria/commit/c2ef2a53a00e3bc0733c1d54ab0603e1f873fdd4))
+
 # [1.5.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.4.0...v1.5.0) (2021-01-15)
 
 
