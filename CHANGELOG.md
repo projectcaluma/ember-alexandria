@@ -1,3 +1,15 @@
+# [1.7.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.6.0...v1.7.0) (2021-02-09)
+
+
+### Bug Fixes
+
+* **search:** add preventDefault to submit ([042d24d](https://github.com/projectcaluma/ember-alexandria/commit/042d24db3659f81421b964e820f0658709a4b3fb))
+
+
+### Features
+
+* **config:** add resolver for user and group IDs ([7364345](https://github.com/projectcaluma/ember-alexandria/commit/73643450af911987ff7b7f8738951bdae351c8ba))
+
 # [1.6.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.5.0...v1.6.0) (2021-02-08)
 
 
