@@ -36,7 +36,7 @@ module("Integration | Component | document-card", function (hooks) {
 
     this.document = {
       title,
-      files: [{ type: "original", downloadUrl }],
+      files: [{ name: "foo.txt", type: "original", downloadUrl }],
     };
     await render(hbs`<DocumentCard @document={{this.document}}/>`);
 
@@ -49,7 +49,7 @@ module("Integration | Component | document-card", function (hooks) {
     );
     assert.equal(
       stub.args[0][1],
-      title,
+      `${title}.txt`,
       "saveAs was called with correct file name"
     );
   });
