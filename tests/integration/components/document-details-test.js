@@ -62,7 +62,7 @@ module("Integration | Component | document-details", function (hooks) {
 
     this.selectedDocument = {
       title,
-      files: [{ type: "original", downloadUrl }],
+      files: [{ name: "foo.txt", type: "original", downloadUrl }],
     };
 
     await render(hbs`<DocumentDetails @document={{this.selectedDocument}} />`);
@@ -75,7 +75,7 @@ module("Integration | Component | document-details", function (hooks) {
     );
     assert.equal(
       stub.args[0][1],
-      title,
+      `${title}.txt`,
       "saveAs was called with correct file name"
     );
   });
