@@ -186,7 +186,7 @@
           <div class="uk-accordion-content">
             <ul class="uk-list uk-list-divider">
               {{#each (filter-by "type" "original" @document.files) as |file|}}
-                <li data-test-file class="uk-flex">
+                <li data-test-file class="uk-flex" title={{file.name}}>
                   <span class="uk-margin-right">
                     {{moment-format file.createdAt "DD.MM.YYYY HH:mm"}}
                   </span>
