@@ -1,5 +1,10 @@
 @use "ember-uikit" as uikit;
 
+// This is needed to make the details panel behave.
+[data-test-details] .uk-overflow-auto {
+  flex: 1 0 0;
+}
+
 .document-details {
   transition: width uikit.$animation-duration;
 
