@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/projectcaluma/ember-alexandria/compare/v1.8.0...v1.8.1) (2021-04-14)
+
+
+### Bug Fixes
+
+* **document-card:** add file extension from last upload to filename ([7bee075](https://github.com/projectcaluma/ember-alexandria/commit/7bee075e2b9fdceaa4fc2699ca72b461a75a9e5f))
+
 # [1.8.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.7.0...v1.8.0) (2021-04-14)
 
 
