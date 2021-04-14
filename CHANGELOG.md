@@ -1,3 +1,15 @@
+# [1.8.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.7.0...v1.8.0) (2021-04-14)
+
+
+### Bug Fixes
+
+* **search:** move onSubmit handler to correct element ([837b554](https://github.com/projectcaluma/ember-alexandria/commit/837b55434115dc014f21eddf67aa12cf06fae80c))
+
+
+### Features
+
+* **document-details:** add filename to file history ([c6c08df](https://github.com/projectcaluma/ember-alexandria/commit/c6c08df618e3734398140fdbf61526eab6f930b3))
+
 # [1.7.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.6.0...v1.7.0) (2021-02-09)
 
 
