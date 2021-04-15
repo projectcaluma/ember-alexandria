@@ -16,4 +16,10 @@ export default class AlexandriaConfigService extends ConfigService {
       },
     };
   }
+
+  resolveUser(id) {
+    return new Promise((resolve) =>
+      setTimeout(() => resolve((id || "").toUpperCase()), 200)
+    );
+  }
 }

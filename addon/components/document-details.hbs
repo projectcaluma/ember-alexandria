@@ -135,11 +135,11 @@
         </p>
         <p data-test-created-by-user>
           <FaIcon @icon="user" class="uk-margin-small-right" />
-          {{resolve-user @document.createdByUser}}
+          {{await (resolve-user @document.createdByUser)}}
         </p>
         <p data-test-created-by-group>
           <FaIcon @icon="users" class="uk-margin-small-right" />
-          {{resolve-group @document.createdByGroup}}
+          {{await (resolve-group @document.createdByGroup)}}
         </p>
       </span>
 
@@ -191,7 +191,7 @@
                     {{moment-format file.createdAt "DD.MM.YYYY HH:mm"}}
                   </span>
                   <span class="uk-width-expand">
-                    {{~resolve-user file.createdByUser~}}
+                    {{~await (resolve-user file.createdByUser)~}}
                   </span>
                   <a
                     uk-icon="download"
