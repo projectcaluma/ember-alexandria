@@ -1,3 +1,15 @@
+# [1.9.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.8.1...v1.9.0) (2021-04-15)
+
+
+### Bug Fixes
+
+* reduce test matrix ([e92d567](https://github.com/projectcaluma/ember-alexandria/commit/e92d56796aa6fe2fe5c14ff63063857d38dc0979))
+
+
+### Features
+
+* **resolve-api:** async support ([af47baa](https://github.com/projectcaluma/ember-alexandria/commit/af47baac3303cbd81dad6592dfb84438dc022ecb))
+
 ## [1.8.1](https://github.com/projectcaluma/ember-alexandria/compare/v1.8.0...v1.8.1) (2021-04-14)
 
 
