@@ -1,0 +1,15 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    day: friday
+    time: "12:00"
+    timezone: "Europe/Zurich"
+  reviewers:
+  - velrest
+  versioning-strategy: increase
+  commit-message:
+    prefix: chore
+    include: scope
