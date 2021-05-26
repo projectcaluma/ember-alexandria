@@ -1,6 +1,7 @@
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
+import { timeout } from "ember-concurrency";
 import { restartableTask, dropTask, task } from "ember-concurrency-decorators";
 
 import DocumentCard from "./document-card";
@@ -62,7 +63,9 @@ export default class DocumentDetailsComponent extends DocumentCard {
     await this.tags.fetchAllTags.perform();
   }
 
-  @action onSearchTag() {
+  @restartableTask *onSearchTag() {
+    yield timeout(500);
+
     if (!this.tags.allTags || this.tagSearchBox.value === "") {
       this.matchingTags = [];
     } else {
