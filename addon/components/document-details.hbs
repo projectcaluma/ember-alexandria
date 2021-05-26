@@ -237,7 +237,7 @@
                 autocomplete="off"
                 name="tag"
                 type="text"
-                {{on "input" this.onSearchTag}}
+                {{on "input" (perform this.onSearchTag)}}
               />
               <button
                 class="uk-button uk-button-primary uk-button-small uk-width-1-2"
