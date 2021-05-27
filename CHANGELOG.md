@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/projectcaluma/ember-alexandria/compare/v1.9.0...v1.9.1) (2021-05-27)
+
+
+### Bug Fixes
+
+* prevent input lag by adding timeout ([b15b2c2](https://github.com/projectcaluma/ember-alexandria/commit/b15b2c2f721e5a15f9c18beea64333f8b22a1950))
+
 # [1.9.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.8.1...v1.9.0) (2021-04-15)
 
 
