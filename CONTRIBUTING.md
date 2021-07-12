@@ -4,13 +4,13 @@
 
 * `git clone <repository-url>`
 * `cd ember-alexandria`
-* `npm install`
+* `yarn`
 
 ## Linting
 
-* `npm run lint:hbs`
-* `npm run lint:js`
-* `npm run lint:js -- --fix`
+* `yarn lint:hbs`
+* `yarn lint:js`
+* `yarn lint:js --fix`
 
 ## Running tests
 
@@ -20,7 +20,7 @@
 
 ## Running the dummy application
 
-* `ember serve`
+* `yarn start` (with mirage backend) or `yarn start-proxy` (with real backend running on [http://localhost:8000](http://localhost:8000))
 * Visit the dummy application at [http://localhost:4200](http://localhost:4200).
 
 For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
