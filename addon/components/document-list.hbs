@@ -1,43 +1,40 @@
-<ul class="document-list">
-    <li class="document-list-header uk-link-reset">
-      <a>
-        <span>Icon</span>
-      </a>
-      <a>
-        <span>Title</span>
-      </a>
-      <a>
-        <span>Created</span>
-      </a>
-      <a>
-        <span>Group</span>
-      </a>
-    </li>
-  {{#each @fetchedDocuments as |document|}}
-    <li>
-      <LinkTo
-          @query={{hash document=document.id}}
-          class="uk-link-reset"
-          data-test-document-link
-      >
-        <span class="list-item-icon">
-          <FaIcon
-            @icon="file-alt"
-            @prefix="far"
-            @size="1x"
-            data-test-file-icon
-            {{set-style color=document.category.color}}
-          />
-        </span>
-        <span class="list-item-title">{{document.title}}</span>
-        <span class="list-item-created">
-          {{t
-            "alexandria.document-details.created-at"
-            date=(format-date document.createdAt)
-          }}
-        </span>
-        <span class="list-item-group">{{document.createdByGroup}}</span>
-      </LinkTo>
-    </li>
-  {{/each}}
-</ul>
+<table class="uk-table uk-table-divider uk-table-striped uk-table-hover ">
+  <caption></caption>
+  <thead>
+    <tr>
+      <th class="uk-table-shrink">Icon</th>
+      <th>Title</th>
+      <th>Created</th>
+      <th>Group</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#each @fetchedDocuments as |document|}}
+        <tr>
+          <td>
+            <FaIcon
+              @icon="file-alt"
+              @prefix="far"
+              @size="1x"
+              data-test-file-icon
+              {{set-style color=document.category.color}}
+            />
+          </td>
+          <td class="uk-table-link">
+            <LinkTo
+              @query={{hash document=document.id}}
+              class="uk-link-reset"
+              data-test-document-link
+            >{{document.title}}</LinkTo>
+          </td>
+          <td>
+            {{t
+              "alexandria.document-details.created-at"
+              date=(format-date document.createdAt)
+            }}
+          </td>
+          <td>{{document.createdByGroup}}</td>
+        </tr>
+      {{/each}}
+  </tbody>
+</table>
