@@ -7,9 +7,22 @@
     </li>
   {{#each @fetchedDocuments as |document|}}
     <li>
-      <span class="list-item-icon" uk-icon="icon: file-text"></span>
+      <span class="list-item-icon">
+        <FaIcon
+          @icon="file-alt"
+          @prefix="far"
+          @size="1x"
+          data-test-file-icon
+          {{set-style color=document.category.color}}
+        />
+      </span>
       <span class="list-item-title">{{document.title}}</span>
-      <span class="list-item-created">{{document.createdAt}}</span>
+      <span class="list-item-created">
+        {{t
+          "alexandria.document-details.created-at"
+          date=(format-date document.createdAt)
+        }}
+      </span>
       <span class="list-item-group">{{document.createdByGroup}}</span>
     </li>
   {{/each}}
