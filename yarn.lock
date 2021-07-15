@@ -7074,6 +7074,14 @@ ember-maybe-import-regenerator@0.1.6, ember-maybe-import-regenerator@^0.1.6:
     ember-cli-babel "^6.0.0-beta.4"
     regenerator-runtime "^0.9.5"
 
+ember-mirage-sauce@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/ember-mirage-sauce/-/ember-mirage-sauce-0.2.2.tgz#e00c63430da9ac588b42ea5c9e750f1faec9b767"
+  integrity sha512-AYzJQahs1sLfSJsvVC9JqBQG3zopoR8hKJoTdBSVFv1V1kPvjWiYHP7bS0Stey/wbD459/PsyW0IDehWPyGmNA==
+  dependencies:
+    ember-cli-babel "^7.22.1"
+    ember-cli-htmlbars "^5.3.1"
+
 ember-modifier-manager-polyfill@^1.1.0, ember-modifier-manager-polyfill@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/ember-modifier-manager-polyfill/-/ember-modifier-manager-polyfill-1.2.0.tgz#cf4444e11a42ac84f5c8badd85e635df57565dda"
