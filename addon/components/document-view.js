@@ -13,7 +13,7 @@ export default class DocumentViewComponent extends Component {
 
   @tracked isDragOver = false;
   @tracked dragCounter = 0;
-  @tracked listView = false;
+  @tracked listView = true;
 
   get canDrop() {
     return Boolean(this.args.filters && this.args.filters.category);

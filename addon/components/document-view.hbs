@@ -39,11 +39,11 @@
         >
           {{! List & Grid View }}
           {{#if this.listView}}
-            <p>
-              <h3>
-                The list-component is W.I.P.
-              </h3>
-            </p>
+            <DocumentList
+              @loading={{this.fetchDocuments}}
+              @selectedDocumentId={{this.selectedDocumentId}}
+              @fetchedDocuments= {{this.fetchedDocuments}}
+            />
           {{else}}
             <DocumentGrid 
               @loading={{this.fetchDocuments.isRunning}} 
