@@ -1,0 +1,16 @@
+<ul class="document-list">
+    <li class="document-list-header">
+      <span>Icon</span>
+      <span>Title</span>
+      <span>Created</span>
+      <span>Group</span>
+    </li>
+  {{#each @fetchedDocuments as |document|}}
+    <li>
+      <span class="list-item-icon" uk-icon="icon: file-text"></span>
+      <span class="list-item-title">{{document.title}}</span>
+      <span class="list-item-created">{{document.createdAt}}</span>
+      <span class="list-item-group">{{document.createdByGroup}}</span>
+    </li>
+  {{/each}}
+</ul>
