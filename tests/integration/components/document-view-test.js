@@ -2,10 +2,14 @@ import { render } from "@ember/test-helpers";
 import setupRenderingTest from "dummy/tests/helpers/setup-rendering-test";
 import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
+import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
 import { module, test } from "qunit";
 
+const modulePrefix = "ember-alexandria";
+const resolver = engineResolverFor(modulePrefix);
+
 module("Integration | Component | document-view", function (hooks) {
-  setupRenderingTest(hooks);
+  setupRenderingTest(hooks, { resolver });
   setupMirage(hooks);
 
   test("it renders a document view", async function (assert) {
