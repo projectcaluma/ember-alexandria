@@ -15,7 +15,7 @@
         class="uk-margin-left"
       />
 
-      <DocumentViewToggle 
+      <DocumentViewToggle
         @viewList={{this.listView}}
         {{on "click" this.toggleView}}
       />
@@ -47,14 +47,14 @@
             <DocumentList
               @loading={{this.fetchDocuments}}
               @selectedDocumentId={{this.selectedDocumentId}}
-              @fetchedDocuments= {{this.fetchedDocuments}}
+              @fetchedDocuments={{this.fetchedDocuments}}
               @setSort={{this.setSort}}
             />
           {{else}}
-            <DocumentGrid 
-              @loading={{this.fetchDocuments.isRunning}} 
+            <DocumentGrid
+              @loading={{this.fetchDocuments.isRunning}}
               @selectedDocumentId={{this.selectedDocumentId}}
-              @fetchedDocuments= {{this.fetchedDocuments}}
+              @fetchedDocuments={{this.fetchedDocuments}}
             />
           {{/if}}
         </div>

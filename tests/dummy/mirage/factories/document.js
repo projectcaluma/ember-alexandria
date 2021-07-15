@@ -7,7 +7,7 @@ export default Factory.extend({
   title: () => setAllLocales(faker.commerce.product()),
   description: () => setAllLocales(faker.company.catchPhrase()),
   createdByUser: "dummy",
-  createdByGroup: () => setAllLocales(faker.company.companyName()),
+  createdByGroup: () => faker.company.companyName(),
   createdAt: () => faker.date.past(),
   thumbnail: null,
 
