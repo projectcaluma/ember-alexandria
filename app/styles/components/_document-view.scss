@@ -1,0 +1,11 @@
+&--dragover {
+  border: 1px solid uikit.$alert-primary-color;
+}
+
+&--disallowed {
+  border-color: uikit.$alert-danger-color;
+
+  & > button {
+    background-color: uikit.$alert-danger-color;
+  }
+}
