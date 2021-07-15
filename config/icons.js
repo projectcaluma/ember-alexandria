@@ -5,6 +5,8 @@ module.exports = function () {
       "ellipsis-v",
       "file-download",
       "box-open",
+      "list",
+      "th",
       "user",
       "users",
     ],

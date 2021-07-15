@@ -14,6 +14,11 @@
         @selectedTags={{@filters.tags}}
         class="uk-margin-left"
       />
+
+      <DocumentViewToggle 
+        @viewList={{this.listView}}
+        {{on "click" this.toggleView}}
+      />
     </div>
 
     {{! Drag'n'Drop Area }}
