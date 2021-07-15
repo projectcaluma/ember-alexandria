@@ -14,6 +14,8 @@ export default class DocumentViewComponent extends Component {
   @tracked isDragOver = false;
   @tracked dragCounter = 0;
   @tracked listView = true;
+  @tracked sort = "";
+  @tracked sortDirection = "";
 
   get canDrop() {
     return Boolean(this.args.filters && this.args.filters.category);
@@ -33,12 +35,23 @@ export default class DocumentViewComponent extends Component {
     this.listView = !this.listView;
   }
 
+  @action setSort(sortAttribute) {
+    if (this.sort === sortAttribute) {
+      this.sortDirection = this.sortDirection === "" ? "-" : "";
+    } else {
+      this.sort = sortAttribute;
+      this.sortDirection = "";
+    }
+    this.fetchDocuments.perform();
+  }
+
   @lastValue("fetchDocuments") fetchedDocuments;
   @task
   *fetchDocuments() {
     return yield this.store.query("document", {
       include: "category,files,tags",
       filter: this.args.filters || {},
+      sort: this.sort ? `${this.sortDirection}${this.sort}` : "",
     });
   }
 

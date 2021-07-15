@@ -3,9 +3,9 @@
   <thead>
     <tr>
       <th class="uk-table-shrink">Icon</th>
-      <th>Title</th>
-      <th>Created</th>
-      <th>Group</th>
+      <th {{on "click" (fn @setSort "title")}}>Title</th>
+      <th {{on "click" (fn @setSort "createdAt")}}>Created</th>
+      <th {{on "click" (fn @setSort "createdByGroup")}}>Group</th>
     </tr>
   </thead>
   <tbody>
