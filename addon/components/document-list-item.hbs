@@ -1,4 +1,7 @@
-<tr {{on "click" (fn @onClickDocument @document)}}>
+<tr
+  {{on "click" (fn @onClickDocument @document)}}
+  class={{if @isSelected 'document-list-item-selected' 'document-list-item'}}
+>
   <td>
     <FaIcon
       @icon="file-alt"

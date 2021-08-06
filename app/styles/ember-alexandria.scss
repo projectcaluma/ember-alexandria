@@ -20,3 +20,6 @@
 .document-list tr {
   cursor: pointer;
 }
+.uk-table tbody tr.document-list-item-selected {
+  background: #ffd;
+}
