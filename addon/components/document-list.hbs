@@ -14,6 +14,7 @@
           @class="uk-margin-small-left"
           {{on "click" (fn @setSort "title")}}
           data-test-sort-title
+          role="button"
         />
       </th>
       <th>
@@ -25,6 +26,7 @@
           @class="uk-margin-small-left"
           {{on "click" (fn @setSort "createdAt")}}
           data-test-sort-title
+          role="button"
         />
       </th>
       <th>
@@ -36,42 +38,17 @@
           @class="uk-margin-small-left"
           {{on "click" (fn @setSort "createdByGroup")}}
           data-test-sort-title
+          role="button"
         />
       </th>
     </tr>
   </thead>
   <tbody>
     {{#each @fetchedDocuments as |document|}}
-      <DocumentListItem @document={{document}} />
-      {{!-- <tr>
-        <td>
-          <FaIcon
-            @icon="file-alt"
-            @prefix="far"
-            @size="1x"
-            data-test-file-icon
-            {{set-style color=document.category.color}}
-          />
-        </td>
-        <td class="uk-table-link">
-          <LinkTo
-            @query={{hash document=document.id}}
-            class="uk-link-reset"
-            data-test-document-link
-          >
-            {{document.title}}
-          </LinkTo>
-        </td>
-        <td>
-          {{t
-            "alexandria.document-details.created-at"
-            date=(format-date document.createdAt)
-          }}
-        </td>
-        <td>
-          {{document.createdByGroup}}
-        </td>
-      </tr> --}}
+      <DocumentListItem
+        @document={{document}}
+        @onClickDocument={{@onClickDocument}}
+      />
     {{/each}}
   </tbody>
 </table>

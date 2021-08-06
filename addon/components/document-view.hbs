@@ -44,11 +44,14 @@
         >
           {{! List & Grid View }}
           {{#if this.listView}}
+            {{this.selectedDocuments}}
+            asdfadsf
             <DocumentList
               @loading={{this.fetchDocuments}}
               @selectedDocumentId={{this.selectedDocumentId}}
               @fetchedDocuments={{this.fetchedDocuments}}
               @setSort={{this.setSort}}
+              @onClickDocument={{this.handleDocumentSelection}}
             />
           {{else}}
             <DocumentGrid
