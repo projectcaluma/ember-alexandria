@@ -12,3 +12,11 @@
 .cursor-pointer {
   cursor: pointer;
 }
+
+.document-list {
+  user-select: none;
+  -moz-user-select: none;
+}
+.document-list tr {
+  cursor: pointer;
+}
