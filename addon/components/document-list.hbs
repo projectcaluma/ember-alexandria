@@ -5,7 +5,7 @@
       <th class="uk-table-shrink">
         Icon
       </th>
-      <th>
+      <th class="uk-table-expand">
         Title
         <FaIcon
           @icon="sort"
@@ -47,6 +47,8 @@
     {{#each @fetchedDocuments as |document|}}
       <DocumentListItem
         @document={{document}}
+        @selectedDocuments={{@selectedDocument}}
+        @isSelected={{includes document.id (map-by "id" @selectedDocuments)}}
         @onClickDocument={{@onClickDocument}}
       />
     {{/each}}
