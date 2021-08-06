@@ -1,0 +1,52 @@
+<table class="uk-table uk-table-divider uk-table-striped uk-table-hover">
+  <caption></caption>
+  <thead>
+    <tr>
+      <th class="uk-table-shrink">
+        Icon
+      </th>
+      <th {{on "click" (fn @setSort "title")}}>
+        Title
+      </th>
+      <th {{on "click" (fn @setSort "createdAt")}}>
+        Created
+      </th>
+      <th {{on "click" (fn @setSort "createdByGroup")}}>
+        Group
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each @fetchedDocuments as |document|}}
+      <tr>
+        <td>
+          <FaIcon
+            @icon="file-alt"
+            @prefix="far"
+            @size="1x"
+            data-test-file-icon
+            {{set-style color=document.category.color}}
+          />
+        </td>
+        <td class="uk-table-link">
+          <LinkTo
+            @query={{hash document=document.id}}
+            class="uk-link-reset"
+            data-test-document-link
+          >
+            {{document.title}}
+          </LinkTo>
+        </td>
+        <td>
+          {{t
+            "alexandria.document-details.created-at"
+            date=(format-date document.createdAt)
+          }}
+        </td>
+        <td>
+          {{document.createdByGroup}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
