@@ -5,23 +5,38 @@
       <th class="uk-table-shrink">
         Icon
       </th>
-      {{!-- <th {{on "click" (fn @setSort "title")}}>
-        Title
-      </th>
-      <th {{on "click" (fn @setSort "createdAt")}}>
-        Created
-      </th>
-      <th {{on "click" (fn @setSort "createdByGroup")}}>
-        Group
-      </th> --}}
       <th>
         Title
+        <FaIcon
+          @icon="sort"
+          @prefix="fas"
+          @size="1x"
+          @class="uk-margin-small-left"
+          {{on "click" (fn @setSort "title")}}
+          data-test-sort-title
+        />
       </th>
       <th>
         Created
+        <FaIcon
+          @icon="sort"
+          @prefix="fas"
+          @size="1x"
+          @class="uk-margin-small-left"
+          {{on "click" (fn @setSort "createdAt")}}
+          data-test-sort-title
+        />
       </th>
       <th>
         Group
+        <FaIcon
+          @icon="sort"
+          @prefix="fas"
+          @size="1x"
+          @class="uk-margin-small-left"
+          {{on "click" (fn @setSort "createdByGroup")}}
+          data-test-sort-title
+        />
       </th>
     </tr>
   </thead>
