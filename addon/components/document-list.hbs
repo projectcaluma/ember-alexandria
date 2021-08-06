@@ -42,7 +42,8 @@
   </thead>
   <tbody>
     {{#each @fetchedDocuments as |document|}}
-      <tr>
+      <DocumentListItem @document={{document}} />
+      {{!-- <tr>
         <td>
           <FaIcon
             @icon="file-alt"
@@ -70,7 +71,7 @@
         <td>
           {{document.createdByGroup}}
         </td>
-      </tr>
+      </tr> --}}
     {{/each}}
   </tbody>
 </table>
