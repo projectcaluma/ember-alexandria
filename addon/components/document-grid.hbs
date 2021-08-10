@@ -13,19 +13,12 @@
     {{#each @fetchedDocuments as |document|}}
       {{! This wrapper div is needed for the uk-grid spacing between elements }}
       <div data-test-document-container>
-        <LinkTo
-          @query={{hash document=document.id}}
-          class="uk-link-reset"
-          data-test-document-link
-          {{did-insert this.scrollIntoView (eq @selectedDocumentId document.id)
-          }}
-        >
-          <DocumentCard
-            data-test-document
-            @document={{document}}
-            class={{if (eq @selectedDocumentId document.id) "selected"}}
-          />
-        </LinkTo>
+        <DocumentCard
+          data-test-document
+          @document={{document}}
+          @isSelected={{includes document.id (map-by "id" @selectedDocuments)}}
+          {{on "click" (fn @onClickDocument document)}}
+        />
       </div>
     {{else}}
       <div class="empty uk-margin-large-top" data-test-empty>

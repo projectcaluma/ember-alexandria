@@ -55,8 +55,9 @@
           {{else}}
             <DocumentGrid
               @loading={{this.fetchDocuments.isRunning}}
-              @selectedDocumentId={{this.selectedDocumentId}}
+              @selectedDocuments={{this.selectedDocuments}}
               @fetchedDocuments={{this.fetchedDocuments}}
+              @onClickDocument={{this.handleDocumentSelection}}
             />
           {{/if}}
         </div>

@@ -1,4 +1,4 @@
-import { render } from "@ember/test-helpers";
+import { render, click } from "@ember/test-helpers";
 import setupRenderingTest from "dummy/tests/helpers/setup-rendering-test";
 import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
@@ -12,22 +12,26 @@ module("Integration | Component | document-view", function (hooks) {
   setupRenderingTest(hooks, { resolver });
   setupMirage(hooks);
 
-  test("it renders a document view", async function (assert) {
+  // test("it parses the route url and initialises the selected documents, grid view, sorting correctly");
+
+  test("it renders a document view when in grid view", async function (assert) {
     this.server.createList("document", 3);
 
-    await render(hbs`<Documentview />`);
+    await render(hbs`<DocumentView />`);
+    await click("[data-test-toggle]");
 
     assert.dom("[data-test-upload]").exists();
     assert.dom("[data-test-empty]").doesNotExist();
+
     assert.dom("[data-test-document]").exists({ count: 3 });
     assert.dom("[data-test-document]").doesNotHaveClass("selected");
-
     assert.dom("[data-test-details]").exists();
     assert.dom("[data-test-details]").hasClass("closed");
   });
 
   test("it renders an empty document view", async function (assert) {
-    await render(hbs`<Documentview />`);
+    await render(hbs`<DocumentView />`);
+    await click("[data-test-toggle]");
 
     assert.dom("[data-test-upload]").exists();
     assert.dom("[data-test-empty]").exists();
@@ -38,7 +42,8 @@ module("Integration | Component | document-view", function (hooks) {
   test("select document", async function (assert) {
     this.server.createList("document", 3);
 
-    await render(hbs`<Documentview @selectedDocumentId="2" />`);
+    await render(hbs`<DocumentView @selectedDocumentId="2" />`);
+    await click("[data-test-toggle]");
 
     assert.dom("[data-test-empty]").doesNotExist();
     assert.dom("[data-test-document]").exists({ count: 3 });
@@ -72,4 +77,10 @@ module("Integration | Component | document-view", function (hooks) {
       include: "category,files,tags",
     });
   });
+
+  // test.todo("it renders the document list component with the correct props");
+  // test.todo("it sets the sort keys correctly");
+  // test.todo("it selects a clicked row");
+  // test.todo("it selects mutliple rows if clicked with ctrl");
+  // test.todo("it selects all rows between two rows clicked with shift");
 });
