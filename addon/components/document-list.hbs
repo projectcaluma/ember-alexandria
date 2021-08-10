@@ -47,7 +47,6 @@
     {{#each @fetchedDocuments as |document|}}
       <DocumentListItem
         @document={{document}}
-        @selectedDocuments={{@selectedDocument}}
         @isSelected={{includes document.id (map-by "id" @selectedDocuments)}}
         @onClickDocument={{@onClickDocument}}
       />
