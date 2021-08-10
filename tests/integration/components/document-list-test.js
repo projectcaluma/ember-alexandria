@@ -14,43 +14,9 @@ module("Integration | Component | document-list", function (hooks) {
   setupIntl(hooks, "en");
   setupMirage(hooks);
 
-  // @loading={{this.fetchDocuments}}
-  // @selectedDocumentId={{this.selectedDocumentId}}
-  // @fetchedDocuments={{this.fetchedDocuments}}
-  // @setSort={{this.setSort}}
-  // @selectedDocuments={{this.selectedDocuments}}
-  // @onClickDocument={{this.handleDocumentSelection}}
-
   test.todo("it renders the list item component with the correct props");
   test.todo("it sets the sort keys correctly");
   test.todo("it selects a clicked row");
   test.todo("it selects mutliple rows if clicked with ctrl");
   test.todo("it selects all rows between two rows clicked with shift");
-  test.todo("");
-
-  test("it renders the supplied list of documents with the correct title", async function (assert) {
-    // const createdDocs = this.server.createList("document", 3);
-    // console.log("🦠 createdDocs:", createdDocs);
-    this.fetchedDocuments = [
-      { title: "document1" },
-      { title: "document2" },
-      { title: "document3" },
-    ];
-
-    //   this.set("fetchedDocuments", createdDocs);
-    //   // await render(hbs`<DocumentList />`);
-    //   // assert.equal(this.element.textContent.trim(), "");
-    //   // Template block usage:
-    await render(hbs`
-      <DocumentList
-        @loading=false
-        @selectedDocuments=[]
-        @fetchedDocuments={{this.fetchedDocuments}}
-        @setSort=""
-      />
-    `);
-    assert.equal(this.element.textContent.trim(), "document1");
-  });
-
-  // test("clicking the sorting buttons enables the correct sorting function");
 });
