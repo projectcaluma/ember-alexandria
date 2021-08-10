@@ -119,23 +119,35 @@ export default class DocumentViewComponent extends Component {
       } else {
         this.selectDocument(selectedDocument);
       }
+      return;
+    }
+    if (event.shiftKey) {
+      const selectedDocIndex = this.fetchedDocuments.indexOf(selectedDocument);
+      const lastSelectedDocIndex = this.fetchedDocuments.indexOf(
+        this.selectedDocuments[0]
+      );
+
+      let startIndex, endIndex;
+      if (selectedDocIndex > lastSelectedDocIndex) {
+        // If we are clicking a document later then the previously selected document (we are going down)
+        startIndex = lastSelectedDocIndex;
+        endIndex = selectedDocIndex;
+      } else {
+        // If we are clicking a document earlier than the previously selected document (we are going up)
+        startIndex = selectedDocIndex;
+        endIndex = lastSelectedDocIndex;
+      }
+
+      this.selectedDocuments = [];
+      for (let i = startIndex; i < endIndex; i++) {
+        this.selectedDocuments.push(this.fetchedDocuments.toArray()[i]);
+      }
     }
 
     if (this.selectedDocuments.length === 0) {
       // we haven't selected any documents yet
-      console.log("🔫", "in here");
-      console.log("🦠 selectedDocument:", selectedDocument);
       this.selectDocument(selectedDocument);
     }
-
-    console.log("🦠 this.selectedDocuments:", this.selectedDocuments);
-
-    // // the document is already selected
-    // if (this.selectedDocuments.find((d) => d.id === selectedDocument.id)) {
-    //   this.deselectDocument(selectedDocument);
-    // } else {
-    //   this.selectedDocuments.push(selectedDocument);
-    // }
   }
 
   @action documentIsSelected(doc) {
