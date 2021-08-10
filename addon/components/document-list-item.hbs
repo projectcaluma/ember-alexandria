@@ -11,15 +11,8 @@
       {{set-style color=@document.category.color}}
     />
   </td>
-  <td class="uk-table-link">
-    {{!-- TODO: Disable this --}}
-    <LinkTo
-      @query={{hash document=@document.id}}
-      class="uk-link-reset"
-      data-test-document-link
-    >
-      {{@document.title}}
-    </LinkTo>
+  <td>
+    {{@document.title}}
   </td>
   <td>
     {{t
