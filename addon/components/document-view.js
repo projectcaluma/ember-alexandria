@@ -10,6 +10,7 @@ export default class DocumentViewComponent extends Component {
   @service store;
   @service intl;
   @service documents;
+  @service router;
 
   @tracked isDragOver = false;
   @tracked dragCounter = 0;
@@ -111,6 +112,9 @@ export default class DocumentViewComponent extends Component {
     if (!event.ctrlKey && !event.shiftKey) {
       this.clearDocumentSelection();
       this.selectDocument(selectedDocument);
+      this.router.transitionTo({
+        queryParams: { document: selectedDocument.id },
+      });
       return;
     }
     if (event.ctrlKey) {
@@ -143,11 +147,9 @@ export default class DocumentViewComponent extends Component {
         this.selectedDocuments.push(this.fetchedDocuments.toArray()[i]);
       }
     }
-
-    if (this.selectedDocuments.length === 0) {
-      // we haven't selected any documents yet
-      this.selectDocument(selectedDocument);
-    }
+    this.router.transitionTo({
+      queryParams: { document: this.selectedDocuments.map((d) => d.id) },
+    });
   }
 
   @action documentIsSelected(doc) {
