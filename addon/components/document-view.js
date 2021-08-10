@@ -143,7 +143,7 @@ export default class DocumentViewComponent extends Component {
       }
 
       this.selectedDocuments = [];
-      for (let i = startIndex; i < endIndex; i++) {
+      for (let i = startIndex; i <= endIndex; i++) {
         this.selectedDocuments.push(this.fetchedDocuments.toArray()[i]);
       }
     }
