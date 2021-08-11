@@ -4,6 +4,7 @@ import {
   click,
   fillIn,
   triggerEvent,
+  pauseTest,
 } from "@ember/test-helpers";
 import { setupMirage } from "ember-cli-mirage/test-support";
 import { setupIntl, setLocale } from "ember-intl/test-support";
@@ -32,7 +33,7 @@ module("Acceptance | documents", function (hooks) {
     assert.expect(5);
 
     await visit("/");
-
+    await click("[data-test-toggle]");
     assert.dom("[data-test-document]").exists({ count: 5 });
     assert
       .dom("[data-test-document-container]:first-child [data-test-title]")
@@ -54,28 +55,32 @@ module("Acceptance | documents", function (hooks) {
     assert.expect(8);
 
     await visit("/");
+    await click("[data-test-toggle]");
 
-    assert.dom("[data-test-file-details]").hasClass("closed");
+    // const done = assert.async();
+    // setTimeout(() => done(), 20000);
+
+    assert.dom("[data-test-file-details]").isNotVisible();
     assert
       .dom("[data-test-document-container]:first-child [data-test-document]")
       .doesNotHaveClass("selected");
 
     await click(
-      "[data-test-document-container]:first-child [data-test-document-link]"
+      "[data-test-document-container]:first-child [data-test-document]"
     );
+
     assert.equal(
       currentURL(),
       `/?document=${document.id}`,
       "url is set to currently selected document"
     );
-    assert.dom("[data-test-file-details]").doesNotHaveClass("closed");
+    assert.dom("[data-test-file-details]").isVisible();
     assert
       .dom("[data-test-document-container]:first-child [data-test-document]")
       .hasClass("selected");
     assert
       .dom("[data-test-file-details] [data-test-title]")
       .hasText(document.title.en);
-
     await click("[data-test-close]");
     assert.equal(currentURL(), "/", "document is removed from url");
     assert.dom("[data-test-file-details]").hasClass("closed");
@@ -198,4 +203,20 @@ module("Acceptance | documents", function (hooks) {
     await click('[data-test-delete-confirm="1"]');
     assert.dom("[data-test-document]").exists({ count: 4 });
   });
+
+  // TODO: implement this test
+  // test("it renders the document details if a single document is selected", async function (assert) {
+  //   const done = assert.async();
+  //   const router = await this.owner.lookup("service:router");
+  //   router.transitionTo = sinon.fake();
+  //   console.log("🦠 router:", router);
+  //   this.owner.register("service:router", router);
+  //   await this.server.createList("document", 1);
+  //   await render(hbs`<DocumentView />`);
+  //   await click("[data-test-document-list-item]");
+  //   // pauseTest();
+  //   setTimeout(() => done(), 20000);
+
+  //   // assert.true(false);
+  // });
 });

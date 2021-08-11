@@ -76,5 +76,11 @@
       {{/if}}
     </div>
   </div>
-  <DocumentDetails @document={{this.selectedDocument}} data-test-details />
+  {{!-- <DocumentDetails @document={{this.selectedDocument}} data-test-details /> --}}
+  {{#if (eq this.selectedDocuments.length 1)}}
+    <DocumentDetails @document={{this.selectedDocument}} data-test-details />
+  {{/if}}
+  {{#if (gt this.selectedDocuments.length 1)}}
+    multiple docs
+  {{/if}}
 </div>
