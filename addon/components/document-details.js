@@ -10,6 +10,7 @@ export default class DocumentDetailsComponent extends DocumentCard {
   @service router;
   @service documents;
   @service tags;
+  @service sidePanel;
 
   @tracked editTitle = false;
   @tracked editDescription = false;
