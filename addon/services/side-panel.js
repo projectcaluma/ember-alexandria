@@ -1,10 +1,13 @@
+import { action } from "@ember/object";
 import Service from "@ember/service";
 import { tracked } from "@glimmer/tracking";
-
 export default class SidePanelService extends Service {
   @tracked open = true;
 
-  async toggle() {
+  /**
+   * Toggles the side panel open state
+   */
+  @action async toggle() {
     this.open = !this.open;
   }
 }
