@@ -86,19 +86,23 @@ module("Acceptance | documents", function (hooks) {
     assert.dom("[data-test-file-details]").hasClass("closed");
   });
 
-  test("document detail edit title", async function (assert) {
+  test("document grid detail edit title", async function (assert) {
     const document = this.server.create("document");
     assert.expect(7);
 
     await visit(`/?document=${document.id}`);
+    await click("[data-test-toggle]");
     setLocale("en");
 
+    await pauseTest();
     assert.dom("[data-test-file-details]").doesNotHaveClass("closed");
+    await pauseTest();
 
     assert
       .dom("[data-test-file-details] [data-test-title]")
       .hasText(document.title.en);
 
+    await pauseTest();
     assert.dom("[data-test-title-input]").doesNotExist();
 
     await click("[data-test-file-details] [data-test-title]");

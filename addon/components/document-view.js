@@ -40,6 +40,7 @@ export default class DocumentViewComponent extends Component {
   }
 
   @action setSort(sortAttribute) {
+    // TODO: The sort attribute should also be reflected in the URL!
     if (this.sort === sortAttribute) {
       this.sortDirection = this.sortDirection === "" ? "-" : "";
     } else {
@@ -58,6 +59,17 @@ export default class DocumentViewComponent extends Component {
       sort: this.sort ? `${this.sortDirection}${this.sort}` : "",
     });
   }
+
+  // TODO: Enable fetching of documents based on query param
+  // @action fetchDocumentsFromUrl() {
+  //   if (this.router.currentRoute.queryParams.document) {
+  //     this.selectDocumentsByIds(
+  //       decodeURIComponent(this.router.currentRoute.queryParams.document).split(
+  //         ","
+  //       )
+  //     );
+  //   }
+  // }
 
   // Drag'n'Drop document upload
 
@@ -147,8 +159,11 @@ export default class DocumentViewComponent extends Component {
         this.selectedDocuments.push(this.fetchedDocuments.toArray()[i]);
       }
     }
+
     this.router.transitionTo({
-      queryParams: { document: this.selectedDocuments.map((d) => d.id) },
+      queryParams: {
+        document: this.selectedDocuments.map((d) => d.id),
+      },
     });
   }
 
@@ -156,7 +171,7 @@ export default class DocumentViewComponent extends Component {
     return !!this.selectedDocuments.find((d) => d.id === doc.id);
   }
 
-  clearDocumentSelection() {
+  @action clearDocumentSelection() {
     this.selectedDocuments = [];
   }
 
@@ -170,11 +185,11 @@ export default class DocumentViewComponent extends Component {
     );
   }
 
-  @action shiftSelect(selectedDocument) {
-    return selectedDocument;
-  }
-
-  @action ctrlSelect(selectedDocument) {
-    return selectedDocument;
-  }
+  // TODO: Enable automatic selection based on URL
+  // @action selectDocumentsByIds(documentIds) {
+  //   documentIds.forEach((id) => {
+  //     const selectedDoc = this.fetchedDocuments.findBy("id", id.toString());
+  //     this.selectDocument(selectedDoc);
+  //   });
+  // }
 }
