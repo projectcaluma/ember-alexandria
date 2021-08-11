@@ -2,20 +2,19 @@
   @color="default"
   @size="small"
   class="uk-height-1-1"
-  data-test-toggle
+  data-test-side-panel-toggle
+  {{on "click" this.sidePanel.toggle}}
   ...attributes
 >
-  {{#if @viewList}}
+  {{#if this.sidePanel.open}}
     <FaIcon
-      @icon="th"
-      @size="1x"
+      @icon="chevron-right"
       class="view-toggle-icon uk-animation-slide-left-small"
       data-test-view-toggle-icon
     />
   {{else}}
     <FaIcon
-      @icon="list"
-      @size="1x"
+      @icon="chevron-left"
       class="view-toggle-icon uk-animation-slide-left-small"
       data-test-view-toggle-icon
     />
