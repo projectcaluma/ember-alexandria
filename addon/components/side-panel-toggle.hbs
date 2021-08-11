@@ -1,0 +1,23 @@
+<UkButton
+  @color="default"
+  @size="small"
+  class="uk-height-1-1"
+  data-test-toggle
+  ...attributes
+>
+  {{#if @viewList}}
+    <FaIcon
+      @icon="th"
+      @size="1x"
+      class="view-toggle-icon uk-animation-slide-left-small"
+      data-test-view-toggle-icon
+    />
+  {{else}}
+    <FaIcon
+      @icon="list"
+      @size="1x"
+      class="view-toggle-icon uk-animation-slide-left-small"
+      data-test-view-toggle-icon
+    />
+  {{/if}}
+</UkButton>

@@ -19,6 +19,7 @@
         @viewList={{this.listView}}
         {{on "click" this.toggleView}}
       />
+      <SidePanelToggle/>
     </div>
 
     {{! Drag'n'Drop Area }}
@@ -77,12 +78,15 @@
     </div>
   </div>
   {{!-- <DocumentDetails @document={{this.selectedDocument}} data-test-details /> --}}
-  {{#if (eq this.selectedDocuments.length 1)}}
+  {{!-- {{#if (eq this.selectedDocuments.length 1)}}
     <DocumentDetails @document={{this.selectedDocument}} data-test-details />
   {{/if}}
   {{#if (gt this.selectedDocuments.length 1)}}
     <MultipleDocumentsDetails
       @documents={{this.selectedDocuments}}
     />
-  {{/if}}
+  {{/if}} --}}
+  <MultipleDocumentsDetails
+    @documents={{this.selectedDocuments}}
+  />
 </div>

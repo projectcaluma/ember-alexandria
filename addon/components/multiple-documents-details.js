@@ -1,22 +1,14 @@
 import { action } from "@ember/object";
-// import { inject as service } from "@ember/service";
+import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
-// import { tracked } from "@glimmer/tracking";
 // import { lastValue, task } from "ember-concurrency-decorators";
 
 export default class MultipleDocumentsDetails extends Component {
-  // @service notification;
-  // @service config;
-  // @service store;
-  // @service intl;
-  // @service documents;
-  // @service router;
+  @service sidePanel;
 
-  // @tracked isDragOver = false;
-  // @tracked dragCounter = 0;
-  // @tracked listView = true;
-  // @tracked sort = "";
-  // @tracked sortDirection = "";
+  get open() {
+    return this.sidePanel.open;
+  }
 
   get mergedTags() {
     const tags = [];
@@ -40,6 +32,7 @@ export default class MultipleDocumentsDetails extends Component {
   }
 
   @action closePanel() {
-    this.router.transitionTo({ queryParams: { document: undefined } });
+    console.log("🦠 this.sidePanel:", this.sidePanel);
+    this.sidePanel.toggle();
   }
 }
