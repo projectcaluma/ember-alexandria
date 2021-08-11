@@ -81,6 +81,8 @@
     <DocumentDetails @document={{this.selectedDocument}} data-test-details />
   {{/if}}
   {{#if (gt this.selectedDocuments.length 1)}}
-    multiple docs
+    <MultipleDocumentsDetails
+      @selectedDocuments={{this.selectedDocuments}}
+    />
   {{/if}}
 </div>

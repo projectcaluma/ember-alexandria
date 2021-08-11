@@ -6,7 +6,7 @@ export default class DocumentsService extends Service {
   @service config;
 
   /**
-   * Uploads one or multipl files and creates the necessary document and
+   * Uploads one or multiple files and creates the necessary document and
    * files entries on the API.
    *
    * @param {Object|String|Number} category Either an ID or category instance.
