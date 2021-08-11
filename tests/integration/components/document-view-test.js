@@ -1,9 +1,10 @@
-import { render, click } from "@ember/test-helpers";
+import { render, click, pauseTest } from "@ember/test-helpers";
 import setupRenderingTest from "dummy/tests/helpers/setup-rendering-test";
 import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
 import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
 import { module, test } from "qunit";
+import sinon from "sinon";
 
 const modulePrefix = "ember-alexandria";
 const resolver = engineResolverFor(modulePrefix);
@@ -68,7 +69,7 @@ module("Integration | Component | document-view", function (hooks) {
 
     this.filters = { title: "test", description: "bla" };
 
-    await render(hbs`<Documentview @filters={{this.filters}} />`);
+    await render(hbs`<DocumentView @filters={{this.filters}} />`);
 
     assert.equal(requests.length, 3, "store handled 3 requests");
     assert.deepEqual(requests[1].queryParams, {
@@ -78,7 +79,6 @@ module("Integration | Component | document-view", function (hooks) {
     });
   });
 
-  // test.todo("it renders the document list component with the correct props");
   // test.todo("it sets the sort keys correctly");
   // test.todo("it selects a clicked row");
   // test.todo("it selects mutliple rows if clicked with ctrl");
