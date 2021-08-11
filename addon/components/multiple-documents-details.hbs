@@ -7,7 +7,7 @@
     <div class="uk-padding-small">
       <div class="uk-flex uk-flex-between uk-flex-bottom">
         <label class="uk-text-meta" for="alexandria-details-title">
-          {{t "alexandria.document-details.document-title"}}
+          {{t "alexandria.multiple-documents-details.title" numDocs=@documents.length}}
         </label>
         <button
           class="uk-icon-button uk-flex-none"
@@ -26,7 +26,6 @@
           data-test-title-container
           {{set-style cursor="text"}}
         >
-          2 documents
           {{!-- <span class="uk-flex-none">
             <FaIcon
               @icon="file-alt"
@@ -76,88 +75,8 @@
         </span>
       </span>
 
-      <p class="uk-margin-remove-top">
-        <label
-          class="uk-text-meta uk-display-block"
-          for="alexandria-details-description"
-        >
-          {{t "alexandria.document-details.document-description"}}
-        </label>
-
-        {{!-- {{#if this.editDescription}}
-          <textarea
-            class="uk-textarea"
-            id="alexandria-details-description"
-            rows="10"
-            {{on "input" this.updateDocumentDescription}}
-          >
-            {{~@document.description~}}
-          </textarea>
-          <div class="uk-text-right">
-            <a
-              class="uk-icon-button cursor-pointer"
-              href="#"
-              uk-icon="icon: check"
-              {{on "click" (perform this.saveDocument)}}
-            ></a>
-            <a
-              href="#"
-              class="uk-icon-button cursor-pointer"
-              uk-icon="icon: close"
-              {{on "click" (set this.editDescription false)}}
-            ></a>
-          </div>
-        {{else}}
-          {{#if @document.description}}
-            <a
-              class="uk-link-reset"
-              href="#"
-              {{on "click" (set this.editDescription true)}}
-            >
-              {{@document.description}}
-            </a>
-          {{else}}
-            <a href="#" {{on "click" (set this.editDescription true)}}>
-              {{t "alexandria.document-details.add-description"}}
-            </a>
-          {{/if}}
-        {{/if}} --}}
-      </p>
-
-      {{!-- <span class="document-meta">
-        <p data-test-created-at>
-          {{t
-            "alexandria.document-details.created-at"
-            date=(format-date @document.createdAt)
-          }}
-        </p>
-        <p data-test-created-by-user>
-          <FaIcon @icon="user" class="uk-margin-small-right" />
-          {{await (resolve-user @document.createdByUser)}}
-        </p>
-        <p data-test-created-by-group>
-          <FaIcon @icon="users" class="uk-margin-small-right" />
-          {{await (resolve-group @document.createdByGroup)}}
-        </p>
-      </span> --}}
-
-      {{!-- <div class="uk-flex">
-        <div uk-form-custom class="uk-width-1-2 uk-margin-small-right">
-          <input
-            data-test-replace
-            type="file"
-            {{on "change" (perform this.uploadReplacement)}}
-          />
-
-          <button
-            class="uk-width-1 uk-button uk-button-default uk-button-small"
-            type="button"
-            tabindex="-1"
-          >
-            {{~t "alexandria.document-details.replace"~}}
-          </button>
-        </div>
-
+      <div class="uk-flex">
+        {{!-- TODO: need to check if the backend supports a single DELETE request for multiple documents --}}
         <DocumentDeleteButton
           @document={{@document}}
           @onConfirm={{this.closePanel}} as |showDialog|
@@ -172,43 +91,34 @@
             {{t "alexandria.delete"}}
           </UkButton>
         </DocumentDeleteButton>
-      </div> --}}
+      </div>
 
       <hr />
 
-      {{!-- <ul uk-accordion="multiple: true">
-        <li class="uk-open">
-          <a class="uk-accordion-title" href="#">
-            {{~t "alexandria.document-details.version-history"~}}
-          </a>
-          <div class="uk-accordion-content">
-            <ul class="uk-list uk-list-divider">
-              {{#each (filter-by "type" "original" @document.files) as |file|}}
-                <li data-test-file class="uk-flex" title={{file.name}}>
-                  <span class="uk-margin-right">
-                    {{moment-format file.createdAt "DD.MM.YYYY HH:mm"}}
-                  </span>
-                  <span class="uk-width-expand">
-                    {{~await (resolve-user file.createdByUser)~}}
-                  </span>
-                  <a
-                    uk-icon="download"
-                    class="uk-icon-link"
-                    href={{file.downloadUrl}}
-                  ></a>
-                </li>
-              {{/each}}
-            </ul>
-          </div>
-        </li>
-
+      <ul uk-accordion="multiple: true">
         <li class="uk-open">
           <a class="uk-accordion-title" href="#">
             {{t "alexandria.document-details.tags.title"}}
           </a>
 
           <div class="uk-accordion-content">
-            {{#if @document.tags.length}}
+            {{!-- TODO: Complete this depending on outcome of github issue --}}
+            DELETION DOES NOT WORK YET
+            <div class="uk-margin-bottom">
+                {{#each this.mergedTags as |tag|}}
+                  <span class="uk-badge {{ if tag.selectedByAll "" "light-blue"}}">
+                    {{tag.name}}
+                    <button
+                      class="uk-margin-small-left"
+                      type="button"
+                      {{set-style color="white"}}
+                      {{on "click" (perform this.removeTag tag)}}
+                      uk-close
+                    ></button>
+                  </span>
+                {{/each}}
+              </div>
+            {{!-- {{#if @document.tags.length}}
               <div class="uk-margin-bottom">
                 {{#each @document.tags as |tag|}}
                   <span class="uk-badge">
@@ -257,10 +167,10 @@
                   </a>
                 {{/each}}
               </div>
-            {{/if}}
+            {{/if}} --}}
           </div>
         </li>
-      </ul> --}}
+      </ul>
     </div>
   </div>
   {{!-- <UkButton
