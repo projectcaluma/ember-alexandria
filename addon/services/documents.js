@@ -1,3 +1,4 @@
+import { action } from "@ember/object";
 import Service, { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import fetch from "fetch";
@@ -78,5 +79,23 @@ export default class DocumentsService extends Service {
     if (!response.ok) {
       throw new Error(response.statusText, response.status);
     }
+  }
+
+  @action clearDocumentSelection() {
+    this.selectedDocuments = [];
+  }
+
+  @action documentIsSelected(doc) {
+    return !!this.selectedDocuments.find((d) => d.id === doc.id);
+  }
+
+  @action selectDocument(doc) {
+    this.selectedDocuments = [...this.selectedDocuments, doc];
+  }
+
+  @action deselectDocument(selectedDocument) {
+    this.selectedDocuments = this.selectedDocuments.filter(
+      (d) => d.id !== selectedDocument.id
+    );
   }
 }

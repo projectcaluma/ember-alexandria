@@ -122,25 +122,25 @@ export default class DocumentViewComponent extends Component {
   // * DOCUMENT SELECTION
   @action handleDocumentSelection(selectedDocument, event) {
     if (!event.ctrlKey && !event.shiftKey) {
-      this.clearDocumentSelection();
-      this.selectDocument(selectedDocument);
+      this.documents.clearDocumentSelection();
+      this.documents.selectDocument(selectedDocument);
       this.router.transitionTo({
         queryParams: { document: selectedDocument.id },
       });
       return;
     }
     if (event.ctrlKey) {
-      if (this.documentIsSelected(selectedDocument)) {
-        this.deselectDocument(selectedDocument);
+      if (this.documents.documentIsSelected(selectedDocument)) {
+        this.documents.deselectDocument(selectedDocument);
       } else {
-        this.selectDocument(selectedDocument);
+        this.documents.selectDocument(selectedDocument);
       }
       return;
     }
     if (event.shiftKey) {
       const selectedDocIndex = this.fetchedDocuments.indexOf(selectedDocument);
       const lastSelectedDocIndex = this.fetchedDocuments.indexOf(
-        this.selectedDocuments[0]
+        this.documents.selectedDocuments[0]
       );
 
       let startIndex, endIndex;
@@ -154,36 +154,36 @@ export default class DocumentViewComponent extends Component {
         endIndex = lastSelectedDocIndex;
       }
 
-      this.selectedDocuments = [];
+      this.documents.clearDocumentSelection();
       for (let i = startIndex; i <= endIndex; i++) {
-        this.selectedDocuments.push(this.fetchedDocuments.toArray()[i]);
+        this.documents.selectDocument(this.fetchedDocuments.toArray()[i]);
       }
     }
 
     this.router.transitionTo({
       queryParams: {
-        document: this.selectedDocuments.map((d) => d.id),
+        document: this.documents.selectedDocuments.map((d) => d.id),
       },
     });
   }
 
-  @action documentIsSelected(doc) {
-    return !!this.selectedDocuments.find((d) => d.id === doc.id);
-  }
+  // @action documentIsSelected(doc) {
+  //   return !!this.selectedDocuments.find((d) => d.id === doc.id);
+  // }
 
-  @action clearDocumentSelection() {
-    this.selectedDocuments = [];
-  }
+  // @action clearDocumentSelection() {
+  //   this.selectedDocuments = [];
+  // }
 
-  @action selectDocument(doc) {
-    this.selectedDocuments = [...this.selectedDocuments, doc];
-  }
+  // @action selectDocument(doc) {
+  //   this.selectedDocuments = [...this.selectedDocuments, doc];
+  // }
 
-  @action deselectDocument(selectedDocument) {
-    this.selectedDocuments = this.selectedDocuments.filter(
-      (d) => d.id !== selectedDocument.id
-    );
-  }
+  // @action deselectDocument(selectedDocument) {
+  //   this.selectedDocuments = this.selectedDocuments.filter(
+  //     (d) => d.id !== selectedDocument.id
+  //   );
+  // }
 
   // TODO: Enable automatic selection based on URL
   // @action selectDocumentsByIds(documentIds) {

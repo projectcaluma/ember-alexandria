@@ -10,4 +10,11 @@ export default class SidePanelService extends Service {
   @action async toggle() {
     this.open = !this.open;
   }
+
+  /**
+   * Closes the sidePanel
+   */
+  @action async close() {
+    this.open = false;
+  }
 }

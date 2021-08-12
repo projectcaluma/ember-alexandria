@@ -50,13 +50,13 @@
               @selectedDocumentId={{this.selectedDocumentId}}
               @fetchedDocuments={{this.fetchedDocuments}}
               @setSort={{this.setSort}}
-              @selectedDocuments={{this.selectedDocuments}}
+              @selectedDocuments={{this.documents.selectedDocuments}}
               @onClickDocument={{this.handleDocumentSelection}}
             />
           {{else}}
             <DocumentGrid
               @loading={{this.fetchDocuments.isRunning}}
-              @selectedDocuments={{this.selectedDocuments}}
+              @selectedDocuments={{this.documents.selectedDocuments}}
               @fetchedDocuments={{this.fetchedDocuments}}
               @onClickDocument={{this.handleDocumentSelection}}
             />
@@ -87,6 +87,6 @@
     />
   {{/if}} --}}
   <DocumentsSidePanel
-    @selectedDocuments={{this.selectedDocuments}}
+    @selectedDocuments={{this.documents.selectedDocuments}}
   />
 </div>
