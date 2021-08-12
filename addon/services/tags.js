@@ -87,6 +87,6 @@ export default class TagsService extends Service {
     document.tags.removeObject(tag);
     await document.save();
 
-    this.fetchSearchTags.perform();
+    this.fetchSearchTags.perform(); // TODO: Is this required?
   }
 }
