@@ -8,7 +8,6 @@
       <div class="uk-margin-bottom">
         {{#each this.tags as |tag|}}
           <span class="uk-badge {{ if tag.selectedByAll "" "light-blue"}}">
-            {{!-- {{tag.name}} --}}
             {{tag.emberModel.name}}
             <button
               class="uk-margin-small-left"

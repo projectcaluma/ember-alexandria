@@ -39,6 +39,25 @@ export default class TagsService extends Service {
     });
   }
 
+  // /**
+  //  * Returns the tags for the selected document or documents
+  //  *
+  //  * @param {Object|Array} documents The single document or the array of documents for which the tags are to be returned
+  //  * @returns {Array} tags The tags that are on the selected documents
+  //  */
+  // @action *getTagsForDocs(docs) {
+  //   if (!Array.isArray(docs)) {
+  //     // if a single object was supplied convert it to an array
+  //     docs = [docs];
+  //   }
+
+  //   this.allTags.filter(t => {
+  //     t.
+  //   })
+
+  //   return true;
+  // }
+
   /**
    * Adds a tag to a document and creates the tag if necessary.
    *
@@ -69,8 +88,8 @@ export default class TagsService extends Service {
     document.tags.pushObject(tag);
     await document.save();
 
-    this.fetchAllTags.perform();
-    this.fetchSearchTags.perform();
+    await this.fetchAllTags.perform();
+    await this.fetchSearchTags.perform();
   }
 
   /**
