@@ -19,7 +19,7 @@ export default class DocumentViewComponent extends Component {
   @tracked sortDirection = "";
 
   // DOCUMENT SELECTION
-  @tracked selectedDocuments = [];
+  // @tracked selectedDocuments = [];
 
   get canDrop() {
     return Boolean(this.args.filters && this.args.filters.category);

@@ -1,9 +1,11 @@
 import Service, { inject as service } from "@ember/service";
+import { tracked } from "@glimmer/tracking";
 import fetch from "fetch";
 
 export default class DocumentsService extends Service {
   @service store;
   @service config;
+  @tracked selectedDocuments = [];
 
   /**
    * Uploads one or multiple files and creates the necessary document and
