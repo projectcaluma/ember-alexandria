@@ -22,9 +22,14 @@
         @prefix="far"
         class="uk-margin-small-right"
         data-test-title-icon
-        {{!-- {{set-style color=@document.category.color}} --}}
       />
     </span>
     {{t "alexandria.multiple-documents-details.title" numDocs=@selectedDocuments.length}}
   </div>
 </div>
+
+<ul uk-accordion="multiple: true">
+  <TagManager
+    @documents={{@selectedDocuments}}
+  />
+</ul>

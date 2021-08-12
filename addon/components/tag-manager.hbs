@@ -1,0 +1,58 @@
+<li class="uk-open">
+  <a class="uk-accordion-title" href="#">
+    {{t "alexandria.document-details.tags.title"}}
+  </a>
+
+  <div class="uk-accordion-content">
+    {{#if this.tags.length}}
+      <div class="uk-margin-bottom">
+        {{#each this.tags as |tag|}}
+          <span class="uk-badge {{ if tag.selectedByAll "" "light-blue"}}">
+            {{tag.name}}
+            <button
+              class="uk-margin-small-left"
+              type="button"
+              uk-close
+              {{set-style color="white"}}
+              {{on "click" (perform this.removeTag tag)}}
+            ></button>
+          </span>
+        {{/each}}
+      </div>
+    {{/if}}
+
+    <form
+      class="uk-flex"
+      {{did-insert this.fetchAllTags}}
+      {{on "submit" (perform this.addTagFromForm)}}
+    >
+      <input
+        class="uk-input uk-form-small uk-width-1-2 uk-margin-small-right"
+        autocomplete="off"
+        name="tag"
+        type="text"
+        {{on "input" (perform this.onSearchTag)}}
+      />
+      <button
+        class="uk-button uk-button-primary uk-button-small uk-width-1-2"
+        type="submit"
+      >
+        {{t "alexandria.document-details.tags.add"}}
+      </button>
+    </form>
+
+    {{#if this.matchingTags.length}}
+      <div class="uk-margin-small-top">
+        {{#each this.matchingTags as |tag|}}
+          <a
+            href="#"
+            class="uk-badge"
+            {{on "click" (perform this.addTagSuggestion tag)}}
+          >
+            {{tag.name}}
+          </a>
+        {{/each}}
+      </div>
+    {{/if}}
+  </div>
+</li>
