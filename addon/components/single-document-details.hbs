@@ -1,255 +1,257 @@
-<div class="uk-flex uk-flex-between uk-flex-bottom">
-  <label class="uk-text-meta" for="alexandria-details-title">
-    {{t "alexandria.document-details.document-title"}}
-  </label>
-  <button
-    class="uk-icon-button uk-flex-none"
-    type="button"
-    uk-icon="chevron-right"
-    data-test-close
-    {{on "click" this.sidePanel.toggle}}
-  ></button>
-</div>
+<div data-test-single-doc-details>
+  <div class="uk-flex uk-flex-between uk-flex-bottom">
+    <label class="uk-text-meta" for="alexandria-details-title">
+      {{t "alexandria.document-details.document-title"}}
+    </label>
+    <button
+      class="uk-icon-button uk-flex-none"
+      type="button"
+      uk-icon="chevron-right"
+      data-test-close
+      {{on "click" this.sidePanel.toggle}}
+    ></button>
+  </div>
 
-<span
-  class="document-title uk-flex uk-flex-between uk-margin-bottom uk-flex-top"
->
   <span
-    class="uk-flex uk-flex-top"
-    data-test-title-container
-    {{set-style cursor="text"}}
+    class="document-title uk-flex uk-flex-between uk-margin-bottom uk-flex-top"
   >
-    <span class="uk-flex-none">
-      <FaIcon
-        @icon="file-alt"
-        @prefix="far"
-        class="uk-margin-small-right"
-        data-test-title-icon
-        {{set-style color=@document.category.color}}
-      />
-    </span>
-    {{#if this.editTitle}}
-      <input
-        class="uk-input"
-        id="alexandria-details-title"
-        type="text"
-        placeholder={{t "alexandria.document-details.name-placeholder"}}
-        value={{@document.title}}
-        data-test-title-input
-        {{on "input" this.updateDocumentTitle}}
-      />
+    <span
+      class="uk-flex uk-flex-top"
+      data-test-title-container
+      {{set-style cursor="text"}}
+    >
       <span class="uk-flex-none">
+        <FaIcon
+          @icon="file-alt"
+          @prefix="far"
+          class="uk-margin-small-right"
+          data-test-title-icon
+          {{set-style color=@document.category.color}}
+        />
+      </span>
+      {{#if this.editTitle}}
+        <input
+          class="uk-input"
+          id="alexandria-details-title"
+          type="text"
+          placeholder={{t "alexandria.document-details.name-placeholder"}}
+          value={{@document.title}}
+          data-test-title-input
+          {{on "input" this.updateDocumentTitle}}
+        />
+        <span class="uk-flex-none">
+          <a
+            href="#"
+            class="uk-icon-button {{
+              unless this.validTitle "uk-disabled"
+            }} cursor-pointer"
+            uk-icon="icon: check"
+            data-test-save
+            {{on "click" (perform this.saveDocument)}}
+          ></a>
+          <a
+            href="#"
+            class="uk-icon-button  cursor-pointer"
+            uk-icon="icon: close"
+            {{on "click" (set this.editTitle false)}}
+          ></a>
+        </span>
+      {{else}}
         <a
           href="#"
-          class="uk-icon-button {{
-            unless this.validTitle "uk-disabled"
-          }} cursor-pointer"
+          class="uk-link-reset"
+          data-test-title
+          {{on "click" (set this.editTitle true)}}
+        >
+          {{@document.title}}
+        </a>
+      {{/if}}
+    </span>
+  </span>
+
+  <p class="uk-margin-remove-top">
+    <label
+      class="uk-text-meta uk-display-block"
+      for="alexandria-details-description"
+    >
+      {{t "alexandria.document-details.document-description"}}
+    </label>
+
+    {{#if this.editDescription}}
+      <textarea
+        class="uk-textarea"
+        id="alexandria-details-description"
+        rows="10"
+        {{on "input" this.updateDocumentDescription}}
+      >
+        {{~@document.description~}}
+      </textarea>
+      <div class="uk-text-right">
+        <a
+          class="uk-icon-button cursor-pointer"
+          href="#"
           uk-icon="icon: check"
-          data-test-save
           {{on "click" (perform this.saveDocument)}}
         ></a>
         <a
           href="#"
-          class="uk-icon-button  cursor-pointer"
+          class="uk-icon-button cursor-pointer"
           uk-icon="icon: close"
-          {{on "click" (set this.editTitle false)}}
+          {{on "click" (set this.editDescription false)}}
         ></a>
-      </span>
+      </div>
     {{else}}
-      <a
-        href="#"
-        class="uk-link-reset"
-        data-test-title
-        {{on "click" (set this.editTitle true)}}
-      >
-        {{@document.title}}
-      </a>
+      {{#if @document.description}}
+        <a
+          class="uk-link-reset"
+          href="#"
+          {{on "click" (set this.editDescription true)}}
+        >
+          {{@document.description}}
+        </a>
+      {{else}}
+        <a href="#" {{on "click" (set this.editDescription true)}}>
+          {{t "alexandria.document-details.add-description"}}
+        </a>
+      {{/if}}
     {{/if}}
+  </p>
+
+  <span class="document-meta">
+    <p data-test-created-at>
+      {{t
+        "alexandria.document-details.created-at"
+        date=(format-date @document.createdAt)
+      }}
+    </p>
+    <p data-test-created-by-user>
+      <FaIcon @icon="user" class="uk-margin-small-right" />
+      {{await (resolve-user @document.createdByUser)}}
+    </p>
+    <p data-test-created-by-group>
+      <FaIcon @icon="users" class="uk-margin-small-right" />
+      {{await (resolve-group @document.createdByGroup)}}
+    </p>
   </span>
-</span>
 
-<p class="uk-margin-remove-top">
-  <label
-    class="uk-text-meta uk-display-block"
-    for="alexandria-details-description"
-  >
-    {{t "alexandria.document-details.document-description"}}
-  </label>
+  <div class="uk-flex">
+    <div uk-form-custom class="uk-width-1-2 uk-margin-small-right">
+      <input
+        data-test-replace
+        type="file"
+        {{on "change" (perform this.uploadReplacement)}}
+      />
 
-  {{#if this.editDescription}}
-    <textarea
-      class="uk-textarea"
-      id="alexandria-details-description"
-      rows="10"
-      {{on "input" this.updateDocumentDescription}}
-    >
-      {{~@document.description~}}
-    </textarea>
-    <div class="uk-text-right">
-      <a
-        class="uk-icon-button cursor-pointer"
-        href="#"
-        uk-icon="icon: check"
-        {{on "click" (perform this.saveDocument)}}
-      ></a>
-      <a
-        href="#"
-        class="uk-icon-button cursor-pointer"
-        uk-icon="icon: close"
-        {{on "click" (set this.editDescription false)}}
-      ></a>
-    </div>
-  {{else}}
-    {{#if @document.description}}
-      <a
-        class="uk-link-reset"
-        href="#"
-        {{on "click" (set this.editDescription true)}}
+      <button
+        class="uk-width-1 uk-button uk-button-default uk-button-small"
+        type="button"
+        tabindex="-1"
       >
-        {{@document.description}}
-      </a>
-    {{else}}
-      <a href="#" {{on "click" (set this.editDescription true)}}>
-        {{t "alexandria.document-details.add-description"}}
-      </a>
-    {{/if}}
-  {{/if}}
-</p>
+        {{~t "alexandria.document-details.replace"~}}
+      </button>
+    </div>
 
-<span class="document-meta">
-  <p data-test-created-at>
-    {{t
-      "alexandria.document-details.created-at"
-      date=(format-date @document.createdAt)
-    }}
-  </p>
-  <p data-test-created-by-user>
-    <FaIcon @icon="user" class="uk-margin-small-right" />
-    {{await (resolve-user @document.createdByUser)}}
-  </p>
-  <p data-test-created-by-group>
-    <FaIcon @icon="users" class="uk-margin-small-right" />
-    {{await (resolve-group @document.createdByGroup)}}
-  </p>
-</span>
-
-<div class="uk-flex">
-  <div uk-form-custom class="uk-width-1-2 uk-margin-small-right">
-    <input
-      data-test-replace
-      type="file"
-      {{on "change" (perform this.uploadReplacement)}}
-    />
-
-    <button
-      class="uk-width-1 uk-button uk-button-default uk-button-small"
-      type="button"
-      tabindex="-1"
+    <DocumentDeleteButton
+      @document={{@document}}
+      @onConfirm={{this.closePanel}} as |showDialog|
     >
-      {{~t "alexandria.document-details.replace"~}}
-    </button>
+      <UkButton
+        data-test-delete
+        @size="small"
+        @color="primary"
+        class="uk-width-1-2 uk-button-danger"
+        {{on "click" showDialog}}
+      >
+        {{t "alexandria.delete"}}
+      </UkButton>
+    </DocumentDeleteButton>
   </div>
 
-  <DocumentDeleteButton
-    @document={{@document}}
-    @onConfirm={{this.closePanel}} as |showDialog|
-  >
-    <UkButton
-      data-test-delete
-      @size="small"
-      @color="primary"
-      class="uk-width-1-2 uk-button-danger"
-      {{on "click" showDialog}}
-    >
-      {{t "alexandria.delete"}}
-    </UkButton>
-  </DocumentDeleteButton>
-</div>
+  <hr />
 
-<hr />
-
-<ul uk-accordion="multiple: true">
-  <li class="uk-open">
-    <a class="uk-accordion-title" href="#">
-      {{~t "alexandria.document-details.version-history"~}}
-    </a>
-    <div class="uk-accordion-content">
-      <ul class="uk-list uk-list-divider">
-        {{#each (filter-by "type" "original" @document.files) as |file|}}
-          <li data-test-file class="uk-flex" title={{file.name}}>
-            <span class="uk-margin-right">
-              {{moment-format file.createdAt "DD.MM.YYYY HH:mm"}}
-            </span>
-            <span class="uk-width-expand">
-              {{~await (resolve-user file.createdByUser)~}}
-            </span>
-            <a
-              uk-icon="download"
-              class="uk-icon-link"
-              href={{file.downloadUrl}}
-            ></a>
-          </li>
-        {{/each}}
-      </ul>
-    </div>
-  </li>
-
-  <li class="uk-open">
-    <a class="uk-accordion-title" href="#">
-      {{t "alexandria.document-details.tags.title"}}
-    </a>
-
-    <div class="uk-accordion-content">
-      {{#if @document.tags.length}}
-        <div class="uk-margin-bottom">
-          {{#each @document.tags as |tag|}}
-            <span class="uk-badge">
-              {{tag.name}}
-              <button
-                class="uk-margin-small-left"
-                type="button"
-                uk-close
-                {{set-style color="white"}}
-                {{on "click" (perform this.removeTag tag)}}
-              ></button>
-            </span>
+  <ul uk-accordion="multiple: true">
+    <li class="uk-open">
+      <a class="uk-accordion-title" href="#">
+        {{~t "alexandria.document-details.version-history"~}}
+      </a>
+      <div class="uk-accordion-content">
+        <ul class="uk-list uk-list-divider">
+          {{#each (filter-by "type" "original" @document.files) as |file|}}
+            <li data-test-file class="uk-flex" title={{file.name}}>
+              <span class="uk-margin-right">
+                {{moment-format file.createdAt "DD.MM.YYYY HH:mm"}}
+              </span>
+              <span class="uk-width-expand">
+                {{~await (resolve-user file.createdByUser)~}}
+              </span>
+              <a
+                uk-icon="download"
+                class="uk-icon-link"
+                href={{file.downloadUrl}}
+              ></a>
+            </li>
           {{/each}}
-        </div>
-      {{/if}}
+        </ul>
+      </div>
+    </li>
 
-      <form
-        class="uk-flex"
-        {{did-insert this.didInsertTagSearch}}
-        {{on "submit" (perform this.addTagFromForm)}}
-      >
-        <input
-          class="uk-input uk-form-small uk-width-1-2 uk-margin-small-right"
-          autocomplete="off"
-          name="tag"
-          type="text"
-          {{on "input" (perform this.onSearchTag)}}
-        />
-        <button
-          class="uk-button uk-button-primary uk-button-small uk-width-1-2"
-          type="submit"
+    <li class="uk-open">
+      <a class="uk-accordion-title" href="#">
+        {{t "alexandria.document-details.tags.title"}}
+      </a>
+
+      <div class="uk-accordion-content">
+        {{#if @document.tags.length}}
+          <div class="uk-margin-bottom">
+            {{#each @document.tags as |tag|}}
+              <span class="uk-badge">
+                {{tag.name}}
+                <button
+                  class="uk-margin-small-left"
+                  type="button"
+                  uk-close
+                  {{set-style color="white"}}
+                  {{on "click" (perform this.removeTag tag)}}
+                ></button>
+              </span>
+            {{/each}}
+          </div>
+        {{/if}}
+
+        <form
+          class="uk-flex"
+          {{did-insert this.didInsertTagSearch}}
+          {{on "submit" (perform this.addTagFromForm)}}
         >
-          {{t "alexandria.document-details.tags.add"}}
-        </button>
-      </form>
+          <input
+            class="uk-input uk-form-small uk-width-1-2 uk-margin-small-right"
+            autocomplete="off"
+            name="tag"
+            type="text"
+            {{on "input" (perform this.onSearchTag)}}
+          />
+          <button
+            class="uk-button uk-button-primary uk-button-small uk-width-1-2"
+            type="submit"
+          >
+            {{t "alexandria.document-details.tags.add"}}
+          </button>
+        </form>
 
-      {{#if this.matchingTags.length}}
-        <div class="uk-margin-small-top">
-          {{#each this.matchingTags as |tag|}}
-            <a
-              href="#"
-              class="uk-badge"
-              {{on "click" (perform this.addTagSuggestion tag)}}
-            >
-              {{tag.name}}
-            </a>
-          {{/each}}
-        </div>
-      {{/if}}
-    </div>
-  </li>
-</ul>
+        {{#if this.matchingTags.length}}
+          <div class="uk-margin-small-top">
+            {{#each this.matchingTags as |tag|}}
+              <a
+                href="#"
+                class="uk-badge"
+                {{on "click" (perform this.addTagSuggestion tag)}}
+              >
+                {{tag.name}}
+              </a>
+            {{/each}}
+          </div>
+        {{/if}}
+      </div>
+    </li>
+  </ul>
+</div>

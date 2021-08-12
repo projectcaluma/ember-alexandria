@@ -1,6 +1,6 @@
 <div
   class="uk-background-muted uk-border-left uk-width-xlarge uk-flex uk-flex-between uk-flex-column document-details {{if this.sidePanel.open "" "closed"}}"
-  data-test-multiple-file-details
+  data-test-document-side-panel
   ...attributes
 >
   <div class="uk-overflow-auto">
@@ -8,7 +8,6 @@
       {{#if (eq @selectedDocuments.length 1)}}
         <SingleDocumentDetails
           @document={{@selectedDocuments.[0]}}
-          data-test-single-doc-details
         />
       {{else}}
         <MultiDocumentDetails

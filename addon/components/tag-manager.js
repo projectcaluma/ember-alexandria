@@ -3,7 +3,7 @@ import { inject as service } from "@ember/service";
 import { faTransgender } from "@fortawesome/free-solid-svg-icons";
 import { tracked } from "@glimmer/tracking";
 import { timeout } from "ember-concurrency";
-import { restartableTask, dropTask, task } from "ember-concurrency-decorators";
+import { restartableTask, task } from "ember-concurrency-decorators";
 
 import DocumentCard from "./document-card";
 

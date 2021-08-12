@@ -50,17 +50,15 @@ module("Acceptance | documents", function (hooks) {
       .hasAttribute("data-src", "test-thumbnail");
   });
 
-  test("select document", async function (assert) {
+  test("select document in the grid view", async function (assert) {
     const [document] = this.server.createList("document", 2);
-    assert.expect(8);
+    assert.expect(7);
 
     await visit("/");
     await click("[data-test-toggle]");
 
-    // const done = assert.async();
-    // setTimeout(() => done(), 20000);
+    assert.dom("[data-test-single-doc-details]").isNotVisible();
 
-    assert.dom("[data-test-file-details]").isNotVisible();
     assert
       .dom("[data-test-document-container]:first-child [data-test-document]")
       .doesNotHaveClass("selected");
@@ -74,16 +72,19 @@ module("Acceptance | documents", function (hooks) {
       `/?document=${document.id}`,
       "url is set to currently selected document"
     );
-    assert.dom("[data-test-file-details]").isVisible();
+
+    assert.dom("[data-test-single-doc-details]").isVisible();
+
     assert
       .dom("[data-test-document-container]:first-child [data-test-document]")
       .hasClass("selected");
+
     assert
-      .dom("[data-test-file-details] [data-test-title]")
+      .dom("[data-test-single-doc-details] [data-test-title]")
       .hasText(document.title.en);
+
     await click("[data-test-close]");
-    assert.equal(currentURL(), "/", "document is removed from url");
-    assert.dom("[data-test-file-details]").hasClass("closed");
+    assert.dom("[data-test-document-side-panel]").hasClass("closed");
   });
 
   test("document grid detail edit title", async function (assert) {
@@ -94,18 +95,15 @@ module("Acceptance | documents", function (hooks) {
     await click("[data-test-toggle]");
     setLocale("en");
 
-    await pauseTest();
-    assert.dom("[data-test-file-details]").doesNotHaveClass("closed");
-    await pauseTest();
+    assert.dom("[data-test-single-doc-details]").doesNotHaveClass("closed");
 
     assert
-      .dom("[data-test-file-details] [data-test-title]")
+      .dom("[data-test-single-doc-details] [data-test-title]")
       .hasText(document.title.en);
 
-    await pauseTest();
     assert.dom("[data-test-title-input]").doesNotExist();
 
-    await click("[data-test-file-details] [data-test-title]");
+    await click("[data-test-single-doc-details] [data-test-title]");
     assert.dom("[data-test-title-input]").hasValue(document.title.en);
 
     await fillIn("[data-test-title-input]", "new title");
@@ -121,7 +119,7 @@ module("Acceptance | documents", function (hooks) {
         "new title is set"
       );
     });
-    await click("[data-test-file-details] [data-test-save]");
+    await click("[data-test-single-doc-details] [data-test-save]");
     assert.dom("[data-test-title-input]").doesNotExist();
   });
 
@@ -138,10 +136,10 @@ module("Acceptance | documents", function (hooks) {
         "deleting the correct document"
       );
     });
-    await click("[data-test-file-details] [data-test-delete]");
+    await click("[data-test-single-doc-details] [data-test-delete]");
     await click(`[data-test-delete-confirm="${document.id}"]`);
     assert.equal(currentURL(), "/", "document is removed from url");
-    assert.dom("[data-test-file-details]").hasClass("closed");
+    assert.dom("[data-test-single-doc-details]").hasClass("closed");
     assert.dom("[data-test-document]").doesNotExist();
     assert.dom("[data-test-empty]").exists();
   });
