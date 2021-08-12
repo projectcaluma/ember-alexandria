@@ -7,6 +7,7 @@ import { task } from "ember-concurrency-decorators";
 export default class DocumentDeleteButtonComponent extends Component {
   @service notification;
   @service intl;
+  @service documents;
 
   @tracked dialogVisible = false;
 
@@ -33,6 +34,7 @@ export default class DocumentDeleteButtonComponent extends Component {
         : [this.args.documents]; // if the supplied argument is not an array we make it one
 
       yield docs.forEach((doc) => {
+        this.documents.deselectDocument(doc);
         doc.destroyRecord();
       });
 

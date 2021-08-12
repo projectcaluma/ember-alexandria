@@ -166,30 +166,4 @@ export default class DocumentViewComponent extends Component {
       },
     });
   }
-
-  // @action documentIsSelected(doc) {
-  //   return !!this.selectedDocuments.find((d) => d.id === doc.id);
-  // }
-
-  // @action clearDocumentSelection() {
-  //   this.selectedDocuments = [];
-  // }
-
-  // @action selectDocument(doc) {
-  //   this.selectedDocuments = [...this.selectedDocuments, doc];
-  // }
-
-  // @action deselectDocument(selectedDocument) {
-  //   this.selectedDocuments = this.selectedDocuments.filter(
-  //     (d) => d.id !== selectedDocument.id
-  //   );
-  // }
-
-  // TODO: Enable automatic selection based on URL
-  // @action selectDocumentsByIds(documentIds) {
-  //   documentIds.forEach((id) => {
-  //     const selectedDoc = this.fetchedDocuments.findBy("id", id.toString());
-  //     this.selectDocument(selectedDoc);
-  //   });
-  // }
 }

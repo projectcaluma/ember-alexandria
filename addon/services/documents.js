@@ -81,21 +81,38 @@ export default class DocumentsService extends Service {
     }
   }
 
+  /**
+   * Clears the document selection
+   */
   @action clearDocumentSelection() {
     this.selectedDocuments = [];
   }
 
+  /**
+   * Checks if the document is selected
+   *
+   * @param {Object} doc an EmberData representation of a Document
+   * @returns {Boolean} If the document is selected
+   */
   @action documentIsSelected(doc) {
     return !!this.selectedDocuments.find((d) => d.id === doc.id);
   }
 
+  /**
+   * Selects the document
+   * @param {Object} doc an EmberData representation of a Document
+   */
   @action selectDocument(doc) {
     this.selectedDocuments = [...this.selectedDocuments, doc];
   }
 
-  @action deselectDocument(selectedDocument) {
+  /**
+   * Removes a document from the document selection
+   * @param {Object} doc an EmberData representation of a Document
+   */
+  @action deselectDocument(doc) {
     this.selectedDocuments = this.selectedDocuments.filter(
-      (d) => d.id !== selectedDocument.id
+      (d) => d.id !== doc.id
     );
   }
 }
