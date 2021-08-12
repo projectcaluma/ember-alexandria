@@ -1,0 +1,21 @@
+<div
+  class="uk-background-muted uk-border-left uk-width-xlarge uk-flex uk-flex-between uk-flex-column document-details {{if this.sidePanel.open "" "closed"}}"
+  data-test-multiple-file-details
+  ...attributes
+>
+  <div class="uk-overflow-auto">
+    <div class="uk-padding-small">
+      {{#if (eq @selectedDocuments.length 1)}}
+        <SingleDocumentDetails
+          @document={{@selectedDocuments.[0]}}
+          data-test-single-doc-details
+        />
+      {{else}}
+        <MultiDocumentDetails
+          @selectedDocuments={{@selectedDocuments}}
+          data-test-multi-doc-details
+        />
+      {{/if}}
+    </div>
+  </div>
+</div>
