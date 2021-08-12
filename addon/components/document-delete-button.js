@@ -29,9 +29,9 @@ export default class DocumentDeleteButtonComponent extends Component {
 
   @task *delete() {
     try {
-      const docs = Array.isArray(this.args.documents)
-        ? this.args.documents
-        : [this.args.documents]; // if the supplied argument is not an array we make it one
+      const docs = Array.isArray(this.args.docsToDelete)
+        ? this.args.docsToDelete
+        : [this.args.docsToDelete]; // if the supplied argument is not an array we make it one
 
       yield docs.forEach((doc) => {
         this.documents.deselectDocument(doc);
@@ -39,7 +39,7 @@ export default class DocumentDeleteButtonComponent extends Component {
       });
 
       if (this.args.onConfirm) {
-        this.args.onConfirm(this.args.documents);
+        this.args.onConfirm(this.args.docsToDelete);
       }
 
       this.hideDialog();

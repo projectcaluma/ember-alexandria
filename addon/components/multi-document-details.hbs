@@ -29,6 +29,25 @@
     </div>
   </div>
 
+  {{#if (gt @selectedDocuments.length 0)}}
+    <div class="uk-flex uk-flex-right">
+      <DocumentDeleteButton
+        @docsToDelete={{@selectedDocuments}}
+        as |showDialog|
+      >
+        <UkButton
+          data-test-delete
+          @size="small"
+          @color="primary"
+          class="uk-width-1-2 uk-button-danger"
+          {{on "click" showDialog}}
+        >
+          {{t "alexandria.delete"}}
+        </UkButton>
+      </DocumentDeleteButton>
+    </div>
+  {{/if}}
+
   <ul uk-accordion="multiple: true">
     <TagManager
       @documents={{@selectedDocuments}}

@@ -37,6 +37,7 @@ alexandria:
     prompt:
       title: "Delete document"
       message: "Do you really want to delete the document \"{title}\" and its complete history?"
+      multiple_docs_message: "Do you really want to delete {nrOfDocs} documents and their complete history?"
       cancel: "Cancel"
       confirm: "Delete"
 
