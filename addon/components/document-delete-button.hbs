@@ -11,12 +11,21 @@
   </Modal.header>
 
   <Modal.body>
-    <p>
-      {{t
-        "alexandria.document-delete-button.prompt.message"
-        title=@document.title
-      }}
-    </p>
+    {{#if (gt @docsToDelete.length 1)}}
+      <p>
+        {{t
+          "alexandria.document-delete-button.prompt.multiple_docs_message"
+          nrOfDocs=@docsToDelete.length
+        }}
+      </p>
+    {{else}}
+      <p>
+        {{t
+          "alexandria.document-delete-button.prompt.message"
+          title=@docsToDelete.[0].title
+        }}
+      </p>
+    {{/if}}
   </Modal.body>
 
   <Modal.footer>
@@ -24,7 +33,7 @@
       <UkButton
         @label={{t "alexandria.document-delete-button.prompt.cancel"}}
         @on-click={{this.cancel}}
-        data-test-delete-cancel={{@document.id}}
+        data-test-delete-cancel={{@docsToDelete.id}}
       />
 
       <UkButton
@@ -32,7 +41,7 @@
         @label={{t "alexandria.document-delete-button.prompt.confirm"}}
         @on-click={{perform this.delete}}
         @loading={{this.delete.isRunning}}
-        data-test-delete-confirm={{@document.id}}
+        data-test-delete-confirm={{@docsToDelete.id}}
       />
     </div>
   </Modal.footer>

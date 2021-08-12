@@ -152,8 +152,8 @@
     </div>
 
     <DocumentDeleteButton
-      @document={{@document}}
-      @onConfirm={{this.closePanel}} as |showDialog|
+      @docsToDelete={{array @document}}
+      as |showDialog|
     >
       <UkButton
         data-test-delete
