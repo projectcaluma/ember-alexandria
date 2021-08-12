@@ -31,7 +31,9 @@ export default class TagManagerComponent extends DocumentCard {
   }
 
   @task *addTagSuggestion(tag) {
-    yield this.tagService.add(this.args.document, tag);
+    yield this.args.documents.forEach(async (doc) => {
+      await this.tagService.add(doc, tag);
+    });
 
     this.tagSearchBox.value = "";
     this.matchingTags = [];
@@ -39,10 +41,15 @@ export default class TagManagerComponent extends DocumentCard {
 
   @task *addTagFromForm(event) {
     event.preventDefault();
+    faTransgender;
 
     const tag = event.target.elements.tag.value;
     // TODO: Refactor to allow multiple doc editing
     // yield this.tags.add(this.args.document, tag);
+    yield this.args.documents.forEach((doc) => {
+      // console.log("🦠 doc:", doc);
+      this.tagService.add(doc, tag);
+    });
 
     this.tagSearchBox.value = "";
     this.matchingTags = [];
@@ -60,20 +67,29 @@ export default class TagManagerComponent extends DocumentCard {
   get tags() {
     const tagsToDisplay = [];
     const nrOfSelectedDocs = this.args.documents.length;
-    const allTagsForSelectedDocs = this.args.documents
-      .map((d) => d.tags.toArray()) // all the tags for a document
-      .flat()
-      .map((t) => t.name); // produces one large array of all tags
 
+    // Produce an array of tags that are on the selected docs
     this.args.documents.forEach((doc) => {
       doc.tags.forEach((tag) => {
-        tagsToDisplay.push({
-          emberModel: tag,
-          selectedByAll:
-            allTagsForSelectedDocs.filter((t) => t.name === tag.name) ===
-            nrOfSelectedDocs,
-        });
+        const existingTag = tagsToDisplay.find(
+          (t) => t.emberModel.id === tag.id
+        );
+        if (existingTag) {
+          existingTag.nrOfDocs += 1;
+        } else {
+          tagsToDisplay.push({
+            emberModel: tag,
+            nrOfDocs: 1,
+          });
+        }
       });
+    });
+
+    // Check which tags are selected by all
+    tagsToDisplay.forEach((tag) => {
+      if (tag.nrOfDocs === nrOfSelectedDocs) {
+        tag.selectedByAll = true;
+      }
     });
 
     return tagsToDisplay;
