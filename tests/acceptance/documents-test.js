@@ -33,7 +33,7 @@ module("Acceptance | documents", function (hooks) {
     assert.expect(5);
 
     await visit("/");
-    await click("[data-test-toggle]");
+    await click("[data-test-toggle-side-panel]");
     assert.dom("[data-test-document]").exists({ count: 5 });
     assert
       .dom("[data-test-document-container]:first-child [data-test-title]")
@@ -55,7 +55,7 @@ module("Acceptance | documents", function (hooks) {
     assert.expect(7);
 
     await visit("/");
-    await click("[data-test-toggle]");
+    await click("[data-test-toggle-side-panel]");
 
     assert.dom("[data-test-single-doc-details]").isNotVisible();
 
@@ -89,13 +89,14 @@ module("Acceptance | documents", function (hooks) {
 
   test("document grid detail edit title", async function (assert) {
     const document = this.server.create("document");
-    assert.expect(7);
-
-    await visit(`/?document=${document.id}`);
-    await click("[data-test-toggle]");
+    assert.expect(6);
+    await visit(`/`);
+    await click("[data-test-toggle-side-panel]");
     setLocale("en");
 
-    assert.dom("[data-test-single-doc-details]").doesNotHaveClass("closed");
+    await click(
+      "[data-test-document-container]:first-child [data-test-document]"
+    );
 
     assert
       .dom("[data-test-single-doc-details] [data-test-title]")
@@ -125,9 +126,11 @@ module("Acceptance | documents", function (hooks) {
 
   test("document detail delete", async function (assert) {
     const document = this.server.create("document");
-    assert.expect(5);
+    assert.expect(4);
 
-    await visit(`/?document=${document.id}`);
+    await visit(`/`);
+
+    await click("[data-test-document-list-item]:first-of-type");
 
     this.assertRequest("DELETE", "/api/v1/documents/:id", (request) => {
       assert.equal(
@@ -139,9 +142,9 @@ module("Acceptance | documents", function (hooks) {
     await click("[data-test-single-doc-details] [data-test-delete]");
     await click(`[data-test-delete-confirm="${document.id}"]`);
     assert.equal(currentURL(), "/", "document is removed from url");
-    assert.dom("[data-test-single-doc-details]").hasClass("closed");
+    await pauseTest();
+    assert.dom("[data-test-document-side-panel]").hasClass("closed");
     assert.dom("[data-test-document]").doesNotExist();
-    assert.dom("[data-test-empty]").exists();
   });
 
   test("upload file", async function (assert) {
