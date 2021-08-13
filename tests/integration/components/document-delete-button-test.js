@@ -1,4 +1,4 @@
-import { render, click } from "@ember/test-helpers";
+import { render, click, pauseTest } from "@ember/test-helpers";
 import setupRenderingTest from "dummy/tests/helpers/setup-rendering-test";
 import { hbs } from "ember-cli-htmlbars";
 import { setupIntl } from "ember-intl/test-support";
@@ -19,18 +19,18 @@ module("Integration | Component | document-delete-button", function (hooks) {
     this.onConfirm = () => assert.step("confirm");
 
     await render(hbs`
-      <DocumentDeleteButton
-        @document={{this.document}}
-        @onConfirm={{this.onConfirm}}
-        @onCancel={{this.onCancel}}
-        as |showDialog|
-      >
-        <button
-          {{on "click" showDialog}}
-          data-test-delete
-          type="button"
-        >Delete</button>
-      </DocumentDeleteButton>
+    <DocumentDeleteButton
+      @document={{this.document}}
+      @onConfirm={{this.onConfirm}}
+      @onCancel={{this.onCancel}}
+      as |showDialog|
+    >
+      <button
+      {{on "click" showDialog}}
+      data-test-delete
+      type="button"
+      >Delete</button>
+    </DocumentDeleteButton>
     `);
 
     await click("[data-test-delete]");
