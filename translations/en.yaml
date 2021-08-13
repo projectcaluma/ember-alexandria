@@ -58,7 +58,7 @@ alexandria:
       add: "Add"
 
   multiple-documents-details:
-    title: "{numDocs, plural, =0 {No document} =1 {1 document} other {# documents}}"
+    title: "{numDocs, plural, =0 {No document selected} =1 {1 document selected} other {# documents selected}}"
 
   tag-filter:
     empty: "No tags..."
