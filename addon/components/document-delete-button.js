@@ -29,14 +29,16 @@ export default class DocumentDeleteButtonComponent extends Component {
 
   @task *delete() {
     try {
-      const docs = Array.isArray(this.args.docsToDelete)
-        ? this.args.docsToDelete
-        : [this.args.docsToDelete]; // if the supplied argument is not an array we make it one
+      if (this.args.docsToDelete) {
+        const docs = Array.isArray(this.args.docsToDelete)
+          ? this.args.docsToDelete
+          : [this.args.docsToDelete]; // if the supplied argument is not an array we make it one
 
-      yield docs.forEach((doc) => {
-        this.documents.deselectDocument(doc);
-        doc.destroyRecord();
-      });
+        yield docs.forEach((doc) => {
+          this.documents.deselectDocument(doc);
+          doc.destroyRecord();
+        });
+      }
 
       if (this.args.onConfirm) {
         this.args.onConfirm(this.args.docsToDelete);
