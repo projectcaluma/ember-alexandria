@@ -2,6 +2,7 @@
   class="document-grid"
   ...attributes
   {{did-insert this.setupGridAnimations}}
+  data-test-document-grid
 >
   {{#if this.fetchDocuments.isRunning}}
     {{#each (range 0 10) as |index|}}

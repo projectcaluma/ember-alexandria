@@ -1,4 +1,4 @@
-import { render, click, fillIn } from "@ember/test-helpers";
+import { render, click, fillIn, pauseTest } from "@ember/test-helpers";
 import { tracked } from "@glimmer/tracking";
 import setupRenderingTest from "dummy/tests/helpers/setup-rendering-test";
 import { hbs } from "ember-cli-htmlbars";
@@ -8,7 +8,7 @@ import fileSaver from "file-saver";
 import { module, test } from "qunit";
 import sinon from "sinon";
 
-module("Integration | Component | document-details", function (hooks) {
+module("Integration | Component | single-document-details", function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks, "en");
   setupMirage(hooks);
@@ -22,9 +22,11 @@ module("Integration | Component | document-details", function (hooks) {
       createdByGroup: "group1",
     };
 
-    await render(hbs`<DocumentDetails @document={{this.selectedDocument}} />`);
+    await render(
+      hbs`<SingleDocumentDetails @document={{this.selectedDocument}} />`
+    );
 
-    assert.dom("[data-test-file-details]").doesNotHaveClass("closed");
+    assert.dom("[data-test-single-doc-details]").doesNotHaveClass("closed");
     assert.dom("[data-test-title-container]").hasStyle({ cursor: "text" });
     assert.dom("[data-test-title-icon]").hasStyle({ color: "rgb(255, 0, 0)" });
 
@@ -39,19 +41,8 @@ module("Integration | Component | document-details", function (hooks) {
 
     assert.dom("[data-test-close]").exists();
     assert.dom("[data-test-delete]").exists();
+    // TODO: ASK SOMEBODY WHY THE DOWNLOAD BUTTON STUFF DOESNT WORK?
     assert.dom("[data-test-download]").exists();
-  });
-
-  test("closed state", async function (assert) {
-    this.set("selectedDocument", null);
-
-    await render(hbs`<DocumentDetails @document={{this.selectedDocument}} />`);
-
-    assert.dom("[data-test-file-details]").hasClass("closed");
-
-    this.set("selectedDocument", {});
-
-    assert.dom("[data-test-file-details]").doesNotHaveClass("closed");
   });
 
   test("download", async function (assert) {
@@ -65,7 +56,9 @@ module("Integration | Component | document-details", function (hooks) {
       files: [{ name: "foo.txt", type: "original", downloadUrl }],
     };
 
-    await render(hbs`<DocumentDetails @document={{this.selectedDocument}} />`);
+    await render(
+      hbs`<SingleDocumentDetails @document={{this.selectedDocument}} />`
+    );
 
     await click("[data-test-download]");
     assert.equal(
@@ -86,10 +79,12 @@ module("Integration | Component | document-details", function (hooks) {
       title: "Test",
       destroyRecord: sinon.fake(),
     };
-    await render(hbs`<DocumentDetails @document={{this.selectedDocument}}/>`);
+    await render(
+      hbs`<SingleDocumentDetails @document={{this.selectedDocument}}/>`
+    );
 
     await click("[data-test-delete]");
-    await click(`[data-test-delete-confirm="${this.selectedDocument.id}"]`);
+    await click("[data-test-delete-confirm]");
 
     assert.ok(
       this.selectedDocument.destroyRecord.calledOnce,
@@ -105,7 +100,9 @@ module("Integration | Component | document-details", function (hooks) {
       save = sinon.fake();
     }
     this.selectedDocument = new Document();
-    await render(hbs`<DocumentDetails @document={{this.selectedDocument}}/>`);
+    await render(
+      hbs`<SingleDocumentDetails @document={{this.selectedDocument}}/>`
+    );
 
     assert.dom("[data-test-title]").exists();
     assert.dom("[data-test-title-input]").doesNotExist();
