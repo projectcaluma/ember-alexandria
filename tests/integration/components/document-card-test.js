@@ -1,4 +1,4 @@
-import { render, click } from "@ember/test-helpers";
+import { render, click, pauseTest } from "@ember/test-helpers";
 import { hbs } from "ember-cli-htmlbars";
 import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
 import { setupRenderingTest } from "ember-qunit";
@@ -28,7 +28,7 @@ module("Integration | Component | document-card", function (hooks) {
     assert.dom("[data-test-download]").isVisible();
   });
 
-  test("donwload file", async function (assert) {
+  test("download file", async function (assert) {
     const stub = sinon.stub(fileSaver, "saveAs");
 
     const downloadUrl = "http://earh.planet",
@@ -63,7 +63,7 @@ module("Integration | Component | document-card", function (hooks) {
 
     await click("[data-test-context-menu-trigger]");
     await click("[data-test-delete]");
-    await click(`[data-test-delete-confirm="${this.document.id}"]`);
+    await click("[data-test-delete-confirm]");
     assert.ok(
       this.document.destroyRecord.calledOnce,
       "destroyRecord was called once"
