@@ -10,7 +10,6 @@ export default class ApplicationController extends Controller {
     "document",
     "activeGroup",
     "sort",
-    "sortDirection",
   ];
 
   @service config;
@@ -22,7 +21,6 @@ export default class ApplicationController extends Controller {
   @tracked document;
   @tracked activeGroup;
   @tracked sort;
-  @tracked sortDirection;
 
   get documentFilters() {
     let filters = {
@@ -37,7 +35,7 @@ export default class ApplicationController extends Controller {
     if (this.config && this.config.modelMetaFilters.document) {
       filters = {
         ...filters,
-        meta: JSON.stringify(this.config.modelMetaFilters.document),
+        // meta: JSON.stringify(this.config.modelMetaFilters.document),
       };
     }
 

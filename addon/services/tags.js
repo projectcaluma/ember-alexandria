@@ -29,34 +29,17 @@ export default class TagsService extends Service {
   }
 
   @task *fetchSearchTags() {
+    // TODO: This doesnt work on the real backend?
     return yield this.store.query("tag", {
-      filter: {
-        withDocumentsInCategory: this.category,
-        withDocumentsMeta: JSON.stringify(
-          this.config.modelMetaFilters.document
-        ),
-      },
+      // TODO: It works if this is commented out?
+      // filter: {
+      //   withDocumentsInCategory: this.category,
+      //   withDocumentsMeta: JSON.stringify(
+      //     this.config.modelMetaFilters.document
+      //   ),
+      // },
     });
   }
-
-  // /**
-  //  * Returns the tags for the selected document or documents
-  //  *
-  //  * @param {Object|Array} documents The single document or the array of documents for which the tags are to be returned
-  //  * @returns {Array} tags The tags that are on the selected documents
-  //  */
-  // @action *getTagsForDocs(docs) {
-  //   if (!Array.isArray(docs)) {
-  //     // if a single object was supplied convert it to an array
-  //     docs = [docs];
-  //   }
-
-  //   this.allTags.filter(t => {
-  //     t.
-  //   })
-
-  //   return true;
-  // }
 
   /**
    * Adds a tag to a document and creates the tag if necessary.
