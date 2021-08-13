@@ -1,6 +1,7 @@
 <li class="category-nav--category" ...attributes>
-  <LinkTo
-    @query={{hash category=@category.id search=undefined document=undefined}}
+  <a
+    {{!-- @query={{hash category=@category.id search=undefined document=undefined}} --}}
+    {{on "click" this.loadCategory}}
     class="uk-link-reset {{if @selected "active"}}"
     data-test-link
   >
@@ -18,5 +19,5 @@
         {{@category.name}}
       </div>
     </div>
-  </LinkTo>
+  </a>
 </li>

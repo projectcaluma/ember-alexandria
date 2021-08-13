@@ -44,10 +44,7 @@ export default class TagManagerComponent extends DocumentCard {
     faTransgender;
 
     const tag = event.target.elements.tag.value;
-    // TODO: Refactor to allow multiple doc editing
-    // yield this.tags.add(this.args.document, tag);
     yield this.args.documents.forEach((doc) => {
-      // console.log("🦠 doc:", doc);
       this.tagService.add(doc, tag);
     });
 
@@ -56,7 +53,6 @@ export default class TagManagerComponent extends DocumentCard {
   }
 
   @task *removeTag(tag) {
-    // TODO: Refactor to allow multiple doc editing
     yield this.args.documents.forEach((doc) => {
       if (doc.tags.includes(tag.emberModel)) {
         this.tagService.remove(doc, tag.emberModel);

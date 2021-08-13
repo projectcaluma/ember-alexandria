@@ -41,7 +41,6 @@ module("Integration | Component | single-document-details", function (hooks) {
 
     assert.dom("[data-test-close]").exists();
     assert.dom("[data-test-delete]").exists();
-    // TODO: ASK SOMEBODY WHY THE DOWNLOAD BUTTON STUFF DOESNT WORK?
     assert.dom("[data-test-download]").exists();
   });
 

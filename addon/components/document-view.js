@@ -15,7 +15,7 @@ export default class DocumentViewComponent extends Component {
   @tracked isDragOver = false;
   @tracked dragCounter = 0;
   @tracked listView = true;
-  @tracked sort = "";
+  @tracked sort = "title";
   @tracked sortDirection = "";
 
   get canDrop() {
@@ -56,7 +56,7 @@ export default class DocumentViewComponent extends Component {
     return yield this.store.query("document", {
       include: "category,files,tags",
       filter: this.args.filters || {},
-      sort: this.sort ? `${this.sortDirection}${this.sort}` : "",
+      // sort: this.sort ? `${this.sortDirection}${this.sort}` : "", // Todo: this breaks it when running the real backend?
     });
   }
 
