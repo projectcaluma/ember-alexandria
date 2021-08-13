@@ -1,4 +1,10 @@
-import { visit, currentURL, click, fillIn } from "@ember/test-helpers";
+import {
+  visit,
+  currentURL,
+  click,
+  fillIn,
+  pauseTest,
+} from "@ember/test-helpers";
 import { setupMirage } from "ember-cli-mirage/test-support";
 import { setupApplicationTest } from "ember-qunit";
 import { module, test } from "qunit";
@@ -21,6 +27,16 @@ module("Acceptance | nav", function (hooks) {
 
     await click("[data-test-category]:last-child [data-test-link]");
     assert.equal(currentURL(), "/?category=5");
+  });
+
+  test("navigating categories clears any sorting, filtering and selection querys", async function (assert) {
+    const categories = this.server.createList("category", 2);
+    await visit(
+      `/?category=${categories[0].id}&sort=title&tag=test&document=1`
+    );
+    await click("[data-test-category]:last-child [data-test-link]");
+
+    assert.equal(currentURL(), `/?category=${categories[1].id}&sort=title`);
   });
 
   test("search", async function (assert) {

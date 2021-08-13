@@ -1,6 +1,5 @@
 <li class="category-nav--category" ...attributes>
   <a
-    {{!-- @query={{hash category=@category.id search=undefined document=undefined}} --}}
     {{on "click" this.loadCategory}}
     class="uk-link-reset {{if @selected "active"}}"
     data-test-link
