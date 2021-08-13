@@ -3,7 +3,15 @@ import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 
 export default class ApplicationController extends Controller {
-  queryParams = ["category", "tags", "search", "document", "activeGroup"];
+  queryParams = [
+    "category",
+    "tags",
+    "search",
+    "document",
+    "activeGroup",
+    "sort",
+    "sortDirection",
+  ];
 
   @service config;
 
@@ -13,6 +21,8 @@ export default class ApplicationController extends Controller {
   @tracked search;
   @tracked document;
   @tracked activeGroup;
+  @tracked sort;
+  @tracked sortDirection;
 
   get documentFilters() {
     let filters = {
@@ -20,6 +30,8 @@ export default class ApplicationController extends Controller {
       tags: this.tags,
       search: this.search,
       activeGroup: this.activeGroup,
+      sort: this.sort,
+      sortDirection: this.sortDirection,
     };
 
     if (this.config && this.config.modelMetaFilters.document) {
