@@ -18,13 +18,11 @@ export default class DocumentViewComponent extends Component {
   @tracked sort = "";
   @tracked sortDirection = "";
 
-  // DOCUMENT SELECTION
-  // @tracked selectedDocuments = [];
-
   get canDrop() {
     return Boolean(this.args.filters && this.args.filters.category);
   }
 
+  // ! DEPRECATED
   get selectedDocument() {
     if (this.args.selectedDocumentId) {
       return (
@@ -40,13 +38,15 @@ export default class DocumentViewComponent extends Component {
   }
 
   @action setSort(sortAttribute) {
-    // TODO: The sort attribute should also be reflected in the URL!
     if (this.sort === sortAttribute) {
       this.sortDirection = this.sortDirection === "" ? "-" : "";
     } else {
       this.sort = sortAttribute;
       this.sortDirection = "";
     }
+    this.router.transitionTo({
+      queryParams: { sort: this.sort, sortDirection: this.sortDirection },
+    });
     this.fetchDocuments.perform();
   }
 
