@@ -1,0 +1,21 @@
+<li class="uk-open">
+  <a class="uk-accordion-title" href="#">
+    {{t "alexandria.document-download.zip-download.title"}}
+  </a>
+
+  <div class="uk-accordion-content">
+    <p>{{t "alexandria.document-download.zip-download.text" numDocs=@documents.length}}</p> 
+
+    <div class="uk-flex uk-flex-right">
+      <UkButton
+        data-test-delete
+        @size="small"
+        @color="primary"
+        class="uk-width-1-2"
+      >
+        {{t "alexandria.document-download.zip-download.button"}}
+      </UkButton>
+    </div>
+  </div>
+
+</li>
