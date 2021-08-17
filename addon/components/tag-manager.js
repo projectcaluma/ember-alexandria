@@ -31,12 +31,15 @@ export default class TagManagerComponent extends DocumentCard {
   }
 
   @task *addTagSuggestion(tag) {
-    yield this.args.documents.forEach(async (doc) => {
-      await this.tagService.add(doc, tag);
-    });
+    // ! DO NOT USE .forEach
+    // .forEach will shoot asynchronous requests which will blow up the EmberData!
+    for (const doc of this.args.documents) {
+      this.tagService.add(doc, tag);
+    }
 
     this.tagSearchBox.value = "";
     this.matchingTags = [];
+    yield;
   }
 
   @task *addTagFromForm(event) {
@@ -44,8 +47,8 @@ export default class TagManagerComponent extends DocumentCard {
     faTransgender;
 
     const tag = event.target.elements.tag.value;
-    yield this.args.documents.forEach((doc) => {
-      this.tagService.add(doc, tag);
+    yield this.args.documents.forEach(async (doc) => {
+      await this.tagService.add(doc, tag);
     });
 
     this.tagSearchBox.value = "";
