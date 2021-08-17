@@ -43,6 +43,7 @@
           class="document-view"
           {{did-insert (perform this.fetchDocuments)}}
           {{did-update (perform this.fetchDocuments) @filters}}
+          {{did-insert (perform this.initialiseDocumentSelection)}}
         >
           {{! List & Grid View }}
           {{#if this.listView}}
