@@ -87,7 +87,7 @@ module("Acceptance | documents", function (hooks) {
     assert.dom("[data-test-document-side-panel]").hasClass("closed");
   });
 
-  test("document grid detail edit title", async function (assert) {
+  test("document detail edit title", async function (assert) {
     const document = this.server.create("document");
     assert.expect(6);
     await visit(`/`);
@@ -192,25 +192,26 @@ module("Acceptance | documents", function (hooks) {
   });
 
   // TODO: Has the context menu been removed?
-  // test("context menu delete", async function (assert) {
-  //   this.server.createList("document", 5);
-  //   assert.expect(3);
+  test("context menu delete", async function (assert) {
+    this.server.createList("document", 5);
+    assert.expect(3);
 
-  //   await visit("/");
+    await visit("/");
+    await click("[data-test-toggle-side-panel]");
 
-  //   assert.dom("[data-test-document-list-item]").exists({ count: 5 });
-  //   await click(
-  //     "[data-test-document]:first-child [data-test-context-menu-trigger]"
-  //   );
-  //   this.assertRequest("DELETE", "/api/v1/documents/:id", (request) => {
-  //     assert.equal(request.params.id, 1, "deleting the correct document");
-  //   });
-  //   await click(
-  //     "[data-test-document]:first-child [data-test-context-menu] [data-test-delete]"
-  //   );
-  //   await click('[data-test-delete-confirm="1"]');
-  //   assert.dom("[data-test-document]").exists({ count: 4 });
-  // });
+    assert.dom("[data-test-document]").exists({ count: 5 });
+    await click(
+      "[data-test-document]:first-child [data-test-context-menu-trigger]"
+    );
+    this.assertRequest("DELETE", "/api/v1/documents/:id", (request) => {
+      assert.equal(request.params.id, 1, "deleting the correct document");
+    });
+    await click(
+      "[data-test-document]:first-child [data-test-context-menu] [data-test-delete]"
+    );
+    await click("[data-test-delete-confirm]");
+    assert.dom("[data-test-document]").exists({ count: 4 });
+  });
 
   // TODO: implement this test
   // test("it renders the document details if a single document is selected", async function (assert) {
