@@ -60,16 +60,23 @@ export default class DocumentViewComponent extends Component {
     });
   }
 
-  // TODO: Enable fetching of documents based on query param
-  // @action fetchDocumentsFromUrl() {
-  //   if (this.router.currentRoute.queryParams.document) {
-  //     this.selectDocumentsByIds(
-  //       decodeURIComponent(this.router.currentRoute.queryParams.document).split(
-  //         ","
-  //       )
-  //     );
-  //   }
-  // }
+  @task
+  *initialiseDocumentSelection() {
+    /* TODO: This is a very brute force way of doing it
+      since i dont know how i could get a collection of EmberData objects otherwise?
+      The problem with this is, that we fetch all the documents two times!
+    */
+    const docIds = decodeURIComponent(
+      this.router.currentRoute.queryParams.document
+    ).split(",");
+    const docs = yield this.store.query("document", {
+      filter: this.args.filters || {},
+      sort: this.sort ? `${this.sortDirection}${this.sort}` : "",
+    });
+    // console.log("🦠 docs:", docs);
+    const selectedDocs = docs.filter((doc) => docIds.includes(doc.id));
+    selectedDocs.forEach((doc) => this.documents.selectDocument(doc));
+  }
 
   // Drag'n'Drop document upload
 
