@@ -56,7 +56,11 @@ alexandria:
     tags:
       title: "Tags"
       add: "Add"
-
+  document-download:
+    zip-download:
+      title: "ZIP Download"
+      button: "Download as ZIP"
+      text: "{numDocs, plural, =1 {Download 1 document as a ZIP} other {Download # documents as a ZIP}}"
   multiple-documents-details:
     title: "{numDocs, plural, =0 {No document selected} =1 {1 document selected} other {# documents selected}}"
 

@@ -79,7 +79,6 @@ export default class DocumentViewComponent extends Component {
   }
 
   // Drag'n'Drop document upload
-
   @action onDragEnter() {
     this.dragCounter++;
     this.isDragOver = true;
