@@ -73,7 +73,6 @@ export default class DocumentViewComponent extends Component {
       filter: this.args.filters || {},
       sort: this.sort ? `${this.sortDirection}${this.sort}` : "",
     });
-    // console.log("🦠 docs:", docs);
     const selectedDocs = docs.filter((doc) => docIds.includes(doc.id));
     selectedDocs.forEach((doc) => this.documents.selectDocument(doc));
   }
@@ -144,6 +143,16 @@ export default class DocumentViewComponent extends Component {
       return;
     }
     if (event.shiftKey) {
+      const isNoDocSelected = this.documents.selectedDocuments.length === 0;
+      if (isNoDocSelected) {
+        // If we don't have a document selected yet so simply select the clicked document
+        this.documents.selectDocument(selectedDocument);
+        this.router.transitionTo({
+          queryParams: { document: selectedDocument.id },
+        });
+        return;
+      }
+
       const selectedDocIndex = this.fetchedDocuments.indexOf(selectedDocument);
       const lastSelectedDocIndex = this.fetchedDocuments.indexOf(
         this.documents.selectedDocuments[0]

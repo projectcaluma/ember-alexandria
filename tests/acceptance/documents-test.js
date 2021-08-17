@@ -191,7 +191,6 @@ module("Acceptance | documents", function (hooks) {
     assert.dom("[data-test-file]").exists({ count: 1 });
   });
 
-  // TODO: Has the context menu been removed?
   test("context menu delete", async function (assert) {
     this.server.createList("document", 5);
     assert.expect(3);
@@ -213,19 +212,28 @@ module("Acceptance | documents", function (hooks) {
     assert.dom("[data-test-document]").exists({ count: 4 });
   });
 
-  // TODO: implement this test
-  // test("it renders the document details if a single document is selected", async function (assert) {
-  //   const done = assert.async();
-  //   const router = await this.owner.lookup("service:router");
-  //   router.transitionTo = sinon.fake();
-  //   console.log("🦠 router:", router);
-  //   this.owner.register("service:router", router);
-  //   await this.server.createList("document", 1);
-  //   await render(hbs`<DocumentView />`);
-  //   await click("[data-test-document-list-item]");
-  //   // pauseTest();
-  //   setTimeout(() => done(), 20000);
-
-  //   // assert.true(false);
-  // });
+  test.todo("downloading multiple documents as a zip", async function (assert) {
+    this.server.createList("document", 5);
+    await visit("/");
+    await click("[data-test-toggle-side-panel]");
+    await click("[data-test-document]", {
+      shiftKey: true,
+    });
+    await click(
+      "[data-test-document-container]:nth-child(3) [data-test-document]",
+      {
+        shiftKey: true,
+      }
+    );
+    assert.dom("[data-test-zip-download-text]").includesText("3");
+    // TODO: Update this test as soon as the backend has been set up
+    this.assertRequest("GET", "/api/v1/documents/zip/:ids", (request) => {
+      assert.equal(
+        request.params.ids,
+        [1, 2, 3],
+        "requesting the correct documents as a zip"
+      );
+    });
+    await click("[data-test-zip-download-button]");
+  });
 });
