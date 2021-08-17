@@ -1,10 +1,10 @@
-<li class="uk-open">
-  <a class="uk-accordion-title" href="#">
+<li class="uk-open" data-test-zip-download>
+  <a class="uk-accordion-title" href="#" data-test-zip-download-title>
     {{t "alexandria.document-download.zip-download.title"}}
   </a>
 
   <div class="uk-accordion-content">
-    <p>{{t "alexandria.document-download.zip-download.text" numDocs=@documents.length}}</p> 
+    <p data-test-zip-download-text>{{t "alexandria.document-download.zip-download.text" numDocs=@documents.length}}</p> 
 
     <div class="uk-flex uk-flex-right">
       <UkButton
@@ -12,6 +12,7 @@
         @size="small"
         @color="primary"
         class="uk-width-1-2"
+        data-test-zip-download-button
       >
         {{t "alexandria.document-download.zip-download.button"}}
       </UkButton>
