@@ -30,14 +30,14 @@ export default class TagsService extends Service {
 
   @task *fetchSearchTags() {
     // TODO: This doesnt work on the real backend?
+    // TODO: It works if this is commented out?
     return yield this.store.query("tag", {
-      // TODO: It works if this is commented out?
-      // filter: {
-      //   withDocumentsInCategory: this.category,
-      //   withDocumentsMeta: JSON.stringify(
-      //     this.config.modelMetaFilters.document
-      //   ),
-      // },
+      filter: {
+        withDocumentsInCategory: this.category,
+        withDocumentsMeta: JSON.stringify(
+          this.config.modelMetaFilters.document
+        ),
+      },
     });
   }
 
@@ -50,7 +50,6 @@ export default class TagsService extends Service {
   @action async add(document, tag) {
     if (typeof tag === "string") {
       const existing = this.allTags.findBy("name", tag);
-
       if (existing) {
         tag = existing;
       } else {
