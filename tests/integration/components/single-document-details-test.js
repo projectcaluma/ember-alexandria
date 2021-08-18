@@ -1,4 +1,4 @@
-import { render, click, fillIn, pauseTest } from "@ember/test-helpers";
+import { render, click, fillIn } from "@ember/test-helpers";
 import { tracked } from "@glimmer/tracking";
 import setupRenderingTest from "dummy/tests/helpers/setup-rendering-test";
 import { hbs } from "ember-cli-htmlbars";

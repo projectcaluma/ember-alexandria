@@ -31,7 +31,8 @@
         autocomplete="off"
         name="tag"
         type="text"
-        {{on "input" (perform this.onSearchTag)}}
+        {{on "input" (perform this.onInput)}}
+        value={{this.tagValue}}
       />
       <button
         class="uk-button uk-button-primary uk-button-small uk-width-1-2"
@@ -47,7 +48,7 @@
           <a
             href="#"
             class="uk-badge"
-            {{on "click" (perform this.addTagSuggestion tag)}}
+            {{on "click" (fn this.addTagSuggestion tag)}}
           >
             {{tag.name}}
           </a>

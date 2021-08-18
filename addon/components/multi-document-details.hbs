@@ -25,7 +25,10 @@
           data-test-title-icon
         />
       </span>
-      {{t "alexandria.multiple-documents-details.title" numDocs=@selectedDocuments.length}}
+      {{t
+        "alexandria.multiple-documents-details.title"
+        numDocs=@selectedDocuments.length
+      }}
     </div>
   </div>
 
@@ -48,15 +51,11 @@
     </div>
 
     <ul uk-accordion="multiple: true">
-      <ZipDownload
-        @documents={{@selectedDocuments}}
-      />
+      <ZipDownload @documents={{@selectedDocuments}} />
     </ul>
 
     <ul uk-accordion="multiple: true">
-      <TagManager
-        @documents={{@selectedDocuments}}
-      />
+      <TagManager @documents={{@selectedDocuments}} />
     </ul>
   {{/if}}
 </div>
