@@ -79,15 +79,6 @@
       {{/if}}
     </div>
   </div>
-  {{!-- <DocumentDetails @document={{this.selectedDocument}} data-test-details /> --}}
-  {{!-- {{#if (eq this.selectedDocuments.length 1)}}
-    <DocumentDetails @document={{this.selectedDocument}} data-test-details />
-  {{/if}}
-  {{#if (gt this.selectedDocuments.length 1)}}
-    <MultipleDocumentsDetails
-      @documents={{this.selectedDocuments}}
-    />
-  {{/if}} --}}
   <DocumentsSidePanel
     @selectedDocuments={{this.documents.selectedDocuments}}
   />

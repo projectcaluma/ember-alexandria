@@ -73,18 +73,12 @@ module("Integration | Component | document-view", function (hooks) {
 
     await render(hbs`<DocumentView @filters={{this.filters}} />`);
 
-    assert.equal(requests.length, 3, "store handled 3 requests");
+    assert.equal(requests.length, 3, "store handled 3 requests"); // TODO? Why should this handle 3 requests?
     assert.deepEqual(requests[1].queryParams, {
       "filter[title]": "test",
       "filter[description]": "bla",
       include: "category,files,tags",
-      sort: "",
+      sort: "title",
     });
   });
-
-  // TODO: Implement this
-  // test.todo("it sets the sort keys correctly");
-  // test.todo("it selects a clicked row");
-  // test.todo("it selects mutliple rows if clicked with ctrl");
-  // test.todo("it selects all rows between two rows clicked with shift");
 });

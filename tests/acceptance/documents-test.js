@@ -4,7 +4,6 @@ import {
   click,
   fillIn,
   triggerEvent,
-  pauseTest,
 } from "@ember/test-helpers";
 import { setupMirage } from "ember-cli-mirage/test-support";
 import { setupIntl, setLocale } from "ember-intl/test-support";
@@ -148,7 +147,6 @@ module("Acceptance | documents", function (hooks) {
   });
 
   test("upload file", async function (assert) {
-    // TODO: Fix this test
     assert.expect(3);
     this.server.create("category");
 
@@ -167,7 +165,7 @@ module("Acceptance | documents", function (hooks) {
     await triggerEvent("[data-test-upload] [data-test-input]", "change", {
       files: [new File(["Ember Rules!"], "test-file.txt")],
     });
-    assert.dom("[data-test-document]").exists({ count: 1 });
+    assert.dom("[data-test-document-list-item]").exists({ count: 1 });
   });
 
   test("replace file", async function (assert) {

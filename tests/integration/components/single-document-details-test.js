@@ -20,6 +20,14 @@ module("Integration | Component | single-document-details", function (hooks) {
       createdAt: new Date(1998, 11, 11),
       createdByUser: "user1",
       createdByGroup: "group1",
+      files: [
+        {
+          type: "original",
+          name: "some-file.pdf",
+          createdByUser: null,
+          downloadUrl: "http://test.com",
+        },
+      ],
     };
 
     await render(
@@ -41,7 +49,7 @@ module("Integration | Component | single-document-details", function (hooks) {
 
     assert.dom("[data-test-close]").exists();
     assert.dom("[data-test-delete]").exists();
-    assert.dom("[data-test-download]").exists();
+    assert.dom("[data-test-file-download-link]").exists();
   });
 
   test("download", async function (assert) {
