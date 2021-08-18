@@ -69,6 +69,7 @@ export default class DocumentViewComponent extends Component {
     const docIds = decodeURIComponent(
       this.router.currentRoute.queryParams.document
     ).split(",");
+    // TODO only do this if array is not empty
     const docs = yield this.store.query("document", {
       filter: this.args.filters || {},
       sort: this.sort ? `${this.sortDirection}${this.sort}` : "",
