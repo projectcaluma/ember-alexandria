@@ -22,9 +22,6 @@ module("Integration | Component | document-view", function (hooks) {
     this.owner.register("service:documents", MockDocumentsService);
   });
 
-  // TODO: Implement this
-  // test("it parses the route url and initialises the selected documents, grid view, sorting correctly");
-
   test("it renders the documents when in grid view", async function (assert) {
     this.server.createList("document", 3);
 
