@@ -1,7 +1,8 @@
 <tr
-  {{on "click" (fn @onClickDocument @document)}}
-  class={{if @isSelected 'document-list-item-selected' 'document-list-item'}}
+  class={{if @isSelected "document-list-item-selected" "document-list-item"}}
   data-test-document-list-item
+  role="button"
+  {{on "click" (fn @onClickDocument @document)}}
 >
   <td>
     <FaIcon

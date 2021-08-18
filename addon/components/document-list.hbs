@@ -1,4 +1,6 @@
-<table class="uk-table uk-table-divider uk-table-striped uk-table-hover document-list">
+<table
+  class="uk-table uk-table-divider uk-table-striped uk-table-hover document-list"
+>
   <caption></caption>
   <thead>
     <tr>
@@ -12,9 +14,9 @@
           @prefix="fas"
           @size="1x"
           @class="uk-margin-small-left"
-          {{on "click" (fn @setSort "title")}}
-          data-test-sort-title
           role="button"
+          data-test-sort-title
+          {{on "click" (fn @setSort "title")}}
         />
       </th>
       <th>
@@ -24,9 +26,9 @@
           @prefix="fas"
           @size="1x"
           @class="uk-margin-small-left"
-          {{on "click" (fn @setSort "createdAt")}}
           data-test-sort-title
           role="button"
+          {{on "click" (fn @setSort "createdAt")}}
         />
       </th>
       <th>
@@ -36,9 +38,9 @@
           @prefix="fas"
           @size="1x"
           @class="uk-margin-small-left"
-          {{on "click" (fn @setSort "createdByGroup")}}
           data-test-sort-title
           role="button"
+          {{on "click" (fn @setSort "createdByGroup")}}
         />
       </th>
     </tr>

@@ -17,10 +17,10 @@
 
       <DocumentViewToggle
         @viewList={{this.listView}}
-        {{on "click" this.toggleView}}
         data-test-toggle-side-panel
+        {{on "click" this.toggleView}}
       />
-      <SidePanelToggle/>
+      <SidePanelToggle />
     </div>
 
     {{! Drag'n'Drop Area }}
@@ -79,7 +79,5 @@
       {{/if}}
     </div>
   </div>
-  <DocumentsSidePanel
-    @selectedDocuments={{this.documents.selectedDocuments}}
-  />
+  <DocumentsSidePanel @selectedDocuments={{this.documents.selectedDocuments}} />
 </div>

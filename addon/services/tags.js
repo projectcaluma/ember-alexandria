@@ -40,14 +40,18 @@ export default class TagsService extends Service {
   }
 
   /**
-   * Adds a tag to a document and creates the tag if necessary.
+   * Adds a tag to a document and creates the tag if necessary. Returns the added tag
    *
    * @param {Object} document The target document.
    * @param {Object|String} tag Either e tag instance or a name.
+   * @returns {Object} addedTag The added tag
    */
   @action async add(document, tag) {
+    // debugger;
     if (typeof tag === "string") {
-      const existing = this.allTags.findBy("name", tag);
+      tag = tag.trim();
+      // const existing = this.allTags.findBy("name", tag);
+      const existing = this.allTags.findBy("id", dasherize(tag));
       if (existing) {
         tag = existing;
       } else {
@@ -62,7 +66,7 @@ export default class TagsService extends Service {
     }
 
     if (document.tags.findBy("id", tag.id)) {
-      return;
+      return tag;
     }
 
     document.tags.pushObject(tag);
@@ -70,6 +74,8 @@ export default class TagsService extends Service {
 
     await this.fetchAllTags.perform();
     await this.fetchSearchTags.perform();
+
+    return tag;
   }
 
   /**
