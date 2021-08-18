@@ -187,6 +187,7 @@
               <a
                 uk-icon="download"
                 class="uk-icon-link"
+                data-test-file-download-link
                 href={{file.downloadUrl}}
               ></a>
             </li>
@@ -254,4 +255,15 @@
       </div>
     </li>
   </ul>
+
+  <UkButton
+    class="uk-width-1-1"
+    @size="large"
+    @color="primary"
+    data-test-download
+    @loading={{this.download.isRunning}}
+    {{on "click" (perform this.download)}}
+  >
+    {{t "alexandria.download"}}
+  </UkButton>
 </div>
