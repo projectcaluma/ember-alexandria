@@ -8,6 +8,7 @@ export default class DocumentDeleteButtonComponent extends Component {
   @service notification;
   @service intl;
   @service documents;
+  @service router;
 
   @tracked dialogVisible = false;
 
@@ -45,6 +46,7 @@ export default class DocumentDeleteButtonComponent extends Component {
       }
 
       this.hideDialog();
+      this.router.transitionTo({ queryParams: { document: undefined } });
 
       this.notification.success(
         this.intl.t("alexandria.success.delete-document")
