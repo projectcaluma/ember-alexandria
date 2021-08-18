@@ -29,9 +29,6 @@ export default class TagsService extends Service {
   }
 
   @task *fetchSearchTags() {
-    // TODO: This doesnt work on the real backend?
-    // TODO: It works if this is commented out?
-    // TODO: Ask JC what this was about
     return yield this.store.query("tag", {
       filter: {
         withDocumentsInCategory: this.category,
