@@ -1,5 +1,5 @@
 import Service from "@ember/service";
-import { render, click } from "@ember/test-helpers";
+import { render, click, pauseTest } from "@ember/test-helpers";
 import { tracked } from "@glimmer/tracking";
 import setupRenderingTest from "dummy/tests/helpers/setup-rendering-test";
 import { hbs } from "ember-cli-htmlbars";
@@ -51,6 +51,7 @@ module("Integration | Component | document-view", function (hooks) {
     docService.selectedDocuments = [documents[0]];
 
     await render(hbs`<DocumentView />`);
+    await pauseTest();
     await click("[data-test-toggle]");
 
     assert.dom("[data-test-empty]").doesNotExist();

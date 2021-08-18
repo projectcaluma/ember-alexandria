@@ -126,7 +126,7 @@ module("Acceptance | documents", function (hooks) {
   test("document detail delete", async function (assert) {
     const document = this.server.create("document");
 
-    assert.expect(2);
+    assert.expect(3);
 
     await visit(`/`);
 
@@ -140,9 +140,8 @@ module("Acceptance | documents", function (hooks) {
       );
     });
     await click("[data-test-single-doc-details] [data-test-delete]");
-    // await click(`[data-test-delete-confirm="${document.id}"]`);
     await click("[data-test-delete-confirm]");
-    // assert.equal(currentURL(), "/", "document is removed from url"); // TODO: This should be back in when file selection and url update has been extracted into the service object
+    assert.equal(currentURL(), "/", "document is removed from url");
     assert.dom("[data-test-document]").doesNotExist();
   });
 
