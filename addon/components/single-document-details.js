@@ -17,10 +17,6 @@ export default class SingleDocumentDetailsComponent extends DocumentCard {
   @tracked validTitle = true;
   @tracked matchingTags = [];
 
-  @action closePanel() {
-    this.router.transitionTo({ queryParams: { document: undefined } });
-  }
-
   @action updateDocumentTitle({ target: { value: title } }) {
     this.validTitle = Boolean(title);
     this.args.document.title = title;
@@ -55,46 +51,5 @@ export default class SingleDocumentDetailsComponent extends DocumentCard {
         this.intl.t("alexandria.errors.replace-document")
       );
     }
-  }
-
-  // Tags
-
-  @action async didInsertTagSearch(element) {
-    this.tagSearchBox = element.querySelector("input");
-    await this.tags.fetchAllTags.perform();
-  }
-
-  @restartableTask *onSearchTag() {
-    yield timeout(500);
-
-    if (!this.tags.allTags || this.tagSearchBox.value === "") {
-      this.matchingTags = [];
-    } else {
-      const searchValue = this.tagSearchBox.value.toLowerCase();
-      this.matchingTags = this.tags.allTags.filter((tag) =>
-        tag.name.toLowerCase().startsWith(searchValue)
-      );
-    }
-  }
-
-  @task *addTagSuggestion(tag) {
-    yield this.tags.add(this.args.document, tag);
-
-    this.tagSearchBox.value = "";
-    this.matchingTags = [];
-  }
-
-  @task *addTagFromForm(event) {
-    event.preventDefault();
-
-    const tag = event.target.elements.tag.value;
-    yield this.tags.add(this.args.document, tag);
-
-    this.tagSearchBox.value = "";
-    this.matchingTags = [];
-  }
-
-  @task *removeTag(tag) {
-    yield this.tags.remove(this.args.document, tag);
   }
 }
