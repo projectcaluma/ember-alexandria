@@ -233,4 +233,35 @@ module("Acceptance | documents", function (hooks) {
     });
     await click("[data-test-zip-download-button]");
   });
+
+  test("selecting documents with CTRL A", async function (assert) {
+    this.server.createList("document", 3);
+    await visit("/");
+    window.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "a", ctrlKey: true })
+    );
+    await triggerEvent(window, "keydown", "a", {
+      ctrlKey: true,
+    });
+
+    assert
+      .dom("[data-test-document-list-item].document-list-item-selected")
+      .exists({ count: 3 });
+  });
+
+  test("deselecting documents with Escape", async function (assert) {
+    this.server.createList("document", 3);
+    await visit("/");
+    await click("[data-test-document-list-item]:first-child");
+    assert
+      .dom("[data-test-document-list-item].document-list-item-selected")
+      .exists({ count: 1 });
+
+    window.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" }));
+    await triggerEvent(window, "keydown", "Escape");
+
+    assert
+      .dom("[data-test-document-list-item].document-list-item-selected")
+      .doesNotExist();
+  });
 });

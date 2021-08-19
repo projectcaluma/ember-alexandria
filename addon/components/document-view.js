@@ -18,19 +18,16 @@ export default class DocumentViewComponent extends Component {
   @tracked sort = "title";
   @tracked sortDirection = "";
 
-  get canDrop() {
-    return Boolean(this.args.filters && this.args.filters.category);
+  constructor(parent, args) {
+    super(parent, args);
+    // Adds a key down event listener to enable Ctrl+A document selection of all docs
+    window.addEventListener("keydown", (event) => {
+      this.handleKeyDown(event);
+    });
   }
 
-  // ! DEPRECATED
-  get selectedDocument() {
-    if (this.args.selectedDocumentId) {
-      return (
-        this.fetchedDocuments &&
-        this.store.peekRecord("document", this.args.selectedDocumentId)
-      );
-    }
-    return undefined;
+  get canDrop() {
+    return Boolean(this.args.filters && this.args.filters.category);
   }
 
   @action toggleView() {
@@ -130,6 +127,18 @@ export default class DocumentViewComponent extends Component {
   }
 
   // * DOCUMENT SELECTION
+  handleKeyDown(event) {
+    if (event.key === "a" && event.ctrlKey) {
+      event.preventDefault();
+      this.fetchedDocuments.forEach((doc) => {
+        this.documents.selectDocument(doc);
+      });
+    }
+    if (event.key === "Escape") {
+      this.documents.clearDocumentSelection();
+    }
+  }
+
   @action handleDocumentSelection(selectedDocument, event) {
     if (!event.ctrlKey && !event.shiftKey) {
       this.documents.clearDocumentSelection();

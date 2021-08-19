@@ -25,6 +25,8 @@ module("Unit | Controller | application", function (hooks) {
       category: 1,
       meta: JSON.stringify([{ key: "instance_id", value: "1" }]),
       search: "test",
+      sort: undefined,
+      sortDirection: undefined,
       tags: undefined,
     });
   });
