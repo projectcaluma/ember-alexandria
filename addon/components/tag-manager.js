@@ -79,19 +79,21 @@ export default class TagManagerComponent extends Component {
 
     // Produce an array of tags that are on the selected docs
     this.args.documents.forEach((doc) => {
-      doc.tags.forEach((tag) => {
-        const existingTag = tagsToDisplay.find(
-          (t) => t.emberModel.id === tag.id
-        );
-        if (existingTag) {
-          existingTag.nrOfDocs += 1;
-        } else {
-          tagsToDisplay.push({
-            emberModel: tag,
-            nrOfDocs: 1,
-          });
-        }
-      });
+      if (Array.isArray(doc.tags) && doc.tags.length !== 0) {
+        doc.tags.forEach((tag) => {
+          const existingTag = tagsToDisplay.find(
+            (t) => t.emberModel.id === tag.id
+          );
+          if (existingTag) {
+            existingTag.nrOfDocs += 1;
+          } else {
+            tagsToDisplay.push({
+              emberModel: tag,
+              nrOfDocs: 1,
+            });
+          }
+        });
+      }
     });
 
     // Check which tags are selected by all
