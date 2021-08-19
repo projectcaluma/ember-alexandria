@@ -51,7 +51,6 @@ module("Integration | Component | document-view", function (hooks) {
     docService.selectedDocuments = [documents[0]];
 
     await render(hbs`<DocumentView />`);
-    await pauseTest();
     await click("[data-test-toggle]");
 
     assert.dom("[data-test-empty]").doesNotExist();
