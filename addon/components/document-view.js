@@ -20,10 +20,20 @@ export default class DocumentViewComponent extends Component {
 
   constructor(parent, args) {
     super(parent, args);
-    // Adds a key down event listener to enable Ctrl+A document selection of all docs
+    /* Adds a key down event listener to enable Ctrl+A document selection of all docs
+    as well as ESC key press for deselection of all docs */
     window.addEventListener("keydown", (event) => {
       this.handleKeyDown(event);
     });
+
+    // Initiliase the sorting param of the route
+    if (this.router?.currentRoute?.queryParams?.sort) {
+      this.sort = decodeURIComponent(this.router.currentRoute.queryParams.sort);
+      if (this.sort[0] === "-") {
+        // reverse sorting
+        this.sortDirection = "-";
+      }
+    }
   }
 
   get canDrop() {
@@ -42,7 +52,7 @@ export default class DocumentViewComponent extends Component {
       this.sortDirection = "";
     }
     this.router.transitionTo({
-      queryParams: { sort: this.sort, sortDirection: this.sortDirection },
+      queryParams: { sort: this.sortDirection + this.sort },
     });
     this.fetchDocuments.perform();
   }
