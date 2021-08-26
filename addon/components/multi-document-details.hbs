@@ -50,12 +50,6 @@
       </DocumentDeleteButton>
     </div>
 
-    <ul uk-accordion="multiple: true">
-      <ZipDownload @documents={{@selectedDocuments}} />
-    </ul>
-
-    <ul uk-accordion="multiple: true">
-      <TagManager @documents={{@selectedDocuments}} />
-    </ul>
+    <TagManager @documents={{@selectedDocuments}} />
   {{/if}}
 </div>

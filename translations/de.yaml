@@ -1,7 +1,6 @@
 alexandria:
   loading: "Lädt..."
   nothing-found: "Wir haben nichts gefunden..."
-  download: "Herunterladen"
   delete: "Löschen"
   upload-file: "Datei hochladen"
 
@@ -58,10 +57,7 @@ alexandria:
       add: "Hinzufügen"
   
   document-download:
-    zip-download:
-      title: "ZIP-Download"
-      button: "ZIP herunterladen"
-      text: "{numDocs, plural, =1 {1 Dokument als ZIP herunterladen} other {# Dokumente als ZIP herunterladen}}"
+    button: "{numDocs, plural, =1 {Herunterladen} other {Auswahl herunterladen}}"
   
   multiple-documents-details:
     title: "{numDocs, plural, =0 {Kein Dokument ausgewählt} =1 {1 Dokument ausgewählt} other {# Dokumente ausgewählt}}"

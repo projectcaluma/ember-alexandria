@@ -194,20 +194,5 @@
     </li>
   </ul>
 
-  <ul uk-accordion="multiple: true">
-    <li class="uk-open">
-      <TagManager @documents={{array @document}} />
-    </li>
-  </ul>
-
-  <UkButton
-    class="uk-width-1-1"
-    @size="large"
-    @color="primary"
-    data-test-download
-    @loading={{this.download.isRunning}}
-    {{on "click" (perform this.download)}}
-  >
-    {{t "alexandria.download"}}
-  </UkButton>
+  <TagManager @documents={{array @document}} />
 </div>
