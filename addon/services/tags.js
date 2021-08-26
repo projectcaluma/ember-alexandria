@@ -47,10 +47,8 @@ export default class TagsService extends Service {
    * @returns {Object} addedTag The added tag
    */
   @action async add(document, tag) {
-    // debugger;
     if (typeof tag === "string") {
       tag = tag.trim();
-      // const existing = this.allTags.findBy("name", tag);
       const existing = this.allTags.findBy("id", dasherize(tag));
       if (existing) {
         tag = existing;
@@ -92,6 +90,6 @@ export default class TagsService extends Service {
     document.tags.removeObject(tag);
     await document.save();
 
-    this.fetchSearchTags.perform(); // TODO: Is this required?
+    this.fetchSearchTags.perform();
   }
 }
