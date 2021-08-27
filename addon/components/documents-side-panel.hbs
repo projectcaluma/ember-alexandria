@@ -17,5 +17,7 @@
       {{/if}}
     </div>
   </div>
-  <DownloadButton @documents={{@selectedDocuments}} data-test-download-button />
+  {{#if (gt @selectedDocuments.length 0)}}
+    <DownloadButton @documents={{@selectedDocuments}} />
+  {{/if}}
 </div>
