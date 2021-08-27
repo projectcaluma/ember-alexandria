@@ -28,6 +28,8 @@ export default class ApplicationController extends Controller {
       tags: this.tags,
       search: this.search,
       activeGroup: this.activeGroup,
+      // sort: this.sort,
+      // sortDirection: this.sortDirection,
     };
 
     if (this.config && this.config.modelMetaFilters.document) {
