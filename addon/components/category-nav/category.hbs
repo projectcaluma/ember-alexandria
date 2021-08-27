@@ -1,8 +1,7 @@
 <li class="category-nav--category" ...attributes>
-  <a
+  <div
     class="uk-link-reset {{if @selected "active"}}"
     role="button"
-    href=""
     data-test-link
     {{on "click" this.loadCategory}}
   >
@@ -20,5 +19,5 @@
         {{@category.name}}
       </div>
     </div>
-  </a>
+  </div>
 </li>
