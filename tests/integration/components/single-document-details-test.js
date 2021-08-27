@@ -4,7 +4,6 @@ import setupRenderingTest from "dummy/tests/helpers/setup-rendering-test";
 import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
 import { setupIntl } from "ember-intl/test-support";
-import fileSaver from "file-saver";
 import { module, test } from "qunit";
 import sinon from "sinon";
 
@@ -50,34 +49,6 @@ module("Integration | Component | single-document-details", function (hooks) {
     assert.dom("[data-test-close]").exists();
     assert.dom("[data-test-delete]").exists();
     assert.dom("[data-test-file-download-link]").exists();
-  });
-
-  test("download", async function (assert) {
-    const stub = sinon.stub(fileSaver, "saveAs");
-
-    const downloadUrl = "http://earh.planet",
-      title = "test1";
-
-    this.selectedDocument = {
-      title,
-      files: [{ name: "foo.txt", type: "original", downloadUrl }],
-    };
-
-    await render(
-      hbs`<SingleDocumentDetails @document={{this.selectedDocument}} />`
-    );
-
-    await click("[data-test-download]");
-    assert.equal(
-      stub.args[0][0],
-      downloadUrl,
-      "saveAs was called with correct downloadUrl"
-    );
-    assert.equal(
-      stub.args[0][1],
-      `${title}.txt`,
-      "saveAs was called with correct file name"
-    );
   });
 
   test("delete document", async function (assert) {

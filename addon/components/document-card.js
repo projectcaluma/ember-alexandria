@@ -12,11 +12,12 @@ export default class DocumentCardComponent extends Component {
   }
 
   @task *download() {
-    if (this.args.documents.length === 1) {
+    if (this.args.document) {
       // TODO: Currently this only works for a single document
-      const doc = this.args.documents[0];
       try {
-        const file = doc.files.find((file) => file.type === "original");
+        const file = this.args.document.files.find(
+          (file) => file.type === "original"
+        );
         const extension = file.name.includes(".")
           ? `.${file.name.split(".").slice(-1)[0]}`
           : "";
@@ -24,7 +25,7 @@ export default class DocumentCardComponent extends Component {
         // There is a known issue with file-saver and urls.
         // The filename passed as the second argument is ignored.
         // https://github.com/eligrey/FileSaver.js/issues/670
-        yield saveAs(file.downloadUrl, doc.title + extension);
+        yield saveAs(file.downloadUrl, this.args.document.title + extension);
       } catch (error) {
         this.notification.danger(this.intl.t("alexandria.errors.save-file"));
       }
