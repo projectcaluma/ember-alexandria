@@ -1,8 +1,10 @@
 <li class="category-nav--category" ...attributes>
   <a
-    {{on "click" this.loadCategory}}
     class="uk-link-reset {{if @selected "active"}}"
+    role="button"
+    href=""
     data-test-link
+    {{on "click" this.loadCategory}}
   >
     <div class="uk-flex uk-flex-middle">
       <div>

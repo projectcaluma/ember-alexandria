@@ -1,8 +1,7 @@
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
-import { timeout } from "ember-concurrency";
-import { restartableTask, dropTask, task } from "ember-concurrency-decorators";
+import { restartableTask, dropTask } from "ember-concurrency-decorators";
 
 import DocumentCard from "./document-card";
 

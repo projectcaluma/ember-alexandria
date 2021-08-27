@@ -39,7 +39,6 @@ module("Integration | Component | document-card", function (hooks) {
       files: [{ name: "foo.txt", type: "original", downloadUrl }],
     };
     await render(hbs`<DocumentCard @document={{this.document}}/>`);
-
     await click("[data-test-context-menu-trigger]");
     await click("[data-test-download]");
     assert.equal(

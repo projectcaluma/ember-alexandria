@@ -168,7 +168,6 @@ module("Acceptance | documents", function (hooks) {
   });
 
   test("replace file", async function (assert) {
-    // TODO: Update this test
     assert.expect(4);
 
     const document = this.server.create("document");
