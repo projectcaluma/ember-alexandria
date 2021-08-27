@@ -38,8 +38,7 @@ export default class DocumentCardComponent extends Component {
           .join(",")
       );
 
-      // const url = `/api/v1/files/multi?filter%5Bfiles%5D=${originalFileIds}`;
-      const url = `api/v1/files/multi?files=${originalFilePKs}`;
+      const url = `/api/v1/files/multi?filter%5Bfiles%5D=${originalFilePKs}`;
       yield saveAs(url, `Download-${this.args.documents.length}-files.zip`);
     }
   }
