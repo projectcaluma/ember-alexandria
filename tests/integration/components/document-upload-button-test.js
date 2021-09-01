@@ -3,7 +3,7 @@ import { hbs } from "ember-cli-htmlbars";
 import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
 import { setupRenderingTest } from "ember-qunit";
 import { module, test } from "qunit";
-import sinon from "sinon";
+import { fake } from "sinon";
 
 const modulePrefix = "ember-alexandria";
 const resolver = engineResolverFor(modulePrefix);
@@ -14,8 +14,8 @@ module("Integration | Component | document-upload-button", function (hooks) {
   test("upload with predefined category", async function (assert) {
     const store = this.owner.lookup("service:store");
 
-    const save = sinon.fake();
-    store.createRecord = sinon.fake.returns({ save });
+    const save = fake();
+    store.createRecord = fake.returns({ save });
     this.category = { id: 1 };
 
     await render(hbs`<DocumentUploadButton @category={{this.category}} />`);
@@ -53,8 +53,8 @@ module("Integration | Component | document-upload-button", function (hooks) {
   test("upload without predefined category", async function (assert) {
     const store = this.owner.lookup("service:store");
 
-    store.createRecord = sinon.fake();
-    store.peekAll = sinon.fake.returns([
+    store.createRecord = fake();
+    store.peekAll = fake.returns([
       { id: 1, name: "c1", color: "#f00" },
       { id: 2, name: "c2", color: "#0f0" },
       { id: 3, name: "c3", color: "#00f" },

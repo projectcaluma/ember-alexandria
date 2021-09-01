@@ -9,6 +9,7 @@
       class="uk-search-input uk-background-default"
       placeholder="Search..."
       value={{@search}}
+      aria-label="Search input"
       data-test-search-input
       {{on "input" (perform this.updateSearch)}}
     />
