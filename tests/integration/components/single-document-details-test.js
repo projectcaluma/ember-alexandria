@@ -5,7 +5,7 @@ import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
 import { setupIntl } from "ember-intl/test-support";
 import { module, test } from "qunit";
-import sinon from "sinon";
+import { fake } from "sinon";
 
 module("Integration | Component | single-document-details", function (hooks) {
   setupRenderingTest(hooks);
@@ -55,7 +55,7 @@ module("Integration | Component | single-document-details", function (hooks) {
     this.selectedDocument = {
       id: 1,
       title: "Test",
-      destroyRecord: sinon.fake(),
+      destroyRecord: fake(),
     };
     await render(
       hbs`<SingleDocumentDetails @document={{this.selectedDocument}}/>`
@@ -75,7 +75,7 @@ module("Integration | Component | single-document-details", function (hooks) {
     // Error: Assertion Failed: You attempted to update [object Object].title to "edited", but it is being tracked by a tracking context, such as a template, computed property, or observer. In order to make sure the context updates properly, you must invalidate the property when updating it. You can mark the property as `@tracked`, or use `@ember/object#set` to do this.
     class Document {
       @tracked title = "unedited";
-      save = sinon.fake();
+      save = fake();
     }
     this.selectedDocument = new Document();
     await render(

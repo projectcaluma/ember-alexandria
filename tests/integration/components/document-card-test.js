@@ -4,7 +4,7 @@ import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
 import { setupRenderingTest } from "ember-qunit";
 import fileSaver from "file-saver";
 import { module, test } from "qunit";
-import sinon from "sinon";
+import { fake, stub } from "sinon";
 
 const modulePrefix = "ember-alexandria";
 const resolver = engineResolverFor(modulePrefix);
@@ -29,7 +29,7 @@ module("Integration | Component | document-card", function (hooks) {
   });
 
   test("download file", async function (assert) {
-    const stub = sinon.stub(fileSaver, "saveAs");
+    const fileSaverStub = stub(fileSaver, "saveAs");
 
     const downloadUrl = "http://earh.planet",
       title = "test1";
@@ -42,12 +42,12 @@ module("Integration | Component | document-card", function (hooks) {
     await click("[data-test-context-menu-trigger]");
     await click("[data-test-download]");
     assert.equal(
-      stub.args[0][0],
+      fileSaverStub.args[0][0],
       downloadUrl,
       "saveAs was called with correct downloadUrl"
     );
     assert.equal(
-      stub.args[0][1],
+      fileSaverStub.args[0][1],
       `${title}.txt`,
       "saveAs was called with correct file name"
     );
@@ -56,7 +56,7 @@ module("Integration | Component | document-card", function (hooks) {
   test("delete file", async function (assert) {
     this.document = {
       id: 1,
-      destroyRecord: sinon.fake(),
+      destroyRecord: fake(),
     };
     await render(hbs`<DocumentCard @document={{this.document}}/>`);
 

@@ -12,6 +12,7 @@ const resolver = engineResolverFor(modulePrefix);
 
 class TagServiceStub extends Service {
   fetchAllTags = {
+    // eslint-disable-next-line import/no-named-as-default-member
     perform: sinon.fake(),
   };
 }
