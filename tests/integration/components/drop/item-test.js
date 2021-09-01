@@ -16,7 +16,7 @@ module("Integration | Component | drop/item", function (hooks) {
     assert.dom(this.element).hasText("test");
   });
 
-  test("it renders with block", async function (assert) {
+  test.todo("it renders with block", async function (assert) {
     await render(hbs`
       <Drop::Item>
         test
