@@ -1,9 +1,10 @@
+/* eslint-disable import/no-named-as-default-member */
 import { render, fillIn } from "@ember/test-helpers";
 import { hbs } from "ember-cli-htmlbars";
 import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
 import { setupRenderingTest } from "ember-qunit";
 import { module, test } from "qunit";
-import { fake } from "sinon";
+import sinon from "sinon";
 
 const modulePrefix = "ember-alexandria";
 const resolver = engineResolverFor(modulePrefix);
@@ -13,7 +14,7 @@ module("Integration | Component | search", function (hooks) {
 
   test("it renders", async function (assert) {
     const router = this.owner.lookup("service:router");
-    router.transitionTo = fake();
+    router.transitionTo = sinon.fake();
 
     await render(hbs`<Search @search="test"/>`);
 

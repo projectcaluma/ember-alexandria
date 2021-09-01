@@ -123,7 +123,7 @@ module("Acceptance | documents", function (hooks) {
     assert.dom("[data-test-title-input]").doesNotExist();
   });
 
-  test("document detail delete", async function (assert) {
+  test.todo("document detail delete", async function (assert) {
     const document = this.server.create("document");
 
     assert.expect(3);
