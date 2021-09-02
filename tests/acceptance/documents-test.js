@@ -222,7 +222,6 @@ module("Acceptance | documents", function (hooks) {
       }
     );
     assert.dom("[data-test-zip-download-text]").includesText("3");
-    // TODO: Update this test as soon as the backend has been set up
     this.assertRequest("GET", "/api/v1/documents/zip/:ids", (request) => {
       assert.equal(
         request.params.ids,

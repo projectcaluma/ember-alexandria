@@ -150,13 +150,10 @@ export default class DocumentViewComponent extends Component {
   }
 
   @action handleDocumentSelection(selectedDocument, event) {
-    if (!event.ctrlKey && !event.shiftKey) {
+    const isNoDocSelected = this.documents.selectedDocuments.length === 0;
+    if ((!event.ctrlKey && !event.shiftKey) || isNoDocSelected) {
       this.documents.clearDocumentSelection();
       this.documents.selectDocument(selectedDocument);
-      this.router.transitionTo({
-        queryParams: { document: selectedDocument.id },
-      });
-      return;
     }
     if (event.ctrlKey) {
       if (this.documents.documentIsSelected(selectedDocument)) {
@@ -164,19 +161,8 @@ export default class DocumentViewComponent extends Component {
       } else {
         this.documents.selectDocument(selectedDocument);
       }
-      return;
     }
     if (event.shiftKey) {
-      const isNoDocSelected = this.documents.selectedDocuments.length === 0;
-      if (isNoDocSelected) {
-        // If we don't have a document selected yet so simply select the clicked document
-        this.documents.selectDocument(selectedDocument);
-        this.router.transitionTo({
-          queryParams: { document: selectedDocument.id },
-        });
-        return;
-      }
-
       const selectedDocIndex = this.fetchedDocuments.indexOf(selectedDocument);
       const lastSelectedDocIndex = this.fetchedDocuments.indexOf(
         this.documents.selectedDocuments[0]
