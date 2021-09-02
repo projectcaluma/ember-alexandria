@@ -44,7 +44,7 @@
     "ember-intl": "^5.5.1",
     "ember-localized-model": "^1.0.1",
     "ember-modifier": "^2.1.1",
-    "ember-moment": "stefanpenner/ember-moment#351/head",
+    "ember-moment": "stefanpenner/ember-moment#89a2c42a7a282bc78127b9a0c623e919df86422e",
     "ember-promise-helpers": "^1.0.9",
     "ember-simple-set-helper": "^0.1.2",
     "ember-truth-helpers": "^2.1.0",
@@ -109,8 +109,6 @@
     "extends": "@adfinis-sygroup/semantic-release-config"
   },
   "//": {
-    "ember-moment": "there is a bug in ember-moment. the merge request referenced above fixes this but it has not been merged yet.",
-    "uikit": "Higher versions break the build. https://github.com/uikit/uikit/issues/4403",
-    "@babel/parser": "For some reason 7.12.13 fails to transpile TypeScript sources. https://github.com/babel/babel/issues/12745"
+    "ember-moment": "there is a bug in ember-moment. the merge request referenced above fixes this but it has not been merged yet. (https://github.com/adopted-ember-addons/ember-moment/pull/351)"
   }
 }

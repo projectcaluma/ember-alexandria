@@ -51,7 +51,7 @@ module("Integration | Component | document-upload-button", function (hooks) {
     );
   });
 
-  test.todo("upload without predefined category", async function (assert) {
+  test("upload without predefined category", async function (assert) {
     const store = this.owner.lookup("service:store");
 
     store.createRecord = sinon.fake();
