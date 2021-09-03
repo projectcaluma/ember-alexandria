@@ -3,6 +3,7 @@ alexandria:
   nothing-found: "Wir haben nichts gefunden..."
   delete: "Löschen"
   upload-file: "Datei hochladen"
+  download: "Download"
 
   errors:
     save-file: "Beim Herunterladen der Datei ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
@@ -47,7 +48,6 @@ alexandria:
   document-details:
     document-title: "Dokumententitel"
     document-description: "Dokumentenbeschreibung"
-    created-at: "Erstellt am {date}"
     name-placeholder: "Name..."
     version-history: "Versionsgeschichte"
     add-description: "Beschreibung hinzufügen"
