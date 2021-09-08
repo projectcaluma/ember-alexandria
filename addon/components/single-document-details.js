@@ -5,6 +5,8 @@ import { restartableTask, dropTask } from "ember-concurrency-decorators";
 
 import DocumentCard from "./document-card";
 
+// TODO: This should be refactored and the SingleDocumentDetailsComponent should NOT
+// be inheriting from DocumentCard
 export default class SingleDocumentDetailsComponent extends DocumentCard {
   @service router;
   @service documents;
@@ -36,7 +38,7 @@ export default class SingleDocumentDetailsComponent extends DocumentCard {
       yield this.args.document.save();
       this.resetState();
       this.notification.success(this.intl.t("alexandria.success.update"));
-    } catch (error) {
+    } catch {
       this.notification.danger(this.intl.t("alexandria.errors.update"));
     }
   }
@@ -45,7 +47,7 @@ export default class SingleDocumentDetailsComponent extends DocumentCard {
     try {
       const [file] = event.target.files;
       yield this.documents.replace(this.args.document, file);
-    } catch (error) {
+    } catch {
       this.notification.danger(
         this.intl.t("alexandria.errors.replace-document")
       );

@@ -3,7 +3,7 @@ import setupRenderingTest from "dummy/tests/helpers/setup-rendering-test";
 import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
 import { setupIntl } from "ember-intl/test-support";
-import { module, test, todo } from "qunit";
+import { module, test } from "qunit";
 
 module("Integration | Component | category-nav", function (hooks) {
   setupRenderingTest(hooks);
@@ -20,7 +20,7 @@ module("Integration | Component | category-nav", function (hooks) {
     assert.dom("[data-test-category]").exists({ count: 2 });
   });
 
-  todo("it renders loading categories", async function (assert) {
+  test.skip("it renders loading categories", async function (assert) {
     // Dont know how to test the loading state since the datafetching is on render and the test waits until rendering is finished.
     this.server.createList("category", 2);
 

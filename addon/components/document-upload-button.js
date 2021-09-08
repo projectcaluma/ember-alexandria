@@ -20,8 +20,10 @@ export default class DocumentUploadButtonComponent extends Component {
         })
       );
 
-      this.args.afterUpload();
-    } catch (error) {
+      if (this.args.afterUpload) {
+        this.args.afterUpload();
+      }
+    } catch {
       this.notification.danger(
         this.intl.t("alexandria.errors.upload-document", {
           count: files.length,
@@ -34,7 +36,7 @@ export default class DocumentUploadButtonComponent extends Component {
     try {
       return yield this.store.peekAll("category") ||
         this.store.findAll("category");
-    } catch (e) {
+    } catch {
       this.notification.danger(
         this.intl.t("alexandria.errors.fetch-categories")
       );

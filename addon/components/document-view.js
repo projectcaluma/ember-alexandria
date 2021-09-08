@@ -25,15 +25,6 @@ export default class DocumentViewComponent extends Component {
     window.addEventListener("keydown", (event) => {
       this.handleKeyDown(event);
     });
-
-    // Initiliase the sorting param of the route
-    if (this.router?.currentRoute?.queryParams?.sort) {
-      this.sort = decodeURIComponent(this.router.currentRoute.queryParams.sort);
-      if (this.sort[0] === "-") {
-        // reverse sorting
-        this.sortDirection = "-";
-      }
-    }
   }
 
   get canDrop() {
@@ -69,10 +60,6 @@ export default class DocumentViewComponent extends Component {
 
   @task
   *initialiseDocumentSelection() {
-    /* TODO: This is a very brute force way of doing it
-      since i dont know how i could get a collection of EmberData objects otherwise?
-      The problem with this is, that we fetch all the documents two times!
-    */
     let docIds = [];
     if (this.router?.currentRoute?.queryParams?.document) {
       docIds = decodeURIComponent(
@@ -125,7 +112,7 @@ export default class DocumentViewComponent extends Component {
       );
 
       await this.fetchDocuments.perform();
-    } catch (error) {
+    } catch {
       this.notification.danger(
         this.intl.t("alexandria.errors.upload-document", {
           count: files.length,
@@ -150,11 +137,14 @@ export default class DocumentViewComponent extends Component {
   }
 
   @action handleDocumentSelection(selectedDocument, event) {
+    // SIMPLE CLICK WITH NO MODIFIER KEYS
     const isNoDocSelected = this.documents.selectedDocuments.length === 0;
     if ((!event.ctrlKey && !event.shiftKey) || isNoDocSelected) {
       this.documents.clearDocumentSelection();
       this.documents.selectDocument(selectedDocument);
     }
+
+    // CTRL SELECTION
     if (event.ctrlKey) {
       if (this.documents.documentIsSelected(selectedDocument)) {
         this.documents.deselectDocument(selectedDocument);
@@ -162,6 +152,8 @@ export default class DocumentViewComponent extends Component {
         this.documents.selectDocument(selectedDocument);
       }
     }
+
+    // SHIFT SELECTION
     if (event.shiftKey) {
       const selectedDocIndex = this.fetchedDocuments.indexOf(selectedDocument);
       const lastSelectedDocIndex = this.fetchedDocuments.indexOf(
@@ -184,11 +176,5 @@ export default class DocumentViewComponent extends Component {
         this.documents.selectDocument(this.fetchedDocuments.toArray()[i]);
       }
     }
-
-    this.router.transitionTo({
-      queryParams: {
-        document: this.documents.selectedDocuments.map((d) => d.id),
-      },
-    });
   }
 }

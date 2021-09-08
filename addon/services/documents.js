@@ -6,7 +6,34 @@ import fetch from "fetch";
 export default class DocumentsService extends Service {
   @service store;
   @service config;
+  @service router;
   @tracked selectedDocuments = [];
+
+  constructor(...args) {
+    super(...args);
+    // Initialise the selected documents based on the query params of the route
+    const documentQueryParam = this.router?.currentRoute?.queryParams?.document;
+    if (documentQueryParam) {
+      documentQueryParam.split(",").map(async (id) => {
+        this.selectDocument(await this.store.find("document", id));
+      });
+    }
+  }
+
+  /**
+   * Updates the route depending to reflect the currently selected documents
+   */
+  updateRoute() {
+    const docs =
+      this.selectedDocuments.length === 0
+        ? undefined
+        : this.selectedDocuments.map((d) => d.id);
+    this.router.transitionTo({
+      queryParams: {
+        document: docs,
+      },
+    });
+  }
 
   /**
    * Uploads one or multiple files and creates the necessary document and
@@ -86,6 +113,7 @@ export default class DocumentsService extends Service {
    */
   @action clearDocumentSelection() {
     this.selectedDocuments = [];
+    this.updateRoute();
   }
 
   /**
@@ -103,7 +131,10 @@ export default class DocumentsService extends Service {
    * @param {Object} doc an EmberData representation of a Document
    */
   @action selectDocument(doc) {
-    this.selectedDocuments = [...this.selectedDocuments, doc];
+    if (!this.selectedDocuments.includes(doc)) {
+      this.selectedDocuments = [...this.selectedDocuments, doc];
+      this.updateRoute();
+    }
   }
 
   /**
@@ -114,5 +145,6 @@ export default class DocumentsService extends Service {
     this.selectedDocuments = this.selectedDocuments.filter(
       (d) => d.id !== doc.id
     );
+    this.updateRoute();
   }
 }

@@ -46,12 +46,11 @@ export default class DocumentDeleteButtonComponent extends Component {
       }
 
       this.hideDialog();
-      this.router.transitionTo({ queryParams: { document: undefined } });
 
       this.notification.success(
         this.intl.t("alexandria.success.delete-document")
       );
-    } catch (error) {
+    } catch {
       this.notification.danger(
         this.intl.t("alexandria.errors.delete-document")
       );

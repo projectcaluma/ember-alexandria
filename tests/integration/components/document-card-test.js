@@ -1,3 +1,4 @@
+import Service from "@ember/service";
 import { render, click } from "@ember/test-helpers";
 import { hbs } from "ember-cli-htmlbars";
 import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
@@ -9,8 +10,18 @@ import sinon from "sinon";
 const modulePrefix = "ember-alexandria";
 const resolver = engineResolverFor(modulePrefix);
 
+const mockDocumentsService = class DocumentsService extends Service {
+  deselectDocument() {
+    return [];
+  }
+};
+
 module("Integration | Component | document-card", function (hooks) {
   setupRenderingTest(hooks, { resolver });
+
+  hooks.beforeEach(function () {
+    this.owner.register("service:documents", mockDocumentsService);
+  });
 
   test("it renders document card", async function (assert) {
     this.document = { title: "test1" };
