@@ -24,7 +24,7 @@ export default class DocumentCardComponent extends Component {
         // The filename passed as the second argument is ignored.
         // https://github.com/eligrey/FileSaver.js/issues/670
         yield saveAs(file.downloadUrl, doc.title + extension);
-      } catch (error) {
+      } catch {
         this.notification.danger(this.intl.t("alexandria.errors.save-file"));
       }
     } else {

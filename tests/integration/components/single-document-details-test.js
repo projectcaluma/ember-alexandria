@@ -1,4 +1,5 @@
 /* eslint-disable import/no-named-as-default-member */
+import Service from "@ember/service";
 import { render, click, fillIn } from "@ember/test-helpers";
 import { tracked } from "@glimmer/tracking";
 import setupRenderingTest from "dummy/tests/helpers/setup-rendering-test";
@@ -8,10 +9,20 @@ import { setupIntl } from "ember-intl/test-support";
 import { module, test } from "qunit";
 import sinon from "sinon";
 
+const mockDocumentsService = class DocumentsService extends Service {
+  deselectDocument() {
+    return [];
+  }
+};
+
 module("Integration | Component | single-document-details", function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks, "en");
   setupMirage(hooks);
+
+  hooks.beforeEach(function () {
+    this.owner.register("service:documents", mockDocumentsService);
+  });
 
   test("it renders document information", async function (assert) {
     this.selectedDocument = {
@@ -39,7 +50,12 @@ module("Integration | Component | single-document-details", function (hooks) {
     assert.dom("[data-test-title-icon]").hasStyle({ color: "rgb(255, 0, 0)" });
 
     assert.dom("[data-test-title]").hasText(this.selectedDocument.title);
-    assert.dom("[data-test-created-at]").hasText("Created on 12/11/1998");
+    assert
+      .dom("[data-test-created-at]")
+      .hasText(
+        't:alexandria.document-details.created-at:("date":"12/11/1998")'
+      );
+    // assert.dom("[data-test-created-at]").hasText("Created on 12/11/1998");
     assert
       .dom("[data-test-created-by-user]")
       .hasText(this.selectedDocument.createdByUser);

@@ -25,6 +25,7 @@ module("Acceptance | nav", function (hooks) {
 
   test("navigating categories clears any sorting, filtering and selection querys", async function (assert) {
     const categories = this.server.createList("category", 2);
+    this.server.create("document", { category: categories[0] });
     await visit(
       `/?category=${categories[0].id}&sort=title&tag=test&document=1`
     );
