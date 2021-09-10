@@ -92,10 +92,10 @@
     "sass": "1.32.12"
   },
   "engines": {
-    "node": "10.* || 12.* || 14.* || >= 16"
+    "node": "12.* || 14.* || >= 16"
   },
   "ember": {
-    "edition": "classic"
+    "edition": "octane"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
