@@ -79,9 +79,9 @@ export default class TagManagerComponent extends Component {
 
     // Produce an array of tags that are on the selected docs
     this.args.documents.forEach((doc) => {
-      if (Array.isArray(doc.tags) && doc?.tags.length !== 0) {
-        // this fixes failing tests when it is called with a collection instead of an array
-        doc.tags.forEach((tag) => {
+      const tags = doc.tags;
+      if (tags && tags.length !== 0) {
+        tags.forEach((tag) => {
           const existingTag = tagsToDisplay.find(
             (t) => t.emberModel.id === tag.id
           );
