@@ -12,6 +12,8 @@ export default Factory.extend({
   thumbnail: null,
 
   afterCreate(document, server) {
-    server.create("tag", { documents: [document] });
+    document.update({
+      tags: server.create("tag"),
+    });
   },
 });
