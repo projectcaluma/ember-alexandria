@@ -3,7 +3,7 @@ import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { timeout } from "ember-concurrency";
-import { restartableTask, task } from "ember-concurrency-decorators";
+import { restartableTask } from "ember-concurrency-decorators";
 
 export default class TagManagerComponent extends Component {
   @service("tags") tagService;
@@ -47,11 +47,11 @@ export default class TagManagerComponent extends Component {
     this.matchingTags = [];
   }
 
-  @task *addTagFromForm(event) {
+  @action addTagFromForm(event) {
     event.preventDefault();
 
     const tag = event.target.elements.tag.value;
-    const addedTag = yield this.tagService.add(this.args.documents[0], tag); // add the tag to the first document
+    const addedTag = this.tagService.add(this.args.documents[0], tag); // add the tag to the first document
 
     if (this.args.documents.length > 1) {
       // now add the returned or created tag to all the other documents
@@ -62,11 +62,10 @@ export default class TagManagerComponent extends Component {
 
     this.tagValue = "";
     this.matchingTags = [];
-    yield;
   }
 
-  @task *removeTag(tag) {
-    yield this.args.documents.forEach((doc) => {
+  @action removeTag(tag) {
+    this.args.documents.forEach((doc) => {
       if (doc.tags.includes(tag.emberModel)) {
         this.tagService.remove(doc, tag.emberModel);
       }

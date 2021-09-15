@@ -156,19 +156,19 @@ export default class DocumentViewComponent extends Component {
     // SHIFT SELECTION
     if (event.shiftKey) {
       const selectedDocIndex = this.fetchedDocuments.indexOf(selectedDocument);
-      const lastSelectedDocIndex = this.fetchedDocuments.indexOf(
+      const firstSelectedDocIndex = this.fetchedDocuments.indexOf(
         this.documents.selectedDocuments[0]
       );
 
       let startIndex, endIndex;
-      if (selectedDocIndex > lastSelectedDocIndex) {
+      if (selectedDocIndex > firstSelectedDocIndex) {
         // If we are clicking a document later then the previously selected document (we are going down)
-        startIndex = lastSelectedDocIndex;
+        startIndex = firstSelectedDocIndex;
         endIndex = selectedDocIndex;
       } else {
         // If we are clicking a document earlier than the previously selected document (we are going up)
         startIndex = selectedDocIndex;
-        endIndex = lastSelectedDocIndex;
+        endIndex = firstSelectedDocIndex;
       }
 
       this.documents.clearDocumentSelection();
