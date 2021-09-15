@@ -46,15 +46,16 @@ export default class TagsService extends Service {
    * @param {Object|String} tag Either e tag instance or a name.
    * @returns {Object} addedTag The added tag
    */
-  @action async add(document, tag) {
-    if (typeof tag === "string") {
-      tag = tag.trim();
-      const existing = this.allTags.findBy("id", dasherize(tag));
+  @action async add(document, tagInput) {
+    let tag = tagInput;
+    if (typeof tagInput === "string") {
+      const tagId = dasherize(tagInput.trim());
+      const existing = this.allTags.findBy("id", tagId);
       if (existing) {
         tag = existing;
       } else {
         tag = this.store.createRecord("tag", {
-          id: dasherize(tag),
+          id: tagId,
           name: tag,
           createdByGroup: this.config.activeGroup,
           modifiedByGroup: this.config.activeGroup,
