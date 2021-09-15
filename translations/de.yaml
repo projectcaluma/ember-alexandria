@@ -51,6 +51,7 @@ alexandria:
     name-placeholder: "Name..."
     version-history: "Versionsgeschichte"
     add-description: "Beschreibung hinzufügen"
+    created-at: "Erstellt am {date}"
     replace: "Ersetzen"
     tags:
       title: "Tags"
