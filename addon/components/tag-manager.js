@@ -47,11 +47,11 @@ export default class TagManagerComponent extends Component {
     this.matchingTags = [];
   }
 
-  @action addTagFromForm(event) {
+  @action async addTagFromForm(event) {
     event.preventDefault();
 
     const tag = event.target.elements.tag.value;
-    const addedTag = this.tagService.add(this.args.documents[0], tag); // add the tag to the first document
+    const addedTag = await this.tagService.add(this.args.documents[0], tag); // add the tag to the first document
 
     if (this.args.documents.length > 1) {
       // now add the returned or created tag to all the other documents
