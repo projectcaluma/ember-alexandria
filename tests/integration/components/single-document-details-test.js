@@ -50,11 +50,7 @@ module("Integration | Component | single-document-details", function (hooks) {
     assert.dom("[data-test-title-icon]").hasStyle({ color: "rgb(255, 0, 0)" });
 
     assert.dom("[data-test-title]").hasText(this.selectedDocument.title);
-    assert
-      .dom("[data-test-created-at]")
-      .hasText(
-        't:alexandria.document-details.created-at:("date":"12/11/1998")'
-      );
+    assert.dom("[data-test-created-at]").hasText("Created on 12/11/1998");
     // assert.dom("[data-test-created-at]").hasText("Created on 12/11/1998");
     assert
       .dom("[data-test-created-by-user]")
