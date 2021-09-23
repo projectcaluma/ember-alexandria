@@ -105,13 +105,11 @@
         <a
           class="uk-link-reset"
           href="#"
-          {{!-- {{on "click" (set this.editDescription true)}} --}}
           {{on "click" this.toggleEditDescription}}
         >
           {{@document.description}}
         </a>
       {{else}}
-        {{!-- <a href="#" {{on "click" (set this.editDescription true)}}> --}}
         <a href="#" {{on "click" this.toggleEditDescription}}>
           {{t "alexandria.document-details.add-description"}}
         </a>
