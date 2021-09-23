@@ -125,6 +125,9 @@ export default class DocumentViewComponent extends Component {
 
   // * DOCUMENT SELECTION
   handleKeyDown(event) {
+    if (this.documents.shortcutsDisabled) {
+      return;
+    }
     if (event.key === "a" && event.ctrlKey) {
       event.preventDefault();
       this.fetchedDocuments.forEach((doc) => {

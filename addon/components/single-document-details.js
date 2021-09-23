@@ -27,10 +27,28 @@ export default class SingleDocumentDetailsComponent extends DocumentCard {
     this.args.document.description = description;
   }
 
+  @action toggleEditDescription() {
+    this.editDescription = !this.editDescription;
+    if (this.editDescription) {
+      this.documents.disableShortcuts();
+    } else {
+      this.documents.enableShortcuts();
+    }
+  }
+  @action toggleEditTitle() {
+    this.editTitle = !this.editTitle;
+    if (this.editTitle) {
+      this.documents.disableShortcuts();
+    } else {
+      this.documents.enableShortcuts();
+    }
+  }
+
   @action resetState() {
     this.editTitle = false;
     this.validTitle = true;
     this.editDescription = false;
+    this.documents.enableShortcuts();
   }
 
   @restartableTask *saveDocument() {
