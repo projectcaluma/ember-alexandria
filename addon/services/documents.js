@@ -8,6 +8,7 @@ export default class DocumentsService extends Service {
   @service config;
   @service router;
   @tracked selectedDocuments = [];
+  @tracked shortcutsDisabled = false;
 
   constructor(...args) {
     super(...args);
@@ -146,5 +147,12 @@ export default class DocumentsService extends Service {
       (d) => d.id !== doc.id
     );
     this.updateRoute();
+  }
+
+  enableShortcuts() {
+    this.shortcutsDisabled = false;
+  }
+  disableShortcuts() {
+    this.shortcutsDisabled = true;
   }
 }
