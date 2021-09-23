@@ -53,6 +53,7 @@ alexandria:
     add-description: "Beschreibung hinzufügen"
     created-at: "Erstellt am {date}"
     replace: "Ersetzen"
+    created-at: "Erstellt am {date}"
     tags:
       title: "Tags"
       add: "Hinzufügen"
