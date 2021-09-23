@@ -53,7 +53,7 @@
             href="#"
             class="uk-icon-button  cursor-pointer"
             uk-icon="icon: close"
-            {{on "click" (set this.editTitle false)}}
+            {{on "click" this.toggleEditTitle}}
           ></a>
         </span>
       {{else}}
@@ -61,7 +61,7 @@
           href="#"
           class="uk-link-reset"
           data-test-title
-          {{on "click" (set this.editTitle true)}}
+          {{on "click" this.toggleEditTitle}}
         >
           {{@document.title}}
         </a>
@@ -97,7 +97,7 @@
           href="#"
           class="uk-icon-button cursor-pointer"
           uk-icon="icon: close"
-          {{on "click" (set this.editDescription false)}}
+          {{on "click" this.toggleEditDescription}}
         ></a>
       </div>
     {{else}}
@@ -105,12 +105,14 @@
         <a
           class="uk-link-reset"
           href="#"
-          {{on "click" (set this.editDescription true)}}
+          {{!-- {{on "click" (set this.editDescription true)}} --}}
+          {{on "click" this.toggleEditDescription}}
         >
           {{@document.description}}
         </a>
       {{else}}
-        <a href="#" {{on "click" (set this.editDescription true)}}>
+        {{!-- <a href="#" {{on "click" (set this.editDescription true)}}> --}}
+        <a href="#" {{on "click" this.toggleEditDescription}}>
           {{t "alexandria.document-details.add-description"}}
         </a>
       {{/if}}
