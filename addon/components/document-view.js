@@ -6,7 +6,6 @@ import { lastValue, task } from "ember-concurrency-decorators";
 
 export default class DocumentViewComponent extends Component {
   @service notification;
-  @service config;
   @service store;
   @service intl;
   @service documents;
