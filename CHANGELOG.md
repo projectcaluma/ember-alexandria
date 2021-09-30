@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/projectcaluma/ember-alexandria/compare/v1.10.0...v1.10.1) (2021-09-30)
+
+
+### Bug Fixes
+
+* zip download works now ([1dbf49f](https://github.com/projectcaluma/ember-alexandria/commit/1dbf49f73d84522805a83f9a8553324f1e4b5658))
+
 # [1.10.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.9.1...v1.10.0) (2021-09-23)
 
 
