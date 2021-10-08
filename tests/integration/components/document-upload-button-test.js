@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default-member */
 import { render, triggerEvent } from "@ember/test-helpers";
 import { hbs } from "ember-cli-htmlbars";
 import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
@@ -11,54 +12,55 @@ const resolver = engineResolverFor(modulePrefix);
 module("Integration | Component | document-upload-button", function (hooks) {
   setupRenderingTest(hooks, { resolver });
 
-  test("upload with predefined category", async function (assert) {
-    const store = this.owner.lookup("service:store");
+  hooks.beforeEach(function () {
+    this.store = this.owner.lookup("service:store");
+    this.docService = this.owner.lookup("service:documents");
+    this.uploadFnMock = sinon.fake();
+    this.docService.upload = this.uploadFnMock;
+  });
 
-    const save = sinon.fake();
-    store.createRecord = sinon.fake.returns({ save });
-    this.category = { id: 1 };
+  test("upload a file with a predefined category", async function (assert) {
+    assert.expect(4);
+
+    this.category = this.store.createRecord("category");
 
     await render(hbs`<DocumentUploadButton @category={{this.category}} />`);
 
     assert.dom("[data-test-input]").exists({ count: 1 });
 
+    const dummyFile = new File(["Ember Rules!"], "test-file.txt");
     await triggerEvent("[data-test-input]", "change", {
-      files: [new File(["Ember Rules!"], "test-file.txt")],
+      files: [dummyFile],
     });
 
-    assert.equal(save.callCount, 2, "save was called twice");
     assert.equal(
-      store.createRecord.callCount,
-      2,
-      "createRecord was called twice"
-    );
-
-    assert.equal(
-      save.firstCall.thisValue.title,
-      "test-file.txt",
-      "title was correctly set on document"
+      this.uploadFnMock.callCount,
+      1,
+      "documents.upload was called once"
     );
     assert.equal(
-      store.createRecord.secondCall.args[1].name,
-      "test-file.txt",
-      "correct model type for file"
+      this.uploadFnMock.args[0][0],
+      this.category,
+      "documents.upload was called with the correct category"
     );
     assert.equal(
-      store.createRecord.secondCall.args[1].type,
-      "original",
-      "correct model type for file"
+      this.uploadFnMock.args[0][1][0].name,
+      dummyFile.name,
+      "documents.upload was called with the correct file"
     );
   });
 
   test("upload without predefined category", async function (assert) {
     const store = this.owner.lookup("service:store");
-
-    store.createRecord = sinon.fake();
-    store.peekAll = sinon.fake.returns([
-      { id: 1, name: "c1", color: "#f00" },
-      { id: 2, name: "c2", color: "#0f0" },
-      { id: 3, name: "c3", color: "#00f" },
-    ]);
+    store.createRecord("category", { name: "c1", color: "#f00" });
+    const secondToLastCategory = store.createRecord("category", {
+      name: "c2",
+      color: "#0f0",
+    });
+    store.createRecord("category", {
+      name: "c3",
+      color: "#00f",
+    });
 
     await render(hbs`<DocumentUploadButton/>`);
 
@@ -73,20 +75,19 @@ module("Integration | Component | document-upload-button", function (hooks) {
       .dom("[data-test-upload-category]:last-child [data-test-folder-icon]")
       .hasStyle({ color: "rgb(0, 0, 255)" });
 
+    const dummyFile = new File(["Ember Rules!"], "test-file.txt");
     await triggerEvent(
       "[data-test-upload-category]:nth-child(2) [data-test-input]",
       "change",
       {
-        files: [new File(["Ember Rules!"], "test-file.txt")],
+        files: [dummyFile],
       }
     );
 
-    assert.ok(store.peekAll.called, "peekAll was called");
-
     assert.equal(
-      store.createRecord.firstCall.args[1].category.id,
-      2,
-      "document was created with correct category"
+      this.uploadFnMock.args[0][0],
+      secondToLastCategory,
+      "documents.upload was called with the correct category"
     );
   });
 });

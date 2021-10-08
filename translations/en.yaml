@@ -1,9 +1,9 @@
 alexandria:
   loading: "Loading..."
   nothing-found: "We found nothing..."
-  download: "Download"
   delete: "Delete"
   upload-file: "Upload file"
+  download: "Download"
 
   errors:
     save-file: "While downloading the document, an error occured. Please try again."
@@ -37,6 +37,7 @@ alexandria:
     prompt:
       title: "Delete document"
       message: "Do you really want to delete the document \"{title}\" and its complete history?"
+      multiple_docs_message: "Do you really want to delete {nrOfDocs} documents and their complete history?"
       cancel: "Cancel"
       confirm: "Delete"
 
@@ -47,14 +48,20 @@ alexandria:
   document-details:
     document-title: "Document title"
     document-description: "Document description"
-    created-at: "Created on {date}"
     name-placeholder: "Name..."
     version-history: "Version history"
     add-description: "Add description"
+    created-at: "Created on {date}"
     replace: "Replace"
     tags:
       title: "Tags"
       add: "Add"
+
+  document-download:
+    button: "{numDocs, plural, =1 {Download} other {Downlaod selection}}"
+
+  multiple-documents-details:
+    title: "{numDocs, plural, =0 {No document selected} =1 {1 document selected} other {# documents selected}}"
 
   tag-filter:
     empty: "No tags..."

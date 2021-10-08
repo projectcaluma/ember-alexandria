@@ -4,6 +4,7 @@ import {
   click,
   fillIn,
   triggerEvent,
+  settled,
 } from "@ember/test-helpers";
 import { setupMirage } from "ember-cli-mirage/test-support";
 import { setupIntl, setLocale } from "ember-intl/test-support";
@@ -32,7 +33,7 @@ module("Acceptance | documents", function (hooks) {
     assert.expect(5);
 
     await visit("/");
-
+    await click("[data-test-toggle-side-panel]");
     assert.dom("[data-test-document]").exists({ count: 5 });
     assert
       .dom("[data-test-document-container]:first-child [data-test-title]")
@@ -49,54 +50,61 @@ module("Acceptance | documents", function (hooks) {
       .hasAttribute("data-src", "test-thumbnail");
   });
 
-  test("select document", async function (assert) {
+  test("select document in the grid view", async function (assert) {
     const [document] = this.server.createList("document", 2);
-    assert.expect(8);
+    assert.expect(7);
 
     await visit("/");
+    await click("[data-test-toggle-side-panel]");
 
-    assert.dom("[data-test-file-details]").hasClass("closed");
+    assert.dom("[data-test-single-doc-details]").isNotVisible();
+
     assert
       .dom("[data-test-document-container]:first-child [data-test-document]")
       .doesNotHaveClass("selected");
 
     await click(
-      "[data-test-document-container]:first-child [data-test-document-link]"
+      "[data-test-document-container]:first-child [data-test-document]"
     );
+
     assert.equal(
       currentURL(),
       `/?document=${document.id}`,
       "url is set to currently selected document"
     );
-    assert.dom("[data-test-file-details]").doesNotHaveClass("closed");
+
+    assert.dom("[data-test-single-doc-details]").isVisible();
+
     assert
       .dom("[data-test-document-container]:first-child [data-test-document]")
       .hasClass("selected");
+
     assert
-      .dom("[data-test-file-details] [data-test-title]")
+      .dom("[data-test-single-doc-details] [data-test-title]")
       .hasText(document.title.en);
 
     await click("[data-test-close]");
-    assert.equal(currentURL(), "/", "document is removed from url");
-    assert.dom("[data-test-file-details]").hasClass("closed");
+    assert.dom("[data-test-document-side-panel]").hasClass("closed");
   });
 
   test("document detail edit title", async function (assert) {
     const document = this.server.create("document");
-    assert.expect(7);
-
-    await visit(`/?document=${document.id}`);
+    assert.expect(6);
+    await visit(`/`);
+    await click("[data-test-toggle-side-panel]");
     setLocale("en");
 
-    assert.dom("[data-test-file-details]").doesNotHaveClass("closed");
+    await click(
+      "[data-test-document-container]:first-child [data-test-document]"
+    );
 
     assert
-      .dom("[data-test-file-details] [data-test-title]")
+      .dom("[data-test-single-doc-details] [data-test-title]")
       .hasText(document.title.en);
 
     assert.dom("[data-test-title-input]").doesNotExist();
 
-    await click("[data-test-file-details] [data-test-title]");
+    await click("[data-test-single-doc-details] [data-test-title]");
     assert.dom("[data-test-title-input]").hasValue(document.title.en);
 
     await fillIn("[data-test-title-input]", "new title");
@@ -112,15 +120,18 @@ module("Acceptance | documents", function (hooks) {
         "new title is set"
       );
     });
-    await click("[data-test-file-details] [data-test-save]");
+    await click("[data-test-single-doc-details] [data-test-save]");
     assert.dom("[data-test-title-input]").doesNotExist();
   });
 
   test("document detail delete", async function (assert) {
     const document = this.server.create("document");
-    assert.expect(5);
 
-    await visit(`/?document=${document.id}`);
+    assert.expect(3);
+
+    await visit(`/`);
+
+    await click("[data-test-document-list-item]:first-of-type");
 
     this.assertRequest("DELETE", "/api/v1/documents/:id", (request) => {
       assert.equal(
@@ -129,12 +140,10 @@ module("Acceptance | documents", function (hooks) {
         "deleting the correct document"
       );
     });
-    await click("[data-test-file-details] [data-test-delete]");
-    await click(`[data-test-delete-confirm="${document.id}"]`);
+    await click("[data-test-single-doc-details] [data-test-delete]");
+    await click("[data-test-delete-confirm]");
     assert.equal(currentURL(), "/", "document is removed from url");
-    assert.dom("[data-test-file-details]").hasClass("closed");
     assert.dom("[data-test-document]").doesNotExist();
-    assert.dom("[data-test-empty]").exists();
   });
 
   test("upload file", async function (assert) {
@@ -156,7 +165,7 @@ module("Acceptance | documents", function (hooks) {
     await triggerEvent("[data-test-upload] [data-test-input]", "change", {
       files: [new File(["Ember Rules!"], "test-file.txt")],
     });
-    assert.dom("[data-test-document]").exists({ count: 1 });
+    assert.dom("[data-test-document-list-item]").exists({ count: 1 });
   });
 
   test("replace file", async function (assert) {
@@ -184,6 +193,7 @@ module("Acceptance | documents", function (hooks) {
     assert.expect(3);
 
     await visit("/");
+    await click("[data-test-toggle-side-panel]");
 
     assert.dom("[data-test-document]").exists({ count: 5 });
     await click(
@@ -195,7 +205,64 @@ module("Acceptance | documents", function (hooks) {
     await click(
       "[data-test-document]:first-child [data-test-context-menu] [data-test-delete]"
     );
-    await click('[data-test-delete-confirm="1"]');
+    await click("[data-test-delete-confirm]");
     assert.dom("[data-test-document]").exists({ count: 4 });
+  });
+
+  test.skip("downloading multiple documents as a zip", async function (assert) {
+    this.server.createList("document", 5);
+    await visit("/");
+    await click("[data-test-toggle-side-panel]");
+    await click("[data-test-document]", {
+      shiftKey: true,
+    });
+    await click(
+      "[data-test-document-container]:nth-child(3) [data-test-document]",
+      {
+        shiftKey: true,
+      }
+    );
+    assert.dom("[data-test-zip-download-text]").includesText("3");
+    this.assertRequest("GET", "/api/v1/documents/zip/:ids", (request) => {
+      assert.equal(
+        request.params.ids,
+        [1, 2, 3],
+        "requesting the correct documents as a zip"
+      );
+    });
+    await click("[data-test-zip-download-button]");
+  });
+
+  test("selecting documents with CTRL A", async function (assert) {
+    this.server.createList("document", 3);
+    await visit("/");
+    window.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "a", ctrlKey: true })
+    );
+    await triggerEvent(window, "keydown", "a", {
+      ctrlKey: true,
+    });
+
+    assert
+      .dom("[data-test-document-list-item].document-list-item-selected")
+      .exists({ count: 3 });
+  });
+
+  test.skip("deselecting documents with Escape", async function (assert) {
+    this.server.createList("document", 3);
+    await visit("/");
+    await click("[data-test-document-list-item]:first-child");
+    assert
+      .dom("[data-test-document-list-item].document-list-item-selected")
+      .exists({ count: 1 });
+
+    // window.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" }));
+    await triggerEvent("[data-test-document-list-item]", "keydown", "Escape");
+    // eslint-disable-next-line ember/no-settled-after-test-helper
+    await settled();
+
+    assert
+      .dom("[data-test-document-list-item].document-list-item-selected")
+      .doesNotExist();
   });
 });

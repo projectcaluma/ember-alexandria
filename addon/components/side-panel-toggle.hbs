@@ -1,0 +1,22 @@
+<UkButton
+  @color="default"
+  @size="small"
+  class="uk-height-1-1"
+  data-test-toggle-side-panel
+  ...attributes
+  {{on "click" this.sidePanel.toggle}}
+>
+  {{#if this.sidePanel.open}}
+    <FaIcon
+      @icon="chevron-right"
+      class="view-toggle-icon uk-animation-slide-left-small"
+      data-test-view-toggle-icon
+    />
+  {{else}}
+    <FaIcon
+      @icon="chevron-left"
+      class="view-toggle-icon uk-animation-slide-left-small"
+      data-test-view-toggle-icon
+    />
+  {{/if}}
+</UkButton>

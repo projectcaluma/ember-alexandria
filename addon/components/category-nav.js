@@ -12,7 +12,7 @@ export default class CategoryNavComponent extends Component {
   *fetchCategories() {
     try {
       return yield this.store.findAll("category");
-    } catch (error) {
+    } catch {
       this.notification.danger(
         this.intl.t("alexandria.errors.fetch-categories")
       );

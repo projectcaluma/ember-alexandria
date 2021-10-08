@@ -1,3 +1,54 @@
+## [1.10.1](https://github.com/projectcaluma/ember-alexandria/compare/v1.10.0...v1.10.1) (2021-09-30)
+
+
+### Bug Fixes
+
+* zip download works now ([1dbf49f](https://github.com/projectcaluma/ember-alexandria/commit/1dbf49f73d84522805a83f9a8553324f1e4b5658))
+
+# [1.10.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.9.1...v1.10.0) (2021-09-23)
+
+
+### Bug Fixes
+
+* added 'useYarn' to ember try to get try and get the ci to work ([7d46c6a](https://github.com/projectcaluma/ember-alexandria/commit/7d46c6a867ecd80871e84778eef3d166a4216e36))
+* added missing tests for the side panel to show the download button or not ([ebd612a](https://github.com/projectcaluma/ember-alexandria/commit/ebd612adfd924436c3e1f3d651ea774aac7cd757))
+* change ember-lts to 3.28 and CI should still run ([8305da0](https://github.com/projectcaluma/ember-alexandria/commit/8305da07ce86f3cd970cef070c8a5069fd08a1d5))
+* due to document selection the document navigation had to be rebuilt using divs instead of links which broke the linter ([d391bb1](https://github.com/projectcaluma/ember-alexandria/commit/d391bb1bc4e388a2330195ce3ea8d36a1d1d01c7))
+* enable ctrl-a in side panel ([a5e9063](https://github.com/projectcaluma/ember-alexandria/commit/a5e9063d930ef90cfa40b0d2b3f8dfbc9baaabe5))
+* fix multi document tagging ([b63c55f](https://github.com/projectcaluma/ember-alexandria/commit/b63c55f09415ca2a0f9931c510b0d6d32ad81e87))
+* fix tag manager ([bdb3c9a](https://github.com/projectcaluma/ember-alexandria/commit/bdb3c9aa19accdeefacf0f5a4882a483ee908890))
+* fix test after adding missing translation ([a26bc04](https://github.com/projectcaluma/ember-alexandria/commit/a26bc043524d5d917a60ec9b871889b2868cd90e))
+* fix the github release workflow ([6d467d6](https://github.com/projectcaluma/ember-alexandria/commit/6d467d6c7b373e7edbd548f1644f22227d2cda02))
+* fixed linting errors ([1f2d7c5](https://github.com/projectcaluma/ember-alexandria/commit/1f2d7c58173d0375225c9a4c6ceadd37d4bf17f9))
+* fixed tag manager with duplicate tags ([d0a51f3](https://github.com/projectcaluma/ember-alexandria/commit/d0a51f3103f5ff220c60df6a236a252622ba033a))
+* fixed the document sorting and removed some comments in the tag service ([77f1280](https://github.com/projectcaluma/ember-alexandria/commit/77f1280f6ad0ebdac96daf22dd549a70ba5b5347))
+* fixed the download button to be at the bottom again ([d48e949](https://github.com/projectcaluma/ember-alexandria/commit/d48e949207901502f94429973b4d4b0fe70be388))
+* fixed the tests now(?) ([09cc7ee](https://github.com/projectcaluma/ember-alexandria/commit/09cc7ee5629d8c35905996f84721d8ab013edef4))
+* last remaining comments per review ([a56e0aa](https://github.com/projectcaluma/ember-alexandria/commit/a56e0aa3a30cc3cc945a5551144f2a06631cc955))
+* lint hbs and js sources ([661818f](https://github.com/projectcaluma/ember-alexandria/commit/661818f9366703112d2f8c8d9ed43b3bfa089e59))
+* linting errors. linting errors everywhere. ([27416cf](https://github.com/projectcaluma/ember-alexandria/commit/27416cf5e76968560dfdb2f1404960a0f7c310ea))
+* missing method in document service stub in test ([db5b4e3](https://github.com/projectcaluma/ember-alexandria/commit/db5b4e33e216ce419ede6d40a844a1bf9f9d2e00))
+* missing translation ([be13ec7](https://github.com/projectcaluma/ember-alexandria/commit/be13ec74fd170f4ebebfe8dd0e8dbb03aeaf1b7e))
+* pin the ember-moment PR to an issue instead of head ([c329861](https://github.com/projectcaluma/ember-alexandria/commit/c329861d3efd6b4c376bd65bbe421d0f40d4b7e0))
+* refactor the document-view to move all the document selection stuff and initialisation into the document-service ([8724d3b](https://github.com/projectcaluma/ember-alexandria/commit/8724d3bca2a7544b400568a200b5753fa8fb19b7))
+* remove 3.24 test from github workflow ([0ce5313](https://github.com/projectcaluma/ember-alexandria/commit/0ce53138a3eebb0d3dfd28eb43eeb0d48d9f93a9))
+* remove commented out code ([9110775](https://github.com/projectcaluma/ember-alexandria/commit/91107751c2b7b9f0680b0551ffc3eb434e2bbca0))
+* remove ember-moment ([d462a00](https://github.com/projectcaluma/ember-alexandria/commit/d462a000df84141158dd95c45177794f0e157fa1))
+* remove moment-shims ([6152746](https://github.com/projectcaluma/ember-alexandria/commit/6152746c2ecada7792dfeff4a44136b11ebad676))
+* updated Ember to v3.28.0 (+ removed some unnecessary resolutions) ([456fcf1](https://github.com/projectcaluma/ember-alexandria/commit/456fcf1d20ccb0ba4af5634a7a6c923cc9a258cb))
+* updated the zip url to reflect the backend changes ([2d106ef](https://github.com/projectcaluma/ember-alexandria/commit/2d106ef36fe9b2f7117856c7e19c3558ea4db445))
+
+
+### Features
+
+* preparing for zip download implementation ([6f88a4e](https://github.com/projectcaluma/ember-alexandria/commit/6f88a4ec5a3255da868b4b9e0a9843822af3f18c))
+* sorting for document-list ([8650a96](https://github.com/projectcaluma/ember-alexandria/commit/8650a962adc5413825f8607f0cb95cfe4e1aa8cd))
+
+
+### Reverts
+
+* Revert "chore: fixed comments" ([201529d](https://github.com/projectcaluma/ember-alexandria/commit/201529d7491428d34857992b127b8291533bb44e))
+
 ## [1.9.1](https://github.com/projectcaluma/ember-alexandria/compare/v1.9.0...v1.9.1) (2021-05-27)
 
 

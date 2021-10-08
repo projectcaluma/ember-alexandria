@@ -1,52 +1,57 @@
-<table class="uk-table uk-table-divider uk-table-striped uk-table-hover">
+<table
+  class="uk-table uk-table-divider uk-table-striped uk-table-hover no-select document-list"
+>
   <caption></caption>
   <thead>
     <tr>
       <th class="uk-table-shrink">
         Icon
       </th>
-      <th {{on "click" (fn @setSort "title")}}>
+      <th class="uk-table-expand">
         Title
+        <FaIcon
+          @icon="sort"
+          @prefix="fas"
+          @size="1x"
+          @class="uk-margin-small-left"
+          role="button"
+          data-test-sort-title
+          {{on "click" (fn @setSort "title")}}
+        />
       </th>
-      <th {{on "click" (fn @setSort "createdAt")}}>
+      <th>
         Created
+        <FaIcon
+          @icon="sort"
+          @prefix="fas"
+          @size="1x"
+          @class="uk-margin-small-left"
+          data-test-sort-title
+          role="button"
+          {{on "click" (fn @setSort "createdAt")}}
+        />
       </th>
-      <th {{on "click" (fn @setSort "createdByGroup")}}>
+      <th>
         Group
+        <FaIcon
+          @icon="sort"
+          @prefix="fas"
+          @size="1x"
+          @class="uk-margin-small-left"
+          data-test-sort-title
+          role="button"
+          {{on "click" (fn @setSort "createdByGroup")}}
+        />
       </th>
     </tr>
   </thead>
   <tbody>
     {{#each @fetchedDocuments as |document|}}
-      <tr>
-        <td>
-          <FaIcon
-            @icon="file-alt"
-            @prefix="far"
-            @size="1x"
-            data-test-file-icon
-            {{set-style color=document.category.color}}
-          />
-        </td>
-        <td class="uk-table-link">
-          <LinkTo
-            @query={{hash document=document.id}}
-            class="uk-link-reset"
-            data-test-document-link
-          >
-            {{document.title}}
-          </LinkTo>
-        </td>
-        <td>
-          {{t
-            "alexandria.document-details.created-at"
-            date=(format-date document.createdAt)
-          }}
-        </td>
-        <td>
-          {{document.createdByGroup}}
-        </td>
-      </tr>
+      <DocumentListItem
+        @document={{document}}
+        @isSelected={{includes document.id (map-by "id" @selectedDocuments)}}
+        @onClickDocument={{@onClickDocument}}
+      />
     {{/each}}
   </tbody>
 </table>

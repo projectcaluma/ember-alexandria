@@ -1,17 +1,29 @@
+/* eslint-disable import/no-named-as-default-member */
+import Service from "@ember/service";
 import { render, click, fillIn } from "@ember/test-helpers";
 import { tracked } from "@glimmer/tracking";
 import setupRenderingTest from "dummy/tests/helpers/setup-rendering-test";
 import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
 import { setupIntl } from "ember-intl/test-support";
-import fileSaver from "file-saver";
 import { module, test } from "qunit";
 import sinon from "sinon";
 
-module("Integration | Component | document-details", function (hooks) {
+const mockDocumentsService = class DocumentsService extends Service {
+  deselectDocument() {
+    return [];
+  }
+  disableShortcuts() {}
+};
+
+module("Integration | Component | single-document-details", function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks, "en");
   setupMirage(hooks);
+
+  hooks.beforeEach(function () {
+    this.owner.register("service:documents", mockDocumentsService);
+  });
 
   test("it renders document information", async function (assert) {
     this.selectedDocument = {
@@ -20,16 +32,27 @@ module("Integration | Component | document-details", function (hooks) {
       createdAt: new Date(1998, 11, 11),
       createdByUser: "user1",
       createdByGroup: "group1",
+      files: [
+        {
+          type: "original",
+          name: "some-file.pdf",
+          createdByUser: null,
+          downloadUrl: "http://test.com",
+        },
+      ],
     };
 
-    await render(hbs`<DocumentDetails @document={{this.selectedDocument}} />`);
+    await render(
+      hbs`<SingleDocumentDetails @document={{this.selectedDocument}} />`
+    );
 
-    assert.dom("[data-test-file-details]").doesNotHaveClass("closed");
+    assert.dom("[data-test-single-doc-details]").doesNotHaveClass("closed");
     assert.dom("[data-test-title-container]").hasStyle({ cursor: "text" });
     assert.dom("[data-test-title-icon]").hasStyle({ color: "rgb(255, 0, 0)" });
 
     assert.dom("[data-test-title]").hasText(this.selectedDocument.title);
     assert.dom("[data-test-created-at]").hasText("Created on 12/11/1998");
+    // assert.dom("[data-test-created-at]").hasText("Created on 12/11/1998");
     assert
       .dom("[data-test-created-by-user]")
       .hasText(this.selectedDocument.createdByUser);
@@ -39,45 +62,7 @@ module("Integration | Component | document-details", function (hooks) {
 
     assert.dom("[data-test-close]").exists();
     assert.dom("[data-test-delete]").exists();
-    assert.dom("[data-test-download]").exists();
-  });
-
-  test("closed state", async function (assert) {
-    this.set("selectedDocument", null);
-
-    await render(hbs`<DocumentDetails @document={{this.selectedDocument}} />`);
-
-    assert.dom("[data-test-file-details]").hasClass("closed");
-
-    this.set("selectedDocument", {});
-
-    assert.dom("[data-test-file-details]").doesNotHaveClass("closed");
-  });
-
-  test("download", async function (assert) {
-    const stub = sinon.stub(fileSaver, "saveAs");
-
-    const downloadUrl = "http://earh.planet",
-      title = "test1";
-
-    this.selectedDocument = {
-      title,
-      files: [{ name: "foo.txt", type: "original", downloadUrl }],
-    };
-
-    await render(hbs`<DocumentDetails @document={{this.selectedDocument}} />`);
-
-    await click("[data-test-download]");
-    assert.equal(
-      stub.args[0][0],
-      downloadUrl,
-      "saveAs was called with correct downloadUrl"
-    );
-    assert.equal(
-      stub.args[0][1],
-      `${title}.txt`,
-      "saveAs was called with correct file name"
-    );
+    assert.dom("[data-test-file-download-link]").exists();
   });
 
   test("delete document", async function (assert) {
@@ -86,10 +71,12 @@ module("Integration | Component | document-details", function (hooks) {
       title: "Test",
       destroyRecord: sinon.fake(),
     };
-    await render(hbs`<DocumentDetails @document={{this.selectedDocument}}/>`);
+    await render(
+      hbs`<SingleDocumentDetails @document={{this.selectedDocument}}/>`
+    );
 
     await click("[data-test-delete]");
-    await click(`[data-test-delete-confirm="${this.selectedDocument.id}"]`);
+    await click("[data-test-delete-confirm]");
 
     assert.ok(
       this.selectedDocument.destroyRecord.calledOnce,
@@ -105,7 +92,9 @@ module("Integration | Component | document-details", function (hooks) {
       save = sinon.fake();
     }
     this.selectedDocument = new Document();
-    await render(hbs`<DocumentDetails @document={{this.selectedDocument}}/>`);
+    await render(
+      hbs`<SingleDocumentDetails @document={{this.selectedDocument}}/>`
+    );
 
     assert.dom("[data-test-title]").exists();
     assert.dom("[data-test-title-input]").doesNotExist();

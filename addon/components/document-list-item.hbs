@@ -1,0 +1,25 @@
+<tr
+  class={{if @isSelected "document-list-item-selected" "document-list-item"}}
+  data-test-document-list-item
+  role="button"
+  {{on "click" (fn @onClickDocument @document)}}
+>
+  <td>
+    <FaIcon
+      @icon="file-alt"
+      @prefix="far"
+      @size="1x"
+      data-test-file-icon
+      {{set-style color=@document.category.color}}
+    />
+  </td>
+  <td>
+    {{@document.title}}
+  </td>
+  <td>
+    {{format-date @document.createdAt month="2-digit" day="2-digit" year="numeric" hour="2-digit" minute="2-digit"}}
+  </td>
+  <td>
+    {{@document.createdByGroup}}
+  </td>
+</tr>

@@ -1,5 +1,11 @@
 <div
-  class="document-card uk-card uk-card-body uk-border-rounded-circular uk-padding-remove"
+  class={{
+    if
+    @isSelected
+    "document-card uk-card uk-card-body uk-border-rounded-circular uk-padding-remove selected"
+    "document-card uk-card uk-card-body uk-border-rounded-circular uk-padding-remove"
+  }}
+  role="button"
   ...attributes
 >
   <div class="uk-card-media-top uk-text-center uk-border-bottom">
@@ -40,7 +46,7 @@
     class="uk-card-body uk-padding-small uk-flex uk-flex-between document-name"
   >
     <span
-      class="uk-text-truncate"
+      class="uk-text-truncate no-select"
       uk-tooltip="title: {{@document.title}}; pos: bottom; delay: 300;"
       data-test-title
     >
@@ -58,7 +64,7 @@
         <FaIcon @icon="file-download" />
         {{t "alexandria.download"}}
       </Item>
-      <DocumentDeleteButton @document={{@document}} as |showDialog|>
+      <DocumentDeleteButton @docsToDelete={{@document}} as |showDialog|>
         <Item data-test-delete {{on "click" showDialog}}>
           <FaIcon @icon="trash-alt" @prefix="far" />
           {{t "alexandria.delete"}}

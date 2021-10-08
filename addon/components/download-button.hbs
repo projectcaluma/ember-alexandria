@@ -1,0 +1,10 @@
+<UkButton
+  class="uk-width-1-1"
+  @size="large"
+  @color="primary"
+  @loading={{this.download.isRunning}}
+  data-test-download-button
+  {{on "click" (perform this.download)}}
+>
+  {{t "alexandria.document-download.button" numDocs=@documents.length}}
+</UkButton>

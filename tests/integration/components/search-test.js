@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default-member */
 import { render, fillIn } from "@ember/test-helpers";
 import { hbs } from "ember-cli-htmlbars";
 import engineResolverFor from "ember-engines/test-support/engine-resolver-for";

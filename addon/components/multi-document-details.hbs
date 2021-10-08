@@ -1,0 +1,54 @@
+<div data-test-multi-doc-details>
+  <div class="uk-flex uk-flex-right">
+    <button
+      class="uk-icon-button"
+      type="button"
+      uk-icon="chevron-right"
+      data-test-close
+      {{on "click" this.sidePanel.toggle}}
+    ></button>
+  </div>
+
+  <div
+    class="document-title uk-flex uk-flex-between uk-margin-bottom uk-flex-top"
+  >
+    <div
+      class="uk-flex uk-flex-top"
+      data-test-title-container
+      {{set-style cursor="text"}}
+    >
+      <span class="uk-flex-none">
+        <FaIcon
+          @icon="file-alt"
+          @prefix="far"
+          class="uk-margin-small-right"
+          data-test-title-icon
+        />
+      </span>
+      {{t
+        "alexandria.multiple-documents-details.title"
+        numDocs=@selectedDocuments.length
+      }}
+    </div>
+  </div>
+
+  {{#if (gt @selectedDocuments.length 0)}}
+    <div class="uk-flex uk-flex-right">
+      <DocumentDeleteButton
+        @docsToDelete={{@selectedDocuments}} as |showDialog|
+      >
+        <UkButton
+          data-test-delete
+          @size="small"
+          @color="primary"
+          class="uk-width-1-2 uk-button-danger"
+          {{on "click" showDialog}}
+        >
+          {{t "alexandria.delete"}}
+        </UkButton>
+      </DocumentDeleteButton>
+    </div>
+
+    <TagManager @documents={{@selectedDocuments}} />
+  {{/if}}
+</div>
