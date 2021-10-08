@@ -3,7 +3,7 @@ import setupRenderingTest from "dummy/tests/helpers/setup-rendering-test";
 import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
 import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
-import { module, todo } from "qunit";
+import { module, test } from "qunit";
 
 const modulePrefix = "ember-alexandria";
 const resolver = engineResolverFor(modulePrefix);

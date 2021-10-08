@@ -9,6 +9,9 @@ module.exports = function () {
       "th",
       "user",
       "users",
+      "sort",
+      "chevron-right",
+      "chevron-left",
     ],
     "free-regular-svg-icons": ["file-alt", "trash-alt"],
   };

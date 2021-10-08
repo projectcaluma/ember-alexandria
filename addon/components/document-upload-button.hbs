@@ -20,6 +20,7 @@
       type="file"
       multiple="multiple"
       data-test-input
+      aria-label="Category name"
       {{on "change" (perform this.upload @category)}}
     />
   {{else}}
@@ -30,6 +31,7 @@
             type="file"
             multiple="multiple"
             data-test-input
+            aria-label="file input"
             {{on "change" (perform this.upload category)}}
           />
           <FaIcon

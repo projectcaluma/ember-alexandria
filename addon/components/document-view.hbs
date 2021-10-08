@@ -1,4 +1,7 @@
-<div class="uk-flex uk-overflow-hidden uk-height-max-1 uk-height-1-1">
+<div
+  class="uk-flex uk-overflow-hidden uk-height-max-1 uk-height-1-1"
+  data-test-document-view
+>
   <div
     class="uk-width-1 uk-flex uk-flex-column uk-overflow-hidden uk-height-max-1"
   >
@@ -17,8 +20,10 @@
 
       <DocumentViewToggle
         @viewList={{this.listView}}
+        data-test-toggle-side-panel
         {{on "click" this.toggleView}}
       />
+      <SidePanelToggle />
     </div>
 
     {{! Drag'n'Drop Area }}
@@ -41,20 +46,23 @@
           class="document-view"
           {{did-insert (perform this.fetchDocuments)}}
           {{did-update (perform this.fetchDocuments) @filters}}
+          {{did-insert (perform this.initialiseDocumentSelection)}}
         >
           {{! List & Grid View }}
           {{#if this.listView}}
             <DocumentList
               @loading={{this.fetchDocuments}}
-              @selectedDocumentId={{this.selectedDocumentId}}
               @fetchedDocuments={{this.fetchedDocuments}}
               @setSort={{this.setSort}}
+              @selectedDocuments={{this.documents.selectedDocuments}}
+              @onClickDocument={{this.handleDocumentSelection}}
             />
           {{else}}
             <DocumentGrid
               @loading={{this.fetchDocuments.isRunning}}
-              @selectedDocumentId={{this.selectedDocumentId}}
+              @selectedDocuments={{this.documents.selectedDocuments}}
               @fetchedDocuments={{this.fetchedDocuments}}
+              @onClickDocument={{this.handleDocumentSelection}}
             />
           {{/if}}
         </div>
@@ -73,5 +81,5 @@
       {{/if}}
     </div>
   </div>
-  <DocumentDetails @document={{this.selectedDocument}} data-test-details />
+  <DocumentsSidePanel @selectedDocuments={{this.documents.selectedDocuments}} />
 </div>

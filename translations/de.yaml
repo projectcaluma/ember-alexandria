@@ -1,9 +1,9 @@
 alexandria:
   loading: "Lädt..."
   nothing-found: "Wir haben nichts gefunden..."
-  download: "Herunterladen"
   delete: "Löschen"
   upload-file: "Datei hochladen"
+  download: "Download"
 
   errors:
     save-file: "Beim Herunterladen der Datei ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
@@ -37,6 +37,7 @@ alexandria:
     prompt:
       title: "Dokument löschen"
       message: "Wollen Sie das Dokument \"{title}\" wirklich mit seiner ganzen Geschichte löschen?"
+      multiple_docs_message: "Wollen Sie wirklich {nrOfDocs} Dokumente inklusive derer Geschichten löschen?"
       cancel: "Abbrechen"
       confirm: "Löschen"
 
@@ -47,14 +48,20 @@ alexandria:
   document-details:
     document-title: "Dokumententitel"
     document-description: "Dokumentenbeschreibung"
-    created-at: "Erstellt am {date}"
     name-placeholder: "Name..."
     version-history: "Versionsgeschichte"
     add-description: "Beschreibung hinzufügen"
+    created-at: "Erstellt am {date}"
     replace: "Ersetzen"
     tags:
       title: "Tags"
       add: "Hinzufügen"
+  
+  document-download:
+    button: "{numDocs, plural, =1 {Herunterladen} other {Auswahl herunterladen}}"
+  
+  multiple-documents-details:
+    title: "{numDocs, plural, =0 {Kein Dokument ausgewählt} =1 {1 Dokument ausgewählt} other {# Dokumente ausgewählt}}"
 
   tag-filter:
     empty: "Keine Tags..."

@@ -1,3 +1,4 @@
+import Service from "@ember/service";
 import { render, click } from "@ember/test-helpers";
 import { hbs } from "ember-cli-htmlbars";
 import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
@@ -9,8 +10,18 @@ import sinon from "sinon";
 const modulePrefix = "ember-alexandria";
 const resolver = engineResolverFor(modulePrefix);
 
+const mockDocumentsService = class DocumentsService extends Service {
+  deselectDocument() {
+    return [];
+  }
+};
+
 module("Integration | Component | document-card", function (hooks) {
   setupRenderingTest(hooks, { resolver });
+
+  hooks.beforeEach(function () {
+    this.owner.register("service:documents", mockDocumentsService);
+  });
 
   test("it renders document card", async function (assert) {
     this.document = { title: "test1" };
@@ -28,8 +39,9 @@ module("Integration | Component | document-card", function (hooks) {
     assert.dom("[data-test-download]").isVisible();
   });
 
-  test("donwload file", async function (assert) {
-    const stub = sinon.stub(fileSaver, "saveAs");
+  test("download file", async function (assert) {
+    // eslint-disable-next-line import/no-named-as-default-member
+    const fileSaverStub = sinon.stub(fileSaver, "saveAs");
 
     const downloadUrl = "http://earh.planet",
       title = "test1";
@@ -39,16 +51,15 @@ module("Integration | Component | document-card", function (hooks) {
       files: [{ name: "foo.txt", type: "original", downloadUrl }],
     };
     await render(hbs`<DocumentCard @document={{this.document}}/>`);
-
     await click("[data-test-context-menu-trigger]");
     await click("[data-test-download]");
     assert.equal(
-      stub.args[0][0],
+      fileSaverStub.args[0][0],
       downloadUrl,
       "saveAs was called with correct downloadUrl"
     );
     assert.equal(
-      stub.args[0][1],
+      fileSaverStub.args[0][1],
       `${title}.txt`,
       "saveAs was called with correct file name"
     );
@@ -57,13 +68,14 @@ module("Integration | Component | document-card", function (hooks) {
   test("delete file", async function (assert) {
     this.document = {
       id: 1,
+      // eslint-disable-next-line import/no-named-as-default-member
       destroyRecord: sinon.fake(),
     };
     await render(hbs`<DocumentCard @document={{this.document}}/>`);
 
     await click("[data-test-context-menu-trigger]");
     await click("[data-test-delete]");
-    await click(`[data-test-delete-confirm="${this.document.id}"]`);
+    await click("[data-test-delete-confirm]");
     assert.ok(
       this.document.destroyRecord.calledOnce,
       "destroyRecord was called once"

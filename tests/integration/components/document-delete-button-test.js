@@ -19,18 +19,18 @@ module("Integration | Component | document-delete-button", function (hooks) {
     this.onConfirm = () => assert.step("confirm");
 
     await render(hbs`
-      <DocumentDeleteButton
-        @document={{this.document}}
-        @onConfirm={{this.onConfirm}}
-        @onCancel={{this.onCancel}}
-        as |showDialog|
-      >
-        <button
-          {{on "click" showDialog}}
-          data-test-delete
-          type="button"
-        >Delete</button>
-      </DocumentDeleteButton>
+    <DocumentDeleteButton
+      @document={{this.document}}
+      @onConfirm={{this.onConfirm}}
+      @onCancel={{this.onCancel}}
+      as |showDialog|
+    >
+      <button
+      {{on "click" showDialog}}
+      data-test-delete
+      type="button"
+      >Delete</button>
+    </DocumentDeleteButton>
     `);
 
     await click("[data-test-delete]");

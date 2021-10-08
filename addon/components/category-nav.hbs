@@ -2,11 +2,11 @@
   class="uk-background-muted uk-border-right"
   {{did-insert (perform this.fetchCategories)}}
 >
-  <div
-    class="uk-padding-small uk-margin-top uk-width-1 uk-text-bold uk-border-bottom"
-  >
+  <div class="uk-padding-small uk-width-1 uk-text-bold uk-border-bottom">
     <div class="uk-text-center" data-test-nav-title>
-      {{t "alexandria.category-nav.categories"}}
+      <span class="category-header">
+        {{t "alexandria.category-nav.categories"}}
+      </span>
     </div>
   </div>
   <ul class="uk-nav uk-width-medium uk-margin-top">
