@@ -45,6 +45,11 @@ alexandria:
     drop-to-upload: "Drop file to upload"
     drop-not-allowed: "No category selected"
 
+  document-list:
+    type: "Type"
+    created-by: "Group"
+    created-at: "Created"
+
   document-details:
     document-title: "Document title"
     document-description: "Document description"
