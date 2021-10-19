@@ -39,4 +39,21 @@ export default class ApplicationController extends Controller {
 
     return filters;
   }
+
+  resetTagFilter() {
+    this.tags = undefined;
+  }
+
+  removeTagFromTags(tagToRemove) {
+    if (this.tags) {
+      this.tags = this.tags
+        .split(",")
+        .filter((tag) => tag !== tagToRemove)
+        .join(",");
+      if (this.tags === "") {
+        // if there are no tags left we need to set to undefined to avoid a request error with an empty tag filter
+        this.resetTagFilter();
+      }
+    }
+  }
 }
