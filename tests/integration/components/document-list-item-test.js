@@ -17,8 +17,8 @@ module("Integration | Component | document-list-item", function (hooks) {
   hooks.beforeEach(async function () {
     this.document = {
       title: "some document",
-      createdAt: new Date("December 1, 2000 00:00:00"),
-      createdByGroup: "some group",
+      modifiedAt: new Date("December 1, 2000 00:00:00"),
+      createdByUser: "some group",
     };
     this.isSelected = false;
     this.onClickDocument = () => {};
