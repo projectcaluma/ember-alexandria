@@ -1,10 +1,10 @@
+import { getOwner } from "@ember/application";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { timeout } from "ember-concurrency";
 import { restartableTask } from "ember-concurrency-decorators";
-
 export default class TagManagerComponent extends Component {
   @service("tags") tagService;
   @tracked matchingTags = [];
@@ -12,6 +12,11 @@ export default class TagManagerComponent extends Component {
 
   @action async fetchAllTags() {
     await this.tagService.fetchAllTags.perform();
+  }
+
+  get controllerInstance() {
+    const applicationInstance = getOwner(this);
+    return applicationInstance.lookup("controller:application");
   }
 
   @restartableTask *onInput(event) {
@@ -65,6 +70,7 @@ export default class TagManagerComponent extends Component {
   }
 
   @action removeTag(tag) {
+    this.controllerInstance.removeTagFromTags(tag.emberModel.name);
     this.args.documents.forEach((doc) => {
       if (doc.tags.includes(tag.emberModel)) {
         this.tagService.remove(doc, tag.emberModel);
