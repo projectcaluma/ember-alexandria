@@ -20,7 +20,7 @@
         />
       </th>
       <th>
-        {{t "alexandria.document-list.created-at"}}
+        {{t "alexandria.document-list.modified-at"}}
         <FaIcon
           @icon="sort"
           @prefix="fas"
@@ -28,7 +28,7 @@
           @class="uk-margin-small-left"
           data-test-sort-title
           role="button"
-          {{on "click" (fn @setSort "createdAt")}}
+          {{on "click" (fn @setSort "modifiedAt")}}
         />
       </th>
       <th>
@@ -40,7 +40,7 @@
           @class="uk-margin-small-left"
           data-test-sort-title
           role="button"
-          {{on "click" (fn @setSort "createdByGroup")}}
+          {{on "click" (fn @setSort "createdByUser")}}
         />
       </th>
     </tr>
