@@ -8,6 +8,7 @@
 @use "components/drop";
 @use "components/document-details";
 @use "components/document-grid";
+@use "components/document-list";
 
 // * DOCUMENT LIST VIEW
 .cursor-pointer {
@@ -36,3 +37,4 @@
 .category-header {
   line-height: 40px;
 }
+
