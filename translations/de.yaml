@@ -48,7 +48,7 @@ alexandria:
   document-list:
     type: "Typ"
     created-by: "Benutzer"
-    created-at: "Änderungsdatum"
+    modified-at: "Änderungsdatum"
 
   document-details:
     document-title: "Dokumententitel"
@@ -61,10 +61,10 @@ alexandria:
     tags:
       title: "Tags"
       add: "Hinzufügen"
-  
+
   document-download:
     button: "{numDocs, plural, =1 {Herunterladen} other {Auswahl herunterladen}}"
-  
+
   multiple-documents-details:
     title: "{numDocs, plural, =0 {Kein Dokument ausgewählt} =1 {1 Dokument ausgewählt} other {# Dokumente ausgewählt}}"
 

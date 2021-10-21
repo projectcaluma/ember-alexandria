@@ -48,7 +48,7 @@ alexandria:
   document-list:
     type: "Type"
     created-by: "User"
-    created-at: "Modified"
+    modified-at: "Modified"
 
   document-details:
     document-title: "Document title"
