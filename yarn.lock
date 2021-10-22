@@ -1451,7 +1451,7 @@
     resolve "^1.8.1"
     semver "^7.3.2"
 
-"@embroider/test-setup@^0.43.5":
+"@embroider/test-setup@0.43.5":
   version "0.43.5"
   resolved "https://registry.yarnpkg.com/@embroider/test-setup/-/test-setup-0.43.5.tgz#79944cb50038802cc71d50aa0d5d7a0955ee6349"
   integrity sha512-ke+5B0VR2343ZrOqV9Ok2LyA4m2q2ApM1Oy1RC8+3+OI5lDVg8UgZG9n/G2e77KPMFxnK3eVpXcPdLcdOxW6+w==
@@ -7306,7 +7306,7 @@ ember-maybe-import-regenerator@0.1.6, ember-maybe-import-regenerator@^0.1.6:
     ember-cli-babel "^6.0.0-beta.4"
     regenerator-runtime "^0.9.5"
 
-ember-mirage-sauce@^0.2.2:
+ember-mirage-sauce@0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/ember-mirage-sauce/-/ember-mirage-sauce-0.2.2.tgz#e00c63430da9ac588b42ea5c9e750f1faec9b767"
   integrity sha512-AYzJQahs1sLfSJsvVC9JqBQG3zopoR8hKJoTdBSVFv1V1kPvjWiYHP7bS0Stey/wbD459/PsyW0IDehWPyGmNA==
@@ -7423,7 +7423,7 @@ ember-source-channel-url@^1.0.1:
   dependencies:
     got "^8.0.1"
 
-ember-source@~3.28.0:
+ember-source@3.28.1:
   version "3.28.1"
   resolved "https://registry.yarnpkg.com/ember-source/-/ember-source-3.28.1.tgz#dbd00dde4e5660231c72574589e7705ed8c76b1d"
   integrity sha512-dPedE1KBNiFllxzS8uiTWCf5Kofd6hrbJCt162UrTfEMZy6Pt4dZrX2kz0Dq/Fi57FrFAYkMM2cuhYCz2dbENw==
@@ -7455,7 +7455,7 @@ ember-source@~3.28.0:
     semver "^7.3.4"
     silent-error "^1.1.1"
 
-ember-template-lint-plugin-prettier@^2.0.0:
+ember-template-lint-plugin-prettier@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/ember-template-lint-plugin-prettier/-/ember-template-lint-plugin-prettier-2.0.1.tgz#38889c8094309b63fd1bc0cbe1033023b2a01bc8"
   integrity sha512-MPlyq1lNlL7U7EamXbmpjIUjHVQUARwmR+TJEmWZcf8lq/ExnV6Jyk3uvmrEXKOfsQS6egpoNgs3wqfh8qAP6Q==
@@ -7898,7 +7898,7 @@ eslint-plugin-prettier@3.4.1:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-eslint-plugin-qunit@^6.2.0:
+eslint-plugin-qunit@6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-qunit/-/eslint-plugin-qunit-6.2.0.tgz#f4efda29da99523e560848d9592c39c0590c308d"
   integrity sha512-KvPmkIC2MHpfRxs/r8WUeeGkG6y+3qwSi2AZIBtjcM/YG6Z3k0GxW5Hbu3l7X0TDhljVCeBb9Q5puUkHzl83Mw==
