@@ -1,3 +1,18 @@
+## [1.10.2](https://github.com/projectcaluma/ember-alexandria/compare/v1.10.1...v1.10.2) (2021-10-22)
+
+
+### Bug Fixes
+
+* pin dev dependencies ([e945899](https://github.com/projectcaluma/ember-alexandria/commit/e94589994ba0addb00f308d025fe5fe528582391))
+* when removing the tag remove it from the URL ([4288f66](https://github.com/projectcaluma/ember-alexandria/commit/4288f668a9a3ce4c0a6b48b3109910e088c7504b))
+* **list-item:** Move inline styles out of component template. ([c772788](https://github.com/projectcaluma/ember-alexandria/commit/c772788c94d7fbd41cb3ceb0865edc10b494055a))
+* **list-view:** adds modified translation key ([1055d10](https://github.com/projectcaluma/ember-alexandria/commit/1055d10a41fe4737a833cc34bbda728166cfd530))
+* **list-view:** Change table headers and values ([7c02e1d](https://github.com/projectcaluma/ember-alexandria/commit/7c02e1d9c5e507406419742304e5f41e90c9d9c2))
+* **list-view:** hides file type column header ([52c1e91](https://github.com/projectcaluma/ember-alexandria/commit/52c1e91ad310c039249fb3323f7feaa5f6fabb36))
+* **list-view:** preserves width of filetype icon ([ec0ddb8](https://github.com/projectcaluma/ember-alexandria/commit/ec0ddb813fdce44e8b7e93a1b45e7971cb23e509))
+* **list-view:** translate list view headers ([7affb2e](https://github.com/projectcaluma/ember-alexandria/commit/7affb2e8419b9d11e9dd35bebe04b4a57c701c1e))
+* **list-view:** updates existing test assumptions ([54af058](https://github.com/projectcaluma/ember-alexandria/commit/54af0584ba1d7126d636e3db2348df22fad6a261))
+
 ## [1.10.1](https://github.com/projectcaluma/ember-alexandria/compare/v1.10.0...v1.10.1) (2021-09-30)
 
 
