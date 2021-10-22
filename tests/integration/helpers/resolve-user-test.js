@@ -11,6 +11,6 @@ module("Integration | Helper | resolve-user", function (hooks) {
 
     await render(hbs`{{resolve-group this.id}}`);
 
-    assert.dom(this.element).hasText('1234');
+    assert.dom(this.element).hasText("1234");
   });
 });
