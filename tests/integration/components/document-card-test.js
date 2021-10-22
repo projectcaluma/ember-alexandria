@@ -82,7 +82,7 @@ module("Integration | Component | document-card", function (hooks) {
     );
   });
 
-  test("delete file", async function (assert) {
+  test("thumbnail", async function (assert) {
     this.document = {
       thumbnail: "some-url",
     };
