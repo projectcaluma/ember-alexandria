@@ -47,7 +47,8 @@ alexandria:
 
   document-list:
     type: "Typ"
-    created-by: "Benutzer"
+    created-by-user: "Ersteller"
+    created-by-group: "Gruppe"
     modified-at: "Änderungsdatum"
 
   document-details:
