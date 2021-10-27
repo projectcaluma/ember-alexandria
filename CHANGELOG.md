@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.10.2...v1.11.0) (2021-10-27)
+
+
+### Features
+
+* resolve users and groups, add group column ([49a767e](https://github.com/projectcaluma/ember-alexandria/commit/49a767e6f024b73a3423f10d42ff2fc408dfd162))
+
 ## [1.10.2](https://github.com/projectcaluma/ember-alexandria/compare/v1.10.1...v1.10.2) (2021-10-22)
 
 
