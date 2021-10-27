@@ -32,7 +32,7 @@
         />
       </th>
       <th>
-        {{t "alexandria.document-list.created-by"}}
+        {{t "alexandria.document-list.created-by-user"}}
         <FaIcon
           @icon="sort"
           @prefix="fas"
@@ -41,6 +41,18 @@
           data-test-sort-title
           role="button"
           {{on "click" (fn @setSort "createdByUser")}}
+        />
+      </th>
+      <th>
+        {{t "alexandria.document-list.created-by-group"}}
+        <FaIcon
+          @icon="sort"
+          @prefix="fas"
+          @size="1x"
+          @class="uk-margin-small-left"
+          data-test-sort-title
+          role="button"
+          {{on "click" (fn @setSort "createdByGroup")}}
         />
       </th>
     </tr>
