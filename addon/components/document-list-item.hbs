@@ -1,6 +1,7 @@
 <tr
   class={{if @isSelected "document-list-item-selected" "document-list-item"}}
   data-test-document-list-item
+  data-test-document-list-item-id={{@document.id}}
   role="button"
   {{on "click" (fn @onClickDocument @document)}}
 >

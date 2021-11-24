@@ -11,6 +11,8 @@
         if (includes tag.id this.selectedTagsArray) "uk-background-secondary"
       }}"
       {{on "click" (fn this.toggleTag tag)}}
+      data-test-tag
+      data-test-tag-id={{tag.id}}
     >
       {{tag.name}}
     </button>

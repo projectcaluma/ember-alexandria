@@ -265,4 +265,75 @@ module("Acceptance | documents", function (hooks) {
       .dom("[data-test-document-list-item].document-list-item-selected")
       .doesNotExist();
   });
+
+  test("changing the category clears the tag selection", async function (assert) {
+    assert.expect(5);
+
+    await this.server.createList("document", 3);
+    const tag = await this.server.create("tag");
+    const category = await this.server.create("category");
+
+    await visit("/");
+
+    assert
+      .dom(`[data-test-tag-id="${tag.id}"]`)
+      .doesNotHaveClass(
+        "uk-background-secondary",
+        "the tag does not have the selected class"
+      );
+
+    await click(`[data-test-tag-id="${tag.id}"]`);
+
+    assert
+      .dom(`[data-test-tag-id="${tag.id}"]`)
+      .hasClass(
+        "uk-background-secondary",
+        "the tag does has the selected class"
+      );
+    assert.equal(
+      currentURL(),
+      `/?tags=${tag.id}`,
+      "tag has been selected and is present in the URL"
+    );
+
+    await click(`[data-test-category-id="${category.id}"]`);
+
+    assert.equal(
+      currentURL(),
+      `/?category=${category.id}`,
+      "the category has been set and the tags queryParam has been cleared"
+    );
+    assert
+      .dom(`[data-test-tag-id="${tag.id}"]`)
+      .doesNotHaveClass(
+        "uk-background-secondary",
+        "the tag does not have the selected class"
+      );
+  });
+
+  test("selecting a document does not clear the tag selection", async function (assert) {
+    assert.expect(2);
+
+    const documents = await this.server.createList("document", 2);
+    const tag = await this.server.create("tag");
+
+    await visit("/");
+    await click(`[data-test-tag-id="${tag.id}"]`);
+
+    assert
+      .dom(`[data-test-tag-id="${tag.id}"]`)
+      .hasClass(
+        "uk-background-secondary",
+        "the tag does has the selected class"
+      );
+
+    await click(`[data-test-document-list-item-id="${documents[0].id}"]`);
+
+    assert
+      .dom(`[data-test-tag-id="${tag.id}"]`)
+      .hasClass(
+        "uk-background-secondary",
+        "the tag still has the selected class"
+      );
+  });
 });
