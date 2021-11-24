@@ -15,7 +15,10 @@
           {{set-style color=@category.color}}
         />
       </div>
-      <div data-test-name>
+      <div
+        data-test-name
+        data-test-category-id={{@category.id}}
+      >
         {{@category.name}}
       </div>
     </div>
