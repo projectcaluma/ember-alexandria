@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/projectcaluma/ember-alexandria/compare/v1.11.0...v1.11.1) (2021-11-25)
+
+
+### Bug Fixes
+
+* don't clear tag selection when selecting a document ([b01c971](https://github.com/projectcaluma/ember-alexandria/commit/b01c971c703b0517c4ebd7b857ee19a3bc236eb6))
+
 # [1.11.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.10.2...v1.11.0) (2021-10-27)
 
 
