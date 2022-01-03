@@ -2,7 +2,7 @@ ember-alexandria
 ==============================================================================
 
 ![Test](https://github.com/projectcaluma/ember-alexandria/workflows/Test/badge.svg)
-[![Dependabot](https://badgen.net/projectcaluma/ember-alexandria/?icon=dependabot)](https://dependabot.com/)
+[![Dependabot](https://badgen.net/dependabot/projectcaluma/ember-alexandria/?icon=dependabot)](https://dependabot.com/)
 [![Code Style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![License: LGPL-3.0](https://img.shields.io/badge/License-LGPL--3.0-blue.svg)](https://spdx.org/licenses/LGPL-3.0-or-later.html)
 
