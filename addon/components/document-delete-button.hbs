@@ -2,6 +2,7 @@
 
 <UkModal
   @on-hide={{this.hideDialog}}
+  @container={{if this.isTesting "#ember-testing" false}}
   @visible={{this.dialogVisible}} as |Modal|
 >
   <Modal.header>
