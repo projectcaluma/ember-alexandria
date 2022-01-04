@@ -133,6 +133,7 @@ module("Acceptance | documents", function (hooks) {
 
     await click("[data-test-document-list-item]:first-of-type");
 
+    setTimeout(() => {}, 2000);
     this.assertRequest("DELETE", "/api/v1/documents/:id", (request) => {
       assert.equal(
         request.params.id,

@@ -1,3 +1,4 @@
+import Ember from "ember";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
@@ -11,6 +12,10 @@ export default class DocumentDeleteButtonComponent extends Component {
   @service router;
 
   @tracked dialogVisible = false;
+
+  get isTesting() {
+    return Ember.testing;
+  }
 
   @action showDialog() {
     this.dialogVisible = true;
@@ -35,10 +40,10 @@ export default class DocumentDeleteButtonComponent extends Component {
           ? this.args.docsToDelete
           : [this.args.docsToDelete]; // if the supplied argument is not an array we make it one
 
-        yield docs.forEach((doc) => {
+        for (let doc of docs) {
+          yield doc.destroyRecord();
           this.documents.deselectDocument(doc);
-          doc.destroyRecord();
-        });
+        }
       }
 
       if (this.args.onConfirm) {
