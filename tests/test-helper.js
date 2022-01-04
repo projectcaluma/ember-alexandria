@@ -1,3 +1,5 @@
+import * as QUnit from "qunit";
+import { setup } from "qunit-dom";
 import { setApplication } from "@ember/test-helpers";
 import { start } from "ember-qunit";
 import setupSinon from "ember-sinon-qunit";
