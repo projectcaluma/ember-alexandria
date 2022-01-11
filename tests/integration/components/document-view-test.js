@@ -73,7 +73,7 @@ module("Integration | Component | document-view", function (hooks) {
 
     await render(hbs`<DocumentView @filters={{this.filters}} />`);
 
-    assert.equal(requests.length, 2, "store handled 2 requests");
+    assert.strictEqual(requests.length, 2, "store handled 2 requests");
     assert.deepEqual(requests[1].queryParams, {
       "filter[title]": "test",
       "filter[description]": "bla",

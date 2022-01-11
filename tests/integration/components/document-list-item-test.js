@@ -43,7 +43,7 @@ module("Integration | Component | document-list-item", function (hooks) {
   test("it fires the onClickDocument function with the correct parameter", async function (assert) {
     assert.expect(1);
     this.set("onClickDocument", (arg) => {
-      assert.equal(arg, this.document);
+      assert.strictEqual(arg, this.document);
     });
 
     await click("[data-test-document-list-item]");
