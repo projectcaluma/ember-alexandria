@@ -17,10 +17,10 @@ module("Acceptance | nav", function (hooks) {
     await visit("/");
 
     assert.dom("[data-test-category]").exists({ count: 5 });
-    assert.equal(currentURL(), "/");
+    assert.strictEqual(currentURL(), "/");
 
     await click("[data-test-category]:last-child [data-test-link]");
-    assert.equal(currentURL(), "/?category=5");
+    assert.strictEqual(currentURL(), "/?category=5");
   });
 
   test("navigating categories clears any sorting, filtering and selection querys", async function (assert) {
@@ -32,7 +32,10 @@ module("Acceptance | nav", function (hooks) {
     );
     await click("[data-test-category]:last-child [data-test-link]");
 
-    assert.equal(currentURL(), `/?category=${categories[1].id}&sort=title`);
+    assert.strictEqual(
+      currentURL(),
+      `/?category=${categories[1].id}&sort=title`
+    );
   });
 
   test("search", async function (assert) {
@@ -40,16 +43,16 @@ module("Acceptance | nav", function (hooks) {
 
     await visit("/");
 
-    assert.equal(currentURL(), "/");
+    assert.strictEqual(currentURL(), "/");
 
     this.assertRequest("GET", "/api/v1/documents", (request) => {
-      assert.equal(
+      assert.strictEqual(
         request.queryParams["filter[search]"],
         "search-text",
         "documents are fetched with search"
       );
     });
     await fillIn("[data-test-search-input]", "search-text");
-    assert.equal(currentURL(), "/?search=search-text");
+    assert.strictEqual(currentURL(), "/?search=search-text");
   });
 });

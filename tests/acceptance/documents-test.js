@@ -67,7 +67,7 @@ module("Acceptance | documents", function (hooks) {
       "[data-test-document-container]:first-child [data-test-document]"
     );
 
-    assert.equal(
+    assert.strictEqual(
       currentURL(),
       `/?document=${document.id}`,
       "url is set to currently selected document"
@@ -109,12 +109,12 @@ module("Acceptance | documents", function (hooks) {
 
     await fillIn("[data-test-title-input]", "new title");
     this.assertRequest("PATCH", "/api/v1/documents/:id", (request) => {
-      assert.equal(
+      assert.strictEqual(
         request.params.id,
         document.id,
         "patching the correct document"
       );
-      assert.equal(
+      assert.strictEqual(
         JSON.parse(request.requestBody).data.attributes.title.en,
         "new title",
         "new title is set"
@@ -135,7 +135,7 @@ module("Acceptance | documents", function (hooks) {
 
     setTimeout(() => {}, 2000);
     this.assertRequest("DELETE", "/api/v1/documents/:id", (request) => {
-      assert.equal(
+      assert.strictEqual(
         request.params.id,
         document.id,
         "deleting the correct document"
@@ -143,7 +143,7 @@ module("Acceptance | documents", function (hooks) {
     });
     await click("[data-test-single-doc-details] [data-test-delete]");
     await click("[data-test-delete-confirm]");
-    assert.equal(currentURL(), "/", "document is removed from url");
+    assert.strictEqual(currentURL(), "/", "document is removed from url");
     assert.dom("[data-test-document]").doesNotExist();
   });
 
@@ -157,7 +157,7 @@ module("Acceptance | documents", function (hooks) {
     assert.dom("[data-test-document]").doesNotExist();
     this.assertRequest("POST", "/api/v1/documents", (request) => {
       const attributes = JSON.parse(request.requestBody).data.attributes;
-      assert.equal(
+      assert.strictEqual(
         attributes.title.en,
         "test-file.txt",
         "correct title is set"
@@ -179,8 +179,8 @@ module("Acceptance | documents", function (hooks) {
 
     this.assertRequest("POST", "/api/v1/files", (request) => {
       const { attributes } = JSON.parse(request.requestBody).data;
-      assert.equal(attributes.name, "test-file.txt");
-      assert.equal(attributes.type, "original");
+      assert.strictEqual(attributes.name, "test-file.txt");
+      assert.strictEqual(attributes.type, "original");
     });
     await triggerEvent("[data-test-replace]", "change", {
       files: [new File(["Ember Rules!"], "test-file.txt")],
@@ -201,7 +201,11 @@ module("Acceptance | documents", function (hooks) {
       "[data-test-document]:first-child [data-test-context-menu-trigger]"
     );
     this.assertRequest("DELETE", "/api/v1/documents/:id", (request) => {
-      assert.equal(request.params.id, 1, "deleting the correct document");
+      assert.strictEqual(
+        request.params.id,
+        "1",
+        "deleting the correct document"
+      );
     });
     await click(
       "[data-test-document]:first-child [data-test-context-menu] [data-test-delete]"
@@ -225,7 +229,7 @@ module("Acceptance | documents", function (hooks) {
     );
     assert.dom("[data-test-zip-download-text]").includesText("3");
     this.assertRequest("GET", "/api/v1/documents/zip/:ids", (request) => {
-      assert.equal(
+      assert.strictEqual(
         request.params.ids,
         [1, 2, 3],
         "requesting the correct documents as a zip"
@@ -291,7 +295,7 @@ module("Acceptance | documents", function (hooks) {
         "uk-background-secondary",
         "the tag does has the selected class"
       );
-    assert.equal(
+    assert.strictEqual(
       currentURL(),
       `/?tags=${tag.id}`,
       "tag has been selected and is present in the URL"
@@ -299,7 +303,7 @@ module("Acceptance | documents", function (hooks) {
 
     await click(`[data-test-category-id="${category.id}"]`);
 
-    assert.equal(
+    assert.strictEqual(
       currentURL(),
       `/?category=${category.id}`,
       "the category has been set and the tags queryParam has been cleared"

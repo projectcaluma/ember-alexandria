@@ -53,12 +53,12 @@ module("Integration | Component | document-card", function (hooks) {
     await render(hbs`<DocumentCard @document={{this.document}}/>`);
     await click("[data-test-context-menu-trigger]");
     await click("[data-test-download]");
-    assert.equal(
+    assert.strictEqual(
       fileSaverStub.args[0][0],
       downloadUrl,
       "saveAs was called with correct downloadUrl"
     );
-    assert.equal(
+    assert.strictEqual(
       fileSaverStub.args[0][1],
       `${title}.txt`,
       "saveAs was called with correct file name"

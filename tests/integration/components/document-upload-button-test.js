@@ -33,17 +33,17 @@ module("Integration | Component | document-upload-button", function (hooks) {
       files: [dummyFile],
     });
 
-    assert.equal(
+    assert.strictEqual(
       this.uploadFnMock.callCount,
       1,
       "documents.upload was called once"
     );
-    assert.equal(
+    assert.strictEqual(
       this.uploadFnMock.args[0][0],
       this.category,
       "documents.upload was called with the correct category"
     );
-    assert.equal(
+    assert.strictEqual(
       this.uploadFnMock.args[0][1][0].name,
       dummyFile.name,
       "documents.upload was called with the correct file"
@@ -84,7 +84,7 @@ module("Integration | Component | document-upload-button", function (hooks) {
       }
     );
 
-    assert.equal(
+    assert.strictEqual(
       this.uploadFnMock.args[0][0],
       secondToLastCategory,
       "documents.upload was called with the correct category"

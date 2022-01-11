@@ -26,7 +26,7 @@ module("Unit | Service | documents", function (hooks) {
     await service.upload(category, files);
 
     // Each file generates three requests.
-    assert.equal(requests.length, files.length * 3);
+    assert.strictEqual(requests.length, files.length * 3);
 
     // Files will be uploaded in parallel. So, we cannot know the order.
     const documentRequests = requests.filter((request) =>
@@ -39,9 +39,9 @@ module("Unit | Service | documents", function (hooks) {
       request.url.endsWith("file-upload")
     );
 
-    assert.equal(documentRequests.length, files.length);
-    assert.equal(fileRequests.length, files.length);
-    assert.equal(uploadRequests.length, files.length);
+    assert.strictEqual(documentRequests.length, files.length);
+    assert.strictEqual(fileRequests.length, files.length);
+    assert.strictEqual(uploadRequests.length, files.length);
   });
 
   test("it replaces documents", async function (assert) {
@@ -54,7 +54,7 @@ module("Unit | Service | documents", function (hooks) {
 
     await service.replace(document, file);
 
-    assert.equal(requests.length, 2);
+    assert.strictEqual(requests.length, 2);
     assert.ok(requests[0].url.endsWith("files"));
     assert.ok(requests[1].url.endsWith("file-upload"));
   });
