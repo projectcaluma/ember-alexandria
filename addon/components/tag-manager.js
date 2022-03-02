@@ -4,7 +4,7 @@ import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { timeout } from "ember-concurrency";
-import { restartableTask } from "ember-concurrency-decorators";
+import { restartableTask } from "ember-concurrency";
 export default class TagManagerComponent extends Component {
   @service("tags") tagService;
   @tracked matchingTags = [];

@@ -2,7 +2,7 @@ import { action } from "@ember/object";
 import Service, { inject as service } from "@ember/service";
 import { dasherize } from "@ember/string";
 import { tracked } from "@glimmer/tracking";
-import { lastValue, task } from "ember-concurrency-decorators";
+import { lastValue, task } from "ember-concurrency";
 
 export default class TagsService extends Service {
   @service store;

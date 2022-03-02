@@ -2,7 +2,7 @@ import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
-import { lastValue, task } from "ember-concurrency-decorators";
+import { lastValue, task } from "ember-concurrency";
 
 export default class DocumentViewComponent extends Component {
   @service notification;
