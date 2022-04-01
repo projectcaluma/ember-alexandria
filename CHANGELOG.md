@@ -1,3 +1,10 @@
+## [1.11.2](https://github.com/projectcaluma/ember-alexandria/compare/v1.11.1...v1.11.2) (2022-04-01)
+
+
+### Bug Fixes
+
+* reset document selection on navigating away ([2876e49](https://github.com/projectcaluma/ember-alexandria/commit/2876e49f8d6f074355667ce743afddf341d2e352))
+
 ## [1.11.1](https://github.com/projectcaluma/ember-alexandria/compare/v1.11.0...v1.11.1) (2021-11-25)
 
 
