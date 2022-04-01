@@ -13,6 +13,7 @@ export default class ApplicationRoute extends Route {
   };
 
   @service config;
+  @service documents;
 
   model() {}
 
