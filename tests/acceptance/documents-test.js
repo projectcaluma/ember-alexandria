@@ -104,7 +104,7 @@ module("Acceptance | documents", function (hooks) {
 
     assert.dom("[data-test-title-input]").doesNotExist();
 
-    await click("[data-test-single-doc-details] [data-test-title]");
+    await click("[data-test-single-doc-details] [data-test-edit-title]");
     assert.dom("[data-test-title-input]").hasValue(document.title.en);
 
     await fillIn("[data-test-title-input]", "new title");

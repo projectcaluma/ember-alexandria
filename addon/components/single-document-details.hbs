@@ -41,30 +41,32 @@
         />
         <span class="uk-flex-none">
           <button
-            class="uk-icon-button {{
-              unless this.validTitle "uk-disabled"
-            }} cursor-pointer"
+            class="uk-icon-button
+              {{unless this.validTitle 'uk-disabled'}}
+              cursor-pointer"
             uk-icon="icon: check"
             type="button"
             data-test-save
             {{on "click" (perform this.saveDocument)}}
-          />
+          ></button>
           <button
             class="uk-icon-button cursor-pointer"
             uk-icon="icon: close"
             type="button"
             {{on "click" this.toggleEditTitle}}
-          />
+          ></button>
         </span>
       {{else}}
-        <button
-          class="uk-link-reset"
-          type="button"
-          data-test-title
-          {{on "click" this.toggleEditTitle}}
-        >
+        <span data-test-title>
           {{@document.title}}
-        </button>
+        </span>
+        <button
+          class="uk-icon-button cursor-pointer uk-margin-small-left"
+          uk-icon="icon: pencil"
+          type="button"
+          data-test-edit-title
+          {{on "click" this.toggleEditTitle}}
+        ></button>
       {{/if}}
     </span>
   </span>
@@ -102,15 +104,22 @@
       </div>
     {{else}}
       {{#if @document.description}}
+        <span>
+          {{@document.description}}
+        </span>
+
         <button
-          class="uk-link-reset"
+          class="uk-icon-button cursor-pointer uk-margin-small-left"
+          uk-icon="icon: pencil"
           type="button"
           {{on "click" this.toggleEditDescription}}
-        >
-          {{@document.description}}
-        </button>
+        ></button>
       {{else}}
-        <button type="button" {{on "click" this.toggleEditDescription}}>
+        <button
+          type="button"
+          class="uk-button-default"
+          {{on "click" this.toggleEditDescription}}
+        >
           {{t "alexandria.document-details.add-description"}}
         </button>
       {{/if}}
@@ -177,7 +186,14 @@
           {{#each (filter-by "type" "original" @document.files) as |file|}}
             <li data-test-file class="uk-flex" title={{file.name}}>
               <span class="uk-margin-right">
-                {{format-date file.createdAt month="2-digit" day="2-digit" year="numeric" hour="2-digit" minute="2-digit"}}
+                {{format-date
+                  file.createdAt
+                  month="2-digit"
+                  day="2-digit"
+                  year="numeric"
+                  hour="2-digit"
+                  minute="2-digit"
+                }}
               </span>
               <span class="uk-width-expand">
                 {{~await (resolve-user file.createdByUser)~}}
