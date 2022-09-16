@@ -1,7 +1,7 @@
 {{yield this.showDialog}}
 
 <UkModal
-  @on-hide={{this.hideDialog}}
+  @onHide={{this.hideDialog}}
   @container={{if this.isTesting "#ember-testing" false}}
   @visible={{this.dialogVisible}} as |Modal|
 >
@@ -33,14 +33,14 @@
     <div class="uk-flex uk-flex-between">
       <UkButton
         @label={{t "alexandria.document-delete-button.prompt.cancel"}}
-        @on-click={{this.cancel}}
+        @onClick={{this.cancel}}
         data-test-delete-cancel
       />
 
       <UkButton
         @color="primary"
         @label={{t "alexandria.document-delete-button.prompt.confirm"}}
-        @on-click={{perform this.delete}}
+        @onClick={{perform this.delete}}
         @loading={{this.delete.isRunning}}
         data-test-delete-confirm
       />
