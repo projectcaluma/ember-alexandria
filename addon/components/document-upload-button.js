@@ -23,7 +23,8 @@ export default class DocumentUploadButtonComponent extends Component {
       if (this.args.afterUpload) {
         this.args.afterUpload();
       }
-    } catch {
+    } catch (error) {
+      console.error(error);
       this.notification.danger(
         this.intl.t("alexandria.errors.upload-document", {
           count: files.length,

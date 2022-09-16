@@ -48,7 +48,13 @@ constructor(...args) {
   this.engines = {
     emberAlexandria: {
       dependencies: {
-        services: ["store", "intl", "notification"],
+        services: [
+          "session",
+          "intl",
+          "notification",
+          "router",
+          { config: "alexandria-config" },
+        ],
       },
     },
   };

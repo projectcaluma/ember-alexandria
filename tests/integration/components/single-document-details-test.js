@@ -99,7 +99,7 @@ module("Integration | Component | single-document-details", function (hooks) {
     assert.dom("[data-test-title]").exists();
     assert.dom("[data-test-title-input]").doesNotExist();
 
-    await click("[data-test-title]");
+    await click("[data-test-edit-title]");
 
     assert.dom("[data-test-title]").doesNotExist();
     assert.dom("[data-test-title-input]").exists();
