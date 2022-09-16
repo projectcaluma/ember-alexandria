@@ -30,7 +30,7 @@ export default class ApplicationController extends Controller {
       activeGroup: this.activeGroup,
     };
 
-    if (this.config && this.config.modelMetaFilters.document) {
+    if (this.config && this.config.modelMetaFilters?.document) {
       filters = {
         ...filters,
         meta: JSON.stringify(this.config.modelMetaFilters.document),

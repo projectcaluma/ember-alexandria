@@ -16,7 +16,7 @@ export default class App extends Application {
       emberAlexandria: {
         dependencies: {
           services: [
-            "store",
+            "session",
             "intl",
             "notification",
             "router",
