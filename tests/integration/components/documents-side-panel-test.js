@@ -1,14 +1,10 @@
 import Service from "@ember/service";
 import { render } from "@ember/test-helpers";
+import setupRenderingTest from "dummy/tests/helpers/setup-rendering-test";
 import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
-import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
-import { setupRenderingTest } from "ember-qunit";
 import { module, test } from "qunit";
 import sinon from "sinon";
-
-const modulePrefix = "ember-alexandria";
-const resolver = engineResolverFor(modulePrefix);
 
 class TagServiceStub extends Service {
   fetchAllTags = {
@@ -18,7 +14,7 @@ class TagServiceStub extends Service {
 }
 
 module("Integration | Component | documents-side-panel", function (hooks) {
-  setupRenderingTest(hooks, { resolver });
+  setupRenderingTest(hooks);
   setupMirage(hooks);
 
   hooks.beforeEach(function () {

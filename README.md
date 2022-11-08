@@ -46,7 +46,7 @@ constructor(...args) {
   super(...args);
 
   this.engines = {
-    emberAlexandria: {
+    "ember-alexandria": {
       dependencies: {
         services: [
           "session",

@@ -25,6 +25,6 @@ export default function setupCustomRenderingTest(hooks) {
   setupRenderingTest(hooks, { resolver });
 
   hooks.beforeEach(function () {
-    this.owner.register("mirage:base-config", config);
+    this.owner.register("mirage:make-server", config);
   });
 }
