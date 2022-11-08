@@ -1,16 +1,12 @@
 /* eslint-disable import/no-named-as-default-member */
 import { render, triggerEvent } from "@ember/test-helpers";
+import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
-import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
-import { setupRenderingTest } from "ember-qunit";
 import { module, test } from "qunit";
 import sinon from "sinon";
 
-const modulePrefix = "ember-alexandria";
-const resolver = engineResolverFor(modulePrefix);
-
 module("Integration | Component | document-upload-button", function (hooks) {
-  setupRenderingTest(hooks, { resolver });
+  setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
     this.store = this.owner.lookup("service:store");

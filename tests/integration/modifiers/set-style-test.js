@@ -1,14 +1,10 @@
 import { render } from "@ember/test-helpers";
-import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
-import { setupRenderingTest } from "ember-qunit";
+import { setupRenderingTest } from "dummy/tests/helpers";
 import hbs from "htmlbars-inline-precompile";
 import { module, test } from "qunit";
 
-const modulePrefix = "ember-alexandria";
-const resolver = engineResolverFor(modulePrefix);
-
 module("Integration | Modifier | set-style", function (hooks) {
-  setupRenderingTest(hooks, { resolver });
+  setupRenderingTest(hooks);
 
   test("it renders style", async function (assert) {
     await render(hbs`<div {{set-style color="#f00" display="flex"}}></div>`);

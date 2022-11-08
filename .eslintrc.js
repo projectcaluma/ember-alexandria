@@ -16,8 +16,4 @@ module.exports = {
       ],
     },
   },
-
-  globals: {
-    Ember: "readonly",
-  },
 };

@@ -1,13 +1,8 @@
-import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
-import { setupTest } from "ember-qunit";
+import { setupTest } from "dummy/tests/helpers";
 import { module, test } from "qunit";
 
-const modulePrefix = "ember-alexandria";
-const resolver = engineResolverFor(modulePrefix);
-
 module("Unit | Controller | application", function (hooks) {
-  // eslint-disable-next-line ember/no-restricted-resolver-tests
-  setupTest(hooks, { resolver });
+  setupTest(hooks);
 
   test("compute document filters", function (assert) {
     const controller = this.owner.lookup("controller:application");

@@ -23,4 +23,4 @@
 * `yarn start` (with mirage backend) or `yarn start-proxy` (with real backend running on [http://localhost:8000](http://localhost:8000))
 * Visit the dummy application at [http://localhost:4200](http://localhost:4200).
 
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+For more information on using ember-cli, visit [https://cli.emberjs.com/release/](https://cli.emberjs.com/release/).
