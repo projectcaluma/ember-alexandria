@@ -13,7 +13,7 @@ export default class App extends Application {
     super(...args);
 
     this.engines = {
-      emberAlexandria: {
+      "ember-alexandria": {
         dependencies: {
           services: [
             "session",

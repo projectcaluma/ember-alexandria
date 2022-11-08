@@ -1,27 +1,37 @@
-import { Response } from "miragejs";
-/*eslint-disable ember/no-get */
-export default function () {
-  this.urlPrefix = "";
-  this.namespace = "/api/v1";
-  this.timing = 400;
+import { discoverEmberDataModels } from "ember-cli-mirage";
+import { createServer, Response } from "miragejs";
 
-  this.get("/categories");
-  this.get("/categories/:id");
+export default function makeServer(config) {
+  return createServer({
+    ...config,
+    models: { ...discoverEmberDataModels(), ...config.models },
+    routes() {
+      this.urlPrefix = "";
+      this.namespace = "/api/v1";
+      this.timing = 400;
 
-  this.get("/documents");
-  this.get("/documents/:id");
-  this.patch("/documents/:id");
-  this.post("/documents");
-  this.delete("/documents/:id");
+      this.get("/categories");
+      this.get("/categories/:id");
 
-  this.get("/tags");
-  this.get("/tags/:id");
-  this.post("/tags");
+      this.get("/documents");
+      this.get("/documents/:id");
+      this.patch("/documents/:id");
+      this.post("/documents");
+      this.delete("/documents/:id");
 
-  this.post("/files", function (schema) {
-    const attrs = this.normalizedRequestAttrs();
-    return schema.files.create({ ...attrs, uploadUrl: "/api/v1/file-upload" });
+      this.get("/tags");
+      this.get("/tags/:id");
+      this.post("/tags");
+
+      this.post("/files", function (schema) {
+        const attrs = this.normalizedRequestAttrs();
+        return schema.files.create({
+          ...attrs,
+          uploadUrl: "/api/v1/file-upload",
+        });
+      });
+
+      this.put("/file-upload", () => new Response(201, {}, {}));
+    },
   });
-
-  this.put("/file-upload", () => new Response(201, {}, {}));
 }
