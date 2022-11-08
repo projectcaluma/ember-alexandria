@@ -1,15 +1,11 @@
 import { render } from "@ember/test-helpers";
 import { hbs } from "ember-cli-htmlbars";
-import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
 import { setupIntl } from "ember-intl/test-support";
 import { setupRenderingTest } from "ember-qunit";
 import { module, test } from "qunit";
 
-const modulePrefix = "ember-alexandria";
-const resolver = engineResolverFor(modulePrefix);
-
 module("Integration | Component | empty-icon", function (hooks) {
-  setupRenderingTest(hooks, { resolver });
+  setupRenderingTest(hooks);
   setupIntl(hooks, "en");
 
   test("it renders", async function (assert) {

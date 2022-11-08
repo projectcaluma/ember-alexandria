@@ -1,16 +1,12 @@
 /* eslint-disable import/no-named-as-default-member */
 import { render, fillIn } from "@ember/test-helpers";
 import { hbs } from "ember-cli-htmlbars";
-import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
 import { setupRenderingTest } from "ember-qunit";
 import { module, test } from "qunit";
 import sinon from "sinon";
 
-const modulePrefix = "ember-alexandria";
-const resolver = engineResolverFor(modulePrefix);
-
 module("Integration | Component | search", function (hooks) {
-  setupRenderingTest(hooks, { resolver });
+  setupRenderingTest(hooks);
 
   test("it renders", async function (assert) {
     const router = this.owner.lookup("service:router");

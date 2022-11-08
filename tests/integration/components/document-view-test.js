@@ -1,21 +1,17 @@
 import Service from "@ember/service";
 import { render, click } from "@ember/test-helpers";
 import { tracked } from "@glimmer/tracking";
-import setupRenderingTest from "dummy/tests/helpers/setup-rendering-test";
 import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
-import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
+import { setupRenderingTest } from "ember-qunit";
 import { module, test } from "qunit";
-
-const modulePrefix = "ember-alexandria";
-const resolver = engineResolverFor(modulePrefix);
 
 class MockDocumentsService extends Service {
   @tracked selectedDocuments = [];
 }
 
 module("Integration | Component | document-view", function (hooks) {
-  setupRenderingTest(hooks, { resolver });
+  setupRenderingTest(hooks);
   setupMirage(hooks);
 
   hooks.beforeEach(function () {
