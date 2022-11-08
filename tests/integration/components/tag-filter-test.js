@@ -1,5 +1,5 @@
 import { render } from "@ember/test-helpers";
-import setupRenderingTest from "dummy/tests/helpers/setup-rendering-test";
+import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
 import { module, test } from "qunit";

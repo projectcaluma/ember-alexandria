@@ -1,14 +1,10 @@
 import Service from "@ember/service";
 import { render, click } from "@ember/test-helpers";
+import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
-import engineResolverFor from "ember-engines/test-support/engine-resolver-for";
-import { setupRenderingTest } from "ember-qunit";
 import fileSaver from "file-saver";
 import { module, test } from "qunit";
 import sinon from "sinon";
-
-const modulePrefix = "ember-alexandria";
-const resolver = engineResolverFor(modulePrefix);
 
 const mockDocumentsService = class DocumentsService extends Service {
   deselectDocument() {
@@ -17,7 +13,7 @@ const mockDocumentsService = class DocumentsService extends Service {
 };
 
 module("Integration | Component | document-card", function (hooks) {
-  setupRenderingTest(hooks, { resolver });
+  setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
     this.owner.register("service:documents", mockDocumentsService);

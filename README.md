@@ -1,5 +1,4 @@
-ember-alexandria
-==============================================================================
+# ember-alexandria
 
 ![Test](https://github.com/projectcaluma/ember-alexandria/workflows/Test/badge.svg)
 [![Dependabot](https://img.shields.io/librariesio/github/projectcaluma/ember-alexandria)](https://dependabot.com/)
@@ -9,16 +8,14 @@ ember-alexandria
 The frontend for the [alexandria](https://github.com/projectcaluma/alexandria)
 document management service
 
-Compatibility
-------------------------------------------------------------------------------
+## Compatibility
 
-* Ember.js v3.20 or above
-* Ember CLI v3.20 or above
-* Node.js v12 or above
+* Ember.js v3.28 or above
+* Ember CLI v3.28 or above
+* Node.js v14 or above
 
 
-Installation
-------------------------------------------------------------------------------
+## Installation
 
 ```bash
 ember install ember-alexandria
@@ -32,8 +29,7 @@ Then add the following lines to your `app/styles/app.scss`:
 ```
 
 
-Usage
-------------------------------------------------------------------------------
+## Usage
 
 Mount the engine with the following command in your `app/router.js`:
 ```js
@@ -129,14 +125,12 @@ export default class AlexandriaConfigService extends ConfigService {
 }
 ```
 
-Contributing
-------------------------------------------------------------------------------
+## Contributing
 
 See the [Contributing](CONTRIBUTING.md) guide for details.
 
 
-License
-------------------------------------------------------------------------------
+## License
 
 This project is licensed under the [LGPL-3.0-or-later license](LICENSE).
 
