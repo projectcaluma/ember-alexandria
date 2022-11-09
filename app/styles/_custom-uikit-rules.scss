@@ -1,7 +1,5 @@
-@use "ember-uikit/variables-theme" as uikit;
-
 [class*="uk-border"] {
-  border: uikit.$global-border-width solid uikit.$global-border;
+  border: $global-border-width solid $global-border;
 }
 
 .uk-border-horizontal {
@@ -26,14 +24,14 @@
 
 .uk-border-rounded,
 .uk-corner-rounded {
-  border-radius: uikit.$border-rounded-border-radius;
+  border-radius: $border-rounded-border-radius;
 
   &-circular {
-    border-radius: calc(#{uikit.$border-rounded-border-radius} * 2);
+    border-radius: calc(#{$border-rounded-border-radius} * 2);
   }
 
   &-angular {
-    border-radius: calc(#{uikit.$border-rounded-border-radius} / 2);
+    border-radius: calc(#{$border-rounded-border-radius} / 2);
   }
 }
 

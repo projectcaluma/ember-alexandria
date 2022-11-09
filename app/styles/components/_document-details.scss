@@ -1,7 +1,5 @@
-@use "ember-uikit" as uikit;
-
 .document-details {
-  transition: width uikit.$animation-duration;
+  transition: width $animation-duration;
 
   &.closed {
     width: 0px;
@@ -13,6 +11,6 @@
 
   .document-meta {
     font-size: 1.25em;
-    color: uikit.$global-muted-color;
+    color: $global-muted-color;
   }
 }

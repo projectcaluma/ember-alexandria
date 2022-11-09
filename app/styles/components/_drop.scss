@@ -1,5 +1,3 @@
-@use "ember-uikit" as uikit;
-
 .drop {
   width: 200px;
 
@@ -9,7 +7,7 @@
     cursor: pointer;
 
     &:hover {
-      background: uikit.$global-muted-background;
+      background: $global-muted-background;
     }
 
     svg {
