@@ -1,10 +1,8 @@
-@use "ember-uikit" as uikit;
-
 .document-card {
   width: 200px;
 
-  transition: box-shadow uikit.$animation-duration,
-    color uikit.$animation-duration, border uikit.$animation-duration;
+  transition: box-shadow $animation-duration,
+    color $animation-duration, border $animation-duration;
 
   &:hover {
     @extend .uk-box-shadow-large;
@@ -15,7 +13,7 @@
     overflow: hidden;
 
     img {
-      border-radius: calc(#{uikit.$border-rounded-border-radius} * 2);
+      border-radius: calc(#{$border-rounded-border-radius} * 2);
     }
   }
 
@@ -39,6 +37,6 @@
   }
 
   &.selected {
-    border-color: uikit.$global-primary-background;
+    border-color: $global-primary-background;
   }
 }

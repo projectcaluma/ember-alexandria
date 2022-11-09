@@ -1,14 +1,18 @@
-@use "custom-uikit-rules";
+@import "ember-uikit/variables-theme";
 
-@use "skeleton-loading";
+@import "custom-uikit-rules";
+
+@import "ember-uikit";
+
+@import "skeleton-loading";
 
 // Components
-@use "components/category-nav/category";
-@use "components/document-card";
-@use "components/drop";
-@use "components/document-details";
-@use "components/document-grid";
-@use "components/document-list";
+@import "components/category-nav/category";
+@import "components/document-card";
+@import "components/drop";
+@import "components/document-details";
+@import "components/document-grid";
+@import "components/document-list";
 
 // * DOCUMENT LIST VIEW
 .cursor-pointer {

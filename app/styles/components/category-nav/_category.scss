@@ -1,12 +1,10 @@
-@use "ember-uikit" as uikit;
-
 @mixin active {
-  background: uikit.$background-default-background;
+  background: $background-default-background;
 }
 
 .uk-nav .category-nav--category > div {
-  transition: background uikit.$animation-duration,
-    box-shadow uikit.$animation-duration, color uikit.$animation-duration;
+  transition: background $animation-duration,
+    box-shadow $animation-duration, color $animation-duration;
   padding: 10px 0 10px 50px;
 
   cursor: pointer;

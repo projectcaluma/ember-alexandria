@@ -1746,14 +1746,14 @@
     lodash "^4.17.21"
     resolve "^1.20.0"
 
-"@embroider/util@^1.9.0":
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/@embroider/util/-/util-1.9.0.tgz#331c46bdf106c44cb1dd6baaa9030d322c13cfca"
-  integrity sha512-9I63iJK6N01OHJafmS/BX0msUkTlmhFMIEmDl/SRNACVi0nS6QfNyTgTTeji1P/DALf6eobg/9t/N4VhS9G9QA==
+"@embroider/util@^1.10.0", "@embroider/util@^1.9.0", "@embroider/util@~1.10.0":
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/@embroider/util/-/util-1.10.0.tgz#8320d73651e7f5d48dac1b71fb9e6d21cac7c803"
+  integrity sha512-utAFKoq6ajI27jyqjvX3PiGL4m+ZyGVlVNbSbE/nOqi2llRyAkh5ltH1WkIK7jhdwQFJouo1NpOSj9J3/HDa3A==
   dependencies:
-    "@embroider/macros" "^1.9.0"
+    "@embroider/macros" "^1.10.0"
     broccoli-funnel "^3.0.5"
-    ember-cli-babel "^7.23.1"
+    ember-cli-babel "^7.26.11"
 
 "@eslint-community/eslint-utils@^4.2.0":
   version "4.4.0"
@@ -7253,7 +7253,7 @@ ember-modifier-manager-polyfill@^1.2.0:
     ember-cli-version-checker "^2.1.2"
     ember-compatibility-helpers "^1.2.0"
 
-ember-modifier@^3.0.0, ember-modifier@^3.2.7:
+ember-modifier@^3.0.0:
   version "3.2.7"
   resolved "https://registry.yarnpkg.com/ember-modifier/-/ember-modifier-3.2.7.tgz#f2d35b7c867cbfc549e1acd8d8903c5ecd02ea4b"
   integrity sha512-ezcPQhH8jUfcJQbbHji4/ZG/h0yyj1jRDknfYue/ypQS8fM8LrGcCMo0rjDZLzL1Vd11InjNs3BD7BdxFlzGoA==
@@ -7538,25 +7538,27 @@ ember-try@2.0.0:
     rimraf "^3.0.2"
     walk-sync "^2.2.0"
 
-ember-uikit@^6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/ember-uikit/-/ember-uikit-6.1.1.tgz#ece31447724f730a1bfde2650c383e3d1eb11f90"
-  integrity sha512-8gLzSS23Gab6WYA3gRFbnvjjgvvTIf5YRjE5JPu523yEkVCQ6kqlntg0MklYuxnEBYAKpzna7IA1H2JPsriYIg==
+ember-uikit@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/ember-uikit/-/ember-uikit-7.0.3.tgz#33344a612258b0df833a758567b8f4edcfb05277"
+  integrity sha512-JKCOiP1paiJLMYK3fPlTDCCSCt4+6VLGchs1QL788S0hgkMJ2bCnA7JPMJ/Cb8Syzv3Lwk3b5XsLCF3NNmZ7MA==
   dependencies:
-    "@ember/string" "^3.0.0"
-    "@embroider/util" "^1.9.0"
+    "@ember/string" "^3.0.1"
+    "@embroider/util" "^1.10.0"
     "@glimmer/component" "^1.1.2"
     "@glimmer/tracking" "^1.1.2"
     broccoli-funnel "^3.0.8"
     broccoli-merge-trees "^4.2.0"
     broccoli-stew "^3.0.0"
-    ember-auto-import "^2.4.3"
+    ember-auto-import "^2.6.3"
     ember-cli-babel "^7.26.11"
-    ember-cli-htmlbars "^6.1.1"
+    ember-cli-htmlbars "^6.2.0"
+    ember-composable-helpers "^5.0.0"
     ember-focus-trap "^1.0.1"
-    ember-modifier "^3.2.7"
+    ember-modifier "^4.1.0"
     ember-toggle "^9.0.3"
-    uikit "^3.15.11"
+    ember-truth-helpers "^3.1.1"
+    uikit "^3.16.15"
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -15668,7 +15670,7 @@ uglify-js@^3.1.4:
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.17.4.tgz#61678cf5fa3f5b7eb789bb345df29afb8257c22c"
   integrity sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==
 
-uikit@^3.15.11:
+uikit@^3.16.15:
   version "3.16.15"
   resolved "https://registry.yarnpkg.com/uikit/-/uikit-3.16.15.tgz#47599dc1851bd803bc2a760da3a946d55a6dc290"
   integrity sha512-uw0vn+h+isInT4Eq/CPxwQx5X0CDS2I9FQwgnxHyDDXOBEnnMEpCxiQWEvVgwkelJlMh/Qv+2ePyXVcb9Wx93A==
