@@ -1,3 +1,27 @@
+# [2.0.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.11.3...v2.0.0) (2022-11-09)
+
+
+### Bug Fixes
+
+* **config:** allow namespace to be configured ([622f291](https://github.com/projectcaluma/ember-alexandria/commit/622f29122f65f44d78dce3bb8c597dee596bacae))
+* live up to stricter eslint rules ([a8f2a87](https://github.com/projectcaluma/ember-alexandria/commit/a8f2a8753a31fd47a70c18007d312f00c8feeb59))
+
+
+* chore!(deps):  upgrade core deps ([1df788f](https://github.com/projectcaluma/ember-alexandria/commit/1df788f55a67750001eefd60cc62fbad66efd601))
+
+
+### BREAKING CHANGES
+
+* **config:** This commit changes the consumed services of the engine.
+New, the engine requires `session`, `intl`, `notification`, `router`, `config`.
+The dependencies are documented in the README.md.
+
+Minor fixes:
+- use optional chaining for lookup
+- update some dependencies
+- unpin ember-data
+* - minimum node version: 12.22 and above or node >15
+
 ## [1.11.3](https://github.com/projectcaluma/ember-alexandria/compare/v1.11.2...v1.11.3) (2022-04-01)
 
 
