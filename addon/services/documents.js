@@ -50,7 +50,7 @@ export default class DocumentsService extends Service {
         this.store.findRecord("category", category);
     }
 
-    await Promise.all(
+    return await Promise.all(
       Array.from(files).map(async (file) => {
         const documentModel = this.store.createRecord("document", {
           category,
@@ -78,6 +78,8 @@ export default class DocumentsService extends Service {
         if (!response.ok) {
           throw new Error(response.statusText, response.status);
         }
+
+        return documentModel;
       })
     );
   }
