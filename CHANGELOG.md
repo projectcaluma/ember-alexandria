@@ -1,3 +1,20 @@
+# [3.0.0](https://github.com/projectcaluma/ember-alexandria/compare/v2.0.0...v3.0.0) (2023-03-24)
+
+
+### Bug Fixes
+
+* **service:** return created documents ([708a057](https://github.com/projectcaluma/ember-alexandria/commit/708a05775835c6d3cd5cfda5cd875a1fd4f910fc))
+
+
+### Features
+
+* **deps:** add compatibility with Ember v4 ([0c733a3](https://github.com/projectcaluma/ember-alexandria/commit/0c733a3892d01329d7bd4a3c9fff8569fb122caa))
+
+
+### BREAKING CHANGES
+
+* **deps:** Drop support for node v12.
+
 # [2.0.0](https://github.com/projectcaluma/ember-alexandria/compare/v1.11.3...v2.0.0) (2022-11-09)
 
 
