@@ -11,7 +11,9 @@ module.exports = function (environment) {
   };
 
   if (environment === "test") {
+    ENV.locationType = 'none';
     ENV.APP.rootElement = "#ember-testing";
+    ENV.APP.autoboot = false;
   }
 
   return ENV;
