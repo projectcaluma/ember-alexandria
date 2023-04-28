@@ -44,8 +44,6 @@ import { assert } from "@ember/debug";
  * @method {String} A HTTP method in caps (GET, PUT, POST, DELETE).
  * @path {String} The api path on which to intercept. Dynamic segments cant be replaced with :segment-name .
  * @assertFunc {Function} The function to call which takes the request as argument.
- *
- * @author Jonas Cosandey (jonas.cosandey@adfinis-sygroup.ch)
  */
 export default function setupRequestAssertions(hooks) {
   hooks.before(function () {

@@ -9,23 +9,19 @@ export default class App extends Application {
   podModulePrefix = config.podModulePrefix;
   Resolver = Resolver;
 
-  constructor(...args) {
-    super(...args);
-
-    this.engines = {
-      "ember-alexandria": {
-        dependencies: {
-          services: [
-            "session",
-            "intl",
-            "notification",
-            "router",
-            { config: "alexandria-config" },
-          ],
-        },
+  engines = {
+    "ember-alexandria": {
+      dependencies: {
+        services: [
+          "session",
+          "intl",
+          "notification",
+          "router",
+          { config: "alexandria-config" },
+        ],
       },
-    };
-  }
+    },
+  };
 }
 
 loadInitializers(App, config.modulePrefix);

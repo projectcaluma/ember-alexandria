@@ -48,10 +48,11 @@ export default class DocumentCardComponent extends Component {
       url += `?filter[files]=${originalFilePKs}`; // list of files we want to download
 
       // Some alexandria applications require the document-meta as well
-      if (this.config.modelMetaFilters.document)
+      if (this.config.modelMetaFilters.document) {
         url += `&filter[document-meta]=${encodeURIComponent(
           JSON.stringify(this.config.modelMetaFilters.document)
         )}`;
+      }
 
       const transfer = yield fetch(url, {
         mode: "cors",
