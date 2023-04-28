@@ -4,7 +4,7 @@ import { LocalizedModel, localizedAttr } from "ember-localized-model";
 export default class DocumentModel extends LocalizedModel {
   @localizedAttr title;
   @localizedAttr description;
-  @attr meta;
+  @attr metainfo;
 
   @attr createdAt;
   @attr createdByUser;
@@ -18,7 +18,9 @@ export default class DocumentModel extends LocalizedModel {
   @hasMany files;
 
   get thumbnail() {
-    const thumbnail = this.files.filter((file) => file.type === "thumbnail")[0];
+    const thumbnail = this.files.filter(
+      (file) => file.variant === "thumbnail"
+    )[0];
     return thumbnail && thumbnail.downloadUrl;
   }
 }

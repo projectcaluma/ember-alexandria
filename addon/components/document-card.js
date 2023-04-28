@@ -17,7 +17,7 @@ export default class DocumentCardComponent extends Component {
       // If we download a single file we can use the saveAs library
       const doc = this.args.document || this.args?.documents[0];
       try {
-        const file = doc.files.find((file) => file.type === "original");
+        const file = doc.files.find((file) => file.variant === "original");
         const extension = file.name.includes(".")
           ? `.${file.name.split(".").slice(-1)[0]}`
           : "";
@@ -36,7 +36,7 @@ export default class DocumentCardComponent extends Component {
       const originalFilePKs = encodeURIComponent(
         this.args.documents
           .map((doc) =>
-            doc.files.toArray().find((file) => file.type === "original")
+            doc.files.toArray().find((file) => file.variant === "original")
           )
           .map((f) => f.id)
           .join(",")
@@ -49,7 +49,7 @@ export default class DocumentCardComponent extends Component {
 
       // Some alexandria applications require the document-meta as well
       if (this.config.modelMetaFilters.document) {
-        url += `&filter[document-meta]=${encodeURIComponent(
+        url += `&filter[document-metainfo]=${encodeURIComponent(
           JSON.stringify(this.config.modelMetaFilters.document)
         )}`;
       }

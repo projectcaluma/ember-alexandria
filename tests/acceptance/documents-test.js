@@ -24,7 +24,7 @@ module("Acceptance | documents", function (hooks) {
     documents[1].update({
       files: [
         this.server.create("file", {
-          type: "thumbnail",
+          variant: "thumbnail",
           downloadUrl: "test-thumbnail",
         }),
       ],
@@ -180,7 +180,7 @@ module("Acceptance | documents", function (hooks) {
     this.assertRequest("POST", "/api/v1/files", (request) => {
       const { attributes } = JSON.parse(request.requestBody).data;
       assert.strictEqual(attributes.name, "test-file.txt");
-      assert.strictEqual(attributes.type, "original");
+      assert.strictEqual(attributes.variant, "original");
     });
     await triggerEvent("[data-test-replace]", "change", {
       files: [new File(["Ember Rules!"], "test-file.txt")],

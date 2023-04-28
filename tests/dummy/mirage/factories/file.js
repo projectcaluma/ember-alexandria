@@ -6,7 +6,7 @@ export default Factory.extend({
   createdByGroup: "dummy-group",
   createdAt: () => faker.date.past(),
   name: () => faker.lorem.word(),
-  type: "original",
+  variant: "original",
   uploadUrl: "/api/v1/file-upload",
   downloadUrl: () => faker.internet.url(),
 });

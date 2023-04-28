@@ -34,7 +34,7 @@ module("Integration | Component | single-document-details", function (hooks) {
       createdByGroup: "group1",
       files: [
         {
-          type: "original",
+          variant: "original",
           name: "some-file.pdf",
           createdByUser: null,
           downloadUrl: "http://test.com",
