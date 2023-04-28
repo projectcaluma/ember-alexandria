@@ -33,7 +33,7 @@ export default class ApplicationController extends Controller {
     if (this.config && this.config.modelMetaFilters?.document) {
       filters = {
         ...filters,
-        meta: JSON.stringify(this.config.modelMetaFilters.document),
+        metainfo: JSON.stringify(this.config.modelMetaFilters.document),
       };
     }
 

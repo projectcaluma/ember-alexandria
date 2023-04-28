@@ -44,7 +44,7 @@ module("Integration | Component | document-card", function (hooks) {
 
     this.document = {
       title,
-      files: [{ name: "foo.txt", type: "original", downloadUrl }],
+      files: [{ name: "foo.txt", variant: "original", downloadUrl }],
     };
     await render(hbs`<DocumentCard @document={{this.document}}/>`);
     await click("[data-test-context-menu-trigger]");

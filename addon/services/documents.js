@@ -54,7 +54,7 @@ export default class DocumentsService extends Service {
       Array.from(files).map(async (file) => {
         const documentModel = this.store.createRecord("document", {
           category,
-          meta: this.config.defaultModelMeta.document,
+          metainfo: this.config.defaultModelMeta.document,
           createdByGroup: this.config.activeGroup,
           modifiedByGroup: this.config.activeGroup,
         });
@@ -63,7 +63,7 @@ export default class DocumentsService extends Service {
 
         const fileModel = this.store.createRecord("file", {
           name: file.name,
-          type: "original",
+          variant: "original",
           document: documentModel,
           createdByGroup: this.config.activeGroup,
           modifiedByGroup: this.config.activeGroup,
@@ -93,7 +93,7 @@ export default class DocumentsService extends Service {
   async replace(document, file) {
     const fileModel = this.store.createRecord("file", {
       name: file.name,
-      type: "original",
+      variant: "original",
       document,
       createdByGroup: this.config.activeGroup,
       modifiedByGroup: this.config.activeGroup,

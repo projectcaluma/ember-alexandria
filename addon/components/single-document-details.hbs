@@ -183,7 +183,7 @@
       </a>
       <div class="uk-accordion-content">
         <ul class="uk-list uk-list-divider">
-          {{#each (filter-by "type" "original" @document.files) as |file|}}
+          {{#each (filter-by "variant" "original" @document.files) as |file|}}
             <li data-test-file class="uk-flex" title={{file.name}}>
               <span class="uk-margin-right">
                 {{format-date

@@ -4,7 +4,7 @@ import { LocalizedModel, localizedAttr } from "ember-localized-model";
 export default class TagModel extends LocalizedModel {
   @attr name;
   @localizedAttr description;
-  @attr meta;
+  @attr metainfo;
 
   @attr createdAt;
   @attr createdByUser;

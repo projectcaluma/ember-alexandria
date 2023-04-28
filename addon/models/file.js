@@ -1,12 +1,12 @@
 import Model, { attr, belongsTo, hasMany } from "@ember-data/model";
 
 export default class FileModel extends Model {
-  @attr type;
+  @attr variant;
   @attr name;
   @attr uploadUrl;
   @attr downloadUrl;
   @attr objectName;
-  @attr meta;
+  @attr metainfo;
 
   @attr createdAt;
   @attr createdByUser;
