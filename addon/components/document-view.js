@@ -162,7 +162,8 @@ export default class DocumentViewComponent extends Component {
         this.documents.selectedDocuments[0]
       );
 
-      let startIndex, endIndex;
+      let startIndex;
+      let endIndex;
       if (selectedDocIndex > firstSelectedDocIndex) {
         // If we are clicking a document later then the previously selected document (we are going down)
         startIndex = firstSelectedDocIndex;

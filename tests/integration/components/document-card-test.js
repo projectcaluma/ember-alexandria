@@ -39,8 +39,8 @@ module("Integration | Component | document-card", function (hooks) {
     // eslint-disable-next-line import/no-named-as-default-member
     const fileSaverStub = sinon.stub(fileSaver, "saveAs");
 
-    const downloadUrl = "http://earh.planet",
-      title = "test1";
+    const downloadUrl = "http://earh.planet";
+    const title = "test1";
 
     this.document = {
       title,
