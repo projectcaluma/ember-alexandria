@@ -90,11 +90,14 @@ jobs:
     timeout-minutes: 10
 
     strategy:
+      fail-fast: false
       matrix:
         scenario:
           - ember-lts-4.4
           - ember-lts-4.8
           - ember-release
+          - embroider-safe
+          - embroider-optimized
 
     steps:
       - uses: actions/checkout@v3
