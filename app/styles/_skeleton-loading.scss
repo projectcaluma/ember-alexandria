@@ -2,11 +2,13 @@ $base-color: #f4f4f4;
 
 @mixin pulse-animation {
   animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
   @keyframes pulse {
     0%,
     100% {
       opacity: 1;
     }
+
     50% {
       opacity: 0.2;
     }
@@ -15,15 +17,18 @@ $base-color: #f4f4f4;
 
 .skeleton-pulse {
   background-color: $base-color;
+
   @include pulse-animation;
 }
 
 .skeleton-text {
   @extend .skeleton-pulse;
+
   border-radius: $border-rounded-border-radius;
 }
 
 .skeleton-icon {
   color: $base-color;
+
   @include pulse-animation;
 }

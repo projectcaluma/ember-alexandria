@@ -6,7 +6,6 @@
   padding-bottom: 15px;
 
   & .empty {
-    grid-column-start: 1;
-    grid-column-end: end;
+    grid-column: 1 end;
   }
 }

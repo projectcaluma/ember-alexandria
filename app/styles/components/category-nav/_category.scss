@@ -3,10 +3,9 @@
 }
 
 .uk-nav .category-nav--category > div {
-  transition: background $animation-duration,
-    box-shadow $animation-duration, color $animation-duration;
+  transition: background $animation-duration, box-shadow $animation-duration,
+    color $animation-duration;
   padding: 10px 0 10px 50px;
-
   cursor: pointer;
 
   &.active {
