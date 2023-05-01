@@ -1,3 +1,25 @@
+# [4.0.0](https://github.com/projectcaluma/ember-alexandria/compare/v3.0.0...v4.0.0) (2023-05-01)
+
+
+### Bug Fixes
+
+* pin ember-data to 4.0.0 ([dc82010](https://github.com/projectcaluma/ember-alexandria/commit/dc820106a3a786f600321a6b6560fd5a75492979))
+* **scss:** import uikit variables without alias ([053524c](https://github.com/projectcaluma/ember-alexandria/commit/053524cca8c4870258ee4f16e2899797c17a86c5))
+
+
+### chore
+
+* **deps:** update dependencies ([cfe322f](https://github.com/projectcaluma/ember-alexandria/commit/cfe322f285b5879ceadd9e65451a9056b3a4d216))
+
+
+* chore!: update most packages ([fb95f6b](https://github.com/projectcaluma/ember-alexandria/commit/fb95f6b72a8fa68f76d3b18cbbba50e709e34055))
+
+
+### BREAKING CHANGES
+
+* **deps:** Drop support for Ember v3.
+* drop node v14 support
+
 # [3.0.0](https://github.com/projectcaluma/ember-alexandria/compare/v2.0.0...v3.0.0) (2023-03-24)
 
 
