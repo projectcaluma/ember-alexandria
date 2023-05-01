@@ -2,8 +2,9 @@
   transition: width $animation-duration;
 
   &.closed {
-    width: 0px;
+    width: 0;
   }
+
   .document-title {
     font-size: 1.5em;
     word-break: break-all;
