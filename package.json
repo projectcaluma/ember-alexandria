@@ -45,7 +45,7 @@
     "ember-cli-htmlbars": "^6.2.0",
     "ember-composable-helpers": "^5.0.0",
     "ember-concurrency": "^2.3.7",
-    "ember-data": "~4.0.0",
+    "ember-data": "^3.28.13",
     "ember-fetch": "^8.1.2",
     "ember-intl": "^6.0.0-beta.4",
     "ember-localized-model": "^2.0.0",
@@ -107,11 +107,8 @@
     "stylelint-scss": "5.0.0",
     "webpack": "5.81.0"
   },
-  "//": {
-    "ember-data": "some kind of problem with ember-cli-mirage and maybe ember-engines"
-  },
   "resolutions": {
-    "ember-data": "~4.0.0"
+    "ember-data": "^3.28.13"
   },
   "ember": {
     "edition": "octane"

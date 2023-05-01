@@ -16,3 +16,8 @@ updates:
       timezone: "Europe/Zurich"
     open-pull-requests-limit: 10
     versioning-strategy: increase
+    # Our apps are not yet ready for ember-data v4
+    ignore:
+      - dependency-name: ember-data
+        versions:
+          - ">= 4"
