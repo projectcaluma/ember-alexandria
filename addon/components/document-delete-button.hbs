@@ -1,10 +1,6 @@
 {{yield this.showDialog}}
 
-<UkModal
-  @onHide={{this.hideDialog}}
-  @container={{if this.isTesting "#ember-testing" false}}
-  @visible={{this.dialogVisible}} as |Modal|
->
+<UkModal @onHide={{this.hideDialog}} @visible={{this.dialogVisible}} as |Modal|>
   <Modal.header>
     <strong class="uk-modal-title">
       {{t "alexandria.document-delete-button.prompt.title"}}
