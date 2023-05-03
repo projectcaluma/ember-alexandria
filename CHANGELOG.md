@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/projectcaluma/ember-alexandria/compare/v4.0.0...v4.0.1) (2023-05-03)
+
+
+### Bug Fixes
+
+* **deps:** downgrade ember-intl to stable version ([6871274](https://github.com/projectcaluma/ember-alexandria/commit/68712741928ac73eb3454ffb9f376f0b7be0542f))
+
 # [4.0.0](https://github.com/projectcaluma/ember-alexandria/compare/v3.0.0...v4.0.0) (2023-05-01)
 
 
