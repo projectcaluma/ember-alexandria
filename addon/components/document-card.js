@@ -35,9 +35,7 @@ export default class DocumentCardComponent extends Component {
       // Compile an array of original file PKs
       const originalFilePKs = encodeURIComponent(
         this.args.documents
-          .map((doc) =>
-            doc.files.toArray().find((file) => file.variant === "original")
-          )
+          .map((doc) => doc.files.find((file) => file.variant === "original"))
           .map((f) => f.id)
           .join(",")
       );

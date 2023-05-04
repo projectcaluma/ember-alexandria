@@ -8,7 +8,7 @@ import {
 } from "@ember/test-helpers";
 import { setupApplicationTest } from "dummy/tests/helpers";
 import { setupMirage } from "ember-cli-mirage/test-support";
-import { setupIntl, setLocale } from "ember-intl/test-support";
+import { setLocale } from "ember-intl/test-support";
 import { module, test } from "qunit";
 
 import setupRequestAssertions from "../helpers/assert-request";
@@ -17,7 +17,6 @@ module("Acceptance | documents", function (hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
   setupRequestAssertions(hooks);
-  setupIntl(hooks, ["en"]);
 
   test("document grid displays documents", async function (assert) {
     const documents = this.server.createList("document", 5);

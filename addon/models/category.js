@@ -7,5 +7,5 @@ export default class CategoryModel extends LocalizedModel {
   @attr color;
   @attr metainfo;
 
-  @hasMany documents;
+  @hasMany("document", { inverse: "category", async: true }) documents;
 }

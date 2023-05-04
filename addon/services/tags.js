@@ -50,7 +50,7 @@ export default class TagsService extends Service {
     let tag = tagInput;
     if (typeof tagInput === "string") {
       const tagId = dasherize(tagInput.trim());
-      const existing = this.allTags.findBy("id", tagId);
+      const existing = this.allTags.find((tag) => tag.id === tagId);
       if (existing) {
         tag = existing;
       } else {
@@ -64,11 +64,11 @@ export default class TagsService extends Service {
       }
     }
 
-    if (document.tags.findBy("id", tag.id)) {
+    if ((await document.tags).find((t) => t.id === tag.id)) {
       return tag;
     }
 
-    document.tags.pushObject(tag);
+    (await document.tags).push(tag);
     await document.save();
 
     await this.fetchAllTags.perform();
@@ -85,10 +85,10 @@ export default class TagsService extends Service {
    */
   @action async remove(document, tag) {
     if (typeof tag === "string") {
-      tag = this.allTags.findBy("name", tag);
+      tag = this.allTags.find((t) => t.name === tag);
     }
 
-    document.tags.removeObject(tag);
+    document.tags = (await document.tags).filter((t) => t !== tag);
     await document.save();
 
     this.fetchSearchTags.perform();

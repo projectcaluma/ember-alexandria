@@ -15,8 +15,8 @@ export default class FileModel extends Model {
   @attr modifiedByUser;
   @attr modifiedByGroup;
 
-  @belongsTo document;
+  @belongsTo("document", { inverse: "files", async: true }) document;
 
-  @belongsTo("file", { inverse: "renderings" }) original;
-  @hasMany("file", { inverse: "original" }) renderings;
+  @belongsTo("file", { inverse: "renderings", async: true }) original;
+  @hasMany("file", { inverse: "original", async: true }) renderings;
 }

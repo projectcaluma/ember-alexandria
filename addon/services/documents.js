@@ -17,7 +17,7 @@ export default class DocumentsService extends Service {
       this.router.externalRouter?.currentRoute?.queryParams?.document;
     if (documentQueryParam) {
       documentQueryParam.split(",").map(async (id) => {
-        this.selectDocument(await this.store.find("document", id));
+        this.selectDocument(await this.store.findRecord("document", id));
       });
     }
   }
