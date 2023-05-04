@@ -48,7 +48,6 @@ constructor(...args) {
           "session",
           "intl",
           "notification",
-          "router",
           { config: "alexandria-config" },
         ],
       },

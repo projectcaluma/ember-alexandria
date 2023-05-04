@@ -41,7 +41,7 @@ export default class DocumentViewComponent extends Component {
       this.sort = sortAttribute;
       this.sortDirection = "";
     }
-    this.router.transitionTo({
+    this.router.transitionTo(this.router.currentRouteName, {
       queryParams: { sort: this.sortDirection + this.sort },
     });
     this.fetchDocuments.perform();
@@ -60,9 +60,9 @@ export default class DocumentViewComponent extends Component {
   @task
   *initialiseDocumentSelection() {
     let docIds = [];
-    if (this.router?.currentRoute?.queryParams?.document) {
+    if (this.router.externalRouter.currentRoute?.queryParams?.document) {
       docIds = decodeURIComponent(
-        this.router.currentRoute.queryParams.document
+        this.router.externalRouter.currentRoute.queryParams.document
       ).split(",");
     }
     if (docIds.length !== 0) {
