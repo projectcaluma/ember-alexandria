@@ -1,12 +1,10 @@
 import { render, click } from "@ember/test-helpers";
 import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
-import { setupIntl } from "ember-intl/test-support";
 import { module, test } from "qunit";
 
 module("Integration | Component | document-delete-button", function (hooks) {
   setupRenderingTest(hooks);
-  setupIntl(hooks, "en");
 
   test("delete document", async function (assert) {
     this.document = {

@@ -13,9 +13,9 @@ export default class DocumentModel extends LocalizedModel {
   @attr modifiedByUser;
   @attr modifiedByGroup;
 
-  @belongsTo category;
-  @hasMany tags;
-  @hasMany files;
+  @belongsTo("category", { inverse: "documents", async: true }) category;
+  @hasMany("tag", { inverse: "documents", async: true }) tags;
+  @hasMany("file", { inverse: "document", async: true }) files;
 
   get thumbnail() {
     const thumbnail = this.files.filter(

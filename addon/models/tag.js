@@ -13,5 +13,5 @@ export default class TagModel extends LocalizedModel {
   @attr modifiedByUser;
   @attr modifiedByGroup;
 
-  @hasMany documents;
+  @hasMany("document", { inverse: "tags", async: true }) documents;
 }

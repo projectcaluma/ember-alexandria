@@ -70,7 +70,7 @@ export default class DocumentViewComponent extends Component {
         filter: this.args.filters || {},
         sort: this.sort ? `${this.sortDirection}${this.sort}` : "",
       });
-      const selectedDocs = docs.filter((doc) => docIds.includes(doc.id));
+      const selectedDocs = [...docs].filter((doc) => docIds.includes(doc.id));
       selectedDocs.forEach((doc) => this.documents.selectDocument(doc));
     }
   }
@@ -176,7 +176,7 @@ export default class DocumentViewComponent extends Component {
 
       this.documents.clearDocumentSelection();
       for (let i = startIndex; i <= endIndex; i++) {
-        this.documents.selectDocument(this.fetchedDocuments.toArray()[i]);
+        this.documents.selectDocument(this.fetchedDocuments[i]);
       }
     }
   }

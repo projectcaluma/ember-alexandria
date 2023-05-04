@@ -36,7 +36,7 @@ module("Unit | Service | tags", function (hooks) {
       ]
     );
 
-    assert.ok(document.tags.includes(tag));
+    assert.ok((await document.tags).includes(tag));
   });
 
   test("it adds new tags", async function (assert) {
@@ -64,7 +64,7 @@ module("Unit | Service | tags", function (hooks) {
       ]
     );
 
-    assert.ok(document.tags.findBy("name", tag));
+    assert.ok((await document.tags).find((t) => t.name === tag));
   });
 
   test("it removes tags", async function (assert) {
@@ -76,7 +76,7 @@ module("Unit | Service | tags", function (hooks) {
     await service.fetchAllTags.perform();
 
     const document = await store.createRecord("document").save();
-    const tag = document.tags.firstObject;
+    const tag = (await document.tags)[0];
 
     await service.remove(document, tag);
 
@@ -90,6 +90,6 @@ module("Unit | Service | tags", function (hooks) {
       ]
     );
 
-    assert.notOk(document.tags.includes(tag));
+    assert.notOk((await document.tags).includes(tag));
   });
 });
