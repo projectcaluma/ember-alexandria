@@ -22,6 +22,7 @@ module("Integration | Component | search", function (hooks) {
     assert.deepEqual(
       router.transitionTo.firstCall.args,
       [
+        null,
         {
           queryParams: { search: "new search", category: undefined },
         },

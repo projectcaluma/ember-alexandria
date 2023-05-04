@@ -15,7 +15,7 @@ export default class CategoryNavCategoryComponent extends Component {
   @action loadCategory() {
     this.documents.clearDocumentSelection();
     this.controllerInstance.resetTagFilter();
-    this.router.transitionTo({
+    this.router.transitionTo(this.router.currentRouteName, {
       queryParams: {
         category: this.args.category.id,
         search: undefined,

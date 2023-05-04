@@ -13,7 +13,8 @@ export default class DocumentsService extends Service {
   constructor(...args) {
     super(...args);
     // Initialise the selected documents based on the query params of the route
-    const documentQueryParam = this.router?.currentRoute?.queryParams?.document;
+    const documentQueryParam =
+      this.router.externalRouter.currentRoute?.queryParams?.document;
     if (documentQueryParam) {
       documentQueryParam.split(",").map(async (id) => {
         this.selectDocument(await this.store.find("document", id));
@@ -29,7 +30,7 @@ export default class DocumentsService extends Service {
       this.selectedDocuments.length === 0
         ? undefined
         : this.selectedDocuments.map((d) => d.id);
-    this.router.transitionTo({
+    this.router.transitionTo(this.router.currentRouteName, {
       queryParams: {
         document: docs,
       },

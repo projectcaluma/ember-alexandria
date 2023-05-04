@@ -18,7 +18,7 @@ export default class SearchComponent extends Component {
       yield timeout(1000);
     }
 
-    this.router.transitionTo({
+    this.router.transitionTo(this.router.currentRouteName, {
       queryParams: { search: search || undefined, category: undefined },
     });
   }

@@ -30,6 +30,8 @@ export default class TagFilterComponent extends Component {
       tags = [...this.selectedTagsArray, tag.id];
     }
 
-    this.router.transitionTo({ queryParams: { tags } });
+    this.router.transitionTo(this.router.currentRouteName, {
+      queryParams: { tags },
+    });
   }
 }
