@@ -1,3 +1,10 @@
+## [4.0.3](https://github.com/projectcaluma/ember-alexandria/compare/v4.0.2...v4.0.3) (2023-05-11)
+
+
+### Bug Fixes
+
+* **tags:** fix outdated tags filter ([420289c](https://github.com/projectcaluma/ember-alexandria/commit/420289c49f97d99420d66870799a54a5b9c3c6a9))
+
 ## [4.0.2](https://github.com/projectcaluma/ember-alexandria/compare/v4.0.1...v4.0.2) (2023-05-11)
 
 
