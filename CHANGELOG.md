@@ -1,3 +1,12 @@
+## [4.0.2](https://github.com/projectcaluma/ember-alexandria/compare/v4.0.1...v4.0.2) (2023-05-11)
+
+
+### Bug Fixes
+
+* fix history download ([473cffe](https://github.com/projectcaluma/ember-alexandria/commit/473cffef3783472a4b00a1cc6989e67456940377))
+* **routing:** use ember-engines-router-service for routing ([27bf3e9](https://github.com/projectcaluma/ember-alexandria/commit/27bf3e9bcb08c163634fcedeaf2fcd8dc04cfcf4))
+* use renamed fields from the backend ([25c8e22](https://github.com/projectcaluma/ember-alexandria/commit/25c8e22305a1abfc005af2fd4d9da523c192909c))
+
 ## [4.0.1](https://github.com/projectcaluma/ember-alexandria/compare/v4.0.0...v4.0.1) (2023-05-03)
 
 
