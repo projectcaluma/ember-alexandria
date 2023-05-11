@@ -198,13 +198,16 @@
               <span class="uk-width-expand">
                 {{~await (resolve-user file.createdByUser)~}}
               </span>
-              <button
+              <a
                 uk-icon="download"
                 class="uk-icon-link"
-                type="button"
                 data-test-file-download-link
                 href={{file.downloadUrl}}
-              ></button>
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span class="uk-invisible">{{t "alexandria.download"}}</span>
+              </a>
             </li>
           {{/each}}
         </ul>
