@@ -32,7 +32,7 @@ export default class TagsService extends Service {
     return yield this.store.query("tag", {
       filter: {
         withDocumentsInCategory: this.category,
-        withDocumentsMeta: JSON.stringify(
+        withDocumentsMetainfo: JSON.stringify(
           this.config.modelMetaFilters.document
         ),
       },
