@@ -1,3 +1,10 @@
+## [4.0.4](https://github.com/projectcaluma/ember-alexandria/compare/v4.0.3...v4.0.4) (2023-05-22)
+
+
+### Bug Fixes
+
+* **deps:** bump ember-localized-model to fix file rename bug ([5b0e4d2](https://github.com/projectcaluma/ember-alexandria/commit/5b0e4d28b896563c9653ee0cb10058a222398799))
+
 ## [4.0.3](https://github.com/projectcaluma/ember-alexandria/compare/v4.0.2...v4.0.3) (2023-05-11)
 
 
