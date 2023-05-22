@@ -6613,7 +6613,7 @@ ember-cookies@^0.5.0:
     ember-cli-babel "^7.1.0"
     ember-getowner-polyfill "^1.1.0 || ^2.0.0"
 
-ember-data@^3.28.13, ember-data@^4.9.1:
+ember-data@^3.28.13:
   version "3.28.13"
   resolved "https://registry.yarnpkg.com/ember-data/-/ember-data-3.28.13.tgz#68668d84924453c2baeeb0cf7d25f75b2c07e8b9"
   integrity sha512-j1YjPl2JNHxQwQW6Bgfis44XSr4WCtdwMXr/SPpLsF1oVeTWIn3kwefcDnbuCI8Spmt1B9ab3ZLKzf2KkGN/7g==
@@ -6786,14 +6786,14 @@ ember-load-initializers@2.1.2:
     ember-cli-babel "^7.13.0"
     ember-cli-typescript "^2.0.2"
 
-ember-localized-model@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/ember-localized-model/-/ember-localized-model-2.0.0.tgz#164c15bc0622ad2b7c3fac21ceab123d5b3b80f5"
-  integrity sha512-jJboh1wav2YSDkoZleU/IxSwmp4ErC2Qt76Rchb7tpF54WzmMgxpcI6cEspQVH3WkATLBqlX6iPUuMW4vqE3PQ==
+ember-localized-model@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/ember-localized-model/-/ember-localized-model-3.0.1.tgz#2c02499799fab6f09987b04df8195ffd8a393da3"
+  integrity sha512-NehJn3M5woFvRssx8wVY1Dmg1d2VLX6pCTTjNRRWYCjgRAGvqQWQtmFoUP0kzz5tIXprWshi9TxFlAnKhao3XQ==
   dependencies:
+    "@glimmer/tracking" "^1.1.2"
     ember-cli-babel "^7.26.11"
-    ember-cli-htmlbars "^6.1.1"
-    ember-data "^4.9.1"
+    ember-cli-htmlbars "^6.2.0"
     ember-intl "^5.7.0"
 
 ember-mirage-sauce@1.0.0:
