@@ -1,3 +1,10 @@
+## [4.0.5](https://github.com/projectcaluma/ember-alexandria/compare/v4.0.4...v4.0.5) (2023-06-15)
+
+
+### Bug Fixes
+
+* **document:** allow service to be used outside of engine ([0db3064](https://github.com/projectcaluma/ember-alexandria/commit/0db30643d9280b12c3d7b9e5ce33ab06b7a12a40))
+
 ## [4.0.4](https://github.com/projectcaluma/ember-alexandria/compare/v4.0.3...v4.0.4) (2023-05-22)
 
 
