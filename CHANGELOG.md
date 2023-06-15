@@ -1,3 +1,10 @@
+## [4.0.6](https://github.com/projectcaluma/ember-alexandria/compare/v4.0.5...v4.0.6) (2023-06-15)
+
+
+### Bug Fixes
+
+* **documents:** fix fetching category for upload ([eb63dff](https://github.com/projectcaluma/ember-alexandria/commit/eb63dffafd99f7751cf76515c48b419e148c9832))
+
 ## [4.0.5](https://github.com/projectcaluma/ember-alexandria/compare/v4.0.4...v4.0.5) (2023-06-15)
 
 
