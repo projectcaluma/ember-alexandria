@@ -14,7 +14,7 @@ export default class DocumentsService extends Service {
     super(...args);
     // Initialise the selected documents based on the query params of the route
     const documentQueryParam =
-      this.router.externalRouter.currentRoute?.queryParams?.document;
+      this.router.externalRouter?.currentRoute?.queryParams?.document;
     if (documentQueryParam) {
       documentQueryParam.split(",").map(async (id) => {
         this.selectDocument(await this.store.find("document", id));
