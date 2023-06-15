@@ -47,8 +47,8 @@ export default class DocumentsService extends Service {
   async upload(category, files) {
     if (!category.id) {
       category =
-        (await this.store.peekRecord("category", category)) ||
-        this.store.findRecord("category", category);
+        this.store.peekRecord("category", category) ||
+        (await this.store.findRecord("category", category));
     }
 
     return await Promise.all(
