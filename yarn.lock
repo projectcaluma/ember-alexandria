@@ -6977,10 +6977,10 @@ ember-load-initializers@2.1.2:
     ember-cli-babel "^7.13.0"
     ember-cli-typescript "^2.0.2"
 
-ember-localized-model@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/ember-localized-model/-/ember-localized-model-3.0.1.tgz#2c02499799fab6f09987b04df8195ffd8a393da3"
-  integrity sha512-NehJn3M5woFvRssx8wVY1Dmg1d2VLX6pCTTjNRRWYCjgRAGvqQWQtmFoUP0kzz5tIXprWshi9TxFlAnKhao3XQ==
+ember-localized-model@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/ember-localized-model/-/ember-localized-model-3.1.0.tgz#8ec5c3191146a01937ad4a532f66c1060b2fbd35"
+  integrity sha512-WKi4eBhj2AcI1MAfPqAX2FZqiuP8Ixim0pliSKT+zCbR5Zs7B/WcoiYrcVdz63jN/eKqWpt9BaJ/c1zMOeIRAg==
   dependencies:
     "@glimmer/tracking" "^1.1.2"
     ember-cli-babel "^7.26.11"
