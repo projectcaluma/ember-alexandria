@@ -8,6 +8,26 @@
   .document-title {
     font-size: 1.5em;
     word-break: break-all;
+
+    .document-marks {
+      margin-top: 1dvh;
+
+      label {
+        height: 36px;
+        width: 36px;
+        align-items: center;
+        justify-content: center;
+        vertical-align: middle;
+        border-radius: 500px;
+        display: inline-flex;
+        background-color: red;
+      }
+      label.active {
+        // try to use mix-blend-mode
+        mix-blend-mode: difference;
+        background-color: blue;
+      }
+    }
   }
 
   .document-meta {

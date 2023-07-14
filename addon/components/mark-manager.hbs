@@ -1,0 +1,20 @@
+<div class="document-marks">
+  {{#each @document.marks as |mark|}}
+    <label class="{{if mark.activeOnAll 'active'}}">
+      <FaIcon
+        @icon={{mark.icon}}
+        @prefix={{mark.prefix}}
+        @size={{mark.size}}
+        @fixedWidth={{mark.fixedWidth}}
+        @rotation={{mark.rotation}}
+        @flip={{mark.flip}}
+      />
+      <Input
+        @type="checkbox"
+        hidden
+        @checked={{mark.activeOnAll}}
+        {{on "input" (fn this.toggleMark mark)}}
+      />
+    </label>
+  {{/each}}
+</div>
