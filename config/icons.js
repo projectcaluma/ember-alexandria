@@ -1,5 +1,6 @@
 module.exports = function () {
   return {
+    // TODO check if addon consumers can override this
     "free-solid-svg-icons": [
       "ellipsis-v",
       "file-download",

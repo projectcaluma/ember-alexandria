@@ -23,6 +23,15 @@ export default class ConfigService extends Service {
     return {};
   }
 
+  get marks() {
+    return [
+      {
+        type: "stamp",
+        icon: "folder",
+      },
+    ];
+  }
+
   resolveUser(id) {
     return id;
   }
