@@ -48,7 +48,7 @@
     "ember-data": "^3.28.13",
     "ember-engines-router-service": "^0.3.0",
     "ember-fetch": "^8.1.2",
-    "ember-intl": "^5.7.2",
+    "ember-intl": "^6.0.0",
     "ember-localized-model": "^3.1.0",
     "ember-modifier": "^4.1.0",
     "ember-promise-helpers": "^2.0.0",
