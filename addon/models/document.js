@@ -19,7 +19,7 @@ export default class DocumentModel extends LocalizedModel {
 
   get thumbnail() {
     const thumbnail = this.files.filter(
-      (file) => file.variant === "thumbnail"
+      (file) => file.variant === "thumbnail",
     )[0];
     return thumbnail && thumbnail.downloadUrl;
   }

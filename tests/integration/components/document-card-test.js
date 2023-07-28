@@ -52,12 +52,12 @@ module("Integration | Component | document-card", function (hooks) {
     assert.strictEqual(
       fileSaverStub.args[0][0],
       downloadUrl,
-      "saveAs was called with correct downloadUrl"
+      "saveAs was called with correct downloadUrl",
     );
     assert.strictEqual(
       fileSaverStub.args[0][1],
       `${title}.txt`,
-      "saveAs was called with correct file name"
+      "saveAs was called with correct file name",
     );
   });
 
@@ -74,7 +74,7 @@ module("Integration | Component | document-card", function (hooks) {
     await click("[data-test-delete-confirm]");
     assert.ok(
       this.document.destroyRecord.calledOnce,
-      "destroyRecord was called once"
+      "destroyRecord was called once",
     );
   });
 

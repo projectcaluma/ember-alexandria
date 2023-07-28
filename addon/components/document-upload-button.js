@@ -17,7 +17,7 @@ export default class DocumentUploadButtonComponent extends Component {
       this.notification.success(
         this.intl.t("alexandria.success.upload-document", {
           count: files.length,
-        })
+        }),
       );
 
       if (this.args.afterUpload) {
@@ -28,7 +28,7 @@ export default class DocumentUploadButtonComponent extends Component {
       this.notification.danger(
         this.intl.t("alexandria.errors.upload-document", {
           count: files.length,
-        })
+        }),
       );
     }
   }
@@ -39,7 +39,7 @@ export default class DocumentUploadButtonComponent extends Component {
         this.store.findAll("category");
     } catch {
       this.notification.danger(
-        this.intl.t("alexandria.errors.fetch-categories")
+        this.intl.t("alexandria.errors.fetch-categories"),
       );
     }
   }

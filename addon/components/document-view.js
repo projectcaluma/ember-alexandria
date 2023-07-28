@@ -62,7 +62,7 @@ export default class DocumentViewComponent extends Component {
     let docIds = [];
     if (this.router.externalRouter.currentRoute?.queryParams?.document) {
       docIds = decodeURIComponent(
-        this.router.externalRouter.currentRoute.queryParams.document
+        this.router.externalRouter.currentRoute.queryParams.document,
       ).split(",");
     }
     if (docIds.length !== 0) {
@@ -107,7 +107,7 @@ export default class DocumentViewComponent extends Component {
       this.notification.success(
         this.intl.t("alexandria.success.upload-document", {
           count: files.length,
-        })
+        }),
       );
 
       await this.fetchDocuments.perform();
@@ -115,7 +115,7 @@ export default class DocumentViewComponent extends Component {
       this.notification.danger(
         this.intl.t("alexandria.errors.upload-document", {
           count: files.length,
-        })
+        }),
       );
     }
 
@@ -159,7 +159,7 @@ export default class DocumentViewComponent extends Component {
     if (event.shiftKey) {
       const selectedDocIndex = this.fetchedDocuments.indexOf(selectedDocument);
       const firstSelectedDocIndex = this.fetchedDocuments.indexOf(
-        this.documents.selectedDocuments[0]
+        this.documents.selectedDocuments[0],
       );
 
       let startIndex;

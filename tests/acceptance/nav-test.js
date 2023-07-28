@@ -28,16 +28,17 @@ module("Acceptance | nav", function (hooks) {
     const tag = this.server.create("tag");
     this.server.create("document", { category: categories[0], tags: [tag] });
     await visit(
-      `/?category=${categories[0].id}&sort=title&tags=${tag.name}&document=1`
+      `/?category=${categories[0].id}&sort=title&tags=${tag.name}&document=1`,
     );
     await click("[data-test-category]:last-child [data-test-link]");
 
     assert.strictEqual(
       currentURL(),
-      `/?category=${categories[1].id}&sort=title`
+      `/?category=${categories[1].id}&sort=title`,
     );
   });
 
+  // eslint-disable-next-line qunit/require-expect
   test("search", async function (assert) {
     assert.expect(3);
 
@@ -49,7 +50,7 @@ module("Acceptance | nav", function (hooks) {
       assert.strictEqual(
         request.queryParams["filter[search]"],
         "search-text",
-        "documents are fetched with search"
+        "documents are fetched with search",
       );
     });
     await fillIn("[data-test-search-input]", "search-text");

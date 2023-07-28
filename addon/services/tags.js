@@ -33,7 +33,7 @@ export default class TagsService extends Service {
       filter: {
         withDocumentsInCategory: this.category,
         withDocumentsMetainfo: JSON.stringify(
-          this.config.modelMetaFilters.document
+          this.config.modelMetaFilters.document,
         ),
       },
     });

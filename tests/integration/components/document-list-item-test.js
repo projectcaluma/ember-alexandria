@@ -28,14 +28,12 @@ module("Integration | Component | document-list-item", function (hooks) {
   });
 
   test("it renders all the required fields for a document", async function (assert) {
-    assert.expect(3);
     assert.dom().includesText("some document");
     assert.dom().includesText("12/01/2000");
     assert.dom().includesText("some group");
   });
 
   test("it fires the onClickDocument function with the correct parameter", async function (assert) {
-    assert.expect(1);
     this.set("onClickDocument", (arg) => {
       assert.strictEqual(arg, this.document);
     });

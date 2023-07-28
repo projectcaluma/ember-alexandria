@@ -33,7 +33,7 @@ module("Unit | Service | tags", function (hooks) {
         "PATCH", // Add tag to document
         "GET", // fetchAllTags
         "GET", // fetchSearchTags
-      ]
+      ],
     );
 
     assert.ok((await document.tags).includes(tag));
@@ -61,7 +61,7 @@ module("Unit | Service | tags", function (hooks) {
         "PATCH", // Add tag to document
         "GET", // fetchAllTags
         "GET", // fetchSearchTags
-      ]
+      ],
     );
 
     assert.ok((await document.tags).find((t) => t.name === tag));
@@ -87,7 +87,7 @@ module("Unit | Service | tags", function (hooks) {
         "POST", // Create document
         "PATCH", // Remove tag from document
         "GET", // fetchSearchTags
-      ]
+      ],
     );
 
     assert.notOk((await document.tags).includes(tag));

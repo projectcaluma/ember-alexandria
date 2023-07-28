@@ -67,7 +67,7 @@ export default class SingleDocumentDetailsComponent extends DocumentCard {
       yield this.documents.replace(this.args.document, file);
     } catch {
       this.notification.danger(
-        this.intl.t("alexandria.errors.replace-document")
+        this.intl.t("alexandria.errors.replace-document"),
       );
     }
   }

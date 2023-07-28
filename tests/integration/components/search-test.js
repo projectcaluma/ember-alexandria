@@ -27,7 +27,7 @@ module("Integration | Component | search", function (hooks) {
           queryParams: { search: "new search", category: undefined },
         },
       ],
-      "transitionTo was called with the correct arguments"
+      "transitionTo was called with the correct arguments",
     );
   });
 });
