@@ -51,7 +51,7 @@ export default function setupRequestAssertions(hooks) {
     this.assertRequest = function (method, path, assertFunc) {
       assert(
         "assertRequest: Use either GET, POST, DELETE, PATCH or PUT as HTTP method,",
-        ["GET", "POST", "DELETE", "PUT", "PATCH"].includes(method)
+        ["GET", "POST", "DELETE", "PUT", "PATCH"].includes(method),
       );
 
       const logging = this.server.logging;
@@ -60,7 +60,7 @@ export default function setupRequestAssertions(hooks) {
         pretender,
         method,
         path,
-        this.defaultHandlers
+        this.defaultHandlers,
       );
 
       pretender[method.toLowerCase()](path, async function (request) {
@@ -77,7 +77,7 @@ export default function setupRequestAssertions(hooks) {
           // or model we just assume its already a response.
           if (this.server.serializerOrRegistry._isModelOrCollection(response)) {
             const serializer = this.server.serializerOrRegistry.serializerFor(
-              response.modelName
+              response.modelName,
             );
             const serialized = serializer.serialize(response);
             response = [200, null, JSON.stringify(serialized)];
@@ -87,15 +87,15 @@ export default function setupRequestAssertions(hooks) {
             `\nassertRequest Intercepted: ${request.method} ${
               request.url
             }:\nThe response has to be an array of [status, headers, data]\nWas: ${JSON.stringify(
-              response
+              response,
             )}\n`,
-            Array.isArray(response)
+            Array.isArray(response),
           );
 
           if (logging) {
             /* eslint-disable no-console */
             console.groupCollapsed(
-              `Intercepted: [${response[0]}] ${request.method} ${request.url}`
+              `Intercepted: [${response[0]}] ${request.method} ${request.url}`,
             );
             console.log({
               request,
@@ -117,11 +117,11 @@ export default function setupRequestAssertions(hooks) {
     this.assertRequests = function (method, path, assertFuncs) {
       assert(
         "assertRequests: Use either GET, POST, DELETE, PATCH or PUT as HTTP method.",
-        ["GET", "POST", "DELETE", "PUT", "PATCH"].includes(method)
+        ["GET", "POST", "DELETE", "PUT", "PATCH"].includes(method),
       );
       assert(
         "assertRequests: You have to supply an array of functions. If you only want to assert one request use assertRequest.",
-        Array.isArray(assertFuncs)
+        Array.isArray(assertFuncs),
       );
 
       const pretender = this.server.pretender;
@@ -129,7 +129,7 @@ export default function setupRequestAssertions(hooks) {
         pretender,
         method,
         path,
-        this.defaultHandlers
+        this.defaultHandlers,
       );
 
       pretender[method.toLowerCase()](path, function (request) {
@@ -147,7 +147,7 @@ export default function setupRequestAssertions(hooks) {
 
   hooks.afterEach(function () {
     this.defaultHandlers.forEach(({ method, path, originalHandler }) =>
-      this.server.pretender[method.toLowerCase()](path, originalHandler)
+      this.server.pretender[method.toLowerCase()](path, originalHandler),
     );
     this.defaultHandlers = [];
   });

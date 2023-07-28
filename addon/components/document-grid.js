@@ -12,7 +12,7 @@ export default class DocumentGridComponent extends Component {
             inline: "nearest",
             behavior: "smooth",
           }),
-        500
+        500,
       );
     }
   }

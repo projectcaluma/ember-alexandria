@@ -37,7 +37,7 @@ export default class DocumentCardComponent extends Component {
         this.args.documents
           .map((doc) => doc.files.find((file) => file.variant === "original"))
           .map((f) => f.id)
-          .join(",")
+          .join(","),
       );
 
       let url = this.config?.zipDownloadHost || ""; // in case we need to send the zipDownload to another URL
@@ -48,7 +48,7 @@ export default class DocumentCardComponent extends Component {
       // Some alexandria applications require the document-meta as well
       if (this.config.modelMetaFilters.document) {
         url += `&filter[document-metainfo]=${encodeURIComponent(
-          JSON.stringify(this.config.modelMetaFilters.document)
+          JSON.stringify(this.config.modelMetaFilters.document),
         )}`;
       }
 

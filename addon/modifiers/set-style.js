@@ -7,5 +7,5 @@ export default modifier(
       element.style[key] = htmlSafe(value);
     });
   },
-  { eager: false }
+  { eager: false },
 );

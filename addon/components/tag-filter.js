@@ -23,7 +23,7 @@ export default class TagFilterComponent extends Component {
 
     if (this.selectedTagsArray.includes(tag.id)) {
       const remaining = this.selectedTagsArray.filter(
-        (tagId) => tag.id !== tagId
+        (tagId) => tag.id !== tagId,
       );
       tags = remaining.length > 0 ? remaining : null;
     } else {

@@ -1,6 +1,8 @@
 .document-card {
   width: 200px;
-  transition: box-shadow $animation-duration, color $animation-duration,
+  transition:
+    box-shadow $animation-duration,
+    color $animation-duration,
     border $animation-duration;
 
   &:hover {

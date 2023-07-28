@@ -24,7 +24,7 @@ module("Integration | Component | documents-side-panel", function (hooks) {
   test("it doesnt show the download button if no documents are selected", async function (assert) {
     this.selectedDocuments = [];
     await render(
-      hbs`<DocumentsSidePanel @selectedDocuments={{this.selectedDocuments}}/>`
+      hbs`<DocumentsSidePanel @selectedDocuments={{this.selectedDocuments}}/>`,
     );
     assert.dom("[data-test-download-button]").isNotVisible();
   });
@@ -32,7 +32,7 @@ module("Integration | Component | documents-side-panel", function (hooks) {
   test("it shows a download button if 1 document is selected", async function (assert) {
     this.selectedDocuments = [this.server.create("document")];
     await render(
-      hbs`<DocumentsSidePanel @selectedDocuments={{this.selectedDocuments}}/>`
+      hbs`<DocumentsSidePanel @selectedDocuments={{this.selectedDocuments}}/>`,
     );
     assert.dom("[data-test-download-button]").isVisible();
   });
@@ -40,7 +40,7 @@ module("Integration | Component | documents-side-panel", function (hooks) {
   test("it shows a download button if multiple document is selected", async function (assert) {
     this.selectedDocuments = this.server.createList("document", 3);
     await render(
-      hbs`<DocumentsSidePanel @selectedDocuments={{this.selectedDocuments}}/>`
+      hbs`<DocumentsSidePanel @selectedDocuments={{this.selectedDocuments}}/>`,
     );
     assert.dom("[data-test-download-button]").isVisible();
   });

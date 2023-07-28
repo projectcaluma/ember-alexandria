@@ -81,7 +81,7 @@ export default class DocumentsService extends Service {
         }
 
         return documentModel;
-      })
+      }),
     );
   }
 
@@ -147,7 +147,7 @@ export default class DocumentsService extends Service {
    */
   @action deselectDocument(doc) {
     this.selectedDocuments = this.selectedDocuments.filter(
-      (d) => d.id !== doc.id
+      (d) => d.id !== doc.id,
     );
     this.updateRoute();
   }

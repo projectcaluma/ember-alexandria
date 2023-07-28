@@ -41,7 +41,7 @@ module("Integration | Component | single-document-details", function (hooks) {
     };
 
     await render(
-      hbs`<SingleDocumentDetails @document={{this.selectedDocument}} />`
+      hbs`<SingleDocumentDetails @document={{this.selectedDocument}} />`,
     );
 
     assert.dom("[data-test-single-doc-details]").doesNotHaveClass("closed");
@@ -70,7 +70,7 @@ module("Integration | Component | single-document-details", function (hooks) {
       destroyRecord: sinon.fake(),
     };
     await render(
-      hbs`<SingleDocumentDetails @document={{this.selectedDocument}}/>`
+      hbs`<SingleDocumentDetails @document={{this.selectedDocument}}/>`,
     );
 
     await click("[data-test-delete]");
@@ -78,7 +78,7 @@ module("Integration | Component | single-document-details", function (hooks) {
 
     assert.ok(
       this.selectedDocument.destroyRecord.calledOnce,
-      "destroyRecord was called once"
+      "destroyRecord was called once",
     );
   });
 
@@ -91,7 +91,7 @@ module("Integration | Component | single-document-details", function (hooks) {
     }
     this.selectedDocument = new Document();
     await render(
-      hbs`<SingleDocumentDetails @document={{this.selectedDocument}}/>`
+      hbs`<SingleDocumentDetails @document={{this.selectedDocument}}/>`,
     );
 
     assert.dom("[data-test-title]").exists();

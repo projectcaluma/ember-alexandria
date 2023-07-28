@@ -37,7 +37,7 @@ export default class TagManagerComponent extends Component {
     } else {
       const searchValue = this.tagValue.toLowerCase();
       this.matchingTags = this.tagService.allTags.filter((tag) =>
-        tag.name.toLowerCase().includes(searchValue)
+        tag.name.toLowerCase().includes(searchValue),
       );
     }
   }
@@ -87,7 +87,7 @@ export default class TagManagerComponent extends Component {
       if (tags && tags.length !== 0) {
         tags.forEach((tag) => {
           const existingTag = tagsToDisplay.find(
-            (t) => t.emberModel.id === tag.id
+            (t) => t.emberModel.id === tag.id,
           );
           if (existingTag) {
             existingTag.nrOfDocs += 1;
