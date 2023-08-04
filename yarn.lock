@@ -6936,19 +6936,18 @@ ember-concurrency@^2.3.7:
     ember-compatibility-helpers "^1.2.0"
     ember-destroyable-polyfill "^2.0.2"
 
-ember-concurrency@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/ember-concurrency/-/ember-concurrency-3.0.0.tgz#dc691998b08f8bb7166480229db437f92971f599"
-  integrity sha512-MUsOgl4qLkINxrY+9FuohSOsn7Ytd3xCxu9mThSrMPatxomscZz/0lT4M95S7xy2aNO4o/zGfAEULECQ09YkWA==
+ember-concurrency@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/ember-concurrency/-/ember-concurrency-3.1.0.tgz#26fccfedd58be979960bb4ac61115eadbd887982"
+  integrity sha512-vJrP+awbiYJvm2y9xYIYO96n2Jx1FXp7mbM7ucjSp+hPuNwNw9i7xXVrgxBYIuJ/0zlbSMF0P2XJoyi4A0XCrQ==
   dependencies:
     "@babel/helper-plugin-utils" "^7.12.13"
     "@babel/types" "^7.12.13"
-    "@glimmer/tracking" "^1.0.4"
+    "@glimmer/tracking" "^1.1.2"
     ember-cli-babel "^7.26.11"
     ember-cli-babel-plugin-helpers "^1.1.1"
-    ember-cli-htmlbars "^5.7.1"
+    ember-cli-htmlbars "^6.2.0"
     ember-compatibility-helpers "^1.2.0"
-    ember-destroyable-polyfill "^2.0.2"
 
 ember-cookies@^0.5.0:
   version "0.5.2"
