@@ -35,7 +35,7 @@
   {{#if (gt @selectedDocuments.length 0)}}
     <MarkManager @documents={{@selectedDocuments}} />
 
-    <div class="uk-flex uk-flex-right">
+    <div class="uk-flex uk-flex-right uk-margin-top">
       <DocumentDeleteButton
         @docsToDelete={{@selectedDocuments}}
         as |showDialog|

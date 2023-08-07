@@ -29,34 +29,23 @@
     border: 1px solid $global-muted-color;
     display: inline-flex;
     z-index: 0;
-    background-color: #ffffff;
+    background-color: #fff;
   }
+
   label.mark-active {
     background-color: $global-primary-background;
 
     svg {
-      fill: #ffffff;
+      fill: #fff;
     }
   }
+
   label.mark-mixed {
     border: 2px solid $global-primary-background;
   }
 }
 
-.tag {
-  padding: 0.3em 0.6em;
-  margin: 0.1em;
-  border-radius: 500px;
-  display: inline-flex;
-  color: #ffffff;
-  border: 2px solid $global-primary-background;
-
-  svg {
-    fill: #ffffff;
-  }
-}
-
 .tag-mixed {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #fff;
+  color: #000 !important;
 }

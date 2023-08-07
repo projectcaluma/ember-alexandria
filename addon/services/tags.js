@@ -22,7 +22,6 @@ export default class TagsService extends Service {
   @lastValue("fetchAllTags") allTags;
 
   /** The searchTags are used in the TagFilter component. */
-  // @lastValue("fetchSearchTags") searchTags;
   get searchTags() {
     const allTags = this.fetchSearchTags.lastSuccessful?.value ?? [];
 

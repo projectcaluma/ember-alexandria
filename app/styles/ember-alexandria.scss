@@ -38,3 +38,17 @@
 .category-header {
   line-height: 40px;
 }
+
+// tag-manager, tag-filter
+.tag {
+  padding: 0.3em 0.6em;
+  margin: 0.1em;
+  border-radius: 500px;
+  display: inline-flex;
+  color: #fff;
+  border: 2px solid $global-primary-background;
+
+  svg {
+    fill: #fff;
+  }
+}

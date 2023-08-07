@@ -1,12 +1,20 @@
 <div
-  class={{
-    if
+  class={{if
     @isSelected
     "document-card uk-card uk-card-body uk-border-rounded-circular uk-padding-remove selected"
     "document-card uk-card uk-card-body uk-border-rounded-circular uk-padding-remove"
   }}
   ...attributes
 >
+  <div
+    class="marks uk-flex uk-position-top-left uk-position-small uk-border-rounded uk-background-muted"
+  >
+    {{#each @document.marks as |mark|}}
+      {{#if mark.active}}
+        <MarkIcon title={{mark.tooltip}} @mark={{mark}} />
+      {{/if}}
+    {{/each}}
+  </div>
   <div class="uk-card-media-top uk-text-center uk-border-bottom">
     {{#if this.showloadingstate}}
       <div class="uk-padding" data-test-loading>
@@ -57,7 +65,8 @@
     <Drop
       @width="uk-width-small"
       @position="left-center"
-      data-test-context-menu as |Item|
+      data-test-context-menu
+      as |Item|
     >
       <Item data-test-download {{on "click" (perform this.download)}}>
         <FaIcon @icon="file-download" />
