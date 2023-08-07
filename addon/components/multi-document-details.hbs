@@ -33,9 +33,12 @@
   </div>
 
   {{#if (gt @selectedDocuments.length 0)}}
+    <MarkManager @documents={{@selectedDocuments}} />
+
     <div class="uk-flex uk-flex-right">
       <DocumentDeleteButton
-        @docsToDelete={{@selectedDocuments}} as |showDialog|
+        @docsToDelete={{@selectedDocuments}}
+        as |showDialog|
       >
         <UkButton
           data-test-delete

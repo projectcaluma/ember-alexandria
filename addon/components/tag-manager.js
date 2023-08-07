@@ -6,6 +6,8 @@ import { tracked } from "@glimmer/tracking";
 import { timeout, restartableTask } from "ember-concurrency";
 export default class TagManagerComponent extends Component {
   @service("tags") tagService;
+  @service config;
+
   @tracked matchingTags = [];
   @tracked tagValue;
 
@@ -86,6 +88,10 @@ export default class TagManagerComponent extends Component {
       const tags = doc.tags;
       if (tags && tags.length !== 0) {
         tags.forEach((tag) => {
+          if (this.config.markTypes.includes(tag.name)) {
+            return;
+          }
+
           const existingTag = tagsToDisplay.find(
             (t) => t.emberModel.id === tag.id,
           );

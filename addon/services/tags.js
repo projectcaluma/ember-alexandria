@@ -22,7 +22,29 @@ export default class TagsService extends Service {
   @lastValue("fetchAllTags") allTags;
 
   /** The searchTags are used in the TagFilter component. */
-  @lastValue("fetchSearchTags") searchTags;
+  // @lastValue("fetchSearchTags") searchTags;
+  get searchTags() {
+    const allTags = this.fetchSearchTags.lastSuccessful?.value ?? [];
+
+    return allTags
+      .map((tag) => {
+        if (this.config.markTypes.includes(tag.name)) {
+          const mark = this.config.marks.find((m) => m.type === tag.name);
+
+          tag = {
+            id: tag.id,
+            ...mark,
+            isMark: true,
+          };
+        }
+
+        return tag;
+      })
+      .sort(function (x, y) {
+        // order marks to the front
+        return Number(y.isMark ?? 0) - Number(x.isMark ?? 0);
+      });
+  }
 
   @task *fetchAllTags() {
     return yield this.store.findAll("tag");

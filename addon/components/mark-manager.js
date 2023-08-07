@@ -7,22 +7,28 @@ export default class TagManagerComponent extends Component {
 
   @action
   toggleMark(mark) {
-    if (mark.active) {
-      this.tagService.remove(this.args.document, mark.type);
-    } else {
-      this.tagService.add(this.args.document, mark.type);
-    }
+    Promise.all(
+      this.args.documents.map((document) => {
+        if (mark.activeOnAll) {
+          return this.tagService.remove(document, mark.type);
+        }
+        return this.tagService.add(document, mark.type);
+      }),
+    );
   }
 
   get marks() {
     return this.config.marks.map((mark) => {
-      const activeOnAll = this.args.documents.marks.every((m) => m.active);
-      const activeOnNone = this.args.documents.marks.every((m) => !m.active);
+      const activeDocuments = this.args.documents.reduce((acc, doc) => {
+        return (
+          acc + Number(Boolean(doc.tags.find((tag) => tag.name === mark.type)))
+        );
+      }, 0);
 
       return {
         ...mark,
-        activeOnAll,
-        activeOnNone,
+        activeOnAll: activeDocuments === this.args.documents.length,
+        activeOnNone: activeDocuments === 0,
       };
     });
   }

@@ -8,30 +8,55 @@
   .document-title {
     font-size: 1.5em;
     word-break: break-all;
-
-    .document-marks {
-      margin-top: 1dvh;
-
-      label {
-        height: 36px;
-        width: 36px;
-        align-items: center;
-        justify-content: center;
-        vertical-align: middle;
-        border-radius: 500px;
-        display: inline-flex;
-        background-color: red;
-      }
-      label.active {
-        // try to use mix-blend-mode
-        mix-blend-mode: difference;
-        background-color: blue;
-      }
-    }
   }
 
   .document-meta {
     font-size: 1.25em;
     color: $global-muted-color;
   }
+}
+
+.document-marks {
+  margin-top: 1dvh;
+
+  label {
+    height: 36px;
+    width: 36px;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    border-radius: 500px;
+    border: 1px solid $global-muted-color;
+    display: inline-flex;
+    z-index: 0;
+    background-color: #ffffff;
+  }
+  label.mark-active {
+    background-color: $global-primary-background;
+
+    svg {
+      fill: #ffffff;
+    }
+  }
+  label.mark-mixed {
+    border: 2px solid $global-primary-background;
+  }
+}
+
+.tag {
+  padding: 0.3em 0.6em;
+  margin: 0.1em;
+  border-radius: 500px;
+  display: inline-flex;
+  color: #ffffff;
+  border: 2px solid $global-primary-background;
+
+  svg {
+    fill: #ffffff;
+  }
+}
+
+.tag-mixed {
+  background-color: #ffffff;
+  color: #000000;
 }
