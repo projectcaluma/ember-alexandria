@@ -40,4 +40,9 @@
   &.selected {
     border-color: $global-primary-background;
   }
+
+  .marks {
+    padding: 1px;
+    border: 1px solid $global-muted-color;
+  }
 }
