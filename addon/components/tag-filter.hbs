@@ -1,20 +1,29 @@
 <div
-  class="uk-border uk-padding-small uk-width-expand"
+  class="uk-border uk-padding-small uk-width-expand uk-flex uk-flex-wrap"
   ...attributes
   {{did-insert this.onInsert}}
   {{did-update this.onInsert @category}}
 >
   {{#each this.tags.searchTags as |tag|}}
+    {{log tag}}
     <button
       type="button"
-      class="uk-badge uk-border-remove {{
-        if (includes tag.id this.selectedTagsArray) "uk-background-secondary"
-      }}"
+      class="tag uk-text-small
+        {{if
+          (includes tag.id this.selectedTagsArray)
+          'uk-background-secondary'
+          'uk-background-primary'
+        }}"
       {{on "click" (fn this.toggleTag tag)}}
       data-test-tag
       data-test-tag-id={{tag.id}}
+      title={{tag.tooltip}}
     >
-      {{tag.name}}
+      {{#if tag.isMark}}
+        <MarkIcon @mark={{tag}} />
+      {{else}}
+        {{tag.name}}
+      {{/if}}
     </button>
   {{else}}
     {{t "alexandria.tag-filter.empty"}}

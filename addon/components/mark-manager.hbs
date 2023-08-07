@@ -1,14 +1,14 @@
 <div class="document-marks">
-  {{#each @document.marks as |mark|}}
-    <label class="{{if mark.activeOnAll 'active'}}">
-      <FaIcon
-        @icon={{mark.icon}}
-        @prefix={{mark.prefix}}
-        @size={{mark.size}}
-        @fixedWidth={{mark.fixedWidth}}
-        @rotation={{mark.rotation}}
-        @flip={{mark.flip}}
-      />
+  {{#each this.marks as |mark|}}
+    <label
+      title={{mark.tooltip}}
+      class="{{if (and (not mark.activeOnNone) mark.activeOnAll) 'mark-active'}}
+        {{if
+          (not (or mark.activeOnAll mark.activeOnNone))
+          'mark-mixed light-blue'
+        }}"
+    >
+      <MarkIcon @mark={{mark}} />
       <Input
         @type="checkbox"
         hidden

@@ -1,6 +1,6 @@
+import { inject as service } from "@ember/service";
 import { belongsTo, hasMany, attr } from "@ember-data/model";
 import { LocalizedModel, localizedAttr } from "ember-localized-model";
-import { inject as service } from "@ember/service";
 import { TrackedObject } from "tracked-built-ins";
 
 export default class DocumentModel extends LocalizedModel {
@@ -30,7 +30,7 @@ export default class DocumentModel extends LocalizedModel {
 
   get marks() {
     return this.config.marks.map((mark) => {
-      mark.active = this.tags.findBy("name", mark.type);
+      mark.active = this.tags.find((tag) => tag.name === mark.type);
       return new TrackedObject(mark);
     });
   }
