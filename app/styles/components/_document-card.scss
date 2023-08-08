@@ -42,7 +42,11 @@
   }
 
   .marks {
-    padding: 1px;
+    padding: 4px;
     border: 1px solid $global-muted-color;
+
+    > div {
+      margin: 0 2px;
+    }
   }
 }
