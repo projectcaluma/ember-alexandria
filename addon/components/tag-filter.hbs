@@ -1,5 +1,5 @@
 <div
-  class="uk-border uk-padding-small uk-width-expand uk-flex uk-flex-wrap"
+  class="uk-border uk-padding-small uk-width-expand uk-flex uk-flex-wrap uk-flex-middle"
   ...attributes
   {{did-insert this.onInsert}}
   {{did-update this.onInsert @category}}
@@ -19,7 +19,7 @@
       title={{tag.tooltip}}
     >
       {{#if tag.isMark}}
-        <MarkIcon @mark={{tag}} />
+        <FaIcon @icon={{tag.icon}} />
       {{else}}
         {{tag.name}}
       {{/if}}
