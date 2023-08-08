@@ -8,7 +8,7 @@ export default class TagManagerComponent extends Component {
   @action
   toggleMark(mark) {
     Promise.all(
-      this.args.documents.map((document) => {
+      this.documents.map((document) => {
         if (mark.activeOnAll) {
           return this.tagService.remove(document, mark.type);
         }
@@ -17,9 +17,13 @@ export default class TagManagerComponent extends Component {
     );
   }
 
+  get documents() {
+    return this.args.documents.filter((document) => !document.isDeleted);
+  }
+
   get marks() {
     return this.config.marks.map((mark) => {
-      const activeDocuments = this.args.documents.reduce((acc, doc) => {
+      const activeDocuments = this.documents.reduce((acc, doc) => {
         return (
           acc + Number(Boolean(doc.tags.find((tag) => tag.name === mark.type)))
         );
@@ -27,7 +31,7 @@ export default class TagManagerComponent extends Component {
 
       return {
         ...mark,
-        activeOnAll: activeDocuments === this.args.documents.length,
+        activeOnAll: activeDocuments === this.documents.length,
         activeOnNone: activeDocuments === 0,
       };
     });

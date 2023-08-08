@@ -22,12 +22,13 @@
   label {
     height: 36px;
     width: 36px;
+    padding: 5px;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     vertical-align: middle;
-    border-radius: 500px;
+    border-radius: 50px;
     border: 1px solid $global-muted-color;
-    display: inline-flex;
     z-index: 0;
     background-color: #fff;
     cursor: pointer;

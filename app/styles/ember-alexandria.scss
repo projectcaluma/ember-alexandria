@@ -47,9 +47,11 @@
   display: inline-flex;
   color: #fff;
   border: 2px solid $global-primary-background;
+  align-items: center;
   cursor: pointer;
 
   svg {
+    margin: 0.2rem;
     fill: #fff;
   }
 }
