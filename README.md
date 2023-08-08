@@ -148,16 +148,16 @@ export default class AlexandriaConfigService extends ConfigService {
 
 ### Marks
 
-Additionally to tags you can configure marks. Which are special tags denoted by icons at various locations.
+Additionally to tags you can configure marks. Marks are similar to tags, but are always displayed for the user to add, even when then are not selected yet. This avoids the issue where users might create multiple, slightly different tags while meaning the same thing. We recommend using not more than five marks for the most important classifications of documents.
 
-The icons for marks are either from [uikit](https://getuikit.com/docs/icon) or you can use an svg string. To use an svg string you need to wrap it in `htmlSafe` from `@ember/string`.
+The icons for marks are either from [UIkit](https://getuikit.com/docs/icon) or you can use an svg string. To use an svg string you need to wrap it in `htmlSafe` from `@ember/template`.
 
 The object for a mark has the following properties:
-- `type`: This is the id of an tag used to identify the mark in the backend.
-- `icon`: This can be either a string or an `htmlSafe` object.
+- `type`: This is the id of a tag used to identify the mark in the backend.
+- `icon`: This can be either a string (referring to an UIkit icon name) or an `htmlSafe` object (containing SVG icon source code).
 - `tooltip`: This is shown when hovering over the mark.
 
-For example if you want to mark important documents, you can configure a mark like this:
+An example configuration with two icons might look like this:
 
 ```js
 import ConfigService from "ember-alexandria/services/config";
