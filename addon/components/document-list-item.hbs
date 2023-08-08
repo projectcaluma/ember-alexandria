@@ -27,7 +27,7 @@
       />
     </div>
   </td>
-  <td class="uk-flex">
+  <td class="uk-flex list-marks">
     {{#each @document.marks as |mark|}}
       {{#if mark.active}}
         <MarkIcon title={{mark.tooltip}} @mark={{mark}} />
