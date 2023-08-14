@@ -2,21 +2,21 @@
 import { render, triggerEvent } from "@ember/test-helpers";
 import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
+import { setupMirage } from "ember-cli-mirage/test-support";
 import { module, test } from "qunit";
 import sinon from "sinon";
 
 module("Integration | Component | document-upload-button", function (hooks) {
   setupRenderingTest(hooks);
+  setupMirage(hooks);
 
   hooks.beforeEach(function () {
-    this.store = this.owner.lookup("service:store");
-    this.docService = this.owner.lookup("service:documents");
     this.uploadFnMock = sinon.fake();
-    this.docService.upload = this.uploadFnMock;
+    this.owner.lookup("service:documents").upload = this.uploadFnMock;
   });
 
   test("upload a file with a predefined category", async function (assert) {
-    this.category = this.store.createRecord("category");
+    this.category = this.server.create("category");
 
     await render(hbs`<DocumentUploadButton @category={{this.category}} />`);
 
@@ -45,13 +45,15 @@ module("Integration | Component | document-upload-button", function (hooks) {
   });
 
   test("upload without predefined category", async function (assert) {
-    const store = this.owner.lookup("service:store");
-    store.createRecord("category", { name: "c1", color: "#f00" });
-    const secondToLastCategory = store.createRecord("category", {
+    this.server.create("category", {
+      name: "c1",
+      color: "#f00",
+    });
+    const secondToLastCategory = this.server.create("category", {
       name: "c2",
       color: "#0f0",
     });
-    store.createRecord("category", {
+    this.server.create("category", {
       name: "c3",
       color: "#00f",
     });
@@ -79,8 +81,8 @@ module("Integration | Component | document-upload-button", function (hooks) {
     );
 
     assert.strictEqual(
-      this.uploadFnMock.args[0][0],
-      secondToLastCategory,
+      this.uploadFnMock.args[0][0].id,
+      secondToLastCategory.id,
       "documents.upload was called with the correct category",
     );
   });

@@ -1,6 +1,7 @@
 import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
-import { task, lastValue } from "ember-concurrency";
+import { task } from "ember-concurrency";
+import { query } from "ember-data-resources";
 
 export default class DocumentUploadButtonComponent extends Component {
   @service notification;
@@ -8,7 +9,10 @@ export default class DocumentUploadButtonComponent extends Component {
   @service store;
   @service documents;
 
-  @lastValue("fetchCategories") categories;
+  categories = query(this, "category", () => ({
+    "filter[hasParent]": false,
+    include: "children",
+  }));
 
   @task *upload(category, { target: { files = [] } = {} }) {
     try {
@@ -29,17 +33,6 @@ export default class DocumentUploadButtonComponent extends Component {
         this.intl.t("alexandria.errors.upload-document", {
           count: files.length,
         }),
-      );
-    }
-  }
-
-  @task *fetchCategories() {
-    try {
-      return yield this.store.peekAll("category") ||
-        this.store.findAll("category");
-    } catch {
-      this.notification.danger(
-        this.intl.t("alexandria.errors.fetch-categories"),
       );
     }
   }

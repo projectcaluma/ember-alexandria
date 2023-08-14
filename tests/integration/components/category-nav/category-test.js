@@ -15,9 +15,9 @@ module("Integration | Component | category-nav/category", function (hooks) {
   });
 
   test("it renders an active category", async function (assert) {
-    this.category = { name: "test", color: "#f00" };
+    this.category = { id: "test", name: "test", color: "#f00" };
     await render(
-      hbs`<CategoryNav::Category @category={{this.category}} @selected={{true}}/>`,
+      hbs`<CategoryNav::Category @category={{this.category}} @selected="test"/>`,
     );
 
     assert.dom("[data-test-name]").hasText("test");

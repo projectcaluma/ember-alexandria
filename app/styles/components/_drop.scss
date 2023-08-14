@@ -11,6 +11,10 @@
       background: $global-muted-background;
     }
 
+    &--indent {
+      padding-left: 25px;
+    }
+
     svg {
       font-size: 1.2em;
       margin-right: 10px;
