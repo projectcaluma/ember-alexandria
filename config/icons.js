@@ -1,7 +1,6 @@
 module.exports = function () {
   return {
     "free-solid-svg-icons": [
-      "folder",
       "ellipsis-v",
       "file-download",
       "box-open",
@@ -13,6 +12,11 @@ module.exports = function () {
       "chevron-right",
       "chevron-left",
     ],
-    "free-regular-svg-icons": ["file-alt", "trash-alt"],
+    "free-regular-svg-icons": [
+      "folder",
+      "folder-open",
+      "file-alt",
+      "trash-alt",
+    ],
   };
 };

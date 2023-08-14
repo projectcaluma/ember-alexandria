@@ -1,7 +1,4 @@
-<nav
-  class="uk-background-muted uk-border-right"
-  {{did-insert (perform this.fetchCategories)}}
->
+<nav class="uk-background-muted uk-border-right">
   <div class="uk-padding-small uk-width-1 uk-text-bold uk-border-bottom">
     <div class="uk-text-center" data-test-nav-title>
       <span class="category-header">
@@ -14,10 +11,10 @@
       @category={{
         hash name=(t "alexandria.category-nav.all-files") color="#e3e3e3"
       }}
-      @selected={{eq @selected undefined}}
+      @selected={{@selected}}
       data-test-all-files
     />
-    {{#if this.fetchCategories.isRunning}}
+    {{#if this.categories.isLoading}}
       {{#each (range 0 5) as |index|}}
         <CategoryNav::Category::Skeleton
           @animationDelay={{concat index "00ms"}}
@@ -25,10 +22,10 @@
         />
       {{/each}}
     {{else}}
-      {{#each this.categories as |category|}}
+      {{#each this.categories.records as |category|}}
         <CategoryNav::Category
           @category={{category}}
-          @selected={{eq category.id @selected}}
+          @selected={{@selected}}
           data-test-category
         />
       {{/each}}

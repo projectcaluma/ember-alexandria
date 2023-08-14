@@ -1,19 +1,29 @@
 <li class="category-nav__category" ...attributes>
   <div
-    class="uk-link-reset {{if @selected "active"}}"
+    class="uk-link-reset {{if this.isActive "active"}}"
     tabindex="0"
     data-test-link
     {{on "click" this.loadCategory}}
   >
     <div class="uk-flex uk-flex-middle">
-      <div>
-        <FaIcon
-          @icon="folder"
-          @size="2x"
-          class="uk-margin-right"
-          data-test-icon
-          {{set-style color=@category.color}}
-        />
+      <div class="uk-margin-right {{if @isSubcategory "uk-margin-left"}}">
+        {{#if this.isOpen}}
+          <FaIcon
+            @prefix="far"
+            @icon="folder-open"
+            @fixedWidth={{true}}
+            data-test-icon
+            {{set-style color=@category.color}}
+          />
+        {{else}}
+          <FaIcon
+            @prefix="far"
+            @icon="folder"
+            @fixedWidth={{true}}
+            data-test-icon
+            {{set-style color=@category.color}}
+          />
+        {{/if}}
       </div>
       <div
         data-test-name
@@ -23,4 +33,16 @@
       </div>
     </div>
   </div>
+  {{#if (and this.expandChildren @category.children.length)}}
+    <ul>
+      {{#each @category.children as |child|}}
+        <CategoryNav::Category
+          @category={{child}}
+          @selected={{@selected}}
+          @isSubcategory={{true}}
+          data-test-subcategory
+        />
+      {{/each}}
+    </ul>
+  {{/if}}
 </li>
