@@ -5,7 +5,19 @@
   justify-content: center;
   padding-bottom: 15px;
 
-  & .empty {
+  &.empty {
     grid-column: 1 end;
+  }
+
+  &--dragover {
+    border: 1px solid $alert-primary-color;
+  }
+
+  &--disallowed {
+    border-color: $alert-danger-color;
+
+    & > button {
+      background-color: $alert-danger-color;
+    }
   }
 }
