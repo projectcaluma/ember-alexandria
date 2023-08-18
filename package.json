@@ -100,7 +100,7 @@
     "prettier": "3.0.1",
     "qunit": "2.19.4",
     "qunit-dom": "2.0.0",
-    "sass": "1.65.1",
+    "sass": "1.66.0",
     "sinon": "15.2.0",
     "stylelint": "15.10.2",
     "stylelint-config-standard-scss": "10.0.0",
