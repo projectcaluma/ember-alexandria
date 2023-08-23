@@ -1,3 +1,16 @@
+# [4.1.0](https://github.com/projectcaluma/ember-alexandria/compare/v4.0.6...v4.1.0) (2023-08-23)
+
+
+### Bug Fixes
+
+* **styling:** fix css classes ([9d7b9d6](https://github.com/projectcaluma/ember-alexandria/commit/9d7b9d67ca4c6fbd0cba809a52d22637892e0b7f))
+
+
+### Features
+
+* **category:** display nested categories ([ab75a63](https://github.com/projectcaluma/ember-alexandria/commit/ab75a63e831ba8b503d9a348af157f110fe81edc))
+* **deps:** add support for ember-data 4 ([5bbdb64](https://github.com/projectcaluma/ember-alexandria/commit/5bbdb64384616d42c0bd4746d887f599842546a4))
+
 ## [4.0.6](https://github.com/projectcaluma/ember-alexandria/compare/v4.0.5...v4.0.6) (2023-06-15)
 
 
