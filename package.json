@@ -104,7 +104,7 @@
     "qunit-dom": "2.0.0",
     "sass": "1.65.1",
     "sinon": "15.2.0",
-    "stylelint": "15.10.2",
+    "stylelint": "15.10.3",
     "stylelint-config-standard-scss": "10.0.0",
     "stylelint-prettier": "4.0.2",
     "stylelint-scss": "5.1.0",
