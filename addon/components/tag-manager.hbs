@@ -8,10 +8,9 @@
       {{#if this.tags.length}}
         <div class="uk-margin-bottom">
           {{#each this.tags as |tag|}}
-            <span class="tag uk-text-small {{if tag.selectedByAll 'uk-background-primary' 'tag-mixed'}}">
+            <span class="tag uk-text-small {{if tag.selectedByAll 'tag--active'}}">
               {{tag.emberModel.name}}
               <button
-                class="uk-margin-small-left"
                 type="button"
                 uk-close
                 {{set-style color=(if tag.selectedByAll "white" "black")}}

@@ -3,6 +3,8 @@
 @import "ember-uikit";
 @import "skeleton-loading";
 
+$tag-hover-shadow: 0 2px 8px rgba(0 0 0 / 20%);
+
 // Components
 @import "components/category-nav/category";
 @import "components/document-card";
@@ -41,17 +43,42 @@
 
 // tag-manager, tag-filter
 .tag {
-  padding: 0.3em 0.6em;
-  margin: 0.1em;
-  border-radius: 500px;
+  padding: 0.2em 0.6em;
+  margin: 0.2em;
+  border-radius: 10px;
   display: inline-flex;
-  color: #fff;
-  border: 2px solid $global-primary-background;
+  color: $global-color;
+  border: 1px solid $global-muted-color;
+  background-color: white;
   align-items: center;
   cursor: pointer;
 
   svg {
     margin: 0.2rem;
-    fill: #fff;
+    height: $global-small-font-size;
+  }
+
+  &--active {
+    color: white;
+    border-color: $global-primary-background;
+    background-color: $global-primary-background;
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: $global-color;
+    box-shadow: $tag-hover-shadow;
+  }
+
+  &--active:hover {
+    color: white;
+  }
+
+  .uk-close {
+    margin-left: 5px;
+
+    > svg {
+      width: 0.75rem;
+    }
   }
 }
