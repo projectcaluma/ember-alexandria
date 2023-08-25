@@ -20,14 +20,14 @@
   margin-top: 1dvh;
 
   label {
-    height: 36px;
-    width: 36px;
+    height: 1.5rem;
+    width: 1.5rem;
     padding: 5px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     vertical-align: middle;
-    border-radius: 50px;
+    border-radius: 10px;
     border: 1px solid $global-muted-color;
     z-index: 0;
     background-color: #fff;
@@ -36,18 +36,18 @@
 
   label.mark-active {
     background-color: $global-primary-background;
+    border-color: $global-primary-background;
 
-    svg {
+    svg path {
       fill: #fff;
     }
   }
 
   label.mark-mixed {
-    border: 2px solid $global-primary-background;
+    border-color: $global-primary-background;
   }
-}
 
-.tag-mixed {
-  background-color: #fff;
-  color: #000 !important;
+  label:hover {
+    box-shadow: $tag-hover-shadow;
+  }
 }

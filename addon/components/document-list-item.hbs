@@ -31,7 +31,7 @@
     {{#each @document.marks as |mark|}}
       {{#if mark.active}}
         <div title={{mark.tooltip}}>
-          <FaIcon @icon={{mark.icon}} />
+          <FaIcon @icon={{mark.icon}} @fixedWidth={{true}} />
         </div>
       {{/if}}
     {{/each}}

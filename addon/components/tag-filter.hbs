@@ -8,18 +8,14 @@
     <button
       type="button"
       class="tag uk-text-small
-        {{if
-          (includes tag.id this.selectedTagsArray)
-          'uk-background-secondary'
-          'uk-background-primary'
-        }}"
+        {{if (includes tag.id this.selectedTagsArray) 'tag--active' }}"
       {{on "click" (fn this.toggleTag tag)}}
       data-test-tag
       data-test-tag-id={{tag.id}}
       title={{tag.tooltip}}
     >
       {{#if tag.isMark}}
-        <FaIcon @icon={{tag.icon}} />
+        <FaIcon @icon={{tag.icon}} @size="sm" @fixedWidth={{true}} />
       {{else}}
         {{tag.name}}
       {{/if}}
