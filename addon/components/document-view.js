@@ -10,6 +10,7 @@ export default class DocumentViewComponent extends Component {
   @service intl;
   @service documents;
   @service router;
+  @service config;
 
   @tracked isDragOver = false;
   @tracked dragCounter = 0;
@@ -50,11 +51,13 @@ export default class DocumentViewComponent extends Component {
   @lastValue("fetchDocuments") fetchedDocuments;
   @task
   *fetchDocuments() {
-    return yield this.store.query("document", {
+    const documents = yield this.store.query("document", {
       include: "category,files,tags",
       filter: this.args.filters || {},
       sort: this.sort ? `${this.sortDirection}${this.sort}` : "",
     });
+
+    return yield this.config.documentsPostProcess(documents);
   }
 
   @task

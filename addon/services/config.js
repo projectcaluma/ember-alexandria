@@ -30,4 +30,8 @@ export default class ConfigService extends Service {
   resolveGroup(id) {
     return id;
   }
+
+  documentsPostProcess(documents) {
+    return documents;
+  }
 }
