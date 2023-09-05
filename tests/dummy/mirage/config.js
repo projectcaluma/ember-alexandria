@@ -20,6 +20,7 @@ export default function makeServer(config) {
       this.get("/tags");
       this.get("/tags/:id");
       this.post("/tags");
+      this.patch("/tags/:id");
 
       this.post("/files", function (schema) {
         const attrs = this.normalizedRequestAttrs();
