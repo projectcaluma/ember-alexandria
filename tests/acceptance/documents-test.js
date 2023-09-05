@@ -282,7 +282,7 @@ module("Acceptance | documents", function (hooks) {
     assert
       .dom(`[data-test-tag-id="${tag.id}"]`)
       .doesNotHaveClass(
-        "uk-background-secondary",
+        "tag--active",
         "the tag does not have the selected class",
       );
 
@@ -290,10 +290,7 @@ module("Acceptance | documents", function (hooks) {
 
     assert
       .dom(`[data-test-tag-id="${tag.id}"]`)
-      .hasClass(
-        "uk-background-secondary",
-        "the tag does has the selected class",
-      );
+      .hasClass("tag--active", "the tag does has the selected class");
     assert.strictEqual(
       currentURL(),
       `/?tags=${tag.id}`,
@@ -310,7 +307,7 @@ module("Acceptance | documents", function (hooks) {
     assert
       .dom(`[data-test-tag-id="${tag.id}"]`)
       .doesNotHaveClass(
-        "uk-background-secondary",
+        "tag--active",
         "the tag does not have the selected class",
       );
   });
@@ -324,18 +321,12 @@ module("Acceptance | documents", function (hooks) {
 
     assert
       .dom(`[data-test-tag-id="${tag.id}"]`)
-      .hasClass(
-        "uk-background-secondary",
-        "the tag does has the selected class",
-      );
+      .hasClass("tag--active", "the tag does has the selected class");
 
     await click(`[data-test-document-list-item-id="${documents[0].id}"]`);
 
     assert
       .dom(`[data-test-tag-id="${tag.id}"]`)
-      .hasClass(
-        "uk-background-secondary",
-        "the tag still has the selected class",
-      );
+      .hasClass("tag--active", "the tag still has the selected class");
   });
 });
