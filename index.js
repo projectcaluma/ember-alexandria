@@ -9,4 +9,22 @@ module.exports = buildEngine({
   lazyLoading: {
     enabled: false,
   },
+  options: {
+    "@embroider/macros": {
+      setOwnConfig: {},
+    },
+  },
+
+  included(...args) {
+    this._super.included.apply(this, ...args);
+
+    const app = this._findHost(this);
+
+    // TODO why is options in options?
+    this.options.options[
+      "@embroider/macros"
+    ].setOwnConfig.enableFrontendThumbnailGeneration =
+      app.options["ember-alexandria"]?.enableFrontendThumbnailGeneration ??
+      false;
+  },
 });

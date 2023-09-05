@@ -1,6 +1,7 @@
 import { action } from "@ember/object";
 import Service, { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
+import { macroCondition, getOwnConfig } from "@embroider/macros";
 import fetch from "fetch";
 
 export default class DocumentsService extends Service {
@@ -79,6 +80,15 @@ export default class DocumentsService extends Service {
 
         if (!response.ok) {
           throw new Error(response.statusText, response.status);
+        }
+
+        if (macroCondition(getOwnConfig().enableFrontendThumbnailGeneration)) {
+          const baseUrl = this.store
+            .adapterFor("file")
+            .urlForFindRecord(fileModel.id, "file");
+          fetch(`${baseUrl}/generate-thumbnail`, {
+            method: "POST",
+          });
         }
 
         return documentModel;

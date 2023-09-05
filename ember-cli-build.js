@@ -7,6 +7,9 @@ module.exports = function (defaults) {
     "ember-simple-auth": {
       useSessionSetupMethod: true,
     },
+    "ember-alexandria": {
+      enableFrontendThumbnailGeneration: true,
+    },
   });
 
   /*
