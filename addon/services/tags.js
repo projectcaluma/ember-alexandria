@@ -64,15 +64,19 @@ export default class TagsService extends Service {
       }
     }
 
-    if ((await document.tags).find((t) => t.id === tag.id)) {
+    const tags = await document.tags;
+
+    if (tags.find((t) => t.id === tag.id)) {
       return tag;
     }
 
-    (await document.tags).push(tag);
+    tags.push(tag);
     await document.save();
 
-    await this.fetchAllTags.perform();
-    await this.fetchSearchTags.perform();
+    await Promise.all([
+      this.fetchAllTags.perform(),
+      this.fetchSearchTags.perform(),
+    ]);
 
     return tag;
   }
