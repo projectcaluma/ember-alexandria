@@ -1,3 +1,15 @@
+# [4.2.0](https://github.com/projectcaluma/ember-alexandria/compare/v4.1.0...v4.2.0) (2023-09-06)
+
+
+### Bug Fixes
+
+* **tags:** improve adding a new tag ([ebca426](https://github.com/projectcaluma/ember-alexandria/commit/ebca4260df6f2bab20e2055af15892280a1aed4a))
+
+
+### Features
+
+* add post process function after documents list fetch ([eafff12](https://github.com/projectcaluma/ember-alexandria/commit/eafff125ddf01202712e26496546e15af2abd349))
+
 # [4.1.0](https://github.com/projectcaluma/ember-alexandria/compare/v4.0.6...v4.1.0) (2023-08-23)
 
 
