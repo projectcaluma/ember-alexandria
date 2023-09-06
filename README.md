@@ -106,10 +106,16 @@ export default class AlexandriaConfigService extends ConfigService {
 }
 ```
 
-As the Alexandria backend returns IDs for the user and groups you can add a
+To set `created_by_user` and `created_by_group` on a document you can use the
+`activeUser` and `activeGroup` properties. They will be set on the document
+when it is created.
+The returned IDs for the user and groups you can be proccessed by adding a
 resolver from your project to turn the IDs to something the user can relate to.
 
 Just replace the identity functions on the config service.
+
+Additionally there is a post proccess hook for the document. It is called `documentsPostProccess` and is executed after the document list is fetched. It gets the documents as an argument and should return the documents as well.
+With it you for example fetch the users and groups of the documents in a batch.
 
 __Example__:
 ```js
@@ -119,8 +125,21 @@ import { inject as service } from "@ember/service";
 export default class AlexandriaConfigService extends ConfigService {
   @service store;
   
+  activeUser = 1;
+  activeGroup = 1;
+
   resolveUser(id) { return this.store.peekRecord("user", id); }
   resolveGroup(id) { return this.store.peekRecord("group", id); }
+
+  documentsPostProcess(documents) {
+    const users = documents.map((d) => d.createdByUser);
+    const groups = documents.map((d) => d.createdByGroup);
+
+    this.store.query("user", { filter: { id: users.join(",") } });
+    this.store.query("group", { filter: { id: groups.join(",") } });>
+
+    return documents
+  }
 }
 ```
 
