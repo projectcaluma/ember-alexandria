@@ -34,7 +34,7 @@
     "@ember/optional-features": "^2.0.0",
     "@ember/render-modifiers": "^2.1.0",
     "@embroider/macros": "^1.13.1",
-    "@fortawesome/ember-fontawesome": "^1.0.1",
+    "@fortawesome/ember-fontawesome": "^1.0.3",
     "@fortawesome/free-regular-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@glimmer/component": "^1.1.2",
