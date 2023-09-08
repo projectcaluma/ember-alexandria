@@ -1651,10 +1651,10 @@
   dependencies:
     tslib "^2.1.0"
 
-"@fortawesome/ember-fontawesome@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@fortawesome/ember-fontawesome/-/ember-fontawesome-1.0.1.tgz#4a6729fdfe39f94dbc53fc8a6edf8b91c49a476b"
-  integrity sha512-t/mkz2K6H2xriD9RPzQJNOpDeqOng3vdCW1V8PmA2/f9VnqqBHGuVT2C5Rs5UIo0nHa9WOvdbkI8T0LE7IzlIA==
+"@fortawesome/ember-fontawesome@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@fortawesome/ember-fontawesome/-/ember-fontawesome-1.0.3.tgz#d315712cb5fc9dd03e3ba40faa98d0d8c2ba203a"
+  integrity sha512-KGw4a4moLo9wcGwFU05Y7yV2/va2R/lN7rO3cw6ZBrnMigyAReYH9XcK4zkiAXGaLAbzc/mOyP19ofr2rc7HBg==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^6.2.0"
     "@rollup/plugin-node-resolve" "^15.1.0"
