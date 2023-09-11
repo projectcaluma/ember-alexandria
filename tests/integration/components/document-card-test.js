@@ -40,7 +40,7 @@ module("Integration | Component | document-card", function (hooks) {
     const fileSaverStub = sinon.stub(fileSaver, "saveAs");
 
     const downloadUrl = "http://earh.planet";
-    const title = "test1";
+    const title = "test1.txt";
 
     this.document = {
       title,
@@ -56,7 +56,7 @@ module("Integration | Component | document-card", function (hooks) {
     );
     assert.strictEqual(
       fileSaverStub.args[0][1],
-      `${title}.txt`,
+      title,
       "saveAs was called with correct file name",
     );
   });
