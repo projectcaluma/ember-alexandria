@@ -1,3 +1,21 @@
+# [4.3.0](https://github.com/projectcaluma/ember-alexandria/compare/v4.2.0...v4.3.0) (2023-09-14)
+
+
+### Bug Fixes
+
+* **download:** don't add extension if already present ([35901b9](https://github.com/projectcaluma/ember-alexandria/commit/35901b93b0dfb39a0464dd94a62057d8d382d37b))
+* fix tag test ([0381737](https://github.com/projectcaluma/ember-alexandria/commit/0381737396491477eafc925211794868153c65af))
+* minor CSS improvements, add marks config to dummy app ([9d10ebe](https://github.com/projectcaluma/ember-alexandria/commit/9d10ebe91943cbd501a3bfeb3fbd92cadec581df))
+* tag styling ([5cc0c77](https://github.com/projectcaluma/ember-alexandria/commit/5cc0c7779a5f0e52b3598059d2999c957c45f6e2))
+
+
+### Features
+
+* add marks ([5e1f080](https://github.com/projectcaluma/ember-alexandria/commit/5e1f08085fa4593670c7fbd8d24decd99878a238))
+* add marks to document list and grid ([e2c8d3e](https://github.com/projectcaluma/ember-alexandria/commit/e2c8d3e373db34e04fcdfe1ace916d06a437a13f))
+* add marks to filter bar ([7e1a937](https://github.com/projectcaluma/ember-alexandria/commit/7e1a937f0c257a64bd9f62a4d1176663ab6c1baa))
+* **mark:** use fontawesome icons ([e726fea](https://github.com/projectcaluma/ember-alexandria/commit/e726fea6df5614bef47b2bc0d48edeaea2e7f449))
+
 # [4.2.0](https://github.com/projectcaluma/ember-alexandria/compare/v4.1.0...v4.2.0) (2023-09-06)
 
 
