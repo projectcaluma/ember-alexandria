@@ -96,7 +96,7 @@
     "eslint-plugin-n": "16.1.0",
     "eslint-plugin-prettier": "5.0.0",
     "eslint-plugin-qunit": "8.0.0",
-    "graphql": "16.8.0",
+    "graphql": "16.8.1",
     "loader.js": "4.7.0",
     "miragejs": "0.1.47",
     "prettier": "3.0.3",
