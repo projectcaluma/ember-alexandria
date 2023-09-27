@@ -13,6 +13,7 @@ export default class App extends Application {
     "ember-alexandria": {
       dependencies: {
         services: [
+          "abilities",
           "session",
           "intl",
           "notification",

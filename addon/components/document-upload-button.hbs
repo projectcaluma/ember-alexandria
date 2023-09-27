@@ -1,8 +1,4 @@
-<div
-  class="uk-height-1-1"
-  uk-form-custom
-  ...attributes
->
+<div class="uk-height-1-1" uk-form-custom ...attributes>
   <UkButton
     @color="primary"
     @size="small"
@@ -15,55 +11,65 @@
   </UkButton>
 
   {{#if @category}}
-    <input
-      type="file"
-      multiple="multiple"
-      data-test-input
-      aria-label="Category name"
-      {{on "change" (perform this.upload @category)}}
-    />
+    {{#if can "upload document" @category}}
+      <input
+        type="file"
+        multiple="multiple"
+        data-test-input
+        aria-label="Category name"
+        {{on "change" (perform this.upload @category)}}
+      />
+    {{/if}}
   {{else}}
     <Drop @width="uk-with-medium" as |Item|>
       {{#each this.categories.records as |category|}}
-        <Item uk-form-custom data-test-upload-category>
-          <input
-            type="file"
-            multiple="multiple"
-            data-test-input
-            aria-label="file input"
-            {{on "change" (perform this.upload category)}}
-          />
-          <FaIcon
-            @prefix="far"
-            @icon="folder"
-            @size="2x"
-            class="uk-margin-small-right"
-            data-test-folder-icon
-            {{set-style color=category.color}}
-          />
-          {{category.name}}
-        </Item>
-        {{#if category.children.length}}
-          {{#each category.children as |child|}}
-            <Item class="item--indent" uk-form-custom data-test-upload-category>
-              <input
-                type="file"
-                multiple="multiple"
-                data-test-input
-                aria-label="file input"
-                {{on "change" (perform this.upload child)}}
-              />
-              <FaIcon
-                @prefix="far"
-                @icon="folder"
-                @size="2x"
-                class="uk-margin-small-right"
-                data-test-folder-icon
-                {{set-style color=child.color}}
-              />
-              {{child.name}}
-            </Item>
-          {{/each}}
+        {{#if can "upload to category" @category}}
+          <Item uk-form-custom data-test-upload-category>
+            <input
+              type="file"
+              multiple="multiple"
+              data-test-input
+              aria-label="file input"
+              {{on "change" (perform this.upload category)}}
+            />
+            <FaIcon
+              @prefix="far"
+              @icon="folder"
+              @size="2x"
+              class="uk-margin-small-right"
+              data-test-folder-icon
+              {{set-style color=category.color}}
+            />
+            {{category.name}}
+          </Item>
+          {{#if category.children.length}}
+            {{#each category.children as |child|}}
+              {{#if can "upload to category" @category}}
+                <Item
+                  class="item--indent"
+                  uk-form-custom
+                  data-test-upload-category
+                >
+                  <input
+                    type="file"
+                    multiple="multiple"
+                    data-test-input
+                    aria-label="file input"
+                    {{on "change" (perform this.upload child)}}
+                  />
+                  <FaIcon
+                    @prefix="far"
+                    @icon="folder"
+                    @size="2x"
+                    class="uk-margin-small-right"
+                    data-test-folder-icon
+                    {{set-style color=child.color}}
+                  />
+                  {{child.name}}
+                </Item>
+              {{/if}}
+            {{/each}}
+          {{/if}}
         {{/if}}
       {{else}}
         <span data-test-no-categories>
