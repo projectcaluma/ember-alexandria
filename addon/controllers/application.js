@@ -1,6 +1,7 @@
 import Controller from "@ember/controller";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
+import { query } from "ember-data-resources";
 
 export default class ApplicationController extends Controller {
   queryParams = [
@@ -15,16 +16,20 @@ export default class ApplicationController extends Controller {
   @service config;
 
   @tracked category;
-  // Cant use @tracked tags = []; because of https://github.com/emberjs/ember.js/issues/19078
   @tracked tags;
   @tracked search;
   @tracked document;
   @tracked activeGroup;
   @tracked sort;
 
+  categories = query(this, "category", () => ({
+    "filter[hasParent]": false,
+    include: "children",
+  }));
+
   get documentFilters() {
     let filters = {
-      category: this.category,
+      categories: this.category,
       tags: this.tags,
       search: this.search,
       activeGroup: this.activeGroup,

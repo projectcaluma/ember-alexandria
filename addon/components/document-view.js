@@ -30,7 +30,7 @@ export default class DocumentViewComponent extends Component {
   }
 
   get canDrop() {
-    return Boolean(this.args.filters && this.args.filters.category);
+    return Boolean(this.args.filters && this.args.filters.categories);
   }
 
   @action toggleView() {
@@ -53,9 +53,20 @@ export default class DocumentViewComponent extends Component {
   @lastValue("fetchDocuments") fetchedDocuments;
   @task
   *fetchDocuments() {
+    const filter = this.args.filters || {};
+
+    if (filter.categories) {
+      filter.categories = [
+        filter.categories,
+        ...this.store
+          .peekRecord("category", this.args.filters.categories)
+          .children.map((category) => category.id),
+      ].join(",");
+    }
+
     const documents = yield this.store.query("document", {
       include: "category,files,tags",
-      filter: this.args.filters || {},
+      filter,
       sort: this.sort ? `${this.sortDirection}${this.sort}` : "",
     });
 
@@ -97,7 +108,7 @@ export default class DocumentViewComponent extends Component {
   }
 
   @action async onDrop(event) {
-    if (!this.args.filters.category) {
+    if (!this.args.filters.categories) {
       return;
     }
 
@@ -107,7 +118,7 @@ export default class DocumentViewComponent extends Component {
     const { files } = event.dataTransfer;
 
     try {
-      await this.documents.upload(this.args.filters.category, files);
+      await this.documents.upload(this.args.filters.categories, files);
 
       this.notification.success(
         this.intl.t("alexandria.success.upload-document", {

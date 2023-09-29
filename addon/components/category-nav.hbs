@@ -14,7 +14,7 @@
       @selected={{@selected}}
       data-test-all-files
     />
-    {{#if this.categories.isLoading}}
+    {{#if @categories.isLoading}}
       {{#each (range 0 5) as |index|}}
         <CategoryNav::Category::Skeleton
           @animationDelay={{concat index "00ms"}}
@@ -22,7 +22,7 @@
         />
       {{/each}}
     {{else}}
-      {{#each this.categories.records as |category|}}
+      {{#each @categories.records as |category|}}
         <CategoryNav::Category
           @category={{category}}
           @selected={{@selected}}
