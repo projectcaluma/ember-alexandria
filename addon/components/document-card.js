@@ -3,6 +3,8 @@ import Component from "@glimmer/component";
 import { task } from "ember-concurrency";
 import { saveAs } from "file-saver";
 
+import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
+
 export default class DocumentCardComponent extends Component {
   @service notification;
   @service intl;
@@ -29,8 +31,8 @@ export default class DocumentCardComponent extends Component {
         // to be same-origin (i.e. object storage needs to be deployed with a proxy)
         // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a?retiredLocale=de#attributes
         yield saveAs(file.downloadUrl, fileName);
-      } catch {
-        this.notification.danger(this.intl.t("alexandria.errors.save-file"));
+      } catch (error) {
+        new ErrorHandler(this, error).notify("alexandria.errors.save-file");
       }
     } else {
       // If we want to save a zip of files we need to do some more stuff

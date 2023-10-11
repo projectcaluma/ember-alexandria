@@ -4,6 +4,8 @@ import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { task } from "ember-concurrency";
 
+import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
+
 export default class DocumentDeleteButtonComponent extends Component {
   @service notification;
   @service intl;
@@ -50,10 +52,8 @@ export default class DocumentDeleteButtonComponent extends Component {
       this.notification.success(
         this.intl.t("alexandria.success.delete-document"),
       );
-    } catch {
-      this.notification.danger(
-        this.intl.t("alexandria.errors.delete-document"),
-      );
+    } catch (error) {
+      new ErrorHandler(this, error).notify("alexandria.errors.delete-document");
     }
   }
 }

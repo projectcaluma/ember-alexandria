@@ -13,6 +13,7 @@ const mockDocumentsService = class DocumentsService extends Service {
     return [];
   }
   disableShortcuts() {}
+  enableShortcuts() {}
 };
 
 module("Integration | Component | single-document-details", function (hooks) {

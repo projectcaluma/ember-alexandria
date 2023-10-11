@@ -16,6 +16,7 @@ alexandria:
         other {documents}
       }, an error occured.
     update: "Your changes chould'nt be saved. Please try again."
+    no-permission: "You don't have permission to perform this action."
 
   success:
     delete-document: "Document deleted successfully"
@@ -36,7 +37,7 @@ alexandria:
   document-delete-button:
     prompt:
       title: "Delete document"
-      message: "Do you really want to delete the document \"{title}\" and its complete history?"
+      message: 'Do you really want to delete the document "{title}" and its complete history?'
       multiple_docs_message: "Do you really want to delete {nrOfDocs} documents and their complete history?"
       cancel: "Cancel"
       confirm: "Delete"
