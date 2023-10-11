@@ -16,6 +16,7 @@ alexandria:
         other {der Dokumente}
       } ist ein Fehler aufgetreten.
     update: "Änderungen konnten nicht gespeichert werden. Versuchen Sie es erneut."
+    no-permission: "Sie haben keine Berechtigung, diese Aktion auszuführen."
 
   success:
     delete-document: "Das Dokument wurde erfolgreich gelöscht."
@@ -36,7 +37,7 @@ alexandria:
   document-delete-button:
     prompt:
       title: "Dokument löschen"
-      message: "Wollen Sie das Dokument \"{title}\" wirklich mit seiner ganzen Geschichte löschen?"
+      message: 'Wollen Sie das Dokument "{title}" wirklich mit seiner ganzen Geschichte löschen?'
       multiple_docs_message: "Wollen Sie wirklich {nrOfDocs} Dokumente inklusive derer Geschichten löschen?"
       cancel: "Abbrechen"
       confirm: "Löschen"

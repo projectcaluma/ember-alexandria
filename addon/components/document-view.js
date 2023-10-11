@@ -4,6 +4,8 @@ import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { lastValue, task } from "ember-concurrency";
 
+import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
+
 export default class DocumentViewComponent extends Component {
   @service notification;
   @service store;
@@ -114,11 +116,12 @@ export default class DocumentViewComponent extends Component {
       );
 
       await this.fetchDocuments.perform();
-    } catch {
-      this.notification.danger(
-        this.intl.t("alexandria.errors.upload-document", {
+    } catch (error) {
+      new ErrorHandler(this, error).notify(
+        "alexandria.errors.upload-document",
+        {
           count: files.length,
-        }),
+        },
       );
     }
 
