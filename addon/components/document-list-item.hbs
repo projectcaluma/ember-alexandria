@@ -4,6 +4,7 @@
   data-test-document-list-item-id={{@document.id}}
   tabindex="0"
   {{on "click" (fn @onClickDocument @document)}}
+  {{on "dblclick" (fn @onDoubleClickDocument @document)}}
 >
   <td class="uk-preserve-width">
     <FaIcon
