@@ -1,22 +1,24 @@
 <div
-  class="uk-background-muted uk-border-left uk-width-xlarge uk-flex uk-flex-between uk-flex-column document-details
-    {{if this.sidePanel.open '' 'closed'}}"
+  class="uk-background-muted uk-border-left uk-width-large uk-flex document-details
+    {{unless this.sidePanel.open 'closed'}}"
   data-test-document-side-panel
   ...attributes
 >
-  <div class="uk-overflow-auto">
-    <div class="uk-padding-small">
-      {{#if (eq @selectedDocuments.length 1)}}
-        <SingleDocumentDetails @document={{object-at 0 @selectedDocuments}} />
-      {{else}}
-        <MultiDocumentDetails
-          @selectedDocuments={{@selectedDocuments}}
-          data-test-multi-doc-details
-        />
-      {{/if}}
+  <div class="uk-flex uk-flex-between uk-flex-column">
+    <div class="uk-overflow-auto">
+      <div class="uk-padding-small">
+        {{#if (eq @selectedDocuments.length 1)}}
+          <SingleDocumentDetails @document={{object-at 0 @selectedDocuments}} />
+        {{else}}
+          <MultiDocumentDetails
+            @selectedDocuments={{@selectedDocuments}}
+            data-test-multi-doc-details
+          />
+        {{/if}}
+      </div>
     </div>
+    {{#if @selectedDocuments.length}}
+      <DownloadButton @documents={{@selectedDocuments}} />
+    {{/if}}
   </div>
-  {{#if (gt @selectedDocuments.length 0)}}
-    <DownloadButton @documents={{@selectedDocuments}} />
-  {{/if}}
 </div>

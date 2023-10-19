@@ -9,6 +9,7 @@ module.exports = function () {
       "th",
       "user",
       "users",
+      "clock",
       "sort",
       "chevron-right",
       "chevron-left",
