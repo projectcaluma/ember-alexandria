@@ -19,6 +19,7 @@
           @document={{document}}
           @isSelected={{includes document.id (map-by "id" @selectedDocuments)}}
           {{on "click" (fn @onClickDocument document)}}
+          {{on "dblclick" (fn @onDoubleClickDocument document)}}
         />
       </div>
     {{else}}

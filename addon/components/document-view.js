@@ -186,4 +186,13 @@ export default class DocumentViewComponent extends Component {
       }
     }
   }
+
+  @action openDocument(selectedDocument, event) {
+    event.preventDefault();
+
+    const file = selectedDocument.files.find(
+      (file) => file.variant === "original",
+    );
+    open(file.downloadUrl);
+  }
 }

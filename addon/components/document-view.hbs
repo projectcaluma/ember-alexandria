@@ -56,6 +56,7 @@
               @setSort={{this.setSort}}
               @selectedDocuments={{this.documents.selectedDocuments}}
               @onClickDocument={{this.handleDocumentSelection}}
+              @onDoubleClickDocument={{this.openDocument}}
             />
           {{else}}
             <DocumentGrid
@@ -63,6 +64,7 @@
               @selectedDocuments={{this.documents.selectedDocuments}}
               @fetchedDocuments={{this.fetchedDocuments}}
               @onClickDocument={{this.handleDocumentSelection}}
+              @onDoubleClickDocument={{this.openDocument}}
             />
           {{/if}}
         </div>

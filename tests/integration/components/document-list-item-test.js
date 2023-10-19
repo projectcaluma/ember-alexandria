@@ -1,4 +1,4 @@
-import { click, render } from "@ember/test-helpers";
+import { click, doubleClick, render } from "@ember/test-helpers";
 import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
@@ -16,6 +16,7 @@ module("Integration | Component | document-list-item", function (hooks) {
     };
     this.isSelected = false;
     this.onClickDocument = () => {};
+    this.onDoubleClickDocument = () => {};
 
     await render(hbs`
       <DocumentListItem
@@ -23,6 +24,7 @@ module("Integration | Component | document-list-item", function (hooks) {
         @selectedDocuments={{this.selectedDocuments}}
         @isSelected={{this.isSelected}}
         @onClickDocument={{this.onClickDocument}}
+        @onDoubleClickDocument={{this.onDoubleClickDocument}}
       />
     `);
   });
@@ -39,5 +41,13 @@ module("Integration | Component | document-list-item", function (hooks) {
     });
 
     await click("[data-test-document-list-item]");
+  });
+
+  test("it fires the onDoubleClickDocument function with the correct parameter", async function (assert) {
+    this.set("onDoubleClickDocument", (arg) => {
+      assert.strictEqual(arg, this.document);
+    });
+
+    await doubleClick("[data-test-document-list-item]");
   });
 });

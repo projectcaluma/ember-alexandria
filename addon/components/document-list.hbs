@@ -64,6 +64,7 @@
         @document={{document}}
         @isSelected={{includes document.id (map-by "id" @selectedDocuments)}}
         @onClickDocument={{@onClickDocument}}
+        @onDoubleClickDocument={{@onDoubleClickDocument}}
       />
     {{/each}}
   </tbody>
