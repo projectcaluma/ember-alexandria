@@ -1,37 +1,31 @@
-<div data-test-single-doc-details>
-  <div class="uk-flex uk-flex-between uk-flex-bottom">
-    <label class="uk-text-meta" for="alexandria-details-title">
-      {{t "alexandria.document-details.document-title"}}
-    </label>
-    <button
-      class="uk-icon-button uk-flex-none"
-      type="button"
-      uk-icon="chevron-right"
-      data-test-close
-      {{on "click" this.sidePanel.toggle}}
-    ></button>
-  </div>
+<div class="uk-position-relative" data-test-single-doc-details>
+  <button
+    class="uk-icon-button uk-position-top-right"
+    type="button"
+    uk-icon="chevron-right"
+    data-test-close
+    {{on "click" this.sidePanel.toggle}}
+  ></button>
 
-  <span
-    class="document-title uk-flex uk-flex-column uk-flex-between uk-margin-bottom uk-flex-top"
-  >
-    <span
-      class="uk-flex uk-flex-top"
-      data-test-title-container
-      {{set-style cursor="text"}}
-    >
-      <span class="uk-flex-none">
-        <FaIcon
-          @icon="file-alt"
-          @prefix="far"
-          class="uk-margin-small-right"
-          data-test-title-icon
-          {{set-style color=@document.category.color}}
-        />
-      </span>
+  <div class="uk-margin uk-margin-remove-top">
+    <label class="uk-text-meta" for="alexandria-details-title">
+      <button type="button" {{on "click" this.toggleEditTitle}} data-test-edit-title>
+        {{t "alexandria.document-details.document-title"}}
+        <UkIcon @icon={{if this.editTitle "close" "pencil"}} />
+      </button>
+    </label>
+
+    <div class="uk-flex uk-flex-middle uk-text-large uk-text-break" data-test-title-container>
+      <FaIcon
+        @icon="file-alt"
+        @prefix="far"
+        class="uk-margin-small-right"
+        data-test-title-icon
+        {{set-style color=@document.category.color}}
+      />
       {{#if this.editTitle}}
         <input
-          class="uk-input"
+          class="uk-input uk-width-auto"
           id="alexandria-details-title"
           type="text"
           placeholder={{t "alexandria.document-details.name-placeholder"}}
@@ -39,45 +33,30 @@
           data-test-title-input
           {{on "input" this.updateDocumentTitle}}
         />
-        <span class="uk-flex-none">
-          <button
-            class="uk-icon-button
-              {{unless this.validTitle 'uk-disabled'}}
-              cursor-pointer"
-            uk-icon="icon: check"
-            type="button"
-            data-test-save
-            {{on "click" (perform this.saveDocument)}}
-          ></button>
-          <button
-            class="uk-icon-button cursor-pointer"
-            uk-icon="icon: close"
-            type="button"
-            {{on "click" this.toggleEditTitle}}
-          ></button>
-        </span>
-      {{else}}
-        <span data-test-title>
-          {{@document.title}}
-        </span>
         <button
-          class="uk-icon-button cursor-pointer uk-margin-small-left"
-          uk-icon="icon: pencil"
+          class="uk-icon-button uk-margin-small-left {{unless this.validTitle 'uk-disabled'}} cursor-pointer"
+          uk-icon="icon: check"
           type="button"
-          data-test-edit-title
-          {{on "click" this.toggleEditTitle}}
+          data-test-save
+          {{on "click" (perform this.saveDocument)}}
         ></button>
+      {{else}}
+        <span data-test-title>{{@document.title}}</span>
       {{/if}}
-    </span>
-    <MarkManager @documents={{array @document}} />
-  </span>
+    </div>
+  </div>
 
-  <p class="uk-margin-remove-top">
+  <MarkManager @documents={{array @document}} class="uk-margin" />
+
+  <div class="uk-margin">
     <label
       class="uk-text-meta uk-display-block"
       for="alexandria-details-description"
     >
-      {{t "alexandria.document-details.document-description"}}
+      <button type="button" {{on "click" this.toggleEditDescription}}>
+        {{t "alexandria.document-details.document-description"}}
+        <UkIcon @icon={{if this.editDescription "close" "pencil"}} />
+      </button>
     </label>
 
     {{#if this.editDescription}}
@@ -89,63 +68,67 @@
       >
         {{~@document.description~}}
       </textarea>
-      <div class="uk-text-right">
+      <div class="uk-text-right uk-margin-small-top">
         <button
           class="uk-icon-button cursor-pointer"
           uk-icon="icon: check"
           type="button"
           {{on "click" (perform this.saveDocument)}}
         ></button>
-        <button
-          class="uk-icon-button cursor-pointer"
-          uk-icon="icon: close"
-          type="button"
-          {{on "click" this.toggleEditDescription}}
-        ></button>
       </div>
     {{else}}
       {{#if @document.description}}
-        <span>
-          {{@document.description}}
-        </span>
-
-        <button
-          class="uk-icon-button cursor-pointer uk-margin-small-left"
-          uk-icon="icon: pencil"
-          type="button"
-          {{on "click" this.toggleEditDescription}}
-        ></button>
+        <div class="document-description">{{@document.description}}</div>
       {{else}}
-        <button
-          type="button"
-          class="uk-button-default"
-          {{on "click" this.toggleEditDescription}}
-        >
-          {{t "alexandria.document-details.add-description"}}
-        </button>
+        <div class="uk-text-italic">{{t "alexandria.document-details.add-description"}}</div>
       {{/if}}
     {{/if}}
-  </p>
+  </div>
 
-  <span class="document-meta">
-    <p data-test-created-at>
-      {{t
-        "alexandria.document-details.created-at"
-        date=(format-date @document.createdAt)
-      }}
+  <div class="uk-margin">
+    <p class="uk-text-meta uk-margin-remove">
+      {{t "alexandria.document-details.metadata"}}
     </p>
-    <p data-test-created-by-user>
-      <FaIcon @icon="user" class="uk-margin-small-right" />
-      {{await (resolve-user @document.createdByUser)}}
-    </p>
-    <p data-test-created-by-group>
-      <FaIcon @icon="users" class="uk-margin-small-right" />
-      {{await (resolve-group @document.createdByGroup)}}
-    </p>
-  </span>
+    <ul class="uk-list uk-list-collapse uk-margin-remove">
+      <li data-test-created-at>
+        <FaIcon
+          @icon="clock"
+          @fixedWidth={{true}}
+          class="uk-margin-small-right"
+          {{uk-tooltip (t "alexandria.document-details.created-at") pos="left"}}
+        />
+        {{format-date
+          @document.createdAt
+          month="2-digit"
+          day="2-digit"
+          year="numeric"
+          hour="2-digit"
+          minute="2-digit"
+        }}
+      </li>
+      <li data-test-created-by-user>
+        <FaIcon
+          @icon="user"
+          @fixedWidth={{true}}
+          class="uk-margin-small-right"
+          {{uk-tooltip (t "alexandria.document-details.created-by-user") pos="left"}}
+        />
+        {{await (resolve-user @document.createdByUser)}}
+      </li>
+      <li data-test-created-by-group>
+        <FaIcon
+          @icon="users"
+          @fixedWidth={{true}}
+          class="uk-margin-small-right"
+          {{uk-tooltip (t "alexandria.document-details.created-by-group") pos="left"}}
+        />
+        {{await (resolve-group @document.createdByGroup)}}
+      </li>
+    </ul>
+  </div>
 
-  <div class="uk-flex">
-    <div uk-form-custom class="uk-width-1-2 uk-margin-small-right">
+  <div class="uk-grid-small uk-child-width-1-2" uk-grid>
+    <div uk-form-custom>
       <input
         data-test-replace
         type="file"
@@ -162,17 +145,19 @@
       </button>
     </div>
 
-    <DocumentDeleteButton @docsToDelete={{@document}} as |showDialog|>
-      <UkButton
-        data-test-delete
-        @size="small"
-        @color="primary"
-        class="uk-width-1-2 uk-button-danger"
-        {{on "click" showDialog}}
-      >
-        {{t "alexandria.delete"}}
-      </UkButton>
-    </DocumentDeleteButton>
+    <div>
+      <DocumentDeleteButton @docsToDelete={{@document}} as |showDialog|>
+        <UkButton
+          data-test-delete
+          @size="small"
+          @color="danger"
+          class="uk-width-1"
+          {{on "click" showDialog}}
+        >
+          {{t "alexandria.delete"}}
+        </UkButton>
+      </DocumentDeleteButton>
+    </div>
   </div>
 
   <hr />

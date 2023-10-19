@@ -54,11 +54,14 @@ alexandria:
 
   document-details:
     document-title: "Dokumententitel"
+    metadata: "Metadaten"
     document-description: "Dokumentenbeschreibung"
     name-placeholder: "Name..."
     version-history: "Versionsgeschichte"
     add-description: "Beschreibung hinzufügen"
-    created-at: "Erstellt am {date}"
+    created-at: "Erstellt um"
+    created-by-user: "Erstellt von Benutzer"
+    created-by-group: "Erstellt von Gruppe"
     replace: "Ersetzen"
     tags:
       title: "Tags"

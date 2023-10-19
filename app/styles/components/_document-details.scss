@@ -1,27 +1,39 @@
 .document-details {
   transition: width $animation-duration;
 
+  > div {
+    min-width: $width-large-width;
+    overflow: hidden;
+  }
+
   &.closed {
     width: 0;
   }
 
-  .document-title {
-    font-size: 1.5em;
-    word-break: break-all;
+  .uk-text-meta > button {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    cursor: pointer;
   }
 
-  .document-meta {
-    font-size: 1.25em;
-    color: $global-muted-color;
+  .uk-text-break {
+    word-break: break-all;
   }
 }
 
-.document-marks {
-  margin-top: 1dvh;
+.document-description {
+  white-space: pre-wrap;
+}
 
+.document-marks {
   label {
     height: 1.5rem;
     width: 1.5rem;
+    font-size: 1.5rem;
     padding: 5px;
     display: inline-flex;
     align-items: center;
