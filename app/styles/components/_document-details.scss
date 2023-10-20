@@ -30,10 +30,10 @@
 }
 
 .document-marks {
-  label {
+  .mark {
     height: 1.5rem;
     width: 1.5rem;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     padding: 5px;
     display: inline-flex;
     align-items: center;
@@ -41,25 +41,31 @@
     vertical-align: middle;
     border-radius: 10px;
     border: 1px solid $global-muted-color;
-    z-index: 0;
     background-color: #fff;
     cursor: pointer;
-  }
-
-  label.mark-active {
-    background-color: $global-primary-background;
-    border-color: $global-primary-background;
+    transition-property: box-shadow, background-color, border-color, fill;
+    transition-duration: $animation-duration;
+    transition-timing-function: ease-in-out;
 
     svg path {
-      fill: #fff;
+      transition: fill $animation-duration ease-in-out;
     }
-  }
 
-  label.mark-mixed {
-    border-color: $global-primary-background;
-  }
+    &--active {
+      background-color: $global-primary-background;
+      border-color: $global-primary-background;
 
-  label:hover {
-    box-shadow: $tag-hover-shadow;
+      svg path {
+        fill: #fff;
+      }
+    }
+
+    &--mixed {
+      border-color: $global-primary-background;
+    }
+
+    &:hover {
+      box-shadow: $tag-hover-shadow;
+    }
   }
 }

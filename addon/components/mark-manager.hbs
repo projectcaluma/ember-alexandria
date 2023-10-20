@@ -1,20 +1,8 @@
 <div class="document-marks" ...attributes>
-  {{#each this.marks as |mark|}}
-    <label
-      title={{mark.tooltip}}
-      class="{{if (and (not mark.activeOnNone) mark.activeOnAll) 'mark-active'}}
-        {{if
-          (not (or mark.activeOnAll mark.activeOnNone))
-          'mark-mixed light-blue'
-        }}"
-    >
-      <FaIcon @icon={{mark.icon}} @size="xs" @fixedWidth={{true}} />
-      <Input
-        @type="checkbox"
-        hidden
-        @checked={{mark.activeOnAll}}
-        {{on "input" (fn this.toggleMark mark)}}
-      />
-    </label>
+  {{#each this.config.marks as |mark|}}
+    <MarkManager::Mark
+      @documents={{this.documents}}
+      @mark={{mark}}
+    />
   {{/each}}
 </div>

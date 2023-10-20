@@ -1,0 +1,9 @@
+<label title={{@mark.tooltip}} class="mark {{this.class}}" {{uk-tooltip @mark.tooltip}}>
+  <FaIcon @icon={{@mark.icon}} @fixedWidth={{true}} />
+  <input
+    type="checkbox"
+    checked={{this.checked}}
+    hidden
+    {{on "input" this.toggle}}
+  />
+</label>
