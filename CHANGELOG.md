@@ -1,3 +1,11 @@
+# [4.4.0](https://github.com/projectcaluma/ember-alexandria/compare/v4.3.0...v4.4.0) (2023-10-25)
+
+
+### Features
+
+* handle 403 differently ([429f7e7](https://github.com/projectcaluma/ember-alexandria/commit/429f7e78fc321ac67dc077bbb103f46881229c58))
+* open documents with double click ([676d393](https://github.com/projectcaluma/ember-alexandria/commit/676d39371babc1e1bad1a5807f82830d719f83d7))
+
 # [4.3.0](https://github.com/projectcaluma/ember-alexandria/compare/v4.2.0...v4.3.0) (2023-09-14)
 
 
