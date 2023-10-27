@@ -2979,10 +2979,10 @@
     "@types/mime" "*"
     "@types/node" "*"
 
-"@types/sinon@^10.0.13":
-  version "10.0.16"
-  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-10.0.16.tgz#4bf10313bd9aa8eef1e50ec9f4decd3dd455b4d3"
-  integrity sha512-j2Du5SYpXZjJVJtXBokASpPRj+e2z+VUhCPHmM6WMfe3dpHu6iVKJMU6AiBcMp/XTAYnEj6Wc1trJUWwZ0QaAQ==
+"@types/sinon@^10.0.19":
+  version "10.0.20"
+  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-10.0.20.tgz#f1585debf4c0d99f9938f4111e5479fb74865146"
+  integrity sha512-2APKKruFNCAZgx3daAyACGzWuJ028VVCUDk6o2rw/Z4PXT0ogwdV4KUegW0MwVs0Zu59auPXbbuBJHF12Sx1Eg==
   dependencies:
     "@types/sinonjs__fake-timers" "*"
 
@@ -7310,14 +7310,14 @@ ember-simple-auth@^4.2.2:
     ember-cookies "^0.5.0"
     silent-error "^1.0.0"
 
-ember-sinon-qunit@7.1.4:
-  version "7.1.4"
-  resolved "https://registry.yarnpkg.com/ember-sinon-qunit/-/ember-sinon-qunit-7.1.4.tgz#52c87bb81be6391931481e11e32b54209fcd3eae"
-  integrity sha512-aV9jOaLR5W4sFsx0hVqHVVdPt/TxY537YeuwMNyeOgxWYmLLFek7Jo4KMs/m442OsFlP0uCT52r7YOeBXBuEiA==
+ember-sinon-qunit@7.2.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/ember-sinon-qunit/-/ember-sinon-qunit-7.2.0.tgz#325cbb9111e75f8e7242c8ce22b2fad13f269566"
+  integrity sha512-yOwNLAMkYAnmwC/hPrnEg99N0y0LrOATEjcU5btAWlAkrifE0eHGvM/zymCYAfuwXOYxpmPf4gQcVw3vjb0E2w==
   dependencies:
-    "@types/sinon" "^10.0.13"
+    "@types/sinon" "^10.0.19"
     broccoli-funnel "^3.0.8"
-    ember-auto-import "^2.6.1"
+    ember-auto-import "^2.6.3"
     ember-cli-babel "^7.26.11"
     ember-cli-typescript "^5.2.1"
 
@@ -16419,6 +16419,7 @@ workerpool@^6.0.0, workerpool@^6.4.0:
   integrity sha512-i3KR1mQMNwY2wx20ozq2EjISGtQWDIfV56We+yGJ5yDs8jTwQiLLaqHlkBHITlCuJnYlVRmXegxFxZg7gqI++A==
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+  name wrap-ansi-cjs
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
