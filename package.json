@@ -70,6 +70,7 @@
     "@ember/test-helpers": "3.2.0",
     "@embroider/test-setup": "3.0.3",
     "@faker-js/faker": "8.3.1",
+    "@fortawesome/fontawesome-svg-core": "6.5.1",
     "broccoli-asset-rev": "3.0.0",
     "concurrently": "8.2.2",
     "ember-cli": "4.12.1",
@@ -84,6 +85,7 @@
     "ember-mirage-sauce": "1.0.0",
     "ember-qunit": "7.0.0",
     "ember-resolver": "11.0.1",
+    "ember-simple-auth": "6.0.0",
     "ember-sinon-qunit": "7.4.0",
     "ember-source": "4.12.3",
     "ember-source-channel-url": "3.0.0",
@@ -105,11 +107,13 @@
     "qunit": "2.20.0",
     "qunit-dom": "2.0.0",
     "sass": "1.69.5",
+    "semantic-release": "22.0.9",
     "sinon": "17.0.1",
     "stylelint": "15.11.0",
     "stylelint-config-standard-scss": "11.0.0",
     "stylelint-prettier": "4.0.2",
     "stylelint-scss": "5.2.1",
+    "uikit": "3.17.11",
     "webpack": "5.89.0"
   },
   "ember": {
@@ -125,6 +129,7 @@
   "engines": {
     "node": ">= 18"
   },
+  "packageManager": "pnpm@8.9.2",
   "release": {
     "extends": "@adfinis/semantic-release-config"
   }
