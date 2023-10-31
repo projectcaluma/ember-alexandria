@@ -14,6 +14,7 @@ export default class DocumentModel extends LocalizedModel {
   @attr modifiedAt;
   @attr modifiedByUser;
   @attr modifiedByGroup;
+  @attr date;
 
   @belongsTo("category", { inverse: "documents", async: true }) category;
   @hasMany("tag", { inverse: "documents", async: true }) tags;

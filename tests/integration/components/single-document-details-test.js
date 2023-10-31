@@ -1,10 +1,11 @@
 /* eslint-disable import/no-named-as-default-member */
 import Service from "@ember/service";
-import { render, click, fillIn } from "@ember/test-helpers";
+import { render, click, fillIn, waitFor } from "@ember/test-helpers";
 import { tracked } from "@glimmer/tracking";
 import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
+import { setFlatpickrDate } from "ember-flatpickr/test-support/helpers";
 import { module, test } from "qunit";
 import sinon from "sinon";
 
@@ -116,5 +117,35 @@ module("Integration | Component | single-document-details", function (hooks) {
     assert.dom("[data-test-title-input]").doesNotExist();
 
     assert.ok(this.selectedDocument.save.calledOnce, "save was called once");
+  });
+
+  test("edit document date", async function (assert) {
+    class Document {
+      @tracked date = "2023-01-01";
+      save = sinon.fake();
+    }
+    this.selectedDocument = new Document();
+
+    await render(
+      hbs`<SingleDocumentDetails @document={{this.selectedDocument}}/>`,
+    );
+
+    assert.dom("[data-test-date]").exists();
+    assert.dom("[data-test-date-input]").doesNotExist();
+
+    assert.dom("[data-test-date]").hasText("01/01/2023");
+
+    await click("[data-test-edit-date]");
+
+    assert.dom("[data-test-date]").doesNotExist();
+    assert.dom("[data-test-date-input]").exists();
+
+    await setFlatpickrDate("[data-test-date-input]", new Date("2023-10-31"));
+    await waitFor("[data-test-date]");
+
+    assert.dom("[data-test-date]").exists();
+    assert.dom("[data-test-date-input]").doesNotExist();
+
+    assert.dom("[data-test-date]").hasText("10/31/2023");
   });
 });

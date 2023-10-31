@@ -2,6 +2,7 @@ import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { restartableTask, dropTask } from "ember-concurrency";
+import { DateTime } from "luxon";
 
 import DocumentCard from "./document-card";
 
@@ -14,11 +15,21 @@ export default class SingleDocumentDetailsComponent extends DocumentCard {
   @service documents;
   @service tags;
   @service sidePanel;
+  @service intl;
 
   @tracked editTitle = false;
   @tracked editDescription = false;
+  @tracked editDate = false;
   @tracked validTitle = true;
   @tracked matchingTags = [];
+
+  get dateFormat() {
+    const language = this.intl.primaryLocale.split("-")[0];
+    const defaultFormat = "m/d/Y";
+    const formats = { de: "d.m.Y", fr: "d.m.Y", en: defaultFormat };
+
+    return formats[language] ?? defaultFormat;
+  }
 
   @action updateDocumentTitle({ target: { value: title } }) {
     this.validTitle = Boolean(title);
@@ -29,17 +40,16 @@ export default class SingleDocumentDetailsComponent extends DocumentCard {
     this.args.document.description = description;
   }
 
-  @action toggleEditDescription() {
-    this.editDescription = !this.editDescription;
-    if (this.editDescription) {
-      this.documents.disableShortcuts();
-    } else {
-      this.documents.enableShortcuts();
-    }
+  @action async updateDate([date]) {
+    this.args.document.date = date
+      ? DateTime.fromJSDate(date).toISODate()
+      : null;
+    await this.saveDocument.perform();
   }
-  @action toggleEditTitle() {
-    this.editTitle = !this.editTitle;
-    if (this.editTitle) {
+
+  @action toggle(name) {
+    this[name] = !this[name];
+    if (this[name]) {
       this.documents.disableShortcuts();
     } else {
       this.documents.enableShortcuts();
@@ -50,6 +60,7 @@ export default class SingleDocumentDetailsComponent extends DocumentCard {
     this.editTitle = false;
     this.validTitle = true;
     this.editDescription = false;
+    this.editDate = false;
     this.documents.enableShortcuts();
   }
 

@@ -51,14 +51,17 @@ alexandria:
     created-by-user: "Ersteller"
     created-by-group: "Gruppe"
     modified-at: "Änderungsdatum"
+    date: "Datum"
 
   document-details:
     document-title: "Dokumententitel"
+    document-date: "Dokumentendatum"
     metadata: "Metadaten"
     document-description: "Dokumentenbeschreibung"
     name-placeholder: "Name..."
     version-history: "Versionsgeschichte"
     add-description: "Beschreibung hinzufügen"
+    add-date: "Datum hinzufügen"
     created-at: "Erstellt um"
     created-by-user: "Erstellt von Benutzer"
     created-by-group: "Erstellt von Gruppe"
