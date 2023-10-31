@@ -9,7 +9,7 @@
 
   <div class="uk-margin uk-margin-remove-top">
     <label class="uk-text-meta" for="alexandria-details-title">
-      <button type="button" {{on "click" this.toggleEditTitle}} data-test-edit-title>
+      <button type="button" {{on "click" (fn this.toggle "editTitle")}} data-test-edit-title>
         {{t "alexandria.document-details.document-title"}}
         <UkIcon @icon={{if this.editTitle "close" "pencil"}} />
       </button>
@@ -53,7 +53,7 @@
       class="uk-text-meta uk-display-block"
       for="alexandria-details-description"
     >
-      <button type="button" {{on "click" this.toggleEditDescription}}>
+      <button type="button" {{on "click" (fn this.toggle "editDescription")}}>
         {{t "alexandria.document-details.document-description"}}
         <UkIcon @icon={{if this.editDescription "close" "pencil"}} />
       </button>
@@ -82,6 +82,41 @@
       {{else}}
         <div class="uk-text-italic">{{t "alexandria.document-details.add-description"}}</div>
       {{/if}}
+    {{/if}}
+  </div>
+
+  <div class="uk-margin">
+    <label class="uk-text-meta uk-display-block" for="date">
+      <button type="button" {{on "click" (fn this.toggle "editDate")}} data-test-edit-date>
+        {{t "alexandria.document-details.document-date"}}
+        <UkIcon @icon={{if this.editDate "close" "pencil"}} />
+      </button>
+    </label>
+
+    {{#if this.editDate}}
+      <EmberFlatpickr
+        id="date"
+        name="date"
+        class="uk-input"
+        @locale={{this.locale}}
+        @date={{or @document.date null}}
+        @altFormat={{this.dateFormat}}
+        @altInput={{true}}
+        @allowInput={{true}}
+        @onChange={{this.updateDate}}
+        data-test-date-input
+      />
+    {{else if @document.date}}
+      <div data-test-date>
+        {{format-date
+          @document.date
+          month="2-digit"
+          day="2-digit"
+          year="numeric"
+        }}
+      </div>
+    {{else}}
+      <div class="uk-text-italic">{{t "alexandria.document-details.add-date"}}</div>
     {{/if}}
   </div>
 

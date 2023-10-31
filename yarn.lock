@@ -7082,6 +7082,22 @@ ember-fetch@^8.1.2:
     node-fetch "^2.6.1"
     whatwg-fetch "^3.6.2"
 
+ember-flatpickr@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/ember-flatpickr/-/ember-flatpickr-4.0.0.tgz#602516b349598a9c8b00cb2d1edc2298a53b5408"
+  integrity sha512-NWCGFZENEcJ5GgtkuAtlAad3uyik4E0wD+/k40tNrlNd+XcGdMVQ4t90ku3GwfTrH9gNR5iq5LajL0dzA5Uhrw==
+  dependencies:
+    "@ember/render-modifiers" "^2.0.3"
+    "@glimmer/component" "^1.1.2"
+    "@glimmer/tracking" "^1.1.2"
+    broccoli-funnel "^3.0.3"
+    broccoli-merge-trees "^4.2.0"
+    broccoli-stew "^3.0.0"
+    ember-cli-babel "^7.26.11"
+    ember-cli-htmlbars "^6.2.0"
+    ember-cli-typescript "^5.0.0"
+    flatpickr "^4.6.9"
+
 ember-focus-trap@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/ember-focus-trap/-/ember-focus-trap-1.0.2.tgz#813ee3684b95f31a9534ef02f47da2bb7f5f13e9"
@@ -8595,6 +8611,11 @@ flat-cache@^3.1.1:
     flatted "^3.2.9"
     keyv "^4.5.3"
     rimraf "^3.0.2"
+
+flatpickr@^4.6.9:
+  version "4.6.13"
+  resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.6.13.tgz#8a029548187fd6e0d670908471e43abe9ad18d94"
+  integrity sha512-97PMG/aywoYpB4IvbvUJi0RQi8vearvU0oov1WW3k0WZPBMrTQVqekSX5CjSG/M4Q3i6A/0FKXC7RyAoAUUSPw==
 
 flatted@^3.1.0:
   version "3.2.7"
@@ -11286,6 +11307,11 @@ lru-cache@^7.4.4, lru-cache@^7.5.1, lru-cache@^7.7.1:
   version "10.0.1"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-10.0.1.tgz#0a3be479df549cca0e5d693ac402ff19537a6b7a"
   integrity sha512-IJ4uwUTi2qCccrioU6g9g/5rvvVl13bsdczUUcqbciD9iLr095yj8DQKdObriEvuNSx325N1rV1O0sJFszx75g==
+
+luxon@^3.4.3:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/luxon/-/luxon-3.4.3.tgz#8ddf0358a9492267ffec6a13675fbaab5551315d"
+  integrity sha512-tFWBiv3h7z+T/tDaoxA8rqTxy1CHV6gHS//QdaH4pulbq/JuBSGgQspQQqcgnwdAx6pNI7cmvz5Sv/addzHmUg==
 
 magic-string@^0.24.0:
   version "0.24.1"
@@ -16419,6 +16445,7 @@ workerpool@^6.0.0, workerpool@^6.4.0:
   integrity sha512-i3KR1mQMNwY2wx20ozq2EjISGtQWDIfV56We+yGJ5yDs8jTwQiLLaqHlkBHITlCuJnYlVRmXegxFxZg7gqI++A==
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+  name wrap-ansi-cjs
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==

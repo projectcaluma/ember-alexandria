@@ -21,6 +21,18 @@
       </th>
       <th></th>
       <th>
+        {{t "alexandria.document-list.date"}}
+        <FaIcon
+          @icon="sort"
+          @prefix="fas"
+          @size="1x"
+          @class="uk-margin-small-left"
+          data-test-sort-date
+          role="button"
+          {{on "click" (fn @setSort "date")}}
+        />
+      </th>
+      <th>
         {{t "alexandria.document-list.modified-at"}}
         <FaIcon
           @icon="sort"

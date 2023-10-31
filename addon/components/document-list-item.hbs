@@ -39,6 +39,14 @@
   </td>
   <td>
     {{format-date
+      @document.date
+      month="2-digit"
+      day="2-digit"
+      year="numeric"
+    }}
+  </td>
+  <td>
+    {{format-date
       @document.modifiedAt
       month="2-digit"
       day="2-digit"
