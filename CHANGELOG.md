@@ -1,3 +1,10 @@
+# [4.5.0](https://github.com/projectcaluma/ember-alexandria/compare/v4.4.0...v4.5.0) (2023-10-31)
+
+
+### Features
+
+* **document:** add manual document date ([89cfc01](https://github.com/projectcaluma/ember-alexandria/commit/89cfc018a332584084d0cc956fcb1619982fea2c))
+
 # [4.4.0](https://github.com/projectcaluma/ember-alexandria/compare/v4.3.0...v4.4.0) (2023-10-25)
 
 
