@@ -1,7 +1,6 @@
 import { inject as service } from "@ember/service";
 import { belongsTo, hasMany, attr } from "@ember-data/model";
 import { LocalizedModel, localizedAttr } from "ember-localized-model";
-import { TrackedObject } from "tracked-built-ins";
 
 export default class DocumentModel extends LocalizedModel {
   @localizedAttr title;
@@ -18,6 +17,7 @@ export default class DocumentModel extends LocalizedModel {
 
   @belongsTo("category", { inverse: "documents", async: true }) category;
   @hasMany("tag", { inverse: "documents", async: true }) tags;
+  @hasMany("mark", { inverse: "documents", async: true }) marks;
   @hasMany("file", { inverse: "document", async: true }) files;
 
   @service config;
@@ -27,12 +27,5 @@ export default class DocumentModel extends LocalizedModel {
       (file) => file.variant === "thumbnail",
     )[0];
     return thumbnail && thumbnail.downloadUrl;
-  }
-
-  get marks() {
-    return this.config.marks.map((mark) => {
-      mark.active = this.tags.find((tag) => tag.name === mark.type);
-      return new TrackedObject(mark);
-    });
   }
 }

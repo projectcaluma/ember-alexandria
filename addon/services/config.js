@@ -2,6 +2,8 @@ import Service from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 
 export default class ConfigService extends Service {
+  markIcons = {};
+
   @tracked alexandriaQueryParams = {};
 
   /**
@@ -25,14 +27,6 @@ export default class ConfigService extends Service {
 
   get suggestedTagsFilters() {
     return {};
-  }
-
-  get marks() {
-    return [];
-  }
-
-  get markTypes() {
-    return this.marks.map((mark) => mark.type);
   }
 
   resolveUser(id) {

@@ -6,17 +6,17 @@
   }}
   ...attributes
 >
-  <div
-    class="marks uk-flex uk-position-top-left uk-position-small uk-border-rounded uk-background-muted"
-  >
-    {{#each @document.marks as |mark|}}
-      {{#if mark.active}}
-        <div title={{mark.tooltip}}>
+  {{#if @document.marks}}
+    <div
+      class="marks uk-flex uk-position-top-left uk-position-small uk-border-rounded uk-background-muted"
+    >
+      {{#each @document.marks as |mark|}}
+        <div title={{mark.name}}>
           <FaIcon @icon={{mark.icon}} />
         </div>
-      {{/if}}
-    {{/each}}
-  </div>
+      {{/each}}
+    </div>
+  {{/if}}
   <div class="uk-card-media-top uk-text-center uk-border-bottom">
     {{#if this.showloadingstate}}
       <div class="uk-padding" data-test-loading>
