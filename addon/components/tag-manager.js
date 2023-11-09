@@ -85,10 +85,6 @@ export default class TagManagerComponent extends Component {
       const tags = doc.tags;
       if (tags && tags.length !== 0) {
         tags.forEach((tag) => {
-          if (this.config.markTypes.includes(tag.name)) {
-            return;
-          }
-
           const existingTag = tagsToDisplay.find(
             (t) => t.emberModel.id === tag.id,
           );

@@ -3,15 +3,13 @@ import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 
 export default class MarkManagerMarkComponent extends Component {
-  @service("tags") tagService;
+  @service marks;
 
   get activeDocumentCount() {
     return this.args.documents.reduce((acc, doc) => {
       return (
         acc +
-        Number(
-          Boolean(doc.tags.find((tag) => tag.name === this.args.mark.type)),
-        )
+        Number(Boolean(doc.marks.find((mark) => mark.id === this.args.mark.id)))
       );
     }, 0);
   }
@@ -33,9 +31,9 @@ export default class MarkManagerMarkComponent extends Component {
     return Promise.all(
       this.args.documents.map((document) => {
         if (this.checked) {
-          return this.tagService.remove(document, this.args.mark.type);
+          return this.marks.remove(document, this.args.mark);
         }
-        return this.tagService.add(document, this.args.mark.type);
+        return this.marks.add(document, this.args.mark);
       }),
     );
   }

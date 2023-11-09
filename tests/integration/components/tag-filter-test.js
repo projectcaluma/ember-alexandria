@@ -8,8 +8,14 @@ module("Integration | Component | tag-filter", function (hooks) {
   setupRenderingTest(hooks);
   setupMirage(hooks);
 
+  hooks.beforeEach(function () {
+    this.server.create("mark");
+    this.server.createList("tag", 2);
+  });
+
   test("it renders", async function (assert) {
     await render(hbs`<TagFilter />`);
-    assert.ok(this.element);
+
+    assert.dom("button").exists({ count: 3 });
   });
 });

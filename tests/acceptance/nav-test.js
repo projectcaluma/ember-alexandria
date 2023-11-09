@@ -28,7 +28,7 @@ module("Acceptance | nav", function (hooks) {
     const tag = this.server.create("tag");
     this.server.create("document", { category: categories[0], tags: [tag] });
     await visit(
-      `/?category=${categories[0].id}&sort=title&tags=${tag.name}&document=1`,
+      `/?category=${categories[0].id}&sort=title&tags=%5B%22${tag.id}%22%5D&document=1`,
     );
     await click("[data-test-category]:last-child [data-test-link]");
 

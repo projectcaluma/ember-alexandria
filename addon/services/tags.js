@@ -10,41 +10,14 @@ export default class TagsService extends Service {
   @service store;
   @service config;
 
-  /**
-   * Different parts of the application should be able to update the searchTags
-   * list as easily as possible. By setting the category on the service the
-   * triggering code doesn't need to find the correct query parameter.
-   */
-  @tracked category = null;
+  @tracked categoryCache;
 
-  /** The searchTags are used in the TagFilter component. */
-  get searchTags() {
-    const allTags = this.fetchSearchTags.lastSuccessful?.value ?? [];
+  @task *fetchSearchTags(category) {
+    this.categoryCache = category;
 
-    return allTags
-      .map((tag) => {
-        if (this.config.markTypes.includes(tag.name)) {
-          const mark = this.config.marks.find((m) => m.type === tag.name);
-
-          tag = {
-            id: tag.id,
-            ...mark,
-            isMark: true,
-          };
-        }
-
-        return tag;
-      })
-      .sort(function (x, y) {
-        // order marks to the front
-        return Number(y.isMark ?? 0) - Number(x.isMark ?? 0);
-      });
-  }
-
-  @task *fetchSearchTags() {
     return yield this.store.query("tag", {
       filter: {
-        withDocumentsInCategory: this.category,
+        withDocumentsInCategory: this.categoryCache,
         withDocumentsMetainfo: JSON.stringify(
           this.config.modelMetaFilters.document,
         ),
@@ -95,7 +68,7 @@ export default class TagsService extends Service {
       new ErrorHandler(this, error).notify("alexandria.errors.update");
     }
 
-    await this.fetchSearchTags.perform();
+    await this.fetchSearchTags.perform(this.categoryCache);
 
     return tag;
   }
@@ -119,6 +92,6 @@ export default class TagsService extends Service {
       new ErrorHandler(this, error).notify("alexandria.errors.update");
     }
 
-    this.fetchSearchTags.perform();
+    this.fetchSearchTags.perform(this.categoryCache);
   }
 }

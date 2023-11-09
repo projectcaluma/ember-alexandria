@@ -6,6 +6,7 @@ export default class ApplicationController extends Controller {
   queryParams = [
     "category",
     "tags",
+    "marks",
     "search",
     "document",
     "activeGroup",
@@ -15,8 +16,8 @@ export default class ApplicationController extends Controller {
   @service config;
 
   @tracked category;
-  // Cant use @tracked tags = []; because of https://github.com/emberjs/ember.js/issues/19078
-  @tracked tags;
+  @tracked tags = [];
+  @tracked marks = [];
   @tracked search;
   @tracked document;
   @tracked activeGroup;
@@ -25,7 +26,8 @@ export default class ApplicationController extends Controller {
   get documentFilters() {
     let filters = {
       category: this.category,
-      tags: this.tags,
+      tags: this.tags.length ? this.tags.join(",") : undefined,
+      marks: this.marks.length ? this.marks.join(",") : undefined,
       search: this.search,
       activeGroup: this.activeGroup,
     };
@@ -40,20 +42,9 @@ export default class ApplicationController extends Controller {
     return filters;
   }
 
-  resetTagFilter() {
-    this.tags = undefined;
-  }
-
   removeTagFromTags(tagToRemove) {
-    if (this.tags) {
-      this.tags = this.tags
-        .split(",")
-        .filter((tag) => tag !== tagToRemove)
-        .join(",");
-      if (this.tags === "") {
-        // if there are no tags left we need to set to undefined to avoid a request error with an empty tag filter
-        this.resetTagFilter();
-      }
+    if (this.tags.length) {
+      this.tags = this.tags.filter((tag) => tag !== tagToRemove);
     }
   }
 }

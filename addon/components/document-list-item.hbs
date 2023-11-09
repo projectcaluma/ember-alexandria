@@ -30,11 +30,9 @@
   </td>
   <td class="list-marks uk-flex">
     {{#each @document.marks as |mark|}}
-      {{#if mark.active}}
-        <div title={{mark.tooltip}}>
-          <FaIcon @icon={{mark.icon}} @fixedWidth={{true}} />
-        </div>
-      {{/if}}
+      <div title={{mark.name}}>
+        <FaIcon @icon={{mark.icon}} @fixedWidth={{true}} />
+      </div>
     {{/each}}
   </td>
   <td>

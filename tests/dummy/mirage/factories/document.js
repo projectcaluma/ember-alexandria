@@ -14,7 +14,10 @@ export default Factory.extend({
   date: () => (Math.random() >= 0.5 ? faker.date.past() : null),
 
   afterCreate(document, server) {
-    document.update({ tags: server.create("tag") });
+    document.update({
+      tags: server.create("tag"),
+      marks: [],
+    });
   },
 
   withFiles: trait({

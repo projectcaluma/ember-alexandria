@@ -1,45 +1,16 @@
-/* eslint-disable import/no-named-as-default-member */
-import Service from "@ember/service";
 import { render, click } from "@ember/test-helpers";
 import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
 import { module, test } from "qunit";
-
-class TagServiceStub extends Service {
-  add(doc, tag) {
-    doc.tags.push({ name: tag });
-    return tag;
-  }
-
-  remove(doc, tag) {
-    doc.tags = doc.tags.filter((t) => t.name !== tag);
-    return tag;
-  }
-}
-
-const mockConfigService = class ConfigService extends Service {
-  get marks() {
-    return [
-      {
-        type: "foo",
-        icon: "bolt",
-      },
-      {
-        type: "bar",
-        icon: "file",
-      },
-    ];
-  }
-};
+import { fake } from "sinon";
 
 module("Integration | Component | mark-manager", function (hooks) {
   setupRenderingTest(hooks);
   setupMirage(hooks);
 
   hooks.beforeEach(function () {
-    this.owner.register("service:config", mockConfigService);
-    this.owner.register("service:tags", TagServiceStub);
+    this.server.createList("mark", 2);
   });
 
   test("it renders mark manager", async function (assert) {
@@ -58,7 +29,8 @@ module("Integration | Component | mark-manager", function (hooks) {
             downloadUrl: "http://test.com",
           },
         ],
-        tags: [],
+        marks: [],
+        save: fake(),
       },
     ];
 

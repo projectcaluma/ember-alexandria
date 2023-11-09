@@ -42,13 +42,13 @@ export default class CategoryNavCategoryComponent extends Component {
     }
 
     this.documents.clearDocumentSelection();
-    this.controllerInstance.resetTagFilter();
     this.router.transitionTo(this.router.currentRouteName, {
       queryParams: {
         category: this.args.category.id,
         search: undefined,
         document: undefined,
-        tags: undefined,
+        tags: [],
+        marks: [],
       },
     });
   }

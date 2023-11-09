@@ -1,6 +1,10 @@
 import ConfigService from "ember-alexandria/services/config";
 
 export default class AlexandriaConfigService extends ConfigService {
+  markIcons = {
+    decision: "stamp",
+  };
+
   get modelMetaFilters() {
     if (this.alexandriaQueryParams.instance_id) {
       return {
@@ -27,20 +31,5 @@ export default class AlexandriaConfigService extends ConfigService {
     return new Promise((resolve) =>
       setTimeout(() => resolve((id || "").toUpperCase()), 200),
     );
-  }
-
-  get marks() {
-    return [
-      {
-        type: "important",
-        icon: "stamp",
-        tooltip: "This is an important document",
-      },
-      {
-        type: "problem",
-        icon: "bullhorn",
-        tooltip: "This document has problems",
-      },
-    ];
   }
 }

@@ -21,6 +21,7 @@ module("Unit | Controller | application", function (hooks) {
       metainfo: JSON.stringify([{ key: "instance_id", value: "1" }]),
       search: "test",
       tags: undefined,
+      marks: undefined,
     });
   });
 });

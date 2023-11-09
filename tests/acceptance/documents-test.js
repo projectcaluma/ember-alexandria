@@ -293,7 +293,7 @@ module("Acceptance | documents", function (hooks) {
       .hasClass("tag--active", "the tag does has the selected class");
     assert.strictEqual(
       currentURL(),
-      `/?tags=${tag.id}`,
+      `/?tags=%5B%22${tag.id}%22%5D`,
       "tag has been selected and is present in the URL",
     );
 

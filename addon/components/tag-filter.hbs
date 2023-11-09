@@ -1,26 +1,34 @@
 <div
   class="uk-border uk-padding-small uk-width-expand uk-flex uk-flex-wrap uk-flex-middle"
   ...attributes
-  {{did-insert this.onInsert}}
-  {{did-update this.onInsert @category}}
 >
-  {{#each this.tags.searchTags as |tag|}}
+  {{#each this.marks.marks.records as |mark|}}
     <button
       type="button"
       class="tag uk-text-small
-        {{if (includes tag.id this.selectedTagsArray) 'tag--active' }}"
-      {{on "click" (fn this.toggleTag tag)}}
-      data-test-tag
-      data-test-tag-id={{tag.id}}
-      title={{tag.tooltip}}
+        {{if (includes mark.id this.parsedSelected.marks) 'tag--active'}}"
+      {{on "click" (fn this.toggle "marks" mark)}}
+      data-test-mark
+      data-test-mark-id={{mark.id}}
+      title={{mark.name}}
     >
-      {{#if tag.isMark}}
-        <FaIcon @icon={{tag.icon}} @size="sm" @fixedWidth={{true}} />
-      {{else}}
-        {{tag.name}}
-      {{/if}}
+      <FaIcon @icon={{mark.icon}} @size="sm" @fixedWidth={{true}} />
     </button>
-  {{else}}
-    {{t "alexandria.tag-filter.empty"}}
   {{/each}}
+  {{#if (and this.searchTags.isFinished (not this.searchTags.value))}}
+    <span class="uk-margin-small-left">{{t "alexandria.tag-filter.empty"}}</span>
+  {{else}}
+    {{#each this.tags.fetchSearchTags.lastSuccessful.value as |tag|}}
+      <button
+        type="button"
+        class="tag uk-text-small
+          {{if (includes tag.id this.parsedSelected.tags) 'tag--active'}}"
+        {{on "click" (fn this.toggle "tags" tag)}}
+        data-test-tag
+        data-test-tag-id={{tag.id}}
+      >
+        {{tag.name}}
+      </button>
+    {{/each}}
+  {{/if}}
 </div>
