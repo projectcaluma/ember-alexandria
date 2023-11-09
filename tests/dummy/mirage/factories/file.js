@@ -2,11 +2,12 @@ import { faker } from "@faker-js/faker";
 import { Factory } from "miragejs";
 
 export default Factory.extend({
-  createdByUser: "dummy",
-  createdByGroup: "dummy-group",
+  createdByUser: () => faker.person.fullName(),
+  createdByGroup: () => faker.company.name(),
   createdAt: () => faker.date.past(),
-  name: () => faker.lorem.word(),
+  name: () => faker.system.fileName(),
   variant: "original",
   uploadUrl: "/api/v1/file-upload",
   downloadUrl: () => faker.internet.url(),
+  checksum: () => `sha256:${faker.git.commitSha({ length: 64 })}`,
 });

@@ -205,7 +205,7 @@
       <div class="uk-accordion-content">
         <ul class="uk-list uk-list-divider">
           {{#each (filter-by "variant" "original" @document.files) as |file|}}
-            <li data-test-file class="uk-flex" title={{file.name}}>
+            <li data-test-file class="uk-flex">
               <span class="uk-margin-right">
                 {{format-date
                   file.createdAt
@@ -219,16 +219,33 @@
               <span class="uk-width-expand">
                 {{~await (resolve-user file.createdByUser)~}}
               </span>
-              <a
-                uk-icon="download"
-                class="uk-icon-link"
-                data-test-file-download-link
-                href={{file.downloadUrl}}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span class="uk-invisible">{{t "alexandria.download"}}</span>
-              </a>
+              <span>
+                <UkIcon @icon="info" class="uk-icon-link" />
+                <div uk-dropdown pos="left-bottom">
+                  <p>
+                    <span class="uk-text-bold">{{t "alexandria.document-details.version.filename"}}</span>
+                    <br>
+                    <span class="uk-text-break">{{file.name}}</span>
+                  </p>
+                  {{#if file.checksum}}
+                    <p>
+                      <span class="uk-text-bold">{{t "alexandria.document-details.version.checksum"}}</span>
+                      <br>
+                      <span class="uk-text-break">{{file.checksum}}</span>
+                    </p>
+                  {{/if}}
+                </div>
+                <a
+                  uk-icon="download"
+                  class="uk-icon-link"
+                  data-test-file-download-link
+                  href={{file.downloadUrl}}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span hidden>{{t "alexandria.download"}}</span>
+                </a>
+              </span>
             </li>
           {{/each}}
         </ul>

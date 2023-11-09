@@ -17,7 +17,7 @@ export default Factory.extend({
 
   withDocuments: trait({
     afterCreate(category, server) {
-      server.createList("document", 2, { category });
+      server.createList("document", 2, { category }, "withFiles");
     },
   }),
 });
