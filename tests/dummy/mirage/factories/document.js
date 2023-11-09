@@ -1,10 +1,10 @@
 import { faker } from "@faker-js/faker";
-import { Factory } from "miragejs";
+import { Factory, trait } from "miragejs";
 
 import { setAllLocales } from "./helpers";
 
 export default Factory.extend({
-  title: () => setAllLocales(faker.commerce.product()),
+  title: () => setAllLocales(faker.system.commonFileName()),
   description: () => setAllLocales(faker.company.catchPhrase()),
   createdByUser: () => faker.person.fullName(),
   createdByGroup: () => faker.company.name(),
@@ -14,8 +14,14 @@ export default Factory.extend({
   date: () => (Math.random() >= 0.5 ? faker.date.past() : null),
 
   afterCreate(document, server) {
-    document.update({
-      tags: server.create("tag"),
-    });
+    document.update({ tags: server.create("tag") });
   },
+
+  withFiles: trait({
+    afterCreate(document, server) {
+      server.createList("file", faker.number.int({ min: 1, max: 5 }), {
+        document,
+      });
+    },
+  }),
 });

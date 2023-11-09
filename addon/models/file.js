@@ -7,6 +7,7 @@ export default class FileModel extends Model {
   @attr downloadUrl;
   @attr objectName;
   @attr metainfo;
+  @attr checksum;
 
   @attr createdAt;
   @attr createdByUser;
