@@ -31,6 +31,11 @@
       >
         {{@category.name}}
       </div>
+      {{#if @category.description}}
+        <div class="uk-margin-auto-left uk-margin-right uk-text-muted" {{uk-tooltip @category.description}}>
+          <UkIcon @icon="info" />
+        </div>
+      {{/if}}
     </div>
   </div>
   {{#if (and this.expandChildren @category.children.length)}}
