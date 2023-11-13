@@ -1,3 +1,10 @@
+# [4.6.0](https://github.com/projectcaluma/ember-alexandria/compare/v4.5.0...v4.6.0) (2023-11-13)
+
+
+### Features
+
+* **details:** show checksum of file variants ([2419c4d](https://github.com/projectcaluma/ember-alexandria/commit/2419c4dfb5779392a7e60ad0ab3ddc2cb6f27e31))
+
 # [4.5.0](https://github.com/projectcaluma/ember-alexandria/compare/v4.4.0...v4.5.0) (2023-10-31)
 
 
