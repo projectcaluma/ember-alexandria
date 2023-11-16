@@ -7,9 +7,9 @@
     <input
       type="search"
       class="uk-search-input uk-background-default"
-      placeholder="Search..."
+      placeholder={{t "alexandria.search"}}
       value={{@search}}
-      aria-label="Search input"
+      aria-label={{t "alexandria.search"}}
       data-test-search-input
       {{on "input" (perform this.updateSearch)}}
     />

@@ -1,5 +1,6 @@
 alexandria:
   loading: "Loading..."
+  search: "Search..."
   nothing-found: "We found nothing..."
   delete: "Delete"
   upload-file: "Upload file"
