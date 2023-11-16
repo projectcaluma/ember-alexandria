@@ -21,7 +21,6 @@ export default class SingleDocumentDetailsComponent extends DocumentCard {
   @tracked editDescription = false;
   @tracked editDate = false;
   @tracked validTitle = true;
-  @tracked matchingTags = [];
 
   get dateFormat() {
     const language = this.intl.primaryLocale.split("-")[0];

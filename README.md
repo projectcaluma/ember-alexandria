@@ -146,6 +146,8 @@ export default class AlexandriaConfigService extends ConfigService {
 }
 ```
 
+If there is a need for filtering the tagging suggestions set the getter `suggestedTagsFilters` to the desired filter.
+
 ### Marks
 
 Additionally to tags you can configure marks. Marks are similar to tags, but are always displayed for the user to add, even when then are not selected yet. This avoids the issue where users might create multiple, slightly different tags while meaning the same thing. We recommend using not more than five marks for the most important classifications of documents.

@@ -23,6 +23,10 @@ export default class ConfigService extends Service {
     return {};
   }
 
+  get suggestedTagsFilters() {
+    return {};
+  }
+
   get marks() {
     return [];
   }
