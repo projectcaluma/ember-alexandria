@@ -4,16 +4,28 @@ import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { timeout, restartableTask } from "ember-concurrency";
+import { trackedFunction } from "ember-resources/util/function";
+
 export default class TagManagerComponent extends Component {
   @service("tags") tagService;
   @service config;
+  @service store;
 
-  @tracked matchingTags = [];
   @tracked tagValue;
 
-  @action async fetchAllTags() {
-    await this.tagService.fetchAllTags.perform();
-  }
+  suggestedTags = trackedFunction(this, async () => {
+    if (!this.tagValue) {
+      return [];
+    }
+
+    return await this.store.query("tag", {
+      filter: {
+        search: this.tagValue,
+        ...this.config.suggestedTagsFilters,
+      },
+      page: { size: 20 },
+    });
+  });
 
   get controllerInstance() {
     const applicationInstance = getOwner(this);
@@ -26,22 +38,9 @@ export default class TagManagerComponent extends Component {
 
     if (!val.length) {
       this.tagValue = "";
-      this.matchingTags = [];
       return;
     }
     this.tagValue = val;
-    this.onSearchTag();
-  }
-
-  onSearchTag() {
-    if (!this.tagService.allTags) {
-      this.matchingTags = [];
-    } else {
-      const searchValue = this.tagValue.toLowerCase();
-      this.matchingTags = this.tagService.allTags.filter((tag) =>
-        tag.name.toLowerCase().includes(searchValue),
-      );
-    }
   }
 
   @action addTagSuggestion(tag) {
@@ -50,7 +49,6 @@ export default class TagManagerComponent extends Component {
     });
 
     this.tagValue = "";
-    this.matchingTags = [];
   }
 
   @action async addTagFromForm(event) {
@@ -67,7 +65,6 @@ export default class TagManagerComponent extends Component {
     }
 
     this.tagValue = "";
-    this.matchingTags = [];
   }
 
   @action removeTag(tag) {

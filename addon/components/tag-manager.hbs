@@ -8,7 +8,9 @@
       {{#if this.tags.length}}
         <div class="uk-margin-bottom">
           {{#each this.tags as |tag|}}
-            <span class="tag uk-text-small {{if tag.selectedByAll 'tag--active'}}">
+            <span
+              class="tag uk-text-small {{if tag.selectedByAll 'tag--active'}}"
+            >
               {{tag.emberModel.name}}
               <button
                 type="button"
@@ -21,11 +23,7 @@
         </div>
       {{/if}}
 
-      <form
-        class="uk-flex"
-        {{did-insert this.fetchAllTags}}
-        {{on "submit" this.addTagFromForm}}
-      >
+      <form class="uk-flex" {{on "submit" this.addTagFromForm}}>
         <input
           class="uk-input uk-form-small uk-width-1-2 uk-margin-small-right"
           autocomplete="off"
@@ -43,9 +41,11 @@
         </button>
       </form>
 
-      {{#if this.matchingTags.length}}
+      {{#if this.suggestedTags.isLoading}}
+        <UkSpinner />
+      {{else}}
         <div class="uk-margin-small-top">
-          {{#each this.matchingTags as |tag|}}
+          {{#each this.suggestedTags.value as |tag|}}
             <a
               href="#"
               class="tag uk-text-small"

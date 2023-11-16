@@ -17,8 +17,6 @@ module("Unit | Service | tags", function (hooks) {
     const service = this.owner.lookup("service:tags");
     const store = this.owner.lookup("service:store");
 
-    await service.fetchAllTags.perform();
-
     const document = await store.createRecord("document").save();
     const tag = await store.createRecord("tag", { name: "T1" }).save();
 
@@ -27,11 +25,9 @@ module("Unit | Service | tags", function (hooks) {
     assert.deepEqual(
       requests.map((request) => request.method),
       [
-        "GET", // fetchAllTags
         "POST", // Create document
         "POST", // Create tag
         "PATCH", // Add tag to document
-        "GET", // fetchAllTags
         "GET", // fetchSearchTags
       ],
     );
@@ -45,8 +41,6 @@ module("Unit | Service | tags", function (hooks) {
     const service = this.owner.lookup("service:tags");
     const store = this.owner.lookup("service:store");
 
-    await service.fetchAllTags.perform();
-
     const document = await store.createRecord("document").save();
     const tag = "T1";
 
@@ -55,11 +49,10 @@ module("Unit | Service | tags", function (hooks) {
     assert.deepEqual(
       requests.map((request) => request.method),
       [
-        "GET", // fetchAllTags
         "POST", // Create document
+        "GET", // search for existing tag
         "POST", // Create tag
         "PATCH", // Add tag to document
-        "GET", // fetchAllTags
         "GET", // fetchSearchTags
       ],
     );
@@ -73,8 +66,6 @@ module("Unit | Service | tags", function (hooks) {
     const service = this.owner.lookup("service:tags");
     const store = this.owner.lookup("service:store");
 
-    await service.fetchAllTags.perform();
-
     const document = await store.createRecord("document").save();
     const tag = (await document.tags)[0];
 
@@ -83,7 +74,6 @@ module("Unit | Service | tags", function (hooks) {
     assert.deepEqual(
       requests.map((request) => request.method),
       [
-        "GET", // fetchAllTags
         "POST", // Create document
         "PATCH", // Remove tag from document
         "GET", // fetchSearchTags

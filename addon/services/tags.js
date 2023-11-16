@@ -2,7 +2,9 @@ import { action } from "@ember/object";
 import Service, { inject as service } from "@ember/service";
 import { dasherize } from "@ember/string";
 import { tracked } from "@glimmer/tracking";
-import { lastValue, task } from "ember-concurrency";
+import { task } from "ember-concurrency";
+
+import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
 
 export default class TagsService extends Service {
   @service store;
@@ -14,12 +16,6 @@ export default class TagsService extends Service {
    * triggering code doesn't need to find the correct query parameter.
    */
   @tracked category = null;
-
-  /**
-   * This list is a stop-gap measure for the type-ahead search
-   * until the API implements a search field. (STARTSWITH)
-   */
-  @lastValue("fetchAllTags") allTags;
 
   /** The searchTags are used in the TagFilter component. */
   get searchTags() {
@@ -45,10 +41,6 @@ export default class TagsService extends Service {
       });
   }
 
-  @task *fetchAllTags() {
-    return yield this.store.findAll("tag");
-  }
-
   @task *fetchSearchTags() {
     return yield this.store.query("tag", {
       filter: {
@@ -69,35 +61,41 @@ export default class TagsService extends Service {
    */
   @action async add(document, tagInput) {
     let tag = tagInput;
-    if (typeof tagInput === "string") {
-      const tagId = dasherize(tagInput.trim());
-      const existing = this.allTags.find((tag) => tag.id === tagId);
-      if (existing) {
-        tag = existing;
-      } else {
-        tag = this.store.createRecord("tag", {
-          id: tagId,
-          name: tag,
-          createdByGroup: this.config.activeGroup,
-          modifiedByGroup: this.config.activeGroup,
-        });
-        await tag.save();
+    try {
+      if (typeof tagInput === "string") {
+        const tagId = dasherize(tagInput.trim());
+        const existing = (
+          await this.store.query("tag", {
+            filter: { nameExact: tagId },
+          })
+        )[0];
+
+        if (existing) {
+          tag = existing;
+        } else {
+          tag = this.store.createRecord("tag", {
+            id: tagId,
+            name: tag,
+            createdByGroup: this.config.activeGroup,
+            modifiedByGroup: this.config.activeGroup,
+          });
+          await tag.save();
+        }
       }
+
+      const tags = await document.tags;
+
+      if (tags.find((t) => t.id === tag.id)) {
+        return tag;
+      }
+
+      tags.push(tag);
+      await document.save();
+    } catch (error) {
+      new ErrorHandler(this, error).notify("alexandria.errors.update");
     }
 
-    const tags = await document.tags;
-
-    if (tags.find((t) => t.id === tag.id)) {
-      return tag;
-    }
-
-    tags.push(tag);
-    await document.save();
-
-    await Promise.all([
-      this.fetchAllTags.perform(),
-      this.fetchSearchTags.perform(),
-    ]);
+    await this.fetchSearchTags.perform();
 
     return tag;
   }
@@ -110,11 +108,16 @@ export default class TagsService extends Service {
    */
   @action async remove(document, tag) {
     if (typeof tag === "string") {
-      tag = this.allTags.find((t) => t.name === tag);
+      tag = this.store.peekRecord("tag", tag.id);
     }
 
     document.tags = (await document.tags).filter((t) => t !== tag);
-    await document.save();
+
+    try {
+      await document.save();
+    } catch (error) {
+      new ErrorHandler(this, error).notify("alexandria.errors.update");
+    }
 
     this.fetchSearchTags.perform();
   }
