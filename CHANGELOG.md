@@ -1,3 +1,11 @@
+## [4.6.1](https://github.com/projectcaluma/ember-alexandria/compare/v4.6.0...v4.6.1) (2023-11-16)
+
+
+### Bug Fixes
+
+* **search:** add missing translation ([5ceaa42](https://github.com/projectcaluma/ember-alexandria/commit/5ceaa42b0268ec39cd9f8c05eb0a44e0d3b93d22))
+* **tags:** improve tag manager ([ffa5792](https://github.com/projectcaluma/ember-alexandria/commit/ffa5792022e08937a803ceef2864d150f8c52a1f))
+
 # [4.6.0](https://github.com/projectcaluma/ember-alexandria/compare/v4.5.0...v4.6.0) (2023-11-13)
 
 
