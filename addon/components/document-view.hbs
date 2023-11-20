@@ -36,7 +36,7 @@
       {{on "dragenter" this.onDragEnter}}
       {{on "dragleave" this.onDragLeave}}
       {{on "dragover" this.onDragOver}}
-      {{on "drop" this.onDrop}}
+      {{on "drop" (perform this.onDrop)}}
     >
       <div
         class="uk-position-cover uk-padding-small uk-height-1-1 uk-overflow-auto"
@@ -74,11 +74,13 @@
           class="uk-width-1 uk-padding-remove uk-position-bottom uk-button uk-button-primary"
           type="button"
         >
-          {{if
-            this.canDrop
-            (t "alexandria.document-grid.drop-to-upload")
-            (t "alexandria.document-grid.drop-not-allowed")
-          }}
+          {{#if this.onDrop.isRunning}}
+            <UkSpinner />
+          {{else if this.canDrop}}
+            {{t "alexandria.document-grid.drop-to-upload"}}
+          {{else}}
+            {{t "alexandria.document-grid.drop-not-allowed"}}
+          {{/if}}
         </button>
       {{/if}}
     </div>
