@@ -1,3 +1,10 @@
+## [4.6.2](https://github.com/projectcaluma/ember-alexandria/compare/v4.6.1...v4.6.2) (2023-11-20)
+
+
+### Bug Fixes
+
+* **upload:** upload files with the proper content type header ([759d401](https://github.com/projectcaluma/ember-alexandria/commit/759d4011f832e1cbcc0c829976f2357ec89b525e))
+
 ## [4.6.1](https://github.com/projectcaluma/ember-alexandria/compare/v4.6.0...v4.6.1) (2023-11-16)
 
 
