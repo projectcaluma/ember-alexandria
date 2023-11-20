@@ -108,7 +108,7 @@ export default class TagsService extends Service {
    */
   @action async remove(document, tag) {
     if (typeof tag === "string") {
-      tag = this.store.peekRecord("tag", tag.id);
+      tag = this.store.peekRecord("tag", tag);
     }
 
     document.tags = (await document.tags).filter((t) => t !== tag);
