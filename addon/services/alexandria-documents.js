@@ -1,7 +1,6 @@
 import { action } from "@ember/object";
 import Service, { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
-import fetch from "fetch";
 
 export default class AlexandriaDocumentsService extends Service {
   @service store;
@@ -68,18 +67,9 @@ export default class AlexandriaDocumentsService extends Service {
           document: documentModel,
           createdByGroup: this.config.activeGroup,
           modifiedByGroup: this.config.activeGroup,
+          content: file,
         });
         await fileModel.save();
-
-        const response = await fetch(fileModel.uploadUrl, {
-          method: "PUT",
-          body: file,
-          headers: { "content-type": "application/octet-stream" },
-        });
-
-        if (!response.ok) {
-          throw new Error(response.statusText, response.status);
-        }
 
         return documentModel;
       }),
@@ -99,21 +89,9 @@ export default class AlexandriaDocumentsService extends Service {
       document,
       createdByGroup: this.config.activeGroup,
       modifiedByGroup: this.config.activeGroup,
+      content: file,
     });
-
     await fileModel.save();
-
-    const response = await fetch(fileModel.uploadUrl, {
-      method: "PUT",
-      body: file,
-      headers: { "content-type": "application/octet-stream" },
-    });
-
-    if (!response.ok) {
-      throw new Error(response.statusText, response.status);
-    }
-
-    await document.reload();
   }
 
   /**
