@@ -68,18 +68,9 @@ export default class AlexandriaDocumentsService extends Service {
           document: documentModel,
           createdByGroup: this.config.activeGroup,
           modifiedByGroup: this.config.activeGroup,
+          path: file,
         });
         await fileModel.save();
-
-        const response = await fetch(fileModel.uploadUrl, {
-          method: "PUT",
-          body: file,
-          headers: { "content-type": "application/octet-stream" },
-        });
-
-        if (!response.ok) {
-          throw new Error(response.statusText, response.status);
-        }
 
         return documentModel;
       }),
