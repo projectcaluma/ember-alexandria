@@ -1,3 +1,11 @@
+## [4.6.3](https://github.com/projectcaluma/ember-alexandria/compare/v4.6.2...v4.6.3) (2023-11-21)
+
+
+### Bug Fixes
+
+* **tags:** fix removing of a tag ([32d2009](https://github.com/projectcaluma/ember-alexandria/commit/32d2009e1fd2b8f42d3f80637ca1757bf153ed8c))
+* **upload:** show loading spinner on drag & drop upload ([7b76628](https://github.com/projectcaluma/ember-alexandria/commit/7b766283eab60e9cfbc21ff3e1ae9e8f575b8459))
+
 ## [4.6.2](https://github.com/projectcaluma/ember-alexandria/compare/v4.6.1...v4.6.2) (2023-11-20)
 
 
