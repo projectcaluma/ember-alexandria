@@ -32,7 +32,7 @@ module("Unit | Service | alexandria-documents", function (hooks) {
     );
 
     // Each file generates three requests.
-    assert.strictEqual(requests.length, files.length * 3);
+    assert.strictEqual(requests.length, files.length * 2);
 
     // Files will be uploaded in parallel. So, we cannot know the order.
     const documentRequests = requests.filter((request) =>
@@ -41,13 +41,9 @@ module("Unit | Service | alexandria-documents", function (hooks) {
     const fileRequests = requests.filter((request) =>
       request.url.endsWith("files"),
     );
-    const uploadRequests = requests.filter((request) =>
-      request.url.endsWith("file-upload"),
-    );
 
     assert.strictEqual(documentRequests.length, files.length);
     assert.strictEqual(fileRequests.length, files.length);
-    assert.strictEqual(uploadRequests.length, files.length);
   });
 
   test("it replaces documents", async function (assert) {
@@ -66,8 +62,7 @@ module("Unit | Service | alexandria-documents", function (hooks) {
       (request) => !request.url.includes("documents"),
     );
 
-    assert.strictEqual(requests.length, 2);
+    assert.strictEqual(requests.length, 1);
     assert.ok(requests[0].url.endsWith("files"));
-    assert.ok(requests[1].url.endsWith("file-upload"));
   });
 });

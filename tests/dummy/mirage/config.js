@@ -14,11 +14,11 @@ export default function makeServer(config) {
       this.resource("tags", { except: ["delete"] });
       this.resource("marks", { only: ["index"] });
 
-      this.post("/files", function (schema) {
-        const attrs = this.normalizedRequestAttrs();
+      this.post("/files", function (schema, request) {
+        const attrs = Object.fromEntries(request.requestBody.entries());
         return schema.files.create({
           ...attrs,
-          uploadUrl: "/api/v1/file-upload",
+          document: schema.documents.find(attrs.document),
         });
       });
 
