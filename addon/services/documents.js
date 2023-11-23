@@ -74,7 +74,6 @@ export default class DocumentsService extends Service {
         const response = await fetch(fileModel.uploadUrl, {
           method: "PUT",
           body: file,
-          headers: { "content-type": "application/octet-stream" },
         });
 
         if (!response.ok) {
@@ -106,7 +105,6 @@ export default class DocumentsService extends Service {
     const response = await fetch(fileModel.uploadUrl, {
       method: "PUT",
       body: file,
-      headers: { "content-type": "application/octet-stream" },
     });
 
     if (!response.ok) {
