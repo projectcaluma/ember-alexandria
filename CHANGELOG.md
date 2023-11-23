@@ -1,3 +1,10 @@
+## [4.6.4](https://github.com/projectcaluma/ember-alexandria/compare/v4.6.3...v4.6.4) (2023-11-23)
+
+
+### Reverts
+
+* Revert "fix(upload): upload files with the proper content type header" ([b8ca7f5](https://github.com/projectcaluma/ember-alexandria/commit/b8ca7f5873cb2f4a2314c7f356936fd51d234594))
+
 ## [4.6.3](https://github.com/projectcaluma/ember-alexandria/compare/v4.6.2...v4.6.3) (2023-11-21)
 
 
