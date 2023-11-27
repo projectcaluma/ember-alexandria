@@ -4,7 +4,7 @@ export default class FileModel extends Model {
   @attr variant;
   @attr name;
   @attr metainfo;
-  @attr path;
+  @attr content;
   @attr checksum;
 
   @attr createdAt;

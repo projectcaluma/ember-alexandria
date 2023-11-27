@@ -68,7 +68,7 @@ export default class AlexandriaDocumentsService extends Service {
           document: documentModel,
           createdByGroup: this.config.activeGroup,
           modifiedByGroup: this.config.activeGroup,
-          path: file,
+          content: file,
         });
         await fileModel.save();
 

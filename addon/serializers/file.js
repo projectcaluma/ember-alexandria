@@ -14,7 +14,7 @@ export default class TemplateSerializer extends JSONSerializer {
   serializeIntoHash = null;
 
   serialize(snapshot) {
-    const { name, variant, path } = snapshot.attributes();
+    const { name, variant, content} = snapshot.attributes();
 
     const formData = new FormData();
 
@@ -22,8 +22,8 @@ export default class TemplateSerializer extends JSONSerializer {
     formData.append("variant", variant);
     formData.append("document", snapshot.belongsTo("document").id);
 
-    if (path instanceof File) {
-      formData.append("path", path);
+    if (content instanceof File) {
+      formData.append("content", content);
     }
 
     return formData;
