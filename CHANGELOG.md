@@ -1,3 +1,10 @@
+# [4.7.0](https://github.com/projectcaluma/ember-alexandria/compare/v4.6.5...v4.7.0) (2023-11-30)
+
+
+### Features
+
+* integrate marks model ([908d612](https://github.com/projectcaluma/ember-alexandria/commit/908d612dc7ddf35cb87c0bbd8074263e0638dc3c))
+
 ## [4.6.5](https://github.com/projectcaluma/ember-alexandria/compare/v4.6.4...v4.6.5) (2023-11-28)
 
 
