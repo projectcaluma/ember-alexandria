@@ -150,14 +150,13 @@ If there is a need for filtering the tagging suggestions set the getter `suggest
 
 ### Marks
 
-Additionally to tags you can configure marks. Marks are similar to tags, but are always displayed for the user to add, even when then are not selected yet. This avoids the issue where users might create multiple, slightly different tags while meaning the same thing. We recommend using not more than five marks for the most important classifications of documents.
+Additionally to tags you can configure icons for the marks from the backend. Marks are similar to tags, but are always displayed for the user to add, even when then are not selected yet. This avoids the issue where users might create multiple, slightly different tags while meaning the same thing. We recommend using not more than five marks for the most important classifications of documents.
 
 The icons for marks are from [FontAwesome](https://fontawesome.com/search?o=r&m=free&s=regular%2Csolid).
 
-The object for a mark has the following properties:
-- `type`: This is the id of a tag used to identify the mark in the backend.
-- `icon`: This a string, which references an FontAwesome.
-- `tooltip`: This is shown when hovering over the mark.
+The configuration for mark icons has the following properties:
+- The slug of the mark as key
+- The name of the icon as value
 
 An example configuration with two icons might look like this:
 
@@ -165,19 +164,9 @@ An example configuration with two icons might look like this:
 import ConfigService from "ember-alexandria/services/config";
 
 export default class AlexandriaConfigService extends ConfigService {
-  get marks() {
-    return [
-      {
-        type: "important",
-        tooltip: "This is an important document",
-        icon: "stamp",
-      },
-      {
-        type: "problem",
-        tooltip: "This document has problems",
-        icon: "hippo",
-      },
-    ];
+  marksIcons = {
+    important: "stamp",
+    problem: "hippo",
   }
 }
 ```
