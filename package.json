@@ -68,7 +68,7 @@
     "@babel/plugin-proposal-decorators": "7.23.5",
     "@ember/string": "3.1.1",
     "@ember/test-helpers": "3.2.0",
-    "@embroider/test-setup": "3.0.2",
+    "@embroider/test-setup": "3.0.3",
     "@faker-js/faker": "8.3.1",
     "broccoli-asset-rev": "3.0.0",
     "concurrently": "8.2.2",
