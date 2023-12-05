@@ -59,7 +59,7 @@ alexandria:
     document-date: "Dokumentendatum"
     metadata: "Metadaten"
     document-description: "Dokumentenbeschreibung"
-    name-placeholder: "Name..."
+    title-placeholder: "Titel..."
     version-history: "Versionsgeschichte"
     add-description: "Beschreibung hinzufügen"
     add-date: "Datum hinzufügen"

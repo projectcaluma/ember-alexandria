@@ -106,7 +106,7 @@ module("Integration | Component | single-document-details", function (hooks) {
 
     await fillIn("[data-test-title-input]", "");
     assert.dom("[data-test-title-input]").hasValue("");
-    assert.dom("[data-test-save]").hasClass("uk-disabled");
+    assert.dom("[data-test-save]").isDisabled();
 
     await fillIn("[data-test-title-input]", "edited");
     assert.dom("[data-test-title-input]").hasValue("edited");
