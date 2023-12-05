@@ -1,11 +1,4 @@
-<div
-  class={{if
-    @isSelected
-    "document-card uk-card uk-card-body uk-border-rounded-circular uk-padding-remove selected"
-    "document-card uk-card uk-card-body uk-border-rounded-circular uk-padding-remove"
-  }}
-  ...attributes
->
+<div class={{this.classes}} ...attributes>
   {{#if @document.marks}}
     <div
       class="marks uk-flex uk-position-top-left uk-position-small uk-border-rounded uk-background-muted"

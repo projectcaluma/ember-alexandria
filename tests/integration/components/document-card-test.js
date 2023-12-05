@@ -20,7 +20,7 @@ module("Integration | Component | document-card", function (hooks) {
   });
 
   test("it renders document card", async function (assert) {
-    this.document = { title: "test1" };
+    this.document = { title: "test1", marks: [] };
     await render(hbs`<DocumentCard @document={{this.document}}/>`);
 
     assert.dom("[data-test-file-icon]").exists();
@@ -45,6 +45,7 @@ module("Integration | Component | document-card", function (hooks) {
     this.document = {
       title,
       files: [{ name: "foo.txt", variant: "original", downloadUrl }],
+      marks: [],
     };
     await render(hbs`<DocumentCard @document={{this.document}}/>`);
     await click("[data-test-context-menu-trigger]");
@@ -64,6 +65,7 @@ module("Integration | Component | document-card", function (hooks) {
   test("delete file", async function (assert) {
     this.document = {
       id: 1,
+      marks: [],
       // eslint-disable-next-line import/no-named-as-default-member
       destroyRecord: sinon.fake(),
     };
@@ -81,6 +83,7 @@ module("Integration | Component | document-card", function (hooks) {
   test("thumbnail", async function (assert) {
     this.document = {
       thumbnail: "some-url",
+      marks: [],
     };
     await render(hbs`<DocumentCard @document={{this.document}}/>`);
 

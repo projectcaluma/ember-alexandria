@@ -29,7 +29,9 @@ module("Integration | Component | document-view", function (hooks) {
     assert.dom("[data-test-empty]").doesNotExist();
 
     assert.dom("[data-test-document]").exists({ count: 3 });
-    assert.dom("[data-test-document]").doesNotHaveClass("selected");
+    assert
+      .dom("[data-test-document]")
+      .doesNotHaveClass("document-card--selected");
   });
 
   test("it renders an empty document view", async function (assert) {
@@ -53,13 +55,13 @@ module("Integration | Component | document-view", function (hooks) {
     assert.dom("[data-test-document]").exists({ count: 3 });
     assert
       .dom("[data-test-document-container]:nth-child(1) div")
-      .hasClass("selected");
+      .hasClass("document-card--selected");
     assert
       .dom("[data-test-document-container]:nth-child(2) div")
-      .doesNotHaveClass("selected");
+      .doesNotHaveClass("document-card--selected");
     assert
       .dom("[data-test-document-container]:nth-child(3) div")
-      .doesNotHaveClass("selected");
+      .doesNotHaveClass("document-card--selected");
   });
 
   test("pass filters", async function (assert) {

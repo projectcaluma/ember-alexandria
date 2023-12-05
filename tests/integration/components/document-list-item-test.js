@@ -13,6 +13,7 @@ module("Integration | Component | document-list-item", function (hooks) {
       title: "some document",
       modifiedAt: new Date("December 1, 2000 00:00:00"),
       createdByUser: "some group",
+      marks: [],
     };
     this.isSelected = false;
     this.onClickDocument = () => {};
