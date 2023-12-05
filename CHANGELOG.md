@@ -1,3 +1,16 @@
+# [4.8.0](https://github.com/projectcaluma/ember-alexandria/compare/v4.7.0...v4.8.0) (2023-12-05)
+
+
+### Bug Fixes
+
+* **document:** allow saving title by pressing enter ([9789ed1](https://github.com/projectcaluma/ember-alexandria/commit/9789ed1d843468e5e507b8863c612cbafcb46987))
+* **marks:** reset marks if request failed ([9ea5a1f](https://github.com/projectcaluma/ember-alexandria/commit/9ea5a1f74042c4228d8568a1b72b6983e0e5ee73))
+
+
+### Features
+
+* **marks:** add classes for each assigned mark on document elements ([7d7e0bf](https://github.com/projectcaluma/ember-alexandria/commit/7d7e0bf21ebc1eae1c54321b2ff5ae5dff23be47))
+
 # [4.7.0](https://github.com/projectcaluma/ember-alexandria/compare/v4.6.5...v4.7.0) (2023-11-30)
 
 
