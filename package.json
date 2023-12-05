@@ -30,6 +30,7 @@
     "test:ember-compatibility": "ember try:each"
   },
   "dependencies": {
+    "@babel/core": "^7.23.5",
     "@ember/legacy-built-in-components": "^0.5.0",
     "@ember/optional-features": "^2.0.0",
     "@ember/render-modifiers": "^2.1.0",
@@ -66,14 +67,14 @@
     "@adfinis/semantic-release-config": "4.1.0",
     "@babel/eslint-parser": "7.23.3",
     "@babel/plugin-proposal-decorators": "7.23.5",
-    "@ember/string": "3.1.1",
     "@ember/test-helpers": "3.2.1",
     "@embroider/test-setup": "3.0.3",
     "@faker-js/faker": "8.3.1",
     "@fortawesome/fontawesome-svg-core": "6.5.1",
     "broccoli-asset-rev": "3.0.0",
     "concurrently": "8.2.2",
-    "ember-cli": "4.12.2",
+    "ember-cli": "5.4.1",
+    "ember-cli-clean-css": "3.0.0",
     "ember-cli-dependency-checker": "3.3.2",
     "ember-cli-inject-live-reload": "2.1.0",
     "ember-cli-mirage": "3.0.2",
@@ -86,7 +87,7 @@
     "ember-resolver": "11.0.1",
     "ember-simple-auth": "6.0.0",
     "ember-sinon-qunit": "7.4.0",
-    "ember-source": "4.12.3",
+    "ember-source": "5.4.0",
     "ember-source-channel-url": "3.0.0",
     "ember-template-lint": "5.13.0",
     "ember-template-lint-plugin-prettier": "5.0.0",
@@ -134,7 +135,7 @@
   },
   "peerDependencies": {
     "ember-engines": "^0.9.0",
-    "ember-source": "^4.0.0"
+    "ember-source": "^4.0.0 || ^5.0.0"
   },
   "engines": {
     "node": ">= 18"
