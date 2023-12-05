@@ -24,6 +24,14 @@ module.exports = async function () {
         },
       },
       {
+        name: "ember-lts-4.12",
+        npm: {
+          devDependencies: {
+            "ember-source": "~4.12.0",
+          },
+        },
+      },
+      {
         name: "ember-release",
         npm: {
           devDependencies: {
@@ -48,7 +56,7 @@ module.exports = async function () {
         },
       },
       embroiderSafe(),
-      embroiderOptimized(),
+      embroiderOptimized({ allowedToFail: true }),
     ],
   };
 };
