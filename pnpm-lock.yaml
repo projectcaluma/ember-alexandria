@@ -75,8 +75,8 @@ dependencies:
     specifier: ^6.3.2
     version: 6.3.2(@babel/core@7.23.5)(@glint/template@1.2.1)(typescript@5.3.2)(webpack@5.89.0)
   ember-localized-model:
-    specifier: ^3.2.1
-    version: 3.2.1(@glint/template@1.2.1)(ember-data@4.12.5)(ember-source@5.4.0)(typescript@5.3.2)(webpack@5.89.0)
+    specifier: ^3.2.2
+    version: 3.2.2(@glint/template@1.2.1)(ember-data@4.12.5)(ember-intl@6.3.2)(ember-source@5.4.0)
   ember-modifier:
     specifier: ^4.1.0
     version: 4.1.0(ember-source@5.4.0)
@@ -7106,11 +7106,12 @@ packages:
       - supports-color
     dev: true
 
-  /ember-localized-model@3.2.1(@glint/template@1.2.1)(ember-data@4.12.5)(ember-source@5.4.0)(typescript@5.3.2)(webpack@5.89.0):
-    resolution: {integrity: sha512-bvkkI5KFMPOCvZ3qou9kpFtpHADoEtSfZ3N0aV0zG3FmkHBijgvttwl8ILbj2uIKE5Z3BdIae2eajBeM5PvxOw==}
+  /ember-localized-model@3.2.2(@glint/template@1.2.1)(ember-data@4.12.5)(ember-intl@6.3.2)(ember-source@5.4.0):
+    resolution: {integrity: sha512-0bidNA2rrtk9HKjdDJHN+51NW/v2AvBh1Jr8vwjZlOlX7CazCgDNF+U14QgCHJoLtnJoYicnA89Z3A62VxpXQg==}
     engines: {node: 16.* || >= 18}
     peerDependencies:
       ember-data: ^3.28.13 || ^4.0.0 || ^5.0.0
+      ember-intl: ^6.3.2
       ember-source: ^4.0.0
     dependencies:
       '@babel/core': 7.23.5
@@ -7124,8 +7125,6 @@ packages:
     transitivePeerDependencies:
       - '@glint/template'
       - supports-color
-      - typescript
-      - webpack
     dev: false
 
   /ember-modifier-manager-polyfill@1.2.0(@babel/core@7.23.5):
