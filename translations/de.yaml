@@ -5,6 +5,7 @@ alexandria:
   delete: "Löschen"
   upload-file: "Datei hochladen"
   download: "Download"
+  move-document: "{count} {count, plural, one {Dokument} other {Dokumente}} verschieben"
 
   errors:
     save-file: "Beim Herunterladen der Datei ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
@@ -18,6 +19,7 @@ alexandria:
       } ist ein Fehler aufgetreten.
     update: "Änderungen konnten nicht gespeichert werden. Versuchen Sie es erneut."
     no-permission: "Sie haben keine Berechtigung, diese Aktion auszuführen."
+    move-document: "Beim Verschieben {count, plural, one {des Dokumentes} other {von # Dokumenten}} ist ein Fehler aufgetreten"
 
   success:
     delete-document: "Das Dokument wurde erfolgreich gelöscht."
@@ -27,6 +29,7 @@ alexandria:
         other {Die Dokumente wurden}
       } erfolgreich hochgeladen.
     update: "Änderungen wurden gespeichert."
+    move-document: "{count, plural, one {Das Dokument wurde} other {# Dokumente wurden}} erfolgreich verschoben"
 
   category-nav:
     all-files: "Alle Dokumente"

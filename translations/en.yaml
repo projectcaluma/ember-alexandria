@@ -5,6 +5,7 @@ alexandria:
   delete: "Delete"
   upload-file: "Upload file"
   download: "Download"
+  move-document: "Move {count} {count, plural, one {document} other {documents}}"
 
   errors:
     save-file: "While downloading the document, an error occured. Please try again."
@@ -18,6 +19,7 @@ alexandria:
       }, an error occured.
     update: "Your changes chould'nt be saved. Please try again."
     no-permission: "You don't have permission to perform this action."
+    move-document: "While moving {count, plural, one {the document} other {# documents}}, an error occured. Please try again."
 
   success:
     delete-document: "Document deleted successfully"
@@ -27,6 +29,7 @@ alexandria:
         other {documents were}
       } uploaded successfully.
     update: "Changes saved."
+    move-document: "{count, plural, one {Document} other {# documents}} moved successfully"
 
   category-nav:
     all-files: "All documents"
