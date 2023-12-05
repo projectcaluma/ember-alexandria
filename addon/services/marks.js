@@ -10,27 +10,25 @@ export default class MarksService extends Service {
   marks = findAll(this, "mark");
 
   /**
-   * Adds a mark to a document. Returns the added mark
+   * Adds a mark to a document.
    *
    * @param {Object} document The target document.
    * @param {Object|String} mark Either e mark instance or a name.
-   * @returns {Object} The added mark
    */
   @action async add(document, mark) {
-    const marks = await document.marks;
+    const marks = [...(await document.marks)];
 
     if (marks.find((m) => m.id === mark.id)) {
-      return mark;
+      return;
     }
 
-    marks.push(mark);
     try {
+      document.marks = [...marks, mark];
       await document.save();
     } catch (error) {
+      document.marks = marks;
       new ErrorHandler(this, error).notify("alexandria.errors.update");
     }
-
-    return mark;
   }
 
   /**
@@ -40,10 +38,17 @@ export default class MarksService extends Service {
    * @param {Object|String} mark Either e mark instance or a name.
    */
   @action async remove(document, mark) {
-    document.marks = (await document.marks).filter((t) => t !== mark);
+    const marks = [...(await document.marks)];
+
+    if (!marks.find((m) => m.id === mark.id)) {
+      return;
+    }
+
     try {
+      document.marks = marks.filter((m) => m !== mark);
       await document.save();
     } catch (error) {
+      document.marks = marks;
       new ErrorHandler(this, error).notify("alexandria.errors.update");
     }
   }
