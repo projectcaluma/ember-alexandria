@@ -22,8 +22,8 @@ export default class MarkManagerMarkComponent extends Component {
     return this.checked
       ? "mark--active"
       : this.activeDocumentCount > 0
-      ? "mark--mixed"
-      : "";
+        ? "mark--mixed"
+        : "";
   }
 
   @action
