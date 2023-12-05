@@ -3,6 +3,7 @@ import { createServer, Response } from "miragejs";
 export default function makeServer(config) {
   return createServer({
     ...config,
+    trackRequests: true,
     routes() {
       this.urlPrefix = "";
       this.namespace = "/api/v1";
