@@ -2,23 +2,34 @@
   background: $background-default-background;
 }
 
-.uk-nav .category-nav__category > div {
-  transition-property: background, box-shadow, color;
-  transition-duration: $animation-duration;
-  padding: 10px 0 10px $global-margin;
-  cursor: pointer;
+.uk-nav .category-nav__category {
+  &--dragover {
+    outline: 1px solid $alert-primary-color;
+    outline-offset: -1px;
 
-  &.active {
-    @include active;
+    > div {
+      background-color: rgba($alert-primary-color, 0.25) !important;
+    }
   }
 
-  &:hover {
-    @include active;
-    @extend .uk-box-shadow-small;
-  }
+  > div {
+    transition-property: background, box-shadow, color;
+    transition-duration: $animation-duration;
+    padding: 10px 0 10px $global-margin;
+    cursor: pointer;
 
-  .skeleton-text {
-    height: 15px;
-    width: 70%;
+    &.active {
+      @include active;
+    }
+
+    &:hover {
+      @include active;
+      @extend .uk-box-shadow-small;
+    }
+
+    .skeleton-text {
+      height: 15px;
+      width: 70%;
+    }
   }
 }

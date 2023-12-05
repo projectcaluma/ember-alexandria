@@ -23,6 +23,8 @@ export default class DocumentViewComponent extends Component {
   // Needed for ember-resource
   @tracked uploadedDocuments = 0;
 
+  dragElement = null;
+
   constructor(parent, args) {
     super(parent, args);
     /* Adds a key down event listener to enable Ctrl+A document selection of all docs
@@ -105,7 +107,9 @@ export default class DocumentViewComponent extends Component {
   }
 
   onDrop = dropTask(async (event) => {
-    if (!this.args.filters.category) {
+    if (!this.args.filters.category || !event.dataTransfer.files.length) {
+      this.dragCounter = 0;
+      this.isDragOver = false;
       return;
     }
 
@@ -132,6 +136,7 @@ export default class DocumentViewComponent extends Component {
       );
     }
 
+    this.dragCounter = 0;
     this.isDragOver = false;
   });
 
@@ -207,5 +212,22 @@ export default class DocumentViewComponent extends Component {
   @action
   afterUpload() {
     this.uploadedDocuments++;
+  }
+
+  @action registerDragInfo(element) {
+    this.dragInfo = element;
+  }
+
+  @action dragDocument(document, event) {
+    if (!this.documents.selectedDocuments.includes(document)) {
+      this.handleDocumentSelection(document, event);
+    }
+
+    event.dataTransfer.clearData();
+    event.dataTransfer.setData(
+      "text/plain",
+      this.documents.selectedDocuments.map((d) => d.id).join(","),
+    );
+    event.dataTransfer.setDragImage(this.dragInfo, -20, 0);
   }
 }

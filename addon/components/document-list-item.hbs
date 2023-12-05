@@ -3,8 +3,10 @@
   data-test-document-list-item
   data-test-document-list-item-id={{@document.id}}
   tabindex="0"
+  draggable="true"
   {{on "click" (fn @onClickDocument @document)}}
   {{on "dblclick" (fn @onDoubleClickDocument @document)}}
+  {{on "dragstart" (fn @onDragStart @document)}}
 >
   <td class="uk-preserve-width">
     <FaIcon

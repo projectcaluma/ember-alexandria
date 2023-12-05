@@ -1,4 +1,11 @@
-<li class="category-nav__category" ...attributes>
+<li
+  class="category-nav__category {{if this.isDragOver "category-nav__category--dragover"}}"
+  ...attributes
+  {{on "dragenter" this.onDragEnter}}
+  {{on "dragleave" this.onDragLeave}}
+  {{on "dragover" this.onDragOver}}
+  {{on "drop" (perform this.onDrop)}}
+>
   <div
     class="uk-link-reset {{if this.isActive "active"}}"
     tabindex="0"

@@ -56,6 +56,7 @@
               @selectedDocuments={{this.documents.selectedDocuments}}
               @onClickDocument={{this.handleDocumentSelection}}
               @onDoubleClickDocument={{this.openDocument}}
+              @onDragStart={{this.dragDocument}}
             />
           {{else}}
             <DocumentGrid
@@ -64,6 +65,7 @@
               @selectedDocuments={{this.documents.selectedDocuments}}
               @onClickDocument={{this.handleDocumentSelection}}
               @onDoubleClickDocument={{this.openDocument}}
+              @onDragStart={{this.dragDocument}}
             />
           {{/if}}
         </div>
@@ -85,4 +87,11 @@
     </div>
   </div>
   <DocumentsSidePanel @selectedDocuments={{this.documents.selectedDocuments}} />
+</div>
+
+<div
+  class="drag-info uk-background-default uk-box-shadow-medium uk-border-rounded uk-width-auto"
+  {{did-insert this.registerDragInfo}}
+>
+  {{t "alexandria.move-document" count=this.documents.selectedDocuments.length}}
 </div>
