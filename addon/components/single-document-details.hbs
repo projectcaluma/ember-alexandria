@@ -24,22 +24,24 @@
         {{set-style color=@document.category.color}}
       />
       {{#if this.editTitle}}
-        <input
-          class="uk-input uk-width-auto"
-          id="alexandria-details-title"
-          type="text"
-          placeholder={{t "alexandria.document-details.name-placeholder"}}
-          value={{@document.title}}
-          data-test-title-input
-          {{on "input" this.updateDocumentTitle}}
-        />
-        <button
-          class="uk-icon-button uk-margin-small-left {{unless this.validTitle 'uk-disabled'}} cursor-pointer"
-          uk-icon="icon: check"
-          type="button"
-          data-test-save
-          {{on "click" (perform this.saveDocument)}}
-        ></button>
+        <form {{on "submit" (perform this.saveDocument)}}>
+          <input
+            class="uk-input uk-width-auto {{unless this.validTitle "uk-form-danger"}}"
+            id="alexandria-details-title"
+            type="text"
+            placeholder={{t "alexandria.document-details.title-placeholder"}}
+            value={{@document.title}}
+            data-test-title-input
+            {{on "input" this.updateDocumentTitle}}
+          />
+          <button
+            class="uk-icon-button uk-margin-small-left cursor-pointer"
+            disabled={{not this.validTitle}}
+            uk-icon="icon: check"
+            type="submit"
+            data-test-save
+          ></button>
+        </form>
       {{else}}
         <span data-test-title>{{@document.title}}</span>
       {{/if}}

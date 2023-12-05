@@ -63,7 +63,9 @@ export default class SingleDocumentDetailsComponent extends DocumentCard {
     this.documents.enableShortcuts();
   }
 
-  @restartableTask *saveDocument() {
+  @restartableTask *saveDocument(event) {
+    event?.preventDefault();
+
     try {
       yield this.args.document.save();
       this.resetState();
