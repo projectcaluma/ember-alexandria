@@ -57,7 +57,7 @@ module("Acceptance | documents", function (hooks) {
 
     assert
       .dom("[data-test-document-container]:first-child [data-test-document]")
-      .doesNotHaveClass("selected");
+      .doesNotHaveClass("document-card--selected");
 
     await click(
       "[data-test-document-container]:first-child [data-test-document]",
@@ -73,7 +73,7 @@ module("Acceptance | documents", function (hooks) {
 
     assert
       .dom("[data-test-document-container]:first-child [data-test-document]")
-      .hasClass("selected");
+      .hasClass("document-card--selected");
 
     assert
       .dom("[data-test-single-doc-details] [data-test-title]")
@@ -250,7 +250,7 @@ module("Acceptance | documents", function (hooks) {
     });
 
     assert
-      .dom("[data-test-document-list-item].document-list-item-selected")
+      .dom("[data-test-document-list-item].document-list-item--selected")
       .exists({ count: 3 });
   });
 
@@ -259,7 +259,7 @@ module("Acceptance | documents", function (hooks) {
     await visit("/");
     await click("[data-test-document-list-item]:first-child");
     assert
-      .dom("[data-test-document-list-item].document-list-item-selected")
+      .dom("[data-test-document-list-item].document-list-item--selected")
       .exists({ count: 1 });
 
     // window.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" }));
@@ -268,7 +268,7 @@ module("Acceptance | documents", function (hooks) {
     await settled();
 
     assert
-      .dom("[data-test-document-list-item].document-list-item-selected")
+      .dom("[data-test-document-list-item].document-list-item--selected")
       .doesNotExist();
   });
 
