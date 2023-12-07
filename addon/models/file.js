@@ -3,6 +3,7 @@ import Model, { attr, belongsTo, hasMany } from "@ember-data/model";
 export default class FileModel extends Model {
   @attr variant;
   @attr name;
+  @attr downloadUrl;
   @attr metainfo;
   @attr content;
   @attr checksum;

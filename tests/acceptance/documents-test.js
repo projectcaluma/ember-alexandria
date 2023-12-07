@@ -170,9 +170,10 @@ module("Acceptance | documents", function (hooks) {
     assert.dom("[data-test-file]").doesNotExist();
 
     this.assertRequest("POST", "/api/v1/files", (request) => {
-      const { attributes } = JSON.parse(request.requestBody).data;
-      assert.strictEqual(attributes.name, "test-file.txt");
-      assert.strictEqual(attributes.variant, "original");
+      const name = request.requestBody.get("name");
+      const variant = request.requestBody.get("variant");
+      assert.strictEqual(name, "test-file.txt");
+      assert.strictEqual(variant, "original");
     });
     await triggerEvent("[data-test-replace]", "change", {
       files: [new File(["Ember Rules!"], "test-file.txt")],

@@ -20,7 +20,7 @@ export default class TemplateSerializer extends JSONSerializer {
 
     formData.append("name", name);
     formData.append("variant", variant);
-    formData.append("document", snapshot.belongsTo("document").id);
+    formData.append("document", snapshot.belongsTo("document")?.id);
 
     if (content instanceof File) {
       formData.append("content", content);
