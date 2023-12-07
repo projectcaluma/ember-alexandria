@@ -1,4 +1,4 @@
-import JSONSerializer from "@ember-data/serializer/json";
+import JSONSerializer from "@ember-data/serializer/json-api";
 
 /*
  * If pagination is enabled in the backend, the response format will be changed.
@@ -14,7 +14,7 @@ export default class TemplateSerializer extends JSONSerializer {
   serializeIntoHash = null;
 
   serialize(snapshot) {
-    const { name, variant, content} = snapshot.attributes();
+    const { name, variant, content } = snapshot.attributes();
 
     const formData = new FormData();
 
