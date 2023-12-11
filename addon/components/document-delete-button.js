@@ -38,7 +38,10 @@ export default class DocumentDeleteButtonComponent extends Component {
           : [this.args.docsToDelete]; // if the supplied argument is not an array we make it one
 
         for (const doc of docs) {
-          yield doc.destroyRecord();
+          yield doc.destroyRecord().catch((error) => {
+            doc.rollbackAttributes();
+            throw error;
+          });
           this.documents.deselectDocument(doc);
         }
       }
@@ -47,13 +50,13 @@ export default class DocumentDeleteButtonComponent extends Component {
         this.args.onConfirm(this.args.docsToDelete);
       }
 
-      this.hideDialog();
-
       this.notification.success(
         this.intl.t("alexandria.success.delete-document"),
       );
     } catch (error) {
       new ErrorHandler(this, error).notify("alexandria.errors.delete-document");
+    } finally {
+      this.hideDialog();
     }
   }
 }

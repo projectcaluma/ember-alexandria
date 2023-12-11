@@ -62,20 +62,18 @@ module("Integration | Component | document-card", function (hooks) {
   });
 
   test("delete file", async function (assert) {
+    const destroy = fake();
     this.document = {
       id: 1,
       marks: [],
-      destroyRecord: fake(),
+      destroyRecord: async () => destroy(),
     };
     await render(hbs`<DocumentCard @document={{this.document}}/>`);
 
     await click("[data-test-context-menu-trigger]");
     await click("[data-test-delete]");
     await click("[data-test-delete-confirm]");
-    assert.ok(
-      this.document.destroyRecord.calledOnce,
-      "destroyRecord was called once",
-    );
+    assert.ok(destroy.calledOnce, "destroyRecord was called once");
   });
 
   test("thumbnail", async function (assert) {

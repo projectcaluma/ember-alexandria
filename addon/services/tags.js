@@ -34,6 +34,8 @@ export default class TagsService extends Service {
    */
   @action async add(document, tagInput) {
     let tag = tagInput;
+    const tags = [...(await document.tags)];
+
     try {
       if (typeof tagInput === "string") {
         const tagId = dasherize(tagInput.trim());
@@ -56,15 +58,14 @@ export default class TagsService extends Service {
         }
       }
 
-      const tags = await document.tags;
-
       if (tags.find((t) => t.id === tag.id)) {
         return tag;
       }
 
-      tags.push(tag);
+      document.tags = [...tags, tag];
       await document.save();
     } catch (error) {
+      document.tags = tags;
       new ErrorHandler(this, error).notify("alexandria.errors.update");
     }
 
@@ -84,11 +85,14 @@ export default class TagsService extends Service {
       tag = this.store.peekRecord("tag", tag);
     }
 
-    document.tags = (await document.tags).filter((t) => t !== tag);
+    const tags = [...(await document.tags)];
+
+    document.tags = tags.filter((t) => t !== tag);
 
     try {
       await document.save();
     } catch (error) {
+      document.tags = tags;
       new ErrorHandler(this, error).notify("alexandria.errors.update");
     }
 
