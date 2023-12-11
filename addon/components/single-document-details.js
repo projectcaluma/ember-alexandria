@@ -71,6 +71,7 @@ export default class SingleDocumentDetailsComponent extends DocumentCard {
       this.resetState();
       this.notification.success(this.intl.t("alexandria.success.update"));
     } catch (error) {
+      this.args.document.rollbackAttributes();
       new ErrorHandler(this, error).notify("alexandria.errors.update");
     }
   }
