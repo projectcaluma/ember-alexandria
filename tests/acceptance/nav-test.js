@@ -38,10 +38,7 @@ module("Acceptance | nav", function (hooks) {
     );
   });
 
-  // eslint-disable-next-line qunit/require-expect
   test("search", async function (assert) {
-    assert.expect(3);
-
     await visit("/");
 
     assert.strictEqual(currentURL(), "/");

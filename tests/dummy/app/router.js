@@ -7,7 +7,7 @@ export default class Router extends EmberRouter {
   rootURL = config.rootURL;
 }
 
-/* eslint-disable-next-line array-callback-return */
+// eslint-disable-next-line array-callback-return
 Router.map(function () {
   this.mount("ember-alexandria", {
     path: "/:instance_id/documents/",
