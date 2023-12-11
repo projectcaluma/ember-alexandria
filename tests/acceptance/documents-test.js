@@ -83,10 +83,8 @@ module("Acceptance | documents", function (hooks) {
     assert.dom("[data-test-document-side-panel]").hasClass("closed");
   });
 
-  // eslint-disable-next-line qunit/require-expect
   test("document detail edit title", async function (assert) {
     const document = this.server.create("document");
-    assert.expect(6);
     await visit(`/`);
     await click("[data-test-toggle-side-panel]");
     setLocale("en");
@@ -121,11 +119,8 @@ module("Acceptance | documents", function (hooks) {
     assert.dom("[data-test-title-input]").doesNotExist();
   });
 
-  // eslint-disable-next-line qunit/require-expect
   test("document detail delete", async function (assert) {
     const document = this.server.create("document");
-
-    assert.expect(3);
 
     await visit(`/`);
 
@@ -145,9 +140,7 @@ module("Acceptance | documents", function (hooks) {
     assert.dom("[data-test-document]").doesNotExist();
   });
 
-  // eslint-disable-next-line qunit/require-expect
   test("upload file", async function (assert) {
-    assert.expect(3);
     this.server.create("category");
 
     await visit("/?category=1");
@@ -168,10 +161,7 @@ module("Acceptance | documents", function (hooks) {
     assert.dom("[data-test-document-list-item]").exists({ count: 1 });
   });
 
-  // eslint-disable-next-line qunit/require-expect
   test("replace file", async function (assert) {
-    assert.expect(4);
-
     const document = this.server.create("document");
     await visit(`/?document=${document.id}`);
 
@@ -189,11 +179,8 @@ module("Acceptance | documents", function (hooks) {
     assert.dom("[data-test-file]").exists({ count: 1 });
   });
 
-  // eslint-disable-next-line qunit/require-expect
   test("context menu delete", async function (assert) {
     this.server.createList("document", 5);
-    assert.expect(3);
-
     await visit("/");
     await click("[data-test-toggle-side-panel]");
 

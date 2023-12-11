@@ -1,17 +1,16 @@
-/* eslint-disable import/no-named-as-default-member */
 import { render, triggerEvent } from "@ember/test-helpers";
 import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
 import { module, test } from "qunit";
-import sinon from "sinon";
+import { fake } from "sinon";
 
 module("Integration | Component | document-upload-button", function (hooks) {
   setupRenderingTest(hooks);
   setupMirage(hooks);
 
   hooks.beforeEach(function () {
-    this.uploadFnMock = sinon.fake();
+    this.uploadFnMock = fake();
     this.owner.lookup("service:documents").upload = this.uploadFnMock;
   });
 

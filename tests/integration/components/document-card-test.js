@@ -4,7 +4,7 @@ import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
 import fileSaver from "file-saver";
 import { module, test } from "qunit";
-import sinon from "sinon";
+import { stub, fake } from "sinon";
 
 const mockDocumentsService = class DocumentsService extends Service {
   deselectDocument() {
@@ -36,8 +36,7 @@ module("Integration | Component | document-card", function (hooks) {
   });
 
   test("download file", async function (assert) {
-    // eslint-disable-next-line import/no-named-as-default-member
-    const fileSaverStub = sinon.stub(fileSaver, "saveAs");
+    const fileSaverStub = stub(fileSaver, "saveAs");
 
     const downloadUrl = "http://earh.planet";
     const title = "test1.txt";
@@ -66,8 +65,7 @@ module("Integration | Component | document-card", function (hooks) {
     this.document = {
       id: 1,
       marks: [],
-      // eslint-disable-next-line import/no-named-as-default-member
-      destroyRecord: sinon.fake(),
+      destroyRecord: fake(),
     };
     await render(hbs`<DocumentCard @document={{this.document}}/>`);
 
