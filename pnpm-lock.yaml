@@ -72,11 +72,11 @@ dependencies:
     specifier: ^4.0.0
     version: 4.0.0(@babel/core@7.23.5)(@glint/template@1.2.1)(ember-source@5.4.0)
   ember-intl:
-    specifier: ^6.3.2
-    version: 6.3.2(@babel/core@7.23.5)(@glint/template@1.2.1)(typescript@5.3.2)(webpack@5.89.0)
+    specifier: ^6.4.0
+    version: 6.4.0(@babel/core@7.23.5)(@glint/template@1.2.1)(typescript@5.3.2)(webpack@5.89.0)
   ember-localized-model:
     specifier: ^3.2.2
-    version: 3.2.2(@glint/template@1.2.1)(ember-data@4.12.5)(ember-intl@6.3.2)(ember-source@5.4.0)
+    version: 3.2.2(@glint/template@1.2.1)(ember-data@4.12.5)(ember-intl@6.4.0)(ember-source@5.4.0)
   ember-modifier:
     specifier: ^4.1.0
     version: 4.1.0(ember-source@5.4.0)
@@ -7042,8 +7042,8 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /ember-intl@6.3.2(@babel/core@7.23.5)(@glint/template@1.2.1)(typescript@5.3.2)(webpack@5.89.0):
-    resolution: {integrity: sha512-UJ91JjlY3z6fjajoHhhJtKUbgqEr/l6Ie4Viqn0B3Lrbavxg5IgAIvyZZ9fOVtq05MDtCuc610zV6vLOc71G0w==}
+  /ember-intl@6.4.0(@babel/core@7.23.5)(@glint/template@1.2.1)(typescript@5.3.2)(webpack@5.89.0):
+    resolution: {integrity: sha512-BXxscjgoqzXQ6tUSV8aJsQcUAIcfqLJnNjegarFWdBBHLEOffQ8xARhvQC0hW40zGi/RHFEyTTx7vbiCPGtP1A==}
     engines: {node: 16.* || >= 18}
     peerDependencies:
       typescript: ^4.8.0 || ^5.0.0
@@ -7090,7 +7090,7 @@ packages:
       - supports-color
     dev: true
 
-  /ember-localized-model@3.2.2(@glint/template@1.2.1)(ember-data@4.12.5)(ember-intl@6.3.2)(ember-source@5.4.0):
+  /ember-localized-model@3.2.2(@glint/template@1.2.1)(ember-data@4.12.5)(ember-intl@6.4.0)(ember-source@5.4.0):
     resolution: {integrity: sha512-0bidNA2rrtk9HKjdDJHN+51NW/v2AvBh1Jr8vwjZlOlX7CazCgDNF+U14QgCHJoLtnJoYicnA89Z3A62VxpXQg==}
     engines: {node: 16.* || >= 18}
     peerDependencies:
@@ -7104,7 +7104,7 @@ packages:
       ember-cli-babel: 8.2.0(@babel/core@7.23.5)
       ember-cli-htmlbars: 6.3.0
       ember-data: 4.12.5(@babel/core@7.23.5)(@ember/string@3.1.1)(@glimmer/tracking@1.1.2)(@glint/template@1.2.1)(ember-source@5.4.0)(webpack@5.89.0)
-      ember-intl: 6.3.2(@babel/core@7.23.5)(@glint/template@1.2.1)(typescript@5.3.2)(webpack@5.89.0)
+      ember-intl: 6.4.0(@babel/core@7.23.5)(@glint/template@1.2.1)(typescript@5.3.2)(webpack@5.89.0)
       ember-source: 5.4.0(@babel/core@7.23.5)(@glimmer/component@1.1.2)(@glint/template@1.2.1)(rsvp@4.8.5)(webpack@5.89.0)
     transitivePeerDependencies:
       - '@glint/template'
