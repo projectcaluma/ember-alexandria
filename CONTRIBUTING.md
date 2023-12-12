@@ -13,9 +13,9 @@
 
 ## Running tests
 
-* `ember test` – Runs the test suite on the current Ember version
-* `ember test --server` – Runs the test suite in "watch mode"
-* `ember try:each` – Runs the test suite against multiple Ember versions
+* `pnpm test` – Runs the test suite on the current Ember version
+* `pnpm test:ember --server` – Runs the test suite in "watch mode"
+* `pnpm test:ember-compatibility` – Runs the test suite against multiple Ember versions
 
 ## Running the dummy application
 
