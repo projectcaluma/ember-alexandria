@@ -1,3 +1,15 @@
+# [4.9.0](https://github.com/projectcaluma/ember-alexandria/compare/v4.8.0...v4.9.0) (2023-12-12)
+
+
+### Bug Fixes
+
+* **errors:** rollback changes after backend returns an error ([54ad8eb](https://github.com/projectcaluma/ember-alexandria/commit/54ad8ebd6d449e0438feb00939017a38e82418a0))
+
+
+### Features
+
+* **categories:** add a tooltip for categories ([01cc783](https://github.com/projectcaluma/ember-alexandria/commit/01cc783185a6eef3a8e797969aeb59e6ed35175f))
+
 # [4.8.0](https://github.com/projectcaluma/ember-alexandria/compare/v4.7.0...v4.8.0) (2023-12-05)
 
 
