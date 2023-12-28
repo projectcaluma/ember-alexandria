@@ -2,7 +2,7 @@ import Service from "@ember/service";
 import { render, click } from "@ember/test-helpers";
 import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
-import fileSaver from "file-saver";
+import * as fileSaver from "file-saver";
 import { module, test } from "qunit";
 import sinon from "sinon";
 

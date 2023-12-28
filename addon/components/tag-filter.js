@@ -26,6 +26,7 @@ export default class TagFilterComponent extends Component {
       .peekAll("document")
       .reduce(async (acc, doc) => {
         const marks = await doc.marks;
+        acc = await acc;
         if (
           (this.args.category === undefined ||
             (await doc.category) === this.args.category) &&
