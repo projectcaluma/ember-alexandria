@@ -6,6 +6,7 @@ export default class TagFilterComponent extends Component {
   @service router;
   @service tags;
   @service marks;
+  @service store;
 
   get parsedSelected() {
     const parse = (str) => (str ? str.split(",") : []);
@@ -18,6 +19,25 @@ export default class TagFilterComponent extends Component {
 
   searchTags = trackedFunction(this, async () => {
     return this.tags.fetchSearchTags.perform(this.args.category);
+  });
+
+  activeMarks = trackedFunction(this, async () => {
+    const activeMarks = await this.store
+      .peekAll("document")
+      .reduce(async (acc, doc) => {
+        const marks = await doc.marks;
+        if (
+          (this.args.category === undefined ||
+            (await doc.category) === this.args.category) &&
+          marks.length > 0
+        ) {
+          marks.forEach((mark) => acc.add(mark.id));
+        }
+
+        return acc;
+      }, new Set());
+
+    return this.marks.marks.records?.filter((mark) => activeMarks.has(mark.id));
   });
 
   @action toggle(type, value) {
