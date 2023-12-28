@@ -8,6 +8,7 @@ export default class ApplicationRoute extends Route {
   queryParams = {
     category: PARAM_OPTIONS,
     tags: PARAM_OPTIONS,
+    marks: PARAM_OPTIONS,
     search: PARAM_OPTIONS,
     document: PARAM_OPTIONS,
     activeGroup: PARAM_OPTIONS,
@@ -29,5 +30,20 @@ export default class ApplicationRoute extends Route {
     }
     this.config.alexandriaQueryParams = transition.to.parent.params;
     this.config.activeGroup = transition.to.queryParams.activeGroup;
+  }
+
+  resetController(controller, isExiting) {
+    // isExiting would be false if only the route's model was changing
+    if (isExiting) {
+      controller.setProperties({
+        category: undefined,
+        tags: [],
+        marks: [],
+        search: undefined,
+        document: undefined,
+        activeGroup: undefined,
+        sort: undefined,
+      });
+    }
   }
 }
