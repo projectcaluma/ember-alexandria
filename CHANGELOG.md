@@ -1,3 +1,12 @@
+## [4.9.1](https://github.com/projectcaluma/ember-alexandria/compare/v4.9.0...v4.9.1) (2023-12-29)
+
+
+### Bug Fixes
+
+* reset query params ([2073a0d](https://github.com/projectcaluma/ember-alexandria/commit/2073a0d2214f713358e641bef92affa27efdb79c))
+* **tag-filter:** only show active marks ([66280c5](https://github.com/projectcaluma/ember-alexandria/commit/66280c5eb7d69590e545b7cfc33eb9e7dc217506))
+* **test:** fix fileSaver stub ([a1dae87](https://github.com/projectcaluma/ember-alexandria/commit/a1dae878d94d80a9573fab70eaaa94efeceb9e4f))
+
 # [4.9.0](https://github.com/projectcaluma/ember-alexandria/compare/v4.8.0...v4.9.0) (2023-12-12)
 
 
