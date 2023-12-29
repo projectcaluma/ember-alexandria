@@ -8,12 +8,13 @@
     <div class="uk-flex uk-flex-middle uk-padding-small">
       <DocumentUploadButton
         @category={{@filters.category}}
-        @afterUpload={{perform this.fetchDocuments}}
+        @afterUpload={{this.afterUpload}}
         data-test-upload
       />
 
       <TagFilter
         @category={{@filters.category}}
+        @documents={{this.fetchedDocuments.value}}
         @selectedTags={{@filters.tags}}
         @selectedMarks={{@filters.marks}}
         class="uk-margin-left"
@@ -29,11 +30,10 @@
 
     {{! Drag'n'Drop Area }}
     <div
-      class="
-      uk-position-relative uk-height-1-1
-      {{if this.isDragOver "document-grid--dragover"}}
-       {{unless this.canDrop "document-grid--disallowed"}}
-      "
+      class="uk-position-relative uk-height-1-1
+        {{if this.isDragOver 'document-grid--dragover'}}
+        {{unless this.canDrop 'document-grid--disallowed'}}
+        "
       {{on "dragenter" this.onDragEnter}}
       {{on "dragleave" this.onDragLeave}}
       {{on "dragover" this.onDragOver}}
@@ -45,15 +45,13 @@
       >
         <div
           class="document-view"
-          {{did-insert (perform this.fetchDocuments)}}
-          {{did-update (perform this.fetchDocuments) @filters}}
           {{did-insert (perform this.initialiseDocumentSelection)}}
         >
           {{! List & Grid View }}
           {{#if this.listView}}
             <DocumentList
-              @loading={{this.fetchDocuments}}
-              @fetchedDocuments={{this.fetchedDocuments}}
+              @loading={{this.fetchedDocuments.isRunning}}
+              @fetchedDocuments={{this.fetchedDocuments.value}}
               @setSort={{this.setSort}}
               @selectedDocuments={{this.documents.selectedDocuments}}
               @onClickDocument={{this.handleDocumentSelection}}
@@ -61,9 +59,9 @@
             />
           {{else}}
             <DocumentGrid
-              @loading={{this.fetchDocuments.isRunning}}
+              @loading={{this.fetchedDocuments.isRunning}}
+              @fetchedDocuments={{this.fetchedDocuments.value}}
               @selectedDocuments={{this.documents.selectedDocuments}}
-              @fetchedDocuments={{this.fetchedDocuments}}
               @onClickDocument={{this.handleDocumentSelection}}
               @onDoubleClickDocument={{this.openDocument}}
             />

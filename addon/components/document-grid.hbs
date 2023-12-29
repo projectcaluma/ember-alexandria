@@ -4,7 +4,7 @@
   ...attributes
   {{did-insert this.setupGridAnimations}}
 >
-  {{#if this.fetchDocuments.isRunning}}
+  {{#if @loading}}
     {{#each (range 0 10) as |index|}}
       <div>
         <DocumentCard::Skeleton @animationDelay={{concat index "00ms"}} />

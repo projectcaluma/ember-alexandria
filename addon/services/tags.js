@@ -2,7 +2,6 @@ import { action } from "@ember/object";
 import Service, { inject as service } from "@ember/service";
 import { dasherize } from "@ember/string";
 import { tracked } from "@glimmer/tracking";
-import { task } from "ember-concurrency";
 
 import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
 
@@ -11,19 +10,6 @@ export default class TagsService extends Service {
   @service config;
 
   @tracked categoryCache;
-
-  @task *fetchSearchTags(category) {
-    this.categoryCache = category;
-
-    return yield this.store.query("tag", {
-      filter: {
-        withDocumentsInCategory: this.categoryCache,
-        withDocumentsMetainfo: JSON.stringify(
-          this.config.modelMetaFilters.document,
-        ),
-      },
-    });
-  }
 
   /**
    * Adds a tag to a document and creates the tag if necessary. Returns the added tag
@@ -69,8 +55,6 @@ export default class TagsService extends Service {
       new ErrorHandler(this, error).notify("alexandria.errors.update");
     }
 
-    await this.fetchSearchTags.perform(this.categoryCache);
-
     return tag;
   }
 
@@ -95,7 +79,5 @@ export default class TagsService extends Service {
       document.tags = tags;
       new ErrorHandler(this, error).notify("alexandria.errors.update");
     }
-
-    this.fetchSearchTags.perform(this.categoryCache);
   }
 }
