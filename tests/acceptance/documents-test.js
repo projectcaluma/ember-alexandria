@@ -273,9 +273,13 @@ module("Acceptance | documents", function (hooks) {
   });
 
   test("changing the category clears the tag selection", async function (assert) {
-    await this.server.createList("document", 3);
+    const documents = await this.server.createList("document", 3);
     const tag = await this.server.create("tag");
     const category = await this.server.create("category");
+
+    documents[0].update({
+      tags: [tag],
+    });
 
     await visit("/");
 
@@ -315,6 +319,10 @@ module("Acceptance | documents", function (hooks) {
   test("selecting a document does not clear the tag selection", async function (assert) {
     const documents = await this.server.createList("document", 2);
     const tag = await this.server.create("tag");
+
+    documents[0].update({
+      tags: [tag],
+    });
 
     await visit("/");
     await click(`[data-test-tag-id="${tag.id}"]`);

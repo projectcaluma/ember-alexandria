@@ -2,23 +2,27 @@
   class="uk-border uk-padding-small uk-width-expand uk-flex uk-flex-wrap uk-flex-middle"
   ...attributes
 >
-  {{#each this.activeMarks.value as |mark|}}
-    <button
-      type="button"
-      class="tag uk-text-small
-        {{if (includes mark.id this.parsedSelected.marks) 'tag--active'}}"
-      {{on "click" (fn this.toggle "marks" mark)}}
-      data-test-mark
-      data-test-mark-id={{mark.id}}
-      title={{mark.name}}
-    >
-      <FaIcon @icon={{mark.icon}} @size="sm" @fixedWidth={{true}} />
-    </button>
-  {{/each}}
-  {{#if (and this.searchTags.isFinished (not this.searchTags.value))}}
-    <span class="uk-margin-small-left">{{t "alexandria.tag-filter.empty"}}</span>
+  {{#if this.marks.marks.hasRan}}
+    {{#each this.availableMarks.value as |mark|}}
+      <button
+        type="button"
+        class="tag uk-text-small
+          {{if (includes mark.id this.parsedSelected.marks) 'tag--active'}}"
+        {{on "click" (fn this.toggle "marks" mark)}}
+        data-test-mark
+        data-test-mark-id={{mark.id}}
+        title={{mark.name}}
+      >
+        <FaIcon @icon={{mark.icon}} @size="sm" @fixedWidth={{true}} />
+      </button>
+    {{/each}}
+  {{/if}}
+  {{#if (and this.availableTags.isFinished (not this.availableTags.value))}}
+    <span class="uk-margin-small-left">{{t
+        "alexandria.tag-filter.empty"
+      }}</span>
   {{else}}
-    {{#each this.tags.fetchSearchTags.lastSuccessful.value as |tag|}}
+    {{#each this.availableTags.value as |tag|}}
       <button
         type="button"
         class="tag uk-text-small

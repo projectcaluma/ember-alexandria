@@ -28,7 +28,6 @@ module("Unit | Service | tags", function (hooks) {
         "POST", // Create document
         "POST", // Create tag
         "PATCH", // Add tag to document
-        "GET", // fetchSearchTags
       ],
     );
 
@@ -53,7 +52,6 @@ module("Unit | Service | tags", function (hooks) {
         "GET", // search for existing tag
         "POST", // Create tag
         "PATCH", // Add tag to document
-        "GET", // fetchSearchTags
       ],
     );
 
@@ -76,7 +74,6 @@ module("Unit | Service | tags", function (hooks) {
       [
         "POST", // Create document
         "PATCH", // Remove tag from document
-        "GET", // fetchSearchTags
       ],
     );
 

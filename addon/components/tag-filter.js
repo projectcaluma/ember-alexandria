@@ -17,28 +17,39 @@ export default class TagFilterComponent extends Component {
     };
   }
 
-  searchTags = trackedFunction(this, async () => {
-    return this.tags.fetchSearchTags.perform(this.args.category);
+  availableTags = trackedFunction(this, async () => {
+    if (!this.args.documents) {
+      return [];
+    }
+
+    const availableTags = await this.args.documents.reduce(async (acc, doc) => {
+      acc = await acc;
+      (await doc.tags).forEach((tag) => acc.add(tag.id));
+
+      return acc;
+    }, new Set());
+
+    return this.store.peekAll("tag").filter((tag) => availableTags.has(tag.id));
   });
 
-  activeMarks = trackedFunction(this, async () => {
-    const activeMarks = await this.store
-      .peekAll("document")
-      .reduce(async (acc, doc) => {
-        const marks = await doc.marks;
+  availableMarks = trackedFunction(this, async () => {
+    if (!this.args.documents) {
+      return [];
+    }
+
+    const availableMarks = await this.args.documents.reduce(
+      async (acc, doc) => {
         acc = await acc;
-        if (
-          (this.args.category === undefined ||
-            (await doc.category) === this.args.category) &&
-          marks.length > 0
-        ) {
-          marks.forEach((mark) => acc.add(mark.id));
-        }
+        (await doc.marks).forEach((mark) => acc.add(mark.id));
 
         return acc;
-      }, new Set());
+      },
+      new Set(),
+    );
 
-    return this.marks.marks.records?.filter((mark) => activeMarks.has(mark.id));
+    return this.marks.marks.records?.filter((mark) =>
+      availableMarks.has(mark.id),
+    );
   });
 
   @action toggle(type, value) {

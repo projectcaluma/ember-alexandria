@@ -2,7 +2,8 @@ import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
-import { dropTask, lastValue, task } from "ember-concurrency";
+import { dropTask, task } from "ember-concurrency";
+import { task as trackedTask } from "ember-resources/util/ember-concurrency";
 
 import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
 
@@ -19,6 +20,8 @@ export default class DocumentViewComponent extends Component {
   @tracked listView = true;
   @tracked sort = "title";
   @tracked sortDirection = "";
+  // Needed for ember-resource
+  @tracked uploadedDocuments = 0;
 
   constructor(parent, args) {
     super(parent, args);
@@ -47,10 +50,15 @@ export default class DocumentViewComponent extends Component {
     this.router.transitionTo(this.router.currentRouteName, {
       queryParams: { sort: this.sortDirection + this.sort },
     });
-    this.fetchDocuments.perform();
   }
 
-  @lastValue("fetchDocuments") fetchedDocuments;
+  fetchedDocuments = trackedTask(this, this.fetchDocuments, () => [
+    this.sort,
+    this.sortDirection,
+    this.args.filters,
+    this.uploadedDocuments,
+  ]);
+
   @task
   *fetchDocuments() {
     const documents = yield this.store.query("document", {
@@ -114,8 +122,7 @@ export default class DocumentViewComponent extends Component {
           count: files.length,
         }),
       );
-
-      await this.fetchDocuments.perform();
+      this.afterUpload();
     } catch (error) {
       new ErrorHandler(this, error).notify(
         "alexandria.errors.upload-document",
@@ -135,7 +142,7 @@ export default class DocumentViewComponent extends Component {
     }
     if (event.key === "a" && event.ctrlKey) {
       event.preventDefault();
-      this.fetchedDocuments.forEach((doc) => {
+      this.fetchedDocuments.value.forEach((doc) => {
         this.documents.selectDocument(doc);
       });
     }
@@ -163,8 +170,9 @@ export default class DocumentViewComponent extends Component {
 
     // SHIFT SELECTION
     if (event.shiftKey) {
-      const selectedDocIndex = this.fetchedDocuments.indexOf(selectedDocument);
-      const firstSelectedDocIndex = this.fetchedDocuments.indexOf(
+      const selectedDocIndex =
+        this.fetchedDocuments.value.indexOf(selectedDocument);
+      const firstSelectedDocIndex = this.fetchedDocuments.value.indexOf(
         this.documents.selectedDocuments[0],
       );
 
@@ -194,5 +202,10 @@ export default class DocumentViewComponent extends Component {
       (file) => file.variant === "original",
     );
     open(file.downloadUrl);
+  }
+
+  @action
+  afterUpload() {
+    this.uploadedDocuments++;
   }
 }
