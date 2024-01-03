@@ -7,7 +7,7 @@ import { timeout, restartableTask } from "ember-concurrency";
 import { trackedFunction } from "ember-resources/util/function";
 
 export default class TagManagerComponent extends Component {
-  @service("tags") tagService;
+  @service("alexandria-tags") tagService;
   @service("alexandria-config") config;
   @service store;
 
