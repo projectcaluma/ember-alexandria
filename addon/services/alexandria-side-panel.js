@@ -1,7 +1,8 @@
 import { action } from "@ember/object";
 import Service from "@ember/service";
 import { tracked } from "@glimmer/tracking";
-export default class SidePanelService extends Service {
+
+export default class AlexandriaSidePanelService extends Service {
   @tracked open = true;
 
   /**

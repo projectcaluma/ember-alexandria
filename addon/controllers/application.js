@@ -13,7 +13,7 @@ export default class ApplicationController extends Controller {
     "sort",
   ];
 
-  @service config;
+  @service("alexandria-config") config;
 
   @tracked category;
   @tracked tags = [];

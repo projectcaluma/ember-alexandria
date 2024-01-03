@@ -8,7 +8,7 @@ import { trackedFunction } from "ember-resources/util/function";
 
 export default class TagManagerComponent extends Component {
   @service("tags") tagService;
-  @service config;
+  @service("alexandria-config") config;
   @service store;
 
   @tracked tagValue;

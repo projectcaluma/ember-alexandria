@@ -1,6 +1,9 @@
-import ConfigService from "ember-alexandria/services/config";
+import { later } from "@ember/runloop";
+import { macroCondition, isTesting } from "@embroider/macros";
 
-export default class AlexandriaConfigService extends ConfigService {
+import AlexandriaConfigService from "ember-alexandria/services/alexandria-config";
+
+export default class CustomAlexandriaConfigService extends AlexandriaConfigService {
   markIcons = {
     decision: "stamp",
   };
@@ -28,8 +31,10 @@ export default class AlexandriaConfigService extends ConfigService {
   }
 
   resolveUser(id) {
+    const timeout = macroCondition(isTesting()) ? 1 : 200;
+
     return new Promise((resolve) =>
-      setTimeout(() => resolve((id || "").toUpperCase()), 200),
+      later(this, () => resolve((id || "").toUpperCase()), timeout),
     );
   }
 }

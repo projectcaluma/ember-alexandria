@@ -11,7 +11,8 @@ module("Integration | Component | document-upload-button", function (hooks) {
 
   hooks.beforeEach(function () {
     this.uploadFnMock = fake();
-    this.owner.lookup("service:documents").upload = this.uploadFnMock;
+    this.owner.lookup("service:alexandria-documents").upload =
+      this.uploadFnMock;
   });
 
   test("upload a file with a predefined category", async function (assert) {

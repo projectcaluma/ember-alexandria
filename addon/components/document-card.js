@@ -8,7 +8,7 @@ import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
 export default class DocumentCardComponent extends Component {
   @service notification;
   @service intl;
-  @service config;
+  @service("alexandria-config") config;
 
   get classes() {
     const classes = [

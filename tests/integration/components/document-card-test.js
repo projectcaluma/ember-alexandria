@@ -16,7 +16,7 @@ module("Integration | Component | document-card", function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
-    this.owner.register("service:documents", mockDocumentsService);
+    this.owner.register("service:alexandria-documents", mockDocumentsService);
   });
 
   test("it renders document card", async function (assert) {

@@ -3,7 +3,7 @@ import { attr, hasMany } from "@ember-data/model";
 import { LocalizedModel, localizedAttr } from "ember-localized-model";
 
 export default class MarkModel extends LocalizedModel {
-  @service config;
+  @service("alexandria-config") config;
 
   @localizedAttr name;
   @localizedAttr description;

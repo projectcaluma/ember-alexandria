@@ -9,7 +9,7 @@ export default class DocumentUploadButtonComponent extends Component {
   @service notification;
   @service intl;
   @service store;
-  @service documents;
+  @service("alexandria-documents") documents;
 
   categories = query(this, "category", () => ({
     "filter[hasParent]": false,

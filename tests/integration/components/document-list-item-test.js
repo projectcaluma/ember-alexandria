@@ -12,7 +12,7 @@ module("Integration | Component | document-list-item", function (hooks) {
     this.document = {
       title: "some document",
       modifiedAt: new Date("December 1, 2000 00:00:00"),
-      createdByUser: "some group",
+      createdByUser: "some user",
       marks: [],
     };
     this.isSelected = false;
@@ -33,7 +33,7 @@ module("Integration | Component | document-list-item", function (hooks) {
   test("it renders all the required fields for a document", async function (assert) {
     assert.dom().includesText("some document");
     assert.dom().includesText("12/01/2000");
-    assert.dom().includesText("some group");
+    assert.dom().includesText("SOME USER");
   });
 
   test("it fires the onClickDocument function with the correct parameter", async function (assert) {

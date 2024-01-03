@@ -11,9 +11,9 @@ export default class DocumentViewComponent extends Component {
   @service notification;
   @service store;
   @service intl;
-  @service documents;
+  @service("alexandria-documents") documents;
   @service router;
-  @service config;
+  @service("alexandria-config") config;
 
   @tracked isDragOver = false;
   @tracked dragCounter = 0;

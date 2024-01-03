@@ -3,7 +3,7 @@ import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 
 export default class MarkManagerMarkComponent extends Component {
-  @service marks;
+  @service("alexandria-marks") marks;
 
   get activeDocumentCount() {
     return this.args.documents.reduce((acc, doc) => {
