@@ -1,3 +1,10 @@
+## [5.0.1](https://github.com/projectcaluma/ember-alexandria/compare/v5.0.0...v5.0.1) (2024-01-03)
+
+
+### Bug Fixes
+
+* **tag:** update filter after adding tag ([4032ac9](https://github.com/projectcaluma/ember-alexandria/commit/4032ac9760177c68842684bb99ee25fc067ec07a))
+
 # [5.0.0](https://github.com/projectcaluma/ember-alexandria/compare/v4.9.1...v5.0.0) (2024-01-03)
 
 
