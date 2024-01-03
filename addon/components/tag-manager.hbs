@@ -10,6 +10,7 @@
           {{#each this.tags as |tag|}}
             <span
               class="tag uk-text-small {{if tag.selectedByAll 'tag--active'}}"
+              data-test-tag={{tag.id}}
             >
               {{tag.emberModel.name}}
               <button
@@ -32,10 +33,12 @@
           value={{this.tagValue}}
           aria-label="Tag value"
           {{on "input" (perform this.onInput)}}
+          data-test-tag-input
         />
         <button
           class="uk-button uk-button-primary uk-button-small uk-width-1-2"
           type="submit"
+          data-test-tag-add
         >
           {{t "alexandria.document-details.tags.add"}}
         </button>
@@ -50,6 +53,7 @@
               href="#"
               class="tag uk-text-small"
               {{on "click" (fn this.addTagSuggestion tag)}}
+              data-test-tag-existing={{tag.id}}
             >
               {{tag.name}}
             </a>
