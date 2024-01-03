@@ -1,3 +1,26 @@
+# [5.0.0](https://github.com/projectcaluma/ember-alexandria/compare/v4.9.1...v5.0.0) (2024-01-03)
+
+
+### Bug Fixes
+
+* **services:** namespace all services ([17766ea](https://github.com/projectcaluma/ember-alexandria/commit/17766ea1604222aa2014f5206a278979dfbedf73))
+
+
+### chore
+
+* **compatibility:** add compatibility tests for ember LTS 5.4 ([b6a7b28](https://github.com/projectcaluma/ember-alexandria/commit/b6a7b288417dd6afa580fcbdede9aab055f1980c))
+
+
+### BREAKING CHANGES
+
+* **compatibility:** Remove support for deprecated ember LTS versions 4.4
+and 4.8.
+* **services:** All services are now namespaced with "alexandria-". If
+your host app customized the config service, you'll need to remove the
+name customization in the passed services to the engine.
+
+For further information, please take a look at the readme.
+
 ## [4.9.1](https://github.com/projectcaluma/ember-alexandria/compare/v4.9.0...v4.9.1) (2023-12-29)
 
 

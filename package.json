@@ -1,6 +1,6 @@
 {
   "name": "ember-alexandria",
-  "version": "4.9.1",
+  "version": "5.0.0",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
     "ember-addon",
