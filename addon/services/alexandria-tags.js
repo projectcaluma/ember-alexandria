@@ -9,7 +9,8 @@ export default class AlexandriaTagsService extends Service {
   @service store;
   @service("alexandria-config") config;
 
-  @tracked categoryCache;
+  // Needed to trigger a recompute of the tag-filter
+  @tracked tagUpdates = 0;
 
   /**
    * Adds a tag to a document and creates the tag if necessary. Returns the added tag
@@ -50,11 +51,11 @@ export default class AlexandriaTagsService extends Service {
 
       document.tags = [...tags, tag];
       await document.save();
+      this.tagUpdates++;
     } catch (error) {
       document.tags = tags;
       new ErrorHandler(this, error).notify("alexandria.errors.update");
     }
-
     return tag;
   }
 
@@ -75,6 +76,7 @@ export default class AlexandriaTagsService extends Service {
 
     try {
       await document.save();
+      this.tagUpdates++;
     } catch (error) {
       document.tags = tags;
       new ErrorHandler(this, error).notify("alexandria.errors.update");
