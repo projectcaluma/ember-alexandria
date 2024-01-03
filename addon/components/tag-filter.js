@@ -18,10 +18,12 @@ export default class TagFilterComponent extends Component {
   }
 
   availableTags = trackedFunction(this, async () => {
+    this.tags.tagUpdates;
     if (!this.args.documents) {
       return [];
     }
 
+    const tags = this.store.peekAll("tag");
     const availableTags = await this.args.documents.reduce(async (acc, doc) => {
       acc = await acc;
       (await doc.tags).forEach((tag) => acc.add(tag.id));
@@ -29,7 +31,7 @@ export default class TagFilterComponent extends Component {
       return acc;
     }, new Set());
 
-    return this.store.peekAll("tag").filter((tag) => availableTags.has(tag.id));
+    return tags.filter((tag) => availableTags.has(tag.id));
   });
 
   availableMarks = trackedFunction(this, async () => {
