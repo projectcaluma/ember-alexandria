@@ -4,7 +4,7 @@ import { findAll } from "ember-data-resources";
 
 import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
 
-export default class MarksService extends Service {
+export default class AlexandriaMarksService extends Service {
   @service store;
 
   marks = findAll(this, "mark");

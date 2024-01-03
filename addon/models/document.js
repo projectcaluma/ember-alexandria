@@ -20,7 +20,7 @@ export default class DocumentModel extends LocalizedModel {
   @hasMany("mark", { inverse: "documents", async: true }) marks;
   @hasMany("file", { inverse: "document", async: true }) files;
 
-  @service config;
+  @service("alexandria-config") config;
 
   get thumbnail() {
     const thumbnail = this.files.filter(

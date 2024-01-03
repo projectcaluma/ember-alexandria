@@ -5,9 +5,9 @@ import { tracked } from "@glimmer/tracking";
 
 import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
 
-export default class TagsService extends Service {
+export default class AlexandriaTagsService extends Service {
   @service store;
-  @service config;
+  @service("alexandria-config") config;
 
   @tracked categoryCache;
 

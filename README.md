@@ -48,7 +48,7 @@ constructor(...args) {
           "session",
           "intl",
           "notification",
-          { config: "alexandria-config" },
+          "alexandria-config",
         ],
       },
     },
@@ -63,8 +63,8 @@ meta value for a model should be. Each configuration field is scoped by model na
 (check out the example to understand what is meant by this).
 
 For this you need to create a service extending from
-`ember-alexandria/services/config` which you then have to pass as `config` to
-alexandria.
+`ember-alexandria/services/alexandria-config` which you then have to pass as
+`alexandria-config` to alexandria.
 
 This is needed since an engine does not merge its env into the host apps.
 See https://github.com/ember-engines/ember-engines/issues/176 for more info.
@@ -81,9 +81,9 @@ can ignore the getters and just define the field as usual.
 **Example**:
 
 ```js
-import ConfigService from "ember-alexandria/services/config";
+import AlexandriaConfigService from "ember-alexandria/services/alexandria-config";
 
-export default class AlexandriaConfigService extends ConfigService {
+export default class CustomAlexandriaConfigService extends AlexandriaConfigService {
   get modelMetaFilters() {
     return {
       document: [
@@ -122,17 +122,22 @@ With it you for example fetch the users and groups of the documents in a batch.
 **Example**:
 
 ```js
-import ConfigService from "ember-alexandria/services/config";
+import AlexandriaConfigService from "ember-alexandria/services/alexandria-config";
 import { inject as service } from "@ember/service";
 
-export default class AlexandriaConfigService extends ConfigService {
+export default class CustomAlexandriaConfigService extends AlexandriaConfigService {
   @service store;
-  
+
   activeUser = 1;
   activeGroup = 1;
 
-  resolveUser(id) { return this.store.peekRecord("user", id); }
-  resolveGroup(id) { return this.store.peekRecord("group", id); }
+  resolveUser(id) {
+    return this.store.peekRecord("user", id);
+  }
+
+  resolveGroup(id) {
+    return this.store.peekRecord("group", id);
+  }
 
   documentsPostProcess(documents) {
     const users = documents.map((d) => d.createdByUser);
@@ -141,7 +146,7 @@ export default class AlexandriaConfigService extends ConfigService {
     this.store.query("user", { filter: { id: users.join(",") } });
     this.store.query("group", { filter: { id: groups.join(",") } });
 
-    return documents
+    return documents;
   }
 }
 ```
@@ -155,6 +160,7 @@ Additionally to tags you can configure marks. Marks are similar to tags, but are
 The icons for marks are from [FontAwesome](https://fontawesome.com/search?o=r&m=free&s=regular%2Csolid).
 
 The object for a mark has the following properties:
+
 - `type`: This is the id of a tag used to identify the mark in the backend.
 - `icon`: This a string, which references an FontAwesome.
 - `tooltip`: This is shown when hovering over the mark.
@@ -162,9 +168,9 @@ The object for a mark has the following properties:
 An example configuration with two icons might look like this:
 
 ```js
-import ConfigService from "ember-alexandria/services/config";
+import AlexandriaConfigService from "ember-alexandria/services/alexandria-config";
 
-export default class AlexandriaConfigService extends ConfigService {
+export default class CustomAlexandriaConfigService extends AlexandriaConfigService {
   get marks() {
     return [
       {
@@ -183,6 +189,7 @@ export default class AlexandriaConfigService extends ConfigService {
 ```
 
 Configure used icons in `config/icons.js`
+
 ```js
 module.exports = function () {
   return {
@@ -190,7 +197,6 @@ module.exports = function () {
   };
 };
 ```
-
 
 ## Contributing
 

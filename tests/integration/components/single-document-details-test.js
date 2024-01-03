@@ -22,7 +22,7 @@ module("Integration | Component | single-document-details", function (hooks) {
   setupMirage(hooks);
 
   hooks.beforeEach(function () {
-    this.owner.register("service:documents", mockDocumentsService);
+    this.owner.register("service:alexandria-documents", mockDocumentsService);
   });
 
   test("it renders document information", async function (assert) {
@@ -53,7 +53,7 @@ module("Integration | Component | single-document-details", function (hooks) {
     assert.dom("[data-test-created-at]").hasText("12/11/1998, 12:00 AM");
     assert
       .dom("[data-test-created-by-user]")
-      .hasText(this.selectedDocument.createdByUser);
+      .hasText(this.selectedDocument.createdByUser.toUpperCase());
     assert
       .dom("[data-test-created-by-group]")
       .hasText(this.selectedDocument.createdByGroup);

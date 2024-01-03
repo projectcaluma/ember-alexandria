@@ -9,7 +9,7 @@ import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
 export default class DocumentDeleteButtonComponent extends Component {
   @service notification;
   @service intl;
-  @service documents;
+  @service("alexandria-documents") documents;
   @service router;
 
   @tracked dialogVisible = false;

@@ -2,19 +2,19 @@ import { setupTest } from "dummy/tests/helpers";
 import { setupMirage } from "ember-cli-mirage/test-support";
 import { module, test } from "qunit";
 
-module("Unit | Service | tags", function (hooks) {
+module("Unit | Service | alexandria-tags", function (hooks) {
   setupTest(hooks);
   setupMirage(hooks);
 
   test("it exists", function (assert) {
-    const service = this.owner.lookup("service:tags");
+    const service = this.owner.lookup("service:alexandria-tags");
     assert.ok(service);
   });
 
   test("it adds existing tags", async function (assert) {
     const requests = this.server.pretender.handledRequests;
 
-    const service = this.owner.lookup("service:tags");
+    const service = this.owner.lookup("service:alexandria-tags");
     const store = this.owner.lookup("service:store");
 
     const document = await store.createRecord("document").save();
@@ -37,7 +37,7 @@ module("Unit | Service | tags", function (hooks) {
   test("it adds new tags", async function (assert) {
     const requests = this.server.pretender.handledRequests;
 
-    const service = this.owner.lookup("service:tags");
+    const service = this.owner.lookup("service:alexandria-tags");
     const store = this.owner.lookup("service:store");
 
     const document = await store.createRecord("document").save();
@@ -61,7 +61,7 @@ module("Unit | Service | tags", function (hooks) {
   test("it removes tags", async function (assert) {
     const requests = this.server.pretender.handledRequests;
 
-    const service = this.owner.lookup("service:tags");
+    const service = this.owner.lookup("service:alexandria-tags");
     const store = this.owner.lookup("service:store");
 
     const document = await store.createRecord("document").save();

@@ -1,7 +1,7 @@
 import Service from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 
-export default class ConfigService extends Service {
+export default class AlexandriaConfigService extends Service {
   markIcons = {};
 
   @tracked alexandriaQueryParams = {};

@@ -12,9 +12,9 @@ import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
 // be inheriting from DocumentCard
 export default class SingleDocumentDetailsComponent extends DocumentCard {
   @service router;
-  @service documents;
-  @service tags;
-  @service sidePanel;
+  @service("alexandria-documents") documents;
+  @service("alexandria-tags") tags;
+  @service("alexandria-side-panel") sidePanel;
   @service intl;
 
   @tracked editTitle = false;

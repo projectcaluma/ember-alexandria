@@ -5,7 +5,7 @@ import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 
 export default class CategoryNavCategoryComponent extends Component {
-  @service documents;
+  @service("alexandria-documents") documents;
   @service router;
 
   @tracked collapseChildren = false;

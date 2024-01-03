@@ -14,9 +14,9 @@ export default class ApplicationRoute extends Route {
     activeGroup: PARAM_OPTIONS,
   };
 
-  @service config;
-  @service documents;
-  @service marks;
+  @service("alexandria-config") config;
+  @service("alexandria-documents") documents;
+  @service("alexandria-marks") marks;
 
   model() {}
 

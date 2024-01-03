@@ -2,17 +2,17 @@ import { setupTest } from "dummy/tests/helpers";
 import { setupMirage } from "ember-cli-mirage/test-support";
 import { module, test } from "qunit";
 
-module("Unit | Service | documents", function (hooks) {
+module("Unit | Service | alexandria-documents", function (hooks) {
   setupTest(hooks);
   setupMirage(hooks);
 
   test("it exists", function (assert) {
-    const service = this.owner.lookup("service:documents");
+    const service = this.owner.lookup("service:alexandria-documents");
     assert.ok(service);
   });
 
   test("it uploads documents", async function (assert) {
-    const service = this.owner.lookup("service:documents");
+    const service = this.owner.lookup("service:alexandria-documents");
     const store = this.owner.lookup("service:store");
 
     const category = await store.findRecord(
@@ -51,7 +51,7 @@ module("Unit | Service | documents", function (hooks) {
   });
 
   test("it replaces documents", async function (assert) {
-    const service = this.owner.lookup("service:documents");
+    const service = this.owner.lookup("service:alexandria-documents");
     const store = this.owner.lookup("service:store");
 
     const document = await store.findRecord(

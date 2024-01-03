@@ -4,8 +4,8 @@ import Component from "@glimmer/component";
 import { trackedFunction } from "ember-resources/util/function";
 export default class TagFilterComponent extends Component {
   @service router;
-  @service tags;
-  @service marks;
+  @service("alexandria-tags") tags;
+  @service("alexandria-marks") marks;
   @service store;
 
   get parsedSelected() {

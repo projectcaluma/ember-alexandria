@@ -15,7 +15,7 @@ module("Integration | Component | document-view", function (hooks) {
   setupMirage(hooks);
 
   hooks.beforeEach(function () {
-    this.owner.register("service:documents", MockDocumentsService);
+    this.owner.register("service:alexandria-documents", MockDocumentsService);
   });
 
   test("it renders the documents when in grid view", async function (assert) {
@@ -44,7 +44,7 @@ module("Integration | Component | document-view", function (hooks) {
 
   test("select document", async function (assert) {
     const documents = this.server.createList("document", 3);
-    const docService = this.owner.lookup("service:documents");
+    const docService = this.owner.lookup("service:alexandria-documents");
 
     docService.selectedDocuments = [documents[0]];
 
