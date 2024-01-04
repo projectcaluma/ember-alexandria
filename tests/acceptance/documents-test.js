@@ -8,8 +8,10 @@ import {
 } from "@ember/test-helpers";
 import { setupApplicationTest } from "dummy/tests/helpers";
 import { setupMirage } from "ember-cli-mirage/test-support";
-import { setLocale } from "ember-intl/test-support";
+import { setLocale, t } from "ember-intl/test-support";
+import * as fileSaver from "file-saver";
 import { module, test } from "qunit";
+import { stub } from "sinon";
 
 import setupRequestAssertions from "../helpers/assert-request";
 
@@ -202,28 +204,39 @@ module("Acceptance | documents", function (hooks) {
     assert.dom("[data-test-document]").exists({ count: 4 });
   });
 
-  test.skip("downloading multiple documents as a zip", async function (assert) {
-    this.server.createList("document", 5);
+  test("downloading multiple documents as a zip", async function (assert) {
+    this.server
+      .createList("document", 5)
+      .forEach((document) => this.server.create("file", { document }));
+
+    const fileSaverStub = stub(fileSaver, "saveAs");
+
     await visit("/");
     await click("[data-test-toggle-side-panel]");
-    await click("[data-test-document]", {
-      shiftKey: true,
-    });
+    await click("[data-test-document]", { shiftKey: true });
     await click(
       "[data-test-document-container]:nth-child(3) [data-test-document]",
-      {
-        shiftKey: true,
-      },
+      { shiftKey: true },
     );
-    assert.dom("[data-test-zip-download-text]").includesText("3");
-    this.assertRequest("GET", "/api/v1/documents/zip/:ids", (request) => {
+
+    assert
+      .dom("[data-test-download-button]")
+      .hasText(t("alexandria.document-download.button", { numDocs: 3 }));
+
+    this.assertRequest("GET", "/api/v1/files/multi", (request) => {
       assert.strictEqual(
-        request.params.ids,
-        [1, 2, 3],
+        request.queryParams["filter[files]"],
+        "1,2,3",
         "requesting the correct documents as a zip",
       );
     });
-    await click("[data-test-zip-download-button]");
+
+    await click("[data-test-download-button]");
+    // eslint-disable-next-line ember/no-settled-after-test-helper
+    await settled();
+
+    assert.true(fileSaverStub.args[0][0] instanceof Blob);
+    assert.strictEqual(fileSaverStub.args[0][1], "Download-3-files.zip");
   });
 
   test("selecting documents with CTRL A", async function (assert) {

@@ -167,7 +167,7 @@ function getAndCacheDefaultHandler(pretender, method, path, cache) {
       [method].recognize(path)[0].handler;
   } catch (error) {
     if (error instanceof TypeError) {
-      throw `assertRequest Intercepted: ${method} ${path}:\nYou tried to assert a url which has no handler configured.\nCheck you mirage config if all routes are defined correctly (and dont forgett to add the id of the model if needed to the assertion url).`;
+      throw `assertRequest Intercepted: ${method} ${path}:\nYou tried to assert a url which has no handler configured.\nCheck you mirage config if all routes are defined correctly (and dont forget to add the id of the model if needed to the assertion url).`;
     }
     throw error;
   }
