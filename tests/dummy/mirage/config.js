@@ -23,6 +23,8 @@ export default function makeServer(config) {
       });
 
       this.put("/file-upload", () => new Response(201, {}, {}));
+
+      this.get("/files/multi", 200);
     },
   });
 }
