@@ -18,6 +18,7 @@ export default class TagFilterComponent extends Component {
   }
 
   availableTags = trackedFunction(this, async () => {
+    // Needed to trigger a recompute for the displayed filters
     this.tags.tagUpdates;
     if (!this.args.documents) {
       return [];
@@ -35,9 +36,13 @@ export default class TagFilterComponent extends Component {
   });
 
   availableMarks = trackedFunction(this, async () => {
-    if (!this.args.documents) {
+    const marks = this.marks.marks.records;
+
+    if (!this.args.documents || !marks) {
       return [];
     }
+    // Needed to trigger a recompute for the displayed filters
+    this.marks.markUpdates;
 
     const availableMarks = await this.args.documents.reduce(
       async (acc, doc) => {
@@ -49,9 +54,7 @@ export default class TagFilterComponent extends Component {
       new Set(),
     );
 
-    return this.marks.marks.records?.filter((mark) =>
-      availableMarks.has(mark.id),
-    );
+    return marks.filter((mark) => availableMarks.has(mark.id));
   });
 
   @action toggle(type, value) {

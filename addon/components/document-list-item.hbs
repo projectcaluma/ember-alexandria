@@ -30,7 +30,7 @@
   </td>
   <td class="list-marks uk-flex">
     {{#each @document.marks as |mark|}}
-      <div title={{mark.name}}>
+      <div title={{mark.name}} data-test-document-mark={{mark.id}}>
         <FaIcon @icon={{mark.icon}} @fixedWidth={{true}} />
       </div>
     {{/each}}
