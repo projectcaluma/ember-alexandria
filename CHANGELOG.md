@@ -1,3 +1,10 @@
+# [5.1.0](https://github.com/projectcaluma/ember-alexandria/compare/v5.0.2...v5.1.0) (2024-01-04)
+
+
+### Features
+
+* **document:** allow moving of a document per drag & drop ([7ba1835](https://github.com/projectcaluma/ember-alexandria/commit/7ba1835fd66c4cd5e0b8c6ff59ffa17a68cb2abd))
+
 ## [5.0.2](https://github.com/projectcaluma/ember-alexandria/compare/v5.0.1...v5.0.2) (2024-01-04)
 
 
