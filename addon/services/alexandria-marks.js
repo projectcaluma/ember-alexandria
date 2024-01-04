@@ -1,11 +1,14 @@
 import { action } from "@ember/object";
 import Service, { inject as service } from "@ember/service";
+import { tracked } from "@glimmer/tracking";
 import { findAll } from "ember-data-resources";
 
 import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
 
 export default class AlexandriaMarksService extends Service {
   @service store;
+
+  @tracked markUpdates = 0;
 
   marks = findAll(this, "mark");
 
@@ -25,6 +28,7 @@ export default class AlexandriaMarksService extends Service {
     try {
       document.marks = [...marks, mark];
       await document.save();
+      this.markUpdates++;
     } catch (error) {
       document.marks = marks;
       new ErrorHandler(this, error).notify("alexandria.errors.update");
@@ -47,6 +51,7 @@ export default class AlexandriaMarksService extends Service {
     try {
       document.marks = marks.filter((m) => m !== mark);
       await document.save();
+      this.markUpdates++;
     } catch (error) {
       document.marks = marks;
       new ErrorHandler(this, error).notify("alexandria.errors.update");
