@@ -6,7 +6,10 @@
     "ember-addon",
     "ember-engine"
   ],
-  "repository": "projectcaluma/ember-alexandria",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/projectcaluma/ember-alexandria.git"
+  },
   "license": "MIT",
   "author": "",
   "directories": {
