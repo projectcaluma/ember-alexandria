@@ -1,3 +1,10 @@
+## [5.0.2](https://github.com/projectcaluma/ember-alexandria/compare/v5.0.1...v5.0.2) (2024-01-04)
+
+
+### Bug Fixes
+
+* **tag:** use namespaced tag service ([9aab258](https://github.com/projectcaluma/ember-alexandria/commit/9aab2588624181e91d88ab388b6cc1241b7148c0))
+
 ## [5.0.1](https://github.com/projectcaluma/ember-alexandria/compare/v5.0.0...v5.0.1) (2024-01-03)
 
 
