@@ -195,7 +195,7 @@ export default class DocumentViewComponent extends Component {
 
       this.documents.clearDocumentSelection();
       for (let i = startIndex; i <= endIndex; i++) {
-        this.documents.selectDocument(this.fetchedDocuments[i]);
+        this.documents.selectDocument(this.fetchedDocuments.value[i]);
       }
     }
   }
