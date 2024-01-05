@@ -1,3 +1,10 @@
+## [5.1.1](https://github.com/projectcaluma/ember-alexandria/compare/v5.1.0...v5.1.1) (2024-01-05)
+
+
+### Bug Fixes
+
+* **marks:** update filter when setting mark ([a3b283b](https://github.com/projectcaluma/ember-alexandria/commit/a3b283ba732527b220f78d4fcd973796323de3b7))
+
 # [5.1.0](https://github.com/projectcaluma/ember-alexandria/compare/v5.0.2...v5.1.0) (2024-01-04)
 
 
