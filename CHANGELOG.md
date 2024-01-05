@@ -1,3 +1,10 @@
+## [5.1.2](https://github.com/projectcaluma/ember-alexandria/compare/v5.1.1...v5.1.2) (2024-01-05)
+
+
+### Bug Fixes
+
+* **selection:** fix regression in shift selection ([251f44b](https://github.com/projectcaluma/ember-alexandria/commit/251f44b53cc5a2a15f4b65e4d6c7ea9613fab0e9))
+
 ## [5.1.1](https://github.com/projectcaluma/ember-alexandria/compare/v5.1.0...v5.1.1) (2024-01-05)
 
 
