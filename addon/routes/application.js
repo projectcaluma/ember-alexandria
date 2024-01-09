@@ -32,18 +32,18 @@ export default class ApplicationRoute extends Route {
     this.config.activeGroup = transition.to.queryParams.activeGroup;
   }
 
-  resetController(controller, isExiting) {
-    // isExiting would be false if only the route's model was changing
-    if (isExiting) {
-      controller.setProperties({
-        category: undefined,
-        tags: [],
-        marks: [],
-        search: undefined,
-        document: undefined,
-        activeGroup: undefined,
-        sort: undefined,
-      });
-    }
+  resetController(controller) {
+    /* Depending on how ember alexandria is used we might have to reset
+    the document selection on navigation */
+    controller.setProperties({
+      category: undefined,
+      tags: [],
+      marks: [],
+      search: undefined,
+      document: undefined,
+      activeGroup: undefined,
+      sort: undefined,
+    });
+    this.documents.selectedDocuments = [];
   }
 }
