@@ -1,3 +1,10 @@
+## [5.1.3](https://github.com/projectcaluma/ember-alexandria/compare/v5.1.2...v5.1.3) (2024-01-09)
+
+
+### Bug Fixes
+
+* reset documents on nav correctly ([93e7155](https://github.com/projectcaluma/ember-alexandria/commit/93e7155aa05174a967a2c67f28d4b6d2255ad2e9))
+
 ## [5.1.2](https://github.com/projectcaluma/ember-alexandria/compare/v5.1.1...v5.1.2) (2024-01-05)
 
 
