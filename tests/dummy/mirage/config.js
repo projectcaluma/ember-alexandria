@@ -24,7 +24,7 @@ export default function makeServer(config) {
 
       this.put("/file-upload", () => new Response(201, {}, {}));
 
-      this.get("/files/multi", 200);
+      this.get("/files/multi", () => new Response(200, {}, {}));
     },
   });
 }

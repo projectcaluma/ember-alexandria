@@ -9,6 +9,7 @@ export default class DocumentCardComponent extends Component {
   @service notification;
   @service intl;
   @service("alexandria-config") config;
+  @service fetch;
 
   get classes() {
     const classes = [
@@ -76,12 +77,7 @@ export default class DocumentCardComponent extends Component {
         )}`;
       }
 
-      const transfer = yield fetch(url, {
-        mode: "cors",
-        headers: {
-          Authorization: `Bearer ${this.config.accessToken}`,
-        },
-      });
+      const transfer = yield this.fetch.fetch(url, { mode: "cors" });
       const bytes = yield transfer.blob();
       saveAs(bytes, `Download-${this.args.documents.length}-files.zip`);
     }
