@@ -48,6 +48,7 @@ constructor(...args) {
           "session",
           "intl",
           "notification",
+          "fetch",
           "alexandria-config",
         ],
       },
