@@ -1,3 +1,15 @@
+# [6.0.0](https://github.com/projectcaluma/ember-alexandria/compare/v5.1.3...v6.0.0) (2024-01-11)
+
+
+* feat!: use fetch service ([9f727db](https://github.com/projectcaluma/ember-alexandria/commit/9f727db63a4e48f6afb4d2bcd7d56059180b56b8))
+
+
+### BREAKING CHANGES
+
+* The addon now requires a fetch service that handles
+authentication. See `dummy/app/services/fetch.js` for an example
+implementation.
+
 ## [5.1.3](https://github.com/projectcaluma/ember-alexandria/compare/v5.1.2...v5.1.3) (2024-01-09)
 
 
