@@ -1,3 +1,11 @@
+## [6.0.1](https://github.com/projectcaluma/ember-alexandria/compare/v6.0.0...v6.0.1) (2024-01-12)
+
+
+### Bug Fixes
+
+* **category:** reset drag state after drop ([35879e4](https://github.com/projectcaluma/ember-alexandria/commit/35879e4e42264ba834de942ef68448f24e9f5684))
+* **download:** ensure file ordering ([76b0cdb](https://github.com/projectcaluma/ember-alexandria/commit/76b0cdb88b8009aa6e376d10e8fbf2d90fd4e1ba))
+
 # [6.0.0](https://github.com/projectcaluma/ember-alexandria/compare/v5.1.3...v6.0.0) (2024-01-11)
 
 
