@@ -112,6 +112,8 @@ export default class AlexandriaDocumentsService extends Service {
     if (!response.ok) {
       throw new Error(response.statusText, response.status);
     }
+
+    await document.reload();
   }
 
   /**

@@ -1,3 +1,4 @@
+import { A } from "@ember/array";
 import Service from "@ember/service";
 import { render, click } from "@ember/test-helpers";
 import { setupRenderingTest } from "dummy/tests/helpers";
@@ -43,7 +44,7 @@ module("Integration | Component | document-card", function (hooks) {
 
     this.document = {
       title,
-      files: [{ name: "foo.txt", variant: "original", downloadUrl }],
+      files: A([{ name: "foo.txt", variant: "original", downloadUrl }]),
       marks: [],
     };
     await render(hbs`<DocumentCard @document={{this.document}}/>`);

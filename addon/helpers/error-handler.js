@@ -12,7 +12,7 @@ export class ErrorHandler {
 
   notify(...args) {
     console.error(this.error);
-    if (this.error?.errors[0].status === "403") {
+    if (this.error?.errors?.[0].status === "403") {
       return this.notification.danger(
         this.intl.t("alexandria.errors.no-permission"),
       );

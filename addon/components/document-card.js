@@ -40,7 +40,10 @@ export default class DocumentCardComponent extends Component {
       // If we download a single file we can use the saveAs library
       const doc = this.args.document || this.args?.documents[0];
       try {
-        const file = doc.files.find((file) => file.variant === "original");
+        const file = doc.files
+          .toArray() // convert to array to not mutate the original
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+          .find((file) => file.variant === "original");
         const extension = file.name.includes(".")
           ? `.${file.name.split(".").slice(-1)[0]}`
           : "";
