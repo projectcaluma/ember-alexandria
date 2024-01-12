@@ -87,6 +87,9 @@ export default class CategoryNavCategoryComponent extends Component {
 
     if (!this.args.category.id) return;
 
+    this.dragCounter = 0;
+    this.isDragOver = false;
+
     const documentIds = event.dataTransfer.getData("text").split(",");
 
     const success = yield Promise.all(
