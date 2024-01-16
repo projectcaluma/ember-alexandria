@@ -5,7 +5,7 @@ import JSONSerializer from "@ember-data/serializer/json-api";
  * The response data will be wrapped in a `results` object.
  * This would need some configurable normalizer functionality to work.
  */
-export default class TemplateSerializer extends JSONSerializer {
+export default class FileSerializer extends JSONSerializer {
   // If we don't do this, Ember will interpret the `meta` property in the single
   // response as meta object and omit it from the attributes.
   extractMeta() {}
