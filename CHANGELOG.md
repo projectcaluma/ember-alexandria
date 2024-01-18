@@ -1,3 +1,15 @@
+# [7.0.0-beta.1](https://github.com/projectcaluma/ember-alexandria/compare/v6.0.1...v7.0.0-beta.1) (2024-01-18)
+
+
+### Features
+
+* **api:** upload files directly via alexandria API ([f934fc4](https://github.com/projectcaluma/ember-alexandria/commit/f934fc487275252008fd069936b0afd3cdc7bb5f))
+
+
+### BREAKING CHANGES
+
+* **api:** Requires alexandria backend v3.0.0-beta.3
+
 ## [6.0.1](https://github.com/projectcaluma/ember-alexandria/compare/v6.0.0...v6.0.1) (2024-01-12)
 
 
