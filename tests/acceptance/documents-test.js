@@ -28,6 +28,10 @@ module("Acceptance | documents", function (hooks) {
           variant: "thumbnail",
           downloadUrl: "test-thumbnail",
         }),
+        this.server.create("file", {
+          variant: "original",
+          downloadUrl: "test-thumbnail",
+        }),
       ],
     });
 

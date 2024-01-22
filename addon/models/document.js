@@ -28,4 +28,15 @@ export default class DocumentModel extends LocalizedModel {
     )[0];
     return thumbnail && thumbnail.downloadUrl;
   }
+
+  get fileLatestCreatedAt() {
+    if (!this.files.length) {
+      return null;
+    }
+
+    return this.files
+      .filter((file) => file.variant === "original")
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))[0]
+      .createdAt;
+  }
 }
