@@ -145,6 +145,14 @@
   },
   "packageManager": "pnpm@8.9.2",
   "release": {
-    "extends": "@adfinis/semantic-release-config"
+    "extends": "@adfinis/semantic-release-config",
+    "branches": [
+      "main",
+      "beta",
+      "v6"
+    ]
+  },
+  "publishConfig": {
+    "tag": "legacy"
   }
 }
