@@ -1,3 +1,10 @@
+# [7.0.0-beta.2](https://github.com/projectcaluma/ember-alexandria/compare/v7.0.0-beta.1...v7.0.0-beta.2) (2024-01-23)
+
+
+### Features
+
+* change displayed modified date to be latest file creation ([6946f6f](https://github.com/projectcaluma/ember-alexandria/commit/6946f6fae7488c4843b83d7359ab04aed23509f2))
+
 # [7.0.0-beta.1](https://github.com/projectcaluma/ember-alexandria/compare/v6.0.1...v7.0.0-beta.1) (2024-01-18)
 
 
