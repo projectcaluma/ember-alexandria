@@ -23,20 +23,21 @@ export default class DocumentModel extends LocalizedModel {
   @service("alexandria-config") config;
 
   get thumbnail() {
-    const thumbnail = this.files.filter(
-      (file) => file.variant === "thumbnail",
-    )[0];
-    return thumbnail && thumbnail.downloadUrl;
+    // get the thumbnail of the latest file, because thumbnails
+    // might be generated out of order
+    const latestThumb = this.files.find(
+      (f) => f.original.id === this.latestFile.id,
+    );
+    return latestThumb?.downloadUrl;
   }
 
-  get fileLatestCreatedAt() {
+  get latestFile() {
     if (!this.files.length) {
       return null;
     }
 
     return this.files
       .filter((file) => file.variant === "original")
-      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))[0]
-      .createdAt;
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))[0];
   }
 }
