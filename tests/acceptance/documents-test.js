@@ -20,19 +20,23 @@ module("Acceptance | documents", function (hooks) {
   setupMirage(hooks);
   setupRequestAssertions(hooks);
 
+  // Mirage relationships are not working properly
   test("document grid displays documents", async function (assert) {
     const documents = this.server.createList("document", 5);
-    documents[1].update({
-      files: [
+    const file = this.server.create("file", {
+      variant: "original",
+      downloadUrl: "test-thumbnail",
+    });
+    file.update({
+      renderings: [
         this.server.create("file", {
           variant: "thumbnail",
           downloadUrl: "test-thumbnail",
         }),
-        this.server.create("file", {
-          variant: "original",
-          downloadUrl: "test-thumbnail",
-        }),
       ],
+    });
+    documents[1].update({
+      files: [file],
     });
 
     await visit("/");

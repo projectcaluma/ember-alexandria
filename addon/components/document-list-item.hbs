@@ -24,7 +24,7 @@
       uk-dropdown="pos: right-bottom; offset: 15; delay-show: 400; delay-hide: 100;"
     >
       <img
-        data-src="{{@document.thumbnail}}"
+        data-src="{{@document.thumbnail.value}}"
         alt="{{@document.title}}"
         uk-img
       />
@@ -47,7 +47,7 @@
   </td>
   <td>
     {{format-date
-      @document.fileLatestCreatedAt
+      @document.latestFile.value.createdAt
       month="2-digit"
       day="2-digit"
       year="numeric"

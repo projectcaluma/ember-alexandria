@@ -22,9 +22,9 @@
         />
       </div>
     {{else}}
-      {{#if @document.thumbnail}}
+      {{#if @document.thumbnail.value}}
         <img
-          data-src={{@document.thumbnail}}
+          data-src={{@document.thumbnail.value}}
           width="200"
           height="170"
           uk-img
