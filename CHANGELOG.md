@@ -1,3 +1,10 @@
+# [7.0.0-beta.3](https://github.com/projectcaluma/ember-alexandria/compare/v7.0.0-beta.2...v7.0.0-beta.3) (2024-01-26)
+
+
+### Bug Fixes
+
+* **thumbnail:** make sure thumbnail of latest file is rendered ([#679](https://github.com/projectcaluma/ember-alexandria/issues/679)) ([754c3bc](https://github.com/projectcaluma/ember-alexandria/commit/754c3bc54c263e366f12c544f153255a35edc689))
+
 # [7.0.0-beta.2](https://github.com/projectcaluma/ember-alexandria/compare/v7.0.0-beta.1...v7.0.0-beta.2) (2024-01-23)
 
 
