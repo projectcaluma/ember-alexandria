@@ -2,7 +2,7 @@ import { render, click, fillIn } from "@ember/test-helpers";
 import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
-import { module, todo } from "qunit";
+import { module, test } from "qunit";
 
 module("Integration | Component | tag-manager", function (hooks) {
   setupRenderingTest(hooks);
@@ -14,7 +14,7 @@ module("Integration | Component | tag-manager", function (hooks) {
   });
 
   // TODO: mirage relationships are not working
-  todo("it adds new tag", async function (assert) {
+  test.skip("it adds new tag", async function (assert) {
     await render(hbs`<TagManager @documents={{this.documents}} />`);
 
     await fillIn("[data-test-tag-input]", "new tag");
@@ -25,7 +25,7 @@ module("Integration | Component | tag-manager", function (hooks) {
   });
 
   // TODO: mirage relationships are not working
-  todo("it adds existing tag", async function (assert) {
+  test.skip("it adds existing tag", async function (assert) {
     await render(hbs`<TagManager @documents={{this.documents}} />`);
 
     await fillIn("[data-test-tag-input]", "new tag");
@@ -36,7 +36,7 @@ module("Integration | Component | tag-manager", function (hooks) {
   });
 
   // TODO: mirage relationships are not working
-  todo("it removes tag", async function (assert) {
+  test.skip("it removes tag", async function (assert) {
     this.documents[0].update({ tags: [this.tag] });
 
     await render(hbs`<TagManager @documents={{this.documents}} />`);
