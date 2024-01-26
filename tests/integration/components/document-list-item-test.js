@@ -12,7 +12,7 @@ module("Integration | Component | document-list-item", function (hooks) {
   hooks.beforeEach(async function () {
     this.document = {
       title: "some document",
-      latestFile: { createdAt: "2000-12-01T05:00:00.000Z" },
+      latestFile: { value: { createdAt: "2000-12-01T05:00:00.000Z" } },
       createdByUser: "some user",
       marks: [],
     };

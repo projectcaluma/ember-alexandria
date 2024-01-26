@@ -1,6 +1,7 @@
 import { inject as service } from "@ember/service";
 import { belongsTo, hasMany, attr } from "@ember-data/model";
 import { LocalizedModel, localizedAttr } from "ember-localized-model";
+import { trackedFunction } from "ember-resources/util/function";
 
 export default class DocumentModel extends LocalizedModel {
   @localizedAttr title;
@@ -22,22 +23,29 @@ export default class DocumentModel extends LocalizedModel {
 
   @service("alexandria-config") config;
 
-  get thumbnail() {
+  thumbnail = trackedFunction(this, async () => {
     // get the thumbnail of the latest file, because thumbnails
     // might be generated out of order
-    const latestThumb = this.files.find(
-      (f) => f.original.id === this.latestFile.id,
-    );
-    return latestThumb?.downloadUrl;
-  }
+    const thumbnails = await this.latestFile.value?.renderings;
 
-  get latestFile() {
-    if (!this.files.length) {
-      return null;
+    if (!thumbnails?.length) {
+      return undefined;
     }
 
-    return this.files
+    return thumbnails.toArray().sort(
+      // convert to array to not mutate the original
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
+    )[0].downloadUrl;
+  });
+
+  latestFile = trackedFunction(this, async () => {
+    const files = await this.files;
+    if (!files.length) {
+      return undefined;
+    }
+
+    return files
       .filter((file) => file.variant === "original")
       .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))[0];
-  }
+  });
 }

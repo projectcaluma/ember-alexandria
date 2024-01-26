@@ -79,7 +79,7 @@ module("Integration | Component | document-card", function (hooks) {
 
   test("thumbnail", async function (assert) {
     this.document = {
-      thumbnail: "some-url",
+      thumbnail: { value: "some-url" },
       marks: [],
     };
     await render(hbs`<DocumentCard @document={{this.document}}/>`);
@@ -87,6 +87,6 @@ module("Integration | Component | document-card", function (hooks) {
     assert.dom("[data-test-file-icon]").doesNotExist();
     assert
       .dom("[data-test-thumbnail]")
-      .hasAttribute("data-src", this.document.thumbnail);
+      .hasAttribute("data-src", this.document.thumbnail.value);
   });
 });

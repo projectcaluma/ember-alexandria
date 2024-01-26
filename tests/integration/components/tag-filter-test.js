@@ -2,7 +2,7 @@ import { render } from "@ember/test-helpers";
 import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
-import { module, todo } from "qunit";
+import { module, test } from "qunit";
 
 module("Integration | Component | tag-filter", function (hooks) {
   setupRenderingTest(hooks);
@@ -15,7 +15,7 @@ module("Integration | Component | tag-filter", function (hooks) {
   });
 
   // TODO: mirage relationships are not working
-  todo("it renders", async function (assert) {
+  test.skip("it renders", async function (assert) {
     this.documents[0].update({
       tags: this.tags,
     });
@@ -26,7 +26,7 @@ module("Integration | Component | tag-filter", function (hooks) {
   });
 
   // TODO: mirage relationships are not working
-  todo("it renders mark filter", async function (assert) {
+  test.skip("it renders mark filter", async function (assert) {
     this.documents[0].update({
       marks: [this.mark],
     });
