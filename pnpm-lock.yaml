@@ -63,8 +63,8 @@ dependencies:
     specifier: ^5.0.0
     version: 5.0.0(@ember-data/store@4.12.5)(@glimmer/tracking@1.1.2)(ember-data@4.12.5)(ember-resources@6.4.2)(ember-source@5.5.0)
   ember-engines-router-service:
-    specifier: ^0.5.0
-    version: 0.5.0(@glint/template@1.2.2)(ember-source@5.5.0)
+    specifier: ^0.5.1
+    version: 0.5.1(@glint/template@1.2.2)(ember-source@5.5.0)
   ember-fetch:
     specifier: ^8.1.2
     version: 8.1.2
@@ -7064,11 +7064,11 @@ packages:
       - supports-color
       - webpack
 
-  /ember-engines-router-service@0.5.0(@glint/template@1.2.2)(ember-source@5.5.0):
-    resolution: {integrity: sha512-RB/xCGHs+d/PPs9PSHIETWme0BaQA2rQXMEyKgk0Si915YRZew5RsnUha2YhbQrpzRSIy6s2MjzJfaHZ8W6O3A==}
+  /ember-engines-router-service@0.5.1(@glint/template@1.2.2)(ember-source@5.5.0):
+    resolution: {integrity: sha512-gQaST5IPPlS4Vg/dmyJfDHX7yDszOXRJvYLgXlJ5PNoBK1H8hjf8wcVIYOV1HeM3y275W3PfpiR7jw9ztJglIA==}
     engines: {node: 16.* || 18.* || >= 20}
     peerDependencies:
-      ember-source: ^3.28.0 || ^4.0.0
+      ember-source: ^3.28.0 || ^4.0.0 || ^5.0.0
     dependencies:
       '@embroider/addon-shim': 1.8.7
       '@embroider/macros': 1.13.4(@glint/template@1.2.2)
