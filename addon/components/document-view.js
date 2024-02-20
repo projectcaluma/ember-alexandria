@@ -210,7 +210,7 @@ export default class DocumentViewComponent extends Component {
   }
 
   @action
-  afterUpload() {
+  refreshDocumentList() {
     this.uploadedDocuments++;
   }
 

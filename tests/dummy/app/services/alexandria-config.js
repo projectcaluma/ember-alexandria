@@ -4,6 +4,8 @@ import { macroCondition, isTesting } from "@embroider/macros";
 import AlexandriaConfigService from "ember-alexandria/services/alexandria-config";
 
 export default class CustomAlexandriaConfigService extends AlexandriaConfigService {
+  enablePDFConversion = true;
+
   markIcons = {
     decision: "stamp",
   };

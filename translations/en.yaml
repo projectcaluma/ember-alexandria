@@ -20,6 +20,7 @@ alexandria:
     update: "Your changes chould'nt be saved. Please try again."
     no-permission: "You don't have permission to perform this action."
     move-document: "While moving {count, plural, one {the document} other {# documents}}, an error occured. Please try again."
+    convert-pdf: "While converting, an error occured. Please try again."
 
   success:
     delete-document: "Document deleted successfully"
@@ -30,6 +31,7 @@ alexandria:
       } uploaded successfully.
     update: "Changes saved."
     move-document: "{count, plural, one {Document} other {# documents}} moved successfully"
+    convert-pdf: "Document converted successfully."
 
   category-nav:
     all-files: "All documents"
@@ -70,6 +72,7 @@ alexandria:
     created-by-user: "Created by user"
     created-by-group: "Created by group"
     replace: "Replace"
+    convert: "To PDF"
     tags:
       title: "Tags"
       add: "Add"

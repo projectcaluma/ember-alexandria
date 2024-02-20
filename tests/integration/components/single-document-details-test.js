@@ -146,4 +146,28 @@ module("Integration | Component | single-document-details", function (hooks) {
 
     assert.dom("[data-test-date]").hasText("10/31/2023");
   });
+
+  test("it renders conversion", async function (assert) {
+    this.selectedDocument = {
+      latestFile: { value: { mimeType: "application/pdf" } },
+    };
+
+    await render(
+      hbs`<SingleDocumentDetails @document={{this.selectedDocument}} />`,
+    );
+
+    assert.dom("[data-test-convert-button]").doesNotExist();
+
+    this.selectedDocument = {
+      latestFile: {
+        value: { mimeType: "application/vnd.oasis.opendocument.text" },
+      },
+    };
+
+    await render(
+      hbs`<SingleDocumentDetails @document={{this.selectedDocument}} />`,
+    );
+
+    assert.dom("[data-test-convert-button]").exists();
+  });
 });
