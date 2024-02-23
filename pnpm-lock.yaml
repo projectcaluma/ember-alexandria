@@ -15,8 +15,8 @@ dependencies:
     specifier: ^0.5.0
     version: 0.5.0(@glint/template@1.2.2)(ember-source@5.5.0)
   '@ember/optional-features':
-    specifier: ^2.0.0
-    version: 2.0.0
+    specifier: ^2.1.0
+    version: 2.1.0
   '@ember/render-modifiers':
     specifier: ^2.1.0
     version: 2.1.0(@babel/core@7.23.9)(@glint/template@1.2.2)(ember-source@5.5.0)
@@ -2123,8 +2123,8 @@ packages:
       - '@glint/template'
       - supports-color
 
-  /@ember/optional-features@2.0.0:
-    resolution: {integrity: sha512-4gkvuGRYfpAh1nwAz306cmMeC1mG7wxZnbsBZ09mMaMX/W7IyKOKc/38JwrDPUFUalmNEM7q7JEPcmew2M3Dog==}
+  /@ember/optional-features@2.1.0:
+    resolution: {integrity: sha512-IXjDpTFhsjPk9h3OXwXjlRfhM/Wjtw2E71Xos/81ZsTTwZMB9H+DWhsxePXOkzYy7Jvw4TIzKbMfcnT8mrtwWQ==}
     engines: {node: 10.* || 12.* || >= 14}
     dependencies:
       chalk: 4.1.2
