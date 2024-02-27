@@ -60,8 +60,8 @@ dependencies:
     specifier: ^3.28.13 || ^4.12.5
     version: 4.12.5(@babel/core@7.23.9)(@ember/string@3.1.1)(@glimmer/tracking@1.1.2)(@glint/template@1.2.2)(ember-source@5.6.0)(webpack@5.90.3)
   ember-data-resources:
-    specifier: ^5.0.0
-    version: 5.0.0(@ember-data/store@4.12.5)(@glimmer/tracking@1.1.2)(ember-data@4.12.5)(ember-resources@6.4.2)(ember-source@5.6.0)
+    specifier: ^5.2.1
+    version: 5.2.1(@ember-data/store@4.12.5)(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.2.2)(ember-data@4.12.5)(ember-resources@6.4.2)(ember-source@5.6.0)
   ember-engines-router-service:
     specifier: ^0.5.1
     version: 0.5.1(@glint/template@1.2.2)(ember-source@5.6.0)
@@ -2178,7 +2178,7 @@ packages:
     resolution: {integrity: sha512-JGOQNRj3UR0NdWEg8MsM2eqPLncEwSB1IX+rwntIj22TEKj8biqx7GDgSbeH+ZedijmCh354Hf2c5rthrdzUAw==}
     engines: {node: 12.* || 14.* || >= 16}
     dependencies:
-      '@embroider/shared-internals': 2.5.1
+      '@embroider/shared-internals': 2.5.2
       broccoli-funnel: 3.0.8
       semver: 7.5.4
     transitivePeerDependencies:
@@ -7035,8 +7035,8 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /ember-data-resources@5.0.0(@ember-data/store@4.12.5)(@glimmer/tracking@1.1.2)(ember-data@4.12.5)(ember-resources@6.4.2)(ember-source@5.6.0):
-    resolution: {integrity: sha512-Da/VJREqhEMm7AkbaDaj8UGR86lEskHBRQDGak979dLvyRAV+9yzce/n3RwsPIvVcMGbwRLxvbFi8TRSaa9chg==}
+  /ember-data-resources@5.2.1(@ember-data/store@4.12.5)(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.2.2)(ember-data@4.12.5)(ember-resources@6.4.2)(ember-source@5.6.0):
+    resolution: {integrity: sha512-1rTFThKfFhaWyen6wqzwIFBS+bAqrXAZvHCIhPwX6Dym8KJ8bmNuoOJ+zNG/iuPnKMMsdnq2xjMmBDFT3+ul6Q==}
     peerDependencies:
       '@ember-data/store': 4.12.5
       '@glimmer/tracking': ^1.1.2
@@ -7050,9 +7050,12 @@ packages:
       '@embroider/addon-shim': 1.8.7
       '@glimmer/tracking': 1.1.2
       ember-data: 4.12.5(@babel/core@7.23.9)(@ember/string@3.1.1)(@glimmer/tracking@1.1.2)(@glint/template@1.2.2)(ember-source@5.6.0)(webpack@5.90.3)
+      ember-modify-based-class-resource: 1.1.0(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.2.2)(ember-resources@6.4.2)(ember-source@5.6.0)
       ember-resources: 6.4.2(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.2.2)(ember-concurrency@3.1.1)(ember-source@5.6.0)
       ember-source: 5.6.0(@babel/core@7.23.9)(@glimmer/component@1.1.2)(@glint/template@1.2.2)(rsvp@4.8.5)(webpack@5.90.3)
     transitivePeerDependencies:
+      - '@glimmer/component'
+      - '@glint/template'
       - supports-color
     dev: false
 
@@ -7348,6 +7351,29 @@ packages:
       ember-cli-string-utils: 1.1.0
       ember-source: 5.6.0(@babel/core@7.23.9)(@glimmer/component@1.1.2)(@glint/template@1.2.2)(rsvp@4.8.5)(webpack@5.90.3)
     transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /ember-modify-based-class-resource@1.1.0(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.2.2)(ember-resources@6.4.2)(ember-source@5.6.0):
+    resolution: {integrity: sha512-35PqPA6XFncpJkePr1Zs5aR/bANpsCEa8X7fXkA0EkTyuILqP3ycqtlfK0VxkADz62lk86BR8biGsTz0jgdZUQ==}
+    peerDependencies:
+      '@glimmer/component': ^1.1.2
+      '@glimmer/tracking': ^1.1.2
+      ember-resources: '>= 6.4.0'
+      ember-source: ^3.28.0 || ^4.0.0 || ^5.0.0
+    peerDependenciesMeta:
+      '@glimmer/component':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.23.6
+      '@embroider/addon-shim': 1.8.7
+      '@embroider/macros': 1.13.5(@glint/template@1.2.2)
+      '@glimmer/component': 1.1.2(@babel/core@7.23.9)
+      '@glimmer/tracking': 1.1.2
+      ember-resources: 6.4.2(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.2.2)(ember-concurrency@3.1.1)(ember-source@5.6.0)
+      ember-source: 5.6.0(@babel/core@7.23.9)(@glimmer/component@1.1.2)(@glint/template@1.2.2)(rsvp@4.8.5)(webpack@5.90.3)
+    transitivePeerDependencies:
+      - '@glint/template'
       - supports-color
     dev: false
 
