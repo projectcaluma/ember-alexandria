@@ -2,6 +2,12 @@ import Service from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 
 export default class AlexandriaConfigService extends Service {
+  namespace = undefined;
+  zipDownloadHost = undefined;
+  zipDownloadNamespace = undefined;
+
+  enablePDFConversion = false;
+
   markIcons = {};
 
   @tracked alexandriaQueryParams = {};

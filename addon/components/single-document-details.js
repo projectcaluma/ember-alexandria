@@ -11,11 +11,13 @@ import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
 // TODO: This should be refactored and the SingleDocumentDetailsComponent should NOT
 // be inheriting from DocumentCard
 export default class SingleDocumentDetailsComponent extends DocumentCard {
-  @service router;
   @service("alexandria-documents") documents;
-  @service("alexandria-tags") tags;
+  @service("alexandria-config") config;
   @service("alexandria-side-panel") sidePanel;
+  @service router;
   @service intl;
+  @service store;
+  @service fetch;
 
   @tracked editTitle = false;
   @tracked editDescription = false;
@@ -28,6 +30,16 @@ export default class SingleDocumentDetailsComponent extends DocumentCard {
     const formats = { de: "d.m.Y", fr: "d.m.Y", en: defaultFormat };
 
     return formats[language] ?? defaultFormat;
+  }
+
+  get displayConvertButton() {
+    return (
+      this.config.enablePDFConversion &&
+      [
+        "application/vnd.oasis.opendocument.text",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      ].includes(this.args.document.latestFile?.value?.mimeType)
+    );
   }
 
   @action updateDocumentTitle({ target: { value: title } }) {
@@ -84,6 +96,25 @@ export default class SingleDocumentDetailsComponent extends DocumentCard {
       new ErrorHandler(this, error).notify(
         "alexandria.errors.replace-document",
       );
+    }
+  }
+
+  @dropTask
+  *convertDocument(event) {
+    event?.preventDefault();
+    try {
+      const modelName = "document";
+      const adapter = this.store.adapterFor(modelName);
+      const url = adapter.buildURL(modelName, this.args.document.id);
+      yield this.fetch.fetch(`${url}/convert`, {
+        method: "POST",
+      });
+
+      this.args.refreshDocumentList();
+
+      this.notification.success(this.intl.t("alexandria.success.covert-pdf"));
+    } catch (error) {
+      new ErrorHandler(this, error).notify("alexandria.errors.convert-pdf");
     }
   }
 }
