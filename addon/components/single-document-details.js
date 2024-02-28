@@ -112,7 +112,7 @@ export default class SingleDocumentDetailsComponent extends DocumentCard {
 
       this.args.refreshDocumentList();
 
-      this.notification.success(this.intl.t("alexandria.success.covert-pdf"));
+      this.notification.success(this.intl.t("alexandria.success.convert-pdf"));
     } catch (error) {
       new ErrorHandler(this, error).notify("alexandria.errors.convert-pdf");
     }
