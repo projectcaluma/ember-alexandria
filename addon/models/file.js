@@ -5,7 +5,8 @@ export default class FileModel extends Model {
   @attr name;
   @attr downloadUrl;
   @attr metainfo;
-  @attr content;
+  @attr content; // needed for upload
+  @attr mimeType;
   @attr checksum;
 
   @attr createdAt;

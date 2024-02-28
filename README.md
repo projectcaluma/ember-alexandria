@@ -199,6 +199,13 @@ module.exports = function () {
 };
 ```
 
+### Others
+
+- `enablePDFConversion`: Set to `true` to enable docx/odt to pdf conversion. Make sure the backend is enabled aswell.
+- `namespace`: Set to API namespace
+- `zipDownloadHost`: Set if the ZIP download is different
+- `zipDownloadNamespace`: Set if the ZIP download is namespaced
+
 ## Contributing
 
 See the [Contributing](CONTRIBUTING.md) guide for details.

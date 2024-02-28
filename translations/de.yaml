@@ -20,6 +20,7 @@ alexandria:
     update: "Änderungen konnten nicht gespeichert werden. Versuchen Sie es erneut."
     no-permission: "Sie haben keine Berechtigung, diese Aktion auszuführen."
     move-document: "Beim Verschieben {count, plural, one {des Dokumentes} other {von # Dokumenten}} ist ein Fehler aufgetreten"
+    convert-pdf: "Während dem Umwandeln ist ein Fehler aufgetreten."
 
   success:
     delete-document: "Das Dokument wurde erfolgreich gelöscht."
@@ -30,6 +31,7 @@ alexandria:
       } erfolgreich hochgeladen.
     update: "Änderungen wurden gespeichert."
     move-document: "{count, plural, one {Das Dokument wurde} other {# Dokumente wurden}} erfolgreich verschoben"
+    convert-pdf: "Dokument wurde erfolgreich umgewandelt."
 
   category-nav:
     all-files: "Alle Dokumente"
@@ -70,6 +72,7 @@ alexandria:
     created-by-user: "Erstellt von Benutzer"
     created-by-group: "Erstellt von Gruppe"
     replace: "Ersetzen"
+    convert: "Zu PDF"
     tags:
       title: "Tags"
       add: "Hinzufügen"
