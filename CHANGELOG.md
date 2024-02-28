@@ -1,3 +1,15 @@
+# [7.0.0-beta.4](https://github.com/projectcaluma/ember-alexandria/compare/v7.0.0-beta.3...v7.0.0-beta.4) (2024-02-28)
+
+
+### Bug Fixes
+
+* **thumbnail:** make sure thumbnail of latest file is rendered ([#679](https://github.com/projectcaluma/ember-alexandria/issues/679)) ([38baf73](https://github.com/projectcaluma/ember-alexandria/commit/38baf73c868fe7ccabf92d9cae5dc7bf94a84e7d))
+
+
+### Features
+
+* add button to convert to pdf ([#700](https://github.com/projectcaluma/ember-alexandria/issues/700)) ([223febe](https://github.com/projectcaluma/ember-alexandria/commit/223febe67c6475e6d91f8d746e6ca6e465b4c1ed))
+
 # [7.0.0-beta.3](https://github.com/projectcaluma/ember-alexandria/compare/v7.0.0-beta.2...v7.0.0-beta.3) (2024-01-26)
 
 
