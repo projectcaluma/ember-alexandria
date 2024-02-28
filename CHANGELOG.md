@@ -1,3 +1,10 @@
+# [7.0.0-beta.5](https://github.com/projectcaluma/ember-alexandria/compare/v7.0.0-beta.4...v7.0.0-beta.5) (2024-02-28)
+
+
+### Bug Fixes
+
+* **convert:** typo for success message ([#708](https://github.com/projectcaluma/ember-alexandria/issues/708)) ([07a0628](https://github.com/projectcaluma/ember-alexandria/commit/07a062852abe85b855af7f016f86c5eba879efc6))
+
 # [7.0.0-beta.4](https://github.com/projectcaluma/ember-alexandria/compare/v7.0.0-beta.3...v7.0.0-beta.4) (2024-02-28)
 
 
