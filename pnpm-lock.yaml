@@ -69,8 +69,8 @@ dependencies:
     specifier: ^8.1.2
     version: 8.1.2
   ember-flatpickr:
-    specifier: ^4.0.0
-    version: 4.0.0(@babel/core@7.23.9)(@glint/template@1.2.2)(ember-source@5.6.0)
+    specifier: ^7.1.0
+    version: 7.1.0(@babel/core@7.23.9)(@glint/template@1.2.2)(ember-source@5.6.0)(flatpickr@4.6.13)(webpack@5.90.3)
   ember-intl:
     specifier: ^6.4.1
     version: 6.4.1(@babel/core@7.23.9)(@glint/template@1.2.2)(typescript@5.3.3)(webpack@5.90.3)
@@ -98,6 +98,9 @@ dependencies:
   file-saver:
     specifier: ^2.0.5
     version: 2.0.5
+  flatpickr:
+    specifier: ^4.6.13
+    version: 4.6.13
   luxon:
     specifier: ^3.4.4
     version: 3.4.4
@@ -7163,27 +7166,23 @@ packages:
       - supports-color
     dev: false
 
-  /ember-flatpickr@4.0.0(@babel/core@7.23.9)(@glint/template@1.2.2)(ember-source@5.6.0):
-    resolution: {integrity: sha512-NWCGFZENEcJ5GgtkuAtlAad3uyik4E0wD+/k40tNrlNd+XcGdMVQ4t90ku3GwfTrH9gNR5iq5LajL0dzA5Uhrw==}
-    engines: {node: 14.* || 16.* || >= 18}
+  /ember-flatpickr@7.1.0(@babel/core@7.23.9)(@glint/template@1.2.2)(ember-source@5.6.0)(flatpickr@4.6.13)(webpack@5.90.3):
+    resolution: {integrity: sha512-EnjwaHAUxH1Z5cBjDgUQwR4GTMI+8tlphH4CzKTYhbwIaESUTlNGmHXYR/D4T8RSzF/Sp0Wm0F3+309NqUUQew==}
+    engines: {node: 18.* || >= 20, pnpm: ^8.14.1}
     peerDependencies:
-      ember-source: ^3.28.0 || ^4.0.0
+      ember-source: ^4.8.0 || ^5.0.0
+      flatpickr: ^4.0.0
     dependencies:
       '@ember/render-modifiers': 2.1.0(@babel/core@7.23.9)(@glint/template@1.2.2)(ember-source@5.6.0)
-      '@glimmer/component': 1.1.2(@babel/core@7.23.9)
-      '@glimmer/tracking': 1.1.2
-      broccoli-funnel: 3.0.8
-      broccoli-merge-trees: 4.2.0
-      broccoli-stew: 3.0.0
-      ember-cli-babel: 7.26.11
-      ember-cli-htmlbars: 6.3.0
-      ember-cli-typescript: 5.2.1
+      '@ember/test-helpers': 3.3.0(@glint/template@1.2.2)(ember-source@5.6.0)(webpack@5.90.3)
+      '@embroider/addon-shim': 1.8.7
       ember-source: 5.6.0(@babel/core@7.23.9)(@glimmer/component@1.1.2)(@glint/template@1.2.2)(rsvp@4.8.5)(webpack@5.90.3)
       flatpickr: 4.6.13
     transitivePeerDependencies:
       - '@babel/core'
       - '@glint/template'
       - supports-color
+      - webpack
     dev: false
 
   /ember-focus-trap@1.1.0(ember-source@5.6.0):
