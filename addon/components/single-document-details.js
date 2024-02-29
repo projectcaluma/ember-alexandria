@@ -2,6 +2,7 @@ import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { restartableTask, dropTask } from "ember-concurrency";
+import lang from "flatpickr/dist/l10n";
 import { DateTime } from "luxon";
 
 import DocumentCard from "./document-card";
@@ -24,12 +25,19 @@ export default class SingleDocumentDetailsComponent extends DocumentCard {
   @tracked editDate = false;
   @tracked validTitle = true;
 
+  get locale() {
+    return this.intl.primaryLocale.split("-")[0];
+  }
+
+  get flatpickrLocale() {
+    return lang[this.locale];
+  }
+
   get dateFormat() {
-    const language = this.intl.primaryLocale.split("-")[0];
     const defaultFormat = "m/d/Y";
     const formats = { de: "d.m.Y", fr: "d.m.Y", en: defaultFormat };
 
-    return formats[language] ?? defaultFormat;
+    return formats[this.locale] ?? defaultFormat;
   }
 
   get displayConvertButton() {

@@ -2,6 +2,8 @@
 @import "custom-uikit-rules";
 @import "ember-uikit";
 @import "skeleton-loading";
+@import "flatpickr/dist/flatpickr";
+@import "flatpickr/dist/themes/airbnb";
 
 $tag-hover-shadow: 0 2px 8px rgba(0 0 0 / 20%);
 
