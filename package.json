@@ -70,7 +70,7 @@
     "@adfinis/eslint-config": "2.1.0",
     "@adfinis/semantic-release-config": "4.1.0",
     "@babel/eslint-parser": "7.23.10",
-    "@babel/plugin-proposal-decorators": "7.23.9",
+    "@babel/plugin-proposal-decorators": "7.24.0",
     "@ember/test-helpers": "3.3.0",
     "@embroider/test-setup": "3.0.3",
     "@faker-js/faker": "8.4.1",
