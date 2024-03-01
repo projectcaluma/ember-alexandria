@@ -7,6 +7,7 @@ export default class AlexandriaConfigService extends Service {
   zipDownloadNamespace = undefined;
 
   enablePDFConversion = false;
+  enableWebDAV = false;
 
   markIcons = {};
 
