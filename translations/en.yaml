@@ -73,6 +73,7 @@ alexandria:
     created-by-group: "Created by group"
     replace: "Replace"
     convert: "To PDF"
+    web-dav: "Edit"
     tags:
       title: "Tags"
       add: "Add"
