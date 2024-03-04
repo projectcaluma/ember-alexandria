@@ -54,7 +54,7 @@
     "ember-engines-router-service": "^0.5.1",
     "ember-fetch": "^8.1.2",
     "ember-flatpickr": "^7.1.0",
-    "ember-intl": "^6.4.1",
+    "ember-intl": "^6.5.1",
     "ember-localized-model": "^3.2.2",
     "ember-modifier": "^4.1.0",
     "ember-promise-helpers": "^2.0.0",
