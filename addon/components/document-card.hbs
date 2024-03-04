@@ -11,7 +11,7 @@
     </div>
   {{/if}}
   <div class="uk-card-media-top uk-text-center uk-border-bottom">
-    {{#if this.showloadingstate}}
+    {{#if this.documents.download.isRunning}}
       <div class="uk-padding" data-test-loading>
         <span uk-spinner="ratio: 4.5" class="uk-position-relative"></span>
         <FaIcon
@@ -63,7 +63,7 @@
       data-test-context-menu
       as |Item|
     >
-      <Item data-test-download {{on "click" (perform this.download)}}>
+      <Item data-test-download {{on "click" (fn this.documents.download.perform (array @document))}}>
         <FaIcon @icon="file-download" />
         {{t "alexandria.download"}}
       </Item>

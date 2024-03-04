@@ -2,6 +2,8 @@ import { action } from "@ember/object";
 import Service, { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import mime from "mime/lite";
+import { task } from "ember-concurrency";
+import { saveAs } from "file-saver";
 
 import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
 
@@ -11,6 +13,7 @@ export default class AlexandriaDocumentsService extends Service {
   @service router;
   @service notification;
   @service intl;
+  @service fetch;
 
   @tracked selectedDocuments = [];
   @tracked shortcutsDisabled = false;
@@ -179,4 +182,42 @@ export default class AlexandriaDocumentsService extends Service {
   disableShortcuts() {
     this.shortcutsDisabled = true;
   }
+
+  download = task({ drop: true }, async (documents) => {
+    try {
+      if (documents.length === 1) {
+        const doc = documents[0];
+        const file = doc.latestFile.value;
+        await file.download.perform();
+        return;
+      }
+
+      // If we want to save a zip of files we need to do some more stuff
+      // Compile an array of original file PKs
+      const originalFilePKs = encodeURIComponent(
+        documents
+          .map((doc) => doc.files.find((file) => file.variant === "original"))
+          .map((f) => f.id)
+          .join(","),
+      );
+
+      let url = this.config?.zipDownloadHost || ""; // in case we need to send the zipDownload to another URL
+      url += this.config?.zipDownloadNamespace || ""; // in case we need to namespace the alexandria api
+      url += "/api/v1/files/multi";
+      url += `?filter[files]=${originalFilePKs}`; // list of files we want to download
+
+      // Some alexandria applications require the document-meta as well
+      if (this.config.modelMetaFilters.document) {
+        url += `&filter[document-metainfo]=${encodeURIComponent(
+          JSON.stringify(this.config.modelMetaFilters.document),
+        )}`;
+      }
+
+      const transfer = await this.fetch.fetch(url, { mode: "cors" });
+      const bytes = await transfer.blob();
+      saveAs(bytes, `Download-${documents.length}-files.zip`);
+    } catch (error) {
+      new ErrorHandler(this, error).notify("alexandria.errors.save-file");
+    }
+  });
 }

@@ -1,23 +1,20 @@
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
+import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { task } from "ember-concurrency";
 import { DateTime } from "luxon";
 
-import DocumentCard from "./document-card";
-
 import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
 
-// TODO: This should be refactored and the SingleDocumentDetailsComponent should NOT
-// be inheriting from DocumentCard
-export default class SingleDocumentDetailsComponent extends DocumentCard {
+export default class SingleDocumentDetailsComponent extends Component {
   @service("alexandria-documents") documents;
   @service("alexandria-config") config;
   @service("alexandria-side-panel") sidePanel;
-  @service router;
   @service intl;
   @service store;
   @service fetch;
+  @service notification;
 
   @tracked editTitle = false;
   @tracked editDescription = false;

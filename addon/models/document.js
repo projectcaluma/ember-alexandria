@@ -36,6 +36,7 @@ export default class DocumentModel extends LocalizedModel {
       // convert to array to not mutate the original
       (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
     )[0].downloadUrl;
+    // no need to check for expired URLs here, because the browser caches the images when they are loaded
   });
 
   latestFile = trackedFunction(this, async () => {
