@@ -1,22 +1,12 @@
-import Service from "@ember/service";
 import { render, click } from "@ember/test-helpers";
-import { tracked } from "@glimmer/tracking";
 import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
 import { module, test } from "qunit";
 
-class MockDocumentsService extends Service {
-  @tracked selectedDocuments = [];
-}
-
 module("Integration | Component | document-view", function (hooks) {
   setupRenderingTest(hooks);
   setupMirage(hooks);
-
-  hooks.beforeEach(function () {
-    this.owner.register("service:alexandria-documents", MockDocumentsService);
-  });
 
   test("it renders the documents when in grid view", async function (assert) {
     this.server.createList("document", 3);

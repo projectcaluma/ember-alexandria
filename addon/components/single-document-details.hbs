@@ -9,13 +9,20 @@
 
   <div class="uk-margin uk-margin-remove-top">
     <label class="uk-text-meta" for="alexandria-details-title">
-      <button type="button" {{on "click" (fn this.toggle "editTitle")}} data-test-edit-title>
+      <button
+        type="button"
+        {{on "click" (fn this.toggle "editTitle")}}
+        data-test-edit-title
+      >
         {{t "alexandria.document-details.document-title"}}
         <UkIcon @icon={{if this.editTitle "close" "pencil"}} />
       </button>
     </label>
 
-    <div class="uk-flex uk-flex-middle uk-text-large uk-text-break" data-test-title-container>
+    <div
+      class="uk-flex uk-flex-middle uk-text-large uk-text-break"
+      data-test-title-container
+    >
       <FaIcon
         @icon="file-alt"
         @prefix="far"
@@ -26,7 +33,8 @@
       {{#if this.editTitle}}
         <form {{on "submit" (perform this.saveDocument)}}>
           <input
-            class="uk-input uk-width-auto {{unless this.validTitle "uk-form-danger"}}"
+            class="uk-input uk-width-auto
+              {{unless this.validTitle 'uk-form-danger'}}"
             id="alexandria-details-title"
             type="text"
             placeholder={{t "alexandria.document-details.title-placeholder"}}
@@ -81,14 +89,20 @@
       {{#if @document.description}}
         <div class="document-description">{{@document.description}}</div>
       {{else}}
-        <div class="uk-text-italic">{{t "alexandria.document-details.add-description"}}</div>
+        <div class="uk-text-italic">{{t
+            "alexandria.document-details.add-description"
+          }}</div>
       {{/if}}
     {{/if}}
   </div>
 
   <div class="uk-margin">
     <label class="uk-text-meta uk-display-block" for="date">
-      <button type="button" {{on "click" (fn this.toggle "editDate")}} data-test-edit-date>
+      <button
+        type="button"
+        {{on "click" (fn this.toggle "editDate")}}
+        data-test-edit-date
+      >
         {{t "alexandria.document-details.document-date"}}
         <UkIcon @icon={{if this.editDate "close" "pencil"}} />
       </button>
@@ -117,7 +131,9 @@
         }}
       </div>
     {{else}}
-      <div class="uk-text-italic">{{t "alexandria.document-details.add-date"}}</div>
+      <div class="uk-text-italic">{{t
+          "alexandria.document-details.add-date"
+        }}</div>
     {{/if}}
   </div>
 
@@ -147,7 +163,10 @@
           @icon="user"
           @fixedWidth={{true}}
           class="uk-margin-small-right"
-          {{uk-tooltip (t "alexandria.document-details.created-by-user") pos="left"}}
+          {{uk-tooltip
+            (t "alexandria.document-details.created-by-user")
+            pos="left"
+          }}
         />
         {{await (resolve-user @document.createdByUser)}}
       </li>
@@ -156,7 +175,10 @@
           @icon="users"
           @fixedWidth={{true}}
           class="uk-margin-small-right"
-          {{uk-tooltip (t "alexandria.document-details.created-by-group") pos="left"}}
+          {{uk-tooltip
+            (t "alexandria.document-details.created-by-group")
+            pos="left"
+          }}
         />
         {{await (resolve-group @document.createdByGroup)}}
       </li>
@@ -182,7 +204,7 @@
         <UkButton
           @size="small"
           class="uk-width-1"
-          @onClick={{perform this.convertDocument}}
+          @onClick={{this.convertDocument.perform}}
           data-test-convert-button
         >
           {{t "alexandria.document-details.convert"}}
@@ -196,7 +218,7 @@
         type="file"
         aria-label="File input"
         accept={{@document.category.allowedMimeTypes}}
-        {{on "change" (perform this.uploadReplacement)}}
+        {{on "change" this.uploadReplacement.perform}}
       />
 
       <button
@@ -247,32 +269,35 @@
               <span class="uk-width-expand">
                 {{~await (resolve-user file.createdByUser)~}}
               </span>
-              <span>
+              <span class="uk-flex uk-flex-middle">
                 <UkIcon @icon="info" class="uk-icon-link" />
                 <div uk-dropdown pos="left-bottom">
                   <p>
-                    <span class="uk-text-bold">{{t "alexandria.document-details.version.filename"}}</span>
-                    <br>
+                    <span class="uk-text-bold">{{t
+                        "alexandria.document-details.version.filename"
+                      }}</span>
+                    <br />
                     <span class="uk-text-break">{{file.name}}</span>
                   </p>
                   {{#if file.checksum}}
                     <p>
-                      <span class="uk-text-bold">{{t "alexandria.document-details.version.checksum"}}</span>
-                      <br>
+                      <span class="uk-text-bold">{{t
+                          "alexandria.document-details.version.checksum"
+                        }}</span>
+                      <br />
                       <span class="uk-text-break">{{file.checksum}}</span>
                     </p>
                   {{/if}}
                 </div>
-                <a
-                  uk-icon="download"
-                  class="uk-icon-link"
+                <button
+                  type="button"
+                  class="uk-button uk-button-link uk-flex uk-flex-middle uk-margin-small-left"
                   data-test-file-download-link
-                  href={{file.downloadUrl}}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  {{on "click" file.download.perform}}
                 >
+                  <UkIcon @icon="download" />
                   <span hidden>{{t "alexandria.download"}}</span>
-                </a>
+                </button>
               </span>
             </li>
           {{/each}}

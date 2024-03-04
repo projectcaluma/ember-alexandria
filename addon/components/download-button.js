@@ -1,5 +1,6 @@
-import DocumentCard from "./document-card";
+import { inject as service } from "@ember/service";
+import Component from "@glimmer/component";
 
-// TODO: This should be refactored and the DownloadButtonComponent should NOT
-// be inheriting from DocumentCard
-export default class DownloadButtonComponent extends DocumentCard {}
+export default class DownloadButtonComponent extends Component {
+  @service("alexandria-documents") documents;
+}

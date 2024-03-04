@@ -1,7 +1,8 @@
 import { setupTest } from "dummy/tests/helpers";
 import { setupMirage } from "ember-cli-mirage/test-support";
+import * as fileSaver from "file-saver";
 import { module, test } from "qunit";
-import { fake } from "sinon";
+import { fake, stub } from "sinon";
 
 module("Unit | Service | alexandria-documents", function (hooks) {
   setupTest(hooks);
@@ -87,5 +88,26 @@ module("Unit | Service | alexandria-documents", function (hooks) {
 
     assert.strictEqual(requests.length, 1);
     assert.ok(requests[0].url.endsWith("files"));
+  });
+
+  test("it downloads documents", async function (assert) {
+    const service = this.owner.lookup("service:alexandria-documents");
+    const store = this.owner.lookup("service:store");
+    const fileSaverStub = stub(fileSaver, "saveAs");
+
+    const document = this.server.create("document");
+    const file = this.server.create("file", {
+      document,
+      name: document.title.en,
+      variant: "original",
+      downloadUrl: "http://earth.planet?expires=123456",
+    });
+    const documentModel = await store.findRecord("document", document.id);
+    const fileModel = await store.findRecord("file", file.id);
+    documentModel.latestFile = { value: fileModel };
+    await service.download.perform([documentModel]);
+
+    assert.strictEqual(fileSaverStub.args[0][0], file.downloadUrl);
+    assert.strictEqual(fileSaverStub.args[0][1], document.title.en);
   });
 });
