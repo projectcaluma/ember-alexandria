@@ -1,3 +1,16 @@
+# [7.0.0-beta.6](https://github.com/projectcaluma/ember-alexandria/compare/v7.0.0-beta.5...v7.0.0-beta.6) (2024-03-05)
+
+
+### Bug Fixes
+
+* **convert:** typo for success message ([#708](https://github.com/projectcaluma/ember-alexandria/issues/708)) ([2a9cdae](https://github.com/projectcaluma/ember-alexandria/commit/2a9cdae38461c9c819f478e3cf77f9a1f5889e59))
+* update and fix flatpickr integration ([#710](https://github.com/projectcaluma/ember-alexandria/issues/710)) ([74d7f50](https://github.com/projectcaluma/ember-alexandria/commit/74d7f50d22282c3cca1e413a3ac9a4a331df8d8c))
+
+
+### Features
+
+* add web dav edit integration ([9d63feb](https://github.com/projectcaluma/ember-alexandria/commit/9d63feb631ce074da9a895259e256fff76263ffc))
+
 # [7.0.0-beta.5](https://github.com/projectcaluma/ember-alexandria/compare/v7.0.0-beta.4...v7.0.0-beta.5) (2024-02-28)
 
 
