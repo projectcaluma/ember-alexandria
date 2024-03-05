@@ -1,7 +1,8 @@
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
-import { restartableTask, dropTask } from "ember-concurrency";
+import { task } from "ember-concurrency";
+import lang from "flatpickr/dist/l10n";
 import { DateTime } from "luxon";
 
 import DocumentCard from "./document-card";
@@ -24,22 +25,34 @@ export default class SingleDocumentDetailsComponent extends DocumentCard {
   @tracked editDate = false;
   @tracked validTitle = true;
 
+  get locale() {
+    return this.intl.primaryLocale.split("-")[0];
+  }
+
+  get flatpickrLocale() {
+    return lang[this.locale];
+  }
+
   get dateFormat() {
-    const language = this.intl.primaryLocale.split("-")[0];
     const defaultFormat = "m/d/Y";
     const formats = { de: "d.m.Y", fr: "d.m.Y", en: defaultFormat };
 
-    return formats[language] ?? defaultFormat;
+    return formats[this.locale] ?? defaultFormat;
+  }
+
+  get isWordProcessingFormat() {
+    return [
+      "application/vnd.oasis.opendocument.text",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ].includes(this.args.document.latestFile?.value?.mimeType);
+  }
+
+  get displayWebDAVButton() {
+    return this.config.enableWebDAV && this.isWordProcessingFormat;
   }
 
   get displayConvertButton() {
-    return (
-      this.config.enablePDFConversion &&
-      [
-        "application/vnd.oasis.opendocument.text",
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-      ].includes(this.args.document.latestFile?.value?.mimeType)
-    );
+    return this.config.enablePDFConversion && this.isWordProcessingFormat;
   }
 
   @action updateDocumentTitle({ target: { value: title } }) {
@@ -75,38 +88,37 @@ export default class SingleDocumentDetailsComponent extends DocumentCard {
     this.documents.enableShortcuts();
   }
 
-  @restartableTask *saveDocument(event) {
+  saveDocument = task({ restartable: true }, async (event) => {
     event?.preventDefault();
 
     try {
-      yield this.args.document.save();
+      await this.args.document.save();
       this.resetState();
       this.notification.success(this.intl.t("alexandria.success.update"));
     } catch (error) {
       this.args.document.rollbackAttributes();
       new ErrorHandler(this, error).notify("alexandria.errors.update");
     }
-  }
+  });
 
-  @dropTask *uploadReplacement(event) {
+  uploadReplacement = task({ drop: true }, async (event) => {
     try {
       const [file] = event.target.files;
-      yield this.documents.replace(this.args.document, file);
+      await this.documents.replace(this.args.document, file);
     } catch (error) {
       new ErrorHandler(this, error).notify(
         "alexandria.errors.replace-document",
       );
     }
-  }
+  });
 
-  @dropTask
-  *convertDocument(event) {
+  convertDocument = task({ drop: true }, async (event) => {
     event?.preventDefault();
     try {
       const modelName = "document";
       const adapter = this.store.adapterFor(modelName);
       const url = adapter.buildURL(modelName, this.args.document.id);
-      yield this.fetch.fetch(`${url}/convert`, {
+      await this.fetch.fetch(`${url}/convert`, {
         method: "POST",
       });
 
@@ -116,5 +128,18 @@ export default class SingleDocumentDetailsComponent extends DocumentCard {
     } catch (error) {
       new ErrorHandler(this, error).notify("alexandria.errors.convert-pdf");
     }
-  }
+  });
+
+  openWebDAV = task({ drop: true }, async (event) => {
+    event?.preventDefault();
+    try {
+      const fileId = this.args.document.latestFile.value.id;
+
+      const file = await this.store.findRecord("file", fileId);
+
+      window.open(file.webdavUrl, "_blank");
+    } catch (error) {
+      new ErrorHandler(this, error).notify("alexandria.errors.open-webdav");
+    }
+  });
 }
