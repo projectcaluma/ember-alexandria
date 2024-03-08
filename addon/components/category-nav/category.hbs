@@ -39,8 +39,9 @@
         {{@category.name}}
       </div>
       {{#if @category.description}}
-        <div class="uk-margin-auto-left uk-margin-right uk-text-muted" {{uk-tooltip @category.description}}>
-          <UkIcon @icon="info" />
+        <UkIcon class="uk-margin-auto-left uk-margin-right uk-text-muted category-nav__category__info-icon" @icon="info" />
+        <div uk-dropdown class="category-nav__category__info-box">
+          <MarkdownToHtml @markdown={{@category.description}} />
         </div>
       {{/if}}
     </div>
