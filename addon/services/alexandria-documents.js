@@ -1,9 +1,9 @@
 import { action } from "@ember/object";
 import Service, { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
-import mime from "mime/lite";
 import { task } from "ember-concurrency";
 import { saveAs } from "file-saver";
+import mime from "mime/lite";
 
 import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
 
@@ -187,18 +187,16 @@ export default class AlexandriaDocumentsService extends Service {
     try {
       if (documents.length === 1) {
         const doc = documents[0];
+        await doc.reload(); // always reload the document to get the latest file (webdav)
+        await doc.latestFile.promise;
         const file = doc.latestFile.value;
-        await file.download.perform();
-        return;
+        return await file.download.perform();
       }
 
       // If we want to save a zip of files we need to do some more stuff
       // Compile an array of original file PKs
       const originalFilePKs = encodeURIComponent(
-        documents
-          .map((doc) => doc.files.find((file) => file.variant === "original"))
-          .map((f) => f.id)
-          .join(","),
+        documents.map((doc) => doc.latestFile.value.id).join(","),
       );
 
       let url = this.config?.zipDownloadHost || ""; // in case we need to send the zipDownload to another URL
