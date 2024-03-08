@@ -1,8 +1,7 @@
 import { setupTest } from "dummy/tests/helpers";
 import { setupMirage } from "ember-cli-mirage/test-support";
-import * as fileSaver from "file-saver";
 import { module, test } from "qunit";
-import { fake, stub } from "sinon";
+import { fake } from "sinon";
 
 module("Unit | Service | alexandria-documents", function (hooks) {
   setupTest(hooks);
@@ -93,7 +92,6 @@ module("Unit | Service | alexandria-documents", function (hooks) {
   test("it downloads documents", async function (assert) {
     const service = this.owner.lookup("service:alexandria-documents");
     const store = this.owner.lookup("service:store");
-    const fileSaverStub = stub(fileSaver, "saveAs");
 
     const document = this.server.create("document");
     const file = this.server.create("file", {
@@ -107,7 +105,12 @@ module("Unit | Service | alexandria-documents", function (hooks) {
     documentModel.latestFile = { value: fileModel };
     await service.download.perform([documentModel]);
 
-    assert.strictEqual(fileSaverStub.args[0][0], file.downloadUrl);
-    assert.strictEqual(fileSaverStub.args[0][1], document.title.en);
+    const requests = this.server.pretender.handledRequests;
+
+    assert.strictEqual(requests.length, 4);
+    assert.ok(requests[0].url.includes("documents"));
+    assert.ok(requests[1].url.includes("files"));
+    assert.ok(requests[2].url.includes("documents"));
+    assert.ok(requests[3].url.includes("files"));
   });
 });

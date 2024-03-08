@@ -1,8 +1,7 @@
 import Model, { attr, belongsTo, hasMany } from "@ember-data/model";
 import { task } from "ember-concurrency";
-import { saveAs } from "file-saver";
-import { DateTime } from "luxon";
 
+import { isDownloadUrlExpired } from "ember-alexandria/helpers/download";
 import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
 
 export default class FileModel extends Model {
@@ -28,9 +27,7 @@ export default class FileModel extends Model {
   @hasMany("file", { inverse: "original", async: true }) renderings;
 
   get isDownloadUrlExpired() {
-    const expiryRegex = /expires=([0-9]+)/;
-    const match = this.downloadUrl.match(expiryRegex);
-    return DateTime.fromSeconds(Number(match[1])) < DateTime.now();
+    return isDownloadUrlExpired(this.downloadUrl);
   }
 
   download = task({ drop: true }, async () => {
@@ -38,18 +35,8 @@ export default class FileModel extends Model {
       if (this.isDownloadUrlExpired) {
         await this.reload();
       }
-      const extension = this.name.includes(".")
-        ? `.${this.name.split(".").slice(-1)[0]}`
-        : "";
-      const documentTitle = this.document.get("title");
-      const fileName = documentTitle.endsWith(extension)
-        ? documentTitle
-        : documentTitle + extension;
 
-      // keep in mind that for the filename to be considered, the request needs
-      // to be same-origin (i.e. object storage needs to be deployed with a proxy)
-      // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a?retiredLocale=de#attributes
-      saveAs(this.downloadUrl, fileName);
+      open(this.downloadUrl);
     } catch (error) {
       new ErrorHandler(this, error).notify("alexandria.errors.save-file");
     }
