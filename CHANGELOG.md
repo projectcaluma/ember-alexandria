@@ -1,3 +1,27 @@
+# [7.0.0](https://github.com/projectcaluma/ember-alexandria/compare/v6.0.1...v7.0.0) (2024-03-11)
+
+
+### Bug Fixes
+
+* **categories:** format alexandria category descriptions ([c7ff8b0](https://github.com/projectcaluma/ember-alexandria/commit/c7ff8b054f10e3a20b90d0f624426590ae101eeb))
+* **convert:** typo for success message ([#708](https://github.com/projectcaluma/ember-alexandria/issues/708)) ([2a9cdae](https://github.com/projectcaluma/ember-alexandria/commit/2a9cdae38461c9c819f478e3cf77f9a1f5889e59))
+* **documents:** fix inital selection with ctrl ([#729](https://github.com/projectcaluma/ember-alexandria/issues/729)) ([ef80fc3](https://github.com/projectcaluma/ember-alexandria/commit/ef80fc3e17524b079d5f62af9fda005a368bbfa6))
+* **thumbnail:** make sure thumbnail of latest file is rendered ([#679](https://github.com/projectcaluma/ember-alexandria/issues/679)) ([38baf73](https://github.com/projectcaluma/ember-alexandria/commit/38baf73c868fe7ccabf92d9cae5dc7bf94a84e7d))
+* update and fix flatpickr integration ([#710](https://github.com/projectcaluma/ember-alexandria/issues/710)) ([74d7f50](https://github.com/projectcaluma/ember-alexandria/commit/74d7f50d22282c3cca1e413a3ac9a4a331df8d8c))
+
+
+### Features
+
+* add button to convert to pdf ([#700](https://github.com/projectcaluma/ember-alexandria/issues/700)) ([223febe](https://github.com/projectcaluma/ember-alexandria/commit/223febe67c6475e6d91f8d746e6ca6e465b4c1ed))
+* add web dav edit integration ([9d63feb](https://github.com/projectcaluma/ember-alexandria/commit/9d63feb631ce074da9a895259e256fff76263ffc))
+* **api:** upload files directly via alexandria API ([f934fc4](https://github.com/projectcaluma/ember-alexandria/commit/f934fc487275252008fd069936b0afd3cdc7bb5f))
+* change displayed modified date to be latest file creation ([6946f6f](https://github.com/projectcaluma/ember-alexandria/commit/6946f6fae7488c4843b83d7359ab04aed23509f2))
+
+
+### BREAKING CHANGES
+
+* **api:** Requires alexandria backend v3.0.0-beta.3
+
 # [7.0.0-beta.1](https://github.com/projectcaluma/ember-alexandria/compare/v6.0.1...v7.0.0-beta.1) (2024-01-18)
 
 
