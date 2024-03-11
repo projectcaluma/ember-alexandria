@@ -140,14 +140,14 @@ devDependencies:
     specifier: 8.2.2
     version: 8.2.2
   ember-cli:
-    specifier: 5.6.0
-    version: 5.6.0
+    specifier: 5.7.0
+    version: 5.7.0
   ember-cli-clean-css:
     specifier: 3.0.0
     version: 3.0.0
   ember-cli-dependency-checker:
     specifier: 3.3.2
-    version: 3.3.2(ember-cli@5.6.0)
+    version: 3.3.2(ember-cli@5.7.0)
   ember-cli-inject-live-reload:
     specifier: 2.1.0
     version: 2.1.0
@@ -752,15 +752,6 @@ packages:
 
   /@babel/plugin-syntax-class-static-block@7.14.5(@babel/core@7.24.0):
     resolution: {integrity: sha512-b+YyPmr6ldyNnM6sqYeMWE+bgJcJpO6yS4QD7ymxgH34GBPNDM/THBh8iunyvKIZztiwLH4CJZ0RxTk9emgpjw==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.24.0
-      '@babel/helper-plugin-utils': 7.24.0
-
-  /@babel/plugin-syntax-decorators@7.23.3(@babel/core@7.24.0):
-    resolution: {integrity: sha512-cf7Niq4/+/juY67E0PbgH0TDhLQ5J7zS8C/Q5FFx+DWyrRa9sUQdTXkjqKu8zGvuqr7vw1muKiukseihU+PJDA==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -6604,14 +6595,14 @@ packages:
       - supports-color
     dev: true
 
-  /ember-cli-dependency-checker@3.3.2(ember-cli@5.6.0):
+  /ember-cli-dependency-checker@3.3.2(ember-cli@5.7.0):
     resolution: {integrity: sha512-PwkrW5oYsdPWwt+0Tojufmv/hxVETTjkrEdK7ANQB2VSnqpA5UcYubwpQM9ONuR2J8wyNDMwEHlqIrk/FYtBsQ==}
     engines: {node: '>= 6'}
     peerDependencies:
       ember-cli: ^3.2.0 || >=4.0.0
     dependencies:
       chalk: 2.4.2
-      ember-cli: 5.6.0
+      ember-cli: 5.7.0
       find-yarn-workspace-root: 1.2.1
       is-git-url: 1.0.0
       resolve: 1.22.8
@@ -6935,8 +6926,8 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /ember-cli@5.6.0:
-    resolution: {integrity: sha512-9ARiTnNgQDX6RPC37PjlEc58/e8p7pgmNu6GcmARq4iBLeTWWW+2mgw3HKoFd91ob1EdRiglskLYzgboRxtBBw==}
+  /ember-cli@5.7.0:
+    resolution: {integrity: sha512-MKHVcRpDk1ENUCCRGGqZ8yfkCsszvSUbwO09h14vqcfaqcJkOWI+p0oynmdZQMM8OkZp484oLe3+CZCsXO9LfA==}
     engines: {node: '>= 18'}
     hasBin: true
     dependencies:
@@ -12738,7 +12729,7 @@ packages:
     resolution: {integrity: sha512-G7Hk1Q+UJ5DvlNAoJZObxANkBZGiGdp589rVcTW/tYqJWJ5rwfraSnKSQaETN8Epaytw8J40nS/zC7bcHGv36w==}
     dependencies:
       '@babel/core': 7.24.0
-      '@babel/plugin-syntax-decorators': 7.23.3(@babel/core@7.24.0)
+      '@babel/plugin-syntax-decorators': 7.24.0(@babel/core@7.24.0)
       '@babel/plugin-transform-typescript': 7.23.6(@babel/core@7.24.0)
       prettier: 2.8.8
     transitivePeerDependencies:
