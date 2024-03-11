@@ -157,9 +157,12 @@ export default class DocumentViewComponent extends Component {
   }
 
   @action handleDocumentSelection(selectedDocument, event) {
-    // SIMPLE CLICK WITH NO MODIFIER KEYS
     const isNoDocSelected = this.documents.selectedDocuments.length === 0;
-    if ((!event.ctrlKey && !event.shiftKey) || isNoDocSelected) {
+    // SIMPLE CLICK WITH NO MODIFIER KEYS
+    if (
+      (!event.ctrlKey && !event.shiftKey) ||
+      (event.shiftKey && isNoDocSelected)
+    ) {
       this.documents.clearDocumentSelection();
       this.documents.selectDocument(selectedDocument);
     }
