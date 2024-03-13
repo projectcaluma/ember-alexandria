@@ -126,7 +126,7 @@ export default class DocumentViewComponent extends Component {
           count: files.length,
         }),
       );
-      this.afterUpload();
+      this.refreshDocumentList();
     } catch (error) {
       new ErrorHandler(this, error).notify(
         "alexandria.errors.upload-document",
