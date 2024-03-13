@@ -1,3 +1,10 @@
+## [7.0.1](https://github.com/projectcaluma/ember-alexandria/compare/v7.0.0...v7.0.1) (2024-03-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependencies ([4f18782](https://github.com/projectcaluma/ember-alexandria/commit/4f18782fc4383baafa308bcb2278e4e3e16bb494))
+
 # [7.0.0](https://github.com/projectcaluma/ember-alexandria/compare/v6.0.1...v7.0.0) (2024-03-11)
 
 
