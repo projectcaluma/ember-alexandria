@@ -4,7 +4,7 @@ import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { timeout, restartableTask } from "ember-concurrency";
-import { trackedFunction } from "ember-resources/util/function";
+import { trackedFunction } from "reactiveweb/function";
 
 export default class TagManagerComponent extends Component {
   @service("alexandria-tags") tagService;

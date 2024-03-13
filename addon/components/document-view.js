@@ -3,7 +3,7 @@ import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { dropTask, task } from "ember-concurrency";
-import { task as trackedTask } from "ember-resources/util/ember-concurrency";
+import { task as trackedTask } from "reactiveweb/ember-concurrency";
 
 import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
 

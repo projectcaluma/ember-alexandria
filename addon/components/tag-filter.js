@@ -1,7 +1,8 @@
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
-import { trackedFunction } from "ember-resources/util/function";
+import { trackedFunction } from "reactiveweb/function";
+
 export default class TagFilterComponent extends Component {
   @service router;
   @service("alexandria-tags") tags;
