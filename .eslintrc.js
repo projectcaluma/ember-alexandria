@@ -5,4 +5,7 @@ module.exports = {
   settings: {
     "import/internal-regex": "^ember-alexandria/",
   },
+  rules: {
+    "ember/no-runloop": "warn",
+  },
 };
