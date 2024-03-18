@@ -2,7 +2,6 @@ import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task } from "ember-concurrency";
-import lang from "flatpickr/dist/l10n";
 import { DateTime } from "luxon";
 
 import DocumentCard from "./document-card";
@@ -27,10 +26,6 @@ export default class SingleDocumentDetailsComponent extends DocumentCard {
 
   get locale() {
     return this.intl.primaryLocale.split("-")[0];
-  }
-
-  get flatpickrLocale() {
-    return lang[this.locale];
   }
 
   get dateFormat() {
