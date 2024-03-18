@@ -93,8 +93,8 @@ dependencies:
     specifier: ^4.0.3
     version: 4.0.3(ember-source@5.7.0)
   ember-uikit:
-    specifier: ^9.0.1
-    version: 9.0.1(@glint/template@1.3.0)(ember-source@5.7.0)(webpack@5.90.3)
+    specifier: ^9.1.0
+    version: 9.1.0(@glint/template@1.3.0)(ember-source@5.7.0)(webpack@5.90.3)
   file-saver:
     specifier: ^2.0.5
     version: 2.0.5
@@ -7985,11 +7985,11 @@ packages:
       - supports-color
     dev: true
 
-  /ember-uikit@9.0.1(@glint/template@1.3.0)(ember-source@5.7.0)(webpack@5.90.3):
-    resolution: {integrity: sha512-gNAGHiIWgX3Hxd2P5ejKG//K9zKG31CEjhxi4rXxnljFVeZtp5JtTKBligi9/RIxqUq2rZsdSVXO/dEB0x3kCA==}
+  /ember-uikit@9.1.0(@glint/template@1.3.0)(ember-source@5.7.0)(webpack@5.90.3):
+    resolution: {integrity: sha512-O9YWhDZkqDT3oIBVKB64se8Ju5lkJLMqZTg7mxCjZfCTdG5MPdqTSj5i+VjOsgw9UNQnKXw0kzwENMEW8eD4Og==}
     engines: {node: '>= 18'}
     peerDependencies:
-      ember-source: ^4.0.0
+      ember-source: '>= 4.0.0'
     dependencies:
       '@babel/core': 7.24.0
       '@ember/string': 3.1.1
