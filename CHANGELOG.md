@@ -1,3 +1,10 @@
+## [7.0.3](https://github.com/projectcaluma/ember-alexandria/compare/v7.0.2...v7.0.3) (2024-03-18)
+
+
+### Bug Fixes
+
+* only pass locale string to flatpickr ([709c415](https://github.com/projectcaluma/ember-alexandria/commit/709c415832b0d70e954333dae942c8ec217aad83))
+
 ## [7.0.2](https://github.com/projectcaluma/ember-alexandria/compare/v7.0.1...v7.0.2) (2024-03-18)
 
 
