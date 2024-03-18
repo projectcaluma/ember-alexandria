@@ -1,3 +1,10 @@
+## [7.0.2](https://github.com/projectcaluma/ember-alexandria/compare/v7.0.1...v7.0.2) (2024-03-18)
+
+
+### Bug Fixes
+
+* call correct method in document view ([45f6c83](https://github.com/projectcaluma/ember-alexandria/commit/45f6c83bd7b2638bf3eb15af86682a7ae1228703))
+
 ## [7.0.1](https://github.com/projectcaluma/ember-alexandria/compare/v7.0.0...v7.0.1) (2024-03-13)
 
 
