@@ -1,3 +1,11 @@
+## [7.0.4](https://github.com/projectcaluma/ember-alexandria/compare/v7.0.3...v7.0.4) (2024-03-19)
+
+
+### Bug Fixes
+
+* **details:** make sure description is resetted on document change ([7ed9583](https://github.com/projectcaluma/ember-alexandria/commit/7ed9583361330a60e5d64890fadbb8601b4a23a4))
+* **errors:** display root level validation messages from backend ([89a3ef8](https://github.com/projectcaluma/ember-alexandria/commit/89a3ef889632233e097e02a1796fdc1bc15eeae8))
+
 ## [7.0.3](https://github.com/projectcaluma/ember-alexandria/compare/v7.0.2...v7.0.3) (2024-03-18)
 
 
