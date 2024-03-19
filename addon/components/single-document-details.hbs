@@ -66,10 +66,9 @@
         class="uk-textarea"
         id="alexandria-details-description"
         rows="10"
+        value="{{~@document.description~}}"
         {{on "input" this.updateDocumentDescription}}
-      >
-        {{~@document.description~}}
-      </textarea>
+      ></textarea>
       <div class="uk-text-right uk-margin-small-top">
         <button
           class="uk-icon-button cursor-pointer"
