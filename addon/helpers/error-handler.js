@@ -28,6 +28,8 @@ export class ErrorHandler {
       return this.notification.danger(firstError.detail);
     }
 
-    return this.notification.danger(this.intl.t(...args));
+    if (args.length) {
+      return this.notification.danger(this.intl.t(...args));
+    }
   }
 }

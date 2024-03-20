@@ -4,7 +4,7 @@
   {{on "dragenter" this.onDragEnter}}
   {{on "dragleave" this.onDragLeave}}
   {{on "dragover" this.onDragOver}}
-  {{on "drop" (perform this.onDrop)}}
+  {{on "drop" this.onDrop.perform}}
 >
   <div
     class="uk-link-reset {{if this.isActive "active"}}"
