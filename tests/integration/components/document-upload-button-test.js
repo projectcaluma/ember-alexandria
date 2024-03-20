@@ -18,7 +18,7 @@ module("Integration | Component | document-upload-button", function (hooks) {
   test("upload a file with a predefined category", async function (assert) {
     this.category = this.server.create("category");
 
-    await render(hbs`<DocumentUploadButton @category={{this.category}} />`);
+    await render(hbs`<DocumentUploadButton @categoryId={{this.category}} />`);
 
     assert.dom("[data-test-input]").exists({ count: 1 });
 

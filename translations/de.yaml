@@ -21,6 +21,7 @@ alexandria:
     no-permission: "Sie haben keine Berechtigung, diese Aktion auszuführen."
     move-document: "Beim Verschieben {count, plural, one {des Dokumentes} other {von # Dokumenten}} ist ein Fehler aufgetreten"
     convert-pdf: "Während dem Umwandeln ist ein Fehler aufgetreten."
+    invalid-file-type: "In der Kategorie \"{category}\" können nur {types} hochgeladen werden."
 
   success:
     delete-document: "Das Dokument wurde erfolgreich gelöscht."
