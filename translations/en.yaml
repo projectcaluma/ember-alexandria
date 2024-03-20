@@ -21,6 +21,7 @@ alexandria:
     no-permission: "You don't have permission to perform this action."
     move-document: "While moving {count, plural, one {the document} other {# documents}}, an error occured. Please try again."
     convert-pdf: "While converting, an error occured. Please try again."
+    invalid-file-type: "In category \"{category}\" only {types} can be uploaded."
 
   success:
     delete-document: "Document deleted successfully"

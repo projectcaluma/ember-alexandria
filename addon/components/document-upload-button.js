@@ -16,9 +16,13 @@ export default class DocumentUploadButtonComponent extends Component {
     include: "children",
   }));
 
-  @task *upload(category, { target: { files = [] } = {} }) {
+  get category() {
+    return this.store.peekRecord("category", this.args.categoryId);
+  }
+
+  upload = task(async (category, { target: { files = [] } = {} }) => {
     try {
-      yield this.documents.upload(category, files);
+      await this.documents.upload(category, files);
 
       this.notification.success(
         this.intl.t("alexandria.success.upload-document", {
@@ -37,5 +41,5 @@ export default class DocumentUploadButtonComponent extends Component {
         },
       );
     }
-  }
+  });
 }

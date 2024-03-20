@@ -1,11 +1,17 @@
 import { action } from "@ember/object";
 import Service, { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
+import mime from "mime/lite";
+
+import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
 
 export default class AlexandriaDocumentsService extends Service {
   @service store;
   @service("alexandria-config") config;
   @service router;
+  @service notification;
+  @service intl;
+
   @tracked selectedDocuments = [];
   @tracked shortcutsDisabled = false;
 
@@ -50,30 +56,63 @@ export default class AlexandriaDocumentsService extends Service {
         (await this.store.findRecord("category", category));
     }
 
-    return await Promise.all(
-      Array.from(files).map(async (file) => {
-        const documentModel = this.store.createRecord("document", {
-          category,
-          metainfo: this.config.defaultModelMeta.document,
-          createdByGroup: this.config.activeGroup,
-          modifiedByGroup: this.config.activeGroup,
-        });
-        documentModel.title = file.name;
-        await documentModel.save();
+    for (const file of files) {
+      if (
+        category.allowedMimeTypes &&
+        !category.allowedMimeTypes.includes(file.type)
+      ) {
+        return this.notification.danger(
+          this.intl.t("alexandria.errors.invalid-file-type", {
+            category: category.name,
+            types: category.allowedMimeTypes
+              .map((t) => mime.getExtension(t))
+              .join(", "),
+          }),
+        );
+      }
+    }
 
-        const fileModel = this.store.createRecord("file", {
-          name: file.name,
-          variant: "original",
-          document: documentModel,
-          createdByGroup: this.config.activeGroup,
-          modifiedByGroup: this.config.activeGroup,
-          content: file,
-        });
-        await fileModel.save();
+    try {
+      const uploaded = await Promise.all(
+        Array.from(files).map(async (file) => {
+          const documentModel = this.store.createRecord("document", {
+            category,
+            metainfo: this.config.defaultModelMeta.document,
+            createdByGroup: this.config.activeGroup,
+            modifiedByGroup: this.config.activeGroup,
+          });
+          documentModel.title = file.name;
+          await documentModel.save();
 
-        return documentModel;
-      }),
-    );
+          const fileModel = this.store.createRecord("file", {
+            name: file.name,
+            variant: "original",
+            document: documentModel,
+            createdByGroup: this.config.activeGroup,
+            modifiedByGroup: this.config.activeGroup,
+            content: file,
+          });
+          await fileModel.save();
+
+          return documentModel;
+        }),
+      );
+
+      this.notification.success(
+        this.intl.t("alexandria.success.upload-document", {
+          count: files.length,
+        }),
+      );
+
+      return uploaded;
+    } catch (error) {
+      new ErrorHandler(this, error).notify(
+        "alexandria.errors.upload-document",
+        {
+          count: files.length,
+        },
+      );
+    }
   }
 
   /**

@@ -5,8 +5,6 @@ import { tracked } from "@glimmer/tracking";
 import { dropTask, task } from "ember-concurrency";
 import { task as trackedTask } from "reactiveweb/ember-concurrency";
 
-import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
-
 export default class DocumentViewComponent extends Component {
   @service notification;
   @service store;
@@ -116,25 +114,11 @@ export default class DocumentViewComponent extends Component {
     event.preventDefault();
     event.stopPropagation();
 
-    const { files } = event.dataTransfer;
-
-    try {
-      await this.documents.upload(this.args.filters.category, files);
-
-      this.notification.success(
-        this.intl.t("alexandria.success.upload-document", {
-          count: files.length,
-        }),
-      );
-      this.refreshDocumentList();
-    } catch (error) {
-      new ErrorHandler(this, error).notify(
-        "alexandria.errors.upload-document",
-        {
-          count: files.length,
-        },
-      );
-    }
+    await this.documents.upload(
+      this.args.filters.category,
+      event.dataTransfer.files,
+    );
+    this.refreshDocumentList();
 
     this.dragCounter = 0;
     this.isDragOver = false;

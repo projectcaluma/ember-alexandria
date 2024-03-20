@@ -14,13 +14,14 @@
     {{t "alexandria.upload-file"}}
   </UkButton>
 
-  {{#if @category}}
+  {{#if @categoryId}}
     <input
       type="file"
       multiple="multiple"
       data-test-input
       aria-label="Category name"
-      {{on "change" (perform this.upload @category)}}
+      accept={{this.category.allowedMimeTypes}}
+      {{on "change" (fn this.upload.perform @categoryId)}}
     />
   {{else}}
     <Drop @width="uk-with-medium" as |Item|>
@@ -31,7 +32,8 @@
             multiple="multiple"
             data-test-input
             aria-label="file input"
-            {{on "change" (perform this.upload category)}}
+            accept={{category.allowedMimeTypes}}
+            {{on "change" (fn this.upload.perform category.id)}}
           />
           <FaIcon
             @prefix="far"
@@ -51,7 +53,7 @@
                 multiple="multiple"
                 data-test-input
                 aria-label="file input"
-                {{on "change" (perform this.upload child)}}
+                {{on "change" (fn this.upload.perform child)}}
               />
               <FaIcon
                 @prefix="far"
