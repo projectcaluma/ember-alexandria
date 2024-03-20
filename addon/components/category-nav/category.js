@@ -3,7 +3,9 @@ import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
-import { dropTask } from "ember-concurrency";
+import { task } from "ember-concurrency";
+
+import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
 
 export default class CategoryNavCategoryComponent extends Component {
   @service("alexandria-documents") documents;
@@ -81,8 +83,7 @@ export default class CategoryNavCategoryComponent extends Component {
     event.stopPropagation();
   }
 
-  @dropTask
-  *onDrop(event) {
+  onDrop = task({ drop: true }, async (event) => {
     event.preventDefault();
 
     if (!this.args.category.id) return;
@@ -90,9 +91,16 @@ export default class CategoryNavCategoryComponent extends Component {
     this.dragCounter = 0;
     this.isDragOver = false;
 
+    if (event.dataTransfer.files.length) {
+      return await this.documents.upload(
+        this.args.category,
+        event.dataTransfer.files,
+      );
+    }
+
     const documentIds = event.dataTransfer.getData("text").split(",");
 
-    const success = yield Promise.all(
+    const success = await Promise.all(
       documentIds.map(async (id) => {
         const document = this.store.peekRecord("document", id);
 
@@ -112,11 +120,7 @@ export default class CategoryNavCategoryComponent extends Component {
         } catch (error) {
           document.category = previousCategory;
 
-          if (error.errors[0].status === "403") {
-            this.notification.danger(
-              this.intl.t("alexandria.errors.no-permission"),
-            );
-          }
+          new ErrorHandler(this, error).notify();
 
           return false;
         }
@@ -151,5 +155,5 @@ export default class CategoryNavCategoryComponent extends Component {
         },
       });
     }
-  }
+  });
 }
