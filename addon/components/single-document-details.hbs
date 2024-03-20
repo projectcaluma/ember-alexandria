@@ -195,6 +195,7 @@
         data-test-replace
         type="file"
         aria-label="File input"
+        accept={{@document.category.allowedMimeTypes}}
         {{on "change" (perform this.uploadReplacement)}}
       />
 
