@@ -3,8 +3,6 @@ import Component from "@glimmer/component";
 import { task } from "ember-concurrency";
 import { query } from "ember-data-resources";
 
-import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
-
 export default class DocumentUploadButtonComponent extends Component {
   @service notification;
   @service intl;
@@ -21,25 +19,10 @@ export default class DocumentUploadButtonComponent extends Component {
   }
 
   upload = task(async (category, { target: { files = [] } = {} }) => {
-    try {
-      await this.documents.upload(category, files);
+    await this.documents.upload(category, files);
 
-      this.notification.success(
-        this.intl.t("alexandria.success.upload-document", {
-          count: files.length,
-        }),
-      );
-
-      if (this.args.afterUpload) {
-        this.args.afterUpload();
-      }
-    } catch (error) {
-      new ErrorHandler(this, error).notify(
-        "alexandria.errors.upload-document",
-        {
-          count: files.length,
-        },
-      );
+    if (this.args.afterUpload) {
+      this.args.afterUpload();
     }
   });
 }
