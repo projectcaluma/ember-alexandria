@@ -3,7 +3,7 @@ import Service, { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task } from "ember-concurrency";
 import { saveAs } from "file-saver";
-import mime from "mime/lite";
+import mime from "mime";
 
 import { ErrorHandler } from "ember-alexandria/utils/error-handler";
 
