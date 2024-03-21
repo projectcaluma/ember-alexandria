@@ -4,7 +4,7 @@ import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { task } from "ember-concurrency";
 
-import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
+import { ErrorHandler } from "ember-alexandria/utils/error-handler";
 
 export default class DocumentDeleteButtonComponent extends Component {
   @service notification;

@@ -5,7 +5,7 @@ import { task } from "ember-concurrency";
 import { saveAs } from "file-saver";
 import mime from "mime/lite";
 
-import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
+import { ErrorHandler } from "ember-alexandria/utils/error-handler";
 
 export default class AlexandriaDocumentsService extends Service {
   @service store;

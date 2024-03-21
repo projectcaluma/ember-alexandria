@@ -3,7 +3,7 @@ import Service, { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { findAll } from "ember-data-resources";
 
-import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
+import { ErrorHandler } from "ember-alexandria/utils/error-handler";
 
 export default class AlexandriaMarksService extends Service {
   @service store;
