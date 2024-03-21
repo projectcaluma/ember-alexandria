@@ -1,3 +1,10 @@
+## [7.1.1](https://github.com/projectcaluma/ember-alexandria/compare/v7.1.0...v7.1.1) (2024-03-21)
+
+
+### Bug Fixes
+
+* open latest file with double click ([29b626c](https://github.com/projectcaluma/ember-alexandria/commit/29b626cd5f7250da5e2cd736278d8673f332cb7f))
+
 # [7.1.0](https://github.com/projectcaluma/ember-alexandria/compare/v7.0.4...v7.1.0) (2024-03-21)
 
 
