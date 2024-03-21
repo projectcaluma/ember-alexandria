@@ -2,7 +2,7 @@ import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
-import { dropTask, task } from "ember-concurrency";
+import { task } from "ember-concurrency";
 import { task as trackedTask } from "reactiveweb/ember-concurrency";
 
 export default class DocumentViewComponent extends Component {
@@ -104,7 +104,7 @@ export default class DocumentViewComponent extends Component {
     event.stopPropagation();
   }
 
-  onDrop = dropTask(async (event) => {
+  onDrop = task({ drop: true }, async (event) => {
     if (!this.args.filters.category || !event.dataTransfer.files.length) {
       this.dragCounter = 0;
       this.isDragOver = false;
@@ -187,14 +187,11 @@ export default class DocumentViewComponent extends Component {
     }
   }
 
-  @action openDocument(selectedDocument, event) {
+  openDocument = task(async (selectedDocument, event) => {
     event.preventDefault();
 
-    const file = selectedDocument.files.find(
-      (file) => file.variant === "original",
-    );
-    open(file.downloadUrl);
-  }
+    await this.documents.download.perform([selectedDocument]);
+  });
 
   @action
   refreshDocumentList() {
