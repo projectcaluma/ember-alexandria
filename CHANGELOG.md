@@ -1,3 +1,20 @@
+# [7.1.0](https://github.com/projectcaluma/ember-alexandria/compare/v7.0.4...v7.1.0) (2024-03-21)
+
+
+### Bug Fixes
+
+* add accept to file replace ([5e628dc](https://github.com/projectcaluma/ember-alexandria/commit/5e628dc67ec629bbbf0d90af53b1c0e645586b7b))
+* **download:** always refresh document before download ([995ec84](https://github.com/projectcaluma/ember-alexandria/commit/995ec844460de6f51ee8a1efdc5d5e08f010901e))
+* **tests:** test upload ([8f3d804](https://github.com/projectcaluma/ember-alexandria/commit/8f3d80427105775456eeeb6931e045f45fe4ff24))
+* **upload:** use full mime as office uses vnd types ([7105db9](https://github.com/projectcaluma/ember-alexandria/commit/7105db98e84f73bcb3f354e2e2a732c28bbe467e))
+* use utils folder ([5d7699b](https://github.com/projectcaluma/ember-alexandria/commit/5d7699bbe0f3416c93ca5cd88fddb002c30efe93))
+
+
+### Features
+
+* **category:** add upload for drag drop over category nav ([d2e7df5](https://github.com/projectcaluma/ember-alexandria/commit/d2e7df5d565d1673ac3a3c2d809de5be84f59863))
+* implement mime type restriction for upload ([2773a08](https://github.com/projectcaluma/ember-alexandria/commit/2773a0828e1f464eca9db18588578f20524ffdaf))
+
 ## [7.0.4](https://github.com/projectcaluma/ember-alexandria/compare/v7.0.3...v7.0.4) (2024-03-19)
 
 
