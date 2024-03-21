@@ -5,7 +5,7 @@ import { tracked } from "@glimmer/tracking";
 import { task } from "ember-concurrency";
 import { DateTime } from "luxon";
 
-import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
+import { ErrorHandler } from "ember-alexandria/utils/error-handler";
 
 export default class SingleDocumentDetailsComponent extends Component {
   @service("alexandria-documents") documents;

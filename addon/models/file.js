@@ -1,8 +1,8 @@
 import Model, { attr, belongsTo, hasMany } from "@ember-data/model";
 import { task } from "ember-concurrency";
 
-import { isDownloadUrlExpired } from "ember-alexandria/helpers/download";
-import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
+import { isDownloadUrlExpired } from "ember-alexandria/utils/download";
+import { ErrorHandler } from "ember-alexandria/utils/error-handler";
 
 export default class FileModel extends Model {
   @attr variant;

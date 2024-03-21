@@ -3,7 +3,7 @@ import Service, { inject as service } from "@ember/service";
 import { dasherize } from "@ember/string";
 import { tracked } from "@glimmer/tracking";
 
-import { ErrorHandler } from "ember-alexandria/helpers/error-handler";
+import { ErrorHandler } from "ember-alexandria/utils/error-handler";
 
 export default class AlexandriaTagsService extends Service {
   @service store;
