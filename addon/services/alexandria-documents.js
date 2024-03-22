@@ -64,14 +64,21 @@ export default class AlexandriaDocumentsService extends Service {
         category.allowedMimeTypes &&
         !category.allowedMimeTypes.includes(file.type)
       ) {
-        return this.notification.danger(
-          this.intl.t("alexandria.errors.invalid-file-type", {
-            category: category.name,
-            types: category.allowedMimeTypes
-              .map((t) => mime.getExtension(t))
-              .join(", "),
-          }),
-        );
+        // file.type is empty for Outlook msg files, see
+        // https://stackoverflow.com/questions/55687631/which-mime-type-can-i-use-for-msg-file-using-file-object
+        if (
+          !category.allowedMimeTypes.includes("application/vnd.ms-outlook") ||
+          !file.name.endsWith(".msg")
+        ) {
+          return this.notification.danger(
+            this.intl.t("alexandria.errors.invalid-file-type", {
+              category: category.name,
+              types: category.allowedMimeTypes
+                .map((t) => mime.getExtension(t))
+                .join(", "),
+            }),
+          );
+        }
       }
     }
 
