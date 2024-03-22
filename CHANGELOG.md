@@ -1,3 +1,10 @@
+## [7.1.2](https://github.com/projectcaluma/ember-alexandria/compare/v7.1.1...v7.1.2) (2024-03-22)
+
+
+### Bug Fixes
+
+* **mime:** allow upload of msg files ([f0dd618](https://github.com/projectcaluma/ember-alexandria/commit/f0dd6184e0f01872e0ab7d75e5ca0e1edc799139))
+
 ## [7.1.1](https://github.com/projectcaluma/ember-alexandria/compare/v7.1.0...v7.1.1) (2024-03-21)
 
 
