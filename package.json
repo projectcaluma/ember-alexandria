@@ -66,7 +66,7 @@
     "flatpickr": "^4.6.13",
     "luxon": "^3.4.4",
     "mime": "^4.0.1",
-    "reactiveweb": "^1.2.2"
+    "reactiveweb": "^1.2.3"
   },
   "devDependencies": {
     "@adfinis/eslint-config": "2.1.1",
