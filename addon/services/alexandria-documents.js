@@ -62,23 +62,18 @@ export default class AlexandriaDocumentsService extends Service {
     for (const file of files) {
       if (
         category.allowedMimeTypes &&
-        !category.allowedMimeTypes.includes(file.type)
+        !category.allowedMimeTypes.includes(
+          file.type ?? mime.getType(file.name.split(".").pop()),
+        )
       ) {
-        // file.type is empty for Outlook msg files, see
-        // https://stackoverflow.com/questions/55687631/which-mime-type-can-i-use-for-msg-file-using-file-object
-        if (
-          !category.allowedMimeTypes.includes("application/vnd.ms-outlook") ||
-          !file.name.endsWith(".msg")
-        ) {
-          return this.notification.danger(
-            this.intl.t("alexandria.errors.invalid-file-type", {
-              category: category.name,
-              types: category.allowedMimeTypes
-                .map((t) => mime.getExtension(t))
-                .join(", "),
-            }),
-          );
-        }
+        return this.notification.danger(
+          this.intl.t("alexandria.errors.invalid-file-type", {
+            category: category.name,
+            types: category.allowedMimeTypes
+              .map((t) => mime.getExtension(t))
+              .join(", "),
+          }),
+        );
       }
     }
 
@@ -90,20 +85,11 @@ export default class AlexandriaDocumentsService extends Service {
             metainfo: this.config.defaultModelMeta.document,
             createdByGroup: this.config.activeGroup,
             modifiedByGroup: this.config.activeGroup,
-          });
-          documentModel.title = file.name;
-          await documentModel.save();
-
-          const fileModel = this.store.createRecord("file", {
-            name: file.name,
-            variant: "original",
-            document: documentModel,
-            createdByGroup: this.config.activeGroup,
-            modifiedByGroup: this.config.activeGroup,
             content: file,
           });
-          await fileModel.save();
-
+          // must be set outside for localized model
+          documentModel.title = file.name;
+          await documentModel.save();
           return documentModel;
         }),
       );
