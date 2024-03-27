@@ -15,6 +15,7 @@ export default class DocumentModel extends LocalizedModel {
   @attr modifiedByUser;
   @attr modifiedByGroup;
   @attr date;
+  @attr content; // needed for upload
 
   @belongsTo("category", { inverse: "documents", async: true }) category;
   @hasMany("tag", { inverse: "documents", async: true }) tags;

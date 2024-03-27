@@ -200,6 +200,9 @@
     {{/if}}
 
     {{#if this.displayConvertButton}}
+      {{#if this.convertDocument.isRunning}}
+        <UkSpinner />
+      {{/if}}
       <div>
         <UkButton
           @size="small"
