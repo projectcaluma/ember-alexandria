@@ -17,7 +17,8 @@ module("Unit | Service | alexandria-tags", function (hooks) {
     const service = this.owner.lookup("service:alexandria-tags");
     const store = this.owner.lookup("service:store");
 
-    const document = await store.createRecord("document").save();
+    const documentId = this.server.create("document").id;
+    const document = await store.findRecord("document", documentId);
     const tag = await store.createRecord("tag", { name: "T1" }).save();
 
     await service.add(document, tag);
@@ -25,7 +26,7 @@ module("Unit | Service | alexandria-tags", function (hooks) {
     assert.deepEqual(
       requests.map((request) => request.method),
       [
-        "POST", // Create document
+        "GET", // Get document
         "POST", // Create tag
         "PATCH", // Add tag to document
       ],
@@ -39,8 +40,12 @@ module("Unit | Service | alexandria-tags", function (hooks) {
 
     const service = this.owner.lookup("service:alexandria-tags");
     const store = this.owner.lookup("service:store");
-
-    const document = await store.createRecord("document").save();
+    const categoryId = this.server.create("category").id;
+    const document = await store
+      .createRecord("document", {
+        category: await store.findRecord("category", categoryId),
+      })
+      .save();
     const tag = "T1";
 
     await service.add(document, tag);
@@ -48,6 +53,7 @@ module("Unit | Service | alexandria-tags", function (hooks) {
     assert.deepEqual(
       requests.map((request) => request.method),
       [
+        "GET", // Get category
         "POST", // Create document
         "GET", // search for existing tag
         "POST", // Create tag
@@ -64,7 +70,8 @@ module("Unit | Service | alexandria-tags", function (hooks) {
     const service = this.owner.lookup("service:alexandria-tags");
     const store = this.owner.lookup("service:store");
 
-    const document = await store.createRecord("document").save();
+    const documentId = this.server.create("document").id;
+    const document = await store.findRecord("document", documentId);
     const tag = (await document.tags)[0];
 
     await service.remove(document, tag);
@@ -72,7 +79,7 @@ module("Unit | Service | alexandria-tags", function (hooks) {
     assert.deepEqual(
       requests.map((request) => request.method),
       [
-        "POST", // Create document
+        "GET", // Get document
         "PATCH", // Remove tag from document
       ],
     );

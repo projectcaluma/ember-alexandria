@@ -158,12 +158,16 @@ module("Acceptance | documents", function (hooks) {
 
     assert.dom("[data-test-document]").doesNotExist();
     this.assertRequest("POST", "/api/v1/documents", (request) => {
-      const attributes = JSON.parse(request.requestBody).data.attributes;
-      assert.strictEqual(
-        attributes.title.en,
-        "test-file.txt",
-        "correct title is set",
-      );
+      request.requestBody
+        .get("data")
+        .text()
+        .then((data) => {
+          assert.strictEqual(
+            JSON.parse(data).title.en,
+            "test-file.txt",
+            "correct title is set",
+          );
+        });
     });
     await triggerEvent("[data-test-upload] [data-test-input]", "change", {
       files: [new File(["Ember Rules!"], "test-file.txt")],
