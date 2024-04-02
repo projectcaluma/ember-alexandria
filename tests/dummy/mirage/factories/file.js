@@ -7,7 +7,6 @@ export default Factory.extend({
   createdAt: () => faker.date.past(),
   name: () => faker.system.fileName(),
   variant: "original",
-  uploadUrl: "/api/v1/file-upload",
   downloadUrl: () => faker.internet.url(),
   checksum: () => `sha256:${faker.git.commitSha({ length: 64 })}`,
 });

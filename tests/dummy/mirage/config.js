@@ -10,7 +10,10 @@ export default function makeServer(config) {
       this.timing = 400;
 
       this.resource("categories", { only: ["index", "show"] });
-      this.resource("documents");
+      this.resource("documents", { except: ["create"] });
+      this.post("/documents", function (schema) {
+        return schema.documents.create();
+      });
       this.resource("tags", { except: ["delete"] });
       this.resource("marks", { only: ["index"] });
 
@@ -22,8 +25,6 @@ export default function makeServer(config) {
           document: schema.documents.find(attrs.document),
         });
       });
-
-      this.put("/file-upload", () => new Response(201, {}, {}));
 
       this.get("/files/multi", () => new Response(200, {}, {}));
     },

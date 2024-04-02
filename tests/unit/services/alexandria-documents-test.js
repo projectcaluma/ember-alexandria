@@ -28,18 +28,14 @@ module("Unit | Service | alexandria-documents", function (hooks) {
     );
 
     // Each file generates three requests.
-    assert.strictEqual(requests.length, files.length * 2);
+    assert.strictEqual(requests.length, files.length);
 
     // Files will be uploaded in parallel. So, we cannot know the order.
     const documentRequests = requests.filter((request) =>
       request.url.endsWith("documents"),
     );
-    const fileRequests = requests.filter((request) =>
-      request.url.endsWith("files"),
-    );
 
     assert.strictEqual(documentRequests.length, files.length);
-    assert.strictEqual(fileRequests.length, files.length);
   });
 
   test("it restricts mime type", async function (assert) {
