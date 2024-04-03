@@ -27,7 +27,6 @@ module("Unit | Service | alexandria-documents", function (hooks) {
       (request) => !request.url.includes("categories"),
     );
 
-    // Each file generates three requests.
     assert.strictEqual(requests.length, files.length);
 
     // Files will be uploaded in parallel. So, we cannot know the order.
