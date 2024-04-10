@@ -38,6 +38,7 @@ export default class AlexandriaDocumentsService extends Service {
       this.selectedDocuments.length === 0
         ? undefined
         : this.selectedDocuments.map((d) => d.id);
+
     this.router.transitionTo(this.router.currentRouteName, {
       queryParams: {
         document: docs,
