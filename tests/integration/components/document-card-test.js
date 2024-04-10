@@ -24,6 +24,9 @@ module("Integration | Component | document-card", function (hooks) {
   });
 
   test("delete file", async function (assert) {
+    const transitionTo = fake();
+    this.owner.lookup("service:router").transitionTo = transitionTo;
+
     const destroy = fake();
     this.document = {
       id: 1,
@@ -36,6 +39,7 @@ module("Integration | Component | document-card", function (hooks) {
     await click("[data-test-delete]");
     await click("[data-test-delete-confirm]");
     assert.ok(destroy.calledOnce, "destroyRecord was called once");
+    assert.ok(transitionTo.calledOnce, "transitionTo was called once");
   });
 
   test("thumbnail", async function (assert) {

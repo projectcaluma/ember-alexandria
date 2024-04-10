@@ -30,33 +30,45 @@ export default class DocumentDeleteButtonComponent extends Component {
     }
   }
 
-  @task *delete() {
-    try {
-      if (this.args.docsToDelete) {
-        const docs = Array.isArray(this.args.docsToDelete)
-          ? this.args.docsToDelete
-          : [this.args.docsToDelete]; // if the supplied argument is not an array we make it one
+  delete = task(async () => {
+    if (!this.args.docsToDelete) {
+      return this.hideDialog();
+    }
 
-        for (const doc of docs) {
-          yield doc.destroyRecord().catch((error) => {
-            doc.rollbackAttributes();
-            throw error;
-          });
-          this.documents.deselectDocument(doc);
-        }
-      }
+    const docs = Array.isArray(this.args.docsToDelete)
+      ? this.args.docsToDelete
+      : [this.args.docsToDelete]; // if the supplied argument is not an array we make it one
 
-      if (this.args.onConfirm) {
-        this.args.onConfirm(this.args.docsToDelete);
-      }
+    if (this.args.onConfirm) {
+      this.args.onConfirm(docs);
+    }
 
+    const deletionStatus = await Promise.allSettled(
+      docs.map((doc) => {
+        return doc.destroyRecord();
+      }),
+    );
+
+    const success = [];
+    const rejected = [];
+    deletionStatus.forEach((element) => {
+      (element.status === "rejected" ? rejected : success).push(element);
+    });
+
+    success.forEach((_, index) => {
+      this.documents.deselectDocument(docs[index]);
+    });
+
+    rejected.forEach((error, index) => {
+      docs[index].rollbackAttributes();
+      new ErrorHandler(this, error).notify("alexandria.errors.delete-document");
+    });
+
+    if (!rejected.length) {
       this.notification.success(
         this.intl.t("alexandria.success.delete-document"),
       );
-    } catch (error) {
-      new ErrorHandler(this, error).notify("alexandria.errors.delete-document");
-    } finally {
-      this.hideDialog();
     }
-  }
+    this.hideDialog();
+  });
 }

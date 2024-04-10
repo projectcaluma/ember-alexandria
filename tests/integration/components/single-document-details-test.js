@@ -51,12 +51,16 @@ module("Integration | Component | single-document-details", function (hooks) {
   });
 
   test("delete document", async function (assert) {
+    const transitionTo = fake();
+    this.owner.lookup("service:router").transitionTo = transitionTo;
+
     const destroy = fake();
     this.selectedDocument = {
       id: 1,
       title: "Test",
       destroyRecord: async () => destroy(),
     };
+
     await render(
       hbs`<SingleDocumentDetails @document={{this.selectedDocument}}/>`,
     );
@@ -65,6 +69,7 @@ module("Integration | Component | single-document-details", function (hooks) {
     await click("[data-test-delete-confirm]");
 
     assert.ok(destroy.calledOnce, "destroyRecord was called once");
+    assert.ok(transitionTo.calledOnce, "transitionTo was called once");
   });
 
   test("edit document title", async function (assert) {
