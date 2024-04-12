@@ -1,3 +1,10 @@
+# [7.2.0-beta.1](https://github.com/projectcaluma/ember-alexandria/compare/v7.1.2...v7.2.0-beta.1) (2024-04-12)
+
+
+### Features
+
+* upload document and file in one request ([c08888f](https://github.com/projectcaluma/ember-alexandria/commit/c08888f758b4ef151950a8364fa93887de444e8a))
+
 ## [7.1.2](https://github.com/projectcaluma/ember-alexandria/compare/v7.1.1...v7.1.2) (2024-03-22)
 
 
