@@ -1,3 +1,24 @@
+# [8.0.0](https://github.com/projectcaluma/ember-alexandria/compare/v7.1.2...v8.0.0) (2024-04-18)
+
+
+### Bug Fixes
+
+* make sure large thumbnails are rendered above search bar ([41ad6b5](https://github.com/projectcaluma/ember-alexandria/commit/41ad6b5630c50ddc8dc8c0e28095d5711d7b90da))
+* move ember-test-selectors to dependencies ([6977cf5](https://github.com/projectcaluma/ember-alexandria/commit/6977cf58c695bb41d40ca03591723a255a5753f0))
+
+
+* fix!: deprecate usage of ember-data 3 ([bec2702](https://github.com/projectcaluma/ember-alexandria/commit/bec27022bf6db3def84934b5c6eef6d0ede1adfb))
+
+
+### Features
+
+* upload document and file in one request ([c08888f](https://github.com/projectcaluma/ember-alexandria/commit/c08888f758b4ef151950a8364fa93887de444e8a))
+
+
+### BREAKING CHANGES
+
+* This removes support for ember data 3 versions
+
 ## [7.1.2](https://github.com/projectcaluma/ember-alexandria/compare/v7.1.1...v7.1.2) (2024-03-22)
 
 
