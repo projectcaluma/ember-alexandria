@@ -75,7 +75,7 @@
     "@babel/eslint-parser": "7.24.1",
     "@babel/plugin-proposal-decorators": "7.24.1",
     "@ember/test-helpers": "3.3.0",
-    "@embroider/test-setup": "3.0.3",
+    "@embroider/test-setup": "4.0.0",
     "@faker-js/faker": "8.4.1",
     "@fortawesome/fontawesome-svg-core": "6.5.2",
     "broccoli-asset-rev": "3.0.0",
