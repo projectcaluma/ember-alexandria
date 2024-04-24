@@ -1,3 +1,10 @@
+## [8.0.1](https://github.com/projectcaluma/ember-alexandria/compare/v8.0.0...v8.0.1) (2024-04-24)
+
+
+### Bug Fixes
+
+* **mime:** softer mime type checking ([fab995b](https://github.com/projectcaluma/ember-alexandria/commit/fab995b88a6d5d845a0bc77629d331e341a1af70))
+
 # [8.0.0](https://github.com/projectcaluma/ember-alexandria/compare/v7.1.2...v8.0.0) (2024-04-18)
 
 
