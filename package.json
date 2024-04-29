@@ -66,7 +66,7 @@
     "file-saver": "^2.0.5",
     "flatpickr": "^4.6.13",
     "luxon": "^3.4.4",
-    "mime": "^4.0.1",
+    "mime": "^4.0.3",
     "reactiveweb": "^1.2.3"
   },
   "devDependencies": {
