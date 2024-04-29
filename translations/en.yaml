@@ -17,7 +17,7 @@ alexandria:
         one {document}
         other {documents}
       }, an error occured.
-    update: "Your changes chould'nt be saved. Please try again."
+    update: "Your changes could not be saved. Please try again."
     no-permission: "You don't have permission to perform this action."
     move-document: "While moving {count, plural, one {the document} other {# documents}}, an error occured. Please try again."
     convert-pdf: "While converting, an error occured. Please try again."
