@@ -19,4 +19,13 @@ export default class DocumentSerializer extends LocalizedSerializer {
 
     return formData;
   }
+
+  serialize(...args) {
+    const json = super.serialize(...args);
+
+    // delete content attribute, as it is only needed for POST
+    delete json.data.attributes.content;
+
+    return json;
+  }
 }
