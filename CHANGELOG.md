@@ -1,3 +1,10 @@
+## [8.0.3](https://github.com/projectcaluma/ember-alexandria/compare/v8.0.2...v8.0.3) (2024-04-30)
+
+
+### Bug Fixes
+
+* **upload:** show error message if file is too large ([6198204](https://github.com/projectcaluma/ember-alexandria/commit/6198204c19c374af820769f7cef6f3da545c289c))
+
 ## [8.0.2](https://github.com/projectcaluma/ember-alexandria/compare/v8.0.1...v8.0.2) (2024-04-30)
 
 
