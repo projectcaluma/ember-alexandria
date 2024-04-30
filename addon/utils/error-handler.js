@@ -19,6 +19,10 @@ export class ErrorHandler {
       return this.notification.danger(
         this.intl.t("alexandria.errors.no-permission"),
       );
+    } else if (firstError?.status === "413") {
+      return this.notification.danger(
+        this.intl.t("alexandria.errors.file-too-large"),
+      );
     } else if (
       firstError?.status === "400" &&
       firstError?.source.pointer === "/data"
