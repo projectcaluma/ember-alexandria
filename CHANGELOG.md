@@ -1,3 +1,12 @@
+## [8.0.2](https://github.com/projectcaluma/ember-alexandria/compare/v8.0.1...v8.0.2) (2024-04-30)
+
+
+### Bug Fixes
+
+* **delete:** delete concurrently and clean up correctly ([0b412ad](https://github.com/projectcaluma/ember-alexandria/commit/0b412ad7d1457eebf9d852aee185468f15bd091a))
+* **i18n:** fix translation typo ([9cccbca](https://github.com/projectcaluma/ember-alexandria/commit/9cccbca2edd12044bbecbf44703c8477c03d3ebf))
+* remove content attr in serialization for patch ([9d7de0a](https://github.com/projectcaluma/ember-alexandria/commit/9d7de0acd56b8f07ca2081e8a00b932fe619a882))
+
 ## [8.0.1](https://github.com/projectcaluma/ember-alexandria/compare/v8.0.0...v8.0.1) (2024-04-24)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "ember-alexandria",
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
     "ember-addon",
