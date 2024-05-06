@@ -7,6 +7,7 @@ export default class CategoryModel extends LocalizedModel {
   @attr color;
   @attr metainfo;
   @attr allowedMimeTypes;
+  @attr sort;
 
   @belongsTo("category", { inverse: "children", async: true }) parent;
   @hasMany("category", { inverse: "parent", async: true }) children;
