@@ -22,7 +22,7 @@
         />
       {{/each}}
     {{else}}
-      {{#each this.categories.records as |category|}}
+      {{#each (sort-by "sort" this.categories.records) as |category|}}
         <CategoryNav::Category
           @category={{category}}
           @selected={{@selected}}
