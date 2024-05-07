@@ -64,7 +64,7 @@ export default class AlexandriaDocumentsService extends Service {
       if (
         category.allowedMimeTypes &&
         !category.allowedMimeTypes.includes(
-          file.type || mime.getType(file.name.split(".").pop()),
+          file.type || mime.getType(file.name),
         )
       ) {
         return this.notification.danger(
