@@ -66,8 +66,8 @@ dependencies:
     specifier: ^5.2.1
     version: 5.2.1(@ember-data/store@4.12.5)(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.3.0)(ember-data@4.12.5)(ember-resources@7.0.0)(ember-source@5.8.0)
   ember-engines-router-service:
-    specifier: ^0.5.1
-    version: 0.5.1(@glint/template@1.3.0)(ember-source@5.8.0)
+    specifier: ^0.6.0
+    version: 0.6.0(@glint/template@1.3.0)(ember-source@5.8.0)
   ember-fetch:
     specifier: ^8.1.2
     version: 8.1.2
@@ -7436,9 +7436,8 @@ packages:
       - supports-color
       - webpack
 
-  /ember-engines-router-service@0.5.1(@glint/template@1.3.0)(ember-source@5.8.0):
-    resolution: {integrity: sha512-gQaST5IPPlS4Vg/dmyJfDHX7yDszOXRJvYLgXlJ5PNoBK1H8hjf8wcVIYOV1HeM3y275W3PfpiR7jw9ztJglIA==}
-    engines: {node: 16.* || 18.* || >= 20}
+  /ember-engines-router-service@0.6.0(@glint/template@1.3.0)(ember-source@5.8.0):
+    resolution: {integrity: sha512-c8Q0l1LKfeZvVsyQtCI52UvftV6jm5D9xYtzffgBKUp2/sm0/EuzQtyfskwRpg3NGQ+wKJaMnQX04VpMlIIeHA==}
     peerDependencies:
       ember-source: ^3.28.0 || ^4.0.0 || ^5.0.0
     dependencies:

@@ -52,7 +52,7 @@
     "ember-concurrency": "^4.0.2",
     "ember-data": "^4.12.5",
     "ember-data-resources": "^5.2.1",
-    "ember-engines-router-service": "^0.5.1",
+    "ember-engines-router-service": "^0.6.0",
     "ember-fetch": "^8.1.2",
     "ember-flatpickr": "^8.0.0",
     "ember-intl": "^6.5.3",
