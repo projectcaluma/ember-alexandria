@@ -170,8 +170,8 @@ devDependencies:
     specifier: 4.0.2
     version: 4.0.2
   ember-engines:
-    specifier: 0.9.0
-    version: 0.9.0(@ember/legacy-built-in-components@0.5.0)(@glint/template@1.3.0)(ember-source@5.8.0)
+    specifier: 0.10.0
+    version: 0.10.0(@ember/legacy-built-in-components@0.5.0)(@glint/template@1.3.0)(ember-source@5.8.0)
   ember-load-initializers:
     specifier: 2.1.2
     version: 2.1.2(@babel/core@7.24.5)
@@ -7449,16 +7449,17 @@ packages:
       - supports-color
     dev: false
 
-  /ember-engines@0.9.0(@ember/legacy-built-in-components@0.5.0)(@glint/template@1.3.0)(ember-source@5.8.0):
-    resolution: {integrity: sha512-LVb1GrLGU2DXLXL2ynYXPHg0JJ6P3LRciOdDfjP0aRPLZ1evOr0h7IPIDq4SsT2nG0yhX5qBMJNB4NCyFZvcyA==}
-    engines: {node: 14.* || 16.* || >= 18}
+  /ember-engines@0.10.0(@ember/legacy-built-in-components@0.5.0)(@glint/template@1.3.0)(ember-source@5.8.0):
+    resolution: {integrity: sha512-Mn0TNULgeDY/UQLfUJu1CGrUOVcB+a9zc5zQDCa0tWmombobt24ZB2bPPg32jyp0Mzbjm+099PM4HvzqupCieQ==}
+    engines: {node: 16.* || 18.* || >= 20}
     peerDependencies:
       '@ember/legacy-built-in-components': '*'
-      ember-source: ^3.24.1 || 4
+      ember-source: ^3.28 || >= 4.0.0
     peerDependenciesMeta:
       '@ember/legacy-built-in-components':
         optional: true
     dependencies:
+      '@babel/core': 7.24.5
       '@ember/legacy-built-in-components': 0.5.0(@glint/template@1.3.0)(ember-source@5.8.0)
       '@embroider/macros': 1.16.0(@glint/template@1.3.0)
       amd-name-resolver: 1.3.1
