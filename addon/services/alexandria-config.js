@@ -51,4 +51,11 @@ export default class AlexandriaConfigService extends Service {
   documentsPostProcess(documents) {
     return documents;
   }
+
+  documentListLinkTo(document) {
+    return {
+      route: "index",
+      label: document.title,
+    };
+  }
 }

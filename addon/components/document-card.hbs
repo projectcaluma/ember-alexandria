@@ -4,7 +4,7 @@
       class="marks uk-flex uk-position-top-left uk-position-small uk-border-rounded uk-background-muted"
     >
       {{#each @document.marks as |mark|}}
-        <div title={{mark.name}}>
+        <div uk-tooltip={{mark.name}}>
           <FaIcon @icon={{mark.icon}} />
         </div>
       {{/each}}
@@ -63,7 +63,10 @@
       data-test-context-menu
       as |Item|
     >
-      <Item data-test-download {{on "click" (fn this.documents.download.perform (array @document))}}>
+      <Item
+        data-test-download
+        {{on "click" (fn this.documents.download.perform (array @document))}}
+      >
         <FaIcon @icon="file-download" />
         {{t "alexandria.download"}}
       </Item>
@@ -73,6 +76,20 @@
           {{t "alexandria.delete"}}
         </Item>
       </DocumentDeleteButton>
+      {{#if @displayLink}}
+        <Item>
+          {{#let (this.config.documentListLinkTo @document) as |linkConfig|}}
+            <LinkTo
+              @route={{linkConfig.route}}
+              @query={{hash document=@document.id}}
+              class="uk-flex uk-flex-middle"
+            >
+              <FaIcon @icon="link" />
+              {{linkConfig.label}}
+            </LinkTo>
+          {{/let}}
+        </Item>
+      {{/if}}
     </Drop>
   </div>
 </div>

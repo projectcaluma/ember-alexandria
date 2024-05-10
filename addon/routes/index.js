@@ -4,7 +4,7 @@ import { inject as service } from "@ember/service";
 
 const PARAM_OPTIONS = { refreshModel: true };
 
-export default class ApplicationRoute extends Route {
+export default class IndexRoute extends Route {
   queryParams = {
     category: PARAM_OPTIONS,
     tags: PARAM_OPTIONS,

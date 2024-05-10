@@ -56,11 +56,16 @@ alexandria:
     drop-not-allowed: "No category selected"
 
   document-list:
+    name: "Document list"
     type: "Type"
+    document-title: "Document title"
     created-by-user: "Created by"
     created-by-group: "Group"
     modified-at: "Modified"
+    link: "Link"
     date: "Date"
+    marks: "Marks"
+    toggle: "Switch view"
 
   document-details:
     document-title: "Document title"

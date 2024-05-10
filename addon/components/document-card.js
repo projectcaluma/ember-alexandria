@@ -3,6 +3,7 @@ import Component from "@glimmer/component";
 
 export default class DocumentCardComponent extends Component {
   @service("alexandria-documents") documents;
+  @service("alexandria-config") config;
 
   get classes() {
     const classes = [

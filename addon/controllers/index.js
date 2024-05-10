@@ -2,7 +2,7 @@ import Controller from "@ember/controller";
 import { inject as service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 
-export default class ApplicationController extends Controller {
+export default class IndexController extends Controller {
   queryParams = [
     "category",
     "tags",

@@ -16,6 +16,11 @@ module("Integration | Component | document-list-item", function (hooks) {
       createdByUser: "some user",
       marks: [],
     };
+    this.columns = {
+      title: { label: "document-title" },
+      modifiedAt: { label: "modified-at" },
+      createdByUser: { label: "created-by-user" },
+    };
     this.isSelected = false;
     this.onClickDocument = fake();
     this.onDoubleClickDocument = fake();
@@ -23,6 +28,7 @@ module("Integration | Component | document-list-item", function (hooks) {
 
     await render(hbs`
       <DocumentListItem
+        @columns={{this.columns}}
         @document={{this.document}}
         @selectedDocuments={{this.selectedDocuments}}
         @isSelected={{this.isSelected}}

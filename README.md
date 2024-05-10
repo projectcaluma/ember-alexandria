@@ -199,6 +199,18 @@ module.exports = function () {
 };
 ```
 
+### Search link
+To configure where the link in the search result point to and what it displays use the `documentListLinkTo` function.
+It receives a document as paramter and expects an object with a route and the label to display.
+```js
+documentListLinkTo(document) {
+  return {
+    route: "index",
+    label: document.title,
+  };
+}
+```
+
 ### Others
 
 - `enablePDFConversion`: Set to `true` to enable docx/odt to pdf conversion. Make sure the backend is enabled aswell.

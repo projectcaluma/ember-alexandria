@@ -40,4 +40,11 @@ export default class CustomAlexandriaConfigService extends AlexandriaConfigServi
       later(this, () => resolve((id || "").toUpperCase()), timeout),
     );
   }
+
+  documentListLinkTo() {
+    return {
+      route: "index",
+      label: "To document detail",
+    };
+  }
 }
