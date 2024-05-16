@@ -2,6 +2,10 @@
   background: $background-default-background;
 }
 
+.category-header {
+  line-height: 40px;
+}
+
 .uk-nav .category-nav__category {
   &--dragover {
     outline: 1px solid $alert-primary-color;

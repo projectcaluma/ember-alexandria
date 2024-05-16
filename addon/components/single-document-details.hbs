@@ -253,7 +253,7 @@
         {{~t "alexandria.document-details.version-history"~}}
       </a>
       <div class="uk-accordion-content">
-        <ul class="uk-list uk-list-divider">
+        <ul class="uk-list uk-list-divider version-history">
           {{#each (filter-by "variant" "original" @document.files) as |file|}}
             <li data-test-file class="uk-flex">
               <span class="uk-margin-right">

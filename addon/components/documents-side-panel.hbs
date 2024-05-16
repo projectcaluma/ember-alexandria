@@ -1,6 +1,6 @@
 <div
   class="uk-background-muted uk-border-left uk-width-large uk-flex document-details
-    {{unless this.sidePanel.open 'closed'}}"
+    {{if (or (not @selectedDocuments.length) (not this.sidePanel.open)) 'closed'}}"
   data-test-document-side-panel
   ...attributes
 >

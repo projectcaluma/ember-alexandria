@@ -1,82 +1,21 @@
+// 3rd party
 @import "ember-uikit/variables-theme";
-@import "custom-uikit-rules";
 @import "ember-uikit";
-@import "skeleton-loading";
 @import "flatpickr/dist/flatpickr";
 @import "flatpickr/dist/themes/airbnb";
 
+// custom variables
 $tag-hover-shadow: 0 2px 8px rgba(0 0 0 / 20%);
 
-// Components
-@import "components/category-nav/category";
+// customization
+@import "custom-uikit-rules";
+@import "responsive";
+
+// components
+@import "components/category-nav";
 @import "components/document-card";
-@import "components/drop";
 @import "components/document-details";
 @import "components/document-grid";
 @import "components/document-list";
-
-// * DOCUMENT LIST VIEW
-.cursor-pointer {
-  cursor: pointer;
-}
-
-.document-list tr {
-  cursor: pointer;
-}
-
-.uk-table tbody tr.document-list-item--selected {
-  background: #ffd;
-}
-
-// * DOCUMENT GRID VIEW
-.no-select {
-  -webkit-touch-callout: none; /* iOS Safari */ /* Safari */ /* Konqueror HTML */ /* Old versions of Firefox */ /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
-}
-
-// * DOCUMENT DETAIL PANEL
-.category-header {
-  line-height: 40px;
-}
-
-// tag-manager, tag-filter
-.tag {
-  padding: 0.2em 0.6em;
-  margin: 0.2em;
-  border-radius: 10px;
-  display: inline-flex;
-  color: $global-color;
-  border: 1px solid $global-muted-color;
-  background-color: white;
-  align-items: center;
-  cursor: pointer;
-
-  svg {
-    margin: 0.2rem;
-    height: $global-small-font-size;
-  }
-
-  &--active {
-    color: white;
-    border-color: $global-primary-background;
-    background-color: $global-primary-background;
-  }
-
-  &:hover {
-    text-decoration: none;
-    color: $global-color;
-    box-shadow: $tag-hover-shadow;
-  }
-
-  &--active:hover {
-    color: white;
-  }
-
-  .uk-close {
-    margin-left: 5px;
-
-    > svg {
-      width: 0.75rem;
-    }
-  }
-}
+@import "components/drop";
+@import "components/skeleton";

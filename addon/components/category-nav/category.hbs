@@ -21,6 +21,7 @@
             @fixedWidth={{true}}
             data-test-icon
             {{set-style color=@category.color}}
+            {{uk-tooltip @category.name}}
           />
         {{else}}
           <FaIcon
@@ -29,6 +30,7 @@
             @fixedWidth={{true}}
             data-test-icon
             {{set-style color=@category.color}}
+            {{uk-tooltip @category.name}}
           />
         {{/if}}
       </div>
