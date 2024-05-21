@@ -125,11 +125,21 @@ export default class SingleDocumentDetailsComponent extends Component {
   openWebDAV = task({ drop: true }, async (event) => {
     event?.preventDefault();
     try {
-      const fileId = this.args.document.latestFile.value.id;
+      const modelName = "document";
+      const adapter = this.store.adapterFor(modelName);
+      let url = adapter.buildURL(modelName, this.args.document.id);
+      url = url.replace("/documents", "/webdav");
+      const response = await this.fetch.fetch(url, {
+        method: "GET",
+      });
 
-      const file = await this.store.findRecord("file", fileId);
+      const webdavUrl = (await response.json()).data.attributes["webdav-url"];
 
-      window.open(file.webdavUrl, "_blank");
+      if (!webdavUrl) {
+        throw new Error(this.intl.t("alexandria.errors.open-webdav"));
+      }
+
+      window.open(webdavUrl, "_blank");
     } catch (error) {
       new ErrorHandler(this, error).notify("alexandria.errors.open-webdav");
     }
