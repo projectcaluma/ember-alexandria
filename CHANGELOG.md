@@ -1,3 +1,10 @@
+## [8.0.4](https://github.com/projectcaluma/ember-alexandria/compare/v8.0.3...v8.0.4) (2024-05-22)
+
+
+### Bug Fixes
+
+* **layout:** improve layout for smaller screens ([7cf3ee5](https://github.com/projectcaluma/ember-alexandria/commit/7cf3ee5c8a70d6679abdb17eb4a4b4e81cd31149))
+
 ## [8.0.3](https://github.com/projectcaluma/ember-alexandria/compare/v8.0.2...v8.0.3) (2024-04-30)
 
 
