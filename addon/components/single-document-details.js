@@ -32,19 +32,23 @@ export default class SingleDocumentDetailsComponent extends Component {
     return formats[this.locale] ?? defaultFormat;
   }
 
-  get isWordProcessingFormat() {
-    return [
-      "application/vnd.oasis.opendocument.text",
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    ].includes(this.args.document.latestFile?.value?.mimeType);
-  }
-
   get displayWebDAVButton() {
-    return this.config.enableWebDAV && this.isWordProcessingFormat;
+    return (
+      this.config.enableWebDAV &&
+      this.config.allowedWebDAVMimeTypes.includes(
+        this.args.document.latestFile?.value?.mimeType,
+      )
+    );
   }
 
   get displayConvertButton() {
-    return this.config.enablePDFConversion && this.isWordProcessingFormat;
+    return (
+      this.config.enablePDFConversion &&
+      [
+        "application/vnd.oasis.opendocument.text",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      ].includes(this.args.document.latestFile?.value?.mimeType)
+    );
   }
 
   @action updateDocumentTitle({ target: { value: title } }) {
