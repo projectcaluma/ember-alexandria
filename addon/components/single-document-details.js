@@ -133,9 +133,7 @@ export default class SingleDocumentDetailsComponent extends Component {
       const adapter = this.store.adapterFor(modelName);
       let url = adapter.buildURL(modelName, this.args.document.id);
       url = url.replace("/documents", "/webdav");
-      const response = await this.fetch.fetch(url, {
-        method: "GET",
-      });
+      const response = await this.fetch.fetch(url);
 
       const webdavUrl = (await response.json()).data.attributes["webdav-url"];
 
