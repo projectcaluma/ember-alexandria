@@ -202,6 +202,8 @@ module.exports = function () {
 ### Others
 
 - `enablePDFConversion`: Set to `true` to enable docx/odt to pdf conversion. Make sure the backend is enabled aswell.
+- `enableWebDAV`: Set to `true` to enable docx/xlsx editing with WebDAV. Make sure the backend is enabled aswell.
+- `allowedWebDAVMimeTypes`: Sets the allowed editable mime types (default: docx, xlsx). Make sure the list is the same as in the backend.
 - `namespace`: Set to API namespace
 - `zipDownloadHost`: Set if the ZIP download is different
 - `zipDownloadNamespace`: Set if the ZIP download is namespaced

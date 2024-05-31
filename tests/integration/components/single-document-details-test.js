@@ -162,4 +162,31 @@ module("Integration | Component | single-document-details", function (hooks) {
 
     assert.dom("[data-test-convert-button]").exists();
   });
+
+  test("it renders WebDAV button", async function (assert) {
+    this.selectedDocument = {
+      latestFile: { value: { mimeType: "application/pdf" } },
+    };
+
+    await render(
+      hbs`<SingleDocumentDetails @document={{this.selectedDocument}} />`,
+    );
+
+    assert.dom("[data-test-web-dav-button]").doesNotExist();
+
+    this.selectedDocument = {
+      latestFile: {
+        value: {
+          mimeType:
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        },
+      },
+    };
+
+    await render(
+      hbs`<SingleDocumentDetails @document={{this.selectedDocument}} />`,
+    );
+
+    assert.dom("[data-test-web-dav-button]").exists();
+  });
 });

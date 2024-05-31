@@ -23,6 +23,7 @@ alexandria:
     convert-pdf: "While converting, an error occured. Please try again."
     invalid-file-type: 'In category "{category}" only {types} can be uploaded.'
     file-too-large: "The uploaded file is too large."
+    open-webdav: "Document could not be opened to be edited."
 
   success:
     delete-document: "Document deleted successfully"
