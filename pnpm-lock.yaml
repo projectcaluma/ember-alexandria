@@ -111,8 +111,8 @@ dependencies:
     specifier: ^4.0.3
     version: 4.0.3
   reactiveweb:
-    specifier: ^1.2.3
-    version: 1.2.3(@babel/core@7.24.6)(@ember/test-waiters@3.1.0)(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.3.0)(ember-source@5.8.0)
+    specifier: ^1.3.0
+    version: 1.3.0(@babel/core@7.24.6)(@ember/test-waiters@3.1.0)(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.3.0)(ember-source@5.8.0)
 
 devDependencies:
   '@adfinis/eslint-config':
@@ -12815,8 +12815,8 @@ packages:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: false
 
-  /reactiveweb@1.2.3(@babel/core@7.24.6)(@ember/test-waiters@3.1.0)(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.3.0)(ember-source@5.8.0):
-    resolution: {integrity: sha512-pb0jNJwBXa2QvHmZSZBzLHG7e9Mc5PWKjEXqf46+H76xqWDrP4Ge7rcY2POW22cAPWjNwmbu5Z7Voh4BykVl9g==}
+  /reactiveweb@1.3.0(@babel/core@7.24.6)(@ember/test-waiters@3.1.0)(@glimmer/component@1.1.2)(@glimmer/tracking@1.1.2)(@glint/template@1.3.0)(ember-source@5.8.0):
+    resolution: {integrity: sha512-+HIF4nW2iiHrZYvMyaFJopL/ljEW8e8s9HS+I6kAtSeJqtJtox577qviywU8ffHRmHPZP4owTlSWg3F4nAj4Vg==}
     peerDependencies:
       '@ember/test-waiters': '>= 3.1.0'
       ember-source: '>= 3.28.0'
