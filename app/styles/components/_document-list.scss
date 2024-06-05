@@ -17,12 +17,10 @@
   user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 
-.document-list {
-  tr {
-    cursor: pointer;
-  }
+.document-list tr {
+  cursor: pointer;
+}
 
-  tr.document-list-item--selected {
-    background: #ffd;
-  }
+.uk-table.document-list tbody tr.document-list-item--selected {
+  background: #ffd;
 }
