@@ -1,3 +1,18 @@
+# [8.1.0](https://github.com/projectcaluma/ember-alexandria/compare/v8.0.4...v8.1.0) (2024-06-05)
+
+
+### Bug Fixes
+
+* **css:** selected color should win over striped table ([#835](https://github.com/projectcaluma/ember-alexandria/issues/835)) ([13a1506](https://github.com/projectcaluma/ember-alexandria/commit/13a15065e1a190b7510d3cbc59563a44c034d0df))
+* fix minor typos in error messages ([841a926](https://github.com/projectcaluma/ember-alexandria/commit/841a926d8859a5028bb150da867990fd99e4cb30))
+* **styling:** fix styling of tags and marks ([4dd0a88](https://github.com/projectcaluma/ember-alexandria/commit/4dd0a88162bfef7a2981eeb1c4fefcc324efbae5))
+* **styling:** make sure responsive rules take precedence ([f63276e](https://github.com/projectcaluma/ember-alexandria/commit/f63276eb6bf4e73477b7804c45084bb7ecacd6de))
+
+
+### Features
+
+* add file full text search ([#806](https://github.com/projectcaluma/ember-alexandria/issues/806)) ([ab1ac26](https://github.com/projectcaluma/ember-alexandria/commit/ab1ac2686e6d3c5e13629a3d8672927d05a89666))
+
 ## [8.0.4](https://github.com/projectcaluma/ember-alexandria/compare/v8.0.3...v8.0.4) (2024-05-22)
 
 
