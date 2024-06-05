@@ -7,10 +7,6 @@
 // custom variables
 $tag-hover-shadow: 0 2px 8px rgba(0 0 0 / 20%);
 
-// customization
-@import "custom-uikit-rules";
-@import "responsive";
-
 // components
 @import "components/category-nav";
 @import "components/document-card";
@@ -20,3 +16,7 @@ $tag-hover-shadow: 0 2px 8px rgba(0 0 0 / 20%);
 @import "components/drop";
 @import "components/skeleton";
 @import "components/tags";
+
+// customization
+@import "custom-uikit-rules";
+@import "responsive";
