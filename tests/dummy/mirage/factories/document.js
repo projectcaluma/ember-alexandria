@@ -14,9 +14,12 @@ export default Factory.extend({
   date: () => (Math.random() >= 0.5 ? faker.date.past() : null),
 
   afterCreate(document, server) {
+    const marks = server.schema.marks.all().models;
+    const tags = server.schema.tags.all().models;
+
     document.update({
-      tags: server.create("tag"),
-      marks: [],
+      tags: faker.helpers.arrayElements(tags, { min: 0, max: tags.length }),
+      marks: faker.helpers.arrayElements(marks, { min: 0, max: marks.length }),
     });
   },
 
