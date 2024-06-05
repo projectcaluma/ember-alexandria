@@ -4,10 +4,10 @@
 
 @container alexandria (max-width: 1200px) {
   .document-details {
-    width: 300px !important;
+    width: 300px;
 
     > div {
-      min-width: 300px !important;
+      min-width: 300px;
     }
   }
 }
