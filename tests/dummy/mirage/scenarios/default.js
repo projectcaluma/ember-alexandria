@@ -1,6 +1,11 @@
 import { setAllLocales } from "./../factories/helpers";
 
 export default function (server) {
+  server.createList("tag", 4);
+  server.create("mark", { id: "decision" });
+  server.create("mark", { id: "like" });
+  server.create("mark", { id: "bill" });
+
   server.create("category", "withDocuments", {
     name: setAllLocales("Beilagen zum Gesuch"),
     color: "#9CDD69",

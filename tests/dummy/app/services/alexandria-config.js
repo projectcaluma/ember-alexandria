@@ -9,6 +9,8 @@ export default class CustomAlexandriaConfigService extends AlexandriaConfigServi
 
   markIcons = {
     decision: "stamp",
+    like: "heart",
+    bill: "dollar-sign",
   };
 
   get modelMetaFilters() {

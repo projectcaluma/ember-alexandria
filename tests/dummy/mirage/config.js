@@ -15,7 +15,7 @@ export default function makeServer(config) {
         return schema.documents.create();
       });
       this.resource("tags", { except: ["delete"] });
-      this.resource("marks", { only: ["index"] });
+      this.resource("marks", { only: ["index", "show"] });
 
       this.get("/files/:id");
       this.post("/files", function (schema, request) {
