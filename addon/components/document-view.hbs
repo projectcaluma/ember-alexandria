@@ -50,6 +50,7 @@
           {{! List & Grid View }}
           {{#if this.listView}}
             <DocumentList
+              @columns={{this.tableColumns}}
               @loading={{this.fetchedDocuments.isRunning}}
               @fetchedDocuments={{this.fetchedDocuments.value}}
               @setSort={{this.setSort}}

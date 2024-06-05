@@ -17,11 +17,12 @@
         <DocumentCard
           data-test-document
           @document={{document}}
+          @displayLink={{@displayLink}}
           @isSelected={{includes document.id (map-by "id" @selectedDocuments)}}
           draggable="true"
-          {{on "click" (fn @onClickDocument document)}}
-          {{on "dblclick" (fn @onDoubleClickDocument document)}}
-          {{on "dragstart" (fn @onDragStart document)}}
+          {{on "click" (fn (optional @onClickDocument) document)}}
+          {{on "dblclick" (fn (optional @onDoubleClickDocument) document)}}
+          {{on "dragstart" (fn (optional @onDragStart) document)}}
         />
       </div>
     {{else}}

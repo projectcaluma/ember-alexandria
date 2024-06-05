@@ -56,11 +56,14 @@ alexandria:
     drop-not-allowed: "Keine Kategorie ausgewählt"
 
   document-list:
+    name: "Dokumentenliste"
     type: "Typ"
     created-by-user: "Ersteller"
     created-by-group: "Gruppe"
     modified-at: "Änderungsdatum"
     date: "Datum"
+    marks: "Markierungen"
+    toggle: "Ansicht wechseln"
 
   document-details:
     document-title: "Dokumententitel"

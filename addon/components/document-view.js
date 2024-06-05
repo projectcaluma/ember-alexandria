@@ -214,4 +214,37 @@ export default class DocumentViewComponent extends Component {
     );
     event.dataTransfer.setDragImage(this.dragInfo, -20, 0);
   }
+
+  get tableColumns() {
+    return {
+      type: {
+        label: "type",
+        labelHidden: true,
+      },
+      title: {
+        label: "document-title",
+        sort: true,
+      },
+      marks: {
+        label: "marks",
+        labelHidden: true,
+      },
+      date: {
+        label: "date",
+        sort: true,
+      },
+      modifiedAt: {
+        label: "modified-at",
+        sort: true,
+      },
+      createdByUser: {
+        label: "created-by-user",
+        sort: true,
+      },
+      createdByGroup: {
+        label: "created-by-group",
+        sort: true,
+      },
+    };
+  }
 }

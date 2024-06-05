@@ -1,11 +1,11 @@
 import { setupTest } from "dummy/tests/helpers";
 import { module, test } from "qunit";
 
-module("Unit | Controller | application", function (hooks) {
+module("Unit | Controller | index", function (hooks) {
   setupTest(hooks);
 
   test("compute document filters", function (assert) {
-    const controller = this.owner.lookup("controller:application");
+    const controller = this.owner.lookup("controller:index");
     controller.activeGroup = "group";
     controller.search = "test";
     controller.category = 1;

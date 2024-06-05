@@ -1,6 +1,9 @@
+import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 
 export default class DocumentListItemComponent extends Component {
+  @service("alexandria-config") config;
+
   get classes() {
     const classes = ["document-list-item"];
 
