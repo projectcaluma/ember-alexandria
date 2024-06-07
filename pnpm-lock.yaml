@@ -170,8 +170,8 @@ devDependencies:
     specifier: 4.0.2
     version: 4.0.2
   ember-engines:
-    specifier: 0.10.0
-    version: 0.10.0(@ember/legacy-built-in-components@0.5.0)(@glint/template@1.4.0)(ember-source@5.8.0)
+    specifier: 0.11.0
+    version: 0.11.0(@glint/template@1.4.0)(ember-engines-router-service@0.6.0)(ember-source@5.8.0)
   ember-load-initializers:
     specifier: 2.1.2
     version: 2.1.2(@babel/core@7.24.7)
@@ -554,7 +554,7 @@ packages:
       '@babel/core': 7.24.7
       '@babel/helper-compilation-targets': 7.24.6
       '@babel/helper-plugin-utils': 7.24.6
-      debug: 4.3.4
+      debug: 4.3.5
       lodash.debounce: 4.0.8
       resolve: 1.22.8
     transitivePeerDependencies:
@@ -568,7 +568,7 @@ packages:
       '@babel/core': 7.24.7
       '@babel/helper-compilation-targets': 7.24.6
       '@babel/helper-plugin-utils': 7.24.6
-      debug: 4.3.4
+      debug: 4.3.5
       lodash.debounce: 4.0.8
       resolve: 1.22.8
     transitivePeerDependencies:
@@ -1737,7 +1737,7 @@ packages:
       '@babel/helper-split-export-declaration': 7.24.7
       '@babel/parser': 7.24.7
       '@babel/types': 7.24.7
-      debug: 4.3.4
+      debug: 4.3.5
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
@@ -2171,7 +2171,7 @@ packages:
       git-repo-info: 2.1.1
       glob: 9.3.5
       npm-git-info: 1.0.3
-      semver: 7.6.0
+      semver: 7.6.2
       silent-error: 1.1.1
     transitivePeerDependencies:
       - '@glint/template'
@@ -2277,6 +2277,7 @@ packages:
     transitivePeerDependencies:
       - '@glint/template'
       - supports-color
+    dev: false
 
   /@ember/optional-features@2.1.0:
     resolution: {integrity: sha512-IXjDpTFhsjPk9h3OXwXjlRfhM/Wjtw2E71Xos/81ZsTTwZMB9H+DWhsxePXOkzYy7Jvw4TIzKbMfcnT8mrtwWQ==}
@@ -2400,14 +2401,14 @@ packages:
     engines: {node: 12.* || 14.* || >= 16}
     dependencies:
       babel-import-util: 2.0.1
-      debug: 4.3.4
+      debug: 4.3.5
       ember-rfc176-data: 0.3.18
       fs-extra: 9.1.0
       js-string-escape: 1.0.1
       lodash: 4.17.21
       minimatch: 3.1.2
       resolve-package-path: 4.0.3
-      semver: 7.6.0
+      semver: 7.6.2
       typescript-memoize: 1.1.1
     transitivePeerDependencies:
       - supports-color
@@ -3940,7 +3941,7 @@ packages:
     resolution: {integrity: sha512-o/zjMZRhJxny7OyEF+Op8X+efiELC7k7yOjMzgfzVqOzXqkBkWI79YoTdOtsuWd5BWhAGAuOY/Xa6xpiaWXiNg==}
     engines: {node: '>= 14'}
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.5
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -4313,7 +4314,7 @@ packages:
     resolution: {integrity: sha512-iH+boep2xivfD9wMaZWkywYIURSmsL96d6MoqrC94BnGSvXE4Quf8hnJiHGFYhw/nLeIa1XyRaf4vvcvkwAefg==}
     engines: {node: 8.* || >= 10.*}
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.5
       heimdalljs: 0.2.6
       istextorbinary: 2.6.0
       mkdirp: 0.5.6
@@ -5258,7 +5259,7 @@ packages:
   /builtins@5.0.1:
     resolution: {integrity: sha512-qwVpFEHNfhYJIzNRBvd2C1kyo6jz3ZSMPyyuR47OPdiKWlbYnZNyDWuyR175qDnAJLiCo5fBBqPb3RiXgWlkOQ==}
     dependencies:
-      semver: 7.6.0
+      semver: 7.6.2
     dev: true
 
   /bytes@1.0.0:
@@ -5669,6 +5670,7 @@ packages:
   /common-tags@1.8.2:
     resolution: {integrity: sha512-gk/Z852D2Wtb//0I+kRFNKKE9dIIVirjoqPoA1wJU+XePVXZfGeBpk45+A1rKO4Q43prqWBNY/MiIeRLbPWUaA==}
     engines: {node: '>=4.0.0'}
+    dev: false
 
   /commondir@1.0.1:
     resolution: {integrity: sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==}
@@ -6159,7 +6161,7 @@ packages:
       postcss-modules-values: 4.0.0(postcss@8.4.38)
       postcss-value-parser: 4.2.0
       schema-utils: 3.3.0
-      semver: 7.6.0
+      semver: 7.6.2
       webpack: 5.91.0
 
   /css-tree@2.3.1:
@@ -6683,12 +6685,13 @@ packages:
       hash-for-dep: 1.5.1
       heimdalljs-logger: 0.1.10
       json-stable-stringify: 1.1.1
-      semver: 7.6.0
+      semver: 7.6.2
       silent-error: 1.1.1
       strip-bom: 4.0.0
       walk-sync: 2.2.0
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /ember-cli-htmlbars@6.3.0:
     resolution: {integrity: sha512-N9Y80oZfcfWLsqickMfRd9YByVcTGyhYRnYQ2XVPVrp6jyUyOeRWmEAPh7ERSXpp8Ws4hr/JB9QVQrn/yZa+Ag==}
@@ -6898,7 +6901,7 @@ packages:
     dependencies:
       '@babel/plugin-transform-typescript': 7.5.5(@babel/core@7.24.7)
       ansi-to-html: 0.6.15
-      debug: 4.3.4
+      debug: 4.3.5
       ember-cli-babel-plugin-helpers: 1.1.1
       execa: 2.1.0
       fs-extra: 8.1.0
@@ -6917,16 +6920,17 @@ packages:
     dependencies:
       ansi-to-html: 0.6.15
       broccoli-stew: 3.0.0
-      debug: 4.3.4
+      debug: 4.3.5
       execa: 4.1.0
       fs-extra: 9.1.0
       resolve: 1.22.8
       rsvp: 4.8.5
-      semver: 7.6.0
+      semver: 7.6.2
       stagehand: 1.0.1
       walk-sync: 2.2.0
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /ember-cli-typescript@5.3.0:
     resolution: {integrity: sha512-gFA+ZwmsvvFwo2Jz/B9GMduEn+fPoGb69qWGP0Tp3+Tu5xypDtIKVSZ5086I3Cr19cLXD4HkrOR3YQvdUKzAkQ==}
@@ -6934,12 +6938,12 @@ packages:
     dependencies:
       ansi-to-html: 0.6.15
       broccoli-stew: 3.0.0
-      debug: 4.3.4
+      debug: 4.3.5
       execa: 4.1.0
       fs-extra: 9.1.0
       resolve: 1.22.8
       rsvp: 4.8.5
-      semver: 7.6.0
+      semver: 7.6.2
       stagehand: 1.0.1
       walk-sync: 2.2.0
     transitivePeerDependencies:
@@ -6975,7 +6979,7 @@ packages:
     engines: {node: 10.* || >= 12.*}
     dependencies:
       resolve-package-path: 3.1.0
-      semver: 7.6.0
+      semver: 7.6.2
       silent-error: 1.1.1
     transitivePeerDependencies:
       - supports-color
@@ -7270,20 +7274,18 @@ packages:
     transitivePeerDependencies:
       - '@glint/template'
       - supports-color
-    dev: false
 
-  /ember-engines@0.10.0(@ember/legacy-built-in-components@0.5.0)(@glint/template@1.4.0)(ember-source@5.8.0):
-    resolution: {integrity: sha512-Mn0TNULgeDY/UQLfUJu1CGrUOVcB+a9zc5zQDCa0tWmombobt24ZB2bPPg32jyp0Mzbjm+099PM4HvzqupCieQ==}
+  /ember-engines@0.11.0(@glint/template@1.4.0)(ember-engines-router-service@0.6.0)(ember-source@5.8.0):
+    resolution: {integrity: sha512-AfIuttjI2O5vtx7JkTQwmb2jHeuPJxivha+867NVNyyNobT6HnwqFJQ2Q2kfwaj4qdqAIIzs5uFsjOBNXUAOiA==}
     engines: {node: 16.* || 18.* || >= 20}
     peerDependencies:
-      '@ember/legacy-built-in-components': '*'
+      ember-engines-router-service: '>=0.5.0'
       ember-source: ^3.28 || >= 4.0.0
     peerDependenciesMeta:
-      '@ember/legacy-built-in-components':
+      ember-engines-router-service:
         optional: true
     dependencies:
       '@babel/core': 7.24.7
-      '@ember/legacy-built-in-components': 0.5.0(@glint/template@1.4.0)(ember-source@5.8.0)
       '@embroider/macros': 1.16.2(@glint/template@1.4.0)
       amd-name-resolver: 1.3.1
       babel-plugin-compact-reexports: 1.1.0
@@ -7297,9 +7299,11 @@ packages:
       calculate-cache-key-for-tree: 2.0.0
       ember-asset-loader: 1.0.0
       ember-cli-babel: 7.26.11
+      ember-cli-htmlbars: 6.3.0
       ember-cli-preprocess-registry: 3.3.0
       ember-cli-string-utils: 1.1.0
       ember-cli-version-checker: 5.1.2
+      ember-engines-router-service: 0.6.0(@glint/template@1.4.0)(ember-source@5.8.0)
       ember-source: 5.8.0(@babel/core@7.24.7)(@glimmer/component@1.1.2)(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.91.0)
       lodash: 4.17.21
     transitivePeerDependencies:
@@ -8026,7 +8030,7 @@ packages:
       base64id: 2.0.0
       cookie: 0.4.2
       cors: 2.8.5
-      debug: 4.3.4
+      debug: 4.3.5
       engine.io-parser: 5.2.2
       ws: 8.11.0
     transitivePeerDependencies:
@@ -9895,7 +9899,7 @@ packages:
     engines: {node: '>= 14'}
     dependencies:
       agent-base: 7.1.0
-      debug: 4.3.4
+      debug: 4.3.5
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -9916,7 +9920,7 @@ packages:
     engines: {node: '>= 14'}
     dependencies:
       agent-base: 7.1.0
-      debug: 4.3.4
+      debug: 4.3.5
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -11499,7 +11503,7 @@ packages:
     dependencies:
       growly: 1.3.0
       is-wsl: 2.2.0
-      semver: 7.6.0
+      semver: 7.6.2
       shellwords: 0.1.1
       uuid: 8.3.2
       which: 2.0.2
@@ -11526,7 +11530,7 @@ packages:
     dependencies:
       hosted-git-info: 7.0.1
       is-core-module: 2.13.1
-      semver: 7.6.0
+      semver: 7.6.2
       validate-npm-package-license: 3.0.4
     dev: true
 
@@ -13389,7 +13393,7 @@ packages:
   /socket.io-adapter@2.5.4:
     resolution: {integrity: sha512-wDNHGXGewWAjQPt3pyeYBtpWSq9cLE5UW1ZUPL/2eGK9jtse/FpXib7epSTsz0Q0m+6sg6Y4KtcFTlah1bdOVg==}
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.5
       ws: 8.11.0
     transitivePeerDependencies:
       - bufferutil
@@ -13402,7 +13406,7 @@ packages:
     engines: {node: '>=10.0.0'}
     dependencies:
       '@socket.io/component-emitter': 3.1.0
-      debug: 4.3.4
+      debug: 4.3.5
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -13414,7 +13418,7 @@ packages:
       accepts: 1.3.8
       base64id: 2.0.0
       cors: 2.8.5
-      debug: 4.3.4
+      debug: 4.3.5
       engine.io: 6.5.4
       socket.io-adapter: 2.5.4
       socket.io-parser: 4.2.4
@@ -13557,7 +13561,7 @@ packages:
     resolution: {integrity: sha512-GqXBq2SPWv9hTXDFKS8WrKK1aISB0aKGHZzH+uD4ShAgs+Fz20ZfoerLOm8U+f62iRWLrw6nimOY/uYuTcVhvg==}
     engines: {node: 6.* || 8.* || >= 10.*}
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.5
     transitivePeerDependencies:
       - supports-color
 
@@ -13706,6 +13710,7 @@ packages:
   /strip-bom@4.0.0:
     resolution: {integrity: sha512-3xurFv5tEgii33Zi8Jtp55wEIILR9eh34FAW00PZf+JnSsTmV/ioewSgQl97JHvgjoRGwPShsWm+IdrxB35d0w==}
     engines: {node: '>=8'}
+    dev: false
 
   /strip-eof@1.0.0:
     resolution: {integrity: sha512-7FCwGGmx8mD5xQd3RPUvnSpUXHM3BWuzjtpD4TXsfcZ9EL4azvVVUscFYwD9nx8Kh+uCBC00XBtAykoMHwTh8Q==}
@@ -13970,7 +13975,7 @@ packages:
     resolution: {integrity: sha512-vngT2JmkSapgq0z7uIoYtB9kWOOzMihAAYq/D3Pjm/ODOGMgS4r++B+OZ09U4hWR6EaOdy9eqQ7/8ygbH3wehA==}
     engines: {node: 8.* || >= 10.*}
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.5
       heimdalljs: 0.2.6
       mkdirp: 0.5.6
       rimraf: 3.0.2
