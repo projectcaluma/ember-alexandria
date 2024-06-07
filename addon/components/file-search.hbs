@@ -6,7 +6,7 @@
     class="uk-width-1 uk-flex uk-flex-column uk-overflow-hidden uk-height-max-1"
   >
     <div class="uk-flex uk-flex-middle uk-padding-small">
-      <Search @search={{@filters.query}}/>
+      <Search @search={{@filters.query}} />
 
       <DocumentViewToggle
         @viewList={{this.listView}}
@@ -15,33 +15,28 @@
       />
     </div>
 
-    <div class="uk-position-relative uk-height-1-1">
-      <div
-        class="uk-position-cover uk-padding-small uk-height-1-1 uk-overflow-auto"
-        ...attributes
-      >
-        <div class="document-view">
-          {{! List & Grid View }}
+    <div class="uk-padding-small uk-height-1-1 uk-overflow-auto" ...attributes>
+      <div class="document-view">
+        {{! List & Grid View }}
 
-          {{#if this.listView}}
-            <DocumentList
-              @columns={{this.tableColumns}}
-              @loading={{this.fetchedDocuments.isRunning}}
-              @fetchedDocuments={{this.fetchedDocuments.value}}
-              @setSort={{this.setSort}}
-              @selectedDocuments={{this.documents.selectedDocuments}}
-              @onDoubleClickDocument={{this.openDocument.perform}}
-            />
-          {{else}}
-            <DocumentGrid
-              @displayLink={{true}}
-              @loading={{this.fetchedDocuments.isRunning}}
-              @fetchedDocuments={{this.fetchedDocuments.value}}
-              @selectedDocuments={{this.documents.selectedDocuments}}
-              @onDoubleClickDocument={{this.openDocument.perform}}
-            />
-          {{/if}}
-        </div>
+        {{#if this.listView}}
+          <DocumentList
+            @columns={{this.tableColumns}}
+            @loading={{this.fetchedDocuments.isRunning}}
+            @fetchedDocuments={{this.fetchedDocuments.value}}
+            @setSort={{this.setSort}}
+            @selectedDocuments={{this.documents.selectedDocuments}}
+            @onDoubleClickDocument={{this.openDocument.perform}}
+          />
+        {{else}}
+          <DocumentGrid
+            @displayLink={{true}}
+            @loading={{this.fetchedDocuments.isRunning}}
+            @fetchedDocuments={{this.fetchedDocuments.value}}
+            @selectedDocuments={{this.documents.selectedDocuments}}
+            @onDoubleClickDocument={{this.openDocument.perform}}
+          />
+        {{/if}}
       </div>
     </div>
   </div>
