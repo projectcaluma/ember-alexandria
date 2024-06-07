@@ -58,6 +58,7 @@ alexandria:
   document-list:
     name: "Dokumentenliste"
     type: "Typ"
+    document-title: "Dokumententitel"
     created-by-user: "Ersteller"
     created-by-group: "Gruppe"
     modified-at: "Änderungsdatum"
