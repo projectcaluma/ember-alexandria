@@ -30,7 +30,7 @@
 
     {{! Drag'n'Drop Area }}
     <div
-      class="uk-position-relative uk-height-1-1
+      class="uk-padding-small uk-height-1-1 uk-overflow-auto
         {{if this.isDragOver 'document-grid--dragover'}}
         {{unless this.canDrop 'document-grid--disallowed'}}
         "
@@ -38,38 +38,34 @@
       {{on "dragleave" this.onDragLeave}}
       {{on "dragover" this.onDragOver}}
       {{on "drop" this.onDrop.perform}}
+      ...attributes
     >
       <div
-        class="uk-position-cover uk-padding-small uk-height-1-1 uk-overflow-auto"
-        ...attributes
+        class="document-view"
+        {{did-insert (perform this.initialiseDocumentSelection)}}
       >
-        <div
-          class="document-view"
-          {{did-insert (perform this.initialiseDocumentSelection)}}
-        >
-          {{! List & Grid View }}
-          {{#if this.listView}}
-            <DocumentList
-              @columns={{this.tableColumns}}
-              @loading={{this.fetchedDocuments.isRunning}}
-              @fetchedDocuments={{this.fetchedDocuments.value}}
-              @setSort={{this.setSort}}
-              @selectedDocuments={{this.documents.selectedDocuments}}
-              @onClickDocument={{this.handleDocumentSelection}}
-              @onDoubleClickDocument={{this.openDocument.perform}}
-              @onDragStart={{this.dragDocument}}
-            />
-          {{else}}
-            <DocumentGrid
-              @loading={{this.fetchedDocuments.isRunning}}
-              @fetchedDocuments={{this.fetchedDocuments.value}}
-              @selectedDocuments={{this.documents.selectedDocuments}}
-              @onClickDocument={{this.handleDocumentSelection}}
-              @onDoubleClickDocument={{this.openDocument.perform}}
-              @onDragStart={{this.dragDocument}}
-            />
-          {{/if}}
-        </div>
+        {{! List & Grid View }}
+        {{#if this.listView}}
+          <DocumentList
+            @columns={{this.tableColumns}}
+            @loading={{this.fetchedDocuments.isRunning}}
+            @fetchedDocuments={{this.fetchedDocuments.value}}
+            @setSort={{this.setSort}}
+            @selectedDocuments={{this.documents.selectedDocuments}}
+            @onClickDocument={{this.handleDocumentSelection}}
+            @onDoubleClickDocument={{this.openDocument.perform}}
+            @onDragStart={{this.dragDocument}}
+          />
+        {{else}}
+          <DocumentGrid
+            @loading={{this.fetchedDocuments.isRunning}}
+            @fetchedDocuments={{this.fetchedDocuments.value}}
+            @selectedDocuments={{this.documents.selectedDocuments}}
+            @onClickDocument={{this.handleDocumentSelection}}
+            @onDoubleClickDocument={{this.openDocument.perform}}
+            @onDragStart={{this.dragDocument}}
+          />
+        {{/if}}
       </div>
       {{#if this.isDragOver}}
         <button
