@@ -3,7 +3,7 @@
 ![Test](https://github.com/projectcaluma/ember-alexandria/workflows/Test/badge.svg)
 [![Dependabot](https://img.shields.io/librariesio/github/projectcaluma/ember-alexandria)](https://dependabot.com/)
 [![Code Style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![License: LGPL-3.0](https://img.shields.io/badge/License-LGPL--3.0-blue.svg)](https://spdx.org/licenses/LGPL-3.0-or-later.html)
+[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](https://spdx.org/licenses/AGPL-3.0-or-later.html)
 
 The frontend for the [alexandria](https://github.com/projectcaluma/alexandria)
 document management service
@@ -226,4 +226,4 @@ See the [Contributing](CONTRIBUTING.md) guide for details.
 
 ## License
 
-This project is licensed under the [LGPL-3.0-or-later license](LICENSE).
+This project is licensed under the [AGPL-3.0-or-later license](LICENSE).
