@@ -1,3 +1,10 @@
+## [8.1.1](https://github.com/projectcaluma/ember-alexandria/compare/v8.1.0...v8.1.1) (2024-06-10)
+
+
+### Bug Fixes
+
+* link to correct licence ([#854](https://github.com/projectcaluma/ember-alexandria/issues/854)) ([60544dd](https://github.com/projectcaluma/ember-alexandria/commit/60544dde628525bd4183f1ae9780a779577889cd))
+
 # [8.1.0](https://github.com/projectcaluma/ember-alexandria/compare/v8.0.4...v8.1.0) (2024-06-05)
 
 
