@@ -126,11 +126,13 @@
     "@ember-data/graph@4.12.5 needs @ember-data/store@5.3.0 as peer",
     "dependency which causes issues (and doesn't make any sense) for embroider",
     "builds used in the test scenarios:",
-    "https://github.com/embroider-build/embroider/blob/main/docs/peer-dependency-resolution-issues.md"
+    "https://github.com/embroider-build/embroider/blob/main/docs/peer-dependency-resolution-issues.md",
+    "conventional-changelog-conventionalcommits https://github.com/semantic-release/commit-analyzer/issues/642"
   ],
   "pnpm": {
     "overrides": {
-      "@ember-data/store": "4.12.5"
+      "@ember-data/store": "4.12.5",
+      "conventional-changelog-conventionalcommits": "8.0.0"
     }
   },
   "ember": {
