@@ -1,7 +1,7 @@
 {
   "name": "ember-alexandria",
   "version": "8.1.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Document management frontend for the alexandria backend",
   "keywords": [
     "ember-addon",
     "ember-engine"
@@ -11,7 +11,7 @@
     "url": "https://github.com/projectcaluma/ember-alexandria.git"
   },
   "license": "MIT",
-  "author": "",
+  "author": "Adfinis AG <info@adfinis.com>",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -71,7 +71,7 @@
   },
   "devDependencies": {
     "@adfinis/eslint-config": "2.1.1",
-    "@adfinis/semantic-release-config": "5.0.0",
+    "@adfinis/semantic-release-config": "4.1.0",
     "@babel/eslint-parser": "7.24.7",
     "@babel/plugin-proposal-decorators": "7.24.7",
     "@ember/test-helpers": "3.3.0",
@@ -113,7 +113,7 @@
     "qunit": "2.21.0",
     "qunit-dom": "3.1.2",
     "sass": "1.77.4",
-    "semantic-release": "24.0.0",
+    "semantic-release": "23.1.1",
     "sinon": "18.0.0",
     "stylelint": "16.6.1",
     "stylelint-config-standard-scss": "13.1.0",
@@ -126,13 +126,11 @@
     "@ember-data/graph@4.12.5 needs @ember-data/store@5.3.0 as peer",
     "dependency which causes issues (and doesn't make any sense) for embroider",
     "builds used in the test scenarios:",
-    "https://github.com/embroider-build/embroider/blob/main/docs/peer-dependency-resolution-issues.md",
-    "conventional-changelog-conventionalcommits https://github.com/semantic-release/commit-analyzer/issues/642"
+    "https://github.com/embroider-build/embroider/blob/main/docs/peer-dependency-resolution-issues.md"
   ],
   "pnpm": {
     "overrides": {
-      "@ember-data/store": "4.12.5",
-      "conventional-changelog-conventionalcommits": "8.0.0"
+      "@ember-data/store": "4.12.5"
     }
   },
   "ember": {
