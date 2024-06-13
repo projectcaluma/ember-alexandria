@@ -10,7 +10,6 @@ export default class DocumentDeleteButtonComponent extends Component {
   @service notification;
   @service intl;
   @service("alexandria-documents") documents;
-  @service router;
 
   @tracked dialogVisible = false;
 
