@@ -30,23 +30,31 @@
   </thead>
 
   <tbody>
-    {{#each @fetchedDocuments as |document|}}
-      <DocumentListItem
-        @columns={{@columns}}
-        @document={{document}}
-        @isSelected={{includes document.id (map-by "id" @selectedDocuments)}}
-        @onClickDocument={{@onClickDocument}}
-        @onDoubleClickDocument={{@onDoubleClickDocument}}
-        @onDragStart={{@onDragStart}}
-      />
-    {{else}}
+    {{#if @loading}}
       <tr>
-        <td colspan={{this.columnCount}}>
-          <div class="uk-text-center uk-text-muted">
-            {{t "alexandria.nothing-found"}}
-          </div>
+        <td colspan={{this.columnCount}} class="uk-text-center">
+          <UkSpinner />
         </td>
       </tr>
-    {{/each}}
+    {{else}}
+      {{#each @fetchedDocuments as |document|}}
+        <DocumentListItem
+          @columns={{@columns}}
+          @document={{document}}
+          @isSelected={{includes document.id (map-by "id" @selectedDocuments)}}
+          @onClickDocument={{@onClickDocument}}
+          @onDoubleClickDocument={{@onDoubleClickDocument}}
+          @onDragStart={{@onDragStart}}
+        />
+      {{else}}
+        <tr>
+          <td colspan={{this.columnCount}}>
+            <div class="uk-text-center uk-text-muted">
+              {{t "alexandria.nothing-found"}}
+            </div>
+          </td>
+        </tr>
+      {{/each}}
+    {{/if}}
   </tbody>
 </table>
