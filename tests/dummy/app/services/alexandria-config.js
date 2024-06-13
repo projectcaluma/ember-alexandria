@@ -1,9 +1,12 @@
-import { later } from "@ember/runloop";
+import { action } from "@ember/object";
+import { inject as service } from "@ember/service";
 import { macroCondition, isTesting } from "@embroider/macros";
 
 import AlexandriaConfigService from "ember-alexandria/services/alexandria-config";
 
 export default class CustomAlexandriaConfigService extends AlexandriaConfigService {
+  @service router;
+
   enablePDFConversion = true;
   enableWebDAV = true;
 
@@ -35,18 +38,27 @@ export default class CustomAlexandriaConfigService extends AlexandriaConfigServi
     return {};
   }
 
-  resolveUser(id) {
+  async resolveUser(id) {
     const timeout = macroCondition(isTesting()) ? 1 : 200;
 
-    return new Promise((resolve) =>
-      later(this, () => resolve((id || "").toUpperCase()), timeout),
-    );
+    await new Promise((resolve) => setTimeout(resolve, timeout));
+
+    return (id || "-").toUpperCase();
   }
 
-  documentListLinkTo() {
+  @action
+  async documentListLinkTo(document) {
+    const timeout = macroCondition(isTesting()) ? 1 : 200;
+
+    await new Promise((resolve) => setTimeout(resolve, timeout));
+
     return {
-      route: "index",
-      label: "To document detail",
+      url: this.router.urlFor("alexandria-meta", 1, {
+        queryParams: {
+          document: document.id,
+        },
+      }),
+      label: "View Detail",
     };
   }
 }
