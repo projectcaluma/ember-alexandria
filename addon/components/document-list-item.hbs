@@ -44,13 +44,17 @@
       </td>
     {{else if (eq column "link")}}
       <td>
-        {{#let (this.config.documentListLinkTo @document) as |linkConfig|}}
-          <LinkTo
-            @route={{linkConfig.route}}
-            @query={{hash document=@document.id}}
-          >
-            {{linkConfig.label}}
-          </LinkTo>
+        {{#let (await (this.config.documentListLinkTo @document)) as |linkConfig|}}
+          {{#if linkConfig.url}}
+            <a href={{linkConfig.url}}>{{linkConfig.label}}</a>
+          {{else}}
+            <LinkTo
+              @route={{linkConfig.route}}
+              @query={{hash document=@document.id}}
+            >
+              {{linkConfig.label}}
+            </LinkTo>
+          {{/if}}
         {{/let}}
       </td>
     {{else if (eq column "date")}}
