@@ -1,3 +1,15 @@
+# [8.2.0](https://github.com/projectcaluma/ember-alexandria/compare/v8.1.1...v8.2.0) (2024-06-13)
+
+
+### Bug Fixes
+
+* **list:** add loading state ([f240a5c](https://github.com/projectcaluma/ember-alexandria/commit/f240a5c270ba2871ce6577c46d00a0d06e1dedbd))
+
+
+### Features
+
+* **list:** add url for LinkTo generation ([e1f376d](https://github.com/projectcaluma/ember-alexandria/commit/e1f376d3e81a5e3c79bee1c8cacb25c04a22404e))
+
 ## [8.1.1](https://github.com/projectcaluma/ember-alexandria/compare/v8.1.0...v8.1.1) (2024-06-10)
 
 
