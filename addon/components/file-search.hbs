@@ -22,7 +22,7 @@
         {{#if this.listView}}
           <DocumentList
             @columns={{this.tableColumns}}
-            @loading={{this.fetchedDocuments.isRunning}}
+            @loading={{this.fetchedDocuments.isPending}}
             @fetchedDocuments={{this.fetchedDocuments.value}}
             @setSort={{this.setSort}}
             @selectedDocuments={{this.documents.selectedDocuments}}
@@ -31,7 +31,7 @@
         {{else}}
           <DocumentGrid
             @displayLink={{true}}
-            @loading={{this.fetchedDocuments.isRunning}}
+            @loading={{this.fetchedDocuments.isPending}}
             @fetchedDocuments={{this.fetchedDocuments.value}}
             @selectedDocuments={{this.documents.selectedDocuments}}
             @onDoubleClickDocument={{this.openDocument.perform}}
