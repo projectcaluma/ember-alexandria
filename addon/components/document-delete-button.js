@@ -60,7 +60,9 @@ export default class DocumentDeleteButtonComponent extends Component {
 
     rejected.forEach((error, index) => {
       docs[index].rollbackAttributes();
-      new ErrorHandler(this, error).notify("alexandria.errors.delete-document");
+      new ErrorHandler(this, error.reason).notify(
+        "alexandria.errors.delete-document",
+      );
     });
 
     if (!rejected.length) {
