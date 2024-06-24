@@ -120,7 +120,7 @@
     "stylelint-prettier": "5.0.0",
     "stylelint-scss": "6.3.2",
     "uikit": "3.21.5",
-    "webpack": "5.91.0"
+    "webpack": "5.92.1"
   },
   "//": [
     "@ember-data/graph@4.12.5 needs @ember-data/store@5.3.0 as peer",
