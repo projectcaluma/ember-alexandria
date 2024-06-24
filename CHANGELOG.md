@@ -1,3 +1,10 @@
+## [8.2.1](https://github.com/projectcaluma/ember-alexandria/compare/v8.2.0...v8.2.1) (2024-06-24)
+
+
+### Bug Fixes
+
+* **errors:** fix error handling when deleting documents ([6d220d5](https://github.com/projectcaluma/ember-alexandria/commit/6d220d5af4712395d750f116d85799ed7e075b73))
+
 # [8.2.0](https://github.com/projectcaluma/ember-alexandria/compare/v8.1.1...v8.2.0) (2024-06-13)
 
 
