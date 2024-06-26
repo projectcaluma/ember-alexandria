@@ -190,8 +190,9 @@
       <div>
         <UkButton
           @size="small"
-          class="uk-width-1"
           @onClick={{this.openWebDAV.perform}}
+          @loading={{this.openWebDAV.isRunning}}
+          class="uk-width-1"
           data-test-web-dav-button
         >
           {{t "alexandria.document-details.web-dav"}}
@@ -203,8 +204,9 @@
       <div>
         <UkButton
           @size="small"
-          class="uk-width-1"
           @onClick={{this.convertDocument.perform}}
+          @loading={{this.convertDocument.isRunning}}
+          class="uk-width-1"
           data-test-convert-button
         >
           {{t "alexandria.document-details.convert"}}
