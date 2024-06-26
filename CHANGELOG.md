@@ -1,3 +1,10 @@
+## [8.2.2](https://github.com/projectcaluma/ember-alexandria/compare/v8.2.1...v8.2.2) (2024-06-26)
+
+
+### Bug Fixes
+
+* **details:** show loading states for action buttons ([dad3b99](https://github.com/projectcaluma/ember-alexandria/commit/dad3b995275318467cee777a3f86c147cb03e281))
+
 ## [8.2.1](https://github.com/projectcaluma/ember-alexandria/compare/v8.2.0...v8.2.1) (2024-06-24)
 
 
