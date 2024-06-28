@@ -111,7 +111,7 @@
     "miragejs": "0.1.48",
     "prettier": "3.3.2",
     "qunit": "2.21.0",
-    "qunit-dom": "3.1.2",
+    "qunit-dom": "3.2.0",
     "sass": "1.77.6",
     "semantic-release": "24.0.0",
     "sinon": "18.0.0",
