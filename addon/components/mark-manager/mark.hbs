@@ -8,3 +8,8 @@
     data-test-add-mark={{@mark.id}}
   />
 </label>
+{{#if @mark.description}}
+  <div uk-dropdown class="mark__info-box">
+    <MarkdownToHtml @markdown={{@mark.description}} />
+  </div>
+{{/if}}

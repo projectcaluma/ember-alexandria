@@ -71,5 +71,10 @@
     &:hover {
       box-shadow: $tag-hover-shadow;
     }
+
+    &__info-box > div > p:last-child {
+      margin-bottom: 0;
+      max-width: 400px;
+    }
   }
 }
