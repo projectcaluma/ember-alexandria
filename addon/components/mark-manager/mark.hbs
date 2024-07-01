@@ -1,4 +1,4 @@
-<label class="mark {{this.class}}" {{uk-tooltip @mark.name}}>
+<label class="mark {{this.class}}">
   <FaIcon @icon={{@mark.icon}} @fixedWidth={{true}} />
   <input
     type="checkbox"
@@ -8,3 +8,7 @@
     data-test-add-mark={{@mark.id}}
   />
 </label>
+<div uk-dropdown class="uk-padding-small mark__info-box">
+  <strong>{{@mark.name}}</strong>
+  <MarkdownToHtml @markdown={{@mark.description}} />
+</div>
