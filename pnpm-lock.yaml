@@ -99,8 +99,8 @@ importers:
         specifier: ^4.0.3
         version: 4.0.3(ember-source@5.9.0(@babel/core@7.24.7)(@glimmer/component@1.1.2(@babel/core@7.24.7))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.92.1))
       ember-uikit:
-        specifier: ^9.1.1
-        version: 9.1.1(@glint/template@1.4.0)(ember-source@5.9.0(@babel/core@7.24.7)(@glimmer/component@1.1.2(@babel/core@7.24.7))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.92.1))(webpack@5.92.1)
+        specifier: ^9.1.2
+        version: 9.1.2(@glint/template@1.4.0)(ember-source@5.9.0(@babel/core@7.24.7)(@glimmer/component@1.1.2(@babel/core@7.24.7))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.92.1))(webpack@5.92.1)
       file-saver:
         specifier: ^2.0.5
         version: 2.0.5
@@ -3782,8 +3782,8 @@ packages:
     resolution: {integrity: sha512-ZYVKYWMnrHSD3vywo7rV76kPCOC9ATIEnGGG/PEKfCcFE0lB26jltRDnOrhORfLKq0JFp62fFxC/4940U+MwRQ==}
     engines: {node: 16.* || >= 18.*}
 
-  ember-uikit@9.1.1:
-    resolution: {integrity: sha512-MOFtBN/pwYyvvkFTGeBK3tRdXQcOzxIS326dc1IT+WMtlThtaItf832V27CRLjEMqhqE0CKUojtvxqCHWDEScw==}
+  ember-uikit@9.1.2:
+    resolution: {integrity: sha512-lD7CMBVVY18GlopcArdA8J09+/y+R6fKgwlHdOl5WwhPFea78Xll3Q187q9hfrJvJZfHahkWlDEz3fL2g9dKLg==}
     engines: {node: '>= 18'}
     peerDependencies:
       ember-source: '>= 4.0.0'
@@ -12863,7 +12863,7 @@ snapshots:
       - encoding
       - supports-color
 
-  ember-uikit@9.1.1(@glint/template@1.4.0)(ember-source@5.9.0(@babel/core@7.24.7)(@glimmer/component@1.1.2(@babel/core@7.24.7))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.92.1))(webpack@5.92.1):
+  ember-uikit@9.1.2(@glint/template@1.4.0)(ember-source@5.9.0(@babel/core@7.24.7)(@glimmer/component@1.1.2(@babel/core@7.24.7))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.92.1))(webpack@5.92.1):
     dependencies:
       '@babel/core': 7.24.7
       '@ember/string': 3.1.1
