@@ -1,8 +1,10 @@
+import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
 
 export default class DocumentListItemComponent extends Component {
   @service("alexandria-config") config;
+  @service router;
 
   get classes() {
     const classes = ["document-list-item"];
@@ -16,5 +18,12 @@ export default class DocumentListItemComponent extends Component {
     });
 
     return classes.join(" ");
+  }
+
+  @action
+  transitionTo(url, event) {
+    event.preventDefault();
+
+    this.router.transitionTo(url);
   }
 }

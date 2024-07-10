@@ -8,6 +8,7 @@ import { trackedFunction } from "reactiveweb/function";
 export default class DocumentViewComponent extends Component {
   @service store;
   @service("alexandria-config") config;
+  @service("alexandria-documents") documents;
 
   @tracked listView = true;
   @tracked search = "";
@@ -24,7 +25,7 @@ export default class DocumentViewComponent extends Component {
     const files = await this.store.query(
       "file",
       {
-        include: "document",
+        include: "document,renderings",
         filter: this.args.filters || {},
         page: { number: 1 },
       },
