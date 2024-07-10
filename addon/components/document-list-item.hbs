@@ -44,9 +44,15 @@
       </td>
     {{else if (eq column "link")}}
       <td>
-        {{#let (await (this.config.documentListLinkTo @document)) as |linkConfig|}}
+        {{#let
+          (await (this.config.documentListLinkTo @document))
+          as |linkConfig|
+        }}
           {{#if linkConfig.url}}
-            <a href={{linkConfig.url}}>{{linkConfig.label}}</a>
+            <a
+              href={{linkConfig.url}}
+              {{on "click" (fn this.transitionTo linkConfig.url)}}
+            >{{linkConfig.label}}</a>
           {{else}}
             <LinkTo
               @route={{linkConfig.route}}
