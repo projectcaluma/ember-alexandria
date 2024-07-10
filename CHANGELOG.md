@@ -1,3 +1,10 @@
+# [8.3.0](https://github.com/projectcaluma/ember-alexandria/compare/v8.2.2...v8.3.0) (2024-07-10)
+
+
+### Features
+
+* **mark:** display description ([05c3d5c](https://github.com/projectcaluma/ember-alexandria/commit/05c3d5c8eed1c2df83794a5c6478257bf467839c))
+
 ## [8.2.2](https://github.com/projectcaluma/ember-alexandria/compare/v8.2.1...v8.2.2) (2024-06-26)
 
 
