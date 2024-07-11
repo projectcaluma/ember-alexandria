@@ -1,3 +1,10 @@
+## [8.3.1](https://github.com/projectcaluma/ember-alexandria/compare/v8.3.0...v8.3.1) (2024-07-11)
+
+
+### Bug Fixes
+
+* **search:** improve search list experience ([cf8f92a](https://github.com/projectcaluma/ember-alexandria/commit/cf8f92a6cc1257501ad6ee2c12b326128423f121))
+
 # [8.3.0](https://github.com/projectcaluma/ember-alexandria/compare/v8.2.2...v8.3.0) (2024-07-10)
 
 
