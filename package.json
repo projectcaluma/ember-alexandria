@@ -118,7 +118,7 @@
     "stylelint": "16.6.1",
     "stylelint-config-standard-scss": "13.1.0",
     "stylelint-prettier": "5.0.0",
-    "stylelint-scss": "6.3.2",
+    "stylelint-scss": "6.4.1",
     "uikit": "3.21.6",
     "webpack": "5.92.1"
   },
