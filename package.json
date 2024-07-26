@@ -77,7 +77,7 @@
     "@ember/test-helpers": "3.3.0",
     "@embroider/test-setup": "4.0.0",
     "@faker-js/faker": "8.4.1",
-    "@fortawesome/fontawesome-svg-core": "6.5.2",
+    "@fortawesome/fontawesome-svg-core": "6.6.0",
     "broccoli-asset-rev": "3.0.0",
     "concurrently": "8.2.2",
     "ember-cli": "5.9.0",
