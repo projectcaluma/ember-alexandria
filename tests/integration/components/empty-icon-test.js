@@ -7,7 +7,7 @@ module("Integration | Component | empty-icon", function (hooks) {
   setupRenderingTest(hooks);
 
   test("it renders", async function (assert) {
-    await render(hbs`<EmptyIcon />`);
+    await render(hbs`<EmptyIcon />`, { owner: this.engine });
 
     assert.dom(this.element).hasText("We found nothing...");
     assert.dom(this.element).hasStyle({ color: "rgb(102, 102, 102)" });

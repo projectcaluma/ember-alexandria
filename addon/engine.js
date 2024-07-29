@@ -11,7 +11,14 @@ export default class EmberAlexandriaEngine extends Engine {
   Resolver = Resolver;
 
   dependencies = {
-    services: ["session", "intl", "notification", "fetch", "alexandria-config"],
+    services: [
+      "session",
+      "intl",
+      "notification",
+      "fetch",
+      "alexandria-config",
+      "store",
+    ],
   };
 }
 

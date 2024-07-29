@@ -5,7 +5,7 @@ import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
 import { setFlatpickrDate } from "ember-flatpickr/test-support/helpers";
 import { module, test } from "qunit";
-import { fake } from "sinon";
+import { fake, stub } from "sinon";
 
 module("Integration | Component | single-document-details", function (hooks) {
   setupRenderingTest(hooks);
@@ -31,6 +31,7 @@ module("Integration | Component | single-document-details", function (hooks) {
 
     await render(
       hbs`<SingleDocumentDetails @document={{this.selectedDocument}} />`,
+      { owner: this.engine },
     );
 
     assert.dom("[data-test-single-doc-details]").doesNotHaveClass("closed");
@@ -51,8 +52,10 @@ module("Integration | Component | single-document-details", function (hooks) {
   });
 
   test("delete document", async function (assert) {
-    const transitionTo = fake();
-    this.owner.lookup("service:router").transitionTo = transitionTo;
+    const router = this.engine.lookup("service:router");
+
+    stub(router, "currentRouteName").get(() => null);
+    router.transitionTo = fake();
 
     const destroy = fake();
     this.selectedDocument = {
@@ -63,13 +66,14 @@ module("Integration | Component | single-document-details", function (hooks) {
 
     await render(
       hbs`<SingleDocumentDetails @document={{this.selectedDocument}}/>`,
+      { owner: this.engine },
     );
 
     await click("[data-test-delete]");
     await click("[data-test-delete-confirm]");
 
     assert.ok(destroy.calledOnce, "destroyRecord was called once");
-    assert.ok(transitionTo.calledOnce, "transitionTo was called once");
+    assert.ok(router.transitionTo.calledOnce, "transitionTo was called once");
   });
 
   test("edit document title", async function (assert) {
@@ -82,6 +86,7 @@ module("Integration | Component | single-document-details", function (hooks) {
     this.selectedDocument = new Document();
     await render(
       hbs`<SingleDocumentDetails @document={{this.selectedDocument}}/>`,
+      { owner: this.engine },
     );
 
     assert.dom("[data-test-title]").exists();
@@ -118,6 +123,7 @@ module("Integration | Component | single-document-details", function (hooks) {
 
     await render(
       hbs`<SingleDocumentDetails @document={{this.selectedDocument}}/>`,
+      { owner: this.engine },
     );
 
     assert.dom("[data-test-date]").exists();
@@ -146,6 +152,7 @@ module("Integration | Component | single-document-details", function (hooks) {
 
     await render(
       hbs`<SingleDocumentDetails @document={{this.selectedDocument}} />`,
+      { owner: this.engine },
     );
 
     assert.dom("[data-test-convert-button]").doesNotExist();
@@ -158,6 +165,7 @@ module("Integration | Component | single-document-details", function (hooks) {
 
     await render(
       hbs`<SingleDocumentDetails @document={{this.selectedDocument}} />`,
+      { owner: this.engine },
     );
 
     assert.dom("[data-test-convert-button]").exists();
@@ -170,6 +178,7 @@ module("Integration | Component | single-document-details", function (hooks) {
 
     await render(
       hbs`<SingleDocumentDetails @document={{this.selectedDocument}} />`,
+      { owner: this.engine },
     );
 
     assert.dom("[data-test-web-dav-button]").doesNotExist();
@@ -185,6 +194,7 @@ module("Integration | Component | single-document-details", function (hooks) {
 
     await render(
       hbs`<SingleDocumentDetails @document={{this.selectedDocument}} />`,
+      { owner: this.engine },
     );
 
     assert.dom("[data-test-web-dav-button]").exists();

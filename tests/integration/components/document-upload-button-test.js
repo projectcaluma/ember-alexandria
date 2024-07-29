@@ -11,7 +11,7 @@ module("Integration | Component | document-upload-button", function (hooks) {
 
   hooks.beforeEach(function () {
     this.uploadFnMock = fake();
-    this.owner.lookup("service:alexandria-documents").upload =
+    this.engine.lookup("service:alexandria-documents").upload =
       this.uploadFnMock;
   });
 
@@ -20,6 +20,7 @@ module("Integration | Component | document-upload-button", function (hooks) {
 
     await render(
       hbs`<DocumentUploadButton @categoryId={{this.category.id}} />`,
+      { owner: this.engine },
     );
 
     assert.dom("[data-test-input]").exists({ count: 1 });
@@ -60,7 +61,7 @@ module("Integration | Component | document-upload-button", function (hooks) {
       color: "#00f",
     });
 
-    await render(hbs`<DocumentUploadButton/>`);
+    await render(hbs`<DocumentUploadButton/>`, { owner: this.engine });
 
     assert.dom("[data-test-upload-category]").exists({ count: 3 });
     assert

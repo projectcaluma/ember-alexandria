@@ -7,14 +7,14 @@ module("Unit | Service | alexandria-tags", function (hooks) {
   setupMirage(hooks);
 
   test("it exists", function (assert) {
-    const service = this.owner.lookup("service:alexandria-tags");
+    const service = this.engine.lookup("service:alexandria-tags");
     assert.ok(service);
   });
 
   test("it adds existing tags", async function (assert) {
     const requests = this.server.pretender.handledRequests;
 
-    const service = this.owner.lookup("service:alexandria-tags");
+    const service = this.engine.lookup("service:alexandria-tags");
     const store = this.owner.lookup("service:store");
 
     const documentId = this.server.create("document").id;
@@ -38,7 +38,7 @@ module("Unit | Service | alexandria-tags", function (hooks) {
   test("it adds new tags", async function (assert) {
     const requests = this.server.pretender.handledRequests;
 
-    const service = this.owner.lookup("service:alexandria-tags");
+    const service = this.engine.lookup("service:alexandria-tags");
     const store = this.owner.lookup("service:store");
     const categoryId = this.server.create("category").id;
     const document = await store
@@ -67,7 +67,7 @@ module("Unit | Service | alexandria-tags", function (hooks) {
   test("it removes tags", async function (assert) {
     const requests = this.server.pretender.handledRequests;
 
-    const service = this.owner.lookup("service:alexandria-tags");
+    const service = this.engine.lookup("service:alexandria-tags");
     const store = this.owner.lookup("service:store");
 
     const documentId = this.server.create("document").id;

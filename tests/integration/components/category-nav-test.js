@@ -11,7 +11,7 @@ module("Integration | Component | category-nav", function (hooks) {
   test("it renders category nav", async function (assert) {
     this.server.createList("category", 2);
 
-    await render(hbs`<CategoryNav />`);
+    await render(hbs`<CategoryNav />`, { owner: this.engine });
 
     assert.dom("[data-test-nav-title]").hasText("Categories");
     assert.dom("[data-test-all-files]").exists();
@@ -22,7 +22,7 @@ module("Integration | Component | category-nav", function (hooks) {
     // Dont know how to test the loading state since the datafetching is on render and the test waits until rendering is finished.
     this.server.createList("category", 2);
 
-    await render(hbs`<CategoryNav />`);
+    await render(hbs`<CategoryNav />`, { owner: this.engine });
 
     assert.dom("[data-test-skeleton-category]").exists({ count: 5 });
 

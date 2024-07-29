@@ -26,7 +26,8 @@ module("Integration | Component | document-list-item", function (hooks) {
     this.onDoubleClickDocument = fake();
     this.onDragStart = fake();
 
-    await render(hbs`
+    await render(
+      hbs`
       <DocumentListItem
         @columns={{this.columns}}
         @document={{this.document}}
@@ -36,7 +37,9 @@ module("Integration | Component | document-list-item", function (hooks) {
         @onDoubleClickDocument={{this.onDoubleClickDocument}}
         @onDragStart={{this.onDragStart}}
       />
-    `);
+    `,
+      { owner: this.engine },
+    );
   });
 
   test("it renders all the required fields for a document", async function (assert) {

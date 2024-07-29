@@ -2,14 +2,16 @@ import { render, click } from "@ember/test-helpers";
 import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
 import { module, test } from "qunit";
-import { fake } from "sinon";
+import { fake, stub } from "sinon";
 
 module("Integration | Component | document-card", function (hooks) {
   setupRenderingTest(hooks);
 
   test("it renders document card", async function (assert) {
     this.document = { title: "test1", marks: [] };
-    await render(hbs`<DocumentCard @document={{this.document}}/>`);
+    await render(hbs`<DocumentCard @document={{this.document}}/>`, {
+      owner: this.engine,
+    });
 
     assert.dom("[data-test-file-icon]").exists();
     assert.dom("[data-test-title]").hasText(this.document.title);
@@ -24,8 +26,10 @@ module("Integration | Component | document-card", function (hooks) {
   });
 
   test("delete file", async function (assert) {
-    const transitionTo = fake();
-    this.owner.lookup("service:router").transitionTo = transitionTo;
+    const router = this.engine.lookup("service:router");
+
+    stub(router, "currentRouteName").get(() => null);
+    router.transitionTo = fake();
 
     const destroy = fake();
     this.document = {
@@ -33,13 +37,15 @@ module("Integration | Component | document-card", function (hooks) {
       marks: [],
       destroyRecord: async () => destroy(),
     };
-    await render(hbs`<DocumentCard @document={{this.document}}/>`);
+    await render(hbs`<DocumentCard @document={{this.document}}/>`, {
+      owner: this.engine,
+    });
 
     await click("[data-test-context-menu-trigger]");
     await click("[data-test-delete]");
     await click("[data-test-delete-confirm]");
     assert.ok(destroy.calledOnce, "destroyRecord was called once");
-    assert.ok(transitionTo.calledOnce, "transitionTo was called once");
+    assert.ok(router.transitionTo.calledOnce, "transitionTo was called once");
   });
 
   test("thumbnail", async function (assert) {
@@ -47,7 +53,9 @@ module("Integration | Component | document-card", function (hooks) {
       thumbnail: { value: "some-url" },
       marks: [],
     };
-    await render(hbs`<DocumentCard @document={{this.document}}/>`);
+    await render(hbs`<DocumentCard @document={{this.document}}/>`, {
+      owner: this.engine,
+    });
 
     assert.dom("[data-test-file-icon]").doesNotExist();
     assert

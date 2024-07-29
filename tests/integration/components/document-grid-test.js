@@ -11,7 +11,7 @@ module("Integration | Component | document-grid", function (hooks) {
   test("it renders a document grid", async function (assert) {
     this.server.createList("document", 3);
 
-    await render(hbs`<DocumentGrid />`);
+    await render(hbs`<DocumentGrid />`, { owner: this.engine });
 
     assert.dom(".document-grid").exists();
   });

@@ -2,13 +2,16 @@ import { render, click } from "@ember/test-helpers";
 import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
 import { module, test } from "qunit";
-import { fake } from "sinon";
+import { fake, stub } from "sinon";
 
 module("Integration | Component | document-delete-button", function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
-    this.owner.lookup("service:router").transitionTo = fake();
+    const router = this.engine.lookup("service:router");
+
+    stub(router, "currentRouteName").get(() => null);
+    router.transitionTo = fake();
   });
 
   test("delete document", async function (assert) {
@@ -23,7 +26,8 @@ module("Integration | Component | document-delete-button", function (hooks) {
     this.onCancel = () => assert.step("cancel");
     this.onConfirm = () => assert.step("confirm");
 
-    await render(hbs`
+    await render(
+      hbs`
     <DocumentDeleteButton
       @docsToDelete={{this.document}}
       @onConfirm={{this.onConfirm}}
@@ -38,7 +42,9 @@ module("Integration | Component | document-delete-button", function (hooks) {
         Delete
       </button>
     </DocumentDeleteButton>
-    `);
+    `,
+      { owner: this.engine },
+    );
 
     await click("[data-test-delete]");
     await click("[data-test-delete-cancel]");
@@ -70,7 +76,8 @@ module("Integration | Component | document-delete-button", function (hooks) {
     this.onCancel = () => assert.step("cancel");
     this.onConfirm = () => assert.step("confirm");
 
-    await render(hbs`
+    await render(
+      hbs`
     <DocumentDeleteButton
       @docsToDelete={{this.documents}}
       @onConfirm={{this.onConfirm}}
@@ -85,7 +92,9 @@ module("Integration | Component | document-delete-button", function (hooks) {
         Delete
       </button>
     </DocumentDeleteButton>
-    `);
+    `,
+      { owner: this.engine },
+    );
 
     await click("[data-test-delete]");
     await click("[data-test-delete-cancel]");

@@ -20,7 +20,9 @@ module("Integration | Component | tag-filter", function (hooks) {
       tags: this.tags,
     });
 
-    await render(hbs`<TagFilter @documents={{this.documents}} />`);
+    await render(hbs`<TagFilter @documents={{this.documents}} />`, {
+      owner: this.engine,
+    });
 
     assert.dom("button").exists({ count: 2 });
   });
@@ -31,7 +33,9 @@ module("Integration | Component | tag-filter", function (hooks) {
       marks: [this.mark],
     });
 
-    await render(hbs`<TagFilter @documents={{this.documents}} />`);
+    await render(hbs`<TagFilter @documents={{this.documents}} />`, {
+      owner: this.engine,
+    });
 
     assert.dom("button").exists({ count: 1 });
   });

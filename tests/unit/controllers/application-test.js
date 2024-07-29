@@ -5,7 +5,7 @@ module("Unit | Controller | index", function (hooks) {
   setupTest(hooks);
 
   test("compute document filters", function (assert) {
-    const controller = this.owner.lookup("controller:index");
+    const controller = this.engine.lookup("controller:index");
     controller.activeGroup = "group";
     controller.search = "test";
     controller.category = 1;
