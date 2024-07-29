@@ -8,7 +8,7 @@ module("Unit | Service | alexandria-documents", function (hooks) {
   setupMirage(hooks);
 
   test("it uploads documents", async function (assert) {
-    const service = this.owner.lookup("service:alexandria-documents");
+    const service = this.engine.lookup("service:alexandria-documents");
     const store = this.owner.lookup("service:store");
 
     const category = await store.findRecord(
@@ -38,7 +38,7 @@ module("Unit | Service | alexandria-documents", function (hooks) {
   });
 
   test("it restricts mime type", async function (assert) {
-    const service = this.owner.lookup("service:alexandria-documents");
+    const service = this.engine.lookup("service:alexandria-documents");
     const store = this.owner.lookup("service:store");
 
     const category = await store.findRecord(
@@ -65,7 +65,7 @@ module("Unit | Service | alexandria-documents", function (hooks) {
   });
 
   test("it replaces documents", async function (assert) {
-    const service = this.owner.lookup("service:alexandria-documents");
+    const service = this.engine.lookup("service:alexandria-documents");
     const store = this.owner.lookup("service:store");
 
     const document = await store.findRecord(
@@ -85,7 +85,7 @@ module("Unit | Service | alexandria-documents", function (hooks) {
   });
 
   test("it downloads documents", async function (assert) {
-    const service = this.owner.lookup("service:alexandria-documents");
+    const service = this.engine.lookup("service:alexandria-documents");
     const store = this.owner.lookup("service:store");
 
     const document = this.server.create("document");

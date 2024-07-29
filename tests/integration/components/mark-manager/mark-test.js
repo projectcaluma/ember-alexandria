@@ -7,7 +7,9 @@ module("Integration | Component | mark-manager/mark", function (hooks) {
   setupRenderingTest(hooks);
 
   test("it renders", async function (assert) {
-    await render(hbs`<MarkManager::Mark @documents={{(array)}} />`);
+    await render(hbs`<MarkManager::Mark @documents={{(array)}} />`, {
+      owner: this.engine,
+    });
 
     assert.dom("label").hasClass("mark");
   });

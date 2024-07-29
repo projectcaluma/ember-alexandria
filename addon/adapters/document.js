@@ -1,23 +1,33 @@
-import ApplicationAdapter from "./application";
+import { service } from "@ember/service";
 
-export default class DocumentAdapter extends ApplicationAdapter {
-  ajaxOptions(url, type, options) {
-    const ajaxOptions = super.ajaxOptions(url, type, options);
+export default function (BaseClass) {
+  return class DocumentAdapter extends BaseClass {
+    @service("alexandria-config") config;
 
-    if (type === "POST") {
-      // Remove content type for updating and creating records so the content
-      // type will be defined by the passed form data
-      delete ajaxOptions.headers["content-type"];
+    get namespace() {
+      return this.config.namespace ?? "/api/v1";
     }
 
-    return ajaxOptions;
-  }
+    ajaxOptions(url, type, options) {
+      const ajaxOptions = super.ajaxOptions(url, type, options);
 
-  createRecord(store, type, snapshot) {
-    const url = this.buildURL(type.modelName, null, snapshot, "createRecord");
+      if (type === "POST") {
+        // Remove content type for updating and creating records so the content
+        // type will be defined by the passed form data
+        delete ajaxOptions.headers["content-type"];
+      }
 
-    const data = store.serializerFor(type.modelName).serializeCreate(snapshot);
+      return ajaxOptions;
+    }
 
-    return this.ajax(url, "POST", { data });
-  }
+    createRecord(store, type, snapshot) {
+      const url = this.buildURL(type.modelName, null, snapshot, "createRecord");
+
+      const data = store
+        .serializerFor(type.modelName)
+        .serializeCreate(snapshot);
+
+      return this.ajax(url, "POST", { data });
+    }
+  };
 }

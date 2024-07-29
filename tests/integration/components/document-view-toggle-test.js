@@ -9,7 +9,7 @@ module("Integration | Component | document-view-toggle", function (hooks) {
   test("it renders", async function (assert) {
     this.set("viewList", true);
 
-    await render(hbs`<DocumentViewToggle />`);
+    await render(hbs`<DocumentViewToggle />`, { owner: this.engine });
 
     assert.dom("[data-test-toggle]").isVisible();
     assert.dom("[data-test-toggle] svg").exists();

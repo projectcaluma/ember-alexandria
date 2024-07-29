@@ -3,7 +3,7 @@ import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
 import { module, test } from "qunit";
-import { fake } from "sinon";
+import { fake, stub } from "sinon";
 
 module("Integration | Component | category-nav/category", function (hooks) {
   setupRenderingTest(hooks);
@@ -11,7 +11,9 @@ module("Integration | Component | category-nav/category", function (hooks) {
 
   test("it renders a category", async function (assert) {
     this.category = { name: "test", color: "#f00", id: 1 };
-    await render(hbs`<CategoryNav::Category @category={{this.category}}/>`);
+    await render(hbs`<CategoryNav::Category @category={{this.category}}/>`, {
+      owner: this.engine,
+    });
 
     assert.dom("[data-test-name]").hasText("test");
     assert.dom("[data-test-icon]").hasStyle({ color: "rgb(255, 0, 0)" });
@@ -21,6 +23,7 @@ module("Integration | Component | category-nav/category", function (hooks) {
     this.category = { id: "test", name: "test", color: "#f00" };
     await render(
       hbs`<CategoryNav::Category @category={{this.category}} @selected="test"/>`,
+      { owner: this.engine },
     );
 
     assert.dom("[data-test-name]").hasText("test");
@@ -39,11 +42,14 @@ module("Integration | Component | category-nav/category", function (hooks) {
     this.category = await store.findRecord("category", category.id);
     await store.findAll("document"); // the code uses peekRecord
 
-    const fakeTransition = fake();
-    this.owner.lookup("service:router").transitionTo = fakeTransition;
+    const router = this.engine.lookup("service:router");
+
+    stub(router, "currentRouteName").get(() => null);
+    router.transitionTo = fake();
 
     await render(
       hbs`<CategoryNav::Category @category={{this.category}} data-test-drop />`,
+      { owner: this.engine },
     );
 
     await triggerEvent("[data-test-drop]", "drop", {
@@ -53,8 +59,8 @@ module("Integration | Component | category-nav/category", function (hooks) {
       },
     });
 
-    assert.strictEqual(fakeTransition.callCount, 1);
-    assert.deepEqual(fakeTransition.args[0][1], {
+    assert.strictEqual(router.transitionTo.callCount, 1);
+    assert.deepEqual(router.transitionTo.args[0][1], {
       queryParams: {
         category: this.category.id,
         document: documents.map((d) => d.id).join(),
@@ -71,15 +77,16 @@ module("Integration | Component | category-nav/category", function (hooks) {
 
   test("it uploads on drop", async function (assert) {
     const category = this.server.create("category");
-    const store = this.owner.lookup("service:store");
+    const store = this.engine.lookup("service:store");
     const fakeUpload = fake();
-    this.owner.lookup("service:alexandria-documents").upload = fakeUpload;
+    this.engine.lookup("service:alexandria-documents").upload = fakeUpload;
 
     this.category = await store.findRecord("category", category.id);
     await store.findAll("document"); // the code uses peekRecord
 
     await render(
       hbs`<CategoryNav::Category @category={{this.category}} data-test-drop />`,
+      { owner: this.engine },
     );
 
     await triggerEvent("[data-test-drop]", "drop", {

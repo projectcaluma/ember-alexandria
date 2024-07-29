@@ -34,7 +34,9 @@ module("Integration | Component | mark-manager", function (hooks) {
       },
     ];
 
-    await render(hbs`<MarkManager @documents={{this.documents}} />`);
+    await render(hbs`<MarkManager @documents={{this.documents}} />`, {
+      owner: this.engine,
+    });
 
     assert.dom("label").exists({ count: 2 });
     assert.dom("input").isNotChecked();

@@ -7,17 +7,20 @@ module("Integration | Component | drop/item", function (hooks) {
   setupRenderingTest(hooks);
 
   test("it renders", async function (assert) {
-    await render(hbs`<Drop::Item @label="test"/>`);
+    await render(hbs`<Drop::Item @label="test"/>`, { owner: this.engine });
 
     assert.dom(this.element).hasText("test");
   });
 
   test("it renders with block", async function (assert) {
-    await render(hbs`
+    await render(
+      hbs`
       <Drop::Item>
         test
       </Drop::Item>
-    `);
+    `,
+      { owner: this.engine },
+    );
 
     assert.dom(this.element).hasText("test");
   });

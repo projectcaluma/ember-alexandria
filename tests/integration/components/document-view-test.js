@@ -11,7 +11,7 @@ module("Integration | Component | document-view", function (hooks) {
   test("it renders the documents when in grid view", async function (assert) {
     this.server.createList("document", 3);
 
-    await render(hbs`<DocumentView />`);
+    await render(hbs`<DocumentView />`, { owner: this.engine });
 
     await click("[data-test-toggle]");
 
@@ -25,7 +25,7 @@ module("Integration | Component | document-view", function (hooks) {
   });
 
   test("it renders an empty document view", async function (assert) {
-    await render(hbs`<DocumentView />`);
+    await render(hbs`<DocumentView />`, { owner: this.engine });
     await click("[data-test-toggle]");
 
     assert.dom("[data-test-upload]").exists();
@@ -34,11 +34,11 @@ module("Integration | Component | document-view", function (hooks) {
 
   test("select document", async function (assert) {
     const documents = this.server.createList("document", 3);
-    const docService = this.owner.lookup("service:alexandria-documents");
+    const docService = this.engine.lookup("service:alexandria-documents");
 
     docService.selectedDocuments = [documents[0]];
 
-    await render(hbs`<DocumentView />`);
+    await render(hbs`<DocumentView />`, { owner: this.engine });
     await click("[data-test-toggle]");
 
     assert.dom("[data-test-empty]").doesNotExist();
@@ -59,7 +59,9 @@ module("Integration | Component | document-view", function (hooks) {
 
     this.filters = { title: "test", description: "bla" };
 
-    await render(hbs`<DocumentView @filters={{this.filters}} />`);
+    await render(hbs`<DocumentView @filters={{this.filters}} />`, {
+      owner: this.engine,
+    });
 
     assert.strictEqual(requests.length, 3, "store handled 3 requests");
     assert.deepEqual(requests[0].queryParams, {

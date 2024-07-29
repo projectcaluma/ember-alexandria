@@ -15,7 +15,9 @@ module("Integration | Component | tag-manager", function (hooks) {
 
   // TODO: mirage relationships are not working
   test.skip("it adds new tag", async function (assert) {
-    await render(hbs`<TagManager @documents={{this.documents}} />`);
+    await render(hbs`<TagManager @documents={{this.documents}} />`, {
+      owner: this.engine,
+    });
 
     await fillIn("[data-test-tag-input]", "new tag");
     await click("[data-test-tag-add]");
@@ -26,7 +28,9 @@ module("Integration | Component | tag-manager", function (hooks) {
 
   // TODO: mirage relationships are not working
   test.skip("it adds existing tag", async function (assert) {
-    await render(hbs`<TagManager @documents={{this.documents}} />`);
+    await render(hbs`<TagManager @documents={{this.documents}} />`, {
+      owner: this.engine,
+    });
 
     await fillIn("[data-test-tag-input]", "new tag");
     await click(`[data-test-tag-existing=${this.tag.id}]`);
@@ -39,7 +43,9 @@ module("Integration | Component | tag-manager", function (hooks) {
   test.skip("it removes tag", async function (assert) {
     this.documents[0].update({ tags: [this.tag] });
 
-    await render(hbs`<TagManager @documents={{this.documents}} />`);
+    await render(hbs`<TagManager @documents={{this.documents}} />`, {
+      owner: this.engine,
+    });
 
     assert.dom(".tag").exists({ count: 1 });
     assert.dom(".tag").hasText("new tag");

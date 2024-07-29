@@ -12,6 +12,7 @@ module("Integration | Component | documents-side-panel", function (hooks) {
     this.selectedDocuments = [];
     await render(
       hbs`<DocumentsSidePanel @selectedDocuments={{this.selectedDocuments}}/>`,
+      { owner: this.engine },
     );
     assert.dom("[data-test-download-button]").isNotVisible();
   });
@@ -20,6 +21,7 @@ module("Integration | Component | documents-side-panel", function (hooks) {
     this.selectedDocuments = [this.server.create("document")];
     await render(
       hbs`<DocumentsSidePanel @selectedDocuments={{this.selectedDocuments}}/>`,
+      { owner: this.engine },
     );
     assert.dom("[data-test-download-button]").isVisible();
   });
@@ -28,6 +30,7 @@ module("Integration | Component | documents-side-panel", function (hooks) {
     this.selectedDocuments = this.server.createList("document", 3);
     await render(
       hbs`<DocumentsSidePanel @selectedDocuments={{this.selectedDocuments}}/>`,
+      { owner: this.engine },
     );
     assert.dom("[data-test-download-button]").isVisible();
   });

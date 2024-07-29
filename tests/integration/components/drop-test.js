@@ -7,7 +7,7 @@ module("Integration | Component | drop", function (hooks) {
   setupRenderingTest(hooks);
 
   test("it renders", async function (assert) {
-    await render(hbs`<Drop />`);
+    await render(hbs`<Drop />`, { owner: this.engine });
 
     assert
       .dom("[data-test-drop]")
@@ -15,7 +15,9 @@ module("Integration | Component | drop", function (hooks) {
   });
 
   test("it renders with style args", async function (assert) {
-    await render(hbs`<Drop @width="uk-width-1" @position="top-left"/>`);
+    await render(hbs`<Drop @width="uk-width-1" @position="top-left"/>`, {
+      owner: this.engine,
+    });
 
     assert
       .dom("[data-test-drop]")

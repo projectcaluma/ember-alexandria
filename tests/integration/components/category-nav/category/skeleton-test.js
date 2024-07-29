@@ -11,6 +11,7 @@ module(
     test("it renders skeleton category", async function (assert) {
       await render(
         hbs`<CategoryNav::Category::Skeleton @animationDelay="100ms"/>`,
+        { owner: this.engine },
       );
 
       assert.dom("[data-test-icon]").hasStyle({ "animation-delay": "0.1s" });
