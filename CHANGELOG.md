@@ -1,3 +1,17 @@
+# [9.0.0-beta.1](https://github.com/projectcaluma/ember-alexandria/compare/v8.3.1...v9.0.0-beta.1) (2024-07-30)
+
+
+### Bug Fixes
+
+* **deps:** remove direct dependency to ember-data ([8801016](https://github.com/projectcaluma/ember-alexandria/commit/8801016c692cae3e2e8f1a12a9c1b4168e59226a))
+* **deps:** update ember-intl and ember-localized-model ([b32db48](https://github.com/projectcaluma/ember-alexandria/commit/b32db48c394a038bd32620f6535ac74ff4e95db7))
+
+
+### BREAKING CHANGES
+
+* **deps:** Please refer to the [documentation](MIGRATIONS.md).
+* **deps:** This engine now requires the usage of `ember-intl` v7.
+
 ## [8.3.1](https://github.com/projectcaluma/ember-alexandria/compare/v8.3.0...v8.3.1) (2024-07-11)
 
 
