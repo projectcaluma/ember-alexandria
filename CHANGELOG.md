@@ -1,3 +1,10 @@
+## [9.0.1](https://github.com/projectcaluma/ember-alexandria/compare/v9.0.0...v9.0.1) (2024-08-27)
+
+
+### Bug Fixes
+
+* add italian translations ([7c48a14](https://github.com/projectcaluma/ember-alexandria/commit/7c48a1485825f284565a1e6c18ea362f9e290017))
+
 # [9.0.0](https://github.com/projectcaluma/ember-alexandria/compare/v8.3.1...v9.0.0) (2024-08-06)
 
 
