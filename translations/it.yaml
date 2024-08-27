@@ -1,0 +1,97 @@
+alexandria:
+  loading: "Sto caricando i risultati..."
+  search: "Cerca..."
+  nothing-found: "Nessun risultato trovato..."
+  delete: "Elimina"
+  upload-file: "Carica file"
+  download: "Download"
+  move-document: "Sposta {count} {count, plural, one {documento} other {documenti}}"
+
+  errors:
+    save-file: "Errore nel tentativo di scaricare il file. Riprova"
+    delete-document: "Errore nel tentativo di eliminare il documento. Riprova"
+    fetch-categories: "Errore nel tentativo di caricare le categorie."
+    replace-document: "Errore nel tentativo di sostituire il documento."
+    upload-document: |-
+      Errore nel tentativo di caricare 
+      {count, plural, one {il documento}
+        other {i documenti}}.
+    update: "Non è stato possibile salvare le modifiche. Riprova"
+    no-permission: "Non dispone dei diritti per eseguire questa operazione."
+    move-document: "Errore nel tentativo di spostare {count, plural, one {il documento} other {i documenti}}"
+    convert-pdf: "Errore nel tentativo di convertire il documento."
+    invalid-file-type: 'Nella categoria "{category}" è possibile caricare solo {types}.'
+    file-too-large: "Il file caricato è troppo grande."
+    open-webdav: "Non è stato possibile aprire il documento per l'elaborazione."
+
+  success:
+    delete-document: "Il documento è stato eliminato con successo."
+    upload-document: |-
+      {count, plural,
+        one {Il documento è stato caricato}
+        other {I documenti sono stati caricati}
+      } con successo.
+    update: "Le modifiche sono state salvate."
+    move-document: "{count, plural, one {Il documento è stato spostato} other {# I documenti sono stati spostati}} con successo"
+    convert-pdf: "Il documento è stato convertito con successo."
+
+  category-nav:
+    all-files: "Tutti i documenti"
+    categories: "Categorie"
+
+  document-upload-button:
+    no-categories: "Non sono state trovate categorie."
+
+  document-delete-button:
+    prompt:
+      title: "Elimina documento"
+      message: 'Eliminare davvero il documento "{title}" e tutta la cronologia?'
+      multiple_docs_message: "Eliminare davvero {nrOfDocs} documenti e tutta la cronologia?"
+      cancel: "Annulla"
+      confirm: "Elimina"
+
+  document-grid:
+    drop-to-upload: "Trascina qui il file per caricarlo"
+    drop-not-allowed: "Nessuna categoria selezionata"
+
+  document-list:
+    name: "Elenco dei documenti"
+    type: "Tipo"
+    document-title: "Titolo del documento"
+    created-by-user: "Creato da"
+    created-by-group: "Gruppo"
+    modified-at: "Data della modifica"
+    date: "Data"
+    marks: "Demarcazioni"
+    toggle: "Cambia visualizzazione"
+
+  document-details:
+    document-title: "Titolo del documento"
+    document-date: "Data del documento"
+    metadata: "Metadati"
+    document-description: "Descrizione del documento"
+    title-placeholder: "Titolo..."
+    version-history: "Cronologia della versione"
+    add-description: "Aggiungi descrizione"
+    add-date: "Aggiungi data"
+    created-at: "Creato alle"
+    created-by-user: "Creato da utente"
+    created-by-group: "Creato da gruppo"
+    replace: "Sostituisci"
+    convert: "In PDF"
+    web-dav: "Modifica"
+    tags:
+      title: "Tag"
+      add: "Aggiungi"
+    version:
+      filename: "Nome del file"
+      checksum: "Checksum"
+
+  document-download:
+    button: "{numDocs, plural, =1 {Scarica} other {Scarica elementi selezionati}}"
+
+  multiple-documents-details:
+    title: "{numDocs, plural, =0 {Nessun documento selezionato} =1 {1 documento selezionato} other {# documenti selezionati}}"
+
+  tag-filter:
+    empty: "Nessun tag..."
