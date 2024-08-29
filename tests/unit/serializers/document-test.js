@@ -7,7 +7,7 @@ module("Unit | Serializer | document", function (hooks) {
   test("it serializes records", function (assert) {
     const store = this.owner.lookup("service:store");
     const record = store.createRecord("document", {
-      title: { en: "Foo" },
+      title: "Foo",
       content: "test",
     });
 
@@ -21,14 +21,12 @@ module("Unit | Serializer | document", function (hooks) {
           "created-by-group": undefined,
           "created-by-user": undefined,
           date: undefined,
-          description: {},
+          description: undefined,
           metainfo: undefined,
           "modified-at": undefined,
           "modified-by-group": undefined,
           "modified-by-user": undefined,
-          title: {
-            en: "Foo",
-          },
+          title: "Foo",
         },
         type: "documents",
       },

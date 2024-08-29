@@ -44,14 +44,14 @@ module("Acceptance | documents", function (hooks) {
     assert.dom("[data-test-document]").exists({ count: 5 });
     assert
       .dom("[data-test-document-container]:first-child [data-test-title]")
-      .hasText(documents[0].title.en);
+      .hasText(documents[0].title);
     assert
       .dom("[data-test-document-container]:first-child [data-test-thumbnail]")
       .doesNotExist();
 
     assert
       .dom("[data-test-document-container]:nth-child(2) [data-test-title]")
-      .hasText(documents[1].title.en);
+      .hasText(documents[1].title);
     assert
       .dom("[data-test-document-container]:nth-child(2) [data-test-thumbnail]")
       .hasAttribute("data-src", "test-thumbnail");
@@ -87,7 +87,7 @@ module("Acceptance | documents", function (hooks) {
 
     assert
       .dom("[data-test-single-doc-details] [data-test-title]")
-      .hasText(document.title.en);
+      .hasText(document.title);
 
     await click("[data-test-close]");
     assert.dom("[data-test-document-side-panel]").hasClass("closed");
@@ -105,12 +105,12 @@ module("Acceptance | documents", function (hooks) {
 
     assert
       .dom("[data-test-single-doc-details] [data-test-title]")
-      .hasText(document.title.en);
+      .hasText(document.title);
 
     assert.dom("[data-test-title-input]").doesNotExist();
 
     await click("[data-test-single-doc-details] [data-test-edit-title]");
-    assert.dom("[data-test-title-input]").hasValue(document.title.en);
+    assert.dom("[data-test-title-input]").hasValue(document.title);
 
     await fillIn("[data-test-title-input]", "new title");
     this.assertRequest("PATCH", "/api/v1/documents/:id", (request) => {
@@ -120,7 +120,7 @@ module("Acceptance | documents", function (hooks) {
         "patching the correct document",
       );
       assert.strictEqual(
-        JSON.parse(request.requestBody).data.attributes.title.en,
+        JSON.parse(request.requestBody).data.attributes.title,
         "new title",
         "new title is set",
       );
@@ -163,7 +163,7 @@ module("Acceptance | documents", function (hooks) {
         .text()
         .then((data) => {
           assert.strictEqual(
-            JSON.parse(data).title.en,
+            JSON.parse(data).title,
             "test-file.txt",
             "correct title is set",
           );

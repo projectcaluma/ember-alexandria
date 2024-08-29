@@ -91,7 +91,7 @@ module("Unit | Service | alexandria-documents", function (hooks) {
     const document = this.server.create("document");
     const file = this.server.create("file", {
       document,
-      name: document.title.en,
+      name: document.title,
       variant: "original",
       downloadUrl: "http://earth.planet?expires=123456",
     });

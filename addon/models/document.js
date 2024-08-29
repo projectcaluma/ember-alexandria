@@ -1,11 +1,10 @@
 import { inject as service } from "@ember/service";
-import { belongsTo, hasMany, attr } from "@ember-data/model";
-import { LocalizedModel, localizedAttr } from "ember-localized-model";
+import Model, { attr, belongsTo, hasMany } from "@ember-data/model";
 import { trackedFunction } from "reactiveweb/function";
 
-export default class DocumentModel extends LocalizedModel {
-  @localizedAttr title;
-  @localizedAttr description;
+export default class DocumentModel extends Model {
+  @attr title;
+  @attr description;
   @attr metainfo;
 
   @attr createdAt;
