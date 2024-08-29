@@ -1,11 +1,9 @@
 import { faker } from "@faker-js/faker";
 import { Factory, trait } from "miragejs";
 
-import { setAllLocales } from "./helpers";
-
 export default Factory.extend({
-  title: () => setAllLocales(faker.system.commonFileName()),
-  description: () => setAllLocales(faker.company.catchPhrase()),
+  title: () => faker.system.commonFileName(),
+  description: () => faker.company.catchPhrase(),
   createdByUser: () => faker.person.fullName(),
   createdByGroup: () => faker.company.name(),
   createdAt: () => faker.date.past(),
