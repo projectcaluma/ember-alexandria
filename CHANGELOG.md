@@ -1,3 +1,15 @@
+# [10.0.0](https://github.com/projectcaluma/ember-alexandria/compare/v9.0.1...v10.0.0) (2024-08-30)
+
+
+* fix!: make document title and description not localized ([3ffcfbd](https://github.com/projectcaluma/ember-alexandria/commit/3ffcfbda0d163d87352be8011a4552a38eaac964))
+
+
+### BREAKING CHANGES
+
+* This turns the document's title and description into
+regular CharFields/TextFields, instead of localized ones, because
+localized fields do not make sense for user-generated data.
+
 ## [9.0.1](https://github.com/projectcaluma/ember-alexandria/compare/v9.0.0...v9.0.1) (2024-08-27)
 
 
