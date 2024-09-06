@@ -71,7 +71,7 @@ alexandria:
     metadata: "Metadati"
     document-description: "Descrizione del documento"
     title-placeholder: "Titolo..."
-    version-history: "Cronologia della versione"
+    version-history: "Cronologia delle versioni"
     add-description: "Aggiungi descrizione"
     add-date: "Aggiungi data"
     created-at: "Creato alle"
