@@ -1,3 +1,10 @@
+## [10.0.1](https://github.com/projectcaluma/ember-alexandria/compare/v10.0.0...v10.0.1) (2024-09-16)
+
+
+### Bug Fixes
+
+* controller lookup (tag removal) ([f02cfbc](https://github.com/projectcaluma/ember-alexandria/commit/f02cfbc7c6c4fcef5b652c96956da41fde6039ca))
+
 # [10.0.0](https://github.com/projectcaluma/ember-alexandria/compare/v9.0.1...v10.0.0) (2024-08-30)
 
 
