@@ -27,6 +27,7 @@ export default function makeServer(config) {
       });
 
       this.get("/files/multi", () => new Response(200, {}, {}));
+      this.get("/search", () => []);
     },
   });
 }
