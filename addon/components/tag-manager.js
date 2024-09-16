@@ -29,7 +29,7 @@ export default class TagManagerComponent extends Component {
 
   get controllerInstance() {
     const applicationInstance = getOwner(this);
-    return applicationInstance.lookup("controller:application");
+    return applicationInstance.lookup("controller:index");
   }
 
   @restartableTask *onInput(event) {
