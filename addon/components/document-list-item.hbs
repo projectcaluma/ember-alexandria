@@ -26,6 +26,7 @@
         <div
           class="document-thumbnail"
           uk-dropdown="pos: right-center; offset: 15; delay-show: 400; delay-hide: 100; container: .alexandria-container;"
+          {{on "dragstart" (fn (optional @onDragStart) @document)}}
         >
           <img
             data-src="{{@document.thumbnail.value}}"

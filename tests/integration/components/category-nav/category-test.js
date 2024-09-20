@@ -55,7 +55,7 @@ module("Integration | Component | category-nav/category", function (hooks) {
     await triggerEvent("[data-test-drop]", "drop", {
       dataTransfer: {
         getData: () => documents.map((d) => d.id).join(","),
-        files: [],
+        files: [new File(["Thumbnail"], "test-file.txt")],
       },
     });
 
@@ -91,7 +91,7 @@ module("Integration | Component | category-nav/category", function (hooks) {
 
     await triggerEvent("[data-test-drop]", "drop", {
       dataTransfer: {
-        getData: () => {},
+        getData: () => "",
         files: [new File(["Ember Rules!"], "test-file.txt")],
       },
     });
