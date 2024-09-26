@@ -72,6 +72,7 @@ export default class AlexandriaDocumentsService extends Service {
             category: category.name,
             types: category.allowedMimeTypes
               .map((t) => mime.getExtension(t))
+              .filter(Boolean)
               .join(", "),
           }),
         );
