@@ -76,7 +76,7 @@
     "@ember-data/serializer": "4.12.8",
     "@ember/test-helpers": "4.0.4",
     "@embroider/test-setup": "4.0.0",
-    "@faker-js/faker": "9.0.1",
+    "@faker-js/faker": "9.0.3",
     "@fortawesome/fontawesome-svg-core": "6.6.0",
     "broccoli-asset-rev": "3.0.0",
     "concurrently": "9.0.1",
