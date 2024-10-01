@@ -55,6 +55,7 @@ module("Integration | Component | category-nav/category", function (hooks) {
     await triggerEvent("[data-test-drop]", "drop", {
       dataTransfer: {
         getData: () => documents.map((d) => d.id).join(","),
+        // sometimes browser send a file as well (e.g. when dragging a thumbnail) - this should be ignored
         files: [new File(["Thumbnail"], "test-file.txt")],
       },
     });
