@@ -91,7 +91,10 @@ export default class CategoryNavCategoryComponent extends Component {
     this.dragCounter = 0;
     this.isDragOver = false;
 
-    if (event.dataTransfer.files.length) {
+    if (
+      event.dataTransfer.files.length &&
+      !event.dataTransfer.getData("text")
+    ) {
       return await this.documents.upload(
         this.args.category,
         event.dataTransfer.files,
@@ -104,7 +107,7 @@ export default class CategoryNavCategoryComponent extends Component {
       documentIds.map(async (id) => {
         const document = this.store.peekRecord("document", id);
 
-        if (document.category.id === this.args.category.id) {
+        if (!document || document.category.id === this.args.category.id) {
           return true;
         }
 
