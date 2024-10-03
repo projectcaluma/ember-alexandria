@@ -1,3 +1,11 @@
+## [10.0.2](https://github.com/projectcaluma/ember-alexandria/compare/v10.0.1...v10.0.2) (2024-10-03)
+
+
+### Bug Fixes
+
+* filter empty extensions in error message ([fe4f3bd](https://github.com/projectcaluma/ember-alexandria/commit/fe4f3bda90a667ae781e6a3ae6f1d9f816c1052b))
+* **nav:** upload of preview images ([#952](https://github.com/projectcaluma/ember-alexandria/issues/952)) ([4f91fea](https://github.com/projectcaluma/ember-alexandria/commit/4f91feaf6cda31de2ad67192d674e881124acf92))
+
 ## [10.0.1](https://github.com/projectcaluma/ember-alexandria/compare/v10.0.0...v10.0.1) (2024-09-16)
 
 
