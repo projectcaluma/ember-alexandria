@@ -61,11 +61,27 @@ export default class DocumentViewComponent extends Component {
 
   @task
   *fetchDocuments() {
-    const documents = yield this.store.query("document", {
-      include: "category,files,tags",
-      filter: this.args.filters || {},
-      sort: this.sort ? `${this.sortDirection}${this.sort}` : "",
-    });
+    const files = yield this.store.query(
+      "file",
+      {
+        include: "document,renderings",
+        filter: this.args.filters || {},
+      },
+      {
+        adapterOptions: {
+          customEndpoint: "search",
+        },
+      },
+    );
+
+    const documents = Array.from(
+      new Map(
+        files.map((file) => [
+          file.document.id,
+          this.store.peekRecord("document", file.document.id),
+        ]),
+      ).values(),
+    );
 
     return yield this.config.documentsPostProcess(documents);
   }
