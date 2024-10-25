@@ -113,7 +113,7 @@
     "prettier": "3.3.3",
     "qunit": "2.22.0",
     "qunit-dom": "3.2.1",
-    "sass": "1.80.2",
+    "sass": "1.80.4",
     "semantic-release": "24.1.2",
     "sinon": "19.0.2",
     "stylelint": "16.10.0",
