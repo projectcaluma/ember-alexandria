@@ -72,11 +72,11 @@ importers:
         specifier: ^8.0.1
         version: 8.0.1(@babel/core@7.25.9)(@glint/template@1.4.0)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.25.9))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.95.0))(flatpickr@4.6.13)(webpack@5.95.0)
       ember-intl:
-        specifier: ^7.0.6
-        version: 7.0.6(@ember/test-helpers@4.0.4(@babel/core@7.25.9)(@glint/template@1.4.0)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.25.9))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.95.0)))(@glint/template@1.4.0)(typescript@5.5.4)(webpack@5.95.0)
+        specifier: ^7.0.7
+        version: 7.0.7(@ember/test-helpers@4.0.4(@babel/core@7.25.9)(@glint/template@1.4.0)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.25.9))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.95.0)))(@glint/template@1.4.0)(typescript@5.5.4)(webpack@5.95.0)
       ember-localized-model:
         specifier: ^4.0.1
-        version: 4.0.1(nhodcphlhq4nuinwx6ddc7mncq)
+        version: 4.0.1(hn2o4hzdiyytuej3mqveq7vwwm)
       ember-modifier:
         specifier: ^4.2.0
         version: 4.2.0(@babel/core@7.25.9)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.25.9))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.95.0))
@@ -1379,29 +1379,29 @@ packages:
     resolution: {integrity: sha512-lWrrK4QNlFSU+13PL9jMbMKLJYXDFu3tQfayBsMXX7KL/GiQeqfB1CzHkqD5UHBUtPAuPo6XwGbMFNdVMZObRA==}
     engines: {node: '>=18.0.0', npm: '>=9.0.0'}
 
-  '@formatjs/ecma402-abstract@2.0.0':
-    resolution: {integrity: sha512-rRqXOqdFmk7RYvj4khklyqzcfQl9vEL/usogncBHRZfZBDOwMGuSRNFl02fu5KGHXdbinju+YXyuR+Nk8xlr/g==}
+  '@formatjs/ecma402-abstract@2.2.1':
+    resolution: {integrity: sha512-O4ywpkdJybrjFc9zyL8qK5aklleIAi5O4nYhBVJaOFtCkNrnU+lKFeJOFC48zpsZQmR8Aok2V79hGpHnzbmFpg==}
 
-  '@formatjs/fast-memoize@2.2.0':
-    resolution: {integrity: sha512-hnk/nY8FyrL5YxwP9e4r9dqeM6cAbo8PeU9UjyXojZMNvVad2Z06FAVHyR3Ecw6fza+0GH7vdJgiKIVXTMbSBA==}
+  '@formatjs/fast-memoize@2.2.2':
+    resolution: {integrity: sha512-mzxZcS0g1pOzwZTslJOBTmLzDXseMLLvnh25ymRilCm8QLMObsQ7x/rj9GNrH0iUhZMlFisVOD6J1n6WQqpKPQ==}
 
-  '@formatjs/icu-messageformat-parser@2.7.8':
-    resolution: {integrity: sha512-nBZJYmhpcSX0WeJ5SDYUkZ42AgR3xiyhNCsQweFx3cz/ULJjym8bHAzWKvG5e2+1XO98dBYC0fWeeAECAVSwLA==}
+  '@formatjs/icu-messageformat-parser@2.9.1':
+    resolution: {integrity: sha512-7AYk4tjnLi5wBkxst2w7qFj38JLMJoqzj7BhdEl7oTlsWMlqwgx4p9oMmmvpXWTSDGNwOKBRc1SfwMh5MOHeNg==}
 
-  '@formatjs/icu-skeleton-parser@1.8.2':
-    resolution: {integrity: sha512-k4ERKgw7aKGWJZgTarIcNEmvyTVD9FYh0mTrrBMHZ1b8hUu6iOJ4SzsZlo3UNAvHYa+PnvntIwRPt1/vy4nA9Q==}
+  '@formatjs/icu-skeleton-parser@1.8.5':
+    resolution: {integrity: sha512-zRZ/e3B5qY2+JCLs7puTzWS1Jb+t/K+8Jur/gEZpA2EjWeLDE17nsx8thyo9P48Mno7UmafnPupV2NCJXX17Dg==}
 
-  '@formatjs/intl-displaynames@6.6.8':
-    resolution: {integrity: sha512-Lgx6n5KxN16B3Pb05z3NLEBQkGoXnGjkTBNCZI+Cn17YjHJ3fhCeEJJUqRlIZmJdmaXQhjcQVDp6WIiNeRYT5g==}
+  '@formatjs/intl-displaynames@6.8.1':
+    resolution: {integrity: sha512-nyWfJk4BZ1+GzLq9a40BgVPSRpBkRAVzrSpql+92i0i+lX11m9eS1trSRf/h3j/XcQ+h1h+ntA4Ra4jETK7nNg==}
 
-  '@formatjs/intl-listformat@7.5.7':
-    resolution: {integrity: sha512-MG2TSChQJQT9f7Rlv+eXwUFiG24mKSzmF144PLb8m8OixyXqn4+YWU+5wZracZGCgVTVmx8viCf7IH3QXoiB2g==}
+  '@formatjs/intl-listformat@7.7.1':
+    resolution: {integrity: sha512-bjBxWaUhYAbJFUlFSMWZGn3r2mglXwk+BLyGRu8dY8Q83ZPsqmmVQzjQKENHE3lV6eoQGHT2oZHxUaVndJlk6Q==}
 
-  '@formatjs/intl-localematcher@0.5.4':
-    resolution: {integrity: sha512-zTwEpWOzZ2CiKcB93BLngUX59hQkuZjT2+SAQEscSm52peDW/getsawMcWF1rGRpMCX6D7nSJA3CzJ8gn13N/g==}
+  '@formatjs/intl-localematcher@0.5.6':
+    resolution: {integrity: sha512-roz1+Ba5e23AHX6KUAWmLEyTRZegM5YDuxuvkHCyK3RJddf/UXB2f+s7pOMm9ktfPGla0g+mQXOn5vsuYirnaA==}
 
-  '@formatjs/intl@2.10.4':
-    resolution: {integrity: sha512-56483O+HVcL0c7VucAS2tyH020mt9XTozZO67cwtGg0a7KWDukS/FzW3OnvaHmTHDuYsoPIzO+ZHVfU6fT/bJw==}
+  '@formatjs/intl@2.10.11':
+    resolution: {integrity: sha512-FNLZjzE1QRlv1Wf0oinnM97AbvZU1zQnQMHI0Oza2F7PxzrPf6bYFRs0ugapq/O4FrvNwDt9F9nyRNwsMM118g==}
     peerDependencies:
       typescript: ^4.7 || 5
     peerDependenciesMeta:
@@ -3782,8 +3782,8 @@ packages:
     peerDependencies:
       ember-source: ^3.16.0 || ^4.0.0 || ^5.0.0
 
-  ember-intl@7.0.6:
-    resolution: {integrity: sha512-56RDyd+xlp9Apmy6hKgMEt99PbsL0r9qvm9ogb5nwe5QSRret2f22P3oi9vqGCgs7ZfP23x6EXTp8HX43E4z5g==}
+  ember-intl@7.0.7:
+    resolution: {integrity: sha512-K9KDkDIm49/qSLguO7OBOp3tB61GQws9DHfPKEdjSztHTbZvLD+uv2vT9ASRE0+xszYG7Q15UwUQqf6tRJGRxQ==}
     engines: {node: 18.* || >= 20}
     peerDependencies:
       '@ember/test-helpers': ^2.9.4 || ^3.2.0 || ^4.0.0
@@ -5039,8 +5039,8 @@ packages:
     resolution: {integrity: sha512-NGnrKwXzSms2qUUih/ILZ5JBqNTSa1+ZmP6flaIp6KmSElgE9qdndzS3cqjrDovwFdmwsGsLdeFgB6suw+1e9g==}
     engines: {node: '>= 0.4'}
 
-  intl-messageformat@10.5.14:
-    resolution: {integrity: sha512-IjC6sI0X7YRjjyVH9aUgdftcmZK7WXdHeil4KwbjDnRWjnVitKpAx3rr6t6di1joFp5188VqKcobOPA6mCLG/w==}
+  intl-messageformat@10.7.3:
+    resolution: {integrity: sha512-AAo/3oyh7ROfPhDuh7DxTTydh97OC+lv7h1Eq5LuHWuLsUMKOhtzTYuyXlUReuwZ9vANDHo4CS1bGRrn7TZRtg==}
 
   into-stream@7.0.0:
     resolution: {integrity: sha512-2dYz766i9HprMBasCMvHMuazJ7u4WzhJwo5kb3iPSiW/iRYV6uPari3zHoqZlnuaR7V1bEiNMxikhp37rdBXbw==}
@@ -9408,50 +9408,51 @@ snapshots:
 
   '@faker-js/faker@9.0.3': {}
 
-  '@formatjs/ecma402-abstract@2.0.0':
+  '@formatjs/ecma402-abstract@2.2.1':
     dependencies:
-      '@formatjs/intl-localematcher': 0.5.4
+      '@formatjs/fast-memoize': 2.2.2
+      '@formatjs/intl-localematcher': 0.5.6
       tslib: 2.7.0
 
-  '@formatjs/fast-memoize@2.2.0':
-    dependencies:
-      tslib: 2.7.0
-
-  '@formatjs/icu-messageformat-parser@2.7.8':
-    dependencies:
-      '@formatjs/ecma402-abstract': 2.0.0
-      '@formatjs/icu-skeleton-parser': 1.8.2
-      tslib: 2.7.0
-
-  '@formatjs/icu-skeleton-parser@1.8.2':
-    dependencies:
-      '@formatjs/ecma402-abstract': 2.0.0
-      tslib: 2.7.0
-
-  '@formatjs/intl-displaynames@6.6.8':
-    dependencies:
-      '@formatjs/ecma402-abstract': 2.0.0
-      '@formatjs/intl-localematcher': 0.5.4
-      tslib: 2.7.0
-
-  '@formatjs/intl-listformat@7.5.7':
-    dependencies:
-      '@formatjs/ecma402-abstract': 2.0.0
-      '@formatjs/intl-localematcher': 0.5.4
-      tslib: 2.7.0
-
-  '@formatjs/intl-localematcher@0.5.4':
+  '@formatjs/fast-memoize@2.2.2':
     dependencies:
       tslib: 2.7.0
 
-  '@formatjs/intl@2.10.4(typescript@5.5.4)':
+  '@formatjs/icu-messageformat-parser@2.9.1':
     dependencies:
-      '@formatjs/ecma402-abstract': 2.0.0
-      '@formatjs/fast-memoize': 2.2.0
-      '@formatjs/icu-messageformat-parser': 2.7.8
-      '@formatjs/intl-displaynames': 6.6.8
-      '@formatjs/intl-listformat': 7.5.7
-      intl-messageformat: 10.5.14
+      '@formatjs/ecma402-abstract': 2.2.1
+      '@formatjs/icu-skeleton-parser': 1.8.5
+      tslib: 2.7.0
+
+  '@formatjs/icu-skeleton-parser@1.8.5':
+    dependencies:
+      '@formatjs/ecma402-abstract': 2.2.1
+      tslib: 2.7.0
+
+  '@formatjs/intl-displaynames@6.8.1':
+    dependencies:
+      '@formatjs/ecma402-abstract': 2.2.1
+      '@formatjs/intl-localematcher': 0.5.6
+      tslib: 2.7.0
+
+  '@formatjs/intl-listformat@7.7.1':
+    dependencies:
+      '@formatjs/ecma402-abstract': 2.2.1
+      '@formatjs/intl-localematcher': 0.5.6
+      tslib: 2.7.0
+
+  '@formatjs/intl-localematcher@0.5.6':
+    dependencies:
+      tslib: 2.7.0
+
+  '@formatjs/intl@2.10.11(typescript@5.5.4)':
+    dependencies:
+      '@formatjs/ecma402-abstract': 2.2.1
+      '@formatjs/fast-memoize': 2.2.2
+      '@formatjs/icu-messageformat-parser': 2.9.1
+      '@formatjs/intl-displaynames': 6.8.1
+      '@formatjs/intl-listformat': 7.7.1
+      intl-messageformat: 10.7.3
       tslib: 2.7.0
     optionalDependencies:
       typescript: 5.5.4
@@ -12755,11 +12756,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-intl@7.0.6(@ember/test-helpers@4.0.4(@babel/core@7.25.9)(@glint/template@1.4.0)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.25.9))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.95.0)))(@glint/template@1.4.0)(typescript@5.5.4)(webpack@5.95.0):
+  ember-intl@7.0.7(@ember/test-helpers@4.0.4(@babel/core@7.25.9)(@glint/template@1.4.0)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.25.9))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.95.0)))(@glint/template@1.4.0)(typescript@5.5.4)(webpack@5.95.0):
     dependencies:
       '@babel/core': 7.25.9
-      '@formatjs/icu-messageformat-parser': 2.7.8
-      '@formatjs/intl': 2.10.4(typescript@5.5.4)
+      '@formatjs/icu-messageformat-parser': 2.9.1
+      '@formatjs/intl': 2.10.11(typescript@5.5.4)
       broccoli-caching-writer: 3.0.3
       broccoli-funnel: 3.0.8
       broccoli-merge-trees: 4.2.0
@@ -12771,7 +12772,7 @@ snapshots:
       ember-cli-typescript: 5.3.0
       eventemitter3: 5.0.1
       extend: 3.0.2
-      intl-messageformat: 10.5.14
+      intl-messageformat: 10.7.3
       js-yaml: 4.1.0
       json-stable-stringify: 1.1.1
     optionalDependencies:
@@ -12790,7 +12791,7 @@ snapshots:
       - '@babel/core'
       - supports-color
 
-  ember-localized-model@4.0.1(nhodcphlhq4nuinwx6ddc7mncq):
+  ember-localized-model@4.0.1(hn2o4hzdiyytuej3mqveq7vwwm):
     dependencies:
       '@babel/core': 7.25.9
       '@ember-data/adapter': 4.12.8(@ember-data/store@4.12.8(@babel/core@7.25.9)(@ember-data/graph@4.12.8)(@ember-data/json-api@4.12.8)(@ember-data/legacy-compat@4.12.8)(@ember-data/model@4.12.8)(@ember-data/tracking@4.12.8(@glint/template@1.4.0))(@ember/string@3.1.1)(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.25.9))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.95.0)))(@ember/string@3.1.1)(@glint/template@1.4.0)(ember-inflector@4.0.3(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.25.9))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.95.0)))
@@ -12802,7 +12803,7 @@ snapshots:
       ember-cli-babel: 8.2.0(@babel/core@7.25.9)
       ember-cli-htmlbars: 6.3.0
       ember-data: 4.12.8(@babel/core@7.25.9)(@ember/string@3.1.1)(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.25.9))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.95.0))(webpack@5.95.0)
-      ember-intl: 7.0.6(@ember/test-helpers@4.0.4(@babel/core@7.25.9)(@glint/template@1.4.0)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.25.9))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.95.0)))(@glint/template@1.4.0)(typescript@5.5.4)(webpack@5.95.0)
+      ember-intl: 7.0.7(@ember/test-helpers@4.0.4(@babel/core@7.25.9)(@glint/template@1.4.0)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.25.9))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.95.0)))(@glint/template@1.4.0)(typescript@5.5.4)(webpack@5.95.0)
       ember-source: 5.12.0(@glimmer/component@1.1.2(@babel/core@7.25.9))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.95.0)
     transitivePeerDependencies:
       - '@glint/template'
@@ -14563,11 +14564,11 @@ snapshots:
       hasown: 2.0.2
       side-channel: 1.0.6
 
-  intl-messageformat@10.5.14:
+  intl-messageformat@10.7.3:
     dependencies:
-      '@formatjs/ecma402-abstract': 2.0.0
-      '@formatjs/fast-memoize': 2.2.0
-      '@formatjs/icu-messageformat-parser': 2.7.8
+      '@formatjs/ecma402-abstract': 2.2.1
+      '@formatjs/fast-memoize': 2.2.2
+      '@formatjs/icu-messageformat-parser': 2.9.1
       tslib: 2.7.0
 
   into-stream@7.0.0:
