@@ -121,7 +121,7 @@
     "stylelint-prettier": "5.0.2",
     "stylelint-scss": "6.8.1",
     "uikit": "3.21.13",
-    "webpack": "5.95.0"
+    "webpack": "5.96.1"
   },
   "ember": {
     "edition": "octane"
