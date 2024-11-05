@@ -12,6 +12,8 @@
       aria-label={{t "alexandria.search"}}
       data-test-search-input
       {{on "input" this.updateSearch.perform}}
+      {{on "focus" this.onFocus}}
+      {{on "focusout" this.onFocusOut}}
     />
   </form>
 </div>

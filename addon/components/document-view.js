@@ -131,12 +131,14 @@ export default class DocumentViewComponent extends Component {
     }
     if (event.key === "a" && event.ctrlKey) {
       event.preventDefault();
-      this.fetchedDocuments.value.forEach((doc) => {
+      this.fetchedDocuments.value?.forEach((doc) => {
         this.documents.selectDocument(doc);
       });
     }
     if (event.key === "Escape") {
-      this.documents.clearDocumentSelection();
+      if (this.documents.selectedDocuments.length > 0) {
+        this.documents.clearDocumentSelection();
+      }
     }
   }
 
