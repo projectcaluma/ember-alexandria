@@ -33,9 +33,12 @@ module("Integration | Component | category-nav/category", function (hooks) {
 
   test("it moves dropped documents to new category", async function (assert) {
     const category = this.server.create("category");
+    const oldCategory = this.server.create("category");
     const documents = this.server.createList("document", 2, {
-      categoryId: this.server.create("category").id,
+      categoryId: oldCategory.id,
+      title: "test.txt",
     });
+    documents[1].update({ title: "test.xlsx" });
 
     const store = this.owner.lookup("service:store");
 
@@ -56,23 +59,25 @@ module("Integration | Component | category-nav/category", function (hooks) {
       dataTransfer: {
         getData: () => documents.map((d) => d.id).join(","),
         // sometimes browser send a file as well (e.g. when dragging a thumbnail) - this should be ignored
-        files: [new File(["Thumbnail"], "test-file.txt")],
+        files: [new File(["Thumbnail"], "test-file.docx")],
       },
     });
 
     assert.strictEqual(router.transitionTo.callCount, 1);
     assert.deepEqual(router.transitionTo.args[0][1], {
       queryParams: {
-        category: this.category.id,
+        category: category.id,
         document: documents.map((d) => d.id).join(),
         marks: [],
         search: undefined,
         tags: [],
       },
     });
+    // Since the mimetype of the second one doesn't match the default allowed
+    // mime types of the category factories, only one file should be moved.
     assert.deepEqual(
       documents.map((d) => d.category.id),
-      [this.category.id, this.category.id],
+      [category.id, oldCategory.id],
     );
   });
 

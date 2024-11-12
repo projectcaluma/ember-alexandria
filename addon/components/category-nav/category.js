@@ -5,8 +5,6 @@ import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { task } from "ember-concurrency";
 
-import { ErrorHandler } from "ember-alexandria/utils/error-handler";
-
 export default class CategoryNavCategoryComponent extends Component {
   @service("alexandria-documents") documents;
   @service notification;
@@ -102,33 +100,7 @@ export default class CategoryNavCategoryComponent extends Component {
     }
 
     const documentIds = event.dataTransfer.getData("text").split(",");
-
-    const success = await Promise.all(
-      documentIds.map(async (id) => {
-        const document = this.store.peekRecord("document", id);
-
-        if (!document || document.category.id === this.args.category.id) {
-          return true;
-        }
-
-        const previousCategory = this.store.peekRecord(
-          "category",
-          document.category.id,
-        );
-
-        try {
-          document.category = this.args.category;
-          await document.save();
-          return true;
-        } catch (error) {
-          document.category = previousCategory;
-
-          new ErrorHandler(this, error).notify();
-
-          return false;
-        }
-      }),
-    );
+    const success = await this.documents.move(this.args.category, documentIds);
 
     const failCount = success.filter((i) => i === false).length;
     const successCount = success.filter((i) => i === true).length;

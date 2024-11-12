@@ -14,6 +14,14 @@ export default Factory.extend({
       "#CB68C1",
       "#DB8B72",
     ]),
+  allowedMimeTypes: () => [
+    "application/pdf",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "image/jpeg",
+    "image/png",
+    "image/gif",
+    "text/plain",
+  ],
 
   withDocuments: trait({
     afterCreate(category, server) {

@@ -7,6 +7,15 @@ import mime from "mime";
 
 import { ErrorHandler } from "ember-alexandria/utils/error-handler";
 
+/**
+ * Check if document upload is in allowed mime types of category
+ * If no allowedMimeTypes are set on the category, just return true
+ */
+const fileHasValidMimeType = (file, category) =>
+  category.allowedMimeTypes?.includes(
+    file.type || mime.getType(file.name ?? file.title),
+  ) ?? true;
+
 export default class AlexandriaDocumentsService extends Service {
   @service store;
   @service("alexandria-config") config;
@@ -47,6 +56,21 @@ export default class AlexandriaDocumentsService extends Service {
   }
 
   /**
+   * Throw a error if mime type of document does't match category allowedMimeTypes
+   */
+  mimeTypeErrorNotification(category) {
+    this.notification.danger(
+      this.intl.t("alexandria.errors.invalid-file-type", {
+        category: category.name,
+        types: category.allowedMimeTypes
+          .map((t) => mime.getExtension(t))
+          .filter(Boolean)
+          .join(", "),
+      }),
+    );
+  }
+
+  /**
    * Uploads one or multiple files and creates the necessary document and
    * files entries on the API.
    *
@@ -61,21 +85,9 @@ export default class AlexandriaDocumentsService extends Service {
     }
 
     for (const file of files) {
-      if (
-        category.allowedMimeTypes &&
-        !category.allowedMimeTypes.includes(
-          file.type || mime.getType(file.name),
-        )
-      ) {
-        return this.notification.danger(
-          this.intl.t("alexandria.errors.invalid-file-type", {
-            category: category.name,
-            types: category.allowedMimeTypes
-              .map((t) => mime.getExtension(t))
-              .filter(Boolean)
-              .join(", "),
-          }),
-        );
+      if (!fileHasValidMimeType(file, category)) {
+        this.mimeTypeErrorNotification(category);
+        return;
       }
     }
 
@@ -129,6 +141,56 @@ export default class AlexandriaDocumentsService extends Service {
       content: file,
     });
     await fileModel.save();
+  }
+
+  /**
+   * Moves one or multiple files to a new category.
+   *
+   * @param {Object} newCategory category instance.
+   * @param {Array<Number>} documentIds.
+   */
+  async move(newCategory, documentIds) {
+    const INVALID_FILE_TYPE = "invalid-file-type";
+
+    const states = await Promise.all(
+      documentIds.map(async (id) => {
+        const document = this.store.peekRecord("document", id);
+
+        if (!document || document.category.id === newCategory) {
+          return true;
+        }
+
+        if (!fileHasValidMimeType(document, newCategory)) {
+          return "invalid-file-type";
+        }
+
+        const previousCategory = this.store.peekRecord(
+          "category",
+          document.category.id,
+        );
+
+        try {
+          document.category = newCategory;
+          await document.save();
+          return true;
+        } catch (error) {
+          document.category = previousCategory;
+
+          new ErrorHandler(this, error).notify();
+
+          return false;
+        }
+      }),
+    );
+
+    if (states.includes(INVALID_FILE_TYPE)) {
+      this.mimeTypeErrorNotification(newCategory);
+      return states.map((state) =>
+        state === INVALID_FILE_TYPE ? false : state,
+      );
+    }
+
+    return states;
   }
 
   /**
