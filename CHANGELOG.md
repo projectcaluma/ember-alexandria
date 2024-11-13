@@ -1,3 +1,10 @@
+## [10.0.3](https://github.com/projectcaluma/ember-alexandria/compare/v10.0.2...v10.0.3) (2024-11-13)
+
+
+### Bug Fixes
+
+* **category-nav:** when moving files, check if the moved file also matches the new category ([5980e9b](https://github.com/projectcaluma/ember-alexandria/commit/5980e9b187c2f0cc42b894d3138263f3a7a2b7b2))
+
 ## [10.0.2](https://github.com/projectcaluma/ember-alexandria/compare/v10.0.1...v10.0.2) (2024-10-03)
 
 
