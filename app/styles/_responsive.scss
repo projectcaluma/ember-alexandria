@@ -34,9 +34,7 @@
     margin-left: 0 !important;
   }
 
-  table.document-list > thead > tr > th:nth-child(4),
-  table.document-list > thead > tr > th:nth-child(5),
-  table.document-list > tbody > tr > td:nth-child(5) {
+  .document-list-item-date {
     display: none;
   }
 

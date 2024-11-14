@@ -5,7 +5,7 @@
   <thead>
     <tr>
       {{#each-in @columns as |key settings|}}
-        <th class={{if (eq key "title") "uk-table-expand"}}>
+        <th class={{concat (if (eq key "title") "uk-table-expand") (concat "document-list-item-" key)}}>
           {{#if settings.labelHidden}}
             <span hidden>
               {{t (concat "alexandria.document-list." settings.label)}}
