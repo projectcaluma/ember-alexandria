@@ -2,7 +2,11 @@
   container: alexandria / inline-size;
 }
 
-@container alexandria (max-width: 1200px) {
+.document-view {
+  container: table / inline-size;
+}
+
+@container alexandria (max-width: 1550px) {
   .document-details {
     width: 300px;
 
@@ -12,7 +16,13 @@
   }
 }
 
-@container alexandria (max-width: 1100px) {
+@container table (max-width: 700px) {
+  .document-list-item-createdByUser {
+    display: none;
+  }
+}
+
+@container table (max-width: 850px) {
   .side-nav > div:first-child {
     font-size: 0;
   }
@@ -34,10 +44,7 @@
     margin-left: 0 !important;
   }
 
-  table.document-list > thead > tr > th:nth-child(4),
-  table.document-list > thead > tr > th:nth-child(5),
-  table.document-list > tbody > tr > td:nth-child(4),
-  table.document-list > tbody > tr > td:nth-child(5) {
+  .document-list-item-date {
     display: none;
   }
 
@@ -49,5 +56,11 @@
     > span:nth-child(2) {
       display: none;
     }
+  }
+}
+
+@container table (max-width: 900px) {
+  .document-list-item-modifiedAt {
+    display: none;
   }
 }
