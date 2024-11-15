@@ -1,3 +1,11 @@
+## [10.0.4](https://github.com/projectcaluma/ember-alexandria/compare/v10.0.3...v10.0.4) (2024-11-15)
+
+
+### Bug Fixes
+
+* optimize responsive behavior of document list ([#1009](https://github.com/projectcaluma/ember-alexandria/issues/1009)) ([f7485ce](https://github.com/projectcaluma/ember-alexandria/commit/f7485ce936e40e9a3aa7546756b5c7e81d860031))
+* **search-input:** make sure text selection works in search bar ([#1001](https://github.com/projectcaluma/ember-alexandria/issues/1001)) ([49ff2aa](https://github.com/projectcaluma/ember-alexandria/commit/49ff2aa32ae320538da5ce0c2b67ab5e6f914180))
+
 ## [10.0.3](https://github.com/projectcaluma/ember-alexandria/compare/v10.0.2...v10.0.3) (2024-11-13)
 
 
