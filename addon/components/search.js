@@ -6,9 +6,18 @@ import { timeout, task } from "ember-concurrency";
 
 export default class SearchComponent extends Component {
   @service router;
+  @service("alexandria-documents") documents;
 
   @action onSubmit(event) {
     event.preventDefault();
+  }
+
+  @action onFocus() {
+    this.documents.disableShortcuts();
+  }
+
+  @action onFocusOut() {
+    this.documents.enableShortcuts();
   }
 
   updateSearch = task(
