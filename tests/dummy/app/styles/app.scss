@@ -6,3 +6,34 @@
   max-height: 100vh;
   overflow: hidden;
 }
+
+.nav-sidebar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  top: 80px;
+  overflow-y: auto;
+  width: 240px;
+  border-right: 1px solid #dfdfdf;
+}
+
+.full-screen-content {
+  margin-left: 241px;
+}
+
+.full-screen-content > div {
+  height: calc(100vh - 80px);
+}
+
+.subnav-header {
+  margin: 10px;
+}
+
+ul.uk-navbar-nav > li.uk-active > a {
+  font-size: larger;
+  margin-left: 20px;
+}
+
+.uk-navbar-nav {
+  margin-right: 20px;
+}

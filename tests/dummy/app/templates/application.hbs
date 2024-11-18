@@ -42,8 +42,17 @@
       </ul>
     </div>
   </nav>
-
-  <main class="uk-height-1-1 uk-overflow-auto">
+  <aside class="nav-sidebar uk-navbar-container">
+    <div class="subnav-header">
+      <br>
+      <div>
+        <p>This panel is to emulate the side panel of the host app</p>
+        <br>
+        <p>This is not a part of <strong>ember-alexandria</strong> package</p>
+      </div>
+    </div>
+  </aside>
+  <div class="full-screen-content">
     {{outlet}}
-  </main>
+  </div>
 </div>
