@@ -157,8 +157,8 @@ importers:
         specifier: 2.1.0
         version: 2.1.0
       ember-cli-mirage:
-        specifier: 3.0.3
-        version: 3.0.3(nsglaigzp6dc5cqlvddr7ujbr4)
+        specifier: 3.0.4
+        version: 3.0.4(nsglaigzp6dc5cqlvddr7ujbr4)
       ember-cli-sass:
         specifier: 11.0.1
         version: 11.0.1
@@ -3563,8 +3563,8 @@ packages:
     resolution: {integrity: sha512-QkLGcYv1WRK35g4MWu/uIeJ5Suk2eJXKtZ+8s+qE7C9INmpCPyPxzaqZABquYzcWNzIdw6kYwz3NWAFdKYFxwg==}
     engines: {node: ^4.5 || 6.* || >= 7.*}
 
-  ember-cli-mirage@3.0.3:
-    resolution: {integrity: sha512-yrg8FpVwbMAH5KpqZn0br6Ka7M26qN3DCddsOJp2FNKk2cDoS5FKQvZUYrlD7oIfPeW4uQFigjfPuRSWRDC9Gw==}
+  ember-cli-mirage@3.0.4:
+    resolution: {integrity: sha512-JpfZJIrvUAcwOVQ44aAzlYSbGiO4/nqnVAbzAKU4kztqgYvYGBa27FX5WxfpIGZMBdnt6OKh78rsimChWo6f/Q==}
     engines: {node: 16.* || >= 18}
     peerDependencies:
       '@ember-data/model': '*'
@@ -12154,7 +12154,7 @@ snapshots:
 
   ember-cli-lodash-subset@2.0.1: {}
 
-  ember-cli-mirage@3.0.3(nsglaigzp6dc5cqlvddr7ujbr4):
+  ember-cli-mirage@3.0.4(nsglaigzp6dc5cqlvddr7ujbr4):
     dependencies:
       '@babel/core': 7.26.0
       '@embroider/macros': 1.16.7(@glint/template@1.4.0)
