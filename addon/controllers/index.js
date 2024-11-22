@@ -28,7 +28,7 @@ export default class IndexController extends Controller {
       category: this.category,
       tags: this.tags.length ? this.tags.join(",") : undefined,
       marks: this.marks.length ? this.marks.join(",") : undefined,
-      search: this.search,
+      query: this.search,
       activeGroup: this.activeGroup,
     };
 

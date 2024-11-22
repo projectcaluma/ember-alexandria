@@ -19,7 +19,7 @@ module("Unit | Controller | index", function (hooks) {
       activeGroup: "group",
       category: 1,
       metainfo: JSON.stringify([{ key: "instance_id", value: "1" }]),
-      search: "test",
+      query: "test",
       tags: undefined,
       marks: undefined,
     });

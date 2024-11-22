@@ -5,7 +5,7 @@ import { tracked } from "@glimmer/tracking";
 import { task } from "ember-concurrency";
 import { trackedFunction } from "reactiveweb/function";
 
-export default class DocumentViewComponent extends Component {
+export default class SearchViewComponent extends Component {
   @service store;
   @service("alexandria-config") config;
   @service("alexandria-documents") documents;
@@ -22,10 +22,10 @@ export default class DocumentViewComponent extends Component {
       return [];
     }
 
-    const files = await this.store.query(
-      "file",
+    const search = await this.store.query(
+      "search-result",
       {
-        include: "document,renderings",
+        include: "document,matched_file",
         filter: this.args.filters || {},
         page: { number: 1 },
       },
@@ -36,14 +36,7 @@ export default class DocumentViewComponent extends Component {
       },
     );
 
-    const documents = Array.from(
-      new Map(
-        files.map((file) => [
-          file.document.id,
-          this.store.peekRecord("document", file.document.id),
-        ]),
-      ).values(),
-    );
+    const documents = search.map((result) => result.document);
 
     return await this.config.documentsPostProcess(documents);
   });
