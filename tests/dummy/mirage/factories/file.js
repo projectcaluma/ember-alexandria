@@ -8,5 +8,4 @@ export default Factory.extend({
   name: () => faker.system.fileName(),
   variant: "original",
   downloadUrl: () => faker.internet.url(),
-  checksum: () => `sha256:${faker.git.commitSha({ length: 64 })}`,
 });
