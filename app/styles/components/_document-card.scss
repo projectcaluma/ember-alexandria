@@ -38,7 +38,8 @@
   }
 
   &--selected {
-    border-color: $global-primary-background;
+    border-color: $global-primary-background !important;
+    border-width: 3px !important;
   }
 
   .marks {
