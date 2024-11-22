@@ -11,6 +11,7 @@ export default class IndexController extends Controller {
     "document",
     "activeGroup",
     "sort",
+    "listView",
   ];
 
   @service("alexandria-config") config;
@@ -22,6 +23,7 @@ export default class IndexController extends Controller {
   @tracked document;
   @tracked activeGroup;
   @tracked sort;
+  @tracked listView = "true";
 
   get documentFilters() {
     let filters = {
