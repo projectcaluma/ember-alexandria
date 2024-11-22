@@ -27,8 +27,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0(@glint/template@1.4.0)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.26.0))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.96.1))(rollup@2.79.1)(webpack@5.96.1)
       '@fortawesome/free-regular-svg-icons':
-        specifier: ^6.6.0
-        version: 6.6.0
+        specifier: ^6.7.1
+        version: 6.7.1
       '@fortawesome/free-solid-svg-icons':
         specifier: ^6.6.0
         version: 6.6.0
@@ -1423,8 +1423,8 @@ packages:
     resolution: {integrity: sha512-8dBIHbfsKlCk2jHQ9PoRBg2Z+4TwyE3vZICSnoDlnsHA6SiMlTwfmW6yX0lHsRmWJugkeb92sA0hZdkXJhuz+g==}
     engines: {node: '>=6'}
 
-  '@fortawesome/free-regular-svg-icons@6.6.0':
-    resolution: {integrity: sha512-Yv9hDzL4aI73BEwSEh20clrY8q/uLxawaQ98lekBx6t9dQKDHcDzzV1p2YtBGTtolYtNqcWdniOnhzB+JPnQEQ==}
+  '@fortawesome/free-regular-svg-icons@6.7.1':
+    resolution: {integrity: sha512-e13cp+bAx716RZOTQ59DhqikAgETA9u1qTBHO3e3jMQQ+4H/N1NC1ZVeFYt1V0m+Th68BrEL1/X6XplISutbXg==}
     engines: {node: '>=6'}
 
   '@fortawesome/free-solid-svg-icons@6.6.0':
@@ -9486,9 +9486,9 @@ snapshots:
     dependencies:
       '@fortawesome/fontawesome-common-types': 6.7.1
 
-  '@fortawesome/free-regular-svg-icons@6.6.0':
+  '@fortawesome/free-regular-svg-icons@6.7.1':
     dependencies:
-      '@fortawesome/fontawesome-common-types': 6.6.0
+      '@fortawesome/fontawesome-common-types': 6.7.1
 
   '@fortawesome/free-solid-svg-icons@6.6.0':
     dependencies:
