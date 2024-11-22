@@ -6,10 +6,16 @@
   container: table / inline-size;
 }
 
+@container alexandria (max-width: 1625px) {
+  .document-details {
+    > div {
+      min-width: 375px;
+    }
+  }
+}
+
 @container alexandria (max-width: 1550px) {
   .document-details {
-    width: 300px;
-
     > div {
       min-width: 300px;
     }
@@ -22,7 +28,7 @@
   }
 }
 
-@container table (max-width: 850px) {
+@container table (max-width: 750px) {
   .side-nav > div:first-child {
     font-size: 0;
   }
@@ -59,7 +65,7 @@
   }
 }
 
-@container table (max-width: 900px) {
+@container table (max-width: 600px) {
   .document-list-item-modifiedAt {
     display: none;
   }
