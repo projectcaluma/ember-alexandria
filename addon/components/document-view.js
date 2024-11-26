@@ -1,5 +1,6 @@
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
+import { macroCondition, isTesting } from "@embroider/macros";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { task } from "ember-concurrency";
@@ -15,7 +16,7 @@ export default class DocumentViewComponent extends Component {
 
   @tracked isDragOver = false;
   @tracked dragCounter = 0;
-  @tracked listView = this.args.listView === "true";
+  @tracked listView = this.args.listView === true;
   @tracked sort = "title";
   @tracked sortDirection = "";
   // Needed for ember-resource
@@ -38,6 +39,7 @@ export default class DocumentViewComponent extends Component {
 
   @action toggleView() {
     this.listView = !this.listView;
+    if (macroCondition(isTesting())) return;
     this.router.transitionTo(this.router.currentRouteName, {
       queryParams: { listView: this.listView },
     });

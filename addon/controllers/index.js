@@ -23,7 +23,7 @@ export default class IndexController extends Controller {
   @tracked document;
   @tracked activeGroup;
   @tracked sort;
-  @tracked listView = "true";
+  @tracked listView = true;
 
   get documentFilters() {
     let filters = {

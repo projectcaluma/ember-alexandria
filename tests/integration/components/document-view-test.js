@@ -11,7 +11,9 @@ module("Integration | Component | document-view", function (hooks) {
   test("it renders the documents when in grid view", async function (assert) {
     this.server.createList("document", 3);
 
-    await render(hbs`<DocumentView />`, { owner: this.engine });
+    await render(hbs`<DocumentView @listView={{true}} />`, {
+      owner: this.engine,
+    });
 
     await click("[data-test-toggle]");
 
@@ -25,7 +27,9 @@ module("Integration | Component | document-view", function (hooks) {
   });
 
   test("it renders an empty document view", async function (assert) {
-    await render(hbs`<DocumentView />`, { owner: this.engine });
+    await render(hbs`<DocumentView @listView={{ true }} />`, {
+      owner: this.engine,
+    });
     await click("[data-test-toggle]");
 
     assert.dom("[data-test-upload]").exists();
@@ -38,7 +42,9 @@ module("Integration | Component | document-view", function (hooks) {
 
     docService.selectedDocuments = [documents[0]];
 
-    await render(hbs`<DocumentView />`, { owner: this.engine });
+    await render(hbs`<DocumentView @listView={{ true }} />`, {
+      owner: this.engine,
+    });
     await click("[data-test-toggle]");
 
     assert.dom("[data-test-empty]").doesNotExist();
