@@ -75,7 +75,7 @@ module("Acceptance | documents", function (hooks) {
 
     assert.strictEqual(
       currentURL(),
-      `/?document=${document.id}`,
+      `/?document=${document.id}&listView=false`,
       "url is set to currently selected document",
     );
 

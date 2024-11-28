@@ -21,7 +21,7 @@
       />
 
       <DocumentViewToggle
-        @viewList={{this.listView}}
+        @viewList={{@listView}}
         data-test-toggle-side-panel
         {{on "click" this.toggleView}}
       />
@@ -45,7 +45,7 @@
         {{did-insert (perform this.initialiseDocumentSelection)}}
       >
         {{! List & Grid View }}
-        {{#if this.listView}}
+        {{#if @listView}}
           <DocumentList
             @columns={{this.tableColumns}}
             @loading={{this.fetchedDocuments.isRunning}}

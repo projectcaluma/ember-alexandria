@@ -3,34 +3,16 @@ import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
 import { module, test } from "qunit";
+import { fake, stub } from "sinon";
 
 module("Integration | Component | document-view", function (hooks) {
   setupRenderingTest(hooks);
   setupMirage(hooks);
 
-  test("it renders the documents when in grid view", async function (assert) {
-    this.server.createList("document", 3);
-
-    await render(hbs`<DocumentView @listView={{true}} />`, {
-      owner: this.engine,
-    });
-
-    await click("[data-test-toggle]");
-
-    assert.dom("[data-test-upload]").exists();
-    assert.dom("[data-test-empty]").doesNotExist();
-
-    assert.dom("[data-test-document]").exists({ count: 3 });
-    assert
-      .dom("[data-test-document]")
-      .doesNotHaveClass("document-card--selected");
-  });
-
   test("it renders an empty document view", async function (assert) {
-    await render(hbs`<DocumentView @listView={{ true }} />`, {
+    await render(hbs`<DocumentView @listView={{ false }} />`, {
       owner: this.engine,
     });
-    await click("[data-test-toggle]");
 
     assert.dom("[data-test-upload]").exists();
     assert.dom("[data-test-empty]").exists();
@@ -42,10 +24,9 @@ module("Integration | Component | document-view", function (hooks) {
 
     docService.selectedDocuments = [documents[0]];
 
-    await render(hbs`<DocumentView @listView={{ true }} />`, {
+    await render(hbs`<DocumentView @listView={{ false }} />`, {
       owner: this.engine,
     });
-    await click("[data-test-toggle]");
 
     assert.dom("[data-test-empty]").doesNotExist();
     assert.dom("[data-test-document]").exists({ count: 3 });
