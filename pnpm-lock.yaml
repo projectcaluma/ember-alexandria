@@ -110,7 +110,7 @@ importers:
     devDependencies:
       '@adfinis/eslint-config':
         specifier: 2.1.1
-        version: 2.1.1(@babel/core@7.26.0)(@babel/eslint-parser@7.25.9(@babel/core@7.26.0)(eslint@8.57.1))(@babel/plugin-proposal-decorators@7.25.9(@babel/core@7.26.0))(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint-plugin-ember@12.3.2(@babel/core@7.26.0)(eslint@8.57.1))(eslint-plugin-import@2.31.0(eslint@8.57.1))(eslint-plugin-n@17.12.0(eslint@8.57.1))(eslint-plugin-prettier@5.2.1(@types/eslint@8.56.12)(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.3.3))(eslint-plugin-qunit@8.1.2(eslint@8.57.1))(eslint@8.57.1)(prettier@3.3.3)
+        version: 2.1.1(@babel/core@7.26.0)(@babel/eslint-parser@7.25.9(@babel/core@7.26.0)(eslint@8.57.1))(@babel/plugin-proposal-decorators@7.25.9(@babel/core@7.26.0))(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint-plugin-ember@12.3.2(@babel/core@7.26.0)(eslint@8.57.1))(eslint-plugin-import@2.31.0(eslint@8.57.1))(eslint-plugin-n@17.12.0(eslint@8.57.1))(eslint-plugin-prettier@5.2.1(@types/eslint@8.56.12)(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.4.1))(eslint-plugin-qunit@8.1.2(eslint@8.57.1))(eslint@8.57.1)(prettier@3.4.1)
       '@adfinis/semantic-release-config':
         specifier: 5.0.0
         version: 5.0.0(@types/node@22.5.0)(typescript@5.5.4)
@@ -200,7 +200,7 @@ importers:
         version: 6.0.0
       ember-template-lint-plugin-prettier:
         specifier: 5.0.0
-        version: 5.0.0(ember-template-lint@6.0.0)(prettier@3.3.3)
+        version: 5.0.0(ember-template-lint@6.0.0)(prettier@3.4.1)
       ember-try:
         specifier: 3.0.0
         version: 3.0.0
@@ -221,7 +221,7 @@ importers:
         version: 17.12.0(eslint@8.57.1)
       eslint-plugin-prettier:
         specifier: 5.2.1
-        version: 5.2.1(@types/eslint@8.56.12)(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.3.3)
+        version: 5.2.1(@types/eslint@8.56.12)(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.4.1)
       eslint-plugin-qunit:
         specifier: 8.1.2
         version: 8.1.2(eslint@8.57.1)
@@ -235,8 +235,8 @@ importers:
         specifier: 0.1.48
         version: 0.1.48
       prettier:
-        specifier: 3.3.3
-        version: 3.3.3
+        specifier: 3.4.1
+        version: 3.4.1
       qunit:
         specifier: 2.22.0
         version: 2.22.0
@@ -260,7 +260,7 @@ importers:
         version: 13.1.0(postcss@8.4.47)(stylelint@16.10.0(typescript@5.5.4))
       stylelint-prettier:
         specifier: 5.0.2
-        version: 5.0.2(prettier@3.3.3)(stylelint@16.10.0(typescript@5.5.4))
+        version: 5.0.2(prettier@3.4.1)(stylelint@16.10.0(typescript@5.5.4))
       stylelint-scss:
         specifier: 6.10.0
         version: 6.10.0(stylelint@16.10.0(typescript@5.5.4))
@@ -6476,8 +6476,8 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  prettier@3.3.3:
-    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
+  prettier@3.4.1:
+    resolution: {integrity: sha512-G+YdqtITVZmOJje6QkXQWzl3fSfMxFwm1tjTyo9exhkmWSqC4Yhd1+lug++IlR2mvRVAxEDDWYkQdeSztajqgg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -7893,7 +7893,7 @@ packages:
 
 snapshots:
 
-  '@adfinis/eslint-config@2.1.1(@babel/core@7.26.0)(@babel/eslint-parser@7.25.9(@babel/core@7.26.0)(eslint@8.57.1))(@babel/plugin-proposal-decorators@7.25.9(@babel/core@7.26.0))(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint-plugin-ember@12.3.2(@babel/core@7.26.0)(eslint@8.57.1))(eslint-plugin-import@2.31.0(eslint@8.57.1))(eslint-plugin-n@17.12.0(eslint@8.57.1))(eslint-plugin-prettier@5.2.1(@types/eslint@8.56.12)(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.3.3))(eslint-plugin-qunit@8.1.2(eslint@8.57.1))(eslint@8.57.1)(prettier@3.3.3)':
+  '@adfinis/eslint-config@2.1.1(@babel/core@7.26.0)(@babel/eslint-parser@7.25.9(@babel/core@7.26.0)(eslint@8.57.1))(@babel/plugin-proposal-decorators@7.25.9(@babel/core@7.26.0))(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint-plugin-ember@12.3.2(@babel/core@7.26.0)(eslint@8.57.1))(eslint-plugin-import@2.31.0(eslint@8.57.1))(eslint-plugin-n@17.12.0(eslint@8.57.1))(eslint-plugin-prettier@5.2.1(@types/eslint@8.56.12)(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.4.1))(eslint-plugin-qunit@8.1.2(eslint@8.57.1))(eslint@8.57.1)(prettier@3.4.1)':
     dependencies:
       '@babel/core': 7.26.0
       '@babel/eslint-parser': 7.25.9(@babel/core@7.26.0)(eslint@8.57.1)
@@ -7901,8 +7901,8 @@ snapshots:
       eslint: 8.57.1
       eslint-config-prettier: 9.1.0(eslint@8.57.1)
       eslint-plugin-import: 2.31.0(eslint@8.57.1)
-      eslint-plugin-prettier: 5.2.1(@types/eslint@8.56.12)(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.3.3)
-      prettier: 3.3.3
+      eslint-plugin-prettier: 5.2.1(@types/eslint@8.56.12)(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.4.1)
+      prettier: 3.4.1
     optionalDependencies:
       eslint-plugin-ember: 12.3.2(@babel/core@7.26.0)(eslint@8.57.1)
       eslint-plugin-n: 17.12.0(eslint@8.57.1)
@@ -9929,9 +9929,9 @@ snapshots:
       style-value-types: 3.2.0
       tslib: 1.14.1
 
-  '@prettier/sync@0.2.1(prettier@3.3.3)':
+  '@prettier/sync@0.2.1(prettier@3.4.1)':
     dependencies:
-      prettier: 3.3.3
+      prettier: 3.4.1
 
   '@rollup/plugin-node-resolve@15.2.3(rollup@2.79.1)':
     dependencies:
@@ -12991,11 +12991,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-template-lint-plugin-prettier@5.0.0(ember-template-lint@6.0.0)(prettier@3.3.3):
+  ember-template-lint-plugin-prettier@5.0.0(ember-template-lint@6.0.0)(prettier@3.4.1):
     dependencies:
-      '@prettier/sync': 0.2.1(prettier@3.3.3)
+      '@prettier/sync': 0.2.1(prettier@3.4.1)
       ember-template-lint: 6.0.0
-      prettier: 3.3.3
+      prettier: 3.4.1
       prettier-linter-helpers: 1.0.0
 
   ember-template-lint@6.0.0:
@@ -13361,10 +13361,10 @@ snapshots:
       minimatch: 9.0.5
       semver: 7.6.3
 
-  eslint-plugin-prettier@5.2.1(@types/eslint@8.56.12)(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.3.3):
+  eslint-plugin-prettier@5.2.1(@types/eslint@8.56.12)(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.4.1):
     dependencies:
       eslint: 8.57.1
-      prettier: 3.3.3
+      prettier: 3.4.1
       prettier-linter-helpers: 1.0.0
       synckit: 0.9.1
     optionalDependencies:
@@ -15805,7 +15805,7 @@ snapshots:
 
   prettier@2.8.8: {}
 
-  prettier@3.3.3: {}
+  prettier@3.4.1: {}
 
   pretty-ms@3.2.0:
     dependencies:
@@ -16733,9 +16733,9 @@ snapshots:
       stylelint: 16.10.0(typescript@5.5.4)
       stylelint-config-recommended: 14.0.1(stylelint@16.10.0(typescript@5.5.4))
 
-  stylelint-prettier@5.0.2(prettier@3.3.3)(stylelint@16.10.0(typescript@5.5.4)):
+  stylelint-prettier@5.0.2(prettier@3.4.1)(stylelint@16.10.0(typescript@5.5.4)):
     dependencies:
-      prettier: 3.3.3
+      prettier: 3.4.1
       prettier-linter-helpers: 1.0.0
       stylelint: 16.10.0(typescript@5.5.4)
 
