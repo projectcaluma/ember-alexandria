@@ -15,7 +15,6 @@ export default class DocumentViewComponent extends Component {
 
   @tracked isDragOver = false;
   @tracked dragCounter = 0;
-  @tracked listView = true;
   @tracked sort = "title";
   @tracked sortDirection = "";
   // Needed for ember-resource
@@ -37,7 +36,9 @@ export default class DocumentViewComponent extends Component {
   }
 
   @action toggleView() {
-    this.listView = !this.listView;
+    this.router.transitionTo(this.router.currentRouteName, {
+      queryParams: { listView: !this.args.listView },
+    });
   }
 
   @action setSort(sortAttribute) {

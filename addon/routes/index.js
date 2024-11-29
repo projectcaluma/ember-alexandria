@@ -12,6 +12,7 @@ export default class IndexRoute extends Route {
     search: PARAM_OPTIONS,
     document: PARAM_OPTIONS,
     activeGroup: PARAM_OPTIONS,
+    listView: {},
   };
 
   @service("alexandria-config") config;
