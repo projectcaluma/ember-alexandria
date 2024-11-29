@@ -1,9 +1,8 @@
-import { render, click } from "@ember/test-helpers";
+import { render } from "@ember/test-helpers";
 import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
 import { module, test } from "qunit";
-import { fake, stub } from "sinon";
 
 module("Integration | Component | document-view", function (hooks) {
   setupRenderingTest(hooks);
