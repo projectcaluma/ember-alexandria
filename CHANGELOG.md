@@ -1,3 +1,15 @@
+# [10.1.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.0.4...v10.1.0) (2024-11-29)
+
+
+### Bug Fixes
+
+* **document-card:** selected color ([#1026](https://github.com/projectcaluma/ember-alexandria/issues/1026)) ([d8b1039](https://github.com/projectcaluma/ember-alexandria/commit/d8b103969b79e9ef7859db2bfb7b6dd11d9896b5))
+
+
+### Features
+
+* emulate production left space of hosted app ([#1013](https://github.com/projectcaluma/ember-alexandria/issues/1013)) ([417f891](https://github.com/projectcaluma/ember-alexandria/commit/417f89189b5f096a23312f2e36181312c35e4fef))
+
 ## [10.0.4](https://github.com/projectcaluma/ember-alexandria/compare/v10.0.3...v10.0.4) (2024-11-15)
 
 
