@@ -1,9 +1,17 @@
+$animation-duration: 0.75s;
+
 .alexandria-container {
   container: alexandria / inline-size;
 }
 
 .document-view {
   container: table / inline-size;
+}
+
+.document-details {
+  > div {
+    transition: min-width $animation-duration ease-in-out;
+  }
 }
 
 @container alexandria (max-width: 1625px) {
@@ -22,7 +30,15 @@
   }
 }
 
-@container table (max-width: 700px) {
+@container alexandria (max-width: 1475px) {
+  .document-details {
+    > div {
+      min-width: 225px;
+    }
+  }
+}
+
+@container table (max-width: 650px) {
   .document-list-item-createdByUser {
     display: none;
   }
@@ -65,7 +81,7 @@
   }
 }
 
-@container table (max-width: 600px) {
+@container table (max-width: 550px) {
   .document-list-item-modifiedAt {
     display: none;
   }
