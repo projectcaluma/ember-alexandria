@@ -40,7 +40,7 @@
     "@embroider/macros": "^1.16.9",
     "@fortawesome/ember-fontawesome": "^2.0.0",
     "@fortawesome/free-regular-svg-icons": "^6.7.1",
-    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.7.1",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "animate-css-grid": "^1.5.1",
