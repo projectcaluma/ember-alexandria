@@ -12,6 +12,7 @@ export default class SearchController extends Controller {
 
   get filters() {
     const filters = {
+      onlyNewest: true,
       query: this.search,
     };
 
