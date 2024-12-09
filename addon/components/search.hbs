@@ -3,7 +3,7 @@
     class="uk-background-default uk-search uk-search-default uk-width-1"
     {{on "submit" this.onSubmit}}
   >
-    <span uk-search-icon />
+    <span uk-search-icon></span>
     <input
       type="search"
       class="uk-search-input uk-background-default"
@@ -15,5 +15,14 @@
       {{on "focus" this.onFocus}}
       {{on "focusout" this.onFocusOut}}
     />
+    <a
+      class="uk-form-icon uk-form-icon-flip"
+      href="#"
+      uk-tooltip={{t "alexandria.search-clear"}}
+      {{on "click" this.resetSearch}}
+      data-test-search-clear
+    >
+      <UkIcon @icon="close" />
+    </a>
   </form>
 </div>
