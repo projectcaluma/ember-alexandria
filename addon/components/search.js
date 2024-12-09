@@ -21,8 +21,16 @@ export default class SearchComponent extends Component {
       }
 
       this.router.transitionTo(this.router.currentRouteName, {
-        queryParams: { search: search || undefined, category: undefined },
+        queryParams: { search: search || undefined },
       });
     },
   );
+
+  @action
+  resetSearch(event) {
+    event.preventDefault();
+    this.router.transitionTo(this.router.currentRouteName, {
+      queryParams: { search: undefined },
+    });
+  }
 }
