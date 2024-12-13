@@ -27,6 +27,15 @@ export default function makeServer(config) {
       });
 
       this.get("/files/multi", () => new Response(200, {}, {}));
+
+      this.get("/search", function (schema) {
+        const res = schema.searchResults.create({
+          document: schema.documents.create(),
+        });
+        const serialized = this.serialize(res);
+        serialized.data = [serialized.data];
+        return serialized;
+      });
     },
   });
 }

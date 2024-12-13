@@ -1,6 +1,7 @@
 alexandria:
   loading: "Sto caricando i risultati..."
   search: "Cerca..."
+  search-clear: "Ricerca chiara"
   nothing-found: "Nessun risultato trovato..."
   delete: "Elimina"
   upload-file: "Carica file"
