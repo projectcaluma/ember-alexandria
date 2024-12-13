@@ -20,7 +20,7 @@
     </label>
 
     <div
-      class="uk-flex uk-flex-middle uk-text-large uk-text-break"
+      class="uk-flex uk-flex-middle uk-text-break"
       data-test-title-container
     >
       <FaIcon
@@ -31,9 +31,9 @@
         {{set-style color=@document.category.color}}
       />
       {{#if this.editTitle}}
-        <form {{on "submit" (perform this.saveDocument)}}>
+        <form {{on "submit" (perform this.saveDocument)}} class="uk-flex uk-width-expand">
           <input
-            class="uk-input uk-width-auto
+            class="uk-input uk-width-expand
               {{unless this.validTitle 'uk-form-danger'}}"
             id="alexandria-details-title"
             type="text"
@@ -51,7 +51,7 @@
           ></button>
         </form>
       {{else}}
-        <span data-test-title>{{@document.title}}</span>
+        <span class="uk-text-bolder" data-test-title>{{@document.title}}</span>
       {{/if}}
     </div>
   </div>
