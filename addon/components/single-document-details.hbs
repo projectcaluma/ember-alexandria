@@ -30,7 +30,7 @@
             id="alexandria-details-title"
             type="text"
             placeholder={{t "alexandria.document-details.title-placeholder"}}
-            value={{@document.title}}
+            value={{this.title}}
             data-test-title-input
             {{on "input" this.updateDocumentTitle}}
           />

@@ -20,6 +20,12 @@ export default class SingleDocumentDetailsComponent extends Component {
   @tracked editDescription = false;
   @tracked editDate = false;
   @tracked validTitle = true;
+  @tracked title = "";
+
+  constructor(...args) {
+    super(...args);
+    this.title = this.args.document.title;
+  }
 
   get locale() {
     return this.intl.primaryLocale.split("-")[0];
@@ -53,7 +59,7 @@ export default class SingleDocumentDetailsComponent extends Component {
 
   @action updateDocumentTitle({ target: { value: title } }) {
     this.validTitle = Boolean(title);
-    this.args.document.title = title;
+    this.title = title;
   }
 
   @action updateDocumentDescription({ target: { value: description } }) {
@@ -69,6 +75,11 @@ export default class SingleDocumentDetailsComponent extends Component {
 
   @action toggle(name) {
     this[name] = !this[name];
+    if (name === "editTitle" && !this[name]) {
+      // if the user cancel title editing,
+      // return edit title input value to be the orginal title
+      this.title = this.args.document.title;
+    }
     if (this[name]) {
       this.documents.disableShortcuts();
     } else {
@@ -86,8 +97,8 @@ export default class SingleDocumentDetailsComponent extends Component {
 
   saveDocument = task({ restartable: true }, async (event) => {
     event?.preventDefault();
-
     try {
+      this.args.document.title = this.title;
       await this.args.document.save();
       this.resetState();
       this.notification.success(this.intl.t("alexandria.success.update"));
