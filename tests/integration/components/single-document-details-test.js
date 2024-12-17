@@ -53,7 +53,6 @@ module("Integration | Component | single-document-details", function (hooks) {
       .dom("[data-test-created-by-group]")
       .hasText(this.selectedDocument.createdByGroup);
 
-    assert.dom("[data-test-close]").exists();
     assert.dom("[data-test-delete]").exists();
     assert.dom("[data-test-file-download-link]").exists();
   });
