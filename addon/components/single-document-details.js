@@ -22,10 +22,12 @@ export default class SingleDocumentDetailsComponent extends Component {
   @tracked editDate = false;
   @tracked validTitle = true;
   @tracked title = "";
+  @tracked description = "";
 
   constructor(...args) {
     super(...args);
     this.title = this.args.document.title;
+    this.description = this.args.document.description;
   }
 
   originalFilename = trackedFunction(this, async () => {
@@ -77,7 +79,7 @@ export default class SingleDocumentDetailsComponent extends Component {
   }
 
   @action updateDocumentDescription({ target: { value: description } }) {
-    this.args.document.description = description;
+    this.description = description;
   }
 
   @action async updateDate([date]) {
@@ -89,10 +91,11 @@ export default class SingleDocumentDetailsComponent extends Component {
 
   @action toggle(name) {
     this[name] = !this[name];
-    if (name === "editTitle" && !this[name]) {
-      // if the user cancel title editing,
-      // return edit title input value to be the orginal title
+    // cancel editing
+    if (name === "editTitle" && !this.editTitle) {
       this.title = this.args.document.title;
+    } else if (name === "editDescription" && !this.editDescription) {
+      this.description = this.args.document.description;
     }
     if (this[name]) {
       this.documents.disableShortcuts();
@@ -113,6 +116,7 @@ export default class SingleDocumentDetailsComponent extends Component {
     event?.preventDefault();
     try {
       this.args.document.title = this.title;
+      this.args.document.description = this.description;
       await this.args.document.save();
       this.resetState();
       this.notification.success(this.intl.t("alexandria.success.update"));
