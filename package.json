@@ -79,7 +79,7 @@
     "@faker-js/faker": "9.3.0",
     "@fortawesome/fontawesome-svg-core": "6.7.1",
     "broccoli-asset-rev": "3.0.0",
-    "concurrently": "9.1.1",
+    "concurrently": "9.1.2",
     "ember-cli": "6.0.1",
     "ember-cli-clean-css": "3.0.0",
     "ember-cli-dependency-checker": "3.3.3",
