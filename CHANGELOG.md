@@ -1,3 +1,10 @@
+# [10.2.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.1.0...v10.2.0) (2025-01-27)
+
+
+### Features
+
+* **search:** add clear button ([1d407fe](https://github.com/projectcaluma/ember-alexandria/commit/1d407fe1f2adc94d4fa557799d0894f33cfbdf79))
+
 # [10.1.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.0.4...v10.1.0) (2024-11-29)
 
 
