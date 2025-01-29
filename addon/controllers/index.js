@@ -37,7 +37,7 @@ export default class IndexController extends Controller {
     if (this.config && this.config.modelMetaFilters?.document) {
       filters = {
         ...filters,
-        metainfo: JSON.stringify(this.config.modelMetaFilters.document),
+        documentMetainfo: JSON.stringify(this.config.modelMetaFilters.document),
       };
     }
 
