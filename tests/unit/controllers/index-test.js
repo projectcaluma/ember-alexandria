@@ -18,7 +18,7 @@ module("Unit | Controller | index", function (hooks) {
     assert.deepEqual(controller.documentFilters, {
       activeGroup: "group",
       categories: 1,
-      metainfo: JSON.stringify([{ key: "instance_id", value: "1" }]),
+      documentMetainfo: JSON.stringify([{ key: "instance_id", value: "1" }]),
       query: "test",
       tags: undefined,
       marks: undefined,
