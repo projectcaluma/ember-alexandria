@@ -1,3 +1,10 @@
+## [10.2.1](https://github.com/projectcaluma/ember-alexandria/compare/v10.2.0...v10.2.1) (2025-01-29)
+
+
+### Bug Fixes
+
+* **search:** use correct filter on document list ([c625962](https://github.com/projectcaluma/ember-alexandria/commit/c62596271f8a042597bda9a8bc34e8a47a9399a5))
+
 # [10.2.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.1.0...v10.2.0) (2025-01-27)
 
 
