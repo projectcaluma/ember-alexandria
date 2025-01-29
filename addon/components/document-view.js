@@ -65,7 +65,9 @@ export default class DocumentViewComponent extends Component {
     let documents = [];
     const filter = this.args.filters || {};
     if (filter.query) {
-      filter.only_newest = true;
+      filter.onlyNewest = true;
+      filter.documentMetainfo = filter.metainfo;
+      delete filter.metainfo;
       const searchResult = yield this.store.query(
         "search-result",
         {
