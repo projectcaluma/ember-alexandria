@@ -7,6 +7,7 @@ alexandria:
   upload-file: "Upload file"
   download: "Download"
   move-document: "Move {count} {count, plural, one {document} other {documents}}"
+  copy-document: "Copy {count} {count, plural, one {document} other {documents}}"
   copy: "Copy"
 
   errors:
@@ -56,6 +57,7 @@ alexandria:
       confirm: "Delete"
 
   document-grid:
+    drop-to-copy: "Drop document to copy"
     drop-to-upload: "Drop file to upload"
     drop-not-allowed: "No category selected"
 
