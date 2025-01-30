@@ -194,6 +194,61 @@ export default class AlexandriaDocumentsService extends Service {
   }
 
   /**
+   * Copies one or multiple files.
+   *
+   * @param {Object} category category instance.
+   * @param {Array<Number>} documentIds.
+   */
+  async copy(category, documentIds) {
+    const INVALID_FILE_TYPE = "invalid-file-type";
+
+    const states = await Promise.all(
+      documentIds.map(async (id) => {
+        const originalDocument = this.store.peekRecord("document", id);
+        if (!originalDocument) {
+          return true;
+        }
+
+        if (!fileHasValidMimeType(originalDocument, category)) {
+          return "invalid-file-type";
+        }
+
+        const adapter = this.store.adapterFor("document");
+        let url = adapter.buildURL("document", originalDocument.id);
+        url += "/copy";
+
+        try {
+          const res = await this.fetch.fetch(url, {
+            method: "POST",
+            body: JSON.stringify({
+              data: {
+                type: "documents",
+                id: originalDocument.id,
+                category: category.id,
+              },
+            }),
+          });
+
+          return (await res.json()).data.id;
+        } catch (error) {
+          new ErrorHandler(this, error).notify();
+
+          return false;
+        }
+      }),
+    );
+
+    if (states.includes(INVALID_FILE_TYPE)) {
+      this.mimeTypeErrorNotification(category);
+      return states.map((state) =>
+        state === INVALID_FILE_TYPE ? false : state,
+      );
+    }
+
+    return states;
+  }
+
+  /**
    * Clears the document selection
    */
   @action clearDocumentSelection() {

@@ -82,6 +82,7 @@ export default class CategoryNavCategoryComponent extends Component {
   }
 
   onDrop = task({ drop: true }, async (event) => {
+    const dragAction = event.shiftKey ? "copy" : "move";
     event.preventDefault();
 
     if (!this.args.category.id) return;
@@ -90,7 +91,7 @@ export default class CategoryNavCategoryComponent extends Component {
     this.isDragOver = false;
 
     if (
-      event.dataTransfer.files.length &&
+      event.dataTransfer.files?.length &&
       !event.dataTransfer.getData("text")
     ) {
       return await this.documents.upload(
@@ -100,14 +101,29 @@ export default class CategoryNavCategoryComponent extends Component {
     }
 
     const documentIds = event.dataTransfer.getData("text").split(",");
-    const success = await this.documents.move(this.args.category, documentIds);
+
+    // copy or move to the category where the document(s) are dropped
+    const success =
+      "move" === dragAction
+        ? await this.documents.move(this.args.category, documentIds)
+        : await this.documents.copy(this.args.category, documentIds);
 
     const failCount = success.filter((i) => i === false).length;
-    const successCount = success.filter((i) => i === true).length;
+    let targetDocumentIds;
+    const successCount = success.filter(
+      (i) => i !== false && i !== "invalid-file-type",
+    ).length;
+    if ("move" === dragAction) {
+      targetDocumentIds = documentIds;
+    } else {
+      targetDocumentIds = success.filter(
+        (i) => i !== false && i !== "invalid-file-type",
+      );
+    }
 
     if (failCount) {
       this.notification.danger(
-        this.intl.t("alexandria.errors.move-document", {
+        this.intl.t(`alexandria.errors.${dragAction}-document`, {
           count: failCount,
         }),
       );
@@ -115,7 +131,7 @@ export default class CategoryNavCategoryComponent extends Component {
 
     if (successCount) {
       this.notification.success(
-        this.intl.t("alexandria.success.move-document", {
+        this.intl.t(`alexandria.success.${dragAction}-document`, {
           count: successCount,
         }),
       );
@@ -124,7 +140,7 @@ export default class CategoryNavCategoryComponent extends Component {
         queryParams: {
           category: this.args.category.id,
           search: undefined,
-          document: documentIds.join(","),
+          document: targetDocumentIds.join(","),
           tags: [],
           marks: [],
         },

@@ -7,13 +7,12 @@
   >
     <div class="uk-flex uk-flex-middle uk-padding-small">
       <DocumentUploadButton
-        @categoryId={{@filters.category}}
+        @categoryId={{@filters.categories}}
         @afterUpload={{this.refreshDocumentList}}
         data-test-upload
       />
 
       <TagFilter
-        @category={{@filters.category}}
         @documents={{this.fetchedDocuments.value}}
         @selectedTags={{@filters.tags}}
         @selectedMarks={{@filters.marks}}
@@ -38,11 +37,10 @@
       {{on "dragleave" this.onDragLeave}}
       {{on "dragover" this.onDragOver}}
       {{on "drop" this.onDrop.perform}}
+      data-drop-documents
       ...attributes
     >
-      <div
-        class="document-view"
-      >
+      <div class="document-view">
         {{! List & Grid View }}
         {{#if @listView}}
           <DocumentList
@@ -73,9 +71,11 @@
         >
           {{#if this.onDrop.isRunning}}
             <UkSpinner />
-          {{else if this.canDrop}}
+          {{else if this.canDropCopy}}
+            {{t "alexandria.document-grid.drop-to-copy"}}
+          {{else if this.canDropUpload}}
             {{t "alexandria.document-grid.drop-to-upload"}}
-          {{else}}
+          {{else if (not this.dropAllowed)}}
             {{t "alexandria.document-grid.drop-not-allowed"}}
           {{/if}}
         </button>
@@ -91,6 +91,7 @@
 <div
   class="drag-info uk-background-default uk-box-shadow-medium uk-border-rounded uk-width-auto"
   {{did-insert this.registerDragInfo}}
->
-  {{t "alexandria.move-document" count=this.documents.selectedDocuments.length}}
-</div>
+>{{t
+    this.dragInfoTranslationKey
+    count=this.documents.selectedDocuments.length
+  }}</div>
