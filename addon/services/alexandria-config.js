@@ -12,6 +12,7 @@ export default class AlexandriaConfigService extends Service {
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
   ];
+  additionalFileTypes = {};
 
   markIcons = {};
 

@@ -9,6 +9,13 @@ export default class CustomAlexandriaConfigService extends AlexandriaConfigServi
 
   enablePDFConversion = true;
   enableWebDAV = true;
+  additionalFileTypes = {
+    json: {
+      icon: "file-code",
+      label: "JSON",
+      mimeTypes: ["application/json"],
+    },
+  };
 
   markIcons = {
     decision: "stamp",

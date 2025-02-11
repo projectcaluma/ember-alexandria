@@ -12,21 +12,26 @@ module("Integration | Component | single-document-details", function (hooks) {
   setupMirage(hooks);
 
   test("it renders document information", async function (assert) {
+    const file = {
+      variant: "original",
+      name: "some-file.pdf",
+      createdByUser: null,
+      downloadUrl: "http://test.com",
+      download: { perform: fake() },
+      fileTypeInfo: {
+        label: "PDF",
+        icon: "file-pdf",
+      },
+    };
+
     this.selectedDocument = {
       title: "Test",
       category: { color: "#F00" },
       createdAt: new Date(1998, 11, 11),
       createdByUser: "user1",
       createdByGroup: "group1",
-      files: [
-        {
-          variant: "original",
-          name: "some-file.pdf",
-          createdByUser: null,
-          downloadUrl: "http://test.com",
-          download: { perform: fake() },
-        },
-      ],
+      latestFile: { value: file },
+      files: [file],
     };
 
     await render(
@@ -38,6 +43,8 @@ module("Integration | Component | single-document-details", function (hooks) {
     assert.dom("[data-test-title-icon]").hasStyle({ color: "rgb(255, 0, 0)" });
 
     assert.dom("[data-test-title]").hasText(this.selectedDocument.title);
+    assert.dom("[data-test-file-type]").hasText("PDF");
+    assert.dom("[data-test-file-type] svg[data-icon='file-pdf']").exists();
     assert.dom("[data-test-created-at]").hasText("12/11/1998, 12:00 AM");
     assert
       .dom("[data-test-created-by-user]")
