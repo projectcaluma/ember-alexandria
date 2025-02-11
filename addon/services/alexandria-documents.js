@@ -13,7 +13,7 @@ import { ErrorHandler } from "ember-alexandria/utils/error-handler";
  */
 const fileHasValidMimeType = (file, category) =>
   category.allowedMimeTypes?.includes(
-    file.type || mime.getType(file.name ?? file.title),
+    file.mimeType || mime.getType(file.name ?? file.title),
   ) ?? true;
 
 export default class AlexandriaDocumentsService extends Service {
@@ -160,7 +160,8 @@ export default class AlexandriaDocumentsService extends Service {
           return true;
         }
 
-        if (!fileHasValidMimeType(document, newCategory)) {
+        const files = (await document.files) ?? [];
+        if (files.some((file) => !fileHasValidMimeType(file, newCategory))) {
           return "invalid-file-type";
         }
 

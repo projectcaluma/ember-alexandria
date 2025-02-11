@@ -34,11 +34,31 @@ module("Integration | Component | category-nav/category", function (hooks) {
   test("it moves dropped documents to new category", async function (assert) {
     const category = this.server.create("category");
     const oldCategory = this.server.create("category");
-    const documents = this.server.createList("document", 2, {
+    // Case 1: File with ext in name & allowed mimType
+    const documents = this.server.createList("document", 3, {
       categoryId: oldCategory.id,
       title: "test.txt",
+      files: this.server.createList("file", 1, {
+        name: "test.txt",
+        mimeType: "text/plain",
+      }),
     });
-    documents[1].update({ title: "test.xlsx" });
+    // Case 2: File with allowed mimeType
+    documents[1].update({
+      title: "TestGif",
+      files: this.server.createList("file", 1, {
+        name: "TestFileWithoutEXT",
+        mimeType: "image/gif",
+      }),
+    });
+    // Case 3: File with allowed ext in name, but not allowed mimeType
+    documents[2].update({
+      title: "TestVid",
+      files: this.server.createList("file", 1, {
+        name: "TestVid.jpg",
+        mimeType: "video/webm",
+      }),
+    });
 
     const store = this.owner.lookup("service:store");
 
@@ -73,11 +93,11 @@ module("Integration | Component | category-nav/category", function (hooks) {
         tags: [],
       },
     });
-    // Since the mimetype of the second one doesn't match the default allowed
+    // Since the mimetype of the third one doesn't match the default allowed
     // mime types of the category factories, only one file should be moved.
     assert.deepEqual(
       documents.map((d) => d.category.id),
-      [category.id, oldCategory.id],
+      [category.id, category.id, oldCategory.id],
     );
   });
 
