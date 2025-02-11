@@ -32,7 +32,7 @@ export default class DocumentViewComponent extends Component {
   }
 
   get canDrop() {
-    return Boolean(this.args.filters && this.args.filters.category);
+    return Boolean(this.args.filters && this.args.filters.categories);
   }
 
   @action toggleView() {
@@ -131,7 +131,7 @@ export default class DocumentViewComponent extends Component {
   }
 
   onDrop = task({ drop: true }, async (event) => {
-    if (!this.args.filters.category || !event.dataTransfer.files.length) {
+    if (!this.args.filters.categories || !event.dataTransfer.files.length) {
       this.dragCounter = 0;
       this.isDragOver = false;
       return;
@@ -141,7 +141,7 @@ export default class DocumentViewComponent extends Component {
     event.stopPropagation();
 
     await this.documents.upload(
-      this.args.filters.category,
+      this.args.filters.categories,
       event.dataTransfer.files,
     );
     this.refreshDocumentList();
