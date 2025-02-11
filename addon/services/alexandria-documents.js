@@ -11,11 +11,19 @@ import { ErrorHandler } from "ember-alexandria/utils/error-handler";
  * Check if document upload is in allowed mime types of category
  * If no allowedMimeTypes are set on the category, just return true
  */
-const fileHasValidMimeType = (file, category) =>
-  category.allowedMimeTypes?.includes(
-    file.type || mime.getType(file.name ?? file.title),
-  ) ?? true;
+function fileHasValidMimeType(file, category) {
+  if (!category.allowedMimeTypes) {
+    return true;
+  }
 
+  if (file instanceof File) {
+    // newly uploaded files that do not have a model yet
+    return category.allowedMimeTypes.includes(file.type);
+  }
+
+  // existing file models
+  return category.allowedMimeTypes.includes(file.mimeType);
+}
 export default class AlexandriaDocumentsService extends Service {
   @service store;
   @service("alexandria-config") config;
@@ -160,7 +168,12 @@ export default class AlexandriaDocumentsService extends Service {
           return true;
         }
 
-        if (!fileHasValidMimeType(document, newCategory)) {
+        const files = (await document.files) ?? [];
+        if (
+          files
+            .filter((f) => f.variant === "original")
+            .some((file) => !fileHasValidMimeType(file, newCategory))
+        ) {
           return "invalid-file-type";
         }
 

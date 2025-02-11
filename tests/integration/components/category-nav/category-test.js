@@ -34,12 +34,30 @@ module("Integration | Component | category-nav/category", function (hooks) {
   test("it moves dropped documents to new category", async function (assert) {
     const category = this.server.create("category");
     const oldCategory = this.server.create("category");
-    const documents = this.server.createList("document", 2, {
-      categoryId: oldCategory.id,
-      title: "test.txt",
-    });
-    documents[1].update({ title: "test.xlsx" });
-
+    const documents = [
+      // Case 1: File with ext in name & allowed mimType
+      this.server.create("document", {
+        categoryId: oldCategory.id,
+        title: "TestTextFile",
+        files: [
+          this.server.create("file", {
+            name: "test.txt",
+            mimeType: "text/plain",
+          }),
+        ],
+      }),
+      // Case 2: File with not allowed mimeType
+      this.server.create("document", {
+        categoryId: oldCategory.id,
+        title: "TestVid",
+        files: [
+          this.server.create("file", {
+            name: "TestVid.webm",
+            mimeType: "video/webm",
+          }),
+        ],
+      }),
+    ];
     const store = this.owner.lookup("service:store");
 
     this.category = await store.findRecord("category", category.id);
@@ -59,7 +77,9 @@ module("Integration | Component | category-nav/category", function (hooks) {
       dataTransfer: {
         getData: () => documents.map((d) => d.id).join(","),
         // sometimes browser send a file as well (e.g. when dragging a thumbnail) - this should be ignored
-        files: [new File(["Thumbnail"], "test-file.docx")],
+        files: [
+          new File(["Thumbnail"], "test-file.txt", { type: "text/plain" }),
+        ],
       },
     });
 
