@@ -88,6 +88,16 @@ alexandria:
     version:
       filename: "Dateiname"
       checksum: "Checksumme"
+    file-type: "Dateityp"
+    file-types:
+      audio: "Audio"
+      excel: "Excel"
+      image: "Bild"
+      pdf: "PDF"
+      powerpoint: "PowerPoint"
+      text: "Text"
+      video: "Video"
+      word: "Word"
 
   document-download:
     button: "{numDocs, plural, =1 {Herunterladen} other {Auswahl herunterladen}}"

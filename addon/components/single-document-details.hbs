@@ -142,6 +142,15 @@
       {{t "alexandria.document-details.metadata"}}
     </p>
     <ul class="uk-list uk-list-collapse uk-margin-remove">
+      <li data-test-file-type>
+        <FaIcon
+          @icon={{@document.latestFile.value.fileTypeInfo.icon}}
+          @fixedWidth={{true}}
+          class="uk-margin-small-right"
+          {{uk-tooltip (t "alexandria.document-details.file-type") pos="left"}}
+        />
+        {{@document.latestFile.value.fileTypeInfo.label}}
+      </li>
       <li data-test-created-at>
         <FaIcon
           @icon="clock"

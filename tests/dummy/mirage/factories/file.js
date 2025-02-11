@@ -1,4 +1,5 @@
 import { faker } from "@faker-js/faker";
+import mime from "mime";
 import { Factory } from "miragejs";
 
 export default Factory.extend({
@@ -8,4 +9,8 @@ export default Factory.extend({
   name: () => faker.system.fileName(),
   variant: "original",
   downloadUrl: () => faker.internet.url(),
+
+  afterCreate(file) {
+    file.update({ mimeType: mime.getType(file.name) });
+  },
 });
