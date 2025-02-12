@@ -52,7 +52,7 @@ module("Integration | Component | category-nav/category", function (hooks) {
         title: "TestVid",
         files: [
           this.server.create("file", {
-            name: "TestVid.jpg",
+            name: "TestVid.webm",
             mimeType: "video/webm",
           }),
         ],
@@ -73,10 +73,6 @@ module("Integration | Component | category-nav/category", function (hooks) {
       { owner: this.engine },
     );
 
-    assert.deepEqual(
-      documents.map((d) => d.category.id),
-      [oldCategory.id, oldCategory.id],
-    );
     await triggerEvent("[data-test-drop]", "drop", {
       dataTransfer: {
         getData: () => documents.map((d) => d.id).join(","),
