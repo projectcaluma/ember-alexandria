@@ -1,3 +1,10 @@
+## [10.3.1](https://github.com/projectcaluma/ember-alexandria/compare/v10.3.0...v10.3.1) (2025-02-12)
+
+
+### Bug Fixes
+
+* **documents:** add mimeType lookup for mimeType/file-extension check ([4e6d533](https://github.com/projectcaluma/ember-alexandria/commit/4e6d533175e1501d7a0e89f5efe62d5fa0d03db6))
+
 # [10.3.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.2.2...v10.3.0) (2025-02-12)
 
 
