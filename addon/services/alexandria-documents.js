@@ -84,8 +84,13 @@ export default class AlexandriaDocumentsService extends Service {
    *
    * @param {Object|String|Number} category Either an ID or category instance.
    * @param {Array<File>} files The file(s) from input[type=file].
+   * @param {Object} options Upload options.
    */
-  async upload(category, files) {
+  async upload(
+    category,
+    files,
+    { muteNotification = false, extraMetainfo = {} } = {},
+  ) {
     if (!category.id) {
       category =
         this.store.peekRecord("category", category) ||
@@ -102,9 +107,14 @@ export default class AlexandriaDocumentsService extends Service {
     try {
       const uploaded = await Promise.all(
         Array.from(files).map(async (file) => {
+          const metainfo = {
+            ...this.config.defaultModelMeta.file,
+            ...(extraMetainfo || {}),
+          };
+
           const documentModel = this.store.createRecord("document", {
             category,
-            metainfo: this.config.defaultModelMeta.document,
+            metainfo,
             createdByGroup: this.config.activeGroup,
             modifiedByGroup: this.config.activeGroup,
             content: file,
@@ -116,11 +126,13 @@ export default class AlexandriaDocumentsService extends Service {
         }),
       );
 
-      this.notification.success(
-        this.intl.t("alexandria.success.upload-document", {
-          count: files.length,
-        }),
-      );
+      if (!muteNotification) {
+        this.notification.success(
+          this.intl.t("alexandria.success.upload-document", {
+            count: files.length,
+          }),
+        );
+      }
 
       return uploaded;
     } catch (error) {
