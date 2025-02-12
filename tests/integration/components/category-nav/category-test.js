@@ -31,7 +31,8 @@ module("Integration | Component | category-nav/category", function (hooks) {
     assert.dom("[data-test-link]").hasClass("active");
   });
 
-  test("it moves dropped documents to new category", async function (assert) {
+  // eslint-disable-next-line qunit/no-only
+  test.only("it moves dropped documents to new category", async function (assert) {
     const category = this.server.create("category");
     const oldCategory = this.server.create("category");
     const documents = [
@@ -52,12 +53,19 @@ module("Integration | Component | category-nav/category", function (hooks) {
         title: "TestVid",
         files: [
           this.server.create("file", {
-            name: "TestVid.webm",
+            name: "TestVid.docx",
             mimeType: "video/webm",
           }),
         ],
       }),
     ];
+
+    console.log("------------------------");
+    console.log("after create callbacks");
+    console.log(documents[1].files.models[0].mimeType);
+    console.log(this.server.factoryFor("file").extractAfterCreateCallbacks());
+    console.log("------------------------");
+
     const store = this.owner.lookup("service:store");
 
     this.category = await store.findRecord("category", category.id);

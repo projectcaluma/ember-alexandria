@@ -11,6 +11,8 @@ export default Factory.extend({
   downloadUrl: () => faker.internet.url(),
 
   afterCreate(file) {
-    file.update({ mimeType: mime.getType(file.name) });
+    if (!file.mimeType) {
+      file.update({ mimeType: mime.getType(file.name) });
+    }
   },
 });
