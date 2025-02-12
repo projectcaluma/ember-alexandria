@@ -13,15 +13,26 @@ import { ErrorHandler } from "ember-alexandria/utils/error-handler";
  */
 function fileHasValidMimeType(file, category) {
   if (!category.allowedMimeTypes) {
+    console.warn("fileHasValidMimeType: all types allowed");
     return true;
   }
 
   if (file instanceof File) {
     // newly uploaded files that do not have a model yet
+    console.warn(
+      "fileHasValidMimeType: file instanceof File",
+      file.type,
+      category.allowedMimeTypes.includes(file.type),
+    );
     return category.allowedMimeTypes.includes(file.type);
   }
 
   // existing file models
+  console.warn(
+    "fileHasValidMimeType: existing file models",
+    file.mimeType,
+    category.allowedMimeTypes.includes(file.mimeType),
+  );
   return category.allowedMimeTypes.includes(file.mimeType);
 }
 export default class AlexandriaDocumentsService extends Service {

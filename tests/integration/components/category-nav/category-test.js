@@ -34,28 +34,30 @@ module("Integration | Component | category-nav/category", function (hooks) {
   test("it moves dropped documents to new category", async function (assert) {
     const category = this.server.create("category");
     const oldCategory = this.server.create("category");
-    // Case 1: File with ext in name & allowed mimType
-    const documents = this.server.createList("document", 2, {
-      categoryId: oldCategory.id,
-      title: "TestTextFile",
-      files: [
-        this.server.create("file", {
-          name: "test.txt",
-          mimeType: "text/plain",
-        }),
-      ],
-    });
-    // Case 2: File with not allowed mimeType
-    await documents[1].update({
-      title: "TestVid",
-      files: [
-        this.server.create("file", {
-          name: "TestVid.jpg",
-          mimeType: "video/webm",
-        }),
-      ],
-    });
-
+    const documents = [
+      // Case 1: File with ext in name & allowed mimType
+      this.server.create("document", {
+        categoryId: oldCategory.id,
+        title: "TestTextFile",
+        files: [
+          this.server.create("file", {
+            name: "test.txt",
+            mimeType: "text/plain",
+          }),
+        ],
+      }),
+      // Case 2: File with not allowed mimeType
+      this.server.create("document", {
+        categoryId: oldCategory.id,
+        title: "TestVid",
+        files: [
+          this.server.create("file", {
+            name: "TestVid.jpg",
+            mimeType: "video/webm",
+          }),
+        ],
+      }),
+    ];
     const store = this.owner.lookup("service:store");
 
     this.category = await store.findRecord("category", category.id);
@@ -71,6 +73,10 @@ module("Integration | Component | category-nav/category", function (hooks) {
       { owner: this.engine },
     );
 
+    assert.deepEqual(
+      documents.map((d) => d.category.id),
+      [oldCategory.id, oldCategory.id],
+    );
     await triggerEvent("[data-test-drop]", "drop", {
       dataTransfer: {
         getData: () => documents.map((d) => d.id).join(","),
