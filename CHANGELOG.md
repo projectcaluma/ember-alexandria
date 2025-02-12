@@ -1,3 +1,16 @@
+# [10.3.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.2.2...v10.3.0) (2025-02-12)
+
+
+### Bug Fixes
+
+* update packages ([#1069](https://github.com/projectcaluma/ember-alexandria/issues/1069)) ([57c4c78](https://github.com/projectcaluma/ember-alexandria/commit/57c4c782b4ad5e2fbcb2343041414fcfe2722f92))
+* **upload:** user correct category filter key ([e46dfea](https://github.com/projectcaluma/ember-alexandria/commit/e46dfea599954a11f4dacb27942df1c9d5ebf8a5))
+
+
+### Features
+
+* **document-details:** show general file type with matching icon ([ca4247d](https://github.com/projectcaluma/ember-alexandria/commit/ca4247d8d8a2d586cf7275b6211ff5811309f215))
+
 ## [10.2.2](https://github.com/projectcaluma/ember-alexandria/compare/v10.2.1...v10.2.2) (2025-01-29)
 
 
