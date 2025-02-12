@@ -38,18 +38,22 @@ module("Integration | Component | category-nav/category", function (hooks) {
     const documents = this.server.createList("document", 2, {
       categoryId: oldCategory.id,
       title: "TestTextFile",
-      files: this.server.createList("file", 1, {
-        name: "test.txt",
-        mimeType: "text/plain",
-      }),
+      files: [
+        this.server.create("file", {
+          name: "test.txt",
+          mimeType: "text/plain",
+        }),
+      ],
     });
     // Case 2: File with not allowed mimeType
-    documents[1].update({
+    await documents[1].update({
       title: "TestVid",
-      files: this.server.createList("file", 1, {
-        name: "TestVid.jpg",
-        mimeType: "video/webm",
-      }),
+      files: [
+        this.server.create("file", {
+          name: "TestVid.jpg",
+          mimeType: "video/webm",
+        }),
+      ],
     });
 
     const store = this.owner.lookup("service:store");
@@ -71,7 +75,9 @@ module("Integration | Component | category-nav/category", function (hooks) {
       dataTransfer: {
         getData: () => documents.map((d) => d.id).join(","),
         // sometimes browser send a file as well (e.g. when dragging a thumbnail) - this should be ignored
-        files: [new File(["Thumbnail"], "test-file.docx")],
+        files: [
+          new File(["Thumbnail"], "test-file.txt", { type: "text/plain" }),
+        ],
       },
     });
 
@@ -85,7 +91,7 @@ module("Integration | Component | category-nav/category", function (hooks) {
         tags: [],
       },
     });
-    // Since the mimetype of the third one doesn't match the default allowed
+    // Since the mimetype of the second one doesn't match the default allowed
     // mime types of the category factories, only one file should be moved.
     assert.deepEqual(
       documents.map((d) => d.category.id),
