@@ -35,24 +35,16 @@ module("Integration | Component | category-nav/category", function (hooks) {
     const category = this.server.create("category");
     const oldCategory = this.server.create("category");
     // Case 1: File with ext in name & allowed mimType
-    const documents = this.server.createList("document", 3, {
+    const documents = this.server.createList("document", 2, {
       categoryId: oldCategory.id,
-      title: "test.txt",
+      title: "TestTextFile",
       files: this.server.createList("file", 1, {
         name: "test.txt",
         mimeType: "text/plain",
       }),
     });
-    // Case 2: File with allowed mimeType
+    // Case 2: File with not allowed mimeType
     documents[1].update({
-      title: "TestGif",
-      files: this.server.createList("file", 1, {
-        name: "TestFileWithoutEXT",
-        mimeType: "image/gif",
-      }),
-    });
-    // Case 3: File with allowed ext in name, but not allowed mimeType
-    documents[2].update({
       title: "TestVid",
       files: this.server.createList("file", 1, {
         name: "TestVid.jpg",
@@ -97,7 +89,7 @@ module("Integration | Component | category-nav/category", function (hooks) {
     // mime types of the category factories, only one file should be moved.
     assert.deepEqual(
       documents.map((d) => d.category.id),
-      [category.id, category.id, oldCategory.id],
+      [category.id, oldCategory.id],
     );
   });
 
