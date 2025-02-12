@@ -18,9 +18,7 @@ function fileHasValidMimeType(file, category) {
 
   if (file instanceof File) {
     // newly uploaded files that do not have a model yet
-    return category.allowedMimeTypes.includes(
-      file.type || mime.getType(file.name),
-    );
+    return category.allowedMimeTypes.includes(file.type);
   }
 
   // existing file models
@@ -173,7 +171,7 @@ export default class AlexandriaDocumentsService extends Service {
         const files = (await document.files) ?? [];
         if (
           files
-            .filter((f) => f.variant !== "thumbnail")
+            .filter((f) => f.variant === "original")
             .some((file) => !fileHasValidMimeType(file, newCategory))
         ) {
           return "invalid-file-type";

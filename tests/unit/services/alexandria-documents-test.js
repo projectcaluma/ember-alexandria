@@ -15,10 +15,13 @@ module("Unit | Service | alexandria-documents", function (hooks) {
       "category",
       this.server.create("category").id,
     );
+
+    const docxMimeType =
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
     const files = [
-      new File(["1"], "test1.docx"),
-      new File(["2"], "test2.docx"),
-      new File(["3"], "test3.docx"),
+      new File(["1"], "test1.docx", { type: docxMimeType }),
+      new File(["2"], "test2.docx", { type: docxMimeType }),
+      new File(["3"], "test3.docx", { type: docxMimeType }),
     ];
 
     await service.upload(category, files);

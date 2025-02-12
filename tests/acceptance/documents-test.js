@@ -170,7 +170,9 @@ module("Acceptance | documents", function (hooks) {
         });
     });
     await triggerEvent("[data-test-upload] [data-test-input]", "change", {
-      files: [new File(["Ember Rules!"], "test-file.txt")],
+      files: [
+        new File(["Ember Rules!"], "test-file.txt", { type: "text/plain" }),
+      ],
     });
     assert.dom("[data-test-document-list-item]").exists({ count: 1 });
   });
