@@ -1,3 +1,10 @@
+## [10.3.2](https://github.com/projectcaluma/ember-alexandria/compare/v10.3.1...v10.3.2) (2025-02-14)
+
+
+### Bug Fixes
+
+* **adapter:** add missing namespace configuration ([8e56d91](https://github.com/projectcaluma/ember-alexandria/commit/8e56d91e5b3aad0c794172aeb9a9a9f1a1a7e948))
+
 ## [10.3.1](https://github.com/projectcaluma/ember-alexandria/compare/v10.3.0...v10.3.1) (2025-02-12)
 
 

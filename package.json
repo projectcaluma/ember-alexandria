@@ -1,6 +1,6 @@
 {
   "name": "ember-alexandria",
-  "version": "10.3.1",
+  "version": "10.3.2",
   "description": "Document management frontend for the alexandria backend",
   "keywords": [
     "ember-addon",
