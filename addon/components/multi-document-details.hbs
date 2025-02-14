@@ -34,6 +34,7 @@
           @color="danger"
           class="uk-width-1"
           {{on "click" showDialog}}
+          {{did-insert (fn this.registerDeleteDialog showDialog)}}
         >
           {{t "alexandria.delete"}}
         </UkButton>
