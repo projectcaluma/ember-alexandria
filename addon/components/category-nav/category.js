@@ -93,10 +93,18 @@ export default class CategoryNavCategoryComponent extends Component {
       event.dataTransfer.files.length &&
       !event.dataTransfer.getData("text")
     ) {
-      return await this.documents.upload(
+      const uploaded = await this.documents.upload(
         this.args.category,
         event.dataTransfer.files,
       );
+
+      this.router.transitionTo(this.router.currentRouteName, {
+        queryParams: {
+          category: this.args.category.id,
+        },
+      });
+
+      return uploaded;
     }
 
     const documentIds = event.dataTransfer.getData("text").split(",");
