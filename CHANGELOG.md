@@ -1,3 +1,10 @@
+## [10.3.3](https://github.com/projectcaluma/ember-alexandria/compare/v10.3.2...v10.3.3) (2025-02-14)
+
+
+### Bug Fixes
+
+* **deps:** allow previous versions of ember-load-initializers and ember-resolver ([14807ee](https://github.com/projectcaluma/ember-alexandria/commit/14807ee5e1ad01d21890907dd212d114a2dd09fb))
+
 ## [10.3.2](https://github.com/projectcaluma/ember-alexandria/compare/v10.3.1...v10.3.2) (2025-02-14)
 
 
