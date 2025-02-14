@@ -107,6 +107,10 @@ module("Integration | Component | category-nav/category", function (hooks) {
     const fakeUpload = fake();
     this.engine.lookup("service:alexandria-documents").upload = fakeUpload;
 
+    const router = this.engine.lookup("service:router");
+    stub(router, "currentRouteName").get(() => null);
+    router.transitionTo = fake();
+
     this.category = await store.findRecord("category", category.id);
     await store.findAll("document"); // the code uses peekRecord
 
@@ -123,5 +127,6 @@ module("Integration | Component | category-nav/category", function (hooks) {
     });
 
     assert.strictEqual(fakeUpload.callCount, 1);
+    assert.strictEqual(router.transitionTo.callCount, 1);
   });
 });
