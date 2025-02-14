@@ -75,7 +75,7 @@ importers:
         specifier: ^7.1.2
         version: 7.1.4(@ember/test-helpers@5.0.0(@babel/core@7.26.8)(@glint/template@1.4.0)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.26.8))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.97.1)))(@glint/template@1.4.0)(typescript@5.5.4)(webpack@5.97.1)
       ember-load-initializers:
-        specifier: ^3.0.1
+        specifier: ^2.1.2 || ^3.0.1
         version: 3.0.1(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.26.8))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.97.1))
       ember-localized-model:
         specifier: ^4.0.1
@@ -87,7 +87,7 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       ember-resolver:
-        specifier: ^13.1.0
+        specifier: ^12.0.1 || ^13.1.0
         version: 13.1.0(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.26.8))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.97.1))
       ember-test-selectors:
         specifier: ^7.0.0
