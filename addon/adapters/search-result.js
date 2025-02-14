@@ -1,5 +1,13 @@
+import { service } from "@ember/service";
+
 export default function (BaseClass) {
   return class SearchResultAdapter extends BaseClass {
+    @service("alexandria-config") config;
+
+    get namespace() {
+      return this.config.namespace ?? "/api/v1";
+    }
+
     // Overwrite and replicate the query function,
     // because ember doesnt pass adapterOptions to urlForQuery
     query(_, type, query, __, options) {
