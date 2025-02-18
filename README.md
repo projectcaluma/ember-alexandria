@@ -1,6 +1,6 @@
 # ember-alexandria
 
-![Test](https://github.com/projectcaluma/ember-alexandria/workflows/Test/badge.svg)
+![CI](https://github.com/projectcaluma/ember-alexandria/workflows/CI/badge.svg)
 [![Dependabot](https://img.shields.io/librariesio/github/projectcaluma/ember-alexandria)](https://dependabot.com/)
 [![Code Style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](https://spdx.org/licenses/AGPL-3.0-or-later.html)
