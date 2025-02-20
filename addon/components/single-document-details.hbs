@@ -223,6 +223,18 @@
       </div>
     {{/if}}
 
+    <div>
+      <UkButton
+        @size="small"
+        @onClick={{this.copyDocument.perform}}
+        @loading={{this.copyDocument.isRunning}}
+        class="uk-width-1"
+        data-test-copy
+      >
+        {{t "alexandria.copy"}}
+      </UkButton>
+    </div>
+
     <div uk-form-custom>
       <input
         data-test-replace
@@ -241,7 +253,7 @@
       </button>
     </div>
 
-    <div>
+    <div class="uk-width-1-1">
       <DocumentDeleteButton @docsToDelete={{@document}} as |showDialog|>
         <UkButton
           data-test-delete

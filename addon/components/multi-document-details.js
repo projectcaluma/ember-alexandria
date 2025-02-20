@@ -1,7 +1,14 @@
 import { inject as service } from "@ember/service";
 import Component from "@glimmer/component";
+import { task } from "ember-concurrency";
+
+import { ErrorHandler } from "ember-alexandria/utils/error-handler";
+
 export default class MultiDocumentDetailsComponent extends Component {
   @service("alexandria-side-panel") sidePanel;
+  @service("alexandria-documents") documents;
+  @service notification;
+  @service intl;
 
   get mergedTags() {
     const tags = [];
@@ -23,4 +30,23 @@ export default class MultiDocumentDetailsComponent extends Component {
 
     return tags;
   }
+
+  copyDocuments = task({ drop: true }, async (event) => {
+    event?.preventDefault();
+    try {
+      await this.documents.copy(
+        this.args.selectedDocuments.map((doc) => doc.id),
+      );
+      await this.args.refreshDocumentList();
+      this.notification.success(
+        this.intl.t("alexandria.success.copy-document", {
+          count: this.args.selectedDocuments.length,
+        }),
+      );
+    } catch (error) {
+      new ErrorHandler(this, error).notify("alexandria.errors.copy-document", {
+        count: this.args.selectedDocuments.length,
+      });
+    }
+  });
 }

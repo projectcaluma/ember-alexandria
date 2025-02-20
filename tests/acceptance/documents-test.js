@@ -150,6 +150,56 @@ module("Acceptance | documents", function (hooks) {
     assert.dom("[data-test-document]").doesNotExist();
   });
 
+  test("copy single document", async function (assert) {
+    const document = this.server.create("document");
+
+    await visit(`/`);
+
+    assert.dom("[data-test-document-list-item]").exists({ count: 1 });
+    await click("[data-test-document-list-item]:nth-of-type(1)");
+
+    this.assertRequest("POST", "/api/v1/documents/:id/copy", (request) => {
+      assert.strictEqual(
+        request.params.id,
+        document.id,
+        "copying the correct document",
+      );
+    });
+
+    await click("[data-test-single-doc-details] [data-test-copy]");
+    assert.dom("[data-test-document-list-item]").exists({ count: 2 });
+  });
+
+  test("copy multiple documents", async function (assert) {
+    const documents = this.server.createList("document", 2);
+
+    await visit(`/`);
+
+    assert.dom("[data-test-document-list-item]").exists({ count: 2 });
+
+    await click("[data-test-document-list-item]:nth-of-type(1)");
+    await click("[data-test-document-list-item]:nth-of-type(2)", {
+      shiftKey: true,
+    });
+
+    const assertFn = (document) => (request) => {
+      assert.strictEqual(
+        request.params.id,
+        document.id,
+        "copying the correct document",
+      );
+    };
+
+    this.assertRequests(
+      "POST",
+      "/api/v1/documents/:id/copy",
+      documents.map(assertFn),
+    );
+
+    await click("[data-test-multi-doc-details] [data-test-copy]");
+    assert.dom("[data-test-document-list-item]").exists({ count: 4 });
+  });
+
   test("upload file", async function (assert) {
     this.server.create("category");
 
