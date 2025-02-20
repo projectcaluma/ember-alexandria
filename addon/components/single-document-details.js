@@ -20,6 +20,34 @@ export default class SingleDocumentDetailsComponent extends Component {
   @tracked editDescription = false;
   @tracked editDate = false;
   @tracked validTitle = true;
+  @tracked deleteDialog = null;
+
+  constructor(parent, args) {
+    super(parent, args);
+
+    this.boundHandleKeyDown = this.handleKeyDown.bind(this);
+    window.addEventListener("keydown", this.boundHandleKeyDown);
+  }
+
+  @action
+  registerDeleteDialog(showDialog) {
+    this.deleteDialog = showDialog;
+  }
+
+  willDestroy() {
+    super.willDestroy();
+    window.removeEventListener("keydown", this.boundHandleKeyDown);
+  }
+
+  handleKeyDown(event) {
+    if (this.documents.shortcutsDisabled) {
+      return;
+    }
+
+    if (event.key === "Delete" && this.deleteDialog) {
+      this.deleteDialog();
+    }
+  }
 
   get locale() {
     return this.intl.primaryLocale.split("-")[0];

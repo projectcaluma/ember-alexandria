@@ -5,6 +5,7 @@ import {
   fillIn,
   triggerEvent,
   settled,
+  waitFor,
 } from "@ember/test-helpers";
 import { setupApplicationTest } from "dummy/tests/helpers";
 import { setupMirage } from "ember-cli-mirage/test-support";
@@ -286,4 +287,73 @@ module("Acceptance | documents", function (hooks) {
       .dom("[data-test-document-list-item].document-list-item--selected")
       .doesNotExist();
   });
+
+  test.each(
+    `trigger document delete with keyboard shortcut`,
+    ["single", "multiple"],
+    async function (assert, type) {
+      const documents = this.server.createList("document", 3);
+
+      function isVisible(element) {
+        if (!element) {
+          return false;
+        }
+
+        const style = window.getComputedStyle(element);
+
+        return style.display !== "none";
+      }
+
+      await visit("/");
+      assert.dom(".uk-modal").doesNotExist();
+
+      if (type === "single") {
+        // select first document and check the single document details
+        await click("[data-test-document-list-item]:first-child");
+
+        assert
+          .dom("[data-test-document-list-item].document-list-item--selected")
+          .exists({ count: 1 });
+        assert.dom("[data-test-single-doc-details]").exists();
+      } else {
+        // select multiple documents and check the multi document details
+        await click("[data-test-document-list-item]:first-child", {
+          shiftKey: true,
+        });
+        await click("[data-test-document-list-item]:nth-child(3)", {
+          shiftKey: true,
+        });
+
+        assert
+          .dom("[data-test-document-list-item].document-list-item--selected")
+          .exists({ count: 3 });
+        assert.dom("[data-test-multi-doc-details]").exists();
+      }
+
+      // assert modal visibility on keyboard shortcut
+      await waitFor(".uk-modal");
+      assert.dom(".uk-modal").exists({ count: 1 });
+      const modal = document.querySelector(".uk-modal");
+
+      assert.false(isVisible(modal));
+      window.dispatchEvent(new KeyboardEvent("keydown", { key: "Delete" }));
+      await triggerEvent(window, "keydown", "Delete");
+      assert.ok(isVisible(modal));
+
+      // assert modal body text
+      if (type === "single") {
+        assert
+          .dom(modal)
+          .containsText(
+            `Do you really want to delete the document "${documents[0].title}" and its complete history?`,
+          );
+      } else {
+        assert
+          .dom(modal)
+          .containsText(
+            "Do you really want to delete 3 documents and their complete history?",
+          );
+      }
+    },
+  );
 });
