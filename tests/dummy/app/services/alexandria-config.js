@@ -1,6 +1,7 @@
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { macroCondition, isTesting } from "@embroider/macros";
+import { dedupeTracked } from "tracked-toolbox";
 
 import AlexandriaConfigService from "ember-alexandria/services/alexandria-config";
 
@@ -22,6 +23,8 @@ export default class CustomAlexandriaConfigService extends AlexandriaConfigServi
     like: "heart",
     bill: "dollar-sign",
   };
+
+  @dedupeTracked alexandriaQueryParams = {};
 
   get modelMetaFilters() {
     if (this.alexandriaQueryParams.instance_id) {
