@@ -14,6 +14,25 @@ export default function makeServer(config) {
       this.post("/documents", function (schema) {
         return schema.documents.create();
       });
+      this.post("/documents/:id/copy", function (schema, request) {
+        const originalDocument = schema.documents.find(request.params.id);
+        const payload = JSON.parse(request.requestBody || "{}");
+        const payloadCategoryId =
+          payload?.data?.relationships?.category?.data?.id;
+        const category = payloadCategoryId
+          ? schema.categories.find(payloadCategoryId)
+          : originalDocument.category;
+
+        const input = {
+          ...originalDocument.attrs,
+        };
+        delete input.id;
+
+        return schema.documents.create({
+          ...input,
+          category,
+        });
+      });
       this.resource("tags", { except: ["delete"] });
       this.resource("marks", { only: ["index", "show"] });
 

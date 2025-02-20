@@ -7,6 +7,7 @@ alexandria:
   upload-file: "Upload file"
   download: "Download"
   move-document: "Move {count} {count, plural, one {document} other {documents}}"
+  copy: "Copy"
 
   errors:
     save-file: "While downloading the document, an error occured. Please try again."
@@ -21,6 +22,7 @@ alexandria:
     update: "Your changes could not be saved. Please try again."
     no-permission: "You don't have permission to perform this action."
     move-document: "While moving {count, plural, one {the document} other {# documents}}, an error occured. Please try again."
+    copy-document: "While copying {count, plural, one {the document} other {# documents}}, an error occured. Please try again."
     convert-pdf: "While converting, an error occured. Please try again."
     invalid-file-type: 'In category "{category}" only {types} can be uploaded.'
     file-too-large: "The uploaded file is too large."
@@ -35,6 +37,7 @@ alexandria:
       } uploaded successfully.
     update: "Changes saved."
     move-document: "{count, plural, one {Document} other {# documents}} moved successfully"
+    copy-document: "{count, plural, one {Document} other {# documents}} copied successfully"
     convert-pdf: "Document converted successfully."
 
   category-nav:

@@ -146,4 +146,19 @@ export default class SingleDocumentDetailsComponent extends Component {
       new ErrorHandler(this, error).notify("alexandria.errors.open-webdav");
     }
   });
+
+  copyDocument = task({ drop: true }, async (event) => {
+    event?.preventDefault();
+    try {
+      await this.documents.copy([this.args.document.id]);
+      await this.args.refreshDocumentList();
+      this.notification.success(
+        this.intl.t("alexandria.success.copy-document", { count: 1 }),
+      );
+    } catch (error) {
+      new ErrorHandler(this, error).notify("alexandria.errors.copy-document", {
+        count: 1,
+      });
+    }
+  });
 }

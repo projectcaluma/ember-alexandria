@@ -7,6 +7,7 @@ alexandria:
   upload-file: "Carica file"
   download: "Download"
   move-document: "Sposta {count} {count, plural, one {documento} other {documenti}}"
+  copy: "Copia"
 
   errors:
     save-file: "Errore nel tentativo di scaricare il file. Riprova"
@@ -14,12 +15,13 @@ alexandria:
     fetch-categories: "Errore nel tentativo di caricare le categorie."
     replace-document: "Errore nel tentativo di sostituire il documento."
     upload-document: |-
-      Errore nel tentativo di caricare 
+      Errore nel tentativo di caricare
       {count, plural, one {il documento}
         other {i documenti}}.
     update: "Non è stato possibile salvare le modifiche. Riprova"
     no-permission: "Non dispone dei diritti per eseguire questa operazione."
     move-document: "Errore nel tentativo di spostare {count, plural, one {il documento} other {i documenti}}"
+    copy-document: "Errore nel tentativo di copiare {count, plural, one {il documento} other {i documenti}}"
     convert-pdf: "Errore nel tentativo di convertire il documento."
     invalid-file-type: 'Nella categoria "{category}" è possibile caricare solo {types}.'
     file-too-large: "Il file caricato è troppo grande."
@@ -34,6 +36,7 @@ alexandria:
       } con successo.
     update: "Le modifiche sono state salvate."
     move-document: "{count, plural, one {Il documento è stato spostato} other {# I documenti sono stati spostati}} con successo"
+    copy-document: "{count, plural, one {Il documento è stato copiato} other {# I documenti sono stati copiati}} con successo"
     convert-pdf: "Il documento è stato convertito con successo."
 
   category-nav:

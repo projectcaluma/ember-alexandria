@@ -23,21 +23,35 @@
   {{#if @selectedDocuments.length}}
     <MarkManager @documents={{@selectedDocuments}} class="uk-margin" />
 
-    <div class="uk-margin">
-      <DocumentDeleteButton
-        @docsToDelete={{@selectedDocuments}}
-        as |showDialog|
-      >
+    <div class="uk-grid uk-grid-small uk-child-width-1-2" uk-grid>
+      <div>
         <UkButton
-          data-test-delete
           @size="small"
-          @color="danger"
+          @onClick={{this.copyDocuments.perform}}
+          @loading={{this.copyDocuments.isLoading}}
           class="uk-width-1"
-          {{on "click" showDialog}}
+          data-test-copy
         >
-          {{t "alexandria.delete"}}
+          {{t "alexandria.copy"}}
         </UkButton>
-      </DocumentDeleteButton>
+      </div>
+
+      <div>
+        <DocumentDeleteButton
+          @docsToDelete={{@selectedDocuments}}
+          as |showDialog|
+        >
+          <UkButton
+            data-test-delete
+            @size="small"
+            @color="danger"
+            class="uk-width-1"
+            {{on "click" showDialog}}
+          >
+            {{t "alexandria.delete"}}
+          </UkButton>
+        </DocumentDeleteButton>
+      </div>
     </div>
 
     <hr>
