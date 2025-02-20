@@ -108,7 +108,7 @@ export default class AlexandriaDocumentsService extends Service {
       const uploaded = await Promise.all(
         Array.from(files).map(async (file) => {
           const metainfo = {
-            ...this.config.defaultModelMeta.file,
+            ...this.config.defaultModelMeta.document,
             ...(extraMetainfo || {}),
           };
 
