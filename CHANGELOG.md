@@ -1,3 +1,17 @@
+# [10.4.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.3.3...v10.4.0) (2025-02-20)
+
+
+### Bug Fixes
+
+* **upload:** add missing router transition after upload drop on category nav ([d4f4b30](https://github.com/projectcaluma/ember-alexandria/commit/d4f4b303c84ed2deb30160a7f3a9bb8df0149f81))
+* **upload:** pass document default meta from config ([ae3a8f3](https://github.com/projectcaluma/ember-alexandria/commit/ae3a8f32ac2388a583d683c811aae55c7a2c4c4c))
+
+
+### Features
+
+* **document:** add copy button ([3cdfb5d](https://github.com/projectcaluma/ember-alexandria/commit/3cdfb5dbbfd892f8cd8d5647e134d6689cbb3636))
+* **upload:** add optional parameters to the upload function ([c69f162](https://github.com/projectcaluma/ember-alexandria/commit/c69f1622723037920a7d61ebef0a6041e3ffbf24))
+
 ## [10.3.3](https://github.com/projectcaluma/ember-alexandria/compare/v10.3.2...v10.3.3) (2025-02-14)
 
 
