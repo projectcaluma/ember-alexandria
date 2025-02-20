@@ -264,6 +264,9 @@ importers:
       stylelint-scss:
         specifier: 6.11.0
         version: 6.11.0(stylelint@16.14.1(typescript@5.5.4))
+      tracked-toolbox:
+        specifier: 2.0.0
+        version: 2.0.0(@babel/core@7.26.8)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.26.8))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.98.0))
       uikit:
         specifier: 3.23.0
         version: 3.23.0
@@ -7681,6 +7684,15 @@ packages:
 
   tr46@0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
+
+  tracked-toolbox@2.0.0:
+    resolution: {integrity: sha512-adZtX+RGN6F+pWs/5JqVuDxLhuia4uhqmQp+UlUaxpykWjDFETtAdQR+LdDJiFPXFAXnS6FBqn/tnSLJQCm3Yw==}
+    engines: {node: 14.* || 16.* || >= 18}
+    peerDependencies:
+      ember-source: '*'
+    peerDependenciesMeta:
+      ember-source:
+        optional: true
 
   traverse@0.6.8:
     resolution: {integrity: sha512-aXJDbk6SnumuaZSANd21XAo15ucCDE38H4fkqiGsc3MhCK+wOlZvLP9cB/TvpHT0mOyWgC4Z8EwRlzqYSUzdsA==}
@@ -17529,6 +17541,16 @@ snapshots:
   toidentifier@1.0.1: {}
 
   tr46@0.0.3: {}
+
+  tracked-toolbox@2.0.0(@babel/core@7.26.8)(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.26.8))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.98.0)):
+    dependencies:
+      '@embroider/addon-shim': 1.9.0
+      ember-cache-primitive-polyfill: 1.0.1(@babel/core@7.26.8)
+    optionalDependencies:
+      ember-source: 5.12.0(@glimmer/component@1.1.2(@babel/core@7.26.8))(@glint/template@1.4.0)(rsvp@4.8.5)(webpack@5.98.0)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - supports-color
 
   traverse@0.6.8: {}
 
