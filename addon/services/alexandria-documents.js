@@ -16,9 +16,12 @@ function fileHasValidMimeType(file, category) {
     return true;
   }
 
+  // newly uploaded files that do not have a model yet
   if (file instanceof File) {
-    // newly uploaded files that do not have a model yet
-    return category.allowedMimeTypes.includes(file.type);
+    // type is not always set, use name as fallback
+    return category.allowedMimeTypes.includes(
+      file.type || mime.getType(file.name),
+    );
   }
 
   // existing file models
