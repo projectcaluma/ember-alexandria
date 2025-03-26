@@ -1,3 +1,10 @@
+## [10.4.1](https://github.com/projectcaluma/ember-alexandria/compare/v10.4.0...v10.4.1) (2025-03-26)
+
+
+### Bug Fixes
+
+* **upload:** check mime type with name fallback ([#1136](https://github.com/projectcaluma/ember-alexandria/issues/1136)) ([b509465](https://github.com/projectcaluma/ember-alexandria/commit/b509465fd1c31c8d5215d0b127c9f3537a3f60f8))
+
 # [10.4.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.3.3...v10.4.0) (2025-02-20)
 
 
