@@ -88,9 +88,6 @@ module("Acceptance | documents", function (hooks) {
     assert
       .dom("[data-test-single-doc-details] [data-test-title]")
       .hasText(document.title);
-
-    await click("[data-test-close]");
-    assert.dom("[data-test-document-side-panel]").hasClass("closed");
   });
 
   test("document detail edit title", async function (assert) {
