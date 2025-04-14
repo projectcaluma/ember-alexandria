@@ -8,6 +8,7 @@ export default class AlexandriaConfigService extends Service {
 
   enablePDFConversion = false;
   enableWebDAV = false;
+  enableOriginalDocumentFilename = false;
   allowedWebDAVMimeTypes = [
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
