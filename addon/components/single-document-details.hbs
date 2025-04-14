@@ -54,6 +54,19 @@
         <span class="uk-text-bolder" data-test-title>{{@document.title}}</span>
       {{/if}}
     </div>
+    {{#if
+      (and
+        this.originalFilename.value
+        (not (eq this.originalFilename.value @document.title))
+      )
+    }}
+      <div data-test-original-filename>
+        <span class="uk-text-bolder">
+          {{t "alexandria.document-details.original-filename"}}:
+        </span>
+        {{this.originalFilename.value}}
+      </div>
+    {{/if}}
   </div>
 
   <MarkManager @documents={{array @document}} class="uk-margin" />

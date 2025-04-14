@@ -97,6 +97,7 @@ alexandria:
       text: "Text"
       video: "Video"
       word: "Word"
+    original-filename: "Original"
 
   document-download:
     button: "{numDocs, plural, =1 {Herunterladen} other {Auswahl herunterladen}}"
