@@ -14,11 +14,7 @@ alexandria:
     delete-document: "While deleting the document, an error occured. Please try again."
     fetch-categories: "While loading the categories, an error occured. Please try again."
     replace-document: "While replacing the document, an error occured. Please try again."
-    upload-document: |-
-      While uploading your {count, plural,
-        one {document}
-        other {documents}
-      }, an error occured.
+    upload-document: "While uploading your document, an error occured."
     update: "Your changes could not be saved. Please try again."
     no-permission: "You don't have permission to perform this action."
     move-document: "While moving {count, plural, one {the document} other {# documents}}, an error occured. Please try again."
@@ -31,9 +27,9 @@ alexandria:
   success:
     delete-document: "Document deleted successfully"
     upload-document: |-
-      The {count, plural,
-        one {document was}
-        other {documents were}
+      {count, plural,
+        one {The document was}
+        other {{count} documents were}
       } uploaded successfully.
     update: "Changes saved."
     move-document: "{count, plural, one {Document} other {# documents}} moved successfully"

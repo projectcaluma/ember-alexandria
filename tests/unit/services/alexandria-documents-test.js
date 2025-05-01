@@ -49,7 +49,7 @@ module("Unit | Service | alexandria-documents", function (hooks) {
         assert.strictEqual(fakeSuccess.callCount, 1);
         assert.deepEqual(
           fakeSuccess.args[0][0],
-          "The documents were uploaded successfully.",
+          `${files.length} documents were uploaded successfully.`,
         );
       }
 
