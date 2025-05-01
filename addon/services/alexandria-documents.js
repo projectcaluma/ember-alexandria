@@ -81,6 +81,28 @@ export default class AlexandriaDocumentsService extends Service {
     );
   }
 
+  uploadFile = task(
+    { enqueue: true, maxConcurrency: 3 },
+    async (file, category, extraMetainfo) => {
+      const metainfo = {
+        ...this.config.defaultModelMeta.document,
+        ...(extraMetainfo || {}),
+      };
+
+      const documentModel = this.store.createRecord("document", {
+        category,
+        metainfo,
+        createdByGroup: this.config.activeGroup,
+        modifiedByGroup: this.config.activeGroup,
+        content: file,
+      });
+      // must be set outside for localized model
+      documentModel.title = file.name;
+      await documentModel.save();
+      return documentModel;
+    },
+  );
+
   /**
    * Uploads one or multiple files and creates the necessary document and
    * files entries on the API.
@@ -107,45 +129,32 @@ export default class AlexandriaDocumentsService extends Service {
       }
     }
 
-    try {
-      const uploaded = await Promise.all(
-        Array.from(files).map(async (file) => {
-          const metainfo = {
-            ...this.config.defaultModelMeta.document,
-            ...(extraMetainfo || {}),
-          };
+    const uploaded = await Promise.all(
+      Array.from(files).map(async (file) => {
+        try {
+          return await this.uploadFile.perform(file, category, extraMetainfo);
+        } catch (error) {
+          return error;
+        }
+      }),
+    );
 
-          const documentModel = this.store.createRecord("document", {
-            category,
-            metainfo,
-            createdByGroup: this.config.activeGroup,
-            modifiedByGroup: this.config.activeGroup,
-            content: file,
-          });
-          // must be set outside for localized model
-          documentModel.title = file.name;
-          await documentModel.save();
-          return documentModel;
+    const successes = uploaded.filter((doc) => !(doc instanceof Error));
+    const errors = uploaded.filter((doc) => doc instanceof Error);
+
+    errors.forEach((error) => {
+      new ErrorHandler(this, error).notify("alexandria.errors.upload-document");
+    });
+
+    if (!muteNotification) {
+      this.notification.success(
+        this.intl.t("alexandria.success.upload-document", {
+          count: successes.length,
         }),
       );
-
-      if (!muteNotification) {
-        this.notification.success(
-          this.intl.t("alexandria.success.upload-document", {
-            count: files.length,
-          }),
-        );
-      }
-
-      return uploaded;
-    } catch (error) {
-      new ErrorHandler(this, error).notify(
-        "alexandria.errors.upload-document",
-        {
-          count: files.length,
-        },
-      );
     }
+
+    return successes;
   }
 
   /**

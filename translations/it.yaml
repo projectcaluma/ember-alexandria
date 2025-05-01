@@ -14,10 +14,7 @@ alexandria:
     delete-document: "Errore nel tentativo di eliminare il documento. Riprova"
     fetch-categories: "Errore nel tentativo di caricare le categorie."
     replace-document: "Errore nel tentativo di sostituire il documento."
-    upload-document: |-
-      Errore nel tentativo di caricare
-      {count, plural, one {il documento}
-        other {i documenti}}.
+    upload-document: "Errore nel tentativo di caricare il documento."
     update: "Non è stato possibile salvare le modifiche. Riprova"
     no-permission: "Non dispone dei diritti per eseguire questa operazione."
     move-document: "Errore nel tentativo di spostare {count, plural, one {il documento} other {i documenti}}"
@@ -32,7 +29,7 @@ alexandria:
     upload-document: |-
       {count, plural,
         one {Il documento è stato caricato}
-        other {I documenti sono stati caricati}
+        other {{count} documenti sono stati caricati}
       } con successo.
     update: "Le modifiche sono state salvate."
     move-document: "{count, plural, one {Il documento è stato spostato} other {# I documenti sono stati spostati}} con successo"
