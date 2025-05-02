@@ -125,7 +125,7 @@ With it you for example fetch the users and groups of the documents in a batch.
 
 ```js
 import AlexandriaConfigService from "ember-alexandria/services/alexandria-config";
-import { inject as service } from "@ember/service";
+import { service } from "@ember/service";
 
 export default class CustomAlexandriaConfigService extends AlexandriaConfigService {
   @service store;
