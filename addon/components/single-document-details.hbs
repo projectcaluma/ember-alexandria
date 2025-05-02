@@ -19,10 +19,7 @@
       </button>
     </label>
 
-    <div
-      class="uk-flex uk-flex-middle uk-text-break"
-      data-test-title-container
-    >
+    <div class="uk-flex uk-flex-middle uk-text-break" data-test-title-container>
       <FaIcon
         @icon="file-alt"
         @prefix="far"
@@ -31,7 +28,10 @@
         {{set-style color=@document.category.color}}
       />
       {{#if this.editTitle}}
-        <form {{on "submit" (perform this.saveDocument)}} class="uk-flex uk-width-expand">
+        <form
+          {{on "submit" (perform this.saveDocument)}}
+          class="uk-flex uk-width-expand"
+        >
           <input
             class="uk-input uk-width-expand
               {{unless this.validTitle 'uk-form-danger'}}"

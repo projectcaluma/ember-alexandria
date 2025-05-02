@@ -10,7 +10,7 @@
 >
   {{#each-in @columns as |column|}}
     {{#if (eq column "type")}}
-      <td class="uk-preserve-width {{concat "document-list-item-" column}}">
+      <td class="uk-preserve-width {{concat 'document-list-item-' column}}">
         <FaIcon
           @icon="file-alt"
           @prefix="far"
@@ -36,7 +36,7 @@
         </div>
       </td>
     {{else if (eq column "marks")}}
-      <td class="list-marks uk-flex {{concat "document-list-item-" column}}">
+      <td class="list-marks uk-flex {{concat 'document-list-item-' column}}">
         {{#each @document.marks as |mark|}}
           <div uk-tooltip={{mark.name}} data-test-document-mark={{mark.id}}>
             <FaIcon @icon={{mark.icon}} @fixedWidth={{true}} />
@@ -74,7 +74,7 @@
         }}
       </td>
     {{else if (eq column "modifiedAt")}}
-      <td class="{{concat "document-list-item-" column}}">
+      <td class="{{concat 'document-list-item-' column}}">
         {{format-date
           @document.latestFile.value.createdAt
           month="2-digit"
@@ -85,11 +85,11 @@
         }}
       </td>
     {{else if (eq column "createdByUser")}}
-      <td class="{{concat "document-list-item-" column}}">
+      <td class="{{concat 'document-list-item-' column}}">
         {{await (resolve-user @document.createdByUser)}}
       </td>
     {{else if (eq column "createdByGroup")}}
-      <td class="{{concat "document-list-item" column}}">
+      <td class="{{concat 'document-list-item' column}}">
         {{await (resolve-group @document.createdByGroup)}}
       </td>
     {{/if}}

@@ -1,5 +1,6 @@
 <li
-  class="category-nav__category {{if this.isDragOver "category-nav__category--dragover"}}"
+  class="category-nav__category
+    {{if this.isDragOver 'category-nav__category--dragover'}}"
   ...attributes
   {{on "dragenter" this.onDragEnter}}
   {{on "dragleave" this.onDragLeave}}
@@ -7,13 +8,13 @@
   {{on "drop" this.onDrop.perform}}
 >
   <div
-    class="uk-link-reset {{if this.isActive "active"}}"
+    class="uk-link-reset {{if this.isActive 'active'}}"
     tabindex="0"
     data-test-link
     {{on "click" this.loadCategory}}
   >
     <div class="uk-flex uk-flex-middle">
-      <div class="uk-margin-right {{if @isSubcategory "uk-margin-left"}}">
+      <div class="uk-margin-right {{if @isSubcategory 'uk-margin-left'}}">
         {{#if this.isOpen}}
           <FaIcon
             @prefix="far"
@@ -34,14 +35,14 @@
           />
         {{/if}}
       </div>
-      <div
-        data-test-name
-        data-test-category-id={{@category.id}}
-      >
+      <div data-test-name data-test-category-id={{@category.id}}>
         {{@category.name}}
       </div>
       {{#if @category.description}}
-        <UkIcon class="uk-margin-auto-left uk-margin-right uk-text-muted category-nav__category__info-icon" @icon="info" />
+        <UkIcon
+          class="uk-margin-auto-left uk-margin-right uk-text-muted category-nav__category__info-icon"
+          @icon="info"
+        />
         <div uk-dropdown class="category-nav__category__info-box">
           <MarkdownToHtml @markdown={{@category.description}} />
         </div>
