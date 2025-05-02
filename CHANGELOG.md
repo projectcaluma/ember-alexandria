@@ -1,3 +1,15 @@
+# [10.5.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.4.1...v10.5.0) (2025-05-02)
+
+
+### Bug Fixes
+
+* **upload:** make sure no more than three files are uploaded in parallel ([235c6aa](https://github.com/projectcaluma/ember-alexandria/commit/235c6aa266ecda850b671b21ec58d1bcaeafb9e9))
+
+
+### Features
+
+* **document-details:** show original filename ([9245fac](https://github.com/projectcaluma/ember-alexandria/commit/9245fac1553edf868176e084801177710f4d1fe7))
+
 ## [10.4.1](https://github.com/projectcaluma/ember-alexandria/compare/v10.4.0...v10.4.1) (2025-03-26)
 
 
