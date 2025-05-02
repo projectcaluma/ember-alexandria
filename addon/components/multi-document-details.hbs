@@ -7,7 +7,10 @@
     {{on "click" this.sidePanel.toggle}}
   ></button>
 
-  <div class="uk-margin uk-margin-remove-top uk-flex uk-flex-middle uk-text-large uk-text-break" data-test-title-container>
+  <div
+    class="uk-margin uk-margin-remove-top uk-flex uk-flex-middle uk-text-large uk-text-break"
+    data-test-title-container
+  >
     <FaIcon
       @icon="file-alt"
       @prefix="far"
@@ -54,7 +57,7 @@
       </div>
     </div>
 
-    <hr>
+    <hr />
 
     <TagManager @documents={{@selectedDocuments}} />
   {{/if}}

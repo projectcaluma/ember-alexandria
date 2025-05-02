@@ -1,6 +1,6 @@
 import Service, { inject as service } from "@ember/service";
+import { waitForPromise } from "@ember/test-waiters";
 import { isEmpty } from "@ember/utils";
-import fetch from "fetch";
 
 const CONTENT_TYPE = "application/vnd.api+json";
 
@@ -24,7 +24,7 @@ export default class FetchService extends Service {
       ...(init.headers || {}),
     });
 
-    const response = await fetch(resource, init);
+    const response = await waitForPromise(fetch(resource, init));
 
     if (!response.ok) {
       if (response.status === 401) {

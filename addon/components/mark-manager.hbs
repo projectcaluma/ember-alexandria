@@ -1,8 +1,5 @@
 <div class="document-marks" ...attributes>
   {{#each this.marks.marks.records as |mark|}}
-    <MarkManager::Mark
-      @documents={{this.documents}}
-      @mark={{mark}}
-    />
+    <MarkManager::Mark @documents={{this.documents}} @mark={{mark}} />
   {{/each}}
 </div>
