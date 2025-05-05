@@ -146,7 +146,7 @@ export default class AlexandriaDocumentsService extends Service {
       new ErrorHandler(this, error).notify("alexandria.errors.upload-document");
     });
 
-    if (!muteNotification) {
+    if (successes.length > 0 && !muteNotification) {
       this.notification.success(
         this.intl.t("alexandria.success.upload-document", {
           count: successes.length,
