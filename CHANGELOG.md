@@ -1,3 +1,10 @@
+## [10.5.1](https://github.com/projectcaluma/ember-alexandria/compare/v10.5.0...v10.5.1) (2025-05-05)
+
+
+### Bug Fixes
+
+* **upload:** only show success notification on successful upload ([3761c55](https://github.com/projectcaluma/ember-alexandria/commit/3761c555d6b6780d5f08b4565284781036d12f4f))
+
 # [10.5.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.4.1...v10.5.0) (2025-05-02)
 
 
