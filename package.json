@@ -47,7 +47,7 @@
     "@fortawesome/ember-fontawesome": "^2.0.0",
     "@fortawesome/free-regular-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
-    "@glimmer/component": "^1.1.2",
+    "@glimmer/component": "^2.0.0",
     "@glimmer/tracking": "^1.1.2",
     "animate-css-grid": "^1.5.1",
     "ember-auto-import": "^2.10.0",
