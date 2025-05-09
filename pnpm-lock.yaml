@@ -64,7 +64,7 @@ importers:
         version: 4.0.3(@babel/core@7.27.1)(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5))
       ember-data-resources:
         specifier: ^5.2.1
-        version: 5.2.1(@ember-data/store@4.12.8(@babel/core@7.27.1)(@ember-data/graph@4.12.8)(@ember-data/json-api@4.12.8)(@ember-data/legacy-compat@4.12.8)(@ember-data/model@4.12.8)(@ember-data/tracking@4.12.8(@glint/template@1.5.2))(@ember/string@4.0.1)(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)))(@glimmer/component@1.1.2(@babel/core@7.27.1))(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-data@4.12.8(@babel/core@7.27.1)(@ember/string@4.0.1)(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5))(webpack@5.99.8))(ember-resources@7.0.3(@glimmer/component@1.1.2(@babel/core@7.27.1))(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)))(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5))
+        version: 5.3.0(@babel/core@7.27.1)(@ember-data/store@4.12.8(@babel/core@7.27.1)(@ember-data/graph@4.12.8)(@ember-data/json-api@4.12.8)(@ember-data/legacy-compat@4.12.8)(@ember-data/model@4.12.8)(@ember-data/tracking@4.12.8(@glint/template@1.5.2))(@ember/string@4.0.1)(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)))(@glimmer/component@1.1.2(@babel/core@7.27.1))(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-data@4.12.8(@babel/core@7.27.1)(@ember/string@4.0.1)(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5))(webpack@5.99.8))(ember-resources@7.0.3(@glimmer/component@1.1.2(@babel/core@7.27.1))(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)))(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5))
       ember-engines-router-service:
         specifier: ^0.6.0
         version: 0.6.0(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5))
@@ -3500,8 +3500,8 @@ packages:
     peerDependencies:
       ember-source: '>=4.0'
 
-  ember-data-resources@5.2.1:
-    resolution: {integrity: sha512-1rTFThKfFhaWyen6wqzwIFBS+bAqrXAZvHCIhPwX6Dym8KJ8bmNuoOJ+zNG/iuPnKMMsdnq2xjMmBDFT3+ul6Q==}
+  ember-data-resources@5.3.0:
+    resolution: {integrity: sha512-IcvaVnmavQ4pWUUjQVb5RfKrs30bnbBilvLOobKjIJFrrocsF/VRWz0K+hV9zxRbB4BVni7Rzed+Hh0IZlEsNw==}
     peerDependencies:
       '@ember-data/store': ^3.25 || >= 4.0.0
       '@glimmer/tracking': ^1.1.2
@@ -12050,18 +12050,20 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-data-resources@5.2.1(@ember-data/store@4.12.8(@babel/core@7.27.1)(@ember-data/graph@4.12.8)(@ember-data/json-api@4.12.8)(@ember-data/legacy-compat@4.12.8)(@ember-data/model@4.12.8)(@ember-data/tracking@4.12.8(@glint/template@1.5.2))(@ember/string@4.0.1)(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)))(@glimmer/component@1.1.2(@babel/core@7.27.1))(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-data@4.12.8(@babel/core@7.27.1)(@ember/string@4.0.1)(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5))(webpack@5.99.8))(ember-resources@7.0.3(@glimmer/component@1.1.2(@babel/core@7.27.1))(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)))(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)):
+  ember-data-resources@5.3.0(@babel/core@7.27.1)(@ember-data/store@4.12.8(@babel/core@7.27.1)(@ember-data/graph@4.12.8)(@ember-data/json-api@4.12.8)(@ember-data/legacy-compat@4.12.8)(@ember-data/model@4.12.8)(@ember-data/tracking@4.12.8(@glint/template@1.5.2))(@ember/string@4.0.1)(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)))(@glimmer/component@1.1.2(@babel/core@7.27.1))(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-data@4.12.8(@babel/core@7.27.1)(@ember/string@4.0.1)(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5))(webpack@5.99.8))(ember-resources@7.0.3(@glimmer/component@1.1.2(@babel/core@7.27.1))(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)))(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)):
     dependencies:
       '@ember-data/store': 4.12.8(@babel/core@7.27.1)(@ember-data/graph@4.12.8)(@ember-data/json-api@4.12.8)(@ember-data/legacy-compat@4.12.8)(@ember-data/model@4.12.8)(@ember-data/tracking@4.12.8(@glint/template@1.5.2))(@ember/string@4.0.1)(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5))
       '@ember/string': 3.1.1
       '@ember/test-waiters': 3.1.0
       '@embroider/addon-shim': 1.10.0
       '@glimmer/tracking': 1.1.2
+      decorator-transforms: 2.3.0(@babel/core@7.27.1)
       ember-data: 4.12.8(@babel/core@7.27.1)(@ember/string@4.0.1)(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5))(webpack@5.99.8)
       ember-modify-based-class-resource: 1.1.1(@glimmer/component@1.1.2(@babel/core@7.27.1))(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-resources@7.0.3(@glimmer/component@1.1.2(@babel/core@7.27.1))(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)))(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5))
       ember-resources: 7.0.3(@glimmer/component@1.1.2(@babel/core@7.27.1))(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5))
       ember-source: 6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)
     transitivePeerDependencies:
+      - '@babel/core'
       - '@glimmer/component'
       - '@glint/template'
       - supports-color
