@@ -73,13 +73,13 @@ importers:
         version: 8.0.1(@babel/core@7.27.1)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5))(flatpickr@4.6.13)(webpack@5.99.8)
       ember-intl:
         specifier: ^7.1.5
-        version: 7.1.7(@ember/test-helpers@5.2.1(@babel/core@7.27.1)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)))(@glint/template@1.5.2)(typescript@5.8.3)(webpack@5.99.8)
+        version: 7.1.8(@ember/test-helpers@5.2.1(@babel/core@7.27.1)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)))(@glint/template@1.5.2)(typescript@5.8.3)(webpack@5.99.8)
       ember-load-initializers:
         specifier: ^2.1.2 || ^3.0.1
         version: 3.0.1(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5))
       ember-localized-model:
         specifier: ^4.0.1
-        version: 4.0.1(wcyxsbtmuaeybvhsowkc4hflju)
+        version: 4.0.1(xe64apunyvz3d6uvubbzs3u7xy)
       ember-modifier:
         specifier: ^4.2.0
         version: 4.2.0(@babel/core@7.27.1)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5))
@@ -3597,8 +3597,8 @@ packages:
     peerDependencies:
       ember-source: ^3.16.0 || ^4.0.0 || ^5.0.0
 
-  ember-intl@7.1.7:
-    resolution: {integrity: sha512-2xrDaT4Kx8JTjh7v38/TD/leV1cu1bVCcz1R1AJbkor3eXXq+bQ1v2DPPGU/RuoEQZH4At4JWaLEOwVSGUacSw==}
+  ember-intl@7.1.8:
+    resolution: {integrity: sha512-yP6Fjx6Ps6kfaNa5B8HkhzDngHoqYXnOnGR+eTyr81tTiPScMjJ1MEjCG+LDbiE5jnW3nszq7h6IVWyJnCvuzA==}
     engines: {node: 18.* || >= 20}
     peerDependencies:
       '@ember/test-helpers': ^2.9.4 || ^3.2.0 || ^4.0.0 || ^5.0.0
@@ -12351,7 +12351,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-intl@7.1.7(@ember/test-helpers@5.2.1(@babel/core@7.27.1)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)))(@glint/template@1.5.2)(typescript@5.8.3)(webpack@5.99.8):
+  ember-intl@7.1.8(@ember/test-helpers@5.2.1(@babel/core@7.27.1)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)))(@glint/template@1.5.2)(typescript@5.8.3)(webpack@5.99.8):
     dependencies:
       '@babel/core': 7.27.1
       '@formatjs/icu-messageformat-parser': 2.11.2
@@ -12381,7 +12381,7 @@ snapshots:
     dependencies:
       ember-source: 6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)
 
-  ember-localized-model@4.0.1(wcyxsbtmuaeybvhsowkc4hflju):
+  ember-localized-model@4.0.1(xe64apunyvz3d6uvubbzs3u7xy):
     dependencies:
       '@babel/core': 7.27.1
       '@ember-data/adapter': 4.12.8(@ember-data/store@4.12.8(@babel/core@7.27.1)(@ember-data/graph@4.12.8)(@ember-data/json-api@4.12.8)(@ember-data/legacy-compat@4.12.8)(@ember-data/model@4.12.8)(@ember-data/tracking@4.12.8(@glint/template@1.5.2))(@ember/string@4.0.1)(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)))(@ember/string@4.0.1)(@glint/template@1.5.2)(ember-inflector@4.0.3(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)))
@@ -12393,7 +12393,7 @@ snapshots:
       ember-cli-babel: 8.2.0(@babel/core@7.27.1)
       ember-cli-htmlbars: 6.3.0
       ember-data: 4.12.8(@babel/core@7.27.1)(@ember/string@4.0.1)(@glimmer/tracking@1.1.2)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5))(webpack@5.99.8)
-      ember-intl: 7.1.7(@ember/test-helpers@5.2.1(@babel/core@7.27.1)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)))(@glint/template@1.5.2)(typescript@5.8.3)(webpack@5.99.8)
+      ember-intl: 7.1.8(@ember/test-helpers@5.2.1(@babel/core@7.27.1)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)))(@glint/template@1.5.2)(typescript@5.8.3)(webpack@5.99.8)
       ember-source: 6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)
     transitivePeerDependencies:
       - '@glint/template'
