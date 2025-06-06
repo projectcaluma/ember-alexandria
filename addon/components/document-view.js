@@ -14,6 +14,7 @@ export default class DocumentViewComponent extends Component {
   @service("alexandria-config") config;
 
   @tracked isDragOver = false;
+  @tracked dragAction = "upload";
   @tracked dragCounter = 0;
   @tracked sort = "title";
   @tracked sortDirection = "";
@@ -32,7 +33,15 @@ export default class DocumentViewComponent extends Component {
   }
 
   get canDrop() {
-    return Boolean(this.args.filters && this.args.filters.categories);
+    return Boolean(
+      ["copy", "upload"].includes(this.dragAction) &&
+        this.args.filters &&
+        this.args.filters.categories,
+    );
+  }
+
+  get dropAllowed() {
+    return ["copy", "upload"].includes(this.dragAction);
   }
 
   @action toggleView() {
@@ -114,7 +123,6 @@ export default class DocumentViewComponent extends Component {
     }
   }
 
-  // Drag'n'Drop document upload
   @action onDragEnter() {
     this.dragCounter++;
     this.isDragOver = true;
@@ -131,23 +139,45 @@ export default class DocumentViewComponent extends Component {
   }
 
   onDrop = task({ drop: true }, async (event) => {
-    if (!this.args.filters.categories || !event.dataTransfer.files.length) {
+    this.dragAction = event.ctrlKey ? "copy" : "move";
+    if (
+      this.dragAction === "move" &&
+      (!this.args.filters.categories || !event.dataTransfer.files?.length)
+    ) {
       this.dragCounter = 0;
       this.isDragOver = false;
+      this.dragAction = "upload";
       return;
     }
 
     event.preventDefault();
     event.stopPropagation();
 
-    await this.documents.upload(
-      this.args.filters.categories,
-      event.dataTransfer.files,
-    );
-    this.refreshDocumentList();
-
+    // Copy documents to current category when dropped in document view.
     this.dragCounter = 0;
     this.isDragOver = false;
+
+    if ("copy" === this.dragAction) {
+      const documentIds = event.dataTransfer.getData("text").split(",");
+      const category = this.args.filters.categories;
+      if (!documentIds.length || !category) {
+        this.dragCounter = 0;
+        this.isDragOver = false;
+        this.dragAction = "upload";
+        return;
+      }
+
+      await this.documents.copy(documentIds, category);
+    } else {
+      // upload new files if it is a file(s) drop.
+      await this.documents.upload(
+        this.args.filters.categories,
+        event.dataTransfer.files,
+      );
+    }
+
+    this.refreshDocumentList();
+    this.dragAction = "upload";
   });
 
   // * DOCUMENT SELECTION
@@ -155,14 +185,19 @@ export default class DocumentViewComponent extends Component {
     if (this.documents.shortcutsDisabled) {
       return;
     }
+
     if (event.key === "a" && event.ctrlKey) {
       event.preventDefault();
       this.fetchedDocuments.value.forEach((doc) => {
         this.documents.selectDocument(doc);
       });
     }
+
     if (event.key === "Escape") {
       this.documents.clearDocumentSelection();
+      this.dragCounter = 0;
+      this.isDragOver = false;
+      this.dragAction = "upload";
     }
   }
 
@@ -229,6 +264,7 @@ export default class DocumentViewComponent extends Component {
   }
 
   @action dragDocument(document, event) {
+    this.dragAction = event.ctrlKey ? "copy" : "move";
     if (!this.documents.selectedDocuments.includes(document)) {
       this.handleDocumentSelection(document, event);
     }
@@ -272,5 +308,13 @@ export default class DocumentViewComponent extends Component {
         sort: true,
       },
     };
+  }
+
+  get dragInfoTranslationKey() {
+    if (this.dragAction === "upload") {
+      return false;
+    }
+
+    return `alexandria.${this.dragAction}-document`;
   }
 }

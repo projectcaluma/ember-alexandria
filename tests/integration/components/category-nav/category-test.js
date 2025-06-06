@@ -74,6 +74,7 @@ module("Integration | Component | category-nav/category", function (hooks) {
     );
 
     await triggerEvent("[data-test-drop]", "drop", {
+      ctrlKey: false,
       dataTransfer: {
         getData: () => documents.map((d) => d.id).join(","),
         // sometimes browser send a file as well (e.g. when dragging a thumbnail) - this should be ignored
@@ -93,12 +94,63 @@ module("Integration | Component | category-nav/category", function (hooks) {
         tags: [],
       },
     });
+
     // Since the mimetype of the second one doesn't match the default allowed
     // mime types of the category factories, only one file should be moved.
     assert.deepEqual(
       documents.map((d) => d.category.id),
       [category.id, oldCategory.id],
     );
+  });
+
+  test("it copies dropped documents to a category", async function (assert) {
+    const category = this.server.create("category");
+    const oldCategory = this.server.create("category");
+    const documents = this.server.createList("document", 2, {
+      categoryId: oldCategory.id,
+      title: "test.txt",
+    });
+    const documentIds = documents.map((d) => `${d.id}`);
+
+    const store = this.owner.lookup("service:store");
+
+    this.category = await store.findRecord("category", category.id);
+    await store.findAll("document"); // the code uses peekRecord
+
+    const router = this.engine.lookup("service:router");
+
+    stub(router, "currentRouteName").get(() => null);
+    router.transitionTo = fake();
+
+    await render(
+      hbs`<CategoryNav::Category @category={{this.category}} data-test-drop />`,
+      { owner: this.engine },
+    );
+
+    await triggerEvent("[data-test-drop]", "drop", {
+      ctrlKey: true,
+      dataTransfer: {
+        getData: () => documents.map((d) => d.id).join(","),
+      },
+    });
+
+    const allDocumentIds = this.server.schema.documents
+      .all()
+      .models.map((d) => `${d.id}`);
+    const newDocumentIds = allDocumentIds.filter(
+      (d) => !documentIds.includes(d),
+    );
+
+    assert.strictEqual(router.transitionTo.callCount, 1);
+    assert.deepEqual(router.transitionTo.args[0][1], {
+      queryParams: {
+        category: category.id,
+        document: newDocumentIds.join(),
+        marks: [],
+        search: undefined,
+        tags: [],
+      },
+    });
   });
 
   test("it uploads on drop", async function (assert) {
