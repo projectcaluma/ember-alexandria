@@ -4,8 +4,8 @@ import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { task } from "ember-concurrency";
 import { DateTime } from "luxon";
-import { localCopy } from 'tracked-toolbox';
 import { trackedFunction } from "reactiveweb/function";
+import { localCopy } from "tracked-toolbox";
 
 import { ErrorHandler } from "ember-alexandria/utils/error-handler";
 
@@ -22,9 +22,8 @@ export default class SingleDocumentDetailsComponent extends Component {
   @tracked editDescription = false;
   @tracked editDate = false;
   @tracked validTitle = true;
-  @localCopy('args.document.title') title;
-  @localCopy('args.document.description') description;
-
+  @localCopy("args.document.title") title;
+  @localCopy("args.document.description") description;
 
   originalFilename = trackedFunction(this, async () => {
     if (!this.config.enableOriginalDocumentFilename) {
