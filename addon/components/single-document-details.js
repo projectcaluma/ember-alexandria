@@ -5,6 +5,7 @@ import { tracked } from "@glimmer/tracking";
 import { task } from "ember-concurrency";
 import { DateTime } from "luxon";
 import { trackedFunction } from "reactiveweb/function";
+import { localCopy } from 'tracked-toolbox';
 
 import { ErrorHandler } from "ember-alexandria/utils/error-handler";
 
@@ -21,27 +22,9 @@ export default class SingleDocumentDetailsComponent extends Component {
   @tracked editDescription = false;
   @tracked editDate = false;
   @tracked validTitle = true;
-  @tracked title = "";
-  @tracked description = "";
+  @localCopy('args.document.title') text;
+  @localCopy('args.document.description') description;
 
-  constructor(...args) {
-    super(...args);
-    this.title = this.args.document.title;
-    this.description = this.args.document.description;
-  }
-
-  originalFilename = trackedFunction(this, async () => {
-    if (!this.config.enableOriginalDocumentFilename) {
-      return false;
-    }
-
-    return (await this.args.document.files)
-      .filter((f) => f.variant === "original")
-      .sort((a, b) => {
-        return new Date(b.createdAt) - new Date(a.createdAt);
-      })
-      .pop()?.name;
-  });
 
   get locale() {
     return this.intl.primaryLocale.split("-")[0];
