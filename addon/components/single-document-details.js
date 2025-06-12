@@ -1,10 +1,11 @@
 import { action } from "@ember/object";
-import { inject as service } from "@ember/service";
+import { service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { task } from "ember-concurrency";
 import { DateTime } from "luxon";
 import { localCopy } from 'tracked-toolbox';
+import { trackedFunction } from "reactiveweb/function";
 
 import { ErrorHandler } from "ember-alexandria/utils/error-handler";
 
@@ -24,6 +25,19 @@ export default class SingleDocumentDetailsComponent extends Component {
   @localCopy('args.document.title') text;
   @localCopy('args.document.description') description;
 
+
+  originalFilename = trackedFunction(this, async () => {
+    if (!this.config.enableOriginalDocumentFilename) {
+      return false;
+    }
+
+    return (await this.args.document.files)
+      .filter((f) => f.variant === "original")
+      .sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      })
+      .pop()?.name;
+  });
 
   get locale() {
     return this.intl.primaryLocale.split("-")[0];
@@ -155,6 +169,21 @@ export default class SingleDocumentDetailsComponent extends Component {
       window.open(webdavUrl, "_blank");
     } catch (error) {
       new ErrorHandler(this, error).notify("alexandria.errors.open-webdav");
+    }
+  });
+
+  copyDocument = task({ drop: true }, async (event) => {
+    event?.preventDefault();
+    try {
+      await this.documents.copy([this.args.document.id]);
+      await this.args.refreshDocumentList();
+      this.notification.success(
+        this.intl.t("alexandria.success.copy-document", { count: 1 }),
+      );
+    } catch (error) {
+      new ErrorHandler(this, error).notify("alexandria.errors.copy-document", {
+        count: 1,
+      });
     }
   });
 }

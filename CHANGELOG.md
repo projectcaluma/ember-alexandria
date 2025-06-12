@@ -1,3 +1,98 @@
+## [10.5.1](https://github.com/projectcaluma/ember-alexandria/compare/v10.5.0...v10.5.1) (2025-05-05)
+
+
+### Bug Fixes
+
+* **upload:** only show success notification on successful upload ([3761c55](https://github.com/projectcaluma/ember-alexandria/commit/3761c555d6b6780d5f08b4565284781036d12f4f))
+
+# [10.5.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.4.1...v10.5.0) (2025-05-02)
+
+
+### Bug Fixes
+
+* **upload:** make sure no more than three files are uploaded in parallel ([235c6aa](https://github.com/projectcaluma/ember-alexandria/commit/235c6aa266ecda850b671b21ec58d1bcaeafb9e9))
+
+
+### Features
+
+* **document-details:** show original filename ([9245fac](https://github.com/projectcaluma/ember-alexandria/commit/9245fac1553edf868176e084801177710f4d1fe7))
+
+## [10.4.1](https://github.com/projectcaluma/ember-alexandria/compare/v10.4.0...v10.4.1) (2025-03-26)
+
+
+### Bug Fixes
+
+* **upload:** check mime type with name fallback ([#1136](https://github.com/projectcaluma/ember-alexandria/issues/1136)) ([b509465](https://github.com/projectcaluma/ember-alexandria/commit/b509465fd1c31c8d5215d0b127c9f3537a3f60f8))
+
+# [10.4.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.3.3...v10.4.0) (2025-02-20)
+
+
+### Bug Fixes
+
+* **upload:** add missing router transition after upload drop on category nav ([d4f4b30](https://github.com/projectcaluma/ember-alexandria/commit/d4f4b303c84ed2deb30160a7f3a9bb8df0149f81))
+* **upload:** pass document default meta from config ([ae3a8f3](https://github.com/projectcaluma/ember-alexandria/commit/ae3a8f32ac2388a583d683c811aae55c7a2c4c4c))
+
+
+### Features
+
+* **document:** add copy button ([3cdfb5d](https://github.com/projectcaluma/ember-alexandria/commit/3cdfb5dbbfd892f8cd8d5647e134d6689cbb3636))
+* **upload:** add optional parameters to the upload function ([c69f162](https://github.com/projectcaluma/ember-alexandria/commit/c69f1622723037920a7d61ebef0a6041e3ffbf24))
+
+## [10.3.3](https://github.com/projectcaluma/ember-alexandria/compare/v10.3.2...v10.3.3) (2025-02-14)
+
+
+### Bug Fixes
+
+* **deps:** allow previous versions of ember-load-initializers and ember-resolver ([14807ee](https://github.com/projectcaluma/ember-alexandria/commit/14807ee5e1ad01d21890907dd212d114a2dd09fb))
+
+## [10.3.2](https://github.com/projectcaluma/ember-alexandria/compare/v10.3.1...v10.3.2) (2025-02-14)
+
+
+### Bug Fixes
+
+* **adapter:** add missing namespace configuration ([8e56d91](https://github.com/projectcaluma/ember-alexandria/commit/8e56d91e5b3aad0c794172aeb9a9a9f1a1a7e948))
+
+## [10.3.1](https://github.com/projectcaluma/ember-alexandria/compare/v10.3.0...v10.3.1) (2025-02-12)
+
+
+### Bug Fixes
+
+* **documents:** add mimeType lookup for mimeType/file-extension check ([4e6d533](https://github.com/projectcaluma/ember-alexandria/commit/4e6d533175e1501d7a0e89f5efe62d5fa0d03db6))
+
+# [10.3.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.2.2...v10.3.0) (2025-02-12)
+
+
+### Bug Fixes
+
+* update packages ([#1069](https://github.com/projectcaluma/ember-alexandria/issues/1069)) ([57c4c78](https://github.com/projectcaluma/ember-alexandria/commit/57c4c782b4ad5e2fbcb2343041414fcfe2722f92))
+* **upload:** user correct category filter key ([e46dfea](https://github.com/projectcaluma/ember-alexandria/commit/e46dfea599954a11f4dacb27942df1c9d5ebf8a5))
+
+
+### Features
+
+* **document-details:** show general file type with matching icon ([ca4247d](https://github.com/projectcaluma/ember-alexandria/commit/ca4247d8d8a2d586cf7275b6211ff5811309f215))
+
+## [10.2.2](https://github.com/projectcaluma/ember-alexandria/compare/v10.2.1...v10.2.2) (2025-01-29)
+
+
+### Bug Fixes
+
+* **search:** fix metainfo filter to differentiate search ([a26dfe8](https://github.com/projectcaluma/ember-alexandria/commit/a26dfe89f180340c198ccb74359364c41aefa0a4))
+
+## [10.2.1](https://github.com/projectcaluma/ember-alexandria/compare/v10.2.0...v10.2.1) (2025-01-29)
+
+
+### Bug Fixes
+
+* **search:** use correct filter on document list ([c625962](https://github.com/projectcaluma/ember-alexandria/commit/c62596271f8a042597bda9a8bc34e8a47a9399a5))
+
+# [10.2.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.1.0...v10.2.0) (2025-01-27)
+
+
+### Features
+
+* **search:** add clear button ([1d407fe](https://github.com/projectcaluma/ember-alexandria/commit/1d407fe1f2adc94d4fa557799d0894f33cfbdf79))
+
 # [10.1.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.0.4...v10.1.0) (2024-11-29)
 
 

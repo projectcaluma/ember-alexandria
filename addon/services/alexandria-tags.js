@@ -1,5 +1,5 @@
 import { action } from "@ember/object";
-import Service, { inject as service } from "@ember/service";
+import Service, { service } from "@ember/service";
 import { dasherize } from "@ember/string";
 import { tracked } from "@glimmer/tracking";
 

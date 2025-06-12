@@ -1,5 +1,5 @@
 import { action } from "@ember/object";
-import Service, { inject as service } from "@ember/service";
+import Service, { service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task } from "ember-concurrency";
 import { saveAs } from "file-saver";
@@ -11,11 +11,22 @@ import { ErrorHandler } from "ember-alexandria/utils/error-handler";
  * Check if document upload is in allowed mime types of category
  * If no allowedMimeTypes are set on the category, just return true
  */
-const fileHasValidMimeType = (file, category) =>
-  category.allowedMimeTypes?.includes(
-    file.type || mime.getType(file.name ?? file.title),
-  ) ?? true;
+function fileHasValidMimeType(file, category) {
+  if (!category.allowedMimeTypes) {
+    return true;
+  }
 
+  // newly uploaded files that do not have a model yet
+  if (file instanceof File) {
+    // type is not always set, use name as fallback
+    return category.allowedMimeTypes.includes(
+      file.type || mime.getType(file.name),
+    );
+  }
+
+  // existing file models
+  return category.allowedMimeTypes.includes(file.mimeType);
+}
 export default class AlexandriaDocumentsService extends Service {
   @service store;
   @service("alexandria-config") config;
@@ -70,14 +81,41 @@ export default class AlexandriaDocumentsService extends Service {
     );
   }
 
+  uploadFile = task(
+    { enqueue: true, maxConcurrency: 3 },
+    async (file, category, extraMetainfo) => {
+      const metainfo = {
+        ...this.config.defaultModelMeta.document,
+        ...(extraMetainfo || {}),
+      };
+
+      const documentModel = this.store.createRecord("document", {
+        category,
+        metainfo,
+        createdByGroup: this.config.activeGroup,
+        modifiedByGroup: this.config.activeGroup,
+        content: file,
+      });
+      // must be set outside for localized model
+      documentModel.title = file.name;
+      await documentModel.save();
+      return documentModel;
+    },
+  );
+
   /**
    * Uploads one or multiple files and creates the necessary document and
    * files entries on the API.
    *
    * @param {Object|String|Number} category Either an ID or category instance.
    * @param {Array<File>} files The file(s) from input[type=file].
+   * @param {Object} options Upload options.
    */
-  async upload(category, files) {
+  async upload(
+    category,
+    files,
+    { muteNotification = false, extraMetainfo = {} } = {},
+  ) {
     if (!category.id) {
       category =
         this.store.peekRecord("category", category) ||
@@ -91,38 +129,32 @@ export default class AlexandriaDocumentsService extends Service {
       }
     }
 
-    try {
-      const uploaded = await Promise.all(
-        Array.from(files).map(async (file) => {
-          const documentModel = this.store.createRecord("document", {
-            category,
-            metainfo: this.config.defaultModelMeta.document,
-            createdByGroup: this.config.activeGroup,
-            modifiedByGroup: this.config.activeGroup,
-            content: file,
-          });
-          // must be set outside for localized model
-          documentModel.title = file.name;
-          await documentModel.save();
-          return documentModel;
-        }),
-      );
+    const uploaded = await Promise.all(
+      Array.from(files).map(async (file) => {
+        try {
+          return await this.uploadFile.perform(file, category, extraMetainfo);
+        } catch (error) {
+          return error;
+        }
+      }),
+    );
 
+    const successes = uploaded.filter((doc) => !(doc instanceof Error));
+    const errors = uploaded.filter((doc) => doc instanceof Error);
+
+    errors.forEach((error) => {
+      new ErrorHandler(this, error).notify("alexandria.errors.upload-document");
+    });
+
+    if (successes.length > 0 && !muteNotification) {
       this.notification.success(
         this.intl.t("alexandria.success.upload-document", {
-          count: files.length,
+          count: successes.length,
         }),
       );
-
-      return uploaded;
-    } catch (error) {
-      new ErrorHandler(this, error).notify(
-        "alexandria.errors.upload-document",
-        {
-          count: files.length,
-        },
-      );
     }
+
+    return successes;
   }
 
   /**
@@ -160,7 +192,12 @@ export default class AlexandriaDocumentsService extends Service {
           return true;
         }
 
-        if (!fileHasValidMimeType(document, newCategory)) {
+        const files = (await document.files) ?? [];
+        if (
+          files
+            .filter((f) => f.variant === "original")
+            .some((file) => !fileHasValidMimeType(file, newCategory))
+        ) {
           return "invalid-file-type";
         }
 
@@ -185,6 +222,76 @@ export default class AlexandriaDocumentsService extends Service {
 
     if (states.includes(INVALID_FILE_TYPE)) {
       this.mimeTypeErrorNotification(newCategory);
+      return states.map((state) =>
+        state === INVALID_FILE_TYPE ? false : state,
+      );
+    }
+
+    return states;
+  }
+
+  /**
+   * Copies one or multiple files.
+   *
+   * @param {Array<Number>} documentIds.
+   * @param {Object} category category instance.
+   */
+  async copy(documentIds, category = null) {
+    const INVALID_FILE_TYPE = "invalid-file-type";
+
+    const states = await Promise.all(
+      documentIds.map(async (id) => {
+        const originalDocument = this.store.peekRecord("document", id);
+        if (!originalDocument) {
+          return true;
+        }
+
+        const files = (await originalDocument.files) ?? [];
+        if (
+          category &&
+          files
+            .filter((f) => f.variant === "original")
+            .some((file) => !fileHasValidMimeType(file, category))
+        ) {
+          return "invalid-file-type";
+        }
+
+        const adapter = this.store.adapterFor("document");
+        let url = adapter.buildURL("document", originalDocument.id);
+        url += "/copy";
+
+        const data = {
+          type: "documents",
+          id: originalDocument.id,
+          relationships: {},
+        };
+
+        if (category) {
+          data.relationships.category = {
+            data: {
+              id: category.id,
+              type: "categories",
+            },
+          };
+        }
+
+        try {
+          const res = await this.fetch.fetch(url, {
+            method: "POST",
+            body: JSON.stringify({ data }),
+          });
+
+          return (await res.json()).data.id;
+        } catch (error) {
+          new ErrorHandler(this, error).notify();
+
+          return false;
+        }
+      }),
+    );
+
+    if (states.includes(INVALID_FILE_TYPE)) {
+      this.mimeTypeErrorNotification(category);
       return states.map((state) =>
         state === INVALID_FILE_TYPE ? false : state,
       );

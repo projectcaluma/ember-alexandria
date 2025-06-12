@@ -7,13 +7,13 @@
   >
     <div class="uk-flex uk-flex-middle uk-padding-small">
       <DocumentUploadButton
-        @categoryId={{@filters.category}}
+        @categoryId={{@filters.categories}}
         @afterUpload={{this.refreshDocumentList}}
         data-test-upload
       />
 
       <TagFilter
-        @category={{@filters.category}}
+        @category={{@filters.categories}}
         @documents={{this.fetchedDocuments.value}}
         @selectedTags={{@filters.tags}}
         @selectedMarks={{@filters.marks}}
@@ -40,10 +40,7 @@
       {{on "drop" this.onDrop.perform}}
       ...attributes
     >
-      <div
-        class="document-view"
-        {{did-insert (perform this.initialiseDocumentSelection)}}
-      >
+      <div class="document-view">
         {{! List & Grid View }}
         {{#if @listView}}
           <DocumentList

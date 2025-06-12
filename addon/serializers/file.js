@@ -6,10 +6,6 @@ import JSONSerializer from "@ember-data/serializer/json-api";
  * This would need some configurable normalizer functionality to work.
  */
 export default class FileSerializer extends JSONSerializer {
-  // If we don't do this, Ember will interpret the `meta` property in the single
-  // response as meta object and omit it from the attributes.
-  extractMeta() {}
-
   // Disable root key serialization since we want to send plain form data
   serializeIntoHash = null;
 

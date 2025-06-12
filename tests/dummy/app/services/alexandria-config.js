@@ -1,6 +1,7 @@
 import { action } from "@ember/object";
-import { inject as service } from "@ember/service";
+import { service } from "@ember/service";
 import { macroCondition, isTesting } from "@embroider/macros";
+import { dedupeTracked } from "tracked-toolbox";
 
 import AlexandriaConfigService from "ember-alexandria/services/alexandria-config";
 
@@ -9,12 +10,22 @@ export default class CustomAlexandriaConfigService extends AlexandriaConfigServi
 
   enablePDFConversion = true;
   enableWebDAV = true;
+  enableOriginalDocumentFilename = true;
+  additionalFileTypes = {
+    json: {
+      icon: "file-code",
+      label: "JSON",
+      mimeTypes: ["application/json"],
+    },
+  };
 
   markIcons = {
     decision: "stamp",
     like: "heart",
     bill: "dollar-sign",
   };
+
+  @dedupeTracked alexandriaQueryParams = {};
 
   get modelMetaFilters() {
     if (this.alexandriaQueryParams.instance_id) {

@@ -1,5 +1,17 @@
 <div class="uk-position-relative" data-test-multi-doc-details>
   <div class="uk-margin uk-margin-remove-top uk-flex uk-flex-middle uk-text-large uk-text-break" data-test-title-container>
+  <button
+    class="uk-icon-button uk-position-top-right"
+    type="button"
+    uk-icon="chevron-right"
+    data-test-close
+    {{on "click" this.sidePanel.toggle}}
+  ></button>
+
+  <div
+    class="uk-margin uk-margin-remove-top uk-flex uk-flex-middle uk-text-large uk-text-break"
+    data-test-title-container
+  >
     <FaIcon
       @icon="file-alt"
       @prefix="far"
@@ -15,24 +27,38 @@
   {{#if @selectedDocuments.length}}
     <MarkManager @documents={{@selectedDocuments}} class="uk-margin" />
 
-    <div class="uk-margin">
-      <DocumentDeleteButton
-        @docsToDelete={{@selectedDocuments}}
-        as |showDialog|
-      >
+    <div class="uk-grid uk-grid-small uk-child-width-1-2" uk-grid>
+      <div>
         <UkButton
-          data-test-delete
           @size="small"
-          @color="danger"
+          @onClick={{this.copyDocuments.perform}}
+          @loading={{this.copyDocuments.isLoading}}
           class="uk-width-1"
-          {{on "click" showDialog}}
+          data-test-copy
         >
-          {{t "alexandria.delete"}}
+          {{t "alexandria.copy"}}
         </UkButton>
-      </DocumentDeleteButton>
+      </div>
+
+      <div>
+        <DocumentDeleteButton
+          @docsToDelete={{@selectedDocuments}}
+          as |showDialog|
+        >
+          <UkButton
+            data-test-delete
+            @size="small"
+            @color="danger"
+            class="uk-width-1"
+            {{on "click" showDialog}}
+          >
+            {{t "alexandria.delete"}}
+          </UkButton>
+        </DocumentDeleteButton>
+      </div>
     </div>
 
-    <hr>
+    <hr />
 
     <TagManager @documents={{@selectedDocuments}} />
   {{/if}}

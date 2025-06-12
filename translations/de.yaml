@@ -1,25 +1,24 @@
 alexandria:
   loading: "Lädt..."
   search: "Suchen..."
+  search-clear: "Suche löschen"
   nothing-found: "Wir haben nichts gefunden..."
   delete: "Löschen"
   upload-file: "Datei hochladen"
   download: "Download"
   move-document: "{count} {count, plural, one {Dokument} other {Dokumente}} verschieben"
+  copy: "Kopieren"
 
   errors:
     save-file: "Beim Herunterladen der Datei ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
     delete-document: "Beim Löschen des Dokummentes ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
     fetch-categories: "Beim Laden der Kategorien ist ein Fehler aufgetreten."
     replace-document: "Beim Ersetzen des Dokumentes ist ein Fehler aufgetreten."
-    upload-document: |-
-      Beim Hochladen {count, plural,
-        one {des Dokumentes}
-        other {der Dokumente}
-      } ist ein Fehler aufgetreten.
+    upload-document: "Beim Hochladen des Dokumentes ist ein Fehler aufgetreten."
     update: "Änderungen konnten nicht gespeichert werden. Versuchen Sie es erneut."
     no-permission: "Sie haben keine Berechtigung, diese Aktion auszuführen."
     move-document: "Beim Verschieben {count, plural, one {des Dokumentes} other {von # Dokumenten}} ist ein Fehler aufgetreten"
+    copy-document: "Beim Kopieren {count, plural, one {des Dokumentes} other {von # Dokumenten}} ist ein Fehler aufgetreten"
     convert-pdf: "Während dem Umwandeln ist ein Fehler aufgetreten."
     invalid-file-type: 'In der Kategorie "{category}" können nur {types} hochgeladen werden.'
     file-too-large: "Die hochgeladene Datei ist zu gross."
@@ -30,10 +29,11 @@ alexandria:
     upload-document: |-
       {count, plural,
         one {Das Dokument wurde}
-        other {Die Dokumente wurden}
+        other {{count} Dokumente wurden}
       } erfolgreich hochgeladen.
     update: "Änderungen wurden gespeichert."
     move-document: "{count, plural, one {Das Dokument wurde} other {# Dokumente wurden}} erfolgreich verschoben"
+    copy-document: "{count, plural, one {Das Dokument wurde} other {# Dokumente wurden}} erfolgreich kopiert"
     convert-pdf: "Dokument wurde erfolgreich umgewandelt."
 
   category-nav:
@@ -87,6 +87,17 @@ alexandria:
     version:
       filename: "Dateiname"
       checksum: "Checksumme"
+    file-type: "Dateityp"
+    file-types:
+      audio: "Audio"
+      excel: "Excel"
+      image: "Bild"
+      pdf: "PDF"
+      powerpoint: "PowerPoint"
+      text: "Text"
+      video: "Video"
+      word: "Word"
+    original-filename: "Original"
 
   document-download:
     button: "{numDocs, plural, =1 {Herunterladen} other {Auswahl herunterladen}}"

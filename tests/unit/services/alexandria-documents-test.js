@@ -7,35 +7,85 @@ module("Unit | Service | alexandria-documents", function (hooks) {
   setupTest(hooks);
   setupMirage(hooks);
 
-  test("it uploads documents", async function (assert) {
-    const service = this.engine.lookup("service:alexandria-documents");
-    const store = this.owner.lookup("service:store");
+  test.each(
+    "it uploads documents",
+    [
+      {},
+      { muteNotification: true },
+      { muteNotification: false },
+      { extraMetainfo: { foo: "bar" } },
+    ],
+    async function (assert, options) {
+      const service = this.engine.lookup("service:alexandria-documents");
+      const store = this.owner.lookup("service:store");
 
-    const category = await store.findRecord(
-      "category",
-      this.server.create("category").id,
-    );
-    const files = [
-      new File(["1"], "test1.docx"),
-      new File(["2"], "test2.docx"),
-      new File(["3"], "test3.docx"),
-    ];
+      const category = await store.findRecord(
+        "category",
+        this.server.create("category").id,
+      );
 
-    await service.upload(category, files);
+      const docxMimeType =
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+      const files = [
+        new File(["1"], "test1.docx", { type: docxMimeType }),
+        new File(["2"], "test2.docx", { type: docxMimeType }),
+        new File(["3"], "test3.docx", { type: docxMimeType }),
+      ];
 
-    const requests = this.server.pretender.handledRequests.filter(
-      (request) => !request.url.includes("categories"),
-    );
+      const fakeSuccess = fake();
+      Object.defineProperty(
+        this.owner.lookup("service:notification"),
+        "success",
+        {
+          value: fakeSuccess,
+        },
+      );
 
-    assert.strictEqual(requests.length, files.length);
+      await service.upload(category, files, options);
 
-    // Files will be uploaded in parallel. So, we cannot know the order.
-    const documentRequests = requests.filter((request) =>
-      request.url.endsWith("documents"),
-    );
+      if (options.muteNotification) {
+        assert.strictEqual(fakeSuccess.callCount, 0);
+      } else {
+        assert.strictEqual(fakeSuccess.callCount, 1);
+        assert.deepEqual(
+          fakeSuccess.args[0][0],
+          `${files.length} documents were uploaded successfully.`,
+        );
+      }
 
-    assert.strictEqual(documentRequests.length, files.length);
-  });
+      const requests = this.server.pretender.handledRequests.filter(
+        (request) => !request.url.includes("categories"),
+      );
+
+      assert.strictEqual(requests.length, files.length);
+
+      // Files will be uploaded in parallel. So, we cannot know the order.
+      const documentRequests = requests.filter((request) =>
+        request.url.endsWith("documents"),
+      );
+
+      assert.strictEqual(documentRequests.length, files.length);
+      await Promise.all(
+        documentRequests.map(
+          (request) =>
+            new Promise((resolve) => {
+              const blob = request.requestBody.get("data");
+              const reader = new FileReader();
+              reader.readAsText(blob);
+              reader.onload = () => {
+                const result = JSON.parse(reader.result);
+
+                assert.deepEqual(result.category, category.id);
+                assert.deepEqual(result.metainfo, options.extraMetainfo || {});
+                assert.ok(result.title.match(/^test\d\.docx$/));
+
+                resolve();
+              };
+            }),
+        ),
+      );
+    },
+  );
 
   test("it restricts mime type", async function (assert) {
     const service = this.engine.lookup("service:alexandria-documents");

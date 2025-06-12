@@ -1,5 +1,5 @@
 import { action } from "@ember/object";
-import { inject as service } from "@ember/service";
+import { service } from "@ember/service";
 import { macroCondition, isTesting } from "@embroider/macros";
 import Component from "@glimmer/component";
 import { timeout, task } from "ember-concurrency";
@@ -30,8 +30,16 @@ export default class SearchComponent extends Component {
       }
 
       this.router.transitionTo(this.router.currentRouteName, {
-        queryParams: { search: search || undefined, category: undefined },
+        queryParams: { search: search || undefined },
       });
     },
   );
+
+  @action
+  resetSearch(event) {
+    event.preventDefault();
+    this.router.transitionTo(this.router.currentRouteName, {
+      queryParams: { search: undefined },
+    });
+  }
 }

@@ -1,5 +1,5 @@
 import { action } from "@ember/object";
-import { inject as service } from "@ember/service";
+import { service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { task } from "ember-concurrency";
@@ -32,7 +32,7 @@ export default class DocumentViewComponent extends Component {
   }
 
   get canDrop() {
-    return Boolean(this.args.filters && this.args.filters.category);
+    return Boolean(this.args.filters && this.args.filters.categories);
   }
 
   @action toggleView() {
@@ -62,17 +62,46 @@ export default class DocumentViewComponent extends Component {
 
   @task
   *fetchDocuments() {
-    const documents = yield this.store.query("document", {
-      include: "category,files,tags",
-      filter: this.args.filters || {},
-      sort: this.sort ? `${this.sortDirection}${this.sort}` : "",
-    });
+    let documents = [];
+    const filter = this.args.filters || {};
+    if (filter.query) {
+      filter.onlyNewest = true;
+      filter.documentMetainfo = filter.metainfo;
+      delete filter.metainfo;
+      const searchResult = yield this.store.query(
+        "search-result",
+        {
+          include: "document,matched_file",
+          filter,
+          page: { number: 1 },
+        },
+        {
+          adapterOptions: {
+            customEndpoint: "search",
+          },
+        },
+      );
+
+      documents = searchResult.reduce((acc, result) => {
+        if (!acc.some((doc) => doc.id === result.document.id)) {
+          acc.push(result.document);
+        }
+        return acc;
+      }, []);
+    } else {
+      documents = yield this.store.query("document", {
+        include: "category,files,tags",
+        filter,
+        sort: this.sort ? `${this.sortDirection}${this.sort}` : "",
+      });
+    }
+
+    this.initialiseDocumentSelection(documents);
 
     return yield this.config.documentsPostProcess(documents);
   }
 
-  @task
-  *initialiseDocumentSelection() {
+  initialiseDocumentSelection(docs) {
     let docIds = [];
     if (this.router.externalRouter.currentRoute?.queryParams?.document) {
       docIds = decodeURIComponent(
@@ -80,10 +109,6 @@ export default class DocumentViewComponent extends Component {
       ).split(",");
     }
     if (docIds.length !== 0) {
-      const docs = yield this.store.query("document", {
-        filter: this.args.filters || {},
-        sort: this.sort ? `${this.sortDirection}${this.sort}` : "",
-      });
       const selectedDocs = [...docs].filter((doc) => docIds.includes(doc.id));
       selectedDocs.forEach((doc) => this.documents.selectDocument(doc));
     }
@@ -106,7 +131,7 @@ export default class DocumentViewComponent extends Component {
   }
 
   onDrop = task({ drop: true }, async (event) => {
-    if (!this.args.filters.category || !event.dataTransfer.files.length) {
+    if (!this.args.filters.categories || !event.dataTransfer.files.length) {
       this.dragCounter = 0;
       this.isDragOver = false;
       return;
@@ -116,7 +141,7 @@ export default class DocumentViewComponent extends Component {
     event.stopPropagation();
 
     await this.documents.upload(
-      this.args.filters.category,
+      this.args.filters.categories,
       event.dataTransfer.files,
     );
     this.refreshDocumentList();

@@ -92,6 +92,26 @@ module("Acceptance | documents", function (hooks) {
 
   test("document detail edit title", async function (assert) {
     const document = this.server.create("document");
+    this.server.create("file", {
+      variant: "original",
+      name: "some-file-after-1.pdf",
+      createdAt: new Date(2025, 2, 1),
+      document,
+    });
+    // oldest original file
+    const originalFile = this.server.create("file", {
+      variant: "original",
+      name: document.title,
+      createdAt: new Date(2025, 1, 1),
+      document,
+    });
+    this.server.create("file", {
+      variant: "original",
+      name: "some-other-after-2.pdf",
+      createdAt: new Date(2025, 3, 1),
+      document,
+    });
+
     await visit(`/`);
     await click("[data-test-toggle-side-panel]");
     setLocale("en");
@@ -105,6 +125,7 @@ module("Acceptance | documents", function (hooks) {
       .hasText(document.title);
 
     assert.dom("[data-test-title-input]").doesNotExist();
+    assert.dom("[data-test-original-filename]").doesNotExist();
 
     await click("[data-test-single-doc-details] [data-test-edit-title]");
     assert.dom("[data-test-title-input]").hasValue(document.title);
@@ -124,6 +145,10 @@ module("Acceptance | documents", function (hooks) {
     });
     await click("[data-test-single-doc-details] [data-test-save]");
     assert.dom("[data-test-title-input]").doesNotExist();
+    assert.dom("[data-test-original-filename]").exists();
+    assert
+      .dom("[data-test-original-filename]")
+      .containsText(`Original: ${originalFile.name}`);
   });
 
   test("document detail delete", async function (assert) {
@@ -147,6 +172,56 @@ module("Acceptance | documents", function (hooks) {
     assert.dom("[data-test-document]").doesNotExist();
   });
 
+  test("copy single document", async function (assert) {
+    const document = this.server.create("document");
+
+    await visit(`/`);
+
+    assert.dom("[data-test-document-list-item]").exists({ count: 1 });
+    await click("[data-test-document-list-item]:nth-of-type(1)");
+
+    this.assertRequest("POST", "/api/v1/documents/:id/copy", (request) => {
+      assert.strictEqual(
+        request.params.id,
+        document.id,
+        "copying the correct document",
+      );
+    });
+
+    await click("[data-test-single-doc-details] [data-test-copy]");
+    assert.dom("[data-test-document-list-item]").exists({ count: 2 });
+  });
+
+  test("copy multiple documents", async function (assert) {
+    const documents = this.server.createList("document", 2);
+
+    await visit(`/`);
+
+    assert.dom("[data-test-document-list-item]").exists({ count: 2 });
+
+    await click("[data-test-document-list-item]:nth-of-type(1)");
+    await click("[data-test-document-list-item]:nth-of-type(2)", {
+      shiftKey: true,
+    });
+
+    const assertFn = (document) => (request) => {
+      assert.strictEqual(
+        request.params.id,
+        document.id,
+        "copying the correct document",
+      );
+    };
+
+    this.assertRequests(
+      "POST",
+      "/api/v1/documents/:id/copy",
+      documents.map(assertFn),
+    );
+
+    await click("[data-test-multi-doc-details] [data-test-copy]");
+    assert.dom("[data-test-document-list-item]").exists({ count: 4 });
+  });
+
   test("upload file", async function (assert) {
     this.server.create("category");
 
@@ -167,7 +242,9 @@ module("Acceptance | documents", function (hooks) {
         });
     });
     await triggerEvent("[data-test-upload] [data-test-input]", "change", {
-      files: [new File(["Ember Rules!"], "test-file.txt")],
+      files: [
+        new File(["Ember Rules!"], "test-file.txt", { type: "text/plain" }),
+      ],
     });
     assert.dom("[data-test-document-list-item]").exists({ count: 1 });
   });

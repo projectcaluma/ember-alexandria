@@ -1,6 +1,8 @@
 <div
-  uk-drop="mode: click; pos: {{
-    if @position @position "bottom-left"
+  uk-drop="mode: click; pos: {{if
+    @position
+    @position
+    'bottom-left'
   }}; offset: 5;"
   class="{{@width}} drop"
   data-test-drop

@@ -1,5 +1,5 @@
 import Controller from "@ember/controller";
-import { inject as service } from "@ember/service";
+import { service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 
 export default class SearchController extends Controller {
@@ -12,6 +12,7 @@ export default class SearchController extends Controller {
 
   get filters() {
     const filters = {
+      onlyNewest: true,
       query: this.search,
     };
 

@@ -14,6 +14,25 @@ export default function makeServer(config) {
       this.post("/documents", function (schema) {
         return schema.documents.create();
       });
+      this.post("/documents/:id/copy", function (schema, request) {
+        const originalDocument = schema.documents.find(request.params.id);
+        const payload = JSON.parse(request.requestBody || "{}");
+        const payloadCategoryId =
+          payload?.data?.relationships?.category?.data?.id;
+        const category = payloadCategoryId
+          ? schema.categories.find(payloadCategoryId)
+          : originalDocument.category;
+
+        const input = {
+          ...originalDocument.attrs,
+        };
+        delete input.id;
+
+        return schema.documents.create({
+          ...input,
+          category,
+        });
+      });
       this.resource("tags", { except: ["delete"] });
       this.resource("marks", { only: ["index", "show"] });
 
@@ -27,6 +46,15 @@ export default function makeServer(config) {
       });
 
       this.get("/files/multi", () => new Response(200, {}, {}));
+
+      this.get("/search", function (schema) {
+        const res = schema.searchResults.create({
+          document: schema.documents.create(),
+        });
+        const serialized = this.serialize(res);
+        serialized.data = [serialized.data];
+        return serialized;
+      });
     },
   });
 }

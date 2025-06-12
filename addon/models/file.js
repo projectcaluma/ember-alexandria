@@ -1,10 +1,15 @@
+import { service } from "@ember/service";
 import Model, { attr, belongsTo, hasMany } from "@ember-data/model";
 import { task } from "ember-concurrency";
 
 import { isDownloadUrlExpired } from "ember-alexandria/utils/download";
 import { ErrorHandler } from "ember-alexandria/utils/error-handler";
+import { getFileType, getIcon } from "ember-alexandria/utils/file-type";
 
 export default class FileModel extends Model {
+  @service("alexandria-config") config;
+  @service intl;
+
   @attr variant;
   @attr name;
   @attr downloadUrl;
@@ -41,4 +46,23 @@ export default class FileModel extends Model {
       new ErrorHandler(this, error).notify("alexandria.errors.save-file");
     }
   });
+
+  get fileTypeInfo() {
+    const fileType = getFileType(
+      this.mimeType,
+      this.config.additionalFileTypes,
+    );
+    let label = fileType
+      ? this.intl.t(`alexandria.document-details.file-types.${fileType}`)
+      : this.mimeType;
+
+    if (Object.keys(this.config.additionalFileTypes).includes(fileType)) {
+      label = this.config.additionalFileTypes[fileType].label;
+    }
+
+    return {
+      icon: getIcon(fileType, this.config.additionalFileTypes),
+      label,
+    };
+  }
 }

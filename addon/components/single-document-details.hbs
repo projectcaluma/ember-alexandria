@@ -11,10 +11,7 @@
       </button>
     </label>
 
-    <div
-      class="uk-flex uk-flex-middle uk-text-break"
-      data-test-title-container
-    >
+    <div class="uk-flex uk-flex-middle uk-text-break" data-test-title-container>
       <FaIcon
         @icon="file-alt"
         @prefix="far"
@@ -23,7 +20,10 @@
         {{set-style color=@document.category.color}}
       />
       {{#if this.editTitle}}
-        <form {{on "submit" (perform this.saveDocument)}} class="uk-flex uk-width-expand">
+        <form
+          {{on "submit" (perform this.saveDocument)}}
+          class="uk-flex uk-width-expand"
+        >
           <input
             class="uk-input uk-width-expand
               {{unless this.validTitle 'uk-form-danger'}}"
@@ -46,6 +46,19 @@
         <span class="uk-text-bolder" data-test-title>{{@document.title}}</span>
       {{/if}}
     </div>
+    {{#if
+      (and
+        this.originalFilename.value
+        (not (eq this.originalFilename.value @document.title))
+      )
+    }}
+      <div data-test-original-filename>
+        <span class="uk-text-bolder">
+          {{t "alexandria.document-details.original-filename"}}:
+        </span>
+        {{this.originalFilename.value}}
+      </div>
+    {{/if}}
   </div>
 
   <MarkManager @documents={{array @document}} class="uk-margin" />
@@ -134,6 +147,15 @@
       {{t "alexandria.document-details.metadata"}}
     </p>
     <ul class="uk-list uk-list-collapse uk-margin-remove">
+      <li data-test-file-type>
+        <FaIcon
+          @icon={{@document.latestFile.value.fileTypeInfo.icon}}
+          @fixedWidth={{true}}
+          class="uk-margin-small-right"
+          {{uk-tooltip (t "alexandria.document-details.file-type") pos="left"}}
+        />
+        {{@document.latestFile.value.fileTypeInfo.label}}
+      </li>
       <li data-test-created-at>
         <FaIcon
           @icon="clock"
@@ -206,6 +228,18 @@
       </div>
     {{/if}}
 
+    <div>
+      <UkButton
+        @size="small"
+        @onClick={{this.copyDocument.perform}}
+        @loading={{this.copyDocument.isRunning}}
+        class="uk-width-1"
+        data-test-copy
+      >
+        {{t "alexandria.copy"}}
+      </UkButton>
+    </div>
+
     <div uk-form-custom>
       <input
         data-test-replace
@@ -224,7 +258,7 @@
       </button>
     </div>
 
-    <div>
+    <div class="uk-width-1-1">
       <DocumentDeleteButton @docsToDelete={{@document}} as |showDialog|>
         <UkButton
           data-test-delete
