@@ -292,10 +292,11 @@
                   year="numeric"
                   hour="2-digit"
                   minute="2-digit"
-                }} <br>
+                }}
+                <br />
                 <span class="uk-width-expand">
-                {{~await (resolve-user file.createdByUser)~}}
-              </span>
+                  {{~await (resolve-user file.createdByUser)~}}
+                </span>
               </span>
               <span class="uk-flex uk-flex-middle">
                 <UkIcon @icon="info" class="uk-icon-link" />
