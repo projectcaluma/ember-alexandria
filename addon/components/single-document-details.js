@@ -22,7 +22,7 @@ export default class SingleDocumentDetailsComponent extends Component {
   @tracked editDescription = false;
   @tracked editDate = false;
   @tracked validTitle = true;
-  @localCopy('args.document.title') text;
+  @localCopy('args.document.title') title;
   @localCopy('args.document.description') description;
 
 
