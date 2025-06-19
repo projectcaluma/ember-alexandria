@@ -271,6 +271,10 @@ export default class DocumentViewComponent extends Component {
         label: "created-by-group",
         sort: true,
       },
+      category: {
+        label: "category",
+        sort: false,
+      },
     };
   }
 }
