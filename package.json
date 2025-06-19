@@ -39,7 +39,7 @@
     "https://github.com/embroider-build/embroider/issues/2440"
   ],
   "dependencies": {
-    "@babel/core": "^7.26.10",
+    "@babel/core": "^7.27.4",
     "@ember/legacy-built-in-components": "^0.5.0",
     "@ember/optional-features": "^2.2.0",
     "@ember/render-modifiers": "^3.0.0",
@@ -83,8 +83,8 @@
     "@babel/plugin-proposal-decorators": "7.27.1",
     "@ember-data/model": "4.12.8",
     "@ember-data/serializer": "4.12.8",
-    "@ember/test-helpers": "5.2.1",
-    "@ember/test-waiters": "3.1.0",
+    "@ember/test-helpers": "5.2.2",
+    "@ember/test-waiters": "4.1.0",
     "@embroider/test-setup": "4.0.0",
     "@eslint/js": "9.25.1",
     "@faker-js/faker": "9.7.0",
