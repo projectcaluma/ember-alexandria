@@ -34,6 +34,10 @@ export default class AlexandriaConfigService extends Service {
     return {};
   }
 
+  get categoryQueryParameters() {
+    return {};
+  }
+
   get defaultModelMeta() {
     return {};
   }
