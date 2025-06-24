@@ -8,10 +8,12 @@ export default class DocumentUploadButtonComponent extends Component {
   @service intl;
   @service store;
   @service("alexandria-documents") documents;
+  @service("alexandria-config") config;
 
   categories = query(this, "category", () => ({
     "filter[hasParent]": false,
     include: "children",
+    ...this.config.categoryQueryParameters,
   }));
 
   get category() {

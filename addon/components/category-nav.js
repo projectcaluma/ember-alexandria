@@ -6,9 +6,11 @@ export default class CategoryNavComponent extends Component {
   @service store;
   @service notification;
   @service intl;
+  @service("alexandria-config") config;
 
   categories = query(this, "category", () => ({
     "filter[hasParent]": false,
     include: "children",
+    ...this.config.categoryQueryParameters,
   }));
 }
