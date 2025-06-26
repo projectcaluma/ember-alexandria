@@ -23,6 +23,9 @@ alexandria:
     invalid-file-type: 'In category "{category}" only {types} can be uploaded.'
     file-too-large: "The uploaded file is too large."
     open-webdav: "Document could not be opened to be edited."
+    move-failed: |-
+      "You do not have the rights to move the document "{documentTitle}" to "{categoryName}". 
+      Would you like to copy it to "{categoryName}" instead?"
 
   success:
     delete-document: "Document deleted successfully"

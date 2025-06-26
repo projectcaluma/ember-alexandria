@@ -2,6 +2,7 @@ import { action } from "@ember/object";
 import Service, { service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task } from "ember-concurrency";
+import { confirm } from "ember-uikit";
 import { saveAs } from "file-saver";
 import mime from "mime";
 
@@ -213,7 +214,31 @@ export default class AlexandriaDocumentsService extends Service {
         } catch (error) {
           document.category = previousCategory;
 
-          new ErrorHandler(this, error).notify();
+          if (error.errors?.[0]?.status !== "403") {
+            new ErrorHandler(this, error).notify();
+            return false;
+          }
+
+          const moveConfirmed = await confirm(
+            this.intl.t("alexandria.errors.move-failed", {
+              documentTitle: document.title,
+              categoryName: newCategory.name,
+            }),
+            {
+              confirmButtonText: this.intl.t("alexandria.confirm.copy"),
+              cancelButtonText: this.intl.t("alexandria.cancel"),
+            },
+          );
+
+          if (moveConfirmed) {
+            try {
+              await this.copy([id], newCategory);
+              return true;
+            } catch (copyError) {
+              new ErrorHandler(this, copyError).notify();
+              return false;
+            }
+          }
 
           return false;
         }
