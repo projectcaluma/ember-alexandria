@@ -242,39 +242,37 @@ export default class DocumentViewComponent extends Component {
   }
 
   get tableColumns() {
-    return {
-      type: {
-        label: "type",
-        labelHidden: true,
-      },
-      title: {
-        label: "document-title",
-        sort: true,
-      },
-      marks: {
-        label: "marks",
-        labelHidden: true,
-      },
-      date: {
-        label: "date",
-        sort: true,
-      },
-      modifiedAt: {
-        label: "modified-at",
-        sort: true,
-      },
-      createdByUser: {
-        label: "created-by-user",
-        sort: true,
-      },
-      createdByGroup: {
-        label: "created-by-group",
-        sort: true,
-      },
-      category: {
-        label: "category",
-        sort: false,
-      },
-    };
+    return (
+      this.config.documentListColumns || {
+        type: {
+          label: "type",
+          labelHidden: true,
+        },
+        title: {
+          label: "document-title",
+          sort: true,
+        },
+        marks: {
+          label: "marks",
+          labelHidden: true,
+        },
+        date: {
+          label: "date",
+          sort: true,
+        },
+        modifiedAt: {
+          label: "modified-at",
+          sort: true,
+        },
+        createdByUser: {
+          label: "created-by-user",
+          sort: true,
+        },
+        createdByGroup: {
+          label: "created-by-group",
+          sort: true,
+        },
+      }
+    );
   }
 }
