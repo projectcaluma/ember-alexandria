@@ -26,6 +26,9 @@ alexandria:
     move-failed: |-
       "Sie haben keine Rechte das Dokument "{documentTitle}" nach "{categoryName}" zu verschieben. 
       Möchten Sie es stattdessen nach "{categoryName}" kopieren?"
+    move-failed-multiple: |-
+      "Sie haben keine Rechte die Dokumente nach "{categoryName}" zu verschieben. 
+      Möchten Sie diese stattdessen nach "{categoryName}" kopieren?"
 
   success:
     delete-document: "Das Dokument wurde erfolgreich gelöscht."

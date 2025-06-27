@@ -2,7 +2,6 @@ import { action } from "@ember/object";
 import Service, { service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task } from "ember-concurrency";
-import { confirm } from "ember-uikit";
 import { saveAs } from "file-saver";
 import mime from "mime";
 
@@ -199,7 +198,10 @@ export default class AlexandriaDocumentsService extends Service {
             .filter((f) => f.variant === "original")
             .some((file) => !fileHasValidMimeType(file, newCategory))
         ) {
-          return "invalid-file-type";
+          return {
+            error: INVALID_FILE_TYPE,
+            document,
+          };
         }
 
         const previousCategory = this.store.peekRecord(
@@ -213,43 +215,21 @@ export default class AlexandriaDocumentsService extends Service {
           return true;
         } catch (error) {
           document.category = previousCategory;
-
           if (error.errors?.[0]?.status !== "403") {
             new ErrorHandler(this, error).notify();
             return false;
           }
 
-          const moveConfirmed = await confirm(
-            this.intl.t("alexandria.errors.move-failed", {
-              documentTitle: document.title,
-              categoryName: newCategory.name,
-            }),
-            {
-              confirmButtonText: this.intl.t("alexandria.confirm.copy"),
-              cancelButtonText: this.intl.t("alexandria.cancel"),
-            },
-          );
-
-          if (moveConfirmed) {
-            try {
-              await this.copy([id], newCategory);
-              return true;
-            } catch (copyError) {
-              new ErrorHandler(this, copyError).notify();
-              return false;
-            }
-          }
-
-          return false;
+          return {
+            error: 403,
+            document,
+          };
         }
       }),
     );
 
-    if (states.includes(INVALID_FILE_TYPE)) {
+    if (states.some((state) => state.error === INVALID_FILE_TYPE)) {
       this.mimeTypeErrorNotification(newCategory);
-      return states.map((state) =>
-        state === INVALID_FILE_TYPE ? false : state,
-      );
     }
 
     return states;
@@ -278,7 +258,7 @@ export default class AlexandriaDocumentsService extends Service {
             .filter((f) => f.variant === "original")
             .some((file) => !fileHasValidMimeType(file, category))
         ) {
-          return "invalid-file-type";
+          return INVALID_FILE_TYPE;
         }
 
         const adapter = this.store.adapterFor("document");

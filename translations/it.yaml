@@ -26,6 +26,9 @@ alexandria:
     move-failed: |-
       "Non hai i diritti per spostare il documento "{documentTitle}" in "{categoryName}". 
       Vuoi copiarlo invece in "{categoryName}"?"
+    move-failed-multiple: |-
+      "Non hai i diritti per spostare i documenti in "{categoryName}". 
+      Desidera invece copiarli in "{categoryName}"?"
 
   success:
     delete-document: "Il documento è stato eliminato con successo."
