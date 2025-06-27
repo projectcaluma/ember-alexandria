@@ -20,6 +20,8 @@
           {{set-style color=@document.category.color}}
         />
       </td>
+    {{else if (eq column "category")}}
+      <td>{{@document.category.name}}</td>
     {{else if (eq column "title")}}
       <td class={{concat "document-list-item-" column}}>
         <span>{{@document.title}}</span>
