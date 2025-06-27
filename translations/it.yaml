@@ -65,7 +65,7 @@ alexandria:
     date: "Data"
     marks: "Demarcazioni"
     toggle: "Cambia visualizzazione"
-    category: "categoria"
+    category: "Categoria"
 
   document-details:
     document-title: "Titolo del documento"
