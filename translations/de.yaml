@@ -65,6 +65,7 @@ alexandria:
     date: "Datum"
     marks: "Markierungen"
     toggle: "Ansicht wechseln"
+    category: "Kategorie"
 
   document-details:
     document-title: "Dokumententitel"
