@@ -10,6 +10,8 @@ module.exports = function () {
       "users",
       "clock",
       "sort",
+      "sort-up",
+      "sort-down",
       "chevron-right",
       "chevron-left",
       "link",

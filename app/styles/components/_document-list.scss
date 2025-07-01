@@ -21,6 +21,14 @@
   cursor: pointer;
 }
 
+.document-list thead tr {
+  cursor: auto;
+}
+
 .uk-table.document-list tbody tr.document-list-item--selected {
   background: #ffd;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }

@@ -52,6 +52,7 @@
             @onClickDocument={{this.handleDocumentSelection}}
             @onDoubleClickDocument={{this.openDocument.perform}}
             @onDragStart={{this.dragDocument}}
+            @sort={{@sort}}
           />
         {{else}}
           <DocumentGrid

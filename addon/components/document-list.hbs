@@ -5,12 +5,18 @@
   <thead>
     <tr>
       {{#each-in @columns as |key settings|}}
+        {{! Required because ember-template-lint doesn't understand the conditional in the role }}
+        {{! template-lint-disable no-invalid-interactive }}
         <th
           class={{concat
             "uk-text-nowrap"
             (if (eq key "title") " uk-table-expand")
             (concat " document-list-item-" key)
+            (if settings.sort " cursor-pointer")
           }}
+          data-test-sort={{key}}
+          role={{if settings.sort "button" "none"}}
+          {{on "click" (if settings.sort (fn @setSort key) (fn (noop)))}}
         >
           {{#if settings.labelHidden}}
             <span hidden>
@@ -20,11 +26,11 @@
             {{t (concat "alexandria.document-list." settings.label)}}
             {{#if settings.sort}}
               <FaIcon
-                @icon="sort"
+                @icon={{this.sortIcon key @sort}}
                 @prefix="fas"
                 @size="1x"
                 class="uk-margin-small-left"
-                role="button"
+                role="presentation"
               />
             {{/if}}
           {{/if}}

@@ -361,4 +361,21 @@ module("Acceptance | documents", function (hooks) {
       .dom("[data-test-document-list-item].document-list-item--selected")
       .doesNotExist();
   });
+
+  test("clicking a sortable column changes the icon", async function (assert) {
+    await visit("/");
+    assert
+      .dom('[data-test-sort="title"] svg')
+      .hasAttribute("data-icon", "sort");
+
+    await click('[data-test-sort="title"]');
+    assert
+      .dom('[data-test-sort="title"] svg')
+      .hasAttribute("data-icon", "sort-down");
+
+    await click('[data-test-sort="title"]');
+    assert
+      .dom('[data-test-sort="title"] svg')
+      .hasAttribute("data-icon", "sort-up");
+  });
 });
