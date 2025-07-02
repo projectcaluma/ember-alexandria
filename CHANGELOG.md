@@ -1,3 +1,16 @@
+# [10.6.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.5.1...v10.6.0) (2025-07-02)
+
+
+### Bug Fixes
+
+* use class instead of [@class](https://github.com/class) for FaIcon component ([f8ef181](https://github.com/projectcaluma/ember-alexandria/commit/f8ef1819e91ec67e863f55b66c40690a5a2fb3bb))
+
+
+### Features
+
+* add sorting icon that changes depending on current sort param ([45cf8d1](https://github.com/projectcaluma/ember-alexandria/commit/45cf8d1692361afad072baddb2de014b49779460))
+* make columns for document list configurable and add category column ([#1187](https://github.com/projectcaluma/ember-alexandria/issues/1187)) ([bb7d651](https://github.com/projectcaluma/ember-alexandria/commit/bb7d6516970576c8efe8d8693cf05fd972e203d9))
+
 ## [10.5.1](https://github.com/projectcaluma/ember-alexandria/compare/v10.5.0...v10.5.1) (2025-05-05)
 
 
