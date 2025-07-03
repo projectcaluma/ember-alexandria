@@ -4,6 +4,7 @@ import { service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { task } from "ember-concurrency";
+import { confirm } from "ember-uikit";
 
 export default class CategoryNavCategoryComponent extends Component {
   @service("alexandria-documents") documents;
@@ -110,15 +111,22 @@ export default class CategoryNavCategoryComponent extends Component {
     const documentIds = event.dataTransfer.getData("text").split(",");
     const success = await this.documents.move(this.args.category, documentIds);
 
-    const failCount = success.filter((i) => i === false).length;
+    const failed = success.filter((i) => i !== true);
     const successCount = success.filter((i) => i === true).length;
 
-    if (failCount) {
-      this.notification.danger(
-        this.intl.t("alexandria.errors.move-document", {
-          count: failCount,
-        }),
-      );
+    if (failed.length > 0) {
+      const permissionDenied = failed.filter((state) => state.error === 403);
+      if (permissionDenied.length > 0) {
+        await this.copyFailedMoves(permissionDenied, this.args.category);
+      }
+
+      if (failed.length > permissionDenied.length) {
+        this.notification.danger(
+          this.intl.t("alexandria.errors.move-document", {
+            count: failed.length - permissionDenied.length,
+          }),
+        );
+      }
     }
 
     if (successCount) {
@@ -139,4 +147,46 @@ export default class CategoryNavCategoryComponent extends Component {
       });
     }
   });
+
+  async copyFailedMoves(documentInfos, newCategory) {
+    const copyConfirmed = await confirm(
+      this.intl.t("alexandria.errors.move-failed", {
+        count: documentInfos.length,
+        documentTitle: documentInfos[0].document.title,
+        categoryName: newCategory.name,
+      }),
+      {
+        confirmButtonText: this.intl.t("alexandria.confirm.copy"),
+        cancelButtonText: this.intl.t("alexandria.cancel"),
+      },
+    );
+
+    if (copyConfirmed) {
+      const copyStates = await this.documents.copy(
+        documentInfos.map((info) => info.document.id),
+        newCategory,
+      );
+      const copyCountSuccess = copyStates.filter((s) => s === true).length;
+      const copyCountFailed = copyStates.filter((s) => s !== true).length;
+      if (copyCountSuccess > 0) {
+        this.router.transitionTo(this.router.currentRouteName, {
+          queryParams: {
+            category: newCategory.id,
+          },
+        });
+        this.notification.success(
+          this.intl.t("alexandria.success.copy-document", {
+            count: copyCountSuccess,
+          }),
+        );
+      }
+      if (copyCountFailed > 0) {
+        this.notification.danger(
+          this.intl.t("alexandria.errors.copy-document", {
+            count: copyCountFailed,
+          }),
+        );
+      }
+    }
+  }
 }
