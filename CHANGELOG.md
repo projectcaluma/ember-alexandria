@@ -1,3 +1,10 @@
+# [10.7.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.6.0...v10.7.0) (2025-07-04)
+
+
+### Features
+
+* **category:** add params to category endpoint ([feba474](https://github.com/projectcaluma/ember-alexandria/commit/feba47494aa89693ed197d8a653fde540a6249d8))
+
 # [10.6.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.5.1...v10.6.0) (2025-07-02)
 
 
