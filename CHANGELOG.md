@@ -1,3 +1,10 @@
+# [10.8.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.7.0...v10.8.0) (2025-07-15)
+
+
+### Features
+
+* ask to create copy in target category when moving a document fails with permission error ([ebcf401](https://github.com/projectcaluma/ember-alexandria/commit/ebcf4013aac641c47dbfd4e1bd2d4468963500d5))
+
 # [10.7.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.6.0...v10.7.0) (2025-07-04)
 
 
