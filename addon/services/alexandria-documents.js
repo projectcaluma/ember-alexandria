@@ -187,7 +187,6 @@ export default class AlexandriaDocumentsService extends Service {
     const states = await Promise.all(
       documentIds.map(async (id) => {
         const document = this.store.peekRecord("document", id);
-
         if (!document || document.category.id === newCategory) {
           return true;
         }
@@ -198,7 +197,10 @@ export default class AlexandriaDocumentsService extends Service {
             .filter((f) => f.variant === "original")
             .some((file) => !fileHasValidMimeType(file, newCategory))
         ) {
-          return "invalid-file-type";
+          return {
+            error: INVALID_FILE_TYPE,
+            document,
+          };
         }
 
         const previousCategory = this.store.peekRecord(
@@ -212,19 +214,21 @@ export default class AlexandriaDocumentsService extends Service {
           return true;
         } catch (error) {
           document.category = previousCategory;
+          if (error.errors?.[0]?.status !== "403") {
+            new ErrorHandler(this, error).notify();
+            return false;
+          }
 
-          new ErrorHandler(this, error).notify();
-
-          return false;
+          return {
+            error: 403,
+            document,
+          };
         }
       }),
     );
 
-    if (states.includes(INVALID_FILE_TYPE)) {
+    if (states.some((state) => state.error === INVALID_FILE_TYPE)) {
       this.mimeTypeErrorNotification(newCategory);
-      return states.map((state) =>
-        state === INVALID_FILE_TYPE ? false : state,
-      );
     }
 
     return states;
@@ -253,7 +257,7 @@ export default class AlexandriaDocumentsService extends Service {
             .filter((f) => f.variant === "original")
             .some((file) => !fileHasValidMimeType(file, category))
         ) {
-          return "invalid-file-type";
+          return INVALID_FILE_TYPE;
         }
 
         const adapter = this.store.adapterFor("document");
@@ -276,12 +280,11 @@ export default class AlexandriaDocumentsService extends Service {
         }
 
         try {
-          const res = await this.fetch.fetch(url, {
+          await this.fetch.fetch(url, {
             method: "POST",
             body: JSON.stringify({ data }),
           });
-
-          return (await res.json()).data.id;
+          return true;
         } catch (error) {
           new ErrorHandler(this, error).notify();
 
