@@ -82,7 +82,7 @@ importers:
         version: 4.0.1(dlamowwovft4l6pmiq3vqvat4y)
       ember-modifier:
         specifier: ^4.2.0
-        version: 4.2.0(@babel/core@7.27.1)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5))
+        version: 4.2.2(@babel/core@7.27.1)
       ember-promise-helpers:
         specifier: ^2.0.0
         version: 2.0.0
@@ -3610,13 +3610,8 @@ packages:
     resolution: {integrity: sha512-ezcPQhH8jUfcJQbbHji4/ZG/h0yyj1jRDknfYue/ypQS8fM8LrGcCMo0rjDZLzL1Vd11InjNs3BD7BdxFlzGoA==}
     engines: {node: 12.* || >= 14}
 
-  ember-modifier@4.2.0:
-    resolution: {integrity: sha512-BJ48eTEGxD8J7+lofwVmee7xDgNDgpr5dd6+MSu4gk+I6xb35099RMNorXY5hjjwMJEyi/IRR6Yn3M7iJMz8Zw==}
-    peerDependencies:
-      ember-source: ^3.24 || >=4.0
-    peerDependenciesMeta:
-      ember-source:
-        optional: true
+  ember-modifier@4.2.2:
+    resolution: {integrity: sha512-pPYBAGyczX0hedGWQFQOEiL9s45KS9efKxJxUQkMLjQyh+1Uef1mcmAGsdw2KmvNupITkE/nXxmVO1kZ9tt3ag==}
 
   ember-modify-based-class-resource@1.1.1:
     resolution: {integrity: sha512-Uig2iEpFf34l/0QgQ8mIo8agUlUEU0JgKXLfYc8gpU2tTHqFnZZ6m6j18HwxTE+sF1/LbH2lWHDdmCs48kLvbQ==}
@@ -12345,14 +12340,12 @@ snapshots:
       - '@babel/core'
       - supports-color
 
-  ember-modifier@4.2.0(@babel/core@7.27.1)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)):
+  ember-modifier@4.2.2(@babel/core@7.27.1):
     dependencies:
       '@embroider/addon-shim': 1.10.0
       decorator-transforms: 2.3.0(@babel/core@7.27.1)
       ember-cli-normalize-entity-name: 1.0.0
       ember-cli-string-utils: 1.1.0
-    optionalDependencies:
-      ember-source: 6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
@@ -12591,7 +12584,7 @@ snapshots:
       ember-cli-htmlbars: 6.3.0
       ember-composable-helpers: 5.0.0
       ember-focus-trap: 1.1.1(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5))
-      ember-modifier: 4.2.0(@babel/core@7.27.1)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5))
+      ember-modifier: 4.2.2(@babel/core@7.27.1)
       ember-source: 6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5)
       ember-toggle: 9.0.3(@babel/core@7.27.1)(@glint/template@1.5.2)(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5))
       ember-truth-helpers: 4.0.3(ember-source@6.4.0(@glimmer/component@1.1.2(@babel/core@7.27.1))(rsvp@4.8.5))
