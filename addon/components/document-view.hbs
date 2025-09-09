@@ -16,7 +16,7 @@
 
       <TagFilter
         @category={{@filters.categories}}
-        @documents={{this.fetchedDocuments.value}}
+        @documents={{this.documentsInCategory}}
         @selectedTags={{@filters.tags}}
         @selectedMarks={{@filters.marks}}
         class="uk-margin-left"
@@ -48,7 +48,7 @@
           <DocumentList
             @columns={{this.tableColumns}}
             @loading={{this.fetchedDocuments.isRunning}}
-            @fetchedDocuments={{this.fetchedDocuments.value}}
+            @fetchedDocuments={{this.documentsInCategory}}
             @setSort={{this.setSort}}
             @selectedDocuments={{this.documents.selectedDocuments}}
             @onClickDocument={{this.handleDocumentSelection}}
@@ -59,7 +59,7 @@
         {{else}}
           <DocumentGrid
             @loading={{this.fetchedDocuments.isRunning}}
-            @fetchedDocuments={{this.fetchedDocuments.value}}
+            @fetchedDocuments={{this.documentsInCategory}}
             @selectedDocuments={{this.documents.selectedDocuments}}
             @onClickDocument={{this.handleDocumentSelection}}
             @onDoubleClickDocument={{this.openDocument.perform}}
