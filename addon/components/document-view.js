@@ -89,6 +89,12 @@ export default class DocumentViewComponent extends Component {
     this.uploadedDocuments,
   ]);
 
+  get documentsInCategory() {
+    console.log("category IDs", this.fetchedDocuments.value.map(doc => doc.category.id));
+    console.log("selected category", this.args.category)
+    return this.fetchedDocuments.value.filter(doc => doc.category.id == this.args.category);
+  }
+
   @task
   *fetchDocuments() {
     let documents = [];
