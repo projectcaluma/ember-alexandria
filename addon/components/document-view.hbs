@@ -9,13 +9,13 @@
   >
     <div class="uk-flex uk-flex-middle uk-padding-small">
       <DocumentUploadButton
-        @categoryId={{@filters.categories}}
+        @categoryId={{@category}}
         @afterUpload={{this.refreshDocumentList}}
         data-test-upload
       />
 
       <TagFilter
-        @category={{@filters.categories}}
+        @category={{@category}}
         @documents={{this.documentsInCategory}}
         @selectedTags={{@filters.tags}}
         @selectedMarks={{@filters.marks}}

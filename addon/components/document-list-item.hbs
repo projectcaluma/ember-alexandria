@@ -12,12 +12,12 @@
     {{#if (eq column "type")}}
       <td class="uk-preserve-width {{concat 'document-list-item-' column}}">
         <FaIcon
-          @icon="file-alt"
-          @prefix="far"
+          @icon={{this.iconStyle.iconClass}}
+          @prefix="fa"
           @size="1x"
           data-test-file-icon
           {{uk-tooltip @document.category.name}}
-          {{set-style color=@document.category.color}}
+          {{set-style color=this.iconStyle.color}}
         />
       </td>
     {{else if (eq column "category")}}
