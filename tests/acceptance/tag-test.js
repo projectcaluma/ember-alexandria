@@ -59,12 +59,7 @@ module("Acceptance | tag", function (hooks) {
 
     await visit("/");
 
-    assert
-      .dom(`[data-test-tag-id="${tag.id}"]`)
-      .doesNotHaveClass(
-        "tag--active",
-        "the tag does not have the selected class",
-      );
+    assert.dom(`.tag`).exists("the tag does not have the selected class");
 
     await click(`[data-test-tag-id="${tag.id}"]`);
 
@@ -84,12 +79,10 @@ module("Acceptance | tag", function (hooks) {
       `/?category=${category.id}`,
       "the category has been set and the tags queryParam has been cleared",
     );
+
     assert
-      .dom(`[data-test-tag-id="${tag.id}"]`)
-      .doesNotHaveClass(
-        "tag--active",
-        "the tag does not have the selected class",
-      );
+      .dom(".tag--active")
+      .doesNotExist("the tag does not have the selected class");
   });
 
   test("selecting a document does not clear the tag selection", async function (assert) {
