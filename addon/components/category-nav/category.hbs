@@ -38,6 +38,9 @@
       <div data-test-name data-test-category-id={{@category.id}}>
         {{@category.name}}
       </div>
+      <div
+        class="uk-margin-auto-left uk-margin-right uk-text-muted"
+      >{{this.documentCount.value}}</div>
       {{#if @category.description}}
         <UkIcon
           class="uk-margin-auto-left uk-margin-right uk-text-muted category-nav__category__info-icon"

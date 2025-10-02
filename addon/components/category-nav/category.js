@@ -5,6 +5,7 @@ import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { task } from "ember-concurrency";
 import { confirm } from "ember-uikit";
+import { trackedFunction } from "reactiveweb/function";
 
 export default class CategoryNavCategoryComponent extends Component {
   @service("alexandria-documents") documents;
@@ -37,6 +38,24 @@ export default class CategoryNavCategoryComponent extends Component {
   get expandChildren() {
     return this.isDragOver || (this.isOpen && !this.collapseChildren);
   }
+
+  documentCount = trackedFunction(this, () => {
+    if (!this.args.category.id) {
+      return this.store.peekAll("document").length;
+    }
+
+    const categoryIds = [this.args.category.id];
+    if (this.args.category.children) {
+      const childIds = this.args.category.children.map(
+        (category) => category.id,
+      );
+      categoryIds.push(...childIds);
+    }
+
+    return this.store
+      .peekAll("document")
+      .filter((doc) => categoryIds.includes(doc.category.get("id"))).length;
+  });
 
   get controllerInstance() {
     const applicationInstance = getOwner(this);
