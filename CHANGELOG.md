@@ -1,3 +1,10 @@
+## [10.8.1](https://github.com/projectcaluma/ember-alexandria/compare/v10.8.0...v10.8.1) (2025-10-22)
+
+
+### Bug Fixes
+
+* **uikit:** use ember-uikit tooltip modifier instead of plain UIkit ([c9915be](https://github.com/projectcaluma/ember-alexandria/commit/c9915bec71320c8895b5a946b957ab401e10f7f3))
+
 # [10.8.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.7.0...v10.8.0) (2025-07-15)
 
 
