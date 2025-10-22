@@ -11,7 +11,7 @@
         {{on "click" (fn this.toggle "marks" mark)}}
         data-test-mark
         data-test-mark-id={{mark.id}}
-        uk-tooltip={{mark.name}}
+        {{uk-tooltip mark.name}}
       >
         <FaIcon @icon={{mark.icon}} @size="sm" @fixedWidth={{true}} />
       </button>

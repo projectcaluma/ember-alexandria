@@ -4,7 +4,7 @@
       class="marks uk-flex uk-position-top-left uk-position-small uk-border-rounded uk-background-muted"
     >
       {{#each @document.marks as |mark|}}
-        <div uk-tooltip={{mark.name}}>
+        <div {{uk-tooltip mark.name}}>
           <FaIcon @icon={{mark.icon}} />
         </div>
       {{/each}}
@@ -49,7 +49,7 @@
   >
     <span
       class="uk-text-truncate no-select"
-      uk-tooltip="title: {{@document.title}}; pos: bottom; delay: 300;"
+      {{uk-tooltip @document.title pos="bottom" delay=300}}
       data-test-title
     >
       {{@document.title}}

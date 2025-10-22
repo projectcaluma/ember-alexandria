@@ -15,8 +15,8 @@
           @icon="file-alt"
           @prefix="far"
           @size="1x"
-          uk-tooltip={{@document.category.name}}
           data-test-file-icon
+          {{uk-tooltip @document.category.name}}
           {{set-style color=@document.category.color}}
         />
       </td>
@@ -40,7 +40,7 @@
     {{else if (eq column "marks")}}
       <td class="list-marks uk-flex {{concat 'document-list-item-' column}}">
         {{#each @document.marks as |mark|}}
-          <div uk-tooltip={{mark.name}} data-test-document-mark={{mark.id}}>
+          <div {{uk-tooltip mark.name}} data-test-document-mark={{mark.id}}>
             <FaIcon @icon={{mark.icon}} @fixedWidth={{true}} />
           </div>
         {{/each}}
