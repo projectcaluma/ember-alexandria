@@ -203,12 +203,28 @@ module.exports = function () {
 ### Search link
 
 To configure where the link in the search result point to and what it displays use the `documentListLinkTo` function.
-It receives a document as paramter and expects an object with a route and the label to display.
+It receives a document as paramter and expects an object with a `route` and the `label` to display.
 
 ```js
 documentListLinkTo(document) {
   return {
     route: "index",
+    label: document.title,
+  };
+}
+```
+
+For more complex links, `route` can be replaced with an `url` that contains an
+full URL recognized by Ember. If the URL is not inside the Ember app but on a
+separate application, additionally pass `isExternal: true`.
+
+```js
+documentListLinkTo(document) {
+  return {
+    url: this.router.urlFor("some.other.route", "my-model", {
+      queryParams: { documentId: document.id, foo: "bar" },
+    }),
+    isExternal: false, // Set to `true` for external application links
     label: document.title,
   };
 }
