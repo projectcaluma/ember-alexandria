@@ -54,7 +54,7 @@
           {{#if linkConfig.url}}
             <a
               href={{linkConfig.url}}
-              {{on "click" (fn this.transitionTo linkConfig.url)}}
+              {{on "click" (fn this.transitionTo linkConfig)}}
             >{{linkConfig.label}}</a>
           {{else}}
             <LinkTo

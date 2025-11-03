@@ -21,9 +21,11 @@ export default class DocumentListItemComponent extends Component {
   }
 
   @action
-  transitionTo(url, event) {
-    event.preventDefault();
+  transitionTo({ url, isExternal = false }, event) {
+    if (!isExternal) {
+      event.preventDefault();
 
-    this.router.transitionTo(url);
+      this.router.transitionTo(url);
+    }
   }
 }
