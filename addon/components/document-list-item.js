@@ -2,33 +2,37 @@ import { action } from "@ember/object";
 import { service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
-import mime from "mime";
 
 export default class DocumentListItemComponent extends Component {
   @service("alexandria-config") config;
   @service router;
 
-  @tracked mimeType = null;
   @tracked color = null;
+  @tracked iconClass = null;
 
   constructor(parent, args) {
     super(parent, args);
-    this.loadDocumentMimeType();
     this.loadCategoryColor();
+    this.loadIconClass();
   }
 
-  async loadDocumentMimeType() {
+  async getFiles() {
     const allFiles = (await this.args.document.files) ?? [];
-    const files = allFiles.filter((f) => f.variant === "original");
-    this.mimeType =
-      files.length > 0
-        ? files[0].mimeType || mime.getType(files[0].name)
-        : null;
+    return allFiles.filter((f) => f.variant === "original");
   }
 
   async loadCategoryColor() {
     const category = await this.args.document.category;
     this.color = category.color;
+  }
+
+  async loadIconClass() {
+    const files = await this.getFiles();
+    if (files.length > 0) {
+      this.iconClass = files[0].fileTypeInfo.icon;
+    } else {
+      this.iconClass = "file-alt";
+    }
   }
 
   get classes() {
@@ -43,40 +47,6 @@ export default class DocumentListItemComponent extends Component {
     });
 
     return classes.join(" ");
-  }
-
-  get iconClass() {
-    if (this.mimeType) {
-      const iconConfig = [
-        { iconClass: "file-image", mimeTypeParts: ["image/"] },
-        { iconClass: "file-pdf", mimeTypeParts: ["application/pdf"] },
-        { iconClass: "file-word", mimeTypeParts: ["word"] },
-        { iconClass: "file-excel", mimeTypeParts: ["excel", "spreadsheet"] },
-        {
-          iconClass: "file-powerpoint",
-          mimeTypeParts: ["powerpoint", "presentation"],
-        },
-        {
-          iconClass: "envelope",
-          mimeTypeParts: ["application/vnd.ms-outlook", "message/rfc822"],
-        },
-        {
-          iconClass: "file",
-          mimeTypeParts: [
-            "image/vnd.dwg",
-            "application/acad",
-            "application/x-dwg",
-          ],
-        },
-      ];
-      return (
-        iconConfig.find((c) =>
-          c.mimeTypeParts.some((part) => this.mimeType.includes(part)),
-        )?.iconClass || "file-alt"
-      );
-    }
-
-    return "file-alt";
   }
 
   @action
