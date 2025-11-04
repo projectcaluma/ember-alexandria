@@ -1,3 +1,11 @@
+## [10.8.2](https://github.com/projectcaluma/ember-alexandria/compare/v10.8.1...v10.8.2) (2025-11-04)
+
+
+### Bug Fixes
+
+* **deps:** remove obsolete dependencies ([46a94da](https://github.com/projectcaluma/ember-alexandria/commit/46a94da403fd8aa01389026dc5e0ecbd807470bc))
+* **search:** allow external links in search view ([3690fd2](https://github.com/projectcaluma/ember-alexandria/commit/3690fd2a247e444b9a4ce57b3d5822f7f5e753d1))
+
 ## [10.8.1](https://github.com/projectcaluma/ember-alexandria/compare/v10.8.0...v10.8.1) (2025-10-22)
 
 
