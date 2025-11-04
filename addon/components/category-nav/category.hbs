@@ -47,13 +47,15 @@
           <MarkdownToHtml @markdown={{@category.description}} />
         </div>
       {{else}}
-        <div class="uk-margin-left uk-flex-auto category-nav__category__info-icon"></div>
+        <div
+          class="uk-margin-left uk-flex-auto category-nav__category__info-icon"
+        ></div>
       {{/if}}
 
       <div
         class="uk-margin-auto-left uk-margin-right uk-text-muted uk-text-right"
       >
-      {{this.documentCount.value}}
+        {{this.documentCount.value}}
       </div>
     </div>
   </div>

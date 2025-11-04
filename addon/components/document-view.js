@@ -93,7 +93,7 @@ export default class DocumentViewComponent extends Component {
   get documentsInCategory() {
     return this.args.category
       ? this.fetchedDocuments.value?.filter((doc) =>
-          this.categoryIds?.value?.includes(doc.category.get("id")),
+          this.categoryIds.value?.includes(doc.category.get("id")),
         )
       : this.fetchedDocuments.value;
   }
