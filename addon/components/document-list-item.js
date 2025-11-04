@@ -9,10 +9,12 @@ export default class DocumentListItemComponent extends Component {
   @service router;
 
   @tracked mimeType = null;
+  @tracked color = null;
 
   constructor(parent, args) {
     super(parent, args);
     this.loadDocumentMimeType();
+    this.loadCategoryColor();
   }
 
   async loadDocumentMimeType() {
@@ -22,6 +24,11 @@ export default class DocumentListItemComponent extends Component {
       files.length > 0
         ? files[0].mimeType || mime.getType(files[0].name)
         : null;
+  }
+
+  async loadCategoryColor() {
+    const category = await this.args.document.category;
+    this.color = category.color;
   }
 
   get classes() {
@@ -38,65 +45,38 @@ export default class DocumentListItemComponent extends Component {
     return classes.join(" ");
   }
 
-  get iconStyle() {
-    let iconClass = "file-alt";
-    let color = "#6c757d";
-
+  get iconClass() {
     if (this.mimeType) {
-      if (this.mimeType.startsWith("image/")) {
-        iconClass = "file-image";
-        color = "#28a745";
-      } else if (this.mimeType === "application/pdf") {
-        iconClass = "file-pdf";
-        color = "#dc3545";
-      } else if (
-        this.mimeType.includes("word") ||
-        [
-          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-          "application/msword",
-        ].includes(this.mimeType)
-      ) {
-        iconClass = "file-word";
-        color = "#2b579a";
-      } else if (
-        this.mimeType.includes("excel") ||
-        this.mimeType.includes("spreadsheet") ||
-        [
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-          "application/vnd.ms-excel",
-        ].includes(this.mimeType)
-      ) {
-        iconClass = "file-excel";
-        color = "#217346";
-      } else if (
-        this.mimeType.includes("powerpoint") ||
-        this.mimeType.includes("presentation") ||
-        this.mimeType ===
-          "application/vnd.openxmlformats-officedocument.presentationml.presentation" ||
-        this.mimeType === "application/vnd.ms-powerpoint"
-      ) {
-        iconClass = "file-powerpoint";
-        color = "#d24726";
-      } else if (
-        this.mimeType === "application/vnd.ms-outlook" ||
-        this.mimeType === "message/rfc822"
-      ) {
-        iconClass = "envelope";
-        color = "#0078d4";
-      } else if (
-        ["image/vnd.dwg", "application/acad", "application/x-dwg"].includes(
-          this.mimeType,
-        )
-      ) {
-        iconClass = "file";
-        color = "#ffc107";
-      }
+      const iconConfig = [
+        { iconClass: "file-image", mimeTypeParts: ["image/"] },
+        { iconClass: "file-pdf", mimeTypeParts: ["application/pdf"] },
+        { iconClass: "file-word", mimeTypeParts: ["word"] },
+        { iconClass: "file-excel", mimeTypeParts: ["excel", "spreadsheet"] },
+        {
+          iconClass: "file-powerpoint",
+          mimeTypeParts: ["powerpoint", "presentation"],
+        },
+        {
+          iconClass: "envelope",
+          mimeTypeParts: ["application/vnd.ms-outlook", "message/rfc822"],
+        },
+        {
+          iconClass: "file",
+          mimeTypeParts: [
+            "image/vnd.dwg",
+            "application/acad",
+            "application/x-dwg",
+          ],
+        },
+      ];
+      return (
+        iconConfig.find((c) =>
+          c.mimeTypeParts.some((part) => this.mimeType.includes(part)),
+        )?.iconClass || "file-alt"
+      );
     }
 
-    return {
-      iconClass,
-      color,
-    };
+    return "file-alt";
   }
 
   @action
