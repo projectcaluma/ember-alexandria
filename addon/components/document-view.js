@@ -41,11 +41,14 @@ export default class DocumentViewComponent extends Component {
     });
   }
 
-  @action setSort(sortAttribute) {
-    if (this.sort === sortAttribute) {
+  @action setSort(sortAttribute, sortKey) {
+    // Some attributes, like category, need to be sorted by the name of the category
+    const sort = sortKey ? sortKey : sortAttribute;
+
+    if (this.sort === sort) {
       this.sortDirection = this.sortDirection === "" ? "-" : "";
     } else {
-      this.sort = sortAttribute;
+      this.sort = sort;
       this.sortDirection = "";
     }
     this.router.transitionTo(this.router.currentRouteName, {
