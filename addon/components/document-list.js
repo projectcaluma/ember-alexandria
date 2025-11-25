@@ -7,11 +7,13 @@ export default class DocumentListComponent extends Component {
   }
 
   @action
-  sortIcon(sortKey, currentSort) {
-    if (currentSort === sortKey) {
+  sortIcon(key, currentSort, sortKey) {
+    const keyToCheck = sortKey ? sortKey : key;
+
+    if (currentSort === keyToCheck) {
       return "sort-up";
     }
-    if (currentSort === `-${sortKey}`) {
+    if (currentSort === `-${keyToCheck}`) {
       return "sort-down";
     }
     return "sort";

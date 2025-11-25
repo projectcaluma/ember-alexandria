@@ -16,7 +16,10 @@
           }}
           data-test-sort={{key}}
           role={{if settings.sort "button" "none"}}
-          {{on "click" (if settings.sort (fn @setSort key) (fn (noop)))}}
+          {{on
+            "click"
+            (if settings.sort (fn @setSort key settings.sortKey) (fn (noop)))
+          }}
         >
           {{#if settings.labelHidden}}
             <span hidden>
@@ -26,7 +29,7 @@
             {{t (concat "alexandria.document-list." settings.label)}}
             {{#if settings.sort}}
               <FaIcon
-                @icon={{this.sortIcon key @sort}}
+                @icon={{this.sortIcon key @sort settings.sortKey}}
                 @prefix="fas"
                 @size="1x"
                 class="uk-margin-small-left"
