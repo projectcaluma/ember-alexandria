@@ -283,8 +283,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0(@babel/core@7.28.5)(ember-source@6.7.0(@glimmer/component@2.0.0)(rsvp@4.8.5))
       uikit:
-        specifier: 3.23.7
-        version: 3.23.7
+        specifier: 3.24.2
+        version: 3.24.2
       webpack:
         specifier: 5.102.1
         version: 5.102.1
@@ -6448,6 +6448,7 @@ packages:
   raw-body@1.1.7:
     resolution: {integrity: sha512-WmJJU2e9Y6M5UzTOkHaM7xJGAPQD8PNzx3bAd2+uhZAim6wDk6dAZxPVYLF67XhbR4hmKGh33Lpmh4XWrCH5Mg==}
     engines: {node: '>= 0.8.0'}
+    deprecated: No longer maintained. Please upgrade to a stable version.
 
   raw-body@2.5.2:
     resolution: {integrity: sha512-8zGqypfENjCIqGhgXToC8aB2r7YrBX+AQAfIPs/Mlk+BtPTztOvTS01NRW/3Eh60J+a48lt8qsCzirQ6loCVfA==}
@@ -7500,8 +7501,8 @@ packages:
     engines: {node: '>=0.8.0'}
     hasBin: true
 
-  uikit@3.23.7:
-    resolution: {integrity: sha512-DaTJDQxRwZMuVUIqkWDamAX9+DuVwdJpbhAqRz8zinLy8dzsh39EXoq6GJnLszu7IYSUe2BjoZLXEQjwQtMIhg==}
+  uikit@3.24.2:
+    resolution: {integrity: sha512-Qj/TiIOJ2mVhDqlGqh3wi0I32NYaeDytxFkPf2dYsYMw8zU1hqzDj1i5lgfQzOH9a9nSlyXaAJQskGq3izyQfw==}
 
   unbox-primitive@1.1.0:
     resolution: {integrity: sha512-nWJ91DjeOkej/TA8pXQ3myruKpKEYgqvpw9lz4OPHj/NWFNluYrjbz9j01CJ8yKQd2g4jFoOkINCTW2I5LEEyw==}
@@ -12737,7 +12738,7 @@ snapshots:
       ember-template-imports: 4.3.0
       ember-toggle: 9.0.3(@babel/core@7.28.5)(@glint/template@1.6.2)(ember-source@6.7.0(@glimmer/component@2.0.0)(rsvp@4.8.5))
       ember-truth-helpers: 5.0.0
-      uikit: 3.23.7
+      uikit: 3.24.2
     transitivePeerDependencies:
       - '@glint/environment-ember-loose'
       - '@glint/template'
@@ -16894,7 +16895,7 @@ snapshots:
   uglify-js@3.19.3:
     optional: true
 
-  uikit@3.23.7: {}
+  uikit@3.24.2: {}
 
   unbox-primitive@1.1.0:
     dependencies:
