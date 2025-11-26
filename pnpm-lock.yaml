@@ -54,8 +54,8 @@ importers:
         specifier: ^5.2.1
         version: 5.3.0(@babel/core@7.28.5)(@ember-data/store@4.12.8(@babel/core@7.28.5)(@ember-data/graph@4.12.8)(@ember-data/json-api@4.12.8)(@ember-data/legacy-compat@4.12.8)(@ember-data/model@4.12.8)(@ember-data/tracking@4.12.8(@glint/template@1.6.2))(@ember/string@4.0.1)(@glimmer/tracking@1.1.2)(@glint/template@1.6.2)(ember-source@6.7.0(@glimmer/component@2.0.0)(rsvp@4.8.5)))(@glimmer/component@2.0.0)(@glimmer/tracking@1.1.2)(@glint/template@1.6.2)(ember-data@4.12.8(@babel/core@7.28.5)(@ember/string@4.0.1)(@glimmer/tracking@1.1.2)(@glint/template@1.6.2)(ember-source@6.7.0(@glimmer/component@2.0.0)(rsvp@4.8.5))(webpack@5.102.1))(ember-resources@7.0.7(@glimmer/component@2.0.0)(@glint/template@1.6.2))(ember-source@6.7.0(@glimmer/component@2.0.0)(rsvp@4.8.5))
       ember-engines-router-service:
-        specifier: ^0.6.0
-        version: 0.6.0(@glint/template@1.6.2)(ember-source@6.7.0(@glimmer/component@2.0.0)(rsvp@4.8.5))
+        specifier: ^0.7.0
+        version: 0.7.0(@babel/core@7.28.5)(@glint/template@1.6.2)
       ember-flatpickr:
         specifier: ^8.0.1
         version: 8.0.1(@babel/core@7.28.5)(@glint/template@1.6.2)(ember-source@6.7.0(@glimmer/component@2.0.0)(rsvp@4.8.5))(flatpickr@4.6.13)(webpack@5.102.1)
@@ -188,7 +188,7 @@ importers:
         version: 4.12.8(@babel/core@7.28.5)(@ember/string@4.0.1)(@glimmer/tracking@1.1.2)(@glint/template@1.6.2)(ember-source@6.7.0(@glimmer/component@2.0.0)(rsvp@4.8.5))(webpack@5.102.1)
       ember-engines:
         specifier: 0.12.0
-        version: 0.12.0(@glint/template@1.6.2)(ember-engines-router-service@0.6.0(@glint/template@1.6.2)(ember-source@6.7.0(@glimmer/component@2.0.0)(rsvp@4.8.5)))(ember-source@6.7.0(@glimmer/component@2.0.0)(rsvp@4.8.5))
+        version: 0.12.0(@glint/template@1.6.2)(ember-engines-router-service@0.7.0(@babel/core@7.28.5)(@glint/template@1.6.2))(ember-source@6.7.0(@glimmer/component@2.0.0)(rsvp@4.8.5))
       ember-qunit:
         specifier: 9.0.4
         version: 9.0.4(@ember/test-helpers@5.4.0(@babel/core@7.28.5)(@glint/template@1.6.2))(@glint/template@1.6.2)(qunit@2.24.2)
@@ -3567,10 +3567,8 @@ packages:
     peerDependencies:
       '@ember/string': ^3.0.1
 
-  ember-engines-router-service@0.6.0:
-    resolution: {integrity: sha512-c8Q0l1LKfeZvVsyQtCI52UvftV6jm5D9xYtzffgBKUp2/sm0/EuzQtyfskwRpg3NGQ+wKJaMnQX04VpMlIIeHA==}
-    peerDependencies:
-      ember-source: ^3.28.0 || ^4.0.0 || ^5.0.0
+  ember-engines-router-service@0.7.0:
+    resolution: {integrity: sha512-g5E659OjopF6YcVU80niA6mS8Cjej4ckFy9qR2chTUjNOasFTw19PdoY8HbNzqdaDOUez66VK74CZmIzbafRaA==}
 
   ember-engines@0.12.0:
     resolution: {integrity: sha512-AsABgJpkrCoC2y/F1cNmcQI5Ia2VhlW2jyw5pAU1g3/XpeIJGV/4xRMbqNGwvs1KRxu78tW/ll20zVNl58N2jg==}
@@ -12334,16 +12332,17 @@ snapshots:
       - supports-color
       - webpack
 
-  ember-engines-router-service@0.6.0(@glint/template@1.6.2)(ember-source@6.7.0(@glimmer/component@2.0.0)(rsvp@4.8.5)):
+  ember-engines-router-service@0.7.0(@babel/core@7.28.5)(@glint/template@1.6.2):
     dependencies:
       '@embroider/addon-shim': 1.10.0
       '@embroider/macros': 1.19.2(@glint/template@1.6.2)
-      ember-source: 6.7.0(@glimmer/component@2.0.0)(rsvp@4.8.5)
+      decorator-transforms: 2.3.0(@babel/core@7.28.5)
     transitivePeerDependencies:
+      - '@babel/core'
       - '@glint/template'
       - supports-color
 
-  ember-engines@0.12.0(@glint/template@1.6.2)(ember-engines-router-service@0.6.0(@glint/template@1.6.2)(ember-source@6.7.0(@glimmer/component@2.0.0)(rsvp@4.8.5)))(ember-source@6.7.0(@glimmer/component@2.0.0)(rsvp@4.8.5)):
+  ember-engines@0.12.0(@glint/template@1.6.2)(ember-engines-router-service@0.7.0(@babel/core@7.28.5)(@glint/template@1.6.2))(ember-source@6.7.0(@glimmer/component@2.0.0)(rsvp@4.8.5)):
     dependencies:
       '@babel/core': 7.28.5
       '@embroider/macros': 1.19.2(@glint/template@1.6.2)
@@ -12366,7 +12365,7 @@ snapshots:
       ember-source: 6.7.0(@glimmer/component@2.0.0)(rsvp@4.8.5)
       lodash: 4.17.21
     optionalDependencies:
-      ember-engines-router-service: 0.6.0(@glint/template@1.6.2)(ember-source@6.7.0(@glimmer/component@2.0.0)(rsvp@4.8.5))
+      ember-engines-router-service: 0.7.0(@babel/core@7.28.5)(@glint/template@1.6.2)
     transitivePeerDependencies:
       - '@glint/template'
       - supports-color
