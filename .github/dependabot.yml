@@ -20,3 +20,6 @@ updates:
       - dependency-name: ember-data
         versions:
           - ">= 5"
+      - dependency-name: @ember-data/*
+        versions:
+          - ">= 5"
