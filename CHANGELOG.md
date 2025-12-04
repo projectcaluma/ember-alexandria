@@ -1,3 +1,15 @@
+# [10.9.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.8.2...v10.9.0) (2025-12-04)
+
+
+### Bug Fixes
+
+* **move:** on child category ([#1244](https://github.com/projectcaluma/ember-alexandria/issues/1244)) ([2370bcc](https://github.com/projectcaluma/ember-alexandria/commit/2370bcccc4fa27554482aff9fa10a31021b637a6))
+
+
+### Features
+
+* allow passing of sortKey for columns ([460c7d3](https://github.com/projectcaluma/ember-alexandria/commit/460c7d33d40e4b1d78e8fc7b2cbb77337b60864b))
+
 ## [10.8.2](https://github.com/projectcaluma/ember-alexandria/compare/v10.8.1...v10.8.2) (2025-11-04)
 
 
