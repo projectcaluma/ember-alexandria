@@ -84,6 +84,7 @@ export default class CategoryNavCategoryComponent extends Component {
 
   onDrop = task({ drop: true }, async (event) => {
     event.preventDefault();
+    event.stopPropagation();
 
     if (!this.args.category.id) return;
 

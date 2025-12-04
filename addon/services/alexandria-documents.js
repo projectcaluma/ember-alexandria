@@ -187,7 +187,7 @@ export default class AlexandriaDocumentsService extends Service {
     const states = await Promise.all(
       documentIds.map(async (id) => {
         const document = this.store.peekRecord("document", id);
-        if (!document || document.category.id === newCategory) {
+        if (!document || document.category.id === newCategory.id) {
           return true;
         }
 
