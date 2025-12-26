@@ -103,7 +103,7 @@ importers:
         version: 4.1.0
       reactiveweb:
         specifier: ^1.4.0
-        version: 1.9.0(@babel/core@7.28.5)(@ember/test-waiters@4.1.1(@glint/template@1.6.2))(@glimmer/component@2.0.0)(@glint/template@1.6.2)
+        version: 1.9.1(@babel/core@7.28.5)(@ember/test-waiters@4.1.1(@glint/template@1.6.2))(@glimmer/component@2.0.0)(@glint/template@1.6.2)
     devDependencies:
       '@adfinis/eslint-config':
         specifier: 3.0.2
@@ -1205,6 +1205,10 @@ packages:
 
   '@embroider/shared-internals@3.0.1':
     resolution: {integrity: sha512-d7RQwDwqqHo7YvjE9t1rtIrCCYtbSoO0uRq2ikVhRh4hGS5OojZNu2ZtS0Wqrg+V72CRtMFr/hibTvHNsRM2Lg==}
+    engines: {node: 12.* || 14.* || >= 16}
+
+  '@embroider/shared-internals@3.0.2':
+    resolution: {integrity: sha512-/SusdG+zgosc3t+9sPFVKSFOYyiSgLfXOT6lYNWoG1YtnhWDxlK4S8leZ0jhcVjemdaHln5rTyxCnq8oFLxqpQ==}
     engines: {node: 12.* || 14.* || >= 16}
 
   '@embroider/test-setup@4.0.0':
@@ -6473,8 +6477,8 @@ packages:
     resolution: {integrity: sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==}
     hasBin: true
 
-  reactiveweb@1.9.0:
-    resolution: {integrity: sha512-2WmDJA8TQe0jwSKB3QTcpxYBxDiBTZoISKjSoqo3LrBEB9Zi5PEluDlnoXBmzW+OM7TVxslgH1NVNqLPB8WCfg==}
+  reactiveweb@1.9.1:
+    resolution: {integrity: sha512-bd/Iyk8wm9A8qyxKVu8w4M4POWOtZErRKr6EJwnrBitceSLlY+yk1/m9AuKec/5XvcNnDi1NRdvBQDBEaVpk6A==}
     peerDependencies:
       '@ember/test-waiters': '>= 3.1.0'
 
@@ -9115,7 +9119,7 @@ snapshots:
 
   '@embroider/addon-shim@1.10.2':
     dependencies:
-      '@embroider/shared-internals': 3.0.1
+      '@embroider/shared-internals': 3.0.2
       broccoli-funnel: 3.0.8
       common-ancestor-path: 1.0.1
       semver: 7.7.3
@@ -9155,6 +9159,24 @@ snapshots:
       - supports-color
 
   '@embroider/shared-internals@3.0.1':
+    dependencies:
+      babel-import-util: 3.0.1
+      debug: 4.4.3
+      ember-rfc176-data: 0.3.18
+      fs-extra: 9.1.0
+      is-subdir: 1.2.0
+      js-string-escape: 1.0.1
+      lodash: 4.17.21
+      minimatch: 3.1.2
+      pkg-entry-points: 1.1.1
+      resolve-package-path: 4.0.3
+      resolve.exports: 2.0.3
+      semver: 7.7.3
+      typescript-memoize: 1.1.1
+    transitivePeerDependencies:
+      - supports-color
+
+  '@embroider/shared-internals@3.0.2':
     dependencies:
       babel-import-util: 3.0.1
       debug: 4.4.3
@@ -12300,7 +12322,7 @@ snapshots:
 
   ember-cookies@1.3.0(ember-source@6.9.0(@glimmer/component@2.0.0)(rsvp@4.8.5)):
     dependencies:
-      '@embroider/addon-shim': 1.10.2
+      '@embroider/addon-shim': 1.10.0
       ember-source: 6.9.0(@glimmer/component@2.0.0)(rsvp@4.8.5)
     transitivePeerDependencies:
       - supports-color
@@ -12532,7 +12554,7 @@ snapshots:
   ember-modify-based-class-resource@1.1.2(@glimmer/component@2.0.0)(@glint/template@1.6.2)(ember-resources@7.0.7(@glimmer/component@2.0.0)(@glint/template@1.6.2)):
     dependencies:
       '@babel/runtime': 7.28.4
-      '@embroider/addon-shim': 1.10.2
+      '@embroider/addon-shim': 1.10.0
       '@embroider/macros': 1.19.2(@glint/template@1.6.2)
       ember-resources: 7.0.7(@glimmer/component@2.0.0)(@glint/template@1.6.2)
     optionalDependencies:
@@ -15567,10 +15589,10 @@ snapshots:
       minimist: 1.2.8
       strip-json-comments: 2.0.1
 
-  reactiveweb@1.9.0(@babel/core@7.28.5)(@ember/test-waiters@4.1.1(@glint/template@1.6.2))(@glimmer/component@2.0.0)(@glint/template@1.6.2):
+  reactiveweb@1.9.1(@babel/core@7.28.5)(@ember/test-waiters@4.1.1(@glint/template@1.6.2))(@glimmer/component@2.0.0)(@glint/template@1.6.2):
     dependencies:
       '@ember/test-waiters': 4.1.1(@glint/template@1.6.2)
-      '@embroider/addon-shim': 1.10.0
+      '@embroider/addon-shim': 1.10.2
       '@embroider/macros': 1.19.2(@glint/template@1.6.2)
       decorator-transforms: 2.3.0(@babel/core@7.28.5)
       ember-resources: 7.0.7(@glimmer/component@2.0.0)(@glint/template@1.6.2)
