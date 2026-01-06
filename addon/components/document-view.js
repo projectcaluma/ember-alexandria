@@ -44,13 +44,39 @@ export default class DocumentViewComponent extends Component {
   @action setSort(sortAttribute, sortKey) {
     // Some attributes, like category, need to be sorted by the name of the category
     const sort = sortKey ? sortKey : sortAttribute;
+    // It is possible to pass a list of sort keys with possible sort directions
+    const sortMap = Array.isArray(sort) ? sort : [{ key: sort }];
+    const sortKeys = sortMap.map((s) => s.key);
 
-    if (this.sort === sort) {
-      this.sortDirection = this.sortDirection === "" ? "-" : "";
+    if (sortKeys.includes(this.sort)) {
+      const currentSortDirections = sortMap.find((s) => s.key === this.sort)
+        .directions ?? ["", "-"];
+
+      // Cycle through sort directions and sort keys.
+      // If we are at the end of sort directions, move to the next sort key
+      // or back to the first sort key if we are at the end of sort keys
+      if (this.sortDirection === "-" || currentSortDirections.length === 1) {
+        const idx = sortKeys.indexOf(this.sort);
+        if (idx < sortKeys.length - 1) {
+          this.sort = sortKeys[idx + 1];
+        } else {
+          this.sort = sortKeys[0];
+        }
+        const newSortDirections = sortMap.find((s) => s.key === this.sort)
+          .directions ?? ["", "-"];
+        this.sortDirection = newSortDirections[0];
+      } else {
+        // Move to the next sort direction.
+        this.sortDirection = currentSortDirections[1];
+      }
     } else {
-      this.sort = sort;
-      this.sortDirection = "";
+      // New sort key selected, take the first sort direction.
+      this.sort = sortKeys[0];
+      const sortDirections = sortMap.find((s) => s.key === this.sort)
+        .directions ?? ["", "-"];
+      this.sortDirection = sortDirections[0];
     }
+
     this.router.transitionTo(this.router.currentRouteName, {
       queryParams: { sort: this.sortDirection + this.sort },
     });
