@@ -76,4 +76,50 @@ export default class CustomAlexandriaConfigService extends AlexandriaConfigServi
       label: "View Detail",
     };
   }
+
+  get documentListColumns() {
+    return {
+      type: {
+        label: "type",
+        labelHidden: true,
+      },
+      title: {
+        label: "document-title",
+        sort: true,
+      },
+      marks: {
+        label: "marks",
+        labelHidden: true,
+      },
+      date: {
+        label: "date",
+        sort: true,
+      },
+      modifiedAt: {
+        label: "modified-at",
+        sort: true,
+      },
+      createdByUser: {
+        label: "created-by-user",
+        sort: true,
+      },
+      createdByGroup: {
+        label: "created-by-group",
+        sort: true,
+      },
+      category: {
+        label: "category",
+        sort: true,
+        // multisort example
+        sortKey: [
+          // name sort, asc/desc
+          { key: "category__name" },
+          // custom sort, asc only
+          { key: "category__sort", icons: ["folder-tree"], directions: [""] },
+          // custom sort, desc only
+          { key: "category__test", icons: ["folder-tree"], directions: ["-"] },
+        ],
+      },
+    };
+  }
 }

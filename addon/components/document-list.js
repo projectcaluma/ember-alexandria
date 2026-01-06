@@ -8,14 +8,19 @@ export default class DocumentListComponent extends Component {
 
   @action
   sortIcon(key, currentSort, sortKey) {
-    const keyToCheck = sortKey ? sortKey : key;
+    const sort = sortKey ? sortKey : key;
+    const sortConfigs = Array.isArray(sort) ? sort : [{ key: sort }];
+    const keysToCheck = sortConfigs.map((s) => s.key);
 
-    if (currentSort === keyToCheck) {
-      return "sort-up";
+    const currentSortName = `${currentSort}`.replace("-", "");
+
+    if (keysToCheck.includes(currentSortName)) {
+      const sortConfig = sortConfigs.find((s) => s.key === currentSortName);
+      const sortIcons = sortConfig.icons ?? ["sort-up", "sort-down"];
+
+      return currentSort.startsWith("-") ? sortIcons[1] : sortIcons[0];
     }
-    if (currentSort === `-${keyToCheck}`) {
-      return "sort-down";
-    }
+
     return "sort";
   }
 }

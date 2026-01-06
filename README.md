@@ -200,6 +200,48 @@ module.exports = function () {
 };
 ```
 
+### Document list columns
+
+Additionally you can configure document list columns.
+
+The object for a column entry has the following properties:
+
+- `label`: This is a string key, which will be visible in the column (translated as `alexandria.document-list.<label>`).
+- `labelHidden`: This a boolean, that enables/disables the column label visibility.
+- `sort`: This a boolean, that enables/disabling sorting the column.
+- `sortKey`: This can be a string or an array. Configure this to use a different key for sorting than the `label`.
+
+If you configure the `sortKey` as an array, the column can cycle through multiple sorting filters. Each entry can contain the following keys:
+
+- `key`: the sortKey to use, this is the same when using just a string for the sortKey property.
+- `icons`: This is an array, containing the used icons for sorting the key ascending and(or) descending.
+- `directions` This is an array, configuring if the key is sortable ascending ("") and(or) descending (-). defaults to `["", "-"]`.
+
+An example configuration which enables sorting on the title column, and a secondary sort key (only ascending) on the category:
+
+```js
+import AlexandriaConfigService from "ember-alexandria/services/alexandria-config";
+
+export default class CustomAlexandriaConfigService extends AlexandriaConfigService {
+  get documentListColumns() {
+    return [
+        title: {
+          label: "document-title",
+          sort: true,
+        },
+        category: {
+          label: "category",
+          sort: true,
+          sortKey: [
+            { key: "category__name" },
+            { key: "category__sort", icons: ["folder-tree"], directions: [""] },
+          ],
+        },
+    ];
+  }
+}
+```
+
 ### Search link
 
 To configure where the link in the search result point to and what it displays use the `documentListLinkTo` function.

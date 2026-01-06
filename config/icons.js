@@ -24,6 +24,7 @@ module.exports = function () {
       "file-powerpoint",
       "file-video",
       "file-word",
+      "folder-tree",
     ],
     "free-regular-svg-icons": [
       "folder",
