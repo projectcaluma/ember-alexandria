@@ -1,3 +1,10 @@
+# [10.10.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.9.0...v10.10.0) (2026-02-03)
+
+
+### Features
+
+* **sorting:** allow multiple sort configurations ([ae3d0bc](https://github.com/projectcaluma/ember-alexandria/commit/ae3d0bcfe749ffba0e26b4c83c11fefd20b5d94f))
+
 # [10.9.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.8.2...v10.9.0) (2025-12-04)
 
 
