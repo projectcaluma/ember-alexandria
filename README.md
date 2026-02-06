@@ -224,20 +224,20 @@ import AlexandriaConfigService from "ember-alexandria/services/alexandria-config
 
 export default class CustomAlexandriaConfigService extends AlexandriaConfigService {
   get documentListColumns() {
-    return [
-        title: {
-          label: "document-title",
-          sort: true,
-        },
-        category: {
-          label: "category",
-          sort: true,
-          sortKey: [
-            { key: "category__name" },
-            { key: "category__sort", icons: ["folder-tree"], directions: [""] },
-          ],
-        },
-    ];
+    return {
+      title: {
+        label: "document-title",
+        sort: true,
+      },
+      category: {
+        label: "category",
+        sort: true,
+        sortKey: [
+          { key: "category__name" },
+          { key: "category__sort", icons: ["folder-tree"], directions: [""] },
+        ],
+      },
+    };
   }
 }
 ```

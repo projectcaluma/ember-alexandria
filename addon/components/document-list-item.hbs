@@ -78,7 +78,7 @@
     {{else if (eq column "modifiedAt")}}
       <td class="{{concat 'document-list-item-' column}}">
         {{format-date
-          @document.latestFile.value.createdAt
+          @document.modifiedAt
           month="2-digit"
           day="2-digit"
           year="numeric"
