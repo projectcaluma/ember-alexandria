@@ -292,14 +292,17 @@ export default class DocumentViewComponent extends Component {
         modifiedAt: {
           label: "modified-at",
           sort: true,
+          sortKey: "modified_at",
         },
         createdByUser: {
           label: "created-by-user",
           sort: true,
+          sortKey: "created_by_user",
         },
         createdByGroup: {
           label: "created-by-group",
           sort: true,
+          sortKey: "created_by_group",
         },
       }
     );
