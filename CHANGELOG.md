@@ -12,6 +12,13 @@
 
 * **sorting:** use sort key by default for camelcase columns ([#1258](https://github.com/projectcaluma/ember-alexandria/issues/1258)) ([bb2c125](https://github.com/projectcaluma/ember-alexandria/commit/bb2c1259c002aeaf4e9ebe16f80dff33da0bb7a5))
 
+## [10.10.1](https://github.com/projectcaluma/ember-alexandria/compare/v10.10.0...v10.10.1) (2026-02-09)
+
+
+### Bug Fixes
+
+* **sorting:** use sort key by default for camelcase columns ([#1258](https://github.com/projectcaluma/ember-alexandria/issues/1258)) ([bb2c125](https://github.com/projectcaluma/ember-alexandria/commit/bb2c1259c002aeaf4e9ebe16f80dff33da0bb7a5))
+
 # [10.10.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.9.0...v10.10.0) (2026-02-03)
 
 
