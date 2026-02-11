@@ -24,7 +24,9 @@ alexandria:
     file-too-large: "Die hochgeladene Datei ist zu gross."
     open-webdav: "Dokument konnte nicht zum Bearbeiten geöffnet werden."
     move-failed: |-
-      Sie haben keine Rechte {count, plural, one {das Dokument "{documentTitle}"} other {die Dokumente}} nach "{categoryName}" zu verschieben. 
+      Sie haben keine Rechte {count, plural, one {das Dokument "{documentTitle}"} other {die Dokumente}} nach "{categoryName}" zu verschieben.
+    move-failed-fallback: |-
+      Sie haben keine Rechte {count, plural, one {das Dokument "{documentTitle}"} other {die Dokumente}} nach "{categoryName}" zu verschieben.
       Möchten Sie {count, plural, one {es} other {diese}} stattdessen nach "{categoryName}" kopieren?
 
   success:

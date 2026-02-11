@@ -7,6 +7,7 @@ import { task } from "ember-concurrency";
 import { confirm } from "ember-uikit";
 
 export default class CategoryNavCategoryComponent extends Component {
+  @service("alexandria-config") config;
   @service("alexandria-documents") documents;
   @service notification;
   @service router;
@@ -117,11 +118,27 @@ export default class CategoryNavCategoryComponent extends Component {
 
     if (failed.length > 0) {
       const permissionDenied = failed.filter((state) => state.error === 403);
-      if (permissionDenied.length > 0) {
+      if (permissionDenied.length > 0 && this.config.enableMoveCopyFallback) {
         await this.copyFailedMoves(permissionDenied, this.args.category);
       }
 
-      if (failed.length > permissionDenied.length) {
+      if (!this.config.enableMoveCopyFallback) {
+        if (permissionDenied.length > 0) {
+          this.notification.danger(
+            this.intl.t("alexandria.errors.move-failed", {
+              count: failed.length,
+              documentTitle: failed[0].document.title,
+              categoryName: this.args.category.name,
+            }),
+          );
+        } else {
+          this.notification.danger(
+            this.intl.t("alexandria.errors.move-document", {
+              count: failed.length,
+            }),
+          );
+        }
+      } else if (failed.length > permissionDenied.length) {
         this.notification.danger(
           this.intl.t("alexandria.errors.move-document", {
             count: failed.length - permissionDenied.length,
@@ -151,7 +168,7 @@ export default class CategoryNavCategoryComponent extends Component {
 
   async copyFailedMoves(documentInfos, newCategory) {
     const copyConfirmed = await confirm(
-      this.intl.t("alexandria.errors.move-failed", {
+      this.intl.t("alexandria.errors.move-failed-fallback", {
         count: documentInfos.length,
         documentTitle: documentInfos[0].document.title,
         categoryName: newCategory.name,
