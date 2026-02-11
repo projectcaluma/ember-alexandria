@@ -24,7 +24,9 @@ alexandria:
     file-too-large: "Il file caricato è troppo grande."
     open-webdav: "Non è stato possibile aprire il documento per l'elaborazione."
     move-failed: |-
-      Non hai i diritti {count, plural, one {per spostare il documento "{documentTitle}"} other {per spostare i documenti}} in "{categoryName}". 
+      Non hai i diritti {count, plural, one {per spostare il documento "{documentTitle}"} other {per spostare i documenti}} in "{categoryName}".
+    move-failed-fallback: |-
+      Non hai i diritti {count, plural, one {per spostare il documento "{documentTitle}"} other {per spostare i documenti}} in "{categoryName}".
       Vuoi {count, plural, one {copiarlo} other {copiarli}} invece in "{categoryName}"?
 
   success:

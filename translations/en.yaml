@@ -24,7 +24,9 @@ alexandria:
     file-too-large: "The uploaded file is too large."
     open-webdav: "Document could not be opened to be edited."
     move-failed: |-
-      You do not have the rights to move the {count, plural, one {document "{documentTitle}"} other {documents}} to "{categoryName}". 
+      You do not have the rights to move the {count, plural, one {document "{documentTitle}"} other {documents}} to "{categoryName}".
+    move-failed-fallback: |-
+      You do not have the rights to move the {count, plural, one {document "{documentTitle}"} other {documents}} to "{categoryName}".
       Would you like to copy {count, plural, one {it} other {them}} to "{categoryName}" instead?
 
   success:
