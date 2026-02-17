@@ -14,6 +14,7 @@ export default class AlexandriaConfigService extends Service {
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
   ];
   additionalFileTypes = {};
+  enableMoveCopyFallback = true;
 
   markIcons = {};
 
