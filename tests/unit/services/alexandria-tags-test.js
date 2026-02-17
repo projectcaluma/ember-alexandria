@@ -12,27 +12,51 @@ module("Unit | Service | alexandria-tags", function (hooks) {
   });
 
   test("it adds existing tags", async function (assert) {
-    const requests = this.server.pretender.handledRequests;
+    const pretender = this.server.pretender;
 
     const service = this.engine.lookup("service:alexandria-tags");
     const store = this.owner.lookup("service:store");
 
     const documentId = this.server.create("document").id;
     const document = await store.findRecord("document", documentId);
-    const tag = await store.createRecord("tag", { name: "T1" }).save();
+    const tagByString = this.server.create("tag", { name: "Tag number two" });
+    const tag = this.server.create("tag", { name: "Tag number two" });
+    const tagModel = await store.findRecord("tag", tag.id);
 
-    await service.add(document, tag);
+    pretender.handledRequests = [];
+    await service.add(document, tagModel);
 
     assert.deepEqual(
-      requests.map((request) => request.method),
+      pretender.handledRequests.map((request) => request.method),
       [
-        "GET", // Get document
-        "POST", // Create tag
         "PATCH", // Add tag to document
       ],
     );
+    assert.deepEqual(
+      [tag.id],
+      (await document.tags).map((tag) => tag.id),
+    );
 
-    assert.ok((await document.tags).includes(tag));
+    pretender.handledRequests = [];
+    await service.add(document, "Tag number two");
+    // Our mirage config doesn't actually support the name filtering.
+    // By creating the named tag first, we return this one first in the
+    // request.
+
+    assert.deepEqual(
+      pretender.handledRequests.map((request) => request.method),
+      [
+        "GET", // Query tags for existing tag
+        "PATCH", // Add tag to document
+      ],
+    );
+    assert.deepEqual(pretender.handledRequests[0].queryParams, {
+      "filter[nameExact]": tagByString.name,
+    });
+    assert.deepEqual(
+      [tag.id, tagByString.id],
+      (await document.tags).map((tag) => tag.id),
+    );
   });
 
   test("it adds new tags", async function (assert) {
