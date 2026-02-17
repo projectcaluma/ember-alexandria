@@ -25,10 +25,10 @@ export default class AlexandriaTagsService extends Service {
 
     try {
       if (typeof tagInput === "string") {
-        const tagId = dasherize(tagInput.trim());
+        const name = tagInput.trim();
         const existing = (
           await this.store.query("tag", {
-            filter: { nameExact: tagId },
+            filter: { nameExact: name },
           })
         )[0];
 
@@ -36,7 +36,7 @@ export default class AlexandriaTagsService extends Service {
           tag = existing;
         } else {
           tag = this.store.createRecord("tag", {
-            id: tagId,
+            id: dasherize(name),
             name: tag,
             createdByGroup: this.config.activeGroup,
             modifiedByGroup: this.config.activeGroup,
