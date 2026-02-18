@@ -9,7 +9,7 @@
 >
   <div class="uk-flex uk-flex-between uk-flex-column">
     <div class="uk-overflow-auto">
-      <div class="uk-padding-small">
+      <div class="uk-padding-small" data-test-document-side-panel-details>
         {{#if (eq @selectedDocuments.length 1)}}
           <SingleDocumentDetails
             @document={{object-at 0 @selectedDocuments}}

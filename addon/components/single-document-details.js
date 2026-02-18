@@ -5,6 +5,7 @@ import { tracked } from "@glimmer/tracking";
 import { task } from "ember-concurrency";
 import { DateTime } from "luxon";
 import { trackedFunction } from "reactiveweb/function";
+import { localCopy } from "tracked-toolbox";
 
 import { ErrorHandler } from "ember-alexandria/utils/error-handler";
 
@@ -21,6 +22,8 @@ export default class SingleDocumentDetailsComponent extends Component {
   @tracked editDescription = false;
   @tracked editDate = false;
   @tracked validTitle = true;
+  @localCopy("args.document.title") title;
+  @localCopy("args.document.description") description;
 
   originalFilename = trackedFunction(this, async () => {
     if (!this.config.enableOriginalDocumentFilename) {
@@ -67,11 +70,11 @@ export default class SingleDocumentDetailsComponent extends Component {
 
   @action updateDocumentTitle({ target: { value: title } }) {
     this.validTitle = Boolean(title);
-    this.args.document.title = title;
+    this.title = title;
   }
 
   @action updateDocumentDescription({ target: { value: description } }) {
-    this.args.document.description = description;
+    this.description = description;
   }
 
   @action async updateDate([date]) {
@@ -83,6 +86,12 @@ export default class SingleDocumentDetailsComponent extends Component {
 
   @action toggle(name) {
     this[name] = !this[name];
+    // cancel editing
+    if (name === "editTitle" && !this.editTitle) {
+      this.title = this.args.document.title;
+    } else if (name === "editDescription" && !this.editDescription) {
+      this.description = this.args.document.description;
+    }
     if (this[name]) {
       this.documents.disableShortcuts();
     } else {
@@ -100,8 +109,9 @@ export default class SingleDocumentDetailsComponent extends Component {
 
   saveDocument = task({ restartable: true }, async (event) => {
     event?.preventDefault();
-
     try {
+      this.args.document.title = this.title;
+      this.args.document.description = this.description;
       await this.args.document.save();
       this.resetState();
       this.notification.success(this.intl.t("alexandria.success.update"));
