@@ -40,13 +40,23 @@
       </div>
       {{#if @category.description}}
         <UkIcon
-          class="uk-margin-auto-left uk-margin-right uk-text-muted category-nav__category__info-icon"
+          class="uk-margin-auto-left uk-margin-right uk-text-muted uk-flex-auto uk-text-right category-nav__category__info-icon"
           @icon="info"
         />
         <div uk-dropdown class="category-nav__category__info-box">
           <MarkdownToHtml @markdown={{@category.description}} />
         </div>
+      {{else}}
+        <div
+          class="uk-margin-left uk-flex-auto category-nav__category__info-icon"
+        ></div>
       {{/if}}
+
+      <div
+        class="uk-margin-auto-left uk-margin-right uk-text-muted uk-text-right"
+      >
+        {{this.documentCount.value}}
+      </div>
     </div>
   </div>
   {{#if (and this.expandChildren @category.children.length)}}

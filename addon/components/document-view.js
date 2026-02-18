@@ -4,6 +4,7 @@ import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { task } from "ember-concurrency";
 import { task as trackedTask } from "reactiveweb/ember-concurrency";
+import { trackedFunction } from "reactiveweb/function";
 
 export default class DocumentViewComponent extends Component {
   @service notification;
@@ -88,6 +89,29 @@ export default class DocumentViewComponent extends Component {
     this.args.filters,
     this.uploadedDocuments,
   ]);
+
+  get documentsInCategory() {
+    return this.args.category
+      ? this.fetchedDocuments.value?.filter((doc) =>
+          this.categoryIds.value?.includes(doc.category.get("id")),
+        )
+      : this.fetchedDocuments.value;
+  }
+
+  categoryIds = trackedFunction(this, () => {
+    if (this.args.category) {
+      const cat = this.store.peekRecord("category", this.args.category);
+
+      const categoryIds = [cat.get("id")];
+      if (cat.children) {
+        const childIds = cat.children.map((category) => category.get("id"));
+        categoryIds.push(...childIds);
+      }
+      return categoryIds;
+    }
+
+    return [];
+  });
 
   @task
   *fetchDocuments() {

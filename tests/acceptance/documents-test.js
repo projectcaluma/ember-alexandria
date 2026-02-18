@@ -249,7 +249,9 @@ module("Acceptance | documents", function (hooks) {
         new File(["Ember Rules!"], "test-file.txt", { type: "text/plain" }),
       ],
     });
-    assert.dom("[data-test-document-list-item]").exists({ count: 1 });
+
+    const allDocuments = this.server.schema.documents.all().models;
+    assert.strictEqual(allDocuments.length, 1, "one document is created");
   });
 
   test("replace file", async function (assert) {
