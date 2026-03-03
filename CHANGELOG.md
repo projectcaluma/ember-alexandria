@@ -1,3 +1,19 @@
+# [10.11.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.10.0...v10.11.0) (2026-03-03)
+
+
+### Bug Fixes
+
+* **alexandria-tags:** dont query for exisiting tags by dasherized name ([a9a191f](https://github.com/projectcaluma/ember-alexandria/commit/a9a191f6c09f366a0f25198d6d3a9dd3dbba18f9))
+* **list:** display documents modified_at ([#1259](https://github.com/projectcaluma/ember-alexandria/issues/1259)) ([7c35a11](https://github.com/projectcaluma/ember-alexandria/commit/7c35a11c1b92f3630e5c0c86d96d3015219c891b))
+* remove close button from document side bar with fixing update title and description ([#1045](https://github.com/projectcaluma/ember-alexandria/issues/1045)) ([eea2191](https://github.com/projectcaluma/ember-alexandria/commit/eea21913c2920043d1bfdd502ac5a92206aa4666))
+* **sorting:** use sort key by default for camelcase columns ([#1258](https://github.com/projectcaluma/ember-alexandria/issues/1258)) ([bb2c125](https://github.com/projectcaluma/ember-alexandria/commit/bb2c1259c002aeaf4e9ebe16f80dff33da0bb7a5))
+
+
+### Features
+
+* add document count display and provide category filtering logic ([365d465](https://github.com/projectcaluma/ember-alexandria/commit/365d465e4f85eb779c0a01a41046b6f44a6ac929))
+* display document count per category (WIP) ([2bd80eb](https://github.com/projectcaluma/ember-alexandria/commit/2bd80eb5f4f1c8057be6fa5f7f588b37c66ace4a))
+
 ## [10.10.1](https://github.com/projectcaluma/ember-alexandria/compare/v10.10.0...v10.10.1) (2026-02-09)
 
 
