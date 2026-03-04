@@ -1,3 +1,10 @@
+# [10.12.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.11.0...v10.12.0) (2026-03-04)
+
+
+### Features
+
+* **document:** add feature flag to enable copy fallback on move ([6323b1f](https://github.com/projectcaluma/ember-alexandria/commit/6323b1f856cd8277609406961b7337bfa5da652d))
+
 # [10.11.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.10.0...v10.11.0) (2026-03-03)
 
 
