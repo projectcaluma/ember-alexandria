@@ -1,3 +1,10 @@
+## [10.12.1](https://github.com/projectcaluma/ember-alexandria/compare/v10.12.0...v10.12.1) (2026-03-18)
+
+
+### Bug Fixes
+
+* drag and drop category selection fix ([#1279](https://github.com/projectcaluma/ember-alexandria/issues/1279)) ([b7b14fd](https://github.com/projectcaluma/ember-alexandria/commit/b7b14fd5b89ac253f609e626386b96736adfc38f))
+
 # [10.12.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.11.0...v10.12.0) (2026-03-04)
 
 
