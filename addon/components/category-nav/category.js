@@ -41,21 +41,22 @@ export default class CategoryNavCategoryComponent extends Component {
   }
 
   documentCount = trackedFunction(this, () => {
-    if (!this.args.category.id) {
-      return this.store.peekAll("document").length;
-    }
+    const metaFilters = this.config.modelMetaFilters?.document ?? [];
+    const categoryIds = this.args.category.id
+      ? [
+          this.args.category.id,
+          ...(this.args.category.children?.map((c) => c.id) ?? []),
+        ]
+      : null;
 
-    const categoryIds = [this.args.category.id];
-    if (this.args.category.children) {
-      const childIds = this.args.category.children.map(
-        (category) => category.id,
+    return this.store.peekAll("document").filter((doc) => {
+      const matchesMeta = metaFilters.every(
+        ({ key, value }) => String(doc.metainfo?.[key]) === String(value),
       );
-      categoryIds.push(...childIds);
-    }
-
-    return this.store
-      .peekAll("document")
-      .filter((doc) => categoryIds.includes(doc.category.get("id"))).length;
+      const matchesCategory =
+        !categoryIds || categoryIds.includes(doc.belongsTo("category").id());
+      return matchesMeta && matchesCategory;
+    }).length;
   });
 
   get controllerInstance() {
