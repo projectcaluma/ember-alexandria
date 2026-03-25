@@ -1,3 +1,10 @@
+## [10.12.2](https://github.com/projectcaluma/ember-alexandria/compare/v10.12.1...v10.12.2) (2026-03-25)
+
+
+### Bug Fixes
+
+* add metaFilter logic to document category count ([749bead](https://github.com/projectcaluma/ember-alexandria/commit/749beadf5c27cfadbe3b3d220be70f23aa2630a5))
+
 ## [10.12.1](https://github.com/projectcaluma/ember-alexandria/compare/v10.12.0...v10.12.1) (2026-03-18)
 
 
