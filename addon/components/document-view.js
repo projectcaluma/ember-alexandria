@@ -239,8 +239,8 @@ export default class DocumentViewComponent extends Component {
     // SHIFT SELECTION
     if (event.shiftKey) {
       const selectedDocIndex =
-        this.fetchedDocuments.value.indexOf(selectedDocument);
-      const firstSelectedDocIndex = this.fetchedDocuments.value.indexOf(
+        this.documentsInCategory.indexOf(selectedDocument);
+      const firstSelectedDocIndex = this.documentsInCategory.indexOf(
         this.documents.selectedDocuments[0],
       );
 
@@ -258,7 +258,7 @@ export default class DocumentViewComponent extends Component {
 
       this.documents.clearDocumentSelection();
       for (let i = startIndex; i <= endIndex; i++) {
-        this.documents.selectDocument(this.fetchedDocuments.value[i]);
+        this.documents.selectDocument(this.documentsInCategory[i]);
       }
     }
   }
