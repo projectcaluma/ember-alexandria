@@ -207,7 +207,7 @@ export default class DocumentViewComponent extends Component {
     }
     if (event.key === "a" && event.ctrlKey) {
       event.preventDefault();
-      this.fetchedDocuments.value.forEach((doc) => {
+      this.documentsInCategory.forEach((doc) => {
         this.documents.selectDocument(doc);
       });
     }
