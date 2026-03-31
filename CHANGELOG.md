@@ -1,3 +1,10 @@
+## [10.12.4](https://github.com/projectcaluma/ember-alexandria/compare/v10.12.3...v10.12.4) (2026-03-31)
+
+
+### Bug Fixes
+
+* selection via ctrl-a should only consider current category ([679deab](https://github.com/projectcaluma/ember-alexandria/commit/679deab3860b7f6f5b7cf5cc8f6d53f36bf90752))
+
 ## [10.12.3](https://github.com/projectcaluma/ember-alexandria/compare/v10.12.2...v10.12.3) (2026-03-31)
 
 
