@@ -1,3 +1,10 @@
+## [10.12.3](https://github.com/projectcaluma/ember-alexandria/compare/v10.12.2...v10.12.3) (2026-03-31)
+
+
+### Bug Fixes
+
+* shift selection should only consider current category ([#1288](https://github.com/projectcaluma/ember-alexandria/issues/1288)) ([88a0a00](https://github.com/projectcaluma/ember-alexandria/commit/88a0a001e99128a77d088a9e940d8e8114feaef3))
+
 ## [10.12.2](https://github.com/projectcaluma/ember-alexandria/compare/v10.12.1...v10.12.2) (2026-03-25)
 
 
