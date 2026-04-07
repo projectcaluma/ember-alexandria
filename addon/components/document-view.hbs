@@ -46,7 +46,7 @@
         {{! List & Grid View }}
         {{#if @listView}}
           <DocumentList
-            @columns={{this.tableColumns}}
+            @columns={{this.config.documentListColumns}}
             @loading={{this.fetchedDocuments.isRunning}}
             @fetchedDocuments={{this.documentsInCategory}}
             @setSort={{this.setSort}}

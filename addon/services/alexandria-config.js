@@ -18,6 +18,42 @@ export default class AlexandriaConfigService extends Service {
 
   markIcons = {};
 
+  get documentListColumns() {
+    return {
+      type: {
+        label: "type",
+        labelHidden: true,
+      },
+      title: {
+        label: "document-title",
+        sort: true,
+      },
+      marks: {
+        label: "marks",
+        labelHidden: true,
+      },
+      date: {
+        label: "date",
+        sort: true,
+      },
+      modifiedAt: {
+        label: "modified-at",
+        sort: true,
+        sortKey: "modified_at",
+      },
+      createdByUser: {
+        label: "created-by-user",
+        sort: true,
+        sortKey: "created_by_user",
+      },
+      createdByGroup: {
+        label: "created-by-group",
+        sort: true,
+        sortKey: "created_by_group",
+      },
+    };
+  }
+
   @tracked alexandriaQueryParams = {};
 
   /**
