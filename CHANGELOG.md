@@ -1,3 +1,10 @@
+# [10.13.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.12.4...v10.13.0) (2026-04-07)
+
+
+### Features
+
+* **search:** make columns for search result list configurable ([58d717e](https://github.com/projectcaluma/ember-alexandria/commit/58d717e52a53cc51461ad8495030fe1acd016963))
+
 ## [10.12.4](https://github.com/projectcaluma/ember-alexandria/compare/v10.12.3...v10.12.4) (2026-03-31)
 
 
