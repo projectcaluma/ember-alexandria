@@ -21,7 +21,7 @@
 
         {{#if this.listView}}
           <DocumentList
-            @columns={{this.tableColumns}}
+            @columns={{this.config.searchListColumns}}
             @loading={{this.fetchedDocuments.isPending}}
             @fetchedDocuments={{this.fetchedDocuments.value}}
             @setSort={{this.setSort}}

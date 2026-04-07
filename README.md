@@ -242,6 +242,20 @@ export default class CustomAlexandriaConfigService extends AlexandriaConfigServi
 }
 ```
 
+The same can be configured for the list in the search view:
+
+```js
+import AlexandriaConfigService from "ember-alexandria/services/alexandria-config";
+
+export default class CustomAlexandriaConfigService extends AlexandriaConfigService {
+  get searchListColumns() {
+    return {
+      // ...
+    };
+  }
+}
+```
+
 ### Search link
 
 To configure where the link in the search result point to and what it displays use the `documentListLinkTo` function.
