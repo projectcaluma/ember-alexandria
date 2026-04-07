@@ -54,6 +54,38 @@ export default class AlexandriaConfigService extends Service {
     };
   }
 
+  get searchListColumns() {
+    return {
+      type: {
+        label: "type",
+        labelHidden: true,
+      },
+      title: {
+        label: "document-title",
+      },
+      marks: {
+        label: "marks",
+        labelHidden: true,
+      },
+      link: {
+        label: "link",
+        labelHidden: true,
+      },
+      date: {
+        label: "date",
+      },
+      modifiedAt: {
+        label: "modified-at",
+      },
+      createdByUser: {
+        label: "created-by-user",
+      },
+      createdByGroup: {
+        label: "created-by-group",
+      },
+    };
+  }
+
   @tracked alexandriaQueryParams = {};
 
   /**
