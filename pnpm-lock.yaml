@@ -283,8 +283,8 @@ importers:
         specifier: 2.2.0
         version: 2.2.0(@babel/core@7.28.5)
       uikit:
-        specifier: 3.23.7
-        version: 3.23.7
+        specifier: 3.25.13
+        version: 3.25.13
       webpack:
         specifier: 5.105.2
         version: 5.105.2
@@ -7804,8 +7804,8 @@ packages:
     engines: {node: '>=0.8.0'}
     hasBin: true
 
-  uikit@3.23.7:
-    resolution: {integrity: sha512-DaTJDQxRwZMuVUIqkWDamAX9+DuVwdJpbhAqRz8zinLy8dzsh39EXoq6GJnLszu7IYSUe2BjoZLXEQjwQtMIhg==}
+  uikit@3.25.13:
+    resolution: {integrity: sha512-p7jCY7+FS0xs1McvU+5pV6Z/hNxsLmE92VD/JytIAZ3qMVTy/39mSCJx4YI6KuxcsL+bX2O3YV4JGlCLxgXSKA==}
 
   unbox-primitive@1.1.0:
     resolution: {integrity: sha512-nWJ91DjeOkej/TA8pXQ3myruKpKEYgqvpw9lz4OPHj/NWFNluYrjbz9j01CJ8yKQd2g4jFoOkINCTW2I5LEEyw==}
@@ -13596,7 +13596,7 @@ snapshots:
       ember-template-imports: 4.3.0
       ember-toggle: 9.0.3(@babel/core@7.28.5)(@glint/template@1.6.2)(ember-source@6.11.0(@glimmer/component@2.0.0)(rsvp@4.8.5))
       ember-truth-helpers: 5.0.0
-      uikit: 3.23.7
+      uikit: 3.25.13
     transitivePeerDependencies:
       - '@glint/environment-ember-loose'
       - '@glint/template'
@@ -17663,7 +17663,7 @@ snapshots:
   uglify-js@3.19.3:
     optional: true
 
-  uikit@3.23.7: {}
+  uikit@3.25.13: {}
 
   unbox-primitive@1.1.0:
     dependencies:
