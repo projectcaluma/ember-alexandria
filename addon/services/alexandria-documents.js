@@ -98,7 +98,15 @@ export default class AlexandriaDocumentsService extends Service {
       });
       // must be set outside for localized model
       documentModel.title = file.name;
-      await documentModel.save();
+
+      try {
+        await documentModel.save();
+      } catch (e) {
+        // Remove the new model from the store if the upload failed
+        documentModel.unloadRecord();
+        throw e;
+      }
+
       return documentModel;
     },
   );

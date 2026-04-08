@@ -104,7 +104,7 @@ module("Integration | Component | category-nav/category", function (hooks) {
   test("it uploads on drop", async function (assert) {
     const category = this.server.create("category");
     const store = this.engine.lookup("service:store");
-    const fakeUpload = fake();
+    const fakeUpload = fake.returns([1]);
     this.engine.lookup("service:alexandria-documents").upload = fakeUpload;
 
     const router = this.engine.lookup("service:router");
