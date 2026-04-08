@@ -1,3 +1,10 @@
+## [10.13.1](https://github.com/projectcaluma/ember-alexandria/compare/v10.13.0...v10.13.1) (2026-04-08)
+
+
+### Bug Fixes
+
+* **error-handling:** rollback new models on failed creation ([a1bff8a](https://github.com/projectcaluma/ember-alexandria/commit/a1bff8a6962f669db7b91d4ba2cf415bb297b198))
+
 # [10.13.0](https://github.com/projectcaluma/ember-alexandria/compare/v10.12.4...v10.13.0) (2026-04-07)
 
 
