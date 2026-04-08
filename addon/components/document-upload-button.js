@@ -21,9 +21,9 @@ export default class DocumentUploadButtonComponent extends Component {
   }
 
   upload = task(async (category, { target: { files = [] } = {} }) => {
-    await this.documents.upload(category, files);
+    const uploaded = await this.documents.upload(category, files);
 
-    if (this.args.afterUpload) {
+    if (this.args.afterUpload && uploaded.length) {
       this.args.afterUpload();
     }
   });

@@ -193,8 +193,14 @@ export default class DocumentViewComponent extends Component {
     event.preventDefault();
     event.stopPropagation();
 
-    await this.documents.upload(this.args.category, event.dataTransfer.files);
-    this.refreshDocumentList();
+    const uploaded = await this.documents.upload(
+      this.args.category,
+      event.dataTransfer.files,
+    );
+
+    if (uploaded.length) {
+      this.refreshDocumentList();
+    }
 
     this.dragCounter = 0;
     this.isDragOver = false;

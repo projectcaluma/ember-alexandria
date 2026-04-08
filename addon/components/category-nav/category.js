@@ -55,7 +55,7 @@ export default class CategoryNavCategoryComponent extends Component {
       );
       const matchesCategory =
         !categoryIds || categoryIds.includes(doc.belongsTo("category").id());
-      return matchesMeta && matchesCategory;
+      return !doc.isNew && matchesMeta && matchesCategory;
     }).length;
   });
 
@@ -121,11 +121,13 @@ export default class CategoryNavCategoryComponent extends Component {
         event.dataTransfer.files,
       );
 
-      this.router.transitionTo(this.router.currentRouteName, {
-        queryParams: {
-          category: this.args.category.id,
-        },
-      });
+      if (uploaded.length) {
+        this.router.transitionTo(this.router.currentRouteName, {
+          queryParams: {
+            category: this.args.category.id,
+          },
+        });
+      }
 
       return uploaded;
     }
