@@ -27,7 +27,7 @@ export default class SearchViewComponent extends Component {
       {
         include: "document,matched_file",
         filter: this.args.filters || {},
-        page: { number: 1 },
+        page: { number: 1, size: 100 },
       },
       {
         adapterOptions: {
