@@ -35,7 +35,11 @@
           />
         {{/if}}
       </div>
-      <div data-test-name data-test-category-id={{@category.id}}>
+      <div
+        class="uk-text-break uk-overflow-hidden"
+        data-test-name
+        data-test-category-id={{@category.id}}
+      >
         {{@category.name}}
       </div>
       {{#if @category.description}}
