@@ -1,3 +1,10 @@
+## [10.13.2](https://github.com/projectcaluma/ember-alexandria/compare/v10.13.1...v10.13.2) (2026-05-05)
+
+
+### Bug Fixes
+
+* **ui:** add category label text break ([22dea41](https://github.com/projectcaluma/ember-alexandria/commit/22dea41b11b00de0ac8b7d4e324f6528efcf7b9e))
+
 ## [10.13.1](https://github.com/projectcaluma/ember-alexandria/compare/v10.13.0...v10.13.1) (2026-04-08)
 
 
