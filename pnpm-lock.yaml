@@ -283,8 +283,8 @@ importers:
         specifier: 2.2.0
         version: 2.2.0(@babel/core@7.28.5)
       uikit:
-        specifier: 3.23.7
-        version: 3.23.7
+        specifier: 3.25.16
+        version: 3.25.16
       webpack:
         specifier: 5.105.2
         version: 5.105.2
@@ -2415,6 +2415,7 @@ packages:
   '@xmldom/xmldom@0.8.11':
     resolution: {integrity: sha512-cQzWCtO6C8TQiYl1ruKNn2U6Ao4o4WBBcbL61yJl84x+j5sOWWFU9X7DpND8XZG3daDppSsigMdfAIl2upQBRw==}
     engines: {node: '>=10.0.0'}
+    deprecated: this version has critical issues, please update to the latest version
 
   '@xtuc/ieee754@1.2.0':
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -7804,8 +7805,8 @@ packages:
     engines: {node: '>=0.8.0'}
     hasBin: true
 
-  uikit@3.23.7:
-    resolution: {integrity: sha512-DaTJDQxRwZMuVUIqkWDamAX9+DuVwdJpbhAqRz8zinLy8dzsh39EXoq6GJnLszu7IYSUe2BjoZLXEQjwQtMIhg==}
+  uikit@3.25.16:
+    resolution: {integrity: sha512-zTpbaNMWTTsWZOiFJkFHa+zia1pRgY3FA6hEAckVgk4aJ19+qie7M/qH9GJgI1nlxP97xMcGH/MXw0qWaKURfQ==}
 
   unbox-primitive@1.1.0:
     resolution: {integrity: sha512-nWJ91DjeOkej/TA8pXQ3myruKpKEYgqvpw9lz4OPHj/NWFNluYrjbz9j01CJ8yKQd2g4jFoOkINCTW2I5LEEyw==}
@@ -7912,6 +7913,7 @@ packages:
 
   uuid@8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   validate-npm-package-license@3.0.4:
@@ -13596,7 +13598,7 @@ snapshots:
       ember-template-imports: 4.3.0
       ember-toggle: 9.0.3(@babel/core@7.28.5)(@glint/template@1.6.2)(ember-source@6.11.0(@glimmer/component@2.0.0)(rsvp@4.8.5))
       ember-truth-helpers: 5.0.0
-      uikit: 3.23.7
+      uikit: 3.25.16
     transitivePeerDependencies:
       - '@glint/environment-ember-loose'
       - '@glint/template'
@@ -17663,7 +17665,7 @@ snapshots:
   uglify-js@3.19.3:
     optional: true
 
-  uikit@3.23.7: {}
+  uikit@3.25.16: {}
 
   unbox-primitive@1.1.0:
     dependencies:
