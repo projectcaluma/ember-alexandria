@@ -34,15 +34,17 @@ export default class MultiDocumentDetailsComponent extends Component {
   copyDocuments = task({ drop: true }, async (event) => {
     event?.preventDefault();
     try {
-      await this.documents.copy(
+      const result = await this.documents.copy(
         this.args.selectedDocuments.map((doc) => doc.id),
       );
-      await this.args.refreshDocumentList();
-      this.notification.success(
-        this.intl.t("alexandria.success.copy-document", {
-          count: this.args.selectedDocuments.length,
-        }),
-      );
+      if (result.filter((r) => r === true).length > 0) {
+        await this.args.refreshDocumentList();
+        this.notification.success(
+          this.intl.t("alexandria.success.copy-document", {
+            count: this.args.selectedDocuments.length,
+          }),
+        );
+      }
     } catch (error) {
       new ErrorHandler(this, error).notify("alexandria.errors.copy-document", {
         count: this.args.selectedDocuments.length,

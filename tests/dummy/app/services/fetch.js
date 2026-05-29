@@ -31,7 +31,9 @@ export default class FetchService extends Service {
         return this.session.handleUnauthorized();
       }
 
-      const contentType = response.headers.map["content-type"];
+      const contentType = response.headers?.map
+        ? response.headers.map["content-type"]
+        : response.headers?.get("content-type");
       let body = "";
 
       if (

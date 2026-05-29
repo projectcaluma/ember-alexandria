@@ -7,7 +7,13 @@ export class ErrorHandler {
 
   constructor(context, error) {
     setOwner(this, getOwner(context));
-    this.error = error;
+
+    // error triggered by fetch is mapped differently.
+    if (error?.cause) {
+      this.error = { errors: error.cause };
+    } else {
+      this.error = error;
+    }
   }
 
   notify(...args) {
