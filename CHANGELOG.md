@@ -1,3 +1,10 @@
+## [10.13.3](https://github.com/projectcaluma/ember-alexandria/compare/v10.13.2...v10.13.3) (2026-06-01)
+
+
+### Bug Fixes
+
+* **error:** handle fetch error notifications correctly ([a55c998](https://github.com/projectcaluma/ember-alexandria/commit/a55c998770d167f2095b1e1fc1c92b3c76891b73))
+
 ## [10.13.2](https://github.com/projectcaluma/ember-alexandria/compare/v10.13.1...v10.13.2) (2026-05-05)
 
 
