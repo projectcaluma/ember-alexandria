@@ -128,7 +128,7 @@
     "stylelint-scss": "6.13.0",
     "tracked-toolbox": "2.2.0",
     "uikit": "3.25.16",
-    "webpack": "5.105.2"
+    "webpack": "5.107.2"
   },
   "pnpm": {
     "overrides": {
