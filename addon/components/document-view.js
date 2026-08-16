@@ -115,6 +115,7 @@ export default class DocumentViewComponent extends Component {
 
   @task
   *fetchDocuments() {
+    yield Promise.resolve();
     let documents = [];
     const filter = this.args.filters || {};
     if (filter.query) {
