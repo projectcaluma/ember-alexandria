@@ -17,7 +17,9 @@ export default class DocumentUploadButtonComponent extends Component {
   }));
 
   get category() {
-    return this.store.peekRecord("category", this.args.categoryId);
+    return this.store
+      .peekAll("category")
+      .find((category) => category.id === this.args.categoryId);
   }
 
   upload = task(async (category, { target: { files = [] } = {} }) => {
