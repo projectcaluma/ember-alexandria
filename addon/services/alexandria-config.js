@@ -1,5 +1,8 @@
 import Service from "@ember/service";
 import { tracked } from "@glimmer/tracking";
+import { Mime } from "mime/lite";
+import otherTypes from "mime/types/other.js";
+import standardTypes from "mime/types/standard.js";
 
 export default class AlexandriaConfigService extends Service {
   namespace = undefined;
@@ -15,8 +18,23 @@ export default class AlexandriaConfigService extends Service {
   ];
   additionalFileTypes = {};
   enableMoveCopyFallback = true;
-
   markIcons = {};
+  customMimeTypes = {
+    "application/vnd.ms-outlook": ["msg"],
+  };
+
+  /**
+   * Mime instance which, in addition to the standard types, knows the mime
+   * types configured in `customMimeTypes`.
+   *
+   * @returns {Mime} The configured mime instance
+   */
+  get mime() {
+    return new Mime(standardTypes, otherTypes).define(
+      this.customMimeTypes,
+      true,
+    );
+  }
 
   get documentListColumns() {
     return {

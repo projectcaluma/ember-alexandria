@@ -3,30 +3,22 @@ import Service, { service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import { task } from "ember-concurrency";
 import { saveAs } from "file-saver";
-import mime from "mime";
 
 import { ErrorHandler } from "ember-alexandria/utils/error-handler";
 
 /**
- * Check if document upload is in allowed mime types of category
- * If no allowedMimeTypes are set on the category, just return true
+ * Get the lowercased extension of the given file name, without the leading
+ * dot. File names without an extension result in an empty string.
+ *
+ * @param {String} filename The name of the file
+ * @returns {String} The file extension
  */
-function fileHasValidMimeType(file, category) {
-  if (!category.allowedMimeTypes) {
-    return true;
-  }
+const getExtension = (filename) => {
+  const index = filename.lastIndexOf(".");
 
-  // newly uploaded files that do not have a model yet
-  if (file instanceof File) {
-    // type is not always set, use name as fallback
-    return category.allowedMimeTypes.includes(
-      file.type || mime.getType(file.name),
-    );
-  }
+  return index > 0 ? filename.slice(index + 1).toLowerCase() : "";
+};
 
-  // existing file models
-  return category.allowedMimeTypes.includes(file.mimeType);
-}
 export default class AlexandriaDocumentsService extends Service {
   @service store;
   @service("alexandria-config") config;
@@ -73,10 +65,7 @@ export default class AlexandriaDocumentsService extends Service {
     this.notification.danger(
       this.intl.t("alexandria.errors.invalid-file-type", {
         category: category.name,
-        types: category.allowedMimeTypes
-          .map((t) => mime.getExtension(t))
-          .filter(Boolean)
-          .join(", "),
+        types: category.allowedExtensions,
       }),
     );
   }
@@ -131,7 +120,7 @@ export default class AlexandriaDocumentsService extends Service {
     }
 
     for (const file of files) {
-      if (!fileHasValidMimeType(file, category)) {
+      if (!this.validateMimeType(file, category)) {
         this.mimeTypeErrorNotification(category);
         return;
       }
@@ -203,7 +192,7 @@ export default class AlexandriaDocumentsService extends Service {
         if (
           files
             .filter((f) => f.variant === "original")
-            .some((file) => !fileHasValidMimeType(file, newCategory))
+            .some((file) => !this.validateMimeType(file, newCategory))
         ) {
           return {
             error: INVALID_FILE_TYPE,
@@ -263,7 +252,7 @@ export default class AlexandriaDocumentsService extends Service {
           category &&
           files
             .filter((f) => f.variant === "original")
-            .some((file) => !fileHasValidMimeType(file, category))
+            .some((file) => !this.validateMimeType(file, category))
         ) {
           return INVALID_FILE_TYPE;
         }
@@ -393,4 +382,43 @@ export default class AlexandriaDocumentsService extends Service {
       new ErrorHandler(this, error).notify("alexandria.errors.save-file");
     }
   });
+
+  /**
+   * Check whether the file is allowed in the target category. Its mime type
+   * must be allowed by the category and, if the category configures
+   * extensions for that mime type, its file extension as well. A category
+   * without configured mime types allows everything.
+   *
+   * @param {File} file Either an uploaded file or an existing file model
+   * @param {Category} category The category the file is uploaded or moved to
+   * @returns {Boolean} Whether the file is allowed in the category
+   */
+  validateMimeType(file, category) {
+    if (!Object.keys(category.allowedMimeTypes).length) {
+      // If there are no mime types configured, we allow everything
+      return true;
+    }
+
+    const mimeType =
+      file instanceof File
+        ? file.type || this.config.mime.getType(file.name)
+        : file.mimeType;
+
+    if (!Object.hasOwn(category.allowedMimeTypes, mimeType)) {
+      return false;
+    }
+
+    const allowedExtensions = category.allowedMimeTypes[mimeType];
+
+    if (
+      allowedExtensions?.length &&
+      !allowedExtensions
+        .map((extension) => extension.toLowerCase())
+        .includes(getExtension(file.name))
+    ) {
+      return false;
+    }
+
+    return true;
+  }
 }

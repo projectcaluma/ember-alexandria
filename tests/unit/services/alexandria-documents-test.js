@@ -95,7 +95,7 @@ module("Unit | Service | alexandria-documents", function (hooks) {
       "category",
       this.server.create("category", {
         name: { en: "Foo" },
-        allowedMimeTypes: ["application/pdf"],
+        allowedMimeTypes: { "application/pdf": null },
       }).id,
     );
     const files = [new File(["1"], "test1.docx")];
@@ -111,6 +111,50 @@ module("Unit | Service | alexandria-documents", function (hooks) {
     assert.deepEqual(
       fakeDanger.args[0][0],
       'In category "Foo" only pdf can be uploaded.',
+    );
+  });
+
+  test("it restricts file extensions", async function (assert) {
+    const service = this.engine.lookup("service:alexandria-documents");
+    const store = this.owner.lookup("service:store");
+
+    const category = await store.findRecord(
+      "category",
+      this.server.create("category", {
+        allowedMimeTypes: { "image/jpeg": ["jpeg"] },
+      }).id,
+    );
+
+    const file = (name) => new File(["1"], name, { type: "image/jpeg" });
+
+    assert.true(service.validateMimeType(file("test.jpeg"), category));
+    // extensions are matched case insensitively
+    assert.true(service.validateMimeType(file("TEST.JPEG"), category));
+    // the mime type is allowed but the extension is not
+    assert.false(service.validateMimeType(file("test.jpg"), category));
+  });
+
+  test("it validates configured custom mime types", async function (assert) {
+    const service = this.engine.lookup("service:alexandria-documents");
+    const config = this.engine.lookup("service:alexandria-config");
+    const store = this.owner.lookup("service:store");
+
+    config.customMimeTypes = { "application/vnd.sqlite3": ["gpkg"] };
+
+    const category = await store.findRecord(
+      "category",
+      this.server.create("category", {
+        allowedMimeTypes: { "application/vnd.sqlite3": null },
+      }).id,
+    );
+
+    // the mime type of the file is unknown, therefore it is guessed from the
+    // file name with the configured custom mime types
+    assert.true(
+      service.validateMimeType(new File(["1"], "map.gpkg"), category),
+    );
+    assert.false(
+      service.validateMimeType(new File(["1"], "map.txt"), category),
     );
   });
 
