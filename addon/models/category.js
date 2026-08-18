@@ -21,16 +21,34 @@ export default class CategoryModel extends LocalizedModel {
    * configured extensions are listed as mime type, so that all of their
    * extensions stay selectable.
    *
+   * Since browsers don't know every mime type - `image/vnd.dwg` or
+   * `application/vnd.ms-outlook` for instance - all extensions known to the
+   * configured `mime` instance are listed as well.
+   *
    * @returns {String} Comma separated list of file extensions and mime types
    */
   get accept() {
-    return Object.entries(this.allowedMimeTypes)
-      .flatMap(([mimeType, extensions]) =>
-        extensions?.length
-          ? extensions.map((extension) => `.${extension}`)
-          : mimeType,
-      )
-      .join(",");
+    const entries = Object.entries(this.allowedMimeTypes);
+
+    const mimeTypes = entries
+      .filter(([, extensions]) => !extensions?.length)
+      .map(([mimeType]) => mimeType);
+
+    const configuredExtensions = entries.flatMap(
+      ([, extensions]) => extensions ?? [],
+    );
+
+    const knownExtensions = mimeTypes.flatMap((mimeType) => [
+      ...(this.config.mime.getAllExtensions(mimeType) ?? []),
+    ]);
+
+    const extensions = new Set(
+      [...configuredExtensions, ...knownExtensions].map(
+        (extension) => `.${extension}`,
+      ),
+    );
+
+    return [...mimeTypes, ...extensions].join(",");
   }
 
   /**

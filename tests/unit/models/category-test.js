@@ -20,12 +20,13 @@ module("Unit | Model | category", function (hooks) {
     const category = await this.createCategory({
       allowedMimeTypes: {
         "image/jpeg": ["jpeg", "jpg"],
-        // mime types without extensions accept all their extensions
+        // mime types without extensions accept all their extensions, which are
+        // listed explicitly since browsers don't know every mime type
         "application/pdf": null,
       },
     });
 
-    assert.strictEqual(category.accept, ".jpeg,.jpg,application/pdf");
+    assert.strictEqual(category.accept, "application/pdf,.jpeg,.jpg,.pdf");
   });
 
   test("it computes the allowed extensions", async function (assert) {
@@ -52,6 +53,6 @@ module("Unit | Model | category", function (hooks) {
     });
 
     assert.strictEqual(category.allowedExtensions, "gpkg");
-    assert.strictEqual(category.accept, "application/vnd.sqlite3");
+    assert.strictEqual(category.accept, "application/vnd.sqlite3,.gpkg");
   });
 });
