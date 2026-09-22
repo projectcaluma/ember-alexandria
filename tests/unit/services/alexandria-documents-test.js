@@ -178,6 +178,45 @@ module("Unit | Service | alexandria-documents", function (hooks) {
     assert.ok(requests[0].url.endsWith("files"));
   });
 
+  test("it adds copied documents to the store", async function (assert) {
+    const service = this.engine.lookup("service:alexandria-documents");
+    const store = this.owner.lookup("service:store");
+
+    const sourceCategory = this.server.create("category");
+    const targetCategory = this.server.create("category");
+
+    const originalDocument = this.server.create("document", {
+      category: sourceCategory,
+    });
+
+    await store.findRecord("document", originalDocument.id);
+
+    const targetCategoryModel = await store.findRecord(
+      "category",
+      targetCategory.id,
+    );
+
+    const result = await service.copy(
+      [originalDocument.id],
+      targetCategoryModel,
+    );
+
+    assert.deepEqual(result, [true]);
+
+    const copiedDocument = this.server.schema.documents
+      .all()
+      .models.find((document) => document.id !== originalDocument.id);
+
+    const copiedDocumentModel = store.peekRecord("document", copiedDocument.id);
+
+    assert.ok(copiedDocumentModel, "the copied document is added to the store");
+    assert.strictEqual(
+      copiedDocumentModel.category.id,
+      targetCategory.id,
+      "the copied document has the target category",
+    );
+  });
+
   test("it downloads documents", async function (assert) {
     const service = this.engine.lookup("service:alexandria-documents");
     const store = this.owner.lookup("service:store");
