@@ -277,10 +277,13 @@ export default class AlexandriaDocumentsService extends Service {
         }
 
         try {
-          await this.fetch.fetch(url, {
+          const response = await this.fetch.fetch(url, {
             method: "POST",
             body: JSON.stringify({ data }),
           });
+
+          this.store.pushPayload(await response.json());
+
           return true;
         } catch (error) {
           new ErrorHandler(this, error).notify();
