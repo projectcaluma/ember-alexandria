@@ -1,3 +1,10 @@
+## [11.0.2](https://github.com/projectcaluma/ember-alexandria/compare/v11.0.1...v11.0.2) (2026-10-28)
+
+
+### Bug Fixes
+
+* add copied documents to store ([a0ece7b](https://github.com/projectcaluma/ember-alexandria/commit/a0ece7b2308fd33890d35deac7ea91893faef713))
+
 ## [11.0.1](https://github.com/projectcaluma/ember-alexandria/compare/v11.0.0...v11.0.1) (2026-08-19)
 
 
