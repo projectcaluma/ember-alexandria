@@ -1,0 +1,117 @@
+# German starting text for Rumantsch Grischun; not yet translated.
+
+alexandria:
+  loading: "Lädt..."
+  search: "Suchen..."
+  search-clear: "Suche löschen"
+  nothing-found: "Wir haben nichts gefunden..."
+  delete: "Löschen"
+  upload-file: "Datei hochladen"
+  download: "Download"
+  move-document: "{count} {count, plural, one {Dokument} other {Dokumente}} verschieben"
+  copy: "Kopieren"
+
+  errors:
+    save-file: "Beim Herunterladen der Datei ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+    delete-document: "Beim Löschen des Dokummentes ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+    fetch-categories: "Beim Laden der Kategorien ist ein Fehler aufgetreten."
+    replace-document: "Beim Ersetzen des Dokumentes ist ein Fehler aufgetreten."
+    upload-document: "Beim Hochladen des Dokumentes ist ein Fehler aufgetreten."
+    update: "Änderungen konnten nicht gespeichert werden. Versuchen Sie es erneut."
+    no-permission: "Sie haben keine Berechtigung, diese Aktion auszuführen."
+    move-document: "Beim Verschieben {count, plural, one {des Dokumentes} other {von # Dokumenten}} ist ein Fehler aufgetreten"
+    copy-document: "Beim Kopieren {count, plural, one {des Dokumentes} other {von # Dokumenten}} ist ein Fehler aufgetreten"
+    convert-pdf: "Während dem Umwandeln ist ein Fehler aufgetreten."
+    invalid-file-type: 'In der Kategorie "{category}" können nur {types} hochgeladen werden.'
+    file-too-large: "Die hochgeladene Datei ist zu gross."
+    open-webdav: "Dokument konnte nicht zum Bearbeiten geöffnet werden."
+    move-failed: |-
+      Sie haben keine Rechte {count, plural, one {das Dokument "{documentTitle}"} other {die Dokumente}} nach "{categoryName}" zu verschieben.
+    move-failed-fallback: |-
+      Sie haben keine Rechte {count, plural, one {das Dokument "{documentTitle}"} other {die Dokumente}} nach "{categoryName}" zu verschieben.
+      Möchten Sie {count, plural, one {es} other {diese}} stattdessen nach "{categoryName}" kopieren?
+
+  success:
+    delete-document: "Das Dokument wurde erfolgreich gelöscht."
+    upload-document: |-
+      {count, plural,
+        one {Das Dokument wurde}
+        other {{count} Dokumente wurden}
+      } erfolgreich hochgeladen.
+    update: "Änderungen wurden gespeichert."
+    move-document: "{count, plural, one {Das Dokument wurde} other {# Dokumente wurden}} erfolgreich verschoben"
+    copy-document: "{count, plural, one {Das Dokument wurde} other {# Dokumente wurden}} erfolgreich kopiert"
+    convert-pdf: "Dokument wurde erfolgreich umgewandelt."
+
+  category-nav:
+    all-files: "Alle Dokumente"
+    categories: "Kategorien"
+
+  document-upload-button:
+    no-categories: "Es wurden keine Kategorien gefunden."
+
+  document-delete-button:
+    prompt:
+      title: "Dokument löschen"
+      message: 'Wollen Sie das Dokument "{title}" wirklich mit seiner ganzen Geschichte löschen?'
+      multiple_docs_message: "Wollen Sie wirklich {nrOfDocs} Dokumente inklusive derer Geschichten löschen?"
+      cancel: "Abbrechen"
+      confirm: "Löschen"
+
+  document-grid:
+    drop-to-upload: "Datei fallen lassen, um sie hochzuladen"
+    drop-not-allowed: "Keine Kategorie ausgewählt"
+
+  document-list:
+    name: "Dokumentenliste"
+    type: "Typ"
+    document-title: "Dokumententitel"
+    created-by-user: "Ersteller"
+    created-by-group: "Gruppe"
+    modified-at: "Änderungsdatum"
+    date: "Datum"
+    marks: "Markierungen"
+    toggle: "Ansicht wechseln"
+    category: "Kategorie"
+
+  document-details:
+    document-title: "Dokumententitel"
+    document-date: "Dokumentendatum"
+    metadata: "Metadaten"
+    document-description: "Dokumentenbeschreibung"
+    title-placeholder: "Titel..."
+    version-history: "Versionsgeschichte"
+    add-description: "Beschreibung hinzufügen"
+    add-date: "Datum hinzufügen"
+    created-at: "Erstellt um"
+    created-by-user: "Erstellt von Benutzer"
+    created-by-group: "Erstellt von Gruppe"
+    replace: "Ersetzen"
+    convert: "Zu PDF"
+    web-dav: "Bearbeiten"
+    tags:
+      title: "Tags"
+      add: "Hinzufügen"
+    version:
+      filename: "Dateiname"
+      checksum: "Checksumme"
+    file-type: "Dateityp"
+    file-types:
+      audio: "Audio"
+      excel: "Excel"
+      image: "Bild"
+      pdf: "PDF"
+      powerpoint: "PowerPoint"
+      text: "Text"
+      video: "Video"
+      word: "Word"
+    original-filename: "Original"
+
+  document-download:
+    button: "{numDocs, plural, =1 {Herunterladen} other {Auswahl herunterladen}}"
+
+  multiple-documents-details:
+    title: "{numDocs, plural, =0 {Kein Dokument ausgewählt} =1 {1 Dokument ausgewählt} other {# Dokumente ausgewählt}}"
+
+  tag-filter:
+    empty: "Keine Tags..."

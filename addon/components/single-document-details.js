@@ -7,6 +7,7 @@ import { DateTime } from "luxon";
 import { trackedFunction } from "reactiveweb/function";
 import { localCopy } from "tracked-toolbox";
 
+import flatpickrRm from "ember-alexandria/locales/flatpickr-rm";
 import { ErrorHandler } from "ember-alexandria/utils/error-handler";
 
 export default class SingleDocumentDetailsComponent extends Component {
@@ -42,9 +43,18 @@ export default class SingleDocumentDetailsComponent extends Component {
     return this.intl.primaryLocale.split("-")[0];
   }
 
+  get flatpickrLocale() {
+    return this.locale === "rm" ? flatpickrRm : this.locale;
+  }
+
   get dateFormat() {
     const defaultFormat = "m/d/Y";
-    const formats = { de: "d.m.Y", fr: "d.m.Y", en: defaultFormat };
+    const formats = {
+      de: "d.m.Y",
+      fr: "d.m.Y",
+      en: defaultFormat,
+      rm: "d.m.Y",
+    };
 
     return formats[this.locale] ?? defaultFormat;
   }
