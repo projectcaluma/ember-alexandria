@@ -1,4 +1,4 @@
-import { click, render } from "@ember/test-helpers";
+import { click, render, settled } from "@ember/test-helpers";
 import { setupRenderingTest } from "dummy/tests/helpers";
 import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
@@ -39,6 +39,26 @@ module("Integration | Component | document-view", function (hooks) {
     assert
       .dom("[data-test-document-container]:nth-child(3) div")
       .doesNotHaveClass("document-card--selected");
+  });
+
+  test("refreshes the document list when requested by the service", async function (assert) {
+    const category = this.server.create("category");
+    this.server.create("document", { category });
+
+    const documentsService = this.engine.lookup("service:alexandria-documents");
+
+    await render(hbs`<DocumentView @listView={{true}} />`, {
+      owner: this.engine,
+    });
+
+    assert.dom("[data-test-document-list-item]").exists({ count: 1 });
+
+    this.server.create("document", { category });
+
+    documentsService.refreshDocumentList();
+    await settled();
+
+    assert.dom("[data-test-document-list-item]").exists({ count: 2 });
   });
 
   test("pass filters", async function (assert) {

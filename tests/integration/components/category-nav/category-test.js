@@ -4,6 +4,7 @@ import { hbs } from "ember-cli-htmlbars";
 import { setupMirage } from "ember-cli-mirage/test-support";
 import { module, test } from "qunit";
 import { fake, stub } from "sinon";
+import UIkit from "uikit";
 
 module("Integration | Component | category-nav/category", function (hooks) {
   setupRenderingTest(hooks);
@@ -99,6 +100,93 @@ module("Integration | Component | category-nav/category", function (hooks) {
       documents.map((d) => d.category.id),
       [category.id, oldCategory.id],
     );
+  });
+
+  test("it refreshes documents after a failed move is copied", async function (assert) {
+    const category = this.server.create("category");
+    const oldCategory = this.server.create("category");
+    const document = this.server.create("document", {
+      categoryId: oldCategory.id,
+      title: "Test document",
+      files: [
+        this.server.create("file", {
+          name: "test.txt",
+          mimeType: "text/plain",
+        }),
+      ],
+    });
+
+    const store = this.owner.lookup("service:store");
+    const documentsService = this.engine.lookup("service:alexandria-documents");
+    const config = this.engine.lookup("service:alexandria-config");
+    const router = this.engine.lookup("service:router");
+
+    this.category = await store.findRecord("category", category.id);
+    await store.findAll("document");
+
+    config.enableMoveCopyFallback = true;
+
+    stub(router, "currentRouteName").get(() => null);
+    router.transitionTo = fake();
+
+    const moveStub = stub(documentsService, "move").resolves([
+      {
+        error: 403,
+        document: store.peekRecord("document", document.id),
+      },
+    ]);
+
+    const confirmStub = stub(UIkit.modal, "confirm").resolves();
+
+    try {
+      await render(
+        hbs`<CategoryNav::Category @category={{this.category}} data-test-drop />`,
+        { owner: this.engine },
+      );
+
+      const previousRevision = documentsService.documentListRevision;
+
+      await triggerEvent("[data-test-drop]", "drop", {
+        dataTransfer: {
+          getData: () => document.id,
+          files: [],
+        },
+      });
+
+      assert.true(moveStub.calledOnce, "move was attempted");
+      assert.true(confirmStub.calledOnce, "copy confirmation was shown");
+
+      assert.strictEqual(
+        documentsService.documentListRevision,
+        previousRevision + 1,
+        "document list refresh was triggered after copying",
+      );
+
+      const copiedDocuments = store
+        .peekAll("document")
+        .filter(
+          (doc) => doc.id !== document.id && doc.category.id === category.id,
+        );
+
+      assert.strictEqual(
+        copiedDocuments.length,
+        1,
+        "a copy was added to the target category",
+      );
+
+      assert.deepEqual(
+        router.transitionTo.args[0][1],
+        {
+          queryParams: {
+            category: category.id,
+          },
+        },
+        "navigation targets the copied document's category",
+      );
+    } finally {
+      confirmStub.restore();
+      moveStub.restore();
+    }
   });
 
   test("it uploads on drop", async function (assert) {

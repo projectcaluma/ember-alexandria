@@ -29,6 +29,12 @@ export default class AlexandriaDocumentsService extends Service {
 
   @tracked selectedDocuments = [];
   @tracked shortcutsDisabled = false;
+  @tracked documentListRevision = 0;
+
+  @action
+  refreshDocumentList() {
+    this.documentListRevision++;
+  }
 
   constructor(...args) {
     super(...args);
