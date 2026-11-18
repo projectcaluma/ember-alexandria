@@ -1,13 +1,56 @@
 <div class={{this.classes}} ...attributes>
-  {{#if @document.marks}}
+  {{#if
+    (or
+      @document.marks.length
+      (and
+        this.config.enableSignatures (or @document.isStamped @document.isSigned)
+      )
+    )
+  }}
     <div
       class="marks uk-flex uk-position-top-left uk-position-small uk-border-rounded uk-background-muted"
     >
       {{#each @document.marks as |mark|}}
-        <div {{uk-tooltip mark.name}}>
-          <FaIcon @icon={{mark.icon}} />
-        </div>
+        {{#if
+          (and
+            this.config.enableSignatures
+            (eq mark.id this.config.stampMark)
+            @document.isStamped
+          )
+        }}
+          {{! Marked for stamping and stamped }}
+          <div
+            class="uk-text-success"
+            {{uk-tooltip (t "alexandria.esign.stamped")}}
+          >
+            <FaIcon @icon={{mark.icon}} />
+          </div>
+        {{else}}
+          <div {{uk-tooltip mark.name}}>
+            <FaIcon @icon={{mark.icon}} />
+          </div>
+        {{/if}}
       {{/each}}
+      {{! Signatures created in alexandria, not marks set by users }}
+      {{#if
+        (and
+          this.config.enableSignatures
+          @document.isStamped
+          (not @document.isMarkedForStamp)
+        )
+      }}
+        <div
+          class="uk-text-success"
+          {{uk-tooltip (t "alexandria.esign.stamped")}}
+        >
+          <FaIcon @icon="stamp" />
+        </div>
+      {{/if}}
+      {{#if (and this.config.enableSignatures @document.isSigned)}}
+        <div {{uk-tooltip (t "alexandria.esign.signed")}}>
+          <FaIcon @icon="file-signature" />
+        </div>
+      {{/if}}
     </div>
   {{/if}}
   <div class="uk-card-media-top uk-text-center uk-border-bottom">

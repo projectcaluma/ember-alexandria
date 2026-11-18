@@ -29,6 +29,10 @@ alexandria:
       You do not have the rights to move the {count, plural, one {document "{documentTitle}"} other {documents}} to "{categoryName}".
       Would you like to copy {count, plural, one {it} other {them}} to "{categoryName}" instead?
 
+    sign-document: "While requesting the signature, an error occured. Please try again."
+    sign-timeout: "The signature was not confirmed in time. Please try again."
+    sign-rejected: "The signature was rejected."
+
   success:
     delete-document: "Document deleted successfully"
     upload-document: |-
@@ -40,6 +44,7 @@ alexandria:
     move-document: "{count, plural, one {Document} other {# documents}} moved successfully"
     copy-document: "{count, plural, one {Document} other {# documents}} copied successfully"
     convert-pdf: "Document converted successfully."
+    sign: "Document signed successfully."
 
   category-nav:
     all-files: "All documents"
@@ -114,3 +119,36 @@ alexandria:
 
   tag-filter:
     empty: "No tags..."
+
+  esign:
+    sign: "Sign (QES)"
+    sign-help: "Creates a qualified electronic signature (QES) according to ZertES. It is legally equivalent to a handwritten signature. You confirm the signature in the DeepID app."
+    title: "Signature"
+    waiting: "Waiting for the signature to be confirmed..."
+    registration-required: "You have to register with the signature provider first. Afterwards, start the signature again."
+    open-action-url: "Open"
+    close: "Close"
+    signer: "Name in the signature certificate"
+    signed: "Signed"
+    stamped: "Stamped"
+    invalid: "No longer valid"
+    invalid-help: "The document was changed afterwards, the signature is no longer part of the current version."
+    replace:
+      title: "Signatures will be invalidated"
+      message: "The current version contains signatures or stamps. They are not part of the new version and will be marked as no longer valid."
+      cancel: "Cancel"
+      confirm: "Replace anyway"
+    history:
+      title: "Signatures created in this application"
+    types:
+      timestamp: "Stamp"
+      advanced: "Advanced signature (AES)"
+      qualified: "Qualified signature (QES)"
+    status:
+      open: "Open"
+      requested: "Waiting for confirmation"
+      confirmed: "Confirmed"
+      done: "Done"
+      timeout: "Timed out"
+      rejected: "Rejected"
+      registration_required: "Registration required"

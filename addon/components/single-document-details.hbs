@@ -246,7 +246,7 @@
         type="file"
         aria-label="File input"
         accept={{@document.category.accept}}
-        {{on "change" this.uploadReplacement.perform}}
+        {{on "change" this.selectReplacement}}
       />
 
       <button
@@ -257,6 +257,27 @@
         {{~t "alexandria.document-details.replace"~}}
       </button>
     </div>
+    {{#if (and this.config.enableSignatures @document.canSign)}}
+      <div>
+        <UkButton
+          @size="small"
+          @onClick={{this.signDocument.perform}}
+          @loading={{this.signDocument.isRunning}}
+          class="uk-width-1"
+          data-test-sign
+        >
+          {{t "alexandria.esign.sign"}}
+          {{! Legally required: the user must know which signature they create }}
+          <UkIcon
+            @icon="question"
+            @ratio={{0.7}}
+            class="uk-margin-small-left"
+            {{uk-tooltip (t "alexandria.esign.sign-help") pos="bottom"}}
+            data-test-sign-help
+          />
+        </UkButton>
+      </div>
+    {{/if}}
 
     <div class="uk-width-1-1">
       <DocumentDeleteButton @docsToDelete={{@document}} as |showDialog|>
@@ -276,6 +297,16 @@
   <hr />
 
   <ul uk-accordion="multiple: true">
+    {{#if this.currentSignatureRequests.length}}
+      <li class="uk-open" data-test-current-signatures>
+        <a class="uk-accordion-title" href="#">
+          {{~t "alexandria.esign.history.title"~}}
+        </a>
+        <div class="uk-accordion-content">
+          <SignatureRequestList @requests={{this.currentSignatureRequests}} />
+        </div>
+      </li>
+    {{/if}}
     <li class="uk-open">
       <a class="uk-accordion-title" href="#">
         {{~t "alexandria.document-details.version-history"~}}
@@ -299,6 +330,22 @@
                 <span class="uk-width-expand">
                   {{~await (resolve-user file.createdByUser)~}}
                 </span>
+                {{#let
+                  (filter-by "historyFileId" file.id this.signatureRequests)
+                  as |requests|
+                }}
+                  {{#if requests.length}}
+                    <div
+                      class="uk-margin-small-top"
+                      data-test-signature-requests
+                    >
+                      <SignatureRequestList
+                        @requests={{requests}}
+                        @showValidity={{true}}
+                      />
+                    </div>
+                  {{/if}}
+                {{/let}}
               </span>
               <span class="uk-flex uk-flex-middle">
                 <UkIcon @icon="info" class="uk-icon-link" />
@@ -338,4 +385,90 @@
   </ul>
 
   <TagManager @documents={{array @document}} />
+
+  <UkModal
+    @visible={{this.pendingReplacement}}
+    @onHide={{this.cancelReplacement}}
+    as |Modal|
+  >
+    <Modal.header>
+      <strong class="uk-modal-title">
+        {{t "alexandria.esign.replace.title"}}
+      </strong>
+    </Modal.header>
+
+    <Modal.body>
+      <p data-test-replace-invalidates-signatures>
+        {{t "alexandria.esign.replace.message"}}
+      </p>
+    </Modal.body>
+
+    <Modal.footer>
+      <div class="uk-flex uk-flex-between">
+        <UkButton
+          @label={{t "alexandria.esign.replace.cancel"}}
+          @onClick={{this.cancelReplacement}}
+          data-test-replace-cancel
+        />
+        <UkButton
+          @color="danger"
+          @label={{t "alexandria.esign.replace.confirm"}}
+          @onClick={{this.confirmReplacement}}
+          data-test-replace-confirm
+        />
+      </div>
+    </Modal.footer>
+  </UkModal>
+
+  <UkModal
+    @visible={{this.signDialogVisible}}
+    @onHide={{this.hideSignDialog}}
+    as |Modal|
+  >
+    <Modal.header>
+      <strong class="uk-modal-title">{{t "alexandria.esign.title"}}</strong>
+    </Modal.header>
+
+    <Modal.body>
+      {{#if this.signatureRequest.isActive}}
+        <p data-test-sign-waiting>
+          <UkSpinner class="uk-margin-small-right" />
+          {{t "alexandria.esign.waiting"}}
+        </p>
+      {{else if (eq this.signatureRequest.status "registration_required")}}
+        <p data-test-sign-registration>
+          {{t "alexandria.esign.registration-required"}}
+        </p>
+      {{/if}}
+
+      {{#if this.signatureRequest.actionUrl}}
+        {{#if this.actionUrlQrCode.value}}
+          <div class="uk-margin">
+            <img
+              src={{this.actionUrlQrCode.value}}
+              alt={{this.signatureRequest.actionUrl}}
+              data-test-sign-qr-code
+            />
+          </div>
+        {{/if}}
+        <a
+          href={{this.signatureRequest.actionUrl}}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="uk-button uk-button-primary"
+          data-test-sign-action-url
+        >
+          {{t "alexandria.esign.open-action-url"}}
+        </a>
+      {{/if}}
+    </Modal.body>
+
+    <Modal.footer>
+      <UkButton
+        @label={{t "alexandria.esign.close"}}
+        @onClick={{this.hideSignDialog}}
+        data-test-sign-close
+      />
+    </Modal.footer>
+  </UkModal>
 </div>

@@ -65,6 +65,7 @@
     "flatpickr": "^4.6.13",
     "luxon": "^3.5.0",
     "mime": "^4.0.6",
+    "qrcode": "1.5.4",
     "reactiveweb": "^1.4.0"
   },
   "devDependencies": {

@@ -28,6 +28,9 @@ alexandria:
     move-failed-fallback: |-
       Sie haben keine Rechte {count, plural, one {das Dokument "{documentTitle}"} other {die Dokumente}} nach "{categoryName}" zu verschieben.
       Möchten Sie {count, plural, one {es} other {diese}} stattdessen nach "{categoryName}" kopieren?
+    sign-document: "Beim Anfordern der Signatur ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+    sign-timeout: "Die Signatur wurde nicht rechtzeitig bestätigt. Bitte versuchen Sie es erneut."
+    sign-rejected: "Die Signatur wurde abgelehnt."
 
   success:
     delete-document: "Das Dokument wurde erfolgreich gelöscht."
@@ -40,6 +43,7 @@ alexandria:
     move-document: "{count, plural, one {Das Dokument wurde} other {# Dokumente wurden}} erfolgreich verschoben"
     copy-document: "{count, plural, one {Das Dokument wurde} other {# Dokumente wurden}} erfolgreich kopiert"
     convert-pdf: "Dokument wurde erfolgreich umgewandelt."
+    sign: "Dokument wurde erfolgreich signiert."
 
   category-nav:
     all-files: "Alle Dokumente"
@@ -113,3 +117,36 @@ alexandria:
 
   tag-filter:
     empty: "Keine Tags..."
+
+  esign:
+    sign: "Signieren (QES)"
+    sign-help: "Erstellt eine qualifizierte elektronische Signatur (QES) nach ZertES. Sie ist der eigenhändigen Unterschrift gleichgestellt. Sie bestätigen die Signatur in der DeepID-App."
+    title: "Signatur"
+    waiting: "Warten auf die Bestätigung der Signatur..."
+    registration-required: "Sie müssen sich zuerst beim Signaturanbieter registrieren. Starten Sie die Signatur danach erneut."
+    open-action-url: "Öffnen"
+    close: "Schliessen"
+    signer: "Name im Signaturzertifikat"
+    signed: "Signiert"
+    stamped: "Gestempelt"
+    invalid: "Nicht mehr gültig"
+    invalid-help: "Das Dokument wurde danach geändert, die Signatur ist nicht mehr Teil der aktuellen Version."
+    replace:
+      title: "Signaturen werden ungültig"
+      message: "Die aktuelle Version enthält Signaturen oder Stempel. Diese sind nicht Teil der neuen Version und werden als nicht mehr gültig markiert."
+      cancel: "Abbrechen"
+      confirm: "Trotzdem ersetzen"
+    history:
+      title: "In dieser Anwendung erstellte Signaturen"
+    types:
+      timestamp: "Stempel"
+      advanced: "Fortgeschrittene Signatur (FES)"
+      qualified: "Qualifizierte Signatur (QES)"
+    status:
+      open: "Offen"
+      requested: "Wartet auf Bestätigung"
+      confirmed: "Bestätigt"
+      done: "Abgeschlossen"
+      timeout: "Zeit abgelaufen"
+      rejected: "Abgelehnt"
+      registration_required: "Registrierung erforderlich"

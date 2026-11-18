@@ -11,6 +11,8 @@ export default class CustomAlexandriaConfigService extends AlexandriaConfigServi
   enablePDFConversion = true;
   enableWebDAV = true;
   enableOriginalDocumentFilename = true;
+  enableSignatures = true;
+  stampMark = "stamp";
   additionalFileTypes = {
     json: {
       icon: "file-code",
@@ -20,7 +22,7 @@ export default class CustomAlexandriaConfigService extends AlexandriaConfigServi
   };
 
   markIcons = {
-    decision: "stamp",
+    stamp: "stamp",
     like: "heart",
     bill: "dollar-sign",
   };

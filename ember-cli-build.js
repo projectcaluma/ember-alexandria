@@ -3,7 +3,15 @@
 const EmberAddon = require("ember-cli/lib/broccoli/ember-addon");
 
 module.exports = function (defaults) {
-  const app = new EmberAddon(defaults, {});
+  const app = new EmberAddon(defaults, {
+    // The addon registers this in `index.js`, the dummy app needs it too
+    // for its own components
+    babel: {
+      plugins: [
+        require.resolve("ember-concurrency/async-arrow-task-transform"),
+      ],
+    },
+  });
 
   /*
     This build file specifies the options for the dummy test app of this

@@ -15,6 +15,10 @@ export default class DocumentModel extends Model {
   @attr modifiedByGroup;
   @attr date;
   @attr content; // needed for upload
+  // read only, signatures created in alexandria
+  @attr canSign; // whether the user can sign the latest file
+  @attr isSigned; // latest file contains a signature
+  @attr isStamped; // latest file contains a stamp
 
   @belongsTo("category", { inverse: "documents", async: true }) category;
   @hasMany("tag", { inverse: "documents", async: true }) tags;
@@ -38,6 +42,14 @@ export default class DocumentModel extends Model {
     )[0].downloadUrl;
     // no need to check for expired URLs here, because the browser caches the images when they are loaded
   });
+
+  // The `stampMark` (config) means "to be stamped", without loading marks
+  get isMarkedForStamp() {
+    return (
+      Boolean(this.config.stampMark) &&
+      this.hasMany("marks").ids().includes(this.config.stampMark)
+    );
+  }
 
   latestFile = trackedFunction(this, async () => {
     const files = await this.files;

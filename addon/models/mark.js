@@ -21,4 +21,20 @@ export default class MarkModel extends LocalizedModel {
   get icon() {
     return this.config.markIcons[this.id];
   }
+
+  /**
+   * Whether documents in `category` may have this mark. Limited with
+   * `metainfo.categories` (slugs, children included), checked by the backend.
+   */
+  allowsCategory(category) {
+    const allowed = this.metainfo?.categories;
+    if (!allowed?.length) {
+      return true;
+    }
+    return (
+      Boolean(category) &&
+      (allowed.includes(category.id) ||
+        allowed.includes(category.belongsTo("parent").id()))
+    );
+  }
 }
