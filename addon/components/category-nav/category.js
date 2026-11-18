@@ -209,6 +209,8 @@ export default class CategoryNavCategoryComponent extends Component {
       const copyCountSuccess = copyStates.filter((s) => s === true).length;
       const copyCountFailed = copyStates.filter((s) => s !== true).length;
       if (copyCountSuccess > 0) {
+        this.documents.refreshDocumentList();
+
         this.router.transitionTo(this.router.currentRouteName, {
           queryParams: {
             category: newCategory.id,

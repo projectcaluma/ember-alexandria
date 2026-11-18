@@ -88,6 +88,7 @@ export default class DocumentViewComponent extends Component {
     this.sortDirection,
     this.args.filters,
     this.uploadedDocuments,
+    this.documents.documentListRevision,
   ]);
 
   get documentsInCategory() {
