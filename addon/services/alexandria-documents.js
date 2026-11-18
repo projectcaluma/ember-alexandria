@@ -29,6 +29,8 @@ export default class AlexandriaDocumentsService extends Service {
 
   @tracked selectedDocuments = [];
   @tracked shortcutsDisabled = false;
+  // Incrementing this counter invalidates DocumentView's tracked query.
+  // Each successful move-copy fallback must trigger a fresh document fetch.
   @tracked documentListRevision = 0;
 
   @action
