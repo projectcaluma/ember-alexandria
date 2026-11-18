@@ -1,0 +1,40 @@
+{{! Signature requests with date, type, requesting user, signer and status }}
+<ul class="uk-list uk-list-collapse uk-margin-remove uk-text-small">
+  {{#each @requests as |request|}}
+    <li data-test-signature-request={{request.id}}>
+      {{format-date
+        request.createdAt
+        month="2-digit"
+        day="2-digit"
+        year="numeric"
+        hour="2-digit"
+        minute="2-digit"
+      }}
+      {{#if request.signatureType}}
+        {{t (concat "alexandria.esign.types." request.signatureType)}}
+      {{/if}}
+      {{await (resolve-user request.createdByUser)}}
+      {{#if request.signerName}}
+        <span
+          {{uk-tooltip (t "alexandria.esign.signer")}}
+          data-test-signature-request-signer
+        >({{request.signerName}})</span>
+      {{/if}}
+      <span
+        class="uk-label {{request.statusLabelClass}}"
+        data-test-signature-request-status
+      >
+        {{t (concat "alexandria.esign.status." request.status)}}
+      </span>
+      {{#if (and @showValidity (not request.isCurrent))}}
+        <span
+          class="uk-label"
+          {{uk-tooltip (t "alexandria.esign.invalid-help")}}
+          data-test-signature-request-invalid
+        >
+          {{t "alexandria.esign.invalid"}}
+        </span>
+      {{/if}}
+    </li>
+  {{/each}}
+</ul>

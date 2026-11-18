@@ -2,12 +2,15 @@ import { action } from "@ember/object";
 import { service } from "@ember/service";
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
-import { task } from "ember-concurrency";
+import { task, timeout } from "ember-concurrency";
 import { DateTime } from "luxon";
+import QRCode from "qrcode";
 import { trackedFunction } from "reactiveweb/function";
 import { localCopy } from "tracked-toolbox";
 
 import { ErrorHandler } from "ember-alexandria/utils/error-handler";
+
+const SIGNATURE_POLL_INTERVAL = 3000;
 
 export default class SingleDocumentDetailsComponent extends Component {
   @service("alexandria-documents") documents;
@@ -22,6 +25,9 @@ export default class SingleDocumentDetailsComponent extends Component {
   @tracked editDescription = false;
   @tracked editDate = false;
   @tracked validTitle = true;
+  @tracked signDialogVisible = false;
+  @tracked signatureRequest = null;
+  @tracked pendingReplacement = null;
   @localCopy("args.document.title") title;
   @localCopy("args.document.description") description;
 
@@ -36,6 +42,43 @@ export default class SingleDocumentDetailsComponent extends Component {
         return new Date(b.createdAt) - new Date(a.createdAt);
       })
       .pop()?.name;
+  });
+
+  // Loads the signature requests of all versions into the store. The
+  // template reads them live from the store, so status changes while
+  // polling show up right away.
+  signatureRequestsLoader = trackedFunction(this, async () => {
+    if (!this.config.enableSignatures) {
+      return false;
+    }
+    await this.store.query("signature-request", {
+      filter: { document: this.args.document.id },
+    });
+    return true;
+  });
+
+  get signatureRequests() {
+    if (!this.signatureRequestsLoader.value) {
+      return [];
+    }
+    return this.store
+      .peekAll("signature-request")
+      .filter((request) => !request.isNew)
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  }
+
+  // Signatures still contained in the latest file
+  get currentSignatureRequests() {
+    const fileIds = new Set(this.args.document.hasMany("files").ids());
+    return this.signatureRequests.filter(
+      (request) => request.isCurrent && fileIds.has(request.fileId),
+    );
+  }
+
+  // e.g. a registration link that has to be opened on the phone
+  actionUrlQrCode = trackedFunction(this, async () => {
+    const url = this.signatureRequest?.actionUrl;
+    return url ? QRCode.toDataURL(url, { quality: 1 }) : null;
   });
 
   get locale() {
@@ -121,10 +164,50 @@ export default class SingleDocumentDetailsComponent extends Component {
     }
   });
 
-  uploadReplacement = task({ drop: true }, async (event) => {
+  // A new version unrelated to signatures invalidates the current ones
+  get replaceInvalidatesSignatures() {
+    return (
+      this.config.enableSignatures &&
+      (this.args.document.isSigned || this.args.document.isStamped)
+    );
+  }
+
+  @action selectReplacement(event) {
+    const [file] = event.target.files;
+    // Allow selecting the same file again after cancelling
+    event.target.value = "";
+    if (!file) {
+      return;
+    }
+
+    if (this.replaceInvalidatesSignatures) {
+      // Confirmed in the dialog
+      this.pendingReplacement = file;
+      return;
+    }
+
+    this.uploadReplacement.perform(file);
+  }
+
+  @action confirmReplacement() {
+    const file = this.pendingReplacement;
+    this.pendingReplacement = null;
+    this.uploadReplacement.perform(file);
+  }
+
+  @action cancelReplacement() {
+    this.pendingReplacement = null;
+  }
+
+  uploadReplacement = task({ drop: true }, async (file) => {
     try {
-      const [file] = event.target.files;
       await this.documents.replace(this.args.document, file);
+
+      if (this.config.enableSignatures) {
+        // `is-signed`, `is-stamped` and `is-current` changed
+        await this.args.document.reload();
+        await this.signatureRequestsLoader.retry();
+      }
     } catch (error) {
       new ErrorHandler(this, error).notify(
         "alexandria.errors.replace-document",
@@ -185,6 +268,71 @@ export default class SingleDocumentDetailsComponent extends Component {
       new ErrorHandler(this, error).notify("alexandria.errors.copy-document", {
         count: 1,
       });
+    }
+  });
+
+  @action hideSignDialog() {
+    // Stops polling only, the backend cleans up after the timeout
+    this.signDocument.cancelAll();
+    this.resetSignDialog();
+  }
+
+  resetSignDialog() {
+    this.signDialogVisible = false;
+    this.signatureRequest = null;
+  }
+
+  signDocument = task({ drop: true }, async (event) => {
+    event?.preventDefault();
+    try {
+      const file = this.args.document.latestFile.value;
+
+      // The backend returns the user's active request for the file instead
+      // of creating a new one. Reuse it if it is already in the store, a new
+      // record with the same id would fail.
+      const existing = this.store
+        .peekAll("signature-request")
+        .find((r) => r.isActive && r.belongsTo("file").id() === file.id);
+
+      if (existing) {
+        await existing.reload();
+        this.signatureRequest = existing;
+      } else {
+        this.signatureRequest = this.store.createRecord("signature-request", {
+          file,
+        });
+        await this.signatureRequest.save();
+      }
+
+      this.signDialogVisible = true;
+
+      // Every reload makes the backend check the state at the provider
+      while (this.signatureRequest.isActive) {
+        // eslint-disable-next-line no-await-in-loop
+        await timeout(SIGNATURE_POLL_INTERVAL);
+        // eslint-disable-next-line no-await-in-loop
+        await this.signatureRequest.reload();
+      }
+
+      const status = this.signatureRequest.status;
+      if (status === "done") {
+        // The signed PDF is stored as new version of the document
+        await this.args.document.hasMany("files").reload();
+        await this.signatureRequestsLoader.retry();
+        await this.args.refreshDocumentList?.();
+        this.resetSignDialog();
+        this.notification.success(this.intl.t("alexandria.success.sign"));
+      } else if (status !== "registration_required") {
+        // registration_required keeps the dialog open to show the link
+        this.resetSignDialog();
+        this.notification.danger(
+          this.intl.t(`alexandria.errors.sign-${status}`),
+        );
+      }
+    } catch (error) {
+      this.signatureRequest?.rollbackAttributes();
+      this.resetSignDialog();
+      new ErrorHandler(this, error).notify("alexandria.errors.sign-document");
     }
   });
 }

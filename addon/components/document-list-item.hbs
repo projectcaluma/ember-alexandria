@@ -40,10 +40,51 @@
     {{else if (eq column "marks")}}
       <td class="list-marks uk-flex {{concat 'document-list-item-' column}}">
         {{#each @document.marks as |mark|}}
-          <div {{uk-tooltip mark.name}} data-test-document-mark={{mark.id}}>
-            <FaIcon @icon={{mark.icon}} @fixedWidth={{true}} />
-          </div>
+          {{#if
+            (and
+              this.config.enableSignatures
+              (eq mark.id this.config.stampMark)
+              @document.isStamped
+            )
+          }}
+            {{! Marked for stamping and stamped }}
+            <div
+              class="uk-text-success"
+              {{uk-tooltip (t "alexandria.esign.stamped")}}
+              data-test-document-mark={{mark.id}}
+              data-test-document-stamped
+            >
+              <FaIcon @icon={{mark.icon}} @fixedWidth={{true}} />
+            </div>
+          {{else}}
+            <div {{uk-tooltip mark.name}} data-test-document-mark={{mark.id}}>
+              <FaIcon @icon={{mark.icon}} @fixedWidth={{true}} />
+            </div>
+          {{/if}}
         {{/each}}
+        {{#if
+          (and
+            this.config.enableSignatures
+            @document.isStamped
+            (not @document.isMarkedForStamp)
+          )
+        }}
+          <div
+            {{uk-tooltip (t "alexandria.esign.stamped")}}
+            class="uk-text-success"
+            data-test-document-stamped
+          >
+            <FaIcon @icon="stamp" @fixedWidth={{true}} />
+          </div>
+        {{/if}}
+        {{#if (and this.config.enableSignatures @document.isSigned)}}
+          <div
+            {{uk-tooltip (t "alexandria.esign.signed")}}
+            data-test-document-signed
+          >
+            <FaIcon @icon="file-signature" @fixedWidth={{true}} />
+          </div>
+        {{/if}}
       </td>
     {{else if (eq column "link")}}
       <td class={{concat "document-list-item-" column}}>

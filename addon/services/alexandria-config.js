@@ -12,6 +12,11 @@ export default class AlexandriaConfigService extends Service {
   enablePDFConversion = false;
   enableWebDAV = false;
   enableOriginalDocumentFilename = false;
+  // Requires the alexandria esign module and the signature models in the host
+  enableSignatures = false;
+  // Slug of the mark for documents to be stamped, its icon turns green once
+  // the document is stamped
+  stampMark = undefined;
   allowedWebDAVMimeTypes = [
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",

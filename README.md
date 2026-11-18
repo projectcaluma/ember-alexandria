@@ -290,6 +290,8 @@ documentListLinkTo(document) {
 
 - `enablePDFConversion`: Set to `true` to enable docx/odt to pdf conversion. Make sure the backend is enabled aswell.
 - `enableWebDAV`: Set to `true` to enable docx/xlsx editing with WebDAV. Make sure the backend is enabled aswell.
+- `enableSignatures`: Set to `true` to enable signing PDFs and showing signatures and stamps created in alexandria. Requires the `esign` module in the backend, the models `signature-request`, `signature` and `deepsign-service-account` in the host app and the icons `stamp` and `file-signature`.
+- `stampMark`: Slug of the mark for documents to be stamped. Its icon turns green once the document is stamped. Stamped documents without this mark get a green `stamp` icon.
 - `allowedWebDAVMimeTypes`: Sets the allowed editable mime types (default: docx, xlsx). Make sure the list is the same as in the backend.
 - `namespace`: Set to API namespace
 - `zipDownloadHost`: Set if the ZIP download is different
